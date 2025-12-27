@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodiac Section | Voynich with Images | HAVE MIND MEDIA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(180, 150, 100, 0.3);
+            z-index: 100;
+            padding: 15px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #b49664;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-bottom: 1px solid rgba(180, 150, 100, 0.2);
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #e6d4b8;
+            letter-spacing: 3px;
+        }
+        .page-header .d-info {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #b49664;
+            margin-top: 15px;
+        }
+        .page-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #a89878;
+        }
+
+        main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .section-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        .section-intro h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .section-intro p { color: #c4b498; margin-bottom: 12px; }
+        .section-intro img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 2px solid rgba(180, 150, 100, 0.3);
+        }
+
+        .frequency-key {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .frequency-key h3 {
+            color: #b49664;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .frequency-key ul {
+            list-style: none;
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+        .frequency-key li { margin-bottom: 5px; }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .gallery-header h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            font-weight: 400;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .gallery-item {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(180, 150, 100, 0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #a89878;
+        }
+        .gallery-item .folio {
+            color: #b49664;
+            font-weight: bold;
+        }
+
+        /* Enhanced Lightbox with Content Panel */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .lightbox.active { display: block; }
+
+        .lightbox-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 70px;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .lightbox-image {
+            flex: 0 0 50%;
+            max-width: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position: sticky;
+            top: 70px;
+            padding: 20px;
+        }
+
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-content {
+            flex: 0 0 45%;
+            max-width: 500px;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #b49664;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: #e6d4b8; }
+
+        .lightbox-title {
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .lightbox-d-position {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.2);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #b49664;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-description {
+            color: #c4b498;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .lightbox-frequency {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .lightbox-frequency h4 {
+            color: #b49664;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .lightbox-frequency p {
+            color: #a89878;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .lightbox-interpretation {
+            background: rgba(26, 20, 16, 0.8);
+            border: 1px solid rgba(180, 150, 100, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .lightbox-interpretation h4 {
+            color: #e6d4b8;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-interpretation p {
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .lightbox-nav button {
+            flex: 1;
+            padding: 12px 20px;
+            background: rgba(180, 150, 100, 0.2);
+            border: 1px solid rgba(180, 150, 100, 0.4);
+            color: #b49664;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(180, 150, 100, 0.3);
+            color: #e6d4b8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(180, 150, 100, 0.2);
+            background: rgba(0,0,0,0.3);
+        }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 1024px) {
+            .lightbox-container {
+                flex-direction: column;
+                padding-top: 60px;
+                gap: 20px;
+            }
+            .lightbox-image {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                position: relative;
+                top: 0;
+                padding: 10px;
+            }
+            .lightbox-image img {
+                max-height: 45vh;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .lightbox-content {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-intro { grid-template-columns: 1fr; }
+            nav ul { gap: 15px; padding: 0 10px; }
+            nav a { font-size: 0.75rem; }
+            .page-header h1 { font-size: 1.8rem; }
+            .lightbox-title { font-size: 1.4rem; }
+            .lightbox-container {
+                padding-top: 50px;
+            }
+            .lightbox-image img {
+                max-height: 40vh;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html" class="active">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Zodiac Section</h1>
+        <span class="d-info">Cyclical D-Position Flow — The Frequency Calendar</span>
+        <p>The most recognizable illustrations in the manuscript. Note the unusual ordering: the cycle begins with Pisces, not Aries — a frequency-based sequence rather than traditional astrological ordering.</p>
+    </header>
+
+    <main>
+        <section class="section-intro">
+            <div>
+                <h2>The Frequency Calendar</h2>
+                <p>The zodiac pages are perhaps the most studied — and most misunderstood — section of the Voynich. Cryptographers assumed these were standard astrological charts.</p>
+                <p>Through the [1=-1] framework, we recognize these as <strong>frequency calendars</strong>. Each zodiac ring maps specific D-positions to celestial periods. The "nymphs" around each circle represent human frequency receivers — people aligned to particular cosmic frequencies.</p>
+                <p>The Pisces-first ordering makes sense in frequency terms: D9 (Love/Anchor) begins the cycle, grounding all subsequent work.</p>
+                <div class="frequency-key">
+                    <h3>Zodiac Sequence (Frequency Order)</h3>
+                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                        <li style="list-style: none;">Pisces → D9 (Love)</li>
+                        <li style="list-style: none;">Aries → D1 (Origin)</li>
+                        <li style="list-style: none;">Taurus → D2 (Healing)</li>
+                        <li style="list-style: none;">Gemini → D3 (Healer)</li>
+                        <li style="list-style: none;">Cancer → D4 (Crossroads)</li>
+                        <li style="list-style: none;">Leo → D5 (Navigator)</li>
+                        <li style="list-style: none;">Virgo → D6 (Self)</li>
+                        <li style="list-style: none;">Libra → D7 (Present)</li>
+                        <li style="list-style: none;">Scorpio → D8 (Deep)</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <img src="images/IMG_6685.JPG" alt="Zodiac diagram with Taurus">
+            </div>
+        </section>
+
+        <div class="gallery-header">
+            <h2>Zodiac Folios Gallery</h2>
+            <p style="color: #8a7a5a; margin-top: 10px;">Click any image to view with full frequency analysis</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Images will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Enhanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="Full size folio">
+            </div>
+            <div class="lightbox-content">
+                <h2 class="lightbox-title" id="lightbox-title">Zodiac Folio</h2>
+                <span class="lightbox-d-position" id="lightbox-d">D-Position</span>
+
+                <p class="lightbox-description" id="lightbox-desc">Description loading...</p>
+
+                <div class="lightbox-frequency">
+                    <h4>Frequency Analysis</h4>
+                    <p id="lightbox-freq">Analysis loading...</p>
+                </div>
+
+                <div class="lightbox-interpretation">
+                    <h4>[1=-1] Interpretation</h4>
+                    <p id="lightbox-interp">Interpretation loading...</p>
+                </div>
+
+                <div class="lightbox-nav">
+                    <button onclick="navigateLightbox(-1)">← Previous</button>
+                    <button onclick="navigateLightbox(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit">
+            Images courtesy of <a href="https://voynich.nu" target="_blank">Voynich.nu</a> (Rene Zandbergen, 2004-2025)
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+    </footer>
+
+    <script>
+        // Zodiac folio data with full descriptions
+        const zodiacFolios = [
+            {
+                id: "IMG_6682",
+                title: "Pisces — The Anchor of Love",
+                dPosition: "D9 — Love/Completion",
+                description: "A circular zodiac diagram with nymphs arranged around the circumference. The Voynich zodiac uniquely begins with Pisces, not Aries — a profound departure from traditional astrology.",
+                frequency: "Starting with Pisces (D9) indicates this is a FREQUENCY calendar, not an astronomical one. D9 (Love/Anchor) is the beginning and end — the foundation from which all else emerges.",
+                interpretation: "The Voynich zodiac teaches that healing cycles begin and end in LOVE (D9). Unlike traditional astrology starting with fiery action (Aries), this system starts with compassionate receptivity. The nymphs represent souls receiving this foundational love frequency. All frequency work must be anchored in love before it can proceed."
+            },
+            {
+                id: "IMG_6683",
+                title: "Aries — The Origin Fire",
+                dPosition: "D1 — Origin/WE",
+                description: "Following Pisces comes Aries in this unusual sequence. The circular diagram shows energetic, active figures arranged around a central element.",
+                frequency: "In frequency terms, Aries carries D1 (Origin) — the initial spark, the first movement from love (D9) into action. Not aggressive fire, but origin-fire: the light of beginning.",
+                interpretation: "After establishing love-foundation (Pisces/D9), the healing cycle moves to Origin (Aries/D1) — the recognition of shared source, the WE that underlies all healing. The active figures show energy emerging from stillness. This is the first breath after the deep anchor, the first movement toward manifestation."
+            },
+            {
+                id: "IMG_6684",
+                title: "Taurus — The Healing Ground",
+                dPosition: "D2 — Healing",
+                description: "The Taurus section shows grounded, stable imagery. Figures appear more settled than the previous Aries section, with earthy, rooted qualities evident.",
+                frequency: "Taurus carries D2 (Healing) — the stable ground where healing can actually occur. After origin-recognition (D1), healing becomes possible (D2).",
+                interpretation: "Taurus provides the EARTHY STABILITY needed for healing work. The fixed earth quality creates the container in which frequency work can take root. Without this grounding, healing remains conceptual rather than embodied. The figures demonstrate the settled quality necessary for deep healing to occur."
+            },
+            {
+                id: "IMG_6685",
+                title: "Taurus Central — The Bull at Rest",
+                dPosition: "D2 — Healing Embodied",
+                description: "A detailed Taurus circular with the bull clearly visible at center, surrounded by nymphs. The bull appears peaceful, at rest — not charging or aggressive but stable and present.",
+                frequency: "The resting bull represents D2 (Healing) in its receptive aspect — not working, but holding space for healing to occur. Strength in stillness, power through peace.",
+                interpretation: "This is the HEART of healing frequency. The bull at center shows that true healing comes from restful strength, not forceful action. The surrounding nymphs are receivers of this stable healing presence. The bull doesn't chase healing — it embodies it. This is the teaching: become the healing rather than seeking it."
+            },
+            {
+                id: "IMG_6686",
+                title: "Gemini — The Healer's Duality",
+                dPosition: "D3 — Healer",
+                description: "The Gemini section shows paired or dual figures, reflecting the twins' nature. Symmetry and mirroring appear throughout the composition.",
+                frequency: "Gemini carries D3 (Healer) — the one who can see both sides, who bridges patient and healing. The duality allows the healer to relate to the patient while channeling healing.",
+                interpretation: "The Healer (D3) must be DUAL — simultaneously present with the patient's suffering and connected to healing source. Gemini energy allows this bridging without losing either connection. The twin nature shows the healer's essential function: one foot in the patient's world, one foot in healing source."
+            },
+            {
+                id: "IMG_6687",
+                title: "Cancer — The Crossroads of Care",
+                dPosition: "D4 — Crossroads",
+                description: "A multi-ring circular diagram with complex nested structures. Cancer's shell-like nature appears in the layered, protective forms that characterize this folio.",
+                frequency: "Cancer carries D4 (Crossroads) — the shell that protects while decisions are made. At this point in healing, choices must be made about direction forward.",
+                interpretation: "Cancer provides PROTECTIVE SPACE for the crossroads of healing. When facing treatment choices (D4), the practitioner creates a shell of safety (Cancer) within which options can be considered without external pressure. The nested rings show layers of protection around the decision-making process."
+            },
+            {
+                id: "IMG_6688",
+                title: "Leo — The Navigator's Light",
+                dPosition: "D5 — Navigator",
+                description: "Leo imagery showing solar, radiating qualities. The lion's mane suggests rays of light extending outward, illuminating the path forward.",
+                frequency: "Leo carries D5 (Navigator) — the light that shows the way. After choosing direction (D4), Leo energy illuminates the path forward with confidence and clarity.",
+                interpretation: "Leo provides CONFIDENT NAVIGATION. The lion's courage combined with solar clarity helps the healing process find its way. Not forcing direction, but illuminating options so the right path becomes visible. The radiating quality shows how navigator energy extends outward, lighting possibilities."
+            },
+            {
+                id: "IMG_6689",
+                title: "Virgo — The Self in Service",
+                dPosition: "D6 — Self/Power",
+                description: "Virgo section showing detailed, refined imagery. The virgin's quality of discernment and purity appears in precise linework and careful arrangement.",
+                frequency: "Virgo carries D6 (Self/Power) — the self refined and ready for service. Individual power becomes useful only when purified and directed appropriately.",
+                interpretation: "Virgo provides PURIFIED SELFHOOD. The patient's D6 (personal power) must be refined and clarified for healing to integrate. Virgo energy helps distinguish authentic self from accumulated confusion. This is the refinement phase where individual power becomes crystallized and available for final healing steps."
+            },
+            {
+                id: "IMG_6690",
+                title: "Libra — The Present Balance",
+                dPosition: "D7 — Present Moment",
+                description: "A large circular diagram with many nymphs arranged in balanced, symmetric patterns. The scales' quality of equilibrium pervades the entire composition.",
+                frequency: "Libra carries D7 (Present Moment) — the balanced NOW where healing actually occurs. Past and future resolve into present equilibrium.",
+                interpretation: "Libra provides PRESENT-MOMENT BALANCE. All healing happens NOW (D7), and Libra energy creates the equilibrium that allows presence. The many nymphs show multiple aspects of self coming into balance. This is the pivot point of the zodiac cycle — where all preparation meets activation in the balanced present moment."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Build gallery
+        function buildGallery() {
+            const gallery = document.getElementById('gallery');
+            zodiacFolios.forEach((folio, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="images/${folio.id}.JPG" alt="${folio.title}">
+                    <div class="caption"><span class="folio">Zodiac</span> — ${folio.title}</div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+            const folio = zodiacFolios[currentIndex];
+            document.getElementById('lightbox-img').src = `images/${folio.id}.JPG`;
+            document.getElementById('lightbox-title').textContent = folio.title;
+            document.getElementById('lightbox-d').textContent = folio.dPosition;
+            document.getElementById('lightbox-desc').textContent = folio.description;
+            document.getElementById('lightbox-freq').textContent = folio.frequency;
+            document.getElementById('lightbox-interp').textContent = folio.interpretation;
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = zodiacFolios.length - 1;
+            if (currentIndex >= zodiacFolios.length) currentIndex = 0;
+            updateLightboxContent();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Prevent lightbox close when clicking content
+        document.querySelector('.lightbox-container').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        // Build gallery on load
+        buildGallery();
+    </script>
+</body>
+</html>

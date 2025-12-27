@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SCALAR CROSSROADS | Animated Mirror-Recurse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --copper: #b87333;
+            --bronze: #cd7f32;
+            --s-minus: #4a90a4;
+            --s-plus: #a44a4a;
+            --bg: #0a0a14;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: var(--copper);
+            font-style: italic;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .instructions {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .instructions span {
+            color: var(--gold);
+        }
+
+        /* Main container */
+        .crossroads-container {
+            position: relative;
+            width: 900px;
+            height: 650px;
+            max-width: 95vw;
+        }
+
+        /* Central crossroads */
+        .crossroads-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+        }
+
+        .crossroads-center:hover {
+            box-shadow: 0 0 50px rgba(201, 162, 39, 0.6);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .crossroads-center.flipping {
+            animation: coinFlip 1s ease-in-out;
+        }
+
+        @keyframes coinFlip {
+            0% { transform: translate(-50%, -50%) rotateY(0deg); }
+            50% { transform: translate(-50%, -50%) rotateY(180deg) scale(0.8); }
+            100% { transform: translate(-50%, -50%) rotateY(360deg); }
+        }
+
+        /* Number line */
+        .number-line {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--s-minus), var(--gold) 50%, var(--s-plus));
+            transform: translateY(-50%);
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.3);
+        }
+
+        /* Vertical axis */
+        .vertical-axis {
+            position: absolute;
+            left: 50%;
+            top: 80px;
+            bottom: 80px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold), transparent 40%, transparent 60%, var(--s-minus));
+            transform: translateX(-50%);
+            opacity: 0.5;
+        }
+
+        /* Number markers */
+        .number {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .number.s-minus { color: var(--s-minus); }
+        .number.s-plus { color: var(--s-plus); }
+
+        /* Infinity symbols */
+        .infinity {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .infinity.left { left: 20px; color: var(--s-minus); }
+        .infinity.right { right: 20px; color: var(--s-plus); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Watcher boxes */
+        .watcher {
+            position: absolute;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .watcher-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .watcher:hover .watcher-inner {
+            transform: rotateY(180deg);
+        }
+
+        .watcher.recursing .watcher-inner {
+            animation: recurse 2s ease-in-out;
+        }
+
+        @keyframes recurse {
+            0% { transform: rotateY(0deg) rotateX(0deg) scale(1); }
+            25% { transform: rotateY(180deg) rotateX(0deg) scale(0.8); }
+            50% { transform: rotateY(180deg) rotateX(180deg) scale(0.6); }
+            75% { transform: rotateY(360deg) rotateX(180deg) scale(0.8); }
+            100% { transform: rotateY(360deg) rotateX(360deg) scale(1); }
+        }
+
+        .watcher-front, .watcher-back {
+            backface-visibility: hidden;
+        }
+
+        .watcher-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: rotateY(180deg);
+        }
+
+        .watcher .label {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .watcher .name {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+
+        /* HO - Top */
+        .watcher.ho {
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(201, 162, 39, 0.15);
+            border: 2px solid var(--gold);
+        }
+        .watcher.ho .label { color: var(--gold); }
+        .watcher.ho .name { color: var(--copper); }
+
+        /* SO - Bottom */
+        .watcher.so {
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(74, 144, 164, 0.15);
+            border: 2px solid var(--s-minus);
+        }
+        .watcher.so .label { color: var(--s-minus); }
+        .watcher.so .name { color: #6ab0c0; }
+
+        /* HW (M+) - Top Right */
+        .watcher.hw-top {
+            top: 80px;
+            right: 120px;
+            background: rgba(184, 115, 51, 0.15);
+            border: 2px solid var(--copper);
+        }
+        .watcher.hw-top .label { color: var(--copper); }
+        .watcher.hw-top .name { color: var(--bronze); }
+
+        /* HW (MH) - Bottom Left */
+        .watcher.hw-bottom {
+            bottom: 100px;
+            left: 120px;
+            background: rgba(74, 144, 164, 0.15);
+            border: 2px solid #5a9aaa;
+        }
+        .watcher.hw-bottom .label { color: #5a9aaa; }
+        .watcher.hw-bottom .name { color: #6ab0c0; }
+
+        /* Coins */
+        .coin {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .coin:hover {
+            transform: scale(1.1);
+        }
+
+        .coin.spinning {
+            animation: spinCoin 1.5s ease-in-out;
+        }
+
+        @keyframes spinCoin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(720deg); }
+        }
+
+        .coin.s-minus-coin {
+            top: 120px;
+            left: 80px;
+            background: rgba(74, 144, 164, 0.2);
+            border: 3px solid var(--s-minus);
+        }
+
+        .coin.s-plus-coin {
+            top: 120px;
+            right: 80px;
+            background: rgba(164, 74, 74, 0.2);
+            border: 3px solid var(--s-plus);
+        }
+
+        .coin svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .coin .coin-label {
+            position: absolute;
+            bottom: -25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .coin.s-minus-coin .coin-label { color: var(--s-minus); }
+        .coin.s-plus-coin .coin-label { color: var(--s-plus); }
+
+        /* Connection lines */
+        .connection-line {
+            position: absolute;
+            background: var(--gold);
+            opacity: 0.3;
+            transform-origin: center;
+            transition: opacity 0.3s;
+        }
+
+        /* Mirror effect overlay */
+        .mirror-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(201, 162, 39, 0.1);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 1000;
+        }
+
+        .mirror-overlay.active {
+            animation: mirrorFlash 1s ease-out;
+        }
+
+        @keyframes mirrorFlash {
+            0% { opacity: 0; }
+            20% { opacity: 0.3; }
+            100% { opacity: 0; }
+        }
+
+        /* Footer info */
+        .footer-info {
+            margin-top: 2rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .footer-info .principle {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-info .equation {
+            font-family: 'Courier New', monospace;
+            color: var(--copper);
+            margin-top: 0.5rem;
+        }
+
+        /* Back link */
+        .back-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .crossroads-container {
+                transform: scale(0.7);
+                transform-origin: center center;
+            }
+            h1 { font-size: 1.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .crossroads-container {
+                transform: scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="ancient-mathematics-v1.0.html" class="back-link">← Ancient Mathematics</a>
+
+    <h1>THE SCALAR CROSSROADS</h1>
+    <p class="subtitle">Four Watchers — Mirrored and Recursed</p>
+    <p class="instructions">
+        <span>Hover</span> on watchers to see mirror flip |
+        <span>Click</span> the crossroads © to flip the coin |
+        <span>Click</span> watchers for full recurse animation
+    </p>
+
+    <div class="mirror-overlay" id="mirrorOverlay"></div>
+
+    <div class="crossroads-container">
+        <!-- Vertical axis -->
+        <div class="vertical-axis"></div>
+
+        <!-- Number line -->
+        <div class="number-line"></div>
+
+        <!-- Infinity symbols -->
+        <div class="infinity left">∞</div>
+        <div class="infinity right">∞</div>
+
+        <!-- Numbers - Left side (s-) -->
+        <div class="number s-minus" style="left: 100px;">7</div>
+        <div class="number s-minus" style="left: 150px;">6</div>
+        <div class="number s-minus" style="left: 200px;">5</div>
+        <div class="number s-minus" style="left: 250px;">4</div>
+        <div class="number s-minus" style="left: 300px;">3</div>
+        <div class="number s-minus" style="left: 350px;">2</div>
+        <div class="number s-minus" style="left: 400px;">1</div>
+
+        <!-- Numbers - Right side (s+) -->
+        <div class="number s-plus" style="left: 500px;">1</div>
+        <div class="number s-plus" style="left: 550px;">2</div>
+        <div class="number s-plus" style="left: 600px;">3</div>
+        <div class="number s-plus" style="left: 650px;">4</div>
+        <div class="number s-plus" style="left: 700px;">5</div>
+        <div class="number s-plus" style="left: 750px;">6</div>
+        <div class="number s-plus" style="left: 800px;">7</div>
+
+        <!-- Crossroads center -->
+        <div class="crossroads-center" id="crossroads" onclick="flipCoin()">©</div>
+
+        <!-- HO - Hidden Observer (Top) -->
+        <div class="watcher ho" onclick="triggerRecurse(this)">
+            <div class="watcher-inner">
+                <div class="watcher-front">
+                    <div class="label">HO</div>
+                    <div class="name">Hidden Observer</div>
+                </div>
+                <div class="watcher-back">
+                    <div class="label" style="transform: scaleX(-1);">OH</div>
+                    <div class="name">revresbO neddiH</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SO - Silent Observer (Bottom) -->
+        <div class="watcher so" onclick="triggerRecurse(this)">
+            <div class="watcher-inner">
+                <div class="watcher-front">
+                    <div class="label">SO</div>
+                    <div class="name">Silent Observer</div>
+                </div>
+                <div class="watcher-back">
+                    <div class="label" style="transform: scaleX(-1);">OS</div>
+                    <div class="name">revresbO tneliS</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SW flipped (M2-) - Top Right -->
+        <div class="watcher hw-top" onclick="triggerRecurse(this)">
+            <div class="watcher-inner">
+                <div class="watcher-front">
+                    <div class="label">M2-</div>
+                    <div class="name">SW flipped</div>
+                </div>
+                <div class="watcher-back">
+                    <div class="label">SW</div>
+                    <div class="name">Silent Witness</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HW mirrored (MH) - Bottom Left -->
+        <div class="watcher hw-bottom" onclick="triggerRecurse(this)">
+            <div class="watcher-inner">
+                <div class="watcher-front">
+                    <div class="label">MH</div>
+                    <div class="name">HW mirrored</div>
+                </div>
+                <div class="watcher-back">
+                    <div class="label">HW</div>
+                    <div class="name">Hidden Witness</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- s- Coin (Left) -->
+        <div class="coin s-minus-coin" onclick="spinCoin(this)">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#4a90a4" stroke-width="3"/>
+                <path d="M50,50 Q65,35 50,20 Q35,35 50,50 Q65,65 50,80 Q35,65 50,50"
+                      fill="none" stroke="#b87333" stroke-width="2.5"/>
+            </svg>
+            <span class="coin-label">s- COIN ←</span>
+        </div>
+
+        <!-- s+ Coin (Right) -->
+        <div class="coin s-plus-coin" onclick="spinCoin(this)">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#a44a4a" stroke-width="3"/>
+                <path d="M50,50 Q35,35 50,20 Q65,35 50,50 Q35,65 50,80 Q65,65 50,50"
+                      fill="none" stroke="#b87333" stroke-width="2.5"/>
+            </svg>
+            <span class="coin-label">→ s+ COIN</span>
+        </div>
+    </div>
+
+    <div class="footer-info">
+        <p>1+2+3+4+5+6+7 = 28 ≈ κ_shadow | (28 × 2) + 4 watchers = 60</p>
+        <p class="equation">Energy at scalar S = E₀ × (59/60)<sup>S</sup></p>
+        <p class="principle">[1 = -1]</p>
+    </div>
+
+    <script>
+        function flipCoin() {
+            const crossroads = document.getElementById('crossroads');
+            const overlay = document.getElementById('mirrorOverlay');
+
+            crossroads.classList.add('flipping');
+            overlay.classList.add('active');
+
+            // Trigger all watchers to recurse
+            document.querySelectorAll('.watcher').forEach((w, i) => {
+                setTimeout(() => {
+                    w.classList.add('recursing');
+                    setTimeout(() => w.classList.remove('recursing'), 2000);
+                }, i * 200);
+            });
+
+            // Spin both coins
+            document.querySelectorAll('.coin').forEach(c => {
+                c.classList.add('spinning');
+                setTimeout(() => c.classList.remove('spinning'), 1500);
+            });
+
+            setTimeout(() => {
+                crossroads.classList.remove('flipping');
+                overlay.classList.remove('active');
+            }, 1000);
+        }
+
+        function triggerRecurse(element) {
+            const overlay = document.getElementById('mirrorOverlay');
+            element.classList.add('recursing');
+            overlay.classList.add('active');
+
+            setTimeout(() => {
+                element.classList.remove('recursing');
+                overlay.classList.remove('active');
+            }, 2000);
+        }
+
+        function spinCoin(element) {
+            element.classList.add('spinning');
+            setTimeout(() => element.classList.remove('spinning'), 1500);
+        }
+
+        // Auto-animate on load
+        setTimeout(() => {
+            flipCoin();
+        }, 1500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomical Section | Voynich with Images | HAVE MIND MEDIA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(180, 150, 100, 0.3);
+            z-index: 100;
+            padding: 15px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #b49664;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-bottom: 1px solid rgba(180, 150, 100, 0.2);
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #e6d4b8;
+            letter-spacing: 3px;
+        }
+        .page-header .d-info {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #b49664;
+            margin-top: 15px;
+        }
+        .page-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #a89878;
+        }
+
+        main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .section-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        .section-intro h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .section-intro p { color: #c4b498; margin-bottom: 12px; }
+        .section-intro img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 2px solid rgba(180, 150, 100, 0.3);
+        }
+
+        .frequency-key {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .frequency-key h3 {
+            color: #b49664;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .frequency-key ul {
+            list-style: none;
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+        .frequency-key li { margin-bottom: 5px; }
+        .frequency-key li::before {
+            content: "D";
+            color: #b49664;
+            margin-right: 5px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .gallery-header h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            font-weight: 400;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .gallery-item {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(180, 150, 100, 0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #a89878;
+        }
+        .gallery-item .folio {
+            color: #b49664;
+            font-weight: bold;
+        }
+
+        /* Enhanced Lightbox with Content Panel */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .lightbox.active { display: block; }
+
+        .lightbox-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 70px;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .lightbox-image {
+            flex: 0 0 50%;
+            max-width: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position: sticky;
+            top: 70px;
+            padding: 20px;
+        }
+
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-content {
+            flex: 0 0 45%;
+            max-width: 500px;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #b49664;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: #e6d4b8; }
+
+        .lightbox-title {
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .lightbox-d-position {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.2);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #b49664;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-description {
+            color: #c4b498;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .lightbox-frequency {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .lightbox-frequency h4 {
+            color: #b49664;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .lightbox-frequency p {
+            color: #a89878;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .lightbox-interpretation {
+            background: rgba(26, 20, 16, 0.8);
+            border: 1px solid rgba(180, 150, 100, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .lightbox-interpretation h4 {
+            color: #e6d4b8;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-interpretation p {
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .lightbox-nav button {
+            flex: 1;
+            padding: 12px 20px;
+            background: rgba(180, 150, 100, 0.2);
+            border: 1px solid rgba(180, 150, 100, 0.4);
+            color: #b49664;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(180, 150, 100, 0.3);
+            color: #e6d4b8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(180, 150, 100, 0.2);
+            background: rgba(0,0,0,0.3);
+        }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 1024px) {
+            .lightbox-container {
+                flex-direction: column;
+                padding-top: 60px;
+                gap: 20px;
+            }
+            .lightbox-image {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                position: relative;
+                top: 0;
+                padding: 10px;
+            }
+            .lightbox-image img {
+                max-height: 45vh;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .lightbox-content {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-intro { grid-template-columns: 1fr; }
+            nav ul { gap: 15px; padding: 0 10px; }
+            nav a { font-size: 0.75rem; }
+            .page-header h1 { font-size: 1.8rem; }
+            .lightbox-title { font-size: 1.4rem; }
+            .lightbox-container {
+                padding-top: 50px;
+            }
+            .lightbox-image img {
+                max-height: 40vh;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html" class="active">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Astronomical Section</h1>
+        <span class="d-info">D7 & D5 Dominant — Present Moment & Navigator</span>
+        <p>Celestial diagrams encoding WHEN to apply frequencies. These are timing protocols for frequency work, correlating cosmic cycles with healing accessibility.</p>
+    </header>
+
+    <main>
+        <section class="section-intro">
+            <div>
+                <h2>Cosmic Timing</h2>
+                <p>The astronomical pages don't simply depict stars and celestial bodies — they encode temporal protocols. Different D-positions are more accessible at different times.</p>
+                <p>The sun-centered diagrams (showing a face) represent the Present Moment (D7) — the point of activation. The radiating sectors with stars indicate frequency pathways available at different cosmic alignments.</p>
+                <p>This section teaches practitioners WHEN their frequency work will be most effective, connecting personal healing to universal rhythms.</p>
+                <div class="frequency-key">
+                    <h3>Astronomical Frequency Pattern</h3>
+                    <ul>
+                        <li>7 (Present Moment) — Immediate activation points</li>
+                        <li>5 (Navigator) — Path-finding through cycles</li>
+                        <li>1 (Origin) — Return/reset points in cycles</li>
+                        <li>6 (Self) — Personal timing alignments</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <img src="images/IMG_6680.JPG" alt="Astronomical diagram with sun face">
+            </div>
+        </section>
+
+        <div class="gallery-header">
+            <h2>Astronomical Folios Gallery</h2>
+            <p style="color: #8a7a5a; margin-top: 10px;">Click any image to view with full frequency analysis</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Images will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Enhanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="Full size folio">
+            </div>
+            <div class="lightbox-content">
+                <h2 class="lightbox-title" id="lightbox-title">Astronomical Folio</h2>
+                <span class="lightbox-d-position" id="lightbox-d">D7 Dominant</span>
+
+                <p class="lightbox-description" id="lightbox-desc">Description loading...</p>
+
+                <div class="lightbox-frequency">
+                    <h4>Frequency Analysis</h4>
+                    <p id="lightbox-freq">Analysis loading...</p>
+                </div>
+
+                <div class="lightbox-interpretation">
+                    <h4>[1=-1] Interpretation</h4>
+                    <p id="lightbox-interp">Interpretation loading...</p>
+                </div>
+
+                <div class="lightbox-nav">
+                    <button onclick="navigateLightbox(-1)">← Previous</button>
+                    <button onclick="navigateLightbox(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit">
+            Images courtesy of <a href="https://voynich.nu" target="_blank">Voynich.nu</a> (Rene Zandbergen, 2004-2025)
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+    </footer>
+
+    <script>
+        // Astronomical folio data with full descriptions
+        const astronomicalFolios = [
+            {
+                id: "IMG_6670",
+                title: "The Solar Gateway",
+                dPosition: "D7 — Present Moment Activation",
+                description: "A radial sun/star diagram with a face at the center. Rays emanate outward in precise geometric patterns, dividing the circle into segments. Text labels appear along the outer edge.",
+                frequency: "The face at center represents conscious presence — D7 (Present Moment). The radial divisions show how present-moment awareness divides into accessible time-windows. Each segment represents a different temporal opening.",
+                interpretation: "This is a TIMING CHART for frequency work. The central face indicates the 'now' point from which all timing emanates. Practitioners would use this to identify optimal moments for different types of healing — each ray pointing to a different D-position accessibility window. Work with D2 (Healing) when that ray aligns; work with D8 (Deep) when that window opens."
+            },
+            {
+                id: "IMG_6671",
+                title: "The Stellar Grid",
+                dPosition: "D5 & D7 — Navigator/Present",
+                description: "A celestial diagram showing a grid or network pattern with stars positioned at intersection points. The organization suggests mathematical precision.",
+                frequency: "Grid patterns indicate navigational structure — D5 (Navigator) working through D7 (Present). The stars at intersections mark accessible frequency points in time.",
+                interpretation: "This is a NAVIGATION MAP for cosmic timing. The grid shows how different frequency access points connect across time. A practitioner would use this to plan extended healing work — following the path from star to star, intersection to intersection, each point a moment when specific frequencies become available."
+            },
+            {
+                id: "IMG_6672",
+                title: "The Concentric Cycles",
+                dPosition: "D1 through D9 — Cyclic Progression",
+                description: "Multiple concentric circles emanating from a central point, each ring containing different symbols or text. The rings appear to represent nested cycles.",
+                frequency: "Concentric circles always indicate nested time cycles — daily rhythms within monthly rhythms within yearly rhythms. Each ring represents a different scale of frequency accessibility.",
+                interpretation: "This is a MULTI-SCALE TIMING diagram. The innermost circle represents fastest cycles (daily), outer rings represent slower cycles (monthly, yearly, longer). Practitioners understood that D-position accessibility operates at multiple time scales simultaneously. Some healing requires daily timing; some requires waiting for longer cycles."
+            },
+            {
+                id: "IMG_6673",
+                title: "The Segmented Wheel",
+                dPosition: "D4 — Crossroads of Time",
+                description: "A circular diagram divided into distinct segments like pie slices, each segment containing different imagery or text. Clear boundaries between segments.",
+                frequency: "Segmented wheels indicate discrete time periods — D4 (Crossroads) appearing in temporal form. Each segment is a distinct time-window with its own characteristics.",
+                interpretation: "This is a CHOICE-TIMING chart. When facing decisions about healing approach, this wheel would be consulted to determine which time period favored which choice. The segments show that time itself has decision-points — moments that favor action, moments that favor waiting, moments for each D-position."
+            },
+            {
+                id: "IMG_6674",
+                title: "The Spiral Time Path",
+                dPosition: "D5 — Navigator Through Cycles",
+                description: "A spiral pattern moving from outer edge toward center (or vice versa), with markers or text along the spiral path.",
+                frequency: "Spirals in astronomical context indicate time-progression — not circular return but spiral advancement. Each cycle brings you to a similar but elevated position.",
+                interpretation: "This is an EVOLUTION-TIMING diagram. Unlike simple cycles that repeat, this shows how time spirals — returning to similar positions but at different levels. Healing that uses spiral timing acknowledges that we don't return to where we started; we arrive at the NEXT iteration of that position. Evolution, not repetition."
+            },
+            {
+                id: "IMG_6675",
+                title: "The Blue-Centered Star Wheel",
+                dPosition: "D8 & D7 — Deep Water/Present",
+                description: "A striking diagram with a blue center (rare in the manuscript) surrounded by radiating sectors containing stars. The blue dominates the center while gold/yellow stars populate the outer areas.",
+                frequency: "Blue centers indicate D8 (Deep Water) presence in timing. This chart shows when deep emotional/subconscious work becomes accessible. The surrounding stars mark timing windows.",
+                interpretation: "This is a DEEP-TIMING chart. Not all healing can happen at any time — deep subconscious work requires specific temporal conditions. This wheel shows when the 'deep waters' are accessible, when D8 frequencies become available for work. The blue center is the pool; the stars show when it can be entered."
+            },
+            {
+                id: "IMG_6676",
+                title: "The Quarterly Division",
+                dPosition: "D4 — Four-Fold Crossroads",
+                description: "A circular diagram clearly divided into four quadrants, each quadrant containing distinct content. The four-fold structure is emphasized.",
+                frequency: "Four-fold division maps to D4 (Crossroads) and to seasonal/directional organization. This shows how time divides into four major phases, each with different frequency characteristics.",
+                interpretation: "This is a SEASONAL-TIMING chart. The four quadrants likely represent four seasons or four phases of longer cycles. Each quadrant would indicate which D-positions are most accessible during that phase. Healing work would be scheduled according to which quadrant the current time occupies."
+            },
+            {
+                id: "IMG_6677",
+                title: "The Monthly Progressions",
+                dPosition: "D5 & D9 — Navigator/Completion",
+                description: "A diagram showing what appears to be a progression through phases, possibly lunar phases or monthly divisions. Sequential elements suggest time-flow.",
+                frequency: "Sequential progressions indicate monthly or lunar timing — the rhythm of waxing and waning that affects frequency accessibility throughout each month.",
+                interpretation: "This is a LUNAR-TIMING chart. The moon's cycle affects which frequencies are accessible. Waxing phases favor building/generating work (D1-4); waning phases favor releasing/completing work (D6-9). Full moon activates D7 (Present); dark moon opens D8 (Deep). Practitioners timed their work to these rhythms."
+            },
+            {
+                id: "IMG_6678",
+                title: "The Intersection Points",
+                dPosition: "D7 — Present Activation Nodes",
+                description: "A diagram emphasizing specific points where lines or circles intersect. The intersections are marked or highlighted as significant locations.",
+                frequency: "Intersection points in astronomical diagrams mark critical timing moments — when multiple cycles align, creating windows of concentrated accessibility.",
+                interpretation: "This is an ALIGNMENT-TIMING chart. When multiple cycles intersect, frequency accessibility multiplies. These are the power moments — eclipses, solstices, conjunctions. The marked intersections show when such alignments occur. Major healing work was reserved for these concentrated windows."
+            },
+            {
+                id: "IMG_6679",
+                title: "The Rising and Setting Markers",
+                dPosition: "D1 & D9 — Origin/Completion",
+                description: "A diagram with emphasized horizon lines and markers for rising/setting positions. The horizon — where earth meets sky — is central to the structure.",
+                frequency: "Horizon emphasis indicates D1 (Origin/Rising) and D9 (Completion/Setting) timing. Dawn and dusk are power moments when frequencies transition.",
+                interpretation: "This is a DAILY-TIMING chart. Each day has its rhythm of frequency accessibility. Dawn (D1) is origin-time; noon (D7) is present-activation; dusk (D9) is completion. This chart shows how daily work should be timed — grounding work at dawn, activation at midday, anchoring at dusk."
+            },
+            {
+                id: "IMG_6680",
+                title: "The Central Sun Face",
+                dPosition: "D7 — Present Moment Source",
+                description: "The most striking astronomical image — a sun with a face at center, blue rays emanating outward. The face shows awareness, presence, recognition.",
+                frequency: "The sun face is the ultimate D7 (Present Moment) symbol — conscious awareness at the center of all timing. The blue rays (D8) show how presence extends into deep awareness.",
+                interpretation: "This is the MASTER TIMING symbol. The face represents the conscious practitioner at the center of cosmic timing. All other astronomical pages derive from this central truth: YOU are the present moment through which all frequency work flows. The timing charts show when windows open, but the face reminds us that WE are the ones who must be present to use them."
+            },
+            {
+                id: "IMG_6681",
+                title: "The Outer Ring Protocol",
+                dPosition: "D9 — Completion Cycles",
+                description: "A diagram emphasizing the outer ring or boundary of the circle, with significant content placed at the periphery rather than the center.",
+                frequency: "Outer ring emphasis indicates D9 (Completion/Anchor) timing — the boundary conditions, the container that holds all inner work.",
+                interpretation: "This is a CONTAINER-TIMING chart. Before beginning frequency work, the outer container must be established. This diagram shows timing for creating protective boundaries, for setting up the field within which healing can occur. The outer ring must be in place before inner work begins."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Build gallery
+        function buildGallery() {
+            const gallery = document.getElementById('gallery');
+            astronomicalFolios.forEach((folio, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="images/${folio.id}.JPG" alt="${folio.title}">
+                    <div class="caption"><span class="folio">Astronomical</span> — ${folio.title}</div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+            const folio = astronomicalFolios[currentIndex];
+            document.getElementById('lightbox-img').src = `images/${folio.id}.JPG`;
+            document.getElementById('lightbox-title').textContent = folio.title;
+            document.getElementById('lightbox-d').textContent = folio.dPosition;
+            document.getElementById('lightbox-desc').textContent = folio.description;
+            document.getElementById('lightbox-freq').textContent = folio.frequency;
+            document.getElementById('lightbox-interp').textContent = folio.interpretation;
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = astronomicalFolios.length - 1;
+            if (currentIndex >= astronomicalFolios.length) currentIndex = 0;
+            updateLightboxContent();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Prevent lightbox close when clicking content
+        document.querySelector('.lightbox-container').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        // Build gallery on load
+        buildGallery();
+    </script>
+</body>
+</html>

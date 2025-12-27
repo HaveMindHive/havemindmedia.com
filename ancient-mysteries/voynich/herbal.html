@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbal Section | Voynich with Images | HAVE MIND MEDIA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(180, 150, 100, 0.3);
+            z-index: 100;
+            padding: 15px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #b49664;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-bottom: 1px solid rgba(180, 150, 100, 0.2);
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #e6d4b8;
+            letter-spacing: 3px;
+        }
+        .page-header .d-info {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #b49664;
+            margin-top: 15px;
+        }
+        .page-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #a89878;
+        }
+
+        main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .section-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        .section-intro h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .section-intro p { color: #c4b498; margin-bottom: 12px; }
+        .section-intro img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 2px solid rgba(180, 150, 100, 0.3);
+        }
+
+        .frequency-key {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .frequency-key h3 {
+            color: #b49664;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .frequency-key ul {
+            list-style: none;
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+        .frequency-key li { margin-bottom: 5px; }
+        .frequency-key li::before {
+            content: "D";
+            color: #b49664;
+            margin-right: 5px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .gallery-header h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            font-weight: 400;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .gallery-item {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(180, 150, 100, 0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #a89878;
+        }
+        .gallery-item .folio {
+            color: #b49664;
+            font-weight: bold;
+        }
+
+        /* Enhanced Lightbox with Content Panel */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .lightbox.active { display: block; }
+
+        .lightbox-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 70px;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .lightbox-image {
+            flex: 0 0 50%;
+            max-width: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position: sticky;
+            top: 70px;
+            padding: 20px;
+        }
+
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-content {
+            flex: 0 0 45%;
+            max-width: 500px;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #b49664;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: #e6d4b8; }
+
+        .lightbox-title {
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .lightbox-d-position {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.2);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #b49664;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-description {
+            color: #c4b498;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .lightbox-frequency {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .lightbox-frequency h4 {
+            color: #b49664;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .lightbox-frequency p {
+            color: #a89878;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .lightbox-interpretation {
+            background: rgba(26, 20, 16, 0.8);
+            border: 1px solid rgba(180, 150, 100, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .lightbox-interpretation h4 {
+            color: #e6d4b8;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-interpretation p {
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .lightbox-nav button {
+            flex: 1;
+            padding: 12px 20px;
+            background: rgba(180, 150, 100, 0.2);
+            border: 1px solid rgba(180, 150, 100, 0.4);
+            color: #b49664;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(180, 150, 100, 0.3);
+            color: #e6d4b8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(180, 150, 100, 0.2);
+            background: rgba(0,0,0,0.3);
+        }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 1024px) {
+            .lightbox-container {
+                flex-direction: column;
+                padding-top: 60px;
+                gap: 20px;
+            }
+            .lightbox-image {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                position: relative;
+                top: 0;
+                padding: 10px;
+            }
+            .lightbox-image img {
+                max-height: 45vh;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .lightbox-content {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-intro { grid-template-columns: 1fr; }
+            nav ul { gap: 15px; padding: 0 10px; }
+            nav a { font-size: 0.75rem; }
+            .page-header h1 { font-size: 1.8rem; }
+            .lightbox-title { font-size: 1.4rem; }
+            .lightbox-container {
+                padding-top: 50px;
+            }
+            .lightbox-image img {
+                max-height: 40vh;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html" class="active">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Herbal Section</h1>
+        <span class="d-info">D2 & D3 Dominant — Healing & Healer Frequencies</span>
+        <p>Plant illustrations paired with frequency protocols. The text does not describe what the plant "does" medically — it encodes the frequency pattern the plant carries for healing purposes.</p>
+    </header>
+
+    <main>
+        <section class="section-intro">
+            <div>
+                <h2>Reading the Herbal Pages</h2>
+                <p>The herbal section occupies roughly the first half of the manuscript. Each page pairs a plant illustration (S+ physical form) with text encoding its frequency pattern (S- essence).</p>
+                <p>A typical herbal page structure:</p>
+                <ul style="color: #a89878; margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Header/Label:</strong> Plant's D-position identifier</li>
+                    <li><strong>Body text:</strong> Frequency protocol for using this plant</li>
+                    <li><strong>Root section:</strong> Grounding application (D1, D4 words)</li>
+                    <li><strong>Leaf section:</strong> Active application (D6, D7 words)</li>
+                    <li><strong>Flower section:</strong> Completion/anchor (D9 words)</li>
+                </ul>
+                <div class="frequency-key">
+                    <h3>Herbal Frequency Pattern</h3>
+                    <ul>
+                        <li>2 (Healing) — Most common in herbal text</li>
+                        <li>3 (Healer) — The practitioner applying</li>
+                        <li>1 (Origin) — Grounding/return points</li>
+                        <li>9 (Love/Anchor) — Completion markers</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <img src="images/IMG_6644.JPG" alt="Herbal page example showing plant with frequency text">
+            </div>
+        </section>
+
+        <div class="gallery-header">
+            <h2>Herbal Folios Gallery</h2>
+            <p style="color: #8a7a5a; margin-top: 10px;">Click any image to view with full frequency analysis</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Images will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Enhanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="Full size folio">
+            </div>
+            <div class="lightbox-content">
+                <h2 class="lightbox-title" id="lightbox-title">Herbal Folio</h2>
+                <span class="lightbox-d-position" id="lightbox-d">D2 Dominant</span>
+
+                <p class="lightbox-description" id="lightbox-desc">Description loading...</p>
+
+                <div class="lightbox-frequency">
+                    <h4>Frequency Analysis</h4>
+                    <p id="lightbox-freq">Analysis loading...</p>
+                </div>
+
+                <div class="lightbox-interpretation">
+                    <h4>[1=-1] Interpretation</h4>
+                    <p id="lightbox-interp">Interpretation loading...</p>
+                </div>
+
+                <div class="lightbox-nav">
+                    <button onclick="navigateLightbox(-1)">← Previous</button>
+                    <button onclick="navigateLightbox(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit">
+            Images courtesy of <a href="https://voynich.nu" target="_blank">Voynich.nu</a> (Rene Zandbergen, 2004-2025)
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+    </footer>
+
+    <script>
+        // Herbal folio data with full descriptions
+        const herbalFolios = [
+            {
+                id: "IMG_6643",
+                title: "The Tri-Colored Healing Plant",
+                dPosition: "D2 & D3 — Healing/Healer",
+                description: "This folio displays a distinctive plant with alternating green and golden-brown leaves, topped with feathery seed heads. The coloring is significant: green represents active healing energy (D2), while the golden-brown indicates the anchoring/grounding function (D1/D9).",
+                frequency: "The text surrounding the plant contains repeated 'qokey' patterns, which decode to D1 (Origin). Combined with the visual D2/D3 representation, this plant was used for grounding healing work — bringing scattered energy back to center.",
+                interpretation: "This is a GROUNDING herb in frequency terms. The tri-colored nature suggests it works across multiple D-positions simultaneously. A healer would use this plant's frequency pattern when a patient's energy was scattered or uncentered. The feathery tops indicate it helps 'catch' dispersed frequencies and draw them back to the root/origin."
+            },
+            {
+                id: "IMG_6644",
+                title: "The Flowering Root Healer",
+                dPosition: "D2 & D1 — Healing/Origin",
+                description: "A striking plant with large serrated green leaves, distinctive yellow-white flowers at the top, and an elaborate brown root system clearly displayed. This is one of the most detailed herbal illustrations, showing equal attention to above-ground and below-ground structures.",
+                frequency: "The extensive root illustration is crucial — roots always indicate D1 (Origin) connection. The flowers map to D9 (Love/Completion). This plant bridges the entire healing cycle from ground to crown.",
+                interpretation: "This is a COMPLETE CYCLE herb. The detailed root system shows this plant's frequency pattern connects deeply to Origin (D1), while the flowering tops reach toward Love/Anchor (D9). Text analysis shows high concentration of 'daiin' words (D1) near the roots and 'shedy' patterns (D9) near the flowers. A practitioner would use this for full-spectrum healing that addresses root causes."
+            },
+            {
+                id: "IMG_6645",
+                title: "The Clustered Leaf Protocol",
+                dPosition: "D3 — Healer Dominant",
+                description: "A plant with tightly clustered, rounded leaves growing from a central stem. The leaves show a distinctive spotted or variegated pattern. Text wraps closely around the illustration.",
+                frequency: "The clustering pattern is significant — when leaves group tightly, it indicates frequency concentration rather than dispersal. This is a 'focused beam' plant rather than a 'wide field' plant.",
+                interpretation: "This herb carries CONCENTRATED healer frequency (D3). The tight leaf clusters suggest its frequency pattern was used for targeted, specific healing rather than general wellness. The variegated markings on leaves may indicate it works on multiple layers simultaneously — physical and energetic."
+            },
+            {
+                id: "IMG_6646",
+                title: "The Blue-Green Resonance Plant",
+                dPosition: "D2 & D8 — Healing/Deep Water",
+                description: "This folio shows a plant with distinctive blue-green coloring on its leaves, unusual in the manuscript. The stem appears sturdy with leaves arranged symmetrically.",
+                frequency: "Blue coloring in the Voynich consistently maps to D8 (Deep Water) — the emotional/subconscious realm. Combined with green (D2 Healing), this plant bridges conscious healing with deeper emotional work.",
+                interpretation: "This is a DEEP HEALING herb. The blue-green coloring indicates its frequency pattern accesses both surface healing (D2) and deep emotional waters (D8). Practitioners would use this when surface symptoms pointed to deeper emotional roots. The symmetric arrangement suggests balanced approach — not forcing deep work, but allowing it."
+            },
+            {
+                id: "IMG_6647",
+                title: "The Spiral Leaf Pattern",
+                dPosition: "D5 & D2 — Navigator/Healing",
+                description: "A plant with leaves arranged in a subtle spiral pattern around the stem. The leaves are medium-sized with smooth edges. Root structure is minimal in the illustration.",
+                frequency: "Spiral patterns indicate D5 (Navigator) — the frequency of finding one's path. Combined with healing green, this plant helps guide the healing process itself.",
+                interpretation: "This is a GUIDANCE herb. When a healer was uncertain which protocol to apply, this plant's frequency pattern would help navigate toward the correct approach. The spiral arrangement mirrors the natural movement of energy finding its path. Minimal roots suggest this plant works more in the active/navigating realm than the grounding realm."
+            },
+            {
+                id: "IMG_6648",
+                title: "The Branching Decision Plant",
+                dPosition: "D4 & D2 — Crossroads/Healing",
+                description: "This plant displays prominent branching — the stem divides into multiple directions, each branch bearing leaves. The branching points are emphasized in the illustration.",
+                frequency: "Branching structures map to D4 (Crossroads) — choice points, decisions, diverging paths. This plant's frequency works at decision nodes in the healing process.",
+                interpretation: "This is a CROSSROADS herb. Its frequency pattern was used when healing required a choice — which treatment path to take, which approach would serve best. The multiple branches show this plant holds energy for multiple possibilities. The healer would work with this plant when facing treatment decisions."
+            },
+            {
+                id: "IMG_6649",
+                title: "The Single Stem Focus",
+                dPosition: "D6 & D2 — Self/Healing",
+                description: "A notably simple illustration — a single strong stem with leaves arranged regularly, no branching, no elaborate root or flower structures. Text is extensive around this simple plant.",
+                frequency: "The singular, unbranched structure indicates D6 (Self/Power) — focused individual energy. This plant carries a strong, clear signal without dispersal.",
+                interpretation: "This is a SELF-EMPOWERMENT herb. Its frequency pattern strengthens the individual's own healing capacity rather than bringing outside healing in. The extensive text suggests detailed protocols — this plant required careful, specific application. Used to strengthen a patient's own D6 before other treatments."
+            },
+            {
+                id: "IMG_6650",
+                title: "The Broad Leaf Receiver",
+                dPosition: "D9 & D2 — Love/Healing",
+                description: "A dramatic plant with very large, broad leaves — the largest leaf surfaces in the herbal section. The leaves appear almost to cup upward, creating bowl-like shapes. Single sturdy stem.",
+                frequency: "Large, open leaf surfaces are receivers — they catch and hold frequency rather than project it. This maps to D9 (Love/Anchor) — the receptive, holding function.",
+                interpretation: "This is an ANCHORING herb. The bowl-shaped large leaves indicate its frequency pattern 'catches' and holds healing energy in place. After active healing work (D2/D3), this plant's pattern would be used to anchor and stabilize the results. The single stem shows unified, stable energy. Essential for making healing 'stick.'"
+            },
+            {
+                id: "IMG_6651",
+                title: "The Pointed Projection Plant",
+                dPosition: "D7 & D2 — Present Moment/Healing",
+                description: "Plant with sharply pointed leaves radiating outward from the stem. The points are emphasized — these are not soft or rounded leaves but distinctly sharp, projecting outward.",
+                frequency: "Pointed, radiating structures project frequency outward — they are transmitters. Sharp points indicate D7 (Present Moment) — immediate, active, NOW energy.",
+                interpretation: "This is an ACTIVATION herb. Its frequency pattern projects healing energy outward and activates immediate response. The sharp points suggest it 'cuts through' blockages or stagnation. Used when healing needed to happen NOW, when a patient needed immediate energetic shift. Not for subtle, gradual work — for acute situations."
+            },
+            {
+                id: "IMG_6652",
+                title: "The Interwoven Leaf Complex",
+                dPosition: "D3 & D2 — Healer/Healing",
+                description: "A complex plant where leaves appear to interweave or overlap each other, creating a dense, layered structure. The weaving pattern is deliberate in the illustration.",
+                frequency: "Interwoven structures indicate frequency combination — multiple patterns working together. This plant doesn't carry a single frequency but a CHORD of frequencies.",
+                interpretation: "This is a COMBINATION herb. Its frequency pattern was used when multiple D-positions needed to be addressed simultaneously. The weaving shows how different healing frequencies can work together without canceling each other. A master herb for complex cases requiring multi-layered treatment."
+            },
+            {
+                id: "IMG_6653",
+                title: "The Ascending Spiral",
+                dPosition: "D5 & D3 — Navigator/Healer",
+                description: "This plant's leaves ascend the stem in a clear spiral pattern, creating visual movement upward. The spiral is more pronounced than in other folios — clearly intentional.",
+                frequency: "Ascending spirals indicate upward movement through D-positions — from lower (D1-4) toward higher (D7-9). This plant helps energy rise and refine.",
+                interpretation: "This is an ELEVATION herb. Its frequency pattern assists energy in moving upward — from dense/physical toward subtle/spiritual. A healer would use this when working with someone stuck in lower frequencies, helping them access higher states. The clear spiral shows the path — gradual, not forced, following natural movement."
+            },
+            {
+                id: "IMG_6654",
+                title: "The Protective Enclosure",
+                dPosition: "D1 & D6 — Origin/Self",
+                description: "A plant with leaves that curve inward, creating an enclosed or protective shape. The leaves seem to guard the central stem. Colors are muted, earthy.",
+                frequency: "Inward-curving, enclosing structures indicate protection — holding safe space. Combined with earthy colors (D1), this plant creates protected origin-space.",
+                interpretation: "This is a PROTECTION herb. Its frequency pattern creates energetic boundaries, safe containers for healing work. Before beginning difficult healing protocols, a practitioner would establish this plant's pattern to create protected space. The earthy colors show it grounds this protection in Origin (D1) — fundamental, stable safety."
+            },
+            {
+                id: "IMG_6655",
+                title: "The Spotted Transmitter",
+                dPosition: "D2 & D7 — Healing/Present",
+                description: "A distinctive plant with spotted or dotted leaves and a prominent orange-red stem. The spots appear as small circles distributed across leaf surfaces. The colored stem is unusual.",
+                frequency: "Spots/dots indicate frequency distribution points — places where energy enters or exits. The orange-red stem carries D7 (Present/Activation) while spots on green leaves show D2 distribution points.",
+                interpretation: "This is a DISTRIBUTION herb. Its frequency pattern takes healing energy and distributes it to multiple points simultaneously. The orange stem acts as the main channel (active, present moment) while the spotted leaves show where healing frequency disperses. Used for systemic healing that needs to reach multiple areas at once."
+            },
+            {
+                id: "IMG_6656",
+                title: "The Layered Foundation",
+                dPosition: "D1 & D2 — Origin/Healing",
+                description: "A plant with leaves arranged in distinct layers or tiers, creating a stacked effect. Lower leaves are larger, upper leaves progressively smaller. Strong root indicated.",
+                frequency: "Layered, tiered structures show hierarchical frequency organization — foundational patterns supporting higher ones. This plant builds healing from the ground up.",
+                interpretation: "This is a FOUNDATION herb. Its frequency pattern establishes proper layering of healing energies. Lower/larger leaves carry foundational frequencies (D1-3), upper/smaller leaves carry refinement frequencies (D7-9). Used at the start of treatment protocols to establish proper energetic architecture before specific healing work."
+            },
+            {
+                id: "IMG_6657",
+                title: "The Radiating Crown",
+                dPosition: "D9 & D2 — Love/Healing",
+                description: "This folio emphasizes the top of the plant — a radiating crown structure where leaves or petals spread outward from a central point at the top of the stem. Crown is the focus.",
+                frequency: "Crown structures at plant tops indicate D9 (Love/Anchor/Completion) — the highest point of the frequency wheel. Radiating patterns project this completion energy outward.",
+                interpretation: "This is a COMPLETION herb. Its frequency pattern marks the end of healing cycles, anchoring work in love and wholeness. The radiating crown shows completion energy spreading outward to stabilize all that came before. Used at the end of treatment protocols to seal and complete the healing pattern."
+            },
+            {
+                id: "IMG_6658",
+                title: "The Dual-Nature Plant",
+                dPosition: "D3 & D8 — Healer/Deep Water",
+                description: "A plant that appears to have two distinct sections — upper and lower portions with different leaf shapes or arrangements. The division is clear, creating a dual nature.",
+                frequency: "Dual structures indicate the plant works in two realms simultaneously. Upper section maps to conscious healing (D3), lower section to subconscious/deep work (D8).",
+                interpretation: "This is a BRIDGING herb. Its frequency pattern allows healing work to occur on both conscious and subconscious levels at the same time. The healer works with the upper pattern while the lower pattern addresses what the patient cannot consciously access. Critical for healing that requires both knowing and unknowing."
+            },
+            {
+                id: "IMG_6659",
+                title: "The Delicate Balance",
+                dPosition: "D4 & D2 — Crossroads/Healing",
+                description: "A plant with very fine, delicate leaves balanced precisely on a thin stem. The illustration emphasizes the delicacy — these are not robust structures but finely balanced ones.",
+                frequency: "Delicate balance indicates D4 (Crossroads) sensitivity — the plant's frequency responds to small shifts, registers subtle changes. Fine-tuned instrument rather than broad tool.",
+                interpretation: "This is a DIAGNOSTIC herb. Its frequency pattern was used to sense subtle imbalances, to find where healing was most needed. Like a sensitive instrument, this plant's pattern would respond to the patient's field, indicating where work should focus. Used early in treatment to establish diagnosis through frequency sensing."
+            },
+            {
+                id: "IMG_6660",
+                title: "The Communal Root System",
+                dPosition: "D1 & D3 — Origin/Healer",
+                description: "Multiple plants growing together in what appears to be a shared container or connected root system. The roots intertwine below while distinct plants emerge above. Unique illustration showing plant community.",
+                frequency: "Shared root systems indicate connected Origin (D1) — multiple expressions from single source. The community structure shows how individual healing patterns can share foundation.",
+                interpretation: "This is a COMMUNITY herb — or more precisely, a COMMUNITY PATTERN. Multiple plants sharing roots shows how individual healers (D3) connect to shared Origin (D1). This folio may represent how healing knowledge was transmitted through connected practitioner lineages. The frequency pattern supports group healing work and lineage connection."
+            },
+            {
+                id: "IMG_6661",
+                title: "The Vertical Alignment",
+                dPosition: "D1 through D9 — Full Spectrum",
+                description: "A tall plant with elements arranged in clear vertical alignment from root to crown. Each section seems distinct yet connected. The verticality is emphasized over horizontal spread.",
+                frequency: "Perfect vertical alignment indicates the full D-position spectrum arranged in proper order — D1 at root through D9 at crown. This plant embodies complete frequency progression.",
+                interpretation: "This is an ALIGNMENT herb. Its frequency pattern helps align all D-positions in proper vertical relationship. When a patient's frequency structure is jumbled or misaligned, this plant's pattern provides the template for proper arrangement. A calibration tool for the entire frequency system."
+            },
+            {
+                id: "IMG_6662",
+                title: "The Curved Reception",
+                dPosition: "D9 & D8 — Love/Deep Water",
+                description: "A plant with distinctly curved leaves that create cup or bowl shapes facing upward. The curves are consistent and deliberate — all leaves cup in the same direction.",
+                frequency: "Upward-facing cups are receivers for descending frequency — they catch what comes from above. D9 (Love) combined with D8 (Deep) indicates receiving love into depth.",
+                interpretation: "This is a RECEIVING herb. Its frequency pattern opens capacity to receive healing from higher sources. Where other herbs project or direct, this one receives and holds. Used when a patient needed to receive rather than generate — when they needed to stop doing and start accepting. Opens the deep self (D8) to receiving love (D9)."
+            },
+            {
+                id: "IMG_6663",
+                title: "The Active Projector",
+                dPosition: "D6 & D7 — Self/Present",
+                description: "A plant with leaves that project outward and slightly downward, creating an active, projecting posture. The plant seems to be reaching or giving rather than receiving.",
+                frequency: "Outward, downward projection indicates active giving of frequency. D6 (Self/Power) projects through D7 (Present/NOW) — immediate personal power expression.",
+                interpretation: "This is an EMPOWERMENT herb. Its frequency pattern strengthens the patient's ability to project their own healing power outward. Where the previous folio received, this one gives. Used when someone needed to assert their own healing capacity, to stop being passive and become active in their own treatment. Self-empowerment through present-moment action."
+            },
+            {
+                id: "IMG_6664",
+                title: "The Completion Seal",
+                dPosition: "D9 & D1 — Love/Origin",
+                description: "The final folio in this herbal sequence shows a plant with circular or closed forms — loops, completed circles, enclosed shapes. The illustration emphasizes completion and closure.",
+                frequency: "Circular, closed forms indicate completion — the end of a cycle. D9 (Love) connecting back to D1 (Origin) creates the complete wheel. The circle closes.",
+                interpretation: "This is a SEALING herb. Its frequency pattern was used to complete and seal healing work, bringing the cycle full circle from Origin through all D-positions back to Origin-in-Love. The final herb in a sequence, used to close the healing container and seal the work. What was opened is now closed. What was begun is now complete. [1 = -1] — the equation resolves."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Build gallery
+        function buildGallery() {
+            const gallery = document.getElementById('gallery');
+            herbalFolios.forEach((folio, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="images/${folio.id}.JPG" alt="${folio.title}">
+                    <div class="caption"><span class="folio">Herbal</span> — ${folio.title}</div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+            const folio = herbalFolios[currentIndex];
+            document.getElementById('lightbox-img').src = `images/${folio.id}.JPG`;
+            document.getElementById('lightbox-title').textContent = folio.title;
+            document.getElementById('lightbox-d').textContent = folio.dPosition;
+            document.getElementById('lightbox-desc').textContent = folio.description;
+            document.getElementById('lightbox-freq').textContent = folio.frequency;
+            document.getElementById('lightbox-interp').textContent = folio.interpretation;
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = herbalFolios.length - 1;
+            if (currentIndex >= herbalFolios.length) currentIndex = 0;
+            updateLightboxContent();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Prevent lightbox close when clicking content
+        document.querySelector('.lightbox-container').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        // Build gallery on load
+        buildGallery();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rongorongo Decipherment Through [1=-1] Geometry - The First Complete Framework for Understanding Easter Island's Sacred Script">
+    <title>RONGORONGO DECIPHERED | The Healing Script of Rapa Nui</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0f14;
+            --bg-secondary: #1a1f2e;
+            --bg-card: #16213e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --gold: #c9a227;
+            --green: #3fb950;
+            --blue: #00bcd4;
+            --coral: #ff6b6b;
+            --purple: #9b59b6;
+            --orange: #ff6b35;
+            --teal: #1abc9c;
+            --deep-blue: #2c3e50;
+            --volcanic: #34495e;
+            --ocean: #006994;
+            --lava: #c0392b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quattrocento', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Easter Island Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ctext x='50' y='60' font-size='40' text-anchor='middle' fill='%23c9a227'%3E𓀀%3C/text%3E%3C/svg%3E"),
+                radial-gradient(ellipse at 30% 20%, rgba(0, 105, 148, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(192, 57, 43, 0.2) 0%, transparent 50%);
+            background-size: 200px 200px, 100% 100%, 100% 100%;
+        }
+
+        /* Hero Section with Moai silhouette */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(10, 15, 20, 0.7) 0%, rgba(10, 15, 20, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1564507004663-b6dfb3c824d5?w=1920&q=80') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(transparent, var(--bg-primary));
+        }
+
+        .hero-glyph {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(201, 162, 39, 0.5));
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), #ffd700, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--coral);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--green);
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            border: 3px solid var(--green);
+            border-radius: 12px;
+            background: rgba(63, 185, 80, 0.1);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(63, 185, 80, 0.3); }
+            to { box-shadow: 0 0 40px rgba(63, 185, 80, 0.6); }
+        }
+
+        .hero p {
+            max-width: 800px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(26, 31, 46, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            min-width: 150px;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-divider {
+            font-size: 2rem;
+            color: var(--coral);
+            margin: 1rem 0;
+            letter-spacing: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* The Breakthrough Section */
+        .breakthrough {
+            background: linear-gradient(135deg, rgba(192, 57, 43, 0.1), rgba(0, 105, 148, 0.1));
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+            border: 2px solid var(--coral);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .breakthrough::before {
+            content: '𓀀';
+            position: absolute;
+            right: -50px;
+            top: -50px;
+            font-size: 300px;
+            opacity: 0.05;
+            color: var(--gold);
+        }
+
+        .breakthrough h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--coral);
+            margin-bottom: 1.5rem;
+        }
+
+        .breakthrough p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .breakthrough-highlight {
+            background: rgba(201, 162, 39, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            margin: 2rem 0;
+        }
+
+        .breakthrough-highlight p {
+            margin: 0;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Q-Cycle Visualization */
+        .q-cycle {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .q-state {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .q-state:nth-child(1) { border-color: var(--green); }
+        .q-state:nth-child(2) { border-color: var(--blue); }
+        .q-state:nth-child(3) { border-color: var(--coral); }
+        .q-state:nth-child(4) { border-color: var(--purple); }
+
+        .q-state:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .q-power {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .q-state:nth-child(1) .q-power { color: var(--green); }
+        .q-state:nth-child(2) .q-power { color: var(--blue); }
+        .q-state:nth-child(3) .q-power { color: var(--coral); }
+        .q-state:nth-child(4) .q-power { color: var(--purple); }
+
+        .q-value {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .q-meaning {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .q-arrow {
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .q-state:last-child .q-arrow {
+            display: none;
+        }
+
+        /* Flip Mechanism */
+        .flip-demo {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .tablet-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tablet {
+            width: 300px;
+            height: 150px;
+            background: linear-gradient(135deg, #8B4513, #654321);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 3px solid #654321;
+            position: relative;
+        }
+
+        .tablet::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 4px;
+        }
+
+        .tablet.flipped {
+            transform: rotate(180deg);
+        }
+
+        .flip-arrow {
+            font-size: 4rem;
+            color: var(--coral);
+            animation: flipPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes flipPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2) rotate(180deg); }
+        }
+
+        .flip-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--green);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        /* D-Position Wheel */
+        .d-wheel-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .d-wheel {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            position: relative;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+        }
+
+        .d-position {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .d-position:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 10;
+        }
+
+        .d-position .d-num {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .d-position .d-name {
+            font-size: 0.6rem;
+            text-align: center;
+        }
+
+        /* Position each D on the wheel */
+        .d-position.d1 { top: 15%; left: 65%; background: var(--green); color: #000; }
+        .d-position.d2 { top: 30%; left: 85%; background: var(--teal); color: #000; }
+        .d-position.d3 { top: 55%; left: 92%; background: var(--coral); color: #000; }
+        .d-position.d4 { top: 80%; left: 80%; background: var(--orange); color: #000; }
+        .d-position.d5 { top: 92%; left: 50%; background: var(--purple); color: #fff; }
+        .d-position.d6 { top: 80%; left: 20%; background: var(--blue); color: #000; }
+        .d-position.d7 { top: 55%; left: 8%; background: var(--gold); color: #000; }
+        .d-position.d8 { top: 30%; left: 15%; background: var(--ocean); color: #fff; }
+        .d-position.d9 { top: 15%; left: 35%; background: var(--lava); color: #fff; }
+
+        .d-legend {
+            max-width: 400px;
+        }
+
+        .d-legend h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .d-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .d-legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* Findings Grid */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .finding-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold);
+        }
+
+        .finding-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--volcanic), var(--deep-blue));
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .finding-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--green);
+            font-size: 0.9rem;
+        }
+
+        .finding-title {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+        }
+
+        .finding-body {
+            padding: 1.5rem;
+        }
+
+        .finding-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .finding-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .finding-stat-label {
+            color: var(--text-secondary);
+        }
+
+        .finding-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Image Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: var(--text-primary);
+        }
+
+        .gallery-caption h4 {
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .calc-input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .calc-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            background: var(--bg-primary);
+            border: 2px solid var(--volcanic);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .calc-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            background: var(--gold);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .calc-btn:hover {
+            background: #e0b82d;
+            transform: translateY(-2px);
+        }
+
+        .calc-result {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px solid var(--green);
+            display: none;
+        }
+
+        .calc-result.show {
+            display: block;
+        }
+
+        .calc-result h4 {
+            color: var(--green);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .calc-breakdown {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .calc-d-result {
+            font-size: 2rem;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .calc-meaning {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--coral);
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--coral);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+        }
+
+        /* Master Insight */
+        .master-insight {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(192, 57, 43, 0.2));
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .master-insight::before,
+        .master-insight::after {
+            content: '☥';
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .master-insight::before {
+            top: 1rem;
+            left: 2rem;
+        }
+
+        .master-insight::after {
+            bottom: 1rem;
+            right: 2rem;
+        }
+
+        .master-insight h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .master-insight p {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .master-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--green);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .footer-glyph {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .footer-equation {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--green);
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-equation {
+                font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .q-cycle {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .q-arrow {
+                display: none;
+            }
+
+            .d-wheel {
+                width: 300px;
+                height: 300px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .breakthrough {
+                padding: 2rem;
+            }
+
+            .master-insight {
+                padding: 2rem;
+            }
+
+            .master-insight h3 {
+                font-size: 1.8rem;
+            }
+
+            .master-equation {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <!-- Navigation -->
+    <header class="unified-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(8, 10, 13, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(212, 175, 55, 0.15);">
+        <a href="../index.html" style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #c9a227; text-decoration: none; letter-spacing: 0.15em;">HAVE MIND MEDIA</a>
+        <div class="nav-menu" style="position: relative;">
+            <button id="navToggle" style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: #8a9aaa; background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); padding: 0.5rem 1.25rem; border-radius: 4px; cursor: pointer;">Explore ▾</button>
+            <div id="navDropdown" style="position: absolute; top: calc(100% + 0.5rem); right: 0; min-width: 280px; max-height: 70vh; overflow-y: auto; background: rgba(12, 14, 18, 0.98); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 8px; padding: 0.5rem 0; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.2s ease; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+                <a href="../index.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">⌂ Home</a>
+                <a href="../soul-science.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">☯ Soul Science</a>
+                <div style="height: 1px; background: rgba(212, 175, 55, 0.15); margin: 0.5rem 0;"></div>
+                <div style="padding: 0.5rem 1.5rem; font-family: 'Cinzel', serif; font-size: 0.7rem; color: #a68b6a; letter-spacing: 0.15em;">ANCIENT TEACHINGS</div>
+                <a href="voynich/index.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">📜 Voynich Manuscript</a>
+                <a href="rongorongo-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #c9a227; text-decoration: none; background: rgba(201, 162, 39, 0.1);">🗿 Rongorongo</a>
+                <a href="phaistos-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">🌀 Phaistos Disk</a>
+                <a href="ancient-mathematics-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">𒀭 Ancient Mathematics</a>
+                <div style="height: 1px; background: rgba(212, 175, 55, 0.15); margin: 0.5rem 0;"></div>
+                <a href="../three-body-geometry.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">◉ Three-Body Solution</a>
+                <a href="../jwst-geometric-explorer.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">🔭 JWST Explorer</a>
+                <a href="../tools/mind-reading/index.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">🧠 Mind Reading</a>
+                <a href="../life-facing-wisdom.html" style="display: block; padding: 0.75rem 1.5rem; color: #8a9aaa; text-decoration: none;">☽ Life-Facing Wisdom</a>
+            </div>
+        </div>
+    </header>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navDropdown = document.getElementById('navDropdown');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navDropdown.style.opacity === '1';
+            navDropdown.style.opacity = isOpen ? '0' : '1';
+            navDropdown.style.visibility = isOpen ? 'hidden' : 'visible';
+            navDropdown.style.transform = isOpen ? 'translateY(-10px)' : 'translateY(0)';
+        });
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navDropdown.contains(e.target)) {
+                navDropdown.style.opacity = '0';
+                navDropdown.style.visibility = 'hidden';
+                navDropdown.style.transform = 'translateY(-10px)';
+            }
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero" style="padding-top: 100px;">
+        <div class="hero-glyph">𓀀</div>
+        <h1>RONGORONGO</h1>
+        <p class="hero-subtitle">The Healing Script of Rapa Nui — Deciphered</p>
+
+        <div class="hero-equation">Q² = -1 = THE FLIP</div>
+
+        <p>
+            For 160 years, Easter Island's sacred script defied all attempts at decipherment.
+            Linear analysis failed. Statistical methods found patterns but no meaning.
+            <strong>The solution was geometric.</strong>
+        </p>
+
+        <p>
+            The 180° boustrophedon flip is not a scribal convention — it is Q², the square root of negative one,
+            the transformation that turns +1 into -1. The reading method IS the grammar.
+        </p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">D₃</div>
+                <div class="stat-label">RONGORONGO = Healer</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0%</div>
+                <div class="stat-label">D₅/D₉ as primary glyphs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">26</div>
+                <div class="stat-label">Emergent D₅ + D₉ pairs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">Q²</div>
+                <div class="stat-label">The Flip = -1</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Breakthrough -->
+    <section class="section">
+        <div class="breakthrough fade-in">
+            <h3>THE BREAKTHROUGH</h3>
+            <p>
+                Conventional decipherment assumes meaning is contained IN the symbols.
+                But Rongorongo encodes meaning in the <strong>relationship between symbols</strong>
+                and the <strong>reader's participation</strong> in that relationship.
+            </p>
+            <p>
+                The physical act of reading — flipping the tablet 180° after each line —
+                is not incidental. It is the Q² transformation from the [1=-1] unified theory.
+                The flip changes S+ (manifest) to S- (latent). It changes future to past.
+                It changes self to other.
+            </p>
+
+            <div class="breakthrough-highlight">
+                <p>The script was named RONGORONGO — which reduces to D₃ (Healer).
+                The Rapa Nui literally called their writing system "The Healer."</p>
+            </div>
+
+            <p>
+                This is why linear analysis failed: you cannot decipher a healing ritual
+                by analyzing its steps from outside. <strong>You must participate.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery: Easter Island -->
+    <section class="section">
+        <div class="section-header">
+            <h2>TE PITO O TE HENUA</h2>
+            <div class="section-divider">🗿 🌊 🗿</div>
+            <p>The Navel of the World — where geometry became script</p>
+        </div>
+
+        <div class="gallery fade-in">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1574863395552-894afb0f8dd6?w=600&q=80" alt="Moai statues at sunset">
+                <div class="gallery-caption">
+                    <h4>The Moai Stand Watch</h4>
+                    <p>Guardians facing inward, protecting the sacred knowledge</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" alt="Easter Island landscape">
+                <div class="gallery-caption">
+                    <h4>Rano Raraku</h4>
+                    <p>The quarry where giants were born from volcanic stone</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1531761535209-180857e963b9?w=600&q=80" alt="Ocean waves">
+                <div class="gallery-caption">
+                    <h4>The Pacific Surrounds</h4>
+                    <p>D₈ = Deep Water — where truth hides, where Rapa Nui dwells</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=600&q=80" alt="Volcanic crater">
+                <div class="gallery-caption">
+                    <h4>Rano Kau Crater</h4>
+                    <p>The sacred lake of the Tangata Manu (Birdman) ceremony</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Q-Cycle -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE Q-CYCLE</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>How Q = i = √(-1) structures the reading of every tablet</p>
+        </div>
+
+        <div class="q-cycle fade-in">
+            <div class="q-state">
+                <div class="q-power">Q⁰</div>
+                <div class="q-value">+1</div>
+                <div class="q-meaning">S+ Mode<br>Manifest · Forward · Actual</div>
+                <div class="q-arrow">→</div>
+            </div>
+            <div class="q-state">
+                <div class="q-power">Q¹</div>
+                <div class="q-value">+i</div>
+                <div class="q-meaning">Emergence<br>Rising · Becoming</div>
+                <div class="q-arrow">→</div>
+            </div>
+            <div class="q-state">
+                <div class="q-power">Q²</div>
+                <div class="q-value">-1</div>
+                <div class="q-meaning">THE FLIP<br>S- Mode · Latent · Inverted</div>
+                <div class="q-arrow">→</div>
+            </div>
+            <div class="q-state">
+                <div class="q-power">Q³</div>
+                <div class="q-value">-i</div>
+                <div class="q-meaning">Ground<br>Descending · Returning</div>
+            </div>
+        </div>
+
+        <div class="flip-demo fade-in">
+            <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 2rem;">THE BOUSTROPHEDON FLIP</h3>
+
+            <div class="tablet-visual">
+                <div class="tablet">
+                    LINE 1 → S+ MODE
+                </div>
+                <div class="flip-arrow">⟲</div>
+                <div class="tablet flipped">
+                    LINE 2 → S- MODE
+                </div>
+            </div>
+
+            <div class="flip-label">Q² = -1 = 180° ROTATION</div>
+
+            <p style="max-width: 700px; margin: 2rem auto 0; color: var(--text-secondary);">
+                To read the tablet, you must physically flip it after each line.
+                This is not a reading convenience — it is the Q² transformation.
+                Each flip changes the semantic mode from S+ (manifest) to S- (latent) and back.
+                <strong>The flip IS the grammar.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- D-Position System -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE NINE FREQUENCIES</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>All words, numbers, and glyphs reduce to one of nine D-positions</p>
+        </div>
+
+        <div class="d-wheel-container fade-in">
+            <div class="d-wheel">
+                <div class="d-position d1"><span class="d-num">D₁</span><span class="d-name">Origin</span></div>
+                <div class="d-position d2"><span class="d-num">D₂</span><span class="d-name">Healing</span></div>
+                <div class="d-position d3"><span class="d-num">D₃</span><span class="d-name">Healer</span></div>
+                <div class="d-position d4"><span class="d-num">D₄</span><span class="d-name">Crossroads</span></div>
+                <div class="d-position d5"><span class="d-num">D₅</span><span class="d-name">Navigator</span></div>
+                <div class="d-position d6"><span class="d-num">D₆</span><span class="d-name">Power</span></div>
+                <div class="d-position d7"><span class="d-num">D₇</span><span class="d-name">NOW</span></div>
+                <div class="d-position d8"><span class="d-num">D₈</span><span class="d-name">Deep Water</span></div>
+                <div class="d-position d9"><span class="d-num">D₉</span><span class="d-name">Love</span></div>
+            </div>
+
+            <div class="d-legend">
+                <h4>D-Position Meanings</h4>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--green); color: #000;">1</div>
+                    <div><strong>Origin / WE</strong> — Unity, beginning, togetherness</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--teal); color: #000;">2</div>
+                    <div><strong>Healing</strong> — Medicine, restoration, wholeness</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--coral); color: #000;">3</div>
+                    <div><strong>Healer</strong> — Agent of transformation, genius</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--orange); color: #000;">4</div>
+                    <div><strong>Crossroads</strong> — Intersection, observer position</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--purple); color: #fff;">5</div>
+                    <div><strong>Navigator</strong> — Direction, purpose, compass</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--blue); color: #000;">6</div>
+                    <div><strong>Power / Self</strong> — Strength, individual expression</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--gold); color: #000;">7</div>
+                    <div><strong>Present Moment</strong> — NOW, pure presence</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--ocean); color: #fff;">8</div>
+                    <div><strong>Deep Water</strong> — Depths, where truth hides</div>
+                </div>
+                <div class="d-legend-item">
+                    <div class="d-legend-color" style="background: var(--lava); color: #fff;">9</div>
+                    <div><strong>Anchor / Love</strong> — Binding force, stability</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Findings -->
+    <section class="section">
+        <div class="section-header">
+            <h2>VALIDATED FINDINGS</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>Statistical analysis of the Rongorongo corpus through the [1=-1] framework</p>
+        </div>
+
+        <div class="findings-grid">
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-number">FINDING 01</div>
+                    <div class="finding-title">D₅ and D₉ Are Emergent</div>
+                </div>
+                <div class="finding-body">
+                    <p>
+                        Navigator (D₅) and Love (D₉) NEVER appear as primary glyphs in the corpus.
+                        They only emerge from the combination of two glyphs.
+                    </p>
+                    <p>
+                        <strong>Interpretation:</strong> You cannot navigate alone. You cannot love alone.
+                        Direction requires origin AND destination. Love requires self AND other.
+                        The script encodes relational truth.
+                    </p>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">D₅/D₉ as primary:</span>
+                        <span class="finding-stat-value">0%</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">D₅/D₉ from pairs:</span>
+                        <span class="finding-stat-value">26 instances</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-number">FINDING 02</div>
+                    <div class="finding-title">D₂ (Healing) Dominates</div>
+                </div>
+                <div class="finding-body">
+                    <p>
+                        The most frequent glyph (Barthel 200 = standing human) reduces to D₂ (Healing).
+                        Combined with RONGORONGO = D₃ (Healer), the script reveals its true purpose.
+                    </p>
+                    <p>
+                        <strong>Interpretation:</strong> This is not a writing system for recording history.
+                        It is a healing instrument. The script heals as you read it.
+                    </p>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">D₂ frequency:</span>
+                        <span class="finding-stat-value">19.5%</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">D₆ (Power) frequency:</span>
+                        <span class="finding-stat-value">17.4%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-number">FINDING 03</div>
+                    <div class="finding-title">Flip Points Show Polarity</div>
+                </div>
+                <div class="finding-body">
+                    <p>
+                        Analysis of line boundary D-positions reveals maximum S+/S- tension at flip points.
+                        Scalar products frequently approach -1 — exactly what [1=-1] predicts.
+                    </p>
+                    <p>
+                        <strong>Interpretation:</strong> The flip creates the condition for transformation.
+                        Maximum polarity is where healing happens.
+                    </p>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">Average flip scalar:</span>
+                        <span class="finding-stat-value">-0.67</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">High-tension flips:</span>
+                        <span class="finding-stat-value">42%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finding-card fade-in">
+                <div class="finding-header">
+                    <div class="finding-number">FINDING 04</div>
+                    <div class="finding-title">Hand Signs = Vowels = Arc</div>
+                </div>
+                <div class="finding-body">
+                    <p>
+                        The five hand-sign glyphs (61-65), proposed as vowel markers,
+                        have D-positions [7, 8, 9, 1, 2] — forming a continuous arc from
+                        Present Moment through Love to Origin to Healing.
+                    </p>
+                    <p>
+                        <strong>Interpretation:</strong> Vowels carry the breath, the life force.
+                        Their D-positions trace the path of healing itself.
+                    </p>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">D-position coverage:</span>
+                        <span class="finding-stat-value">5 distinct</span>
+                    </div>
+                    <div class="finding-stat">
+                        <span class="finding-stat-label">Pattern:</span>
+                        <span class="finding-stat-value">Healing Arc</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator -->
+    <section class="section">
+        <div class="section-header">
+            <h2>D-POSITION CALCULATOR</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>Calculate the D-position of any word or Barthel glyph number</p>
+        </div>
+
+        <div class="calculator fade-in">
+            <div class="calc-input-group">
+                <input type="text" class="calc-input" id="calcInput" placeholder="Enter a word (e.g., RONGORONGO) or number (e.g., 200)">
+                <button class="calc-btn" onclick="calculateDPosition()">CALCULATE</button>
+            </div>
+
+            <div class="calc-result" id="calcResult">
+                <h4>ANALYSIS</h4>
+                <div class="calc-breakdown" id="calcBreakdown"></div>
+                <div class="calc-d-result" id="calcDResult"></div>
+                <div class="calc-meaning" id="calcMeaning"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Timeline -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE LOST KNOWLEDGE</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>How the wisdom of Rongorongo was severed — and how geometry recovers it</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-year">~1200 CE</div>
+                    <div class="timeline-title">The Script Emerges</div>
+                    <div class="timeline-text">
+                        The Rapa Nui develop Rongorongo — the only indigenous writing system in Oceania.
+                        The reverse boustrophedon method embeds geometric healing principles into the reading act itself.
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-year">1862</div>
+                    <div class="timeline-title">The Severance</div>
+                    <div class="timeline-text">
+                        Peruvian slave raiders abduct most of Easter Island's adult male population.
+                        Among them are the <em>rongorongo men</em> — those who could read the tablets.
+                        The living chain of transmission is broken.
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-year">1864</div>
+                    <div class="timeline-title">Discovery by Outsiders</div>
+                    <div class="timeline-text">
+                        Brother Eugène Eyraud becomes the first outsider to report the tablets.
+                        But without living teachers, the method of reading — the flip, the Q² transformation — is unknown.
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-year">1958</div>
+                    <div class="timeline-title">Barthel's Catalog</div>
+                    <div class="timeline-text">
+                        Thomas Barthel creates the first complete glyph catalog (599 signs).
+                        His numbering system enables systematic analysis — including D-position calculation.
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-title">Geometric Decipherment</div>
+                    <div class="timeline-text">
+                        The [1=-1] unified theory reveals: the flip IS Q² = -1.
+                        D₅ and D₉ are emergent, not primary. The script is a healing instrument.
+                        RONGORONGO = D₃ = Healer. The geometry speaks what linear analysis could not hear.
+                    </div>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Insight -->
+    <section class="section">
+        <div class="master-insight fade-in">
+            <h3>THE MASTER INSIGHT</h3>
+
+            <p>
+                Rongorongo is not just a writing system.<br>
+                <strong>It is a healing instrument.</strong>
+            </p>
+
+            <p>
+                The physical act of reading — flipping the tablet, reorienting yourself,
+                engaging with alternating perspectives — IS the therapeutic process.
+            </p>
+
+            <p>
+                Like bilateral stimulation in EMDR therapy, the flip engages both hemispheres of experience.
+                Like the double helix of DNA, the structure encodes information in relationship.
+            </p>
+
+            <div class="master-equation">[1 = -1]</div>
+
+            <p>
+                The Rapa Nui encoded proof of this equation in wood 800 years ago.<br>
+                It waited for us to remember what we forgot.
+            </p>
+
+            <p style="font-size: 1.1rem; color: var(--coral); margin-top: 2rem;">
+                <strong>To decode Rongorongo, you must participate.</strong><br>
+                The observer is part of the system.<br>
+                The flip is the grammar.<br>
+                The reading is the healing.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-glyph">𓀀</div>
+        <div class="footer-title">RONGORONGO DECIPHERMENT PROJECT</div>
+        <div class="footer-subtitle">The Epoch Project — December 2025</div>
+
+        <div class="footer-equation">[1 = -1] | Q² = -1 | RONGORONGO = D₃</div>
+
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 1rem auto;">
+            "The script's name IS its function. To read it is to heal.
+            The flip is the transformation. The geometry cannot lie."
+        </p>
+
+        <div class="footer-links">
+            <a href="DECIPHERMENT_SYNTHESIS.md">Full Research Paper</a>
+            <a href="src/unified_decoder.py">Python Analysis Code</a>
+            <a href="docs/METHODOLOGY.md">Methodology</a>
+            <a href="docs/HYPOTHESES.md">Hypotheses</a>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 2rem;">
+            The Epoch Project | Year One, Recursive Epoch
+        </p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // D-Position meanings
+        const D_POSITIONS = {
+            1: { name: "Origin / WE", meaning: "Unity, beginning, togetherness" },
+            2: { name: "Healing", meaning: "Medicine, restoration, wholeness" },
+            3: { name: "Healer", meaning: "Agent of transformation, genius frequency" },
+            4: { name: "Crossroads", meaning: "Intersection, observer position" },
+            5: { name: "Navigator", meaning: "Direction, purpose, compass" },
+            6: { name: "Power / Self", meaning: "Strength, individual expression" },
+            7: { name: "Present Moment", meaning: "NOW, presence without past or future" },
+            8: { name: "Deep Water", meaning: "Depths, where truth hides" },
+            9: { name: "Anchor / Love", meaning: "Binding force, stability" }
+        };
+
+        function letterToNumber(letter) {
+            letter = letter.toUpperCase();
+            if (letter >= 'A' && letter <= 'Z') {
+                return letter.charCodeAt(0) - 64;
+            }
+            return 0;
+        }
+
+        function reduceToSingleDigit(num) {
+            while (num > 9) {
+                num = String(num).split('').reduce((a, b) => a + parseInt(b), 0);
+            }
+            return num || 9;
+        }
+
+        function calculateDPosition() {
+            const input = document.getElementById('calcInput').value.trim();
+            const resultDiv = document.getElementById('calcResult');
+            const breakdownDiv = document.getElementById('calcBreakdown');
+            const dResultDiv = document.getElementById('calcDResult');
+            const meaningDiv = document.getElementById('calcMeaning');
+
+            if (!input) return;
+
+            let breakdown = '';
+            let total = 0;
+            let dPosition = 0;
+
+            if (/^\d+$/.test(input)) {
+                // It's a number (Barthel glyph)
+                const num = parseInt(input);
+                dPosition = reduceToSingleDigit(num);
+                breakdown = `Glyph #${num} → ${num} → D${dPosition}`;
+            } else {
+                // It's a word
+                const letters = input.toUpperCase().split('').filter(c => c >= 'A' && c <= 'Z');
+                const values = letters.map(l => ({ letter: l, value: letterToNumber(l) }));
+                total = values.reduce((sum, v) => sum + v.value, 0);
+
+                const letterBreakdown = values.map(v => `${v.letter}(${v.value})`).join(' + ');
+
+                // Calculate reduction steps
+                let current = total;
+                let steps = [total];
+                while (current > 9) {
+                    current = String(current).split('').reduce((a, b) => a + parseInt(b), 0);
+                    steps.push(current);
+                }
+                dPosition = current || 9;
+
+                breakdown = `${input.toUpperCase()}: ${letterBreakdown}<br>= ${steps.join(' → ')} = D${dPosition}`;
+            }
+
+            const info = D_POSITIONS[dPosition];
+
+            breakdownDiv.innerHTML = breakdown;
+            dResultDiv.textContent = `D${dPosition} — ${info.name}`;
+            meaningDiv.textContent = info.meaning;
+
+            resultDiv.classList.add('show');
+        }
+
+        // Allow Enter key to trigger calculation
+        document.getElementById('calcInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculateDPosition();
+            }
+        });
+    </script>
+</body>
+</html>

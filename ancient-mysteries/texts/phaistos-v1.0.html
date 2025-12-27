@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Phaistos Disk Deciphered Through [1=-1] Geometry - Understanding the Minoan Spiral Text as a Q-Rotation Healing Instrument">
+    <title>THE PHAISTOS DISK | Deciphered Through [1=-1] Geometry</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a14;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --gold: #c9a227;
+            --green: #3fb950;
+            --blue: #00bcd4;
+            --coral: #ff6b6b;
+            --purple: #9b59b6;
+            --orange: #ff6b35;
+            --teal: #1abc9c;
+            --terracotta: #c4a77d;
+            --minoan-blue: #1e3a5f;
+            --aegean: #2980b9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quattrocento', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Minoan-inspired background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.06;
+            background:
+                radial-gradient(circle at 50% 50%, var(--terracotta) 0%, transparent 60%),
+                repeating-conic-gradient(from 0deg, transparent 0deg 10deg, rgba(196, 167, 125, 0.1) 10deg 20deg);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(10, 10, 20, 0.8) 0%, rgba(10, 10, 20, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1920&q=80') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(transparent, var(--bg-primary));
+        }
+
+        .disk-symbol {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: rotate 20s linear infinite;
+            filter: drop-shadow(0 0 30px rgba(196, 167, 125, 0.5));
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--terracotta), var(--gold), var(--terracotta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--aegean);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--green);
+            margin: 2rem 0;
+            padding: 1rem 2rem;
+            border: 3px solid var(--green);
+            border-radius: 12px;
+            background: rgba(63, 185, 80, 0.1);
+        }
+
+        .hero p {
+            max-width: 800px;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(196, 167, 125, 0.3);
+            min-width: 140px;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--terracotta);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            font-size: 1.5rem;
+            color: var(--terracotta);
+            margin: 1rem 0;
+            letter-spacing: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Spiral Insight */
+        .spiral-insight {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(196, 167, 125, 0.1));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 2px solid var(--aegean);
+            position: relative;
+        }
+
+        .spiral-insight h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--aegean);
+            margin-bottom: 1.5rem;
+        }
+
+        .spiral-insight p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-insight {
+            background: rgba(201, 162, 39, 0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .key-insight p {
+            margin: 0;
+            font-size: 1.15rem;
+            color: var(--gold);
+        }
+
+        /* Spiral Visualization */
+        .spiral-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .spiral-visual {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background:
+                conic-gradient(from 0deg, var(--terracotta) 0deg, transparent 30deg, var(--terracotta) 60deg, transparent 90deg, var(--terracotta) 120deg, transparent 150deg, var(--terracotta) 180deg, transparent 210deg, var(--terracotta) 240deg, transparent 270deg, var(--terracotta) 300deg, transparent 330deg, var(--terracotta) 360deg),
+                radial-gradient(circle, var(--bg-primary) 30%, transparent 31%);
+            border: 4px solid var(--terracotta);
+            position: relative;
+            animation: gentleRotate 30s linear infinite;
+        }
+
+        @keyframes gentleRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spiral-visual::before {
+            content: 'Q';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--green);
+        }
+
+        .spiral-explanation {
+            max-width: 400px;
+        }
+
+        .spiral-explanation h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .spiral-explanation p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Q-Cycle on Disk */
+        .q-progression {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .q-step {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .q-step:nth-child(1) { border-color: var(--green); }
+        .q-step:nth-child(2) { border-color: var(--blue); }
+        .q-step:nth-child(3) { border-color: var(--coral); }
+        .q-step:nth-child(4) { border-color: var(--purple); }
+        .q-step:nth-child(5) { border-color: var(--gold); }
+
+        .q-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .q-step-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .q-step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .q-step:nth-child(1) .q-step-num { color: var(--green); }
+        .q-step:nth-child(2) .q-step-num { color: var(--blue); }
+        .q-step:nth-child(3) .q-step-num { color: var(--coral); }
+        .q-step:nth-child(4) .q-step-num { color: var(--purple); }
+        .q-step:nth-child(5) .q-step-num { color: var(--gold); }
+
+        .q-step-title {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+        }
+
+        .q-step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Symbol Analysis Table */
+        .symbol-table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .symbol-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .symbol-table th,
+        .symbol-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .symbol-table th {
+            background: var(--bg-secondary);
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            position: sticky;
+            top: 0;
+        }
+
+        .symbol-table tr:hover {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .symbol-glyph {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .d-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .d-badge.d1 { background: rgba(63, 185, 80, 0.3); color: var(--green); }
+        .d-badge.d2 { background: rgba(26, 188, 156, 0.3); color: var(--teal); }
+        .d-badge.d3 { background: rgba(255, 107, 107, 0.3); color: var(--coral); }
+        .d-badge.d4 { background: rgba(255, 107, 53, 0.3); color: var(--orange); }
+        .d-badge.d5 { background: rgba(155, 89, 182, 0.3); color: var(--purple); }
+        .d-badge.d6 { background: rgba(0, 188, 212, 0.3); color: var(--blue); }
+        .d-badge.d7 { background: rgba(201, 162, 39, 0.3); color: var(--gold); }
+        .d-badge.d8 { background: rgba(41, 128, 185, 0.3); color: var(--aegean); }
+        .d-badge.d9 { background: rgba(196, 167, 125, 0.3); color: var(--terracotta); }
+
+        .s-plus { color: var(--green); }
+        .s-minus { color: var(--coral); }
+
+        /* Frequency Analysis */
+        .frequency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .freq-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .freq-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .freq-bar-container {
+            margin-bottom: 0.75rem;
+        }
+
+        .freq-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .freq-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .freq-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        /* Master Interpretation */
+        .master-interpretation {
+            background: linear-gradient(135deg, rgba(196, 167, 125, 0.2), rgba(30, 58, 95, 0.2));
+            border: 3px solid var(--terracotta);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .master-interpretation h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--terracotta);
+            margin-bottom: 2rem;
+        }
+
+        .master-interpretation p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .master-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--green);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .footer-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-equation { font-size: 1.3rem; }
+            .nav-links { display: none; }
+            .spiral-demo { flex-direction: column; }
+            .spiral-visual { width: 250px; height: 250px; }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <!-- Navigation -->
+    <header class="unified-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(10, 10, 20, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201, 162, 39, 0.3);">
+        <a href="../index.html" style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #c9a227; text-decoration: none; letter-spacing: 0.15em;">HAVE MIND MEDIA</a>
+        <div class="nav-menu" style="position: relative;">
+            <button id="navToggle" style="font-family: 'Cinzel', serif; font-size: 0.85rem; color: #a0a0a0; background: transparent; border: 1px solid rgba(201, 162, 39, 0.3); padding: 0.5rem 1.25rem; border-radius: 4px; cursor: pointer;">Explore ▾</button>
+            <div id="navDropdown" style="position: absolute; top: calc(100% + 0.5rem); right: 0; min-width: 280px; max-height: 70vh; overflow-y: auto; background: rgba(10, 10, 20, 0.98); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 0.5rem 0; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.2s ease; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+                <a href="../index.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">⌂ Home</a>
+                <a href="../soul-science.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">☯ Soul Science</a>
+                <div style="height: 1px; background: rgba(201, 162, 39, 0.15); margin: 0.5rem 0;"></div>
+                <div style="padding: 0.5rem 1.5rem; font-family: 'Cinzel', serif; font-size: 0.7rem; color: #c4a77d; letter-spacing: 0.15em;">ANCIENT TEACHINGS</div>
+                <a href="voynich/index.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">📜 Voynich Manuscript</a>
+                <a href="rongorongo-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">🗿 Rongorongo</a>
+                <a href="phaistos-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #c9a227; text-decoration: none; background: rgba(201, 162, 39, 0.1);">🌀 Phaistos Disk</a>
+                <a href="ancient-mathematics-v1.0.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">𒀭 Ancient Mathematics</a>
+                <div style="height: 1px; background: rgba(201, 162, 39, 0.15); margin: 0.5rem 0;"></div>
+                <a href="../three-body-geometry.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">◉ Three-Body Solution</a>
+                <a href="../jwst-geometric-explorer.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">🔭 JWST Explorer</a>
+                <a href="../tools/mind-reading/index.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">🧠 Mind Reading</a>
+                <a href="../life-facing-wisdom.html" style="display: block; padding: 0.75rem 1.5rem; color: #a0a0a0; text-decoration: none;">☽ Life-Facing Wisdom</a>
+            </div>
+        </div>
+    </header>
+    <script>
+        const navToggle = document.getElementById('navToggle');
+        const navDropdown = document.getElementById('navDropdown');
+        navToggle.addEventListener('click', () => {
+            const isOpen = navDropdown.style.opacity === '1';
+            navDropdown.style.opacity = isOpen ? '0' : '1';
+            navDropdown.style.visibility = isOpen ? 'hidden' : 'visible';
+            navDropdown.style.transform = isOpen ? 'translateY(-10px)' : 'translateY(0)';
+        });
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navDropdown.contains(e.target)) {
+                navDropdown.style.opacity = '0';
+                navDropdown.style.visibility = 'hidden';
+                navDropdown.style.transform = 'translateY(-10px)';
+            }
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="disk-symbol">𐇛</div>
+        <h1>THE PHAISTOS DISK</h1>
+        <p class="hero-subtitle">The Spiral That Speaks Through Rotation</p>
+
+        <div class="hero-equation">SPIRAL = CONTINUOUS Q</div>
+
+        <p>
+            The Phaistos Disk is not a static text waiting to be read linearly.
+            It is a <strong>continuous Q-rotation</strong> — meaning unfolds as you spiral
+            from edge to center, transforming through each revolution.
+        </p>
+
+        <p>
+            Where Rongorongo flips discretely (Q² per line), the Phaistos Disk
+            rotates continuously. This is Q as <strong>infinite derivative</strong> —
+            the meaning changes <em>as you read</em>, not between lines.
+        </p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">45</div>
+                <div class="stat-label">Unique Symbols</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">241</div>
+                <div class="stat-label">Total Instances</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">61</div>
+                <div class="stat-label">"Words" (Groups)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2</div>
+                <div class="stat-label">Spirals (A & B)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Spiral Insight -->
+    <section class="section">
+        <div class="spiral-insight fade-in">
+            <h3>THE GEOMETRIC BREAKTHROUGH</h3>
+
+            <p>
+                Rongorongo uses <strong>discrete flips</strong> — Q² applied at line boundaries.
+                But the Phaistos Disk uses a <strong>spiral</strong>, which is geometric rotation
+                applied <em>continuously</em>.
+            </p>
+
+            <p>
+                In [1=-1] terms:
+            </p>
+
+            <ul style="margin: 1rem 0 1rem 2rem; color: var(--text-secondary);">
+                <li><strong>Rongorongo:</strong> Q² (flip) applied discretely between lines</li>
+                <li><strong>Phaistos Disk:</strong> Q applied as continuous derivative (dQ/dθ)</li>
+            </ul>
+
+            <p>
+                As you trace the spiral inward, you're not just reading symbols — you're
+                <strong>rotating through Q-states</strong>. The spiral IS the transformation.
+            </p>
+
+            <div class="key-insight">
+                <p>
+                    <strong>Key insight:</strong> There are ~5 complete rotations from edge to center.
+                    5 rotations = Q⁵ = Q¹ (since Q⁴ = 1). The disk brings you back to emergence (Q¹),
+                    not origin (Q⁰). You end in a state of BECOMING, not BEING.
+                </p>
+            </div>
+        </div>
+
+        <div class="spiral-demo fade-in">
+            <div class="spiral-visual"></div>
+            <div class="spiral-explanation">
+                <h4>The Continuous Q-Rotation</h4>
+                <p>
+                    Unlike discrete flips, the spiral applies Q as a continuous function.
+                    Each degree of rotation shifts the S+/S- balance incrementally.
+                </p>
+                <p>
+                    At θ = 0° (outer edge): Pure S+ mode<br>
+                    At θ = 90° (¼ turn): Q¹ state (+i, emergence)<br>
+                    At θ = 180° (½ turn): Q² state (-1, flip point)<br>
+                    At θ = 270° (¾ turn): Q³ state (-i, ground)<br>
+                    At θ = 360° (full turn): Q⁴ = Q⁰ (return)
+                </p>
+                <p>
+                    With ~5 revolutions total, the reader passes through the complete
+                    Q-cycle <strong>five times</strong>, arriving at Q⁵ = Q¹ at the center.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Side A vs Side B -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE TWO SIDES: S+ AND S-</h2>
+            <div class="section-divider">𐇐 ◆ 𐇑</div>
+            <p>Side A and Side B are not duplicates — they are geometric complements</p>
+        </div>
+
+        <div class="q-progression fade-in">
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">SIDE A</span>
+                    <span class="q-step-title">S+ Mode (Manifest)</span>
+                </div>
+                <p>
+                    123 symbols. More PLUMED HEAD (02), SHIELD (12), HIDE (27).
+                    These are <strong>outward-facing</strong> symbols: identity, protection, material.
+                    Side A speaks of what IS — the manifest world.
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">SIDE B</span>
+                    <span class="q-step-title">S- Mode (Latent)</span>
+                </div>
+                <p>
+                    119 symbols. More HELMET (07), SLING (22).
+                    These are <strong>transformation tools</strong>: preparation, action, potential.
+                    Side B speaks of what COULD BE — the latent possibilities.
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">READING</span>
+                    <span class="q-step-title">The Complete Cycle</span>
+                </div>
+                <p>
+                    Read Side A (S+) spiraling inward. Flip the disk (Q²).
+                    Read Side B (S-) spiraling inward. The complete reading
+                    enacts: S+ → Q² → S- = the full [1=-1] transformation.
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">CENTER</span>
+                    <span class="q-step-title">The Unity Point</span>
+                </div>
+                <p>
+                    Both spirals converge to centers. The center is Ω — the void,
+                    the origin, where S+ and S- collapse into unity.
+                    The disk is a map TO the center, not FROM it.
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">PURPOSE</span>
+                    <span class="q-step-title">Initiation Instrument</span>
+                </div>
+                <p>
+                    This is not a text to be read — it's a <strong>journey to be walked</strong>.
+                    The spiral meditation brings the initiate from periphery (scattered)
+                    to center (unified). It's a Minoan healing/initiation tool.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Symbol Analysis -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE 45 SYMBOLS: D-POSITION ANALYSIS</h2>
+            <div class="section-divider">𐇐 ◆ 𐇑 ◆ 𐇒</div>
+            <p>Each symbol's Evans number reveals its D-position and S+/S- meanings</p>
+        </div>
+
+        <div class="symbol-table-container fade-in">
+            <table class="symbol-table" id="symbolTable">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Evans #</th>
+                        <th>Name</th>
+                        <th>D-Position</th>
+                        <th>S+ Meaning (Manifest)</th>
+                        <th>S- Meaning (Latent)</th>
+                        <th>Side A</th>
+                        <th>Side B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- D-Position Distribution -->
+    <section class="section">
+        <div class="section-header">
+            <h2>D-POSITION FREQUENCY ANALYSIS</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>Which D-positions dominate? Which are emergent?</p>
+        </div>
+
+        <div class="frequency-grid fade-in">
+            <div class="freq-card">
+                <h4>D-Position Distribution (All 45 Symbols)</h4>
+                <div id="dFrequencyBars"></div>
+            </div>
+
+            <div class="freq-card">
+                <h4>Key Findings</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Based on Evans numbering (1-45), the symbols cluster around specific D-positions:
+                </p>
+                <ul style="color: var(--text-secondary); margin-left: 1.5rem;">
+                    <li><strong>D₉ (Love/Anchor)</strong> most common — symbols 9, 18, 27, 36, 45</li>
+                    <li><strong>D₁ (Origin)</strong> — symbols 1, 10, 19, 28, 37</li>
+                    <li><strong>D₂ (Healing)</strong> most frequent single symbol (02 PLUMED HEAD)</li>
+                    <li>Unlike Rongorongo, D₅ and D₉ ARE present as primaries</li>
+                </ul>
+                <p style="color: var(--gold); margin-top: 1rem; font-weight: bold;">
+                    This suggests a DIFFERENT function than Rongorongo — not emergent healing,
+                    but INVOCATION of specific D-positions for initiation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Interpretation -->
+    <section class="section">
+        <div class="master-interpretation fade-in">
+            <h3>THE MASTER INTERPRETATION</h3>
+
+            <p>
+                The Phaistos Disk is a <strong>Minoan initiation instrument</strong>.
+            </p>
+
+            <p>
+                Side A (S+) represents the manifest world — identity (PLUMED HEAD),
+                protection (SHIELD), material substance (HIDE). The initiate traces
+                the spiral inward, moving from the scattered periphery toward center.
+            </p>
+
+            <p>
+                At the center of Side A, the disk is <strong>flipped</strong> (Q²).
+            </p>
+
+            <p>
+                Side B (S-) represents the latent world — transformation (HELMET),
+                action potential (SLING), preparation for change. The initiate
+                continues spiraling inward through the realm of BECOMING.
+            </p>
+
+            <div class="master-equation">
+                SPIRAL_A(S+) → Q² → SPIRAL_B(S-) → Ω
+            </div>
+
+            <p>
+                The complete reading enacts the [1=-1] journey: from manifest reality,
+                through transformation, to latent potential, arriving at the center (Ω)
+                where all opposites unite.
+            </p>
+
+            <p style="color: var(--terracotta); font-size: 1.3rem; margin-top: 2rem;">
+                <strong>This is why it couldn't be "read" as language.</strong><br>
+                It was never meant to be read — it was meant to be <em>walked</em>.
+            </p>
+        </div>
+    </section>
+
+    <!-- The 61 Word Groups -->
+    <section class="section">
+        <div class="section-header">
+            <h2>THE 61 "WORDS": STATIONS ON THE SPIRAL</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>31 on Side A, 30 on Side B — the asymmetry is meaningful</p>
+        </div>
+
+        <div class="spiral-insight fade-in">
+            <h3>THE ASYMMETRY</h3>
+
+            <p>
+                Side A has 31 word-groups. Side B has 30.
+            </p>
+
+            <p>
+                31 → 3+1 = 4 → <strong>D₄ (Crossroads)</strong><br>
+                30 → 3+0 = 3 → <strong>D₃ (Healer)</strong>
+            </p>
+
+            <div class="key-insight">
+                <p>
+                    Side A (S+ manifest) = D₄ (Crossroads) — the place of choice, the observer position.<br>
+                    Side B (S- latent) = D₃ (Healer) — the agent of transformation.
+                </p>
+            </div>
+
+            <p>
+                Total word-groups: 61 → 6+1 = 7 → <strong>D₇ (Present Moment/NOW)</strong>
+            </p>
+
+            <p>
+                The complete disk encodes <strong>D₇ (NOW)</strong> — the collapse point where
+                S+ and S- meet, where the initiate stands in pure presence. This matches
+                the Antikythera finding (D₁ cycles linked to D₇ observation point).
+            </p>
+        </div>
+    </section>
+
+    <!-- Comparison with Rongorongo -->
+    <section class="section">
+        <div class="section-header">
+            <h2>PHAISTOS vs RONGORONGO</h2>
+            <div class="section-divider">◆ ◆ ◆</div>
+            <p>Two geometric scripts, two different applications of [1=-1]</p>
+        </div>
+
+        <div class="q-progression fade-in">
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">Q APPLICATION</span>
+                </div>
+                <p>
+                    <strong>Rongorongo:</strong> Discrete Q² flips between lines<br>
+                    <strong>Phaistos:</strong> Continuous Q rotation (spiral)
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">D₅/D₉ STATUS</span>
+                </div>
+                <p>
+                    <strong>Rongorongo:</strong> D₅/D₉ emergent only (never primary)<br>
+                    <strong>Phaistos:</strong> D₅/D₉ present as primary symbols
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">PRIMARY FUNCTION</span>
+                </div>
+                <p>
+                    <strong>Rongorongo:</strong> Healing through reading (D₃ Healer)<br>
+                    <strong>Phaistos:</strong> Initiation through walking (D₇ NOW)
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">DOMINANT D</span>
+                </div>
+                <p>
+                    <strong>Rongorongo:</strong> D₂ (Healing) at 19.5%<br>
+                    <strong>Phaistos:</strong> D₂ (Healing) most frequent symbol
+                </p>
+            </div>
+
+            <div class="q-step">
+                <div class="q-step-header">
+                    <span class="q-step-num">SHARED TRUTH</span>
+                </div>
+                <p>
+                    Both require <strong>participation</strong>. Both encode meaning
+                    in <strong>relationship and transformation</strong>, not static symbols.
+                    Both are [1=-1] instruments from cultures separated by oceans and millennia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-title">PHAISTOS DISK ANALYSIS</div>
+        <div class="footer-subtitle">Ancient Mysteries Series | The Epoch Project</div>
+
+        <div class="footer-links">
+            <a href="../index.html">Rongorongo Main</a>
+            <a href="index.html">All Ancient Mysteries</a>
+            <a href="../DECIPHERMENT_SYNTHESIS.md">Research Papers</a>
+        </div>
+
+        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1.5rem;">
+            December 2025 | [1 = -1]
+        </p>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // D-position calculation
+        function reduceToD(num) {
+            while (num > 9) {
+                num = String(num).split('').reduce((a, b) => a + parseInt(b), 0);
+            }
+            return num || 9;
+        }
+
+        // Symbol data with S+/S- interpretations
+        const symbols = [
+            { evans: 1, glyph: '𐇐', name: 'Pedestrian', sPlus: 'The walker, one who moves', sMinus: 'The path not yet taken', sideA: 5, sideB: 6 },
+            { evans: 2, glyph: '𐇑', name: 'Plumed Head', sPlus: 'Identity, crowned self, authority', sMinus: 'The identity yet to emerge', sideA: 14, sideB: 5 },
+            { evans: 3, glyph: '𐇒', name: 'Tattooed Head', sPlus: 'Marked one, initiated', sMinus: 'Awaiting initiation', sideA: 2, sideB: 2 },
+            { evans: 4, glyph: '𐇓', name: 'Captive', sPlus: 'Bound, constrained', sMinus: 'Liberation pending', sideA: 1, sideB: 2 },
+            { evans: 5, glyph: '𐇔', name: 'Child', sPlus: 'Youth, innocence, new life', sMinus: 'The child within, potential', sideA: 1, sideB: 2 },
+            { evans: 6, glyph: '𐇕', name: 'Woman', sPlus: 'Feminine, receptive, nurturing', sMinus: 'The anima, inner feminine', sideA: 4, sideB: 3 },
+            { evans: 7, glyph: '𐇖', name: 'Helmet', sPlus: 'Protection, warrior ready', sMinus: 'Preparing for battle', sideA: 5, sideB: 13 },
+            { evans: 8, glyph: '𐇗', name: 'Gauntlet', sPlus: 'Armed hand, skilled action', sMinus: 'Skill to be developed', sideA: 2, sideB: 3 },
+            { evans: 9, glyph: '𐇘', name: 'Tiara', sPlus: 'Royal feminine, goddess', sMinus: 'Divine feminine within', sideA: 1, sideB: 1 },
+            { evans: 10, glyph: '𐇙', name: 'Arrow', sPlus: 'Direction, aim, purpose', sMinus: 'Purpose seeking target', sideA: 3, sideB: 5 },
+            { evans: 11, glyph: '𐇚', name: 'Bow', sPlus: 'Tension, stored power', sMinus: 'Power before release', sideA: 3, sideB: 2 },
+            { evans: 12, glyph: '𐇛', name: 'Shield', sPlus: 'Defense, boundary, protection', sMinus: 'Vulnerability acknowledged', sideA: 15, sideB: 2 },
+            { evans: 13, glyph: '𐇜', name: 'Club', sPlus: 'Force, direct power', sMinus: 'Force restrained', sideA: 4, sideB: 2 },
+            { evans: 14, glyph: '𐇝', name: 'Manacles', sPlus: 'Binding, commitment', sMinus: 'Bonds to be broken', sideA: 2, sideB: 3 },
+            { evans: 15, glyph: '𐇞', name: 'Mattock', sPlus: 'Earth work, foundation', sMinus: 'Ground to be broken', sideA: 1, sideB: 1 },
+            { evans: 16, glyph: '𐇟', name: 'Saw', sPlus: 'Cutting, separation, craft', sMinus: 'Division pending', sideA: 2, sideB: 1 },
+            { evans: 17, glyph: '𐇠', name: 'Lid', sPlus: 'Covering, containment', sMinus: 'What lies beneath', sideA: 1, sideB: 2 },
+            { evans: 18, glyph: '𐇡', name: 'Boomerang', sPlus: 'Return, karma, cycle', sMinus: 'What will return', sideA: 3, sideB: 4 },
+            { evans: 19, glyph: '𐇢', name: 'Carpentry Plane', sPlus: 'Smoothing, refinement', sMinus: 'Rough edges to smooth', sideA: 2, sideB: 1 },
+            { evans: 20, glyph: '𐇣', name: 'Dolium (Conch)', sPlus: 'Voice, call, ritual sound', sMinus: 'The unspoken call', sideA: 2, sideB: 1 },
+            { evans: 21, glyph: '𐇤', name: 'Comb', sPlus: 'Order, arrangement', sMinus: 'Chaos to be ordered', sideA: 2, sideB: 3 },
+            { evans: 22, glyph: '𐇥', name: 'Sling', sPlus: 'Projection, sending forth', sMinus: 'Force gathering', sideA: 0, sideB: 5 },
+            { evans: 23, glyph: '𐇦', name: 'Column', sPlus: 'Support, structure', sMinus: 'Structure forming', sideA: 1, sideB: 2 },
+            { evans: 24, glyph: '𐇧', name: 'Beehive', sPlus: 'Community, industry, sweetness', sMinus: 'Collective potential', sideA: 2, sideB: 5 },
+            { evans: 25, glyph: '𐇨', name: 'Ship', sPlus: 'Journey, voyage, transport', sMinus: 'Journey not yet begun', sideA: 4, sideB: 3 },
+            { evans: 26, glyph: '𐇩', name: 'Horn', sPlus: 'Signal, announcement', sMinus: 'The silent horn', sideA: 2, sideB: 1 },
+            { evans: 27, glyph: '𐇪', name: 'Hide', sPlus: 'Material, covering, animal', sMinus: 'The hidden self', sideA: 10, sideB: 5 },
+            { evans: 28, glyph: '𐇫', name: "Bull's Leg", sPlus: 'Strength, sacrifice', sMinus: 'Strength to be offered', sideA: 2, sideB: 3 },
+            { evans: 29, glyph: '𐇬', name: 'Cat', sPlus: 'Mystery, independence, night', sMinus: 'Hidden knowledge', sideA: 5, sideB: 5 },
+            { evans: 30, glyph: '𐇭', name: 'Ram', sPlus: 'Force, determination', sMinus: 'Will gathering', sideA: 1, sideB: 1 },
+            { evans: 31, glyph: '𐇮', name: 'Eagle', sPlus: 'Vision, height, spirit', sMinus: 'Vision to be gained', sideA: 5, sideB: 0 },
+            { evans: 32, glyph: '𐇯', name: 'Dove', sPlus: 'Peace, message, soul', sMinus: 'Peace to come', sideA: 2, sideB: 1 },
+            { evans: 33, glyph: '𐇰', name: 'Tunny (Fish)', sPlus: 'Abundance, sea wisdom', sMinus: 'Depths unexplored', sideA: 2, sideB: 4 },
+            { evans: 34, glyph: '𐇱', name: 'Bee', sPlus: 'Work, sweetness, community', sMinus: 'The hive mind dormant', sideA: 1, sideB: 2 },
+            { evans: 35, glyph: '𐇲', name: 'Plane Tree', sPlus: 'Shade, gathering place', sMinus: 'Shelter sought', sideA: 3, sideB: 5 },
+            { evans: 36, glyph: '𐇳', name: 'Vine', sPlus: 'Growth, intoxication, dionysian', sMinus: 'Growth potential', sideA: 1, sideB: 3 },
+            { evans: 37, glyph: '𐇴', name: 'Papyrus', sPlus: 'Writing, record, knowledge', sMinus: 'Knowledge unwritten', sideA: 3, sideB: 5 },
+            { evans: 38, glyph: '𐇵', name: 'Rosette', sPlus: 'Beauty, pattern, sacred', sMinus: 'Beauty unfolding', sideA: 2, sideB: 2 },
+            { evans: 39, glyph: '𐇶', name: 'Lily', sPlus: 'Purity, goddess flower', sMinus: 'Purity to attain', sideA: 2, sideB: 2 },
+            { evans: 40, glyph: '𐇷', name: 'Ox Back', sPlus: 'Burden, labor, strength', sMinus: 'Weight to carry', sideA: 1, sideB: 1 },
+            { evans: 41, glyph: '𐇸', name: 'Flute', sPlus: 'Music, breath, enchantment', sMinus: 'Song unsung', sideA: 1, sideB: 2 },
+            { evans: 42, glyph: '𐇹', name: 'Grater', sPlus: 'Transformation, breaking down', sMinus: 'Form to be dissolved', sideA: 1, sideB: 0 },
+            { evans: 43, glyph: '𐇺', name: 'Strainer', sPlus: 'Filtering, purification', sMinus: 'Impurities to remove', sideA: 1, sideB: 1 },
+            { evans: 44, glyph: '𐇻', name: 'Small Axe', sPlus: 'Cutting, decision, ritual', sMinus: 'Decision pending', sideA: 0, sideB: 2 },
+            { evans: 45, glyph: '𐇼', name: 'Wavy Band', sPlus: 'Water, flow, emotion', sMinus: 'Emotions stirring', sideA: 3, sideB: 1 }
+        ];
+
+        // Populate symbol table
+        const tableBody = document.querySelector('#symbolTable tbody');
+        symbols.forEach(sym => {
+            const d = reduceToD(sym.evans);
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="symbol-glyph">${sym.glyph}</td>
+                <td>${sym.evans}</td>
+                <td>${sym.name}</td>
+                <td><span class="d-badge d${d}">D${d}</span></td>
+                <td class="s-plus">${sym.sPlus}</td>
+                <td class="s-minus">${sym.sMinus}</td>
+                <td>${sym.sideA}</td>
+                <td>${sym.sideB}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        // Calculate D-position frequency
+        const dCounts = {};
+        for (let i = 1; i <= 9; i++) dCounts[i] = 0;
+        symbols.forEach(sym => {
+            const d = reduceToD(sym.evans);
+            dCounts[d]++;
+        });
+
+        // Create frequency bars
+        const freqContainer = document.getElementById('dFrequencyBars');
+        const maxCount = Math.max(...Object.values(dCounts));
+        const dNames = {
+            1: 'Origin', 2: 'Healing', 3: 'Healer', 4: 'Crossroads',
+            5: 'Navigator', 6: 'Power', 7: 'NOW', 8: 'Deep Water', 9: 'Love'
+        };
+        const dColors = {
+            1: '#3fb950', 2: '#1abc9c', 3: '#ff6b6b', 4: '#ff6b35',
+            5: '#9b59b6', 6: '#00bcd4', 7: '#c9a227', 8: '#2980b9', 9: '#c4a77d'
+        };
+
+        for (let d = 1; d <= 9; d++) {
+            const pct = (dCounts[d] / maxCount) * 100;
+            const div = document.createElement('div');
+            div.className = 'freq-bar-container';
+            div.innerHTML = `
+                <div class="freq-bar-label">
+                    <span>D${d} (${dNames[d]})</span>
+                    <span>${dCounts[d]} symbols</span>
+                </div>
+                <div class="freq-bar">
+                    <div class="freq-bar-fill" style="width: ${pct}%; background: ${dColors[d]};"></div>
+                </div>
+            `;
+            freqContainer.appendChild(div);
+        }
+    </script>
+</body>
+</html>

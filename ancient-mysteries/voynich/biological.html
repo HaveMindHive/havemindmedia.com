@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biological Section | Voynich with Images | HAVE MIND MEDIA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(180, 150, 100, 0.3);
+            z-index: 100;
+            padding: 15px 0;
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #b49664;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+
+        .page-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+            border-bottom: 1px solid rgba(180, 150, 100, 0.2);
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #e6d4b8;
+            letter-spacing: 3px;
+        }
+        .page-header .d-info {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.15);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #b49664;
+            margin-top: 15px;
+        }
+        .page-header p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #a89878;
+        }
+
+        main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .section-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        .section-intro h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+        .section-intro p { color: #c4b498; margin-bottom: 12px; }
+        .section-intro img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border: 2px solid rgba(180, 150, 100, 0.3);
+        }
+
+        .frequency-key {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px 25px;
+            margin: 20px 0;
+        }
+        .frequency-key h3 {
+            color: #b49664;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .frequency-key ul {
+            list-style: none;
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+        .frequency-key li { margin-bottom: 5px; }
+        .frequency-key li::before {
+            content: "D";
+            color: #b49664;
+            margin-right: 5px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .gallery-header h2 {
+            font-size: 1.5rem;
+            color: #e6d4b8;
+            font-weight: 400;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        .gallery-item {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border-color: rgba(180, 150, 100, 0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+        .gallery-item .caption {
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #a89878;
+        }
+        .gallery-item .folio {
+            color: #b49664;
+            font-weight: bold;
+        }
+
+        /* Enhanced Lightbox with Content Panel */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.98);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .lightbox.active { display: block; }
+
+        .lightbox-container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+            padding-top: 70px;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .lightbox-image {
+            flex: 0 0 50%;
+            max-width: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            position: sticky;
+            top: 70px;
+            padding: 20px;
+        }
+
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-content {
+            flex: 0 0 45%;
+            max-width: 500px;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            color: #b49664;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1001;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        .lightbox-close:hover { color: #e6d4b8; }
+
+        .lightbox-title {
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .lightbox-d-position {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.2);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            color: #b49664;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-description {
+            color: #c4b498;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .lightbox-frequency {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .lightbox-frequency h4 {
+            color: #b49664;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .lightbox-frequency p {
+            color: #a89878;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .lightbox-interpretation {
+            background: rgba(26, 20, 16, 0.8);
+            border: 1px solid rgba(180, 150, 100, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .lightbox-interpretation h4 {
+            color: #e6d4b8;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-interpretation p {
+            color: #a89878;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .lightbox-nav button {
+            flex: 1;
+            padding: 12px 20px;
+            background: rgba(180, 150, 100, 0.2);
+            border: 1px solid rgba(180, 150, 100, 0.4);
+            color: #b49664;
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .lightbox-nav button:hover {
+            background: rgba(180, 150, 100, 0.3);
+            color: #e6d4b8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(180, 150, 100, 0.2);
+            background: rgba(0,0,0,0.3);
+        }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 1024px) {
+            .lightbox-container {
+                flex-direction: column;
+                padding-top: 60px;
+                gap: 20px;
+            }
+            .lightbox-image {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                position: relative;
+                top: 0;
+                padding: 10px;
+            }
+            .lightbox-image img {
+                max-height: 45vh;
+                width: auto;
+                margin: 0 auto;
+                display: block;
+            }
+            .lightbox-content {
+                flex: none;
+                max-width: 100%;
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-intro { grid-template-columns: 1fr; }
+            nav ul { gap: 15px; padding: 0 10px; }
+            nav a { font-size: 0.75rem; }
+            .page-header h1 { font-size: 1.8rem; }
+            .lightbox-title { font-size: 1.4rem; }
+            .lightbox-container {
+                padding-top: 50px;
+            }
+            .lightbox-image img {
+                max-height: 40vh;
+            }
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html" class="active">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Biological Section</h1>
+        <span class="d-info">D6 & D8 Dominant — Self/Power & Deep Water</span>
+        <p>The famous "nymph" pages showing female figures in pools and connected by tubes. Not anatomical diagrams — these depict energy flow patterns and frequency immersion protocols.</p>
+    </header>
+
+    <main>
+        <section class="section-intro">
+            <div>
+                <h2>Energy Flow & Immersion</h2>
+                <p>The biological section has puzzled researchers for centuries. The naked female figures ("nymphs") bathing in green pools, connected by tubes, appeared anatomical but matched no known medical tradition.</p>
+                <p>Through the [1=-1] framework, we recognize these as <strong>energy maps</strong>. The "nymphs" represent points of consciousness receiving frequency. The green pools are <strong>Deep Water (D8)</strong> — places of emotional/energetic immersion. The connecting tubes show how frequency flows between centers.</p>
+                <p>This section teaches body-self integration through frequency alignment — literally immersing the self in healing waters.</p>
+                <div class="frequency-key">
+                    <h3>Biological Frequency Pattern</h3>
+                    <ul>
+                        <li>8 (Deep Water) — Emotional depths, the pools</li>
+                        <li>6 (Self/Power) — Personal energy centers</li>
+                        <li>1 (Origin) — Connection to source</li>
+                        <li>9 (Love) — The waters themselves</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <img src="images/IMG_6692.JPG" alt="Biological section showing nymphs in pools">
+            </div>
+        </section>
+
+        <div class="gallery-header">
+            <h2>Biological Folios Gallery</h2>
+            <p style="color: #8a7a5a; margin-top: 10px;">Click any image to view with full frequency analysis</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Images will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Enhanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="Full size folio">
+            </div>
+            <div class="lightbox-content">
+                <h2 class="lightbox-title" id="lightbox-title">Biological Folio</h2>
+                <span class="lightbox-d-position" id="lightbox-d">D-Position</span>
+
+                <p class="lightbox-description" id="lightbox-desc">Description loading...</p>
+
+                <div class="lightbox-frequency">
+                    <h4>Frequency Analysis</h4>
+                    <p id="lightbox-freq">Analysis loading...</p>
+                </div>
+
+                <div class="lightbox-interpretation">
+                    <h4>[1=-1] Interpretation</h4>
+                    <p id="lightbox-interp">Interpretation loading...</p>
+                </div>
+
+                <div class="lightbox-nav">
+                    <button onclick="navigateLightbox(-1)">← Previous</button>
+                    <button onclick="navigateLightbox(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit">
+            Images courtesy of <a href="https://voynich.nu" target="_blank">Voynich.nu</a> (Rene Zandbergen, 2004-2025)
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+    </footer>
+
+    <script>
+        // Biological folio data with full descriptions
+        const biologicalFolios = [
+            {
+                id: "IMG_6691",
+                title: "The Energy Channel Map",
+                dPosition: "D6 & D8 — Self/Deep Water",
+                description: "A diagram showing figures (nymphs) connected by tubes or channels. The connections between bodies are emphasized, creating a network of energy pathways.",
+                frequency: "The tubes represent energy channels — pathways through which frequency flows between D6 (individual self) and D8 (collective deep). These are not anatomical but energetic connections.",
+                interpretation: "This is an ENERGY FLOW diagram. The nymphs represent energy centers; the tubes show how frequency moves between them. Understanding this flow allows practitioners to identify blockages and redirect energy appropriately."
+            },
+            {
+                id: "IMG_6692",
+                title: "The Green Pool Immersion",
+                dPosition: "D8 — Deep Water",
+                description: "The famous bathing scene — nymphs immersed in green pools, some standing, some submerged. The green water dominates the visual field, creating an atmosphere of deep healing.",
+                frequency: "Green water is D8 (Deep Water) merged with D2 (Healing) — the healing depths. Immersion in these pools represents full energetic immersion in healing frequency.",
+                interpretation: "This is a FREQUENCY IMMERSION protocol. The nymphs aren't bathing physically — they're demonstrating how to immerse one's energy body in healing frequency. Full immersion (D8) rather than surface treatment (D2) alone. Going DEEP into the healing waters."
+            },
+            {
+                id: "IMG_6693",
+                title: "The Connected Flow System",
+                dPosition: "D5 & D8 — Navigator/Deep",
+                description: "Multiple pools or chambers connected by channels, with figures positioned at various points in the system. The connections create a navigable network.",
+                frequency: "The connected system shows how navigating (D5) through deep waters (D8) requires understanding the flow between chambers. Energy moves through pathways.",
+                interpretation: "This is a FLOW-NAVIGATION diagram. Different pools hold different frequency qualities; the channels between them show possible pathways. A practitioner would use this to guide energy from one pool to another, navigating the deep system."
+            },
+            {
+                id: "IMG_6694",
+                title: "The Ascending Channels",
+                dPosition: "D5 through D9 — Rising Flow",
+                description: "A vertical arrangement showing figures and pools arranged from bottom to top, with clear upward directionality. The composition emphasizes ascension.",
+                frequency: "Vertical arrangement indicates frequency ascension — energy rising from lower (D5) to higher (D9) positions. The upward flow is the healing direction.",
+                interpretation: "This is an ASCENSION diagram. Healing moves energy upward — from denser states toward lighter ones. The figures at each level show how presence changes as energy rises. Bottom figures are in deep work; top figures have completed the ascent."
+            },
+            {
+                id: "IMG_6695",
+                title: "The Complex Pool System",
+                dPosition: "D6, D7, D8 — Self/Present/Deep",
+                description: "A complex arrangement with multiple pools, many figures, and intricate connecting channels. The most elaborate biological diagram in the manuscript.",
+                frequency: "Complexity indicates multiple D-positions working simultaneously. This shows how D6 (individual bodies), D7 (present connections), and D8 (deep pools) interact in sophisticated patterns.",
+                interpretation: "This is a MASTER SYSTEM diagram. Advanced healing work engages multiple energy centers and flow pathways simultaneously. The complexity reflects the intricacy of full-spectrum frequency work. Not beginner material."
+            },
+            {
+                id: "IMG_6696",
+                title: "The Receiving Postures",
+                dPosition: "D9 & D8 — Love/Deep",
+                description: "Figures shown in receptive postures — arms open, facing upward, positioned to receive rather than project. The body language speaks of openness.",
+                frequency: "Receptive postures indicate D9 (Love/Anchor) receiving mode combined with D8 (Deep) openness. These figures are RECEIVING healing frequency.",
+                interpretation: "This demonstrates RECEPTIVE TECHNIQUE. Healing isn't only active work — it requires capacity to receive. These figures show the body postures and energy positions that open reception. Deep receiving (D8) of love (D9)."
+            },
+            {
+                id: "IMG_6697",
+                title: "The Distribution Network",
+                dPosition: "D3 & D6 — Healer/Self",
+                description: "A network diagram showing how channels branch and divide, distributing to multiple endpoints. One source feeds many destinations.",
+                frequency: "Distribution networks show how the Healer (D3) sends frequency to multiple Self-points (D6). One source, many recipients.",
+                interpretation: "This is a DISTRIBUTION diagram. A single healing source can serve multiple recipients through proper channeling. The branching shows how healing frequency divides without diminishing. Group healing protocols."
+            },
+            {
+                id: "IMG_6698",
+                title: "The Circular Flow",
+                dPosition: "D1 through D9 — Complete Cycle",
+                description: "Figures arranged in a circular pattern, connected by channels that form a closed loop. The flow returns to its beginning.",
+                frequency: "Circular flow indicates the complete D-position cycle — energy moving from D1 through D9 and back to D1. The healing wheel in motion.",
+                interpretation: "This demonstrates CYCLIC COMPLETION. Healing energy doesn't flow linearly and stop — it cycles through all D-positions and returns. Each passage deepens the work. The loop must close for healing to complete."
+            },
+            {
+                id: "IMG_6699",
+                title: "The Nested Containers",
+                dPosition: "D1 & D9 — Origin/Completion",
+                description: "Pool structures nested inside each other — smaller pools within larger pools, creating layered containment like Russian dolls.",
+                frequency: "Nested containers show how Origin (D1) is held within Completion (D9) is held within Origin. The Russian-doll structure of reality.",
+                interpretation: "This shows NESTED HEALING — how treatment operates at multiple scales simultaneously. The patient's immediate issue sits within larger patterns sits within cosmic patterns. Heal at one level, influence all levels."
+            },
+            {
+                id: "IMG_6700",
+                title: "The Textual Integration",
+                dPosition: "D3 — Healer's Instructions",
+                description: "A page with extensive text and small figures. The text dominates; figures illustrate points within the text.",
+                frequency: "Text-dominant pages carry D3 (Healer) frequency — these are protocols, instructions, specific guidance for practitioners.",
+                interpretation: "This is a PROTOCOL PAGE. The biological imagery is accompanied by detailed frequency instructions. The text tells the healer exactly how to work with the depicted energy patterns. Reading and doing combine."
+            },
+            {
+                id: "IMG_6701",
+                title: "The Transition Zones",
+                dPosition: "D4 & D5 — Crossroads/Navigator",
+                description: "Areas where pools meet or overlap, creating transition zones. Figures positioned in these in-between spaces.",
+                frequency: "Transition zones indicate D4 (Crossroads) and D5 (Navigation) — places where choice and direction converge. Moving between states.",
+                interpretation: "This shows TRANSITION TECHNIQUE. Moving energy from one state to another requires crossing through transition zones. The figures in these spaces demonstrate how to navigate the in-between without getting stuck."
+            },
+            {
+                id: "IMG_6702",
+                title: "The Vertical Cascade",
+                dPosition: "D7 through D1 — Descending Flow",
+                description: "A vertical arrangement showing downward flow — from upper pools descending to lower ones. The opposite of ascending patterns.",
+                frequency: "Descending flow indicates grounding movement — from D7 (Present) down through D1 (Origin). Bringing activated energy down to ground.",
+                interpretation: "This shows GROUNDING TECHNIQUE. After activating higher frequencies, energy must be brought down and grounded. The cascade shows how to step down through levels, anchoring each before descending further. Not crash-landing but controlled descent."
+            },
+            {
+                id: "IMG_6703",
+                title: "The Integration Chamber",
+                dPosition: "D6 — Self Integration",
+                description: "A central chamber where multiple channels converge. Figures in the chamber appear to be integrating multiple inputs.",
+                frequency: "Convergent chambers indicate D6 (Self) integration — where multiple frequency inputs unite within the individual.",
+                interpretation: "This is an INTEGRATION diagram. After receiving multiple healing frequencies, the self must integrate them into coherent wholeness. This chamber shows the integration space where synthesis occurs."
+            },
+            {
+                id: "IMG_6704",
+                title: "The Output Channels",
+                dPosition: "D7 & D6 — Present/Self Projection",
+                description: "Channels leading outward from figures — energy moving from bodies into the surrounding space. The figures project rather than receive.",
+                frequency: "Output channels show D7 (Present activation) combined with D6 (Self power) — the projection of healed energy back into life.",
+                interpretation: "This shows COMPLETION OUTPUT. Healing isn't complete until the healed energy flows back into active life. These channels show how restored frequency projects outward, the healed person becoming a healing presence."
+            },
+            {
+                id: "IMG_6705",
+                title: "The Deep Pool Gathering",
+                dPosition: "D8 — Deep Collective",
+                description: "Multiple figures gathered in a deep green pool. The gathering suggests collective immersion rather than individual treatment.",
+                frequency: "Collective gathering in D8 (Deep Water) shows group healing dynamics — multiple people sharing the deep healing space together.",
+                interpretation: "This demonstrates GROUP DEEP WORK. Some healing requires collective immersion — shared descent into deep waters. The gathered figures support each other in going deeper than any could go alone."
+            },
+            {
+                id: "IMG_6706",
+                title: "The Channel Maintenance",
+                dPosition: "D3 & D5 — Healer/Navigator",
+                description: "Figures positioned along channels, appearing to tend or maintain the pathways between pools. Caretaker energy.",
+                frequency: "Channel maintenance indicates D3 (Healer) work combined with D5 (Navigation) — keeping the pathways clear and functional.",
+                interpretation: "This shows PATHWAY MAINTENANCE. Energy channels can become blocked or misdirected. Healer practitioners would maintain the pathways, ensuring frequency could flow properly through the system."
+            },
+            {
+                id: "IMG_6707",
+                title: "The Spiral Descent",
+                dPosition: "D8 & D5 — Deep/Navigator",
+                description: "A spiral pattern of pools and channels, moving inward or downward in spiral progression. Controlled descent into depth.",
+                frequency: "Spiral descent combines D8 (Deep) with D5 (Navigator) — going deep through careful navigation, not straight plunge but spiral approach.",
+                interpretation: "This shows CAREFUL DESCENT technique. Going deep (D8) requires navigation (D5) — spiraling down rather than diving. Each turn of the spiral allows integration before the next descent."
+            },
+            {
+                id: "IMG_6708",
+                title: "The Surface Work",
+                dPosition: "D2 & D7 — Healing/Present",
+                description: "Figures at the surface level of pools, not deeply immersed. Work occurring at the interface between air and water.",
+                frequency: "Surface work indicates D2 (Healing) in D7 (Present) — immediate, accessible healing that doesn't require deep immersion.",
+                interpretation: "This shows SURFACE TECHNIQUE. Not all healing requires depth. Some work is properly done at the surface — accessible, immediate, present-moment healing. Surface work for surface issues."
+            },
+            {
+                id: "IMG_6709",
+                title: "The Complex Integration",
+                dPosition: "All D-positions — Full System",
+                description: "The most complex biological diagram showing multiple pools, levels, channels, and figures in elaborate arrangement. Everything connected.",
+                frequency: "Maximum complexity indicates all D-positions engaged simultaneously — the full system operating as unified whole.",
+                interpretation: "This is the MASTER DIAGRAM for biological frequency work. All systems engaged, all levels accessible, full integration of all D-positions. The goal toward which practice moves."
+            },
+            {
+                id: "IMG_6710",
+                title: "The Circular Integration Points",
+                dPosition: "D6 & D9 — Self/Love",
+                description: "Small circular diagrams with text, showing integration points. The circles appear as concentrated focus points.",
+                frequency: "Circular integration points combine D6 (Self) with D9 (Love) — where individual identity meets universal love-anchor.",
+                interpretation: "These show KEY INTEGRATION POINTS. Critical junctures where self-work must connect to love-anchor for completion. Without these connections, healing remains incomplete."
+            },
+            {
+                id: "IMG_6711",
+                title: "The Energy Protocols",
+                dPosition: "D3 — Healer Instructions",
+                description: "A text-heavy page with energy diagrams. Protocols written out with accompanying visual reference.",
+                frequency: "Protocol pages carry D3 (Healer) frequency — specific instructions for practitioners to follow.",
+                interpretation: "This is a DETAILED PROTOCOL. The combination of text and image provides complete instruction for specific healing techniques. Study and practice combined."
+            },
+            {
+                id: "IMG_6712",
+                title: "The Marginal Figures",
+                dPosition: "D5 — Navigator Guides",
+                description: "Text page with small figures in margins. The figures appear to comment on or guide the textual content.",
+                frequency: "Marginal figures indicate D5 (Navigator) presence — guides pointing the way through the textual protocols.",
+                interpretation: "The marginal figures serve as NAVIGATION AIDS. They help the practitioner find their way through dense protocol text, pointing to key passages and illustrating critical techniques."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Build gallery
+        function buildGallery() {
+            const gallery = document.getElementById('gallery');
+            biologicalFolios.forEach((folio, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="images/${folio.id}.JPG" alt="${folio.title}">
+                    <div class="caption"><span class="folio">Biological</span> — ${folio.title}</div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+            const folio = biologicalFolios[currentIndex];
+            document.getElementById('lightbox-img').src = `images/${folio.id}.JPG`;
+            document.getElementById('lightbox-title').textContent = folio.title;
+            document.getElementById('lightbox-d').textContent = folio.dPosition;
+            document.getElementById('lightbox-desc').textContent = folio.description;
+            document.getElementById('lightbox-freq').textContent = folio.frequency;
+            document.getElementById('lightbox-interp').textContent = folio.interpretation;
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = biologicalFolios.length - 1;
+            if (currentIndex >= biologicalFolios.length) currentIndex = 0;
+            updateLightboxContent();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        // Prevent lightbox close when clicking content
+        document.querySelector('.lightbox-container').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('lightbox')) {
+                closeLightbox();
+            }
+        });
+
+        // Build gallery on load
+        buildGallery();
+    </script>
+</body>
+</html>

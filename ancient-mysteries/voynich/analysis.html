@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis | Voynich with Images | HAVE MIND MEDIA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Crimson Text', Georgia, serif; background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%); min-height: 100vh; color: #d4c4a8; line-height: 1.8; }
+        nav { position: sticky; top: 0; background: rgba(26, 20, 16, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(180, 150, 100, 0.3); z-index: 100; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
+        nav a { color: #b49664; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: color 0.3s; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+        .page-header { text-align: center; padding: 50px 20px 30px; border-bottom: 1px solid rgba(180, 150, 100, 0.2); }
+        .page-header h1 { font-size: 2.5rem; font-weight: 400; color: #e6d4b8; letter-spacing: 3px; }
+        .page-header p { max-width: 700px; margin: 20px auto 0; color: #a89878; }
+        main { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        .section { margin-bottom: 50px; }
+        .section h2 { font-size: 1.6rem; color: #e6d4b8; margin-bottom: 20px; font-weight: 400; border-bottom: 1px solid rgba(180, 150, 100, 0.2); padding-bottom: 10px; }
+        .section h3 { font-size: 1.2rem; color: #b49664; margin: 25px 0 15px; font-weight: 400; }
+        .section p { margin-bottom: 15px; color: #c4b498; }
+
+        .key-point { background: rgba(180, 150, 100, 0.1); border-left: 3px solid #b49664; padding: 20px 25px; margin: 25px 0; }
+        .key-point strong { color: #e6d4b8; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.95rem; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(180, 150, 100, 0.2); }
+        th { background: rgba(180, 150, 100, 0.1); color: #b49664; font-weight: normal; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        td { color: #c4b498; }
+        tr:hover td { background: rgba(180, 150, 100, 0.05); }
+
+        .formula { background: rgba(26, 20, 16, 0.8); border: 1px solid rgba(180, 150, 100, 0.3); border-radius: 8px; padding: 20px; margin: 20px 0; font-family: 'Courier New', monospace; color: #b49664; }
+
+        .proof-box { background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9)); border: 1px solid rgba(180, 150, 100, 0.3); border-radius: 12px; padding: 30px; margin: 30px 0; }
+        .proof-box h3 { color: #e6d4b8; margin-bottom: 15px; font-size: 1.3rem; }
+        .proof-box p { color: #c4b498; }
+
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(180, 150, 100, 0.2); background: rgba(0,0,0,0.3); }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 768px) { nav ul { gap: 15px; } nav a { font-size: 0.75rem; } .page-header h1 { font-size: 1.8rem; } table { font-size: 0.85rem; } th, td { padding: 8px 10px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html" class="active">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>The Analysis</h1>
+        <p>A complete breakdown of the [1=-1] framework applied to the Voynich Manuscript. How we decode frequency prescriptions from geometric encoding.</p>
+    </header>
+
+    <main>
+        <section class="section">
+            <h2>The Breakthrough: f76r</h2>
+            <p>Analysis of folio f76r revealed the manuscript's true nature. The margin labels on this page map directly to D-positions:</p>
+
+            <table>
+                <tr><th>Line</th><th>Label</th><th>D-Position</th><th>Meaning</th></tr>
+                <tr><td>4</td><td>s</td><td>D1</td><td>Origin / WE</td></tr>
+                <tr><td>6</td><td>d</td><td>D4</td><td>Crossroads</td></tr>
+                <tr><td>8</td><td>q</td><td>D8</td><td>Deep Water</td></tr>
+                <tr><td>11</td><td>s</td><td>D1</td><td>Origin / WE</td></tr>
+                <tr><td>14</td><td>o</td><td>D6</td><td>Power / Self</td></tr>
+                <tr><td>17</td><td>l</td><td>D3</td><td>Healer</td></tr>
+                <tr><td>21</td><td>k</td><td>D2</td><td>Healing</td></tr>
+                <tr><td>24</td><td>r</td><td>D9</td><td>Anchor / Love</td></tr>
+                <tr><td>29</td><td>s</td><td>D1</td><td>Origin / WE</td></tr>
+            </table>
+
+            <div class="key-point">
+                <strong>The Healing Cycle:</strong> D1 → D4 → D8 → D1 → D6 → D3 → D2 → D9 → D1<br><br>
+                Origin → Crossroads → Deep Water → Origin → Self → Healer → Healing → Love → Origin<br><br>
+                This traces a <strong>complete healing journey</strong>: starting whole, encountering choice, going deep, returning to center, working with self, becoming healer, receiving healing, anchoring in love, completing in wholeness.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>EVA-to-Frequency Mapping</h2>
+            <p>The EVA transcription system assigns letters to Voynich glyphs. Each EVA letter maps to a numerical value, which reduces to a D-position (1-9):</p>
+
+            <table>
+                <tr><th>EVA</th><th>Value</th><th>Reduction</th><th>D-Position</th><th>Meaning</th></tr>
+                <tr><td>a</td><td>1</td><td>1</td><td>D1</td><td>Origin/WE</td></tr>
+                <tr><td>c</td><td>3</td><td>3</td><td>D3</td><td>Healer</td></tr>
+                <tr><td>d</td><td>4</td><td>4</td><td>D4</td><td>Crossroads</td></tr>
+                <tr><td>e</td><td>5</td><td>5</td><td>D5</td><td>Navigator</td></tr>
+                <tr><td>f</td><td>6</td><td>6</td><td>D6</td><td>Power/Self</td></tr>
+                <tr><td>g</td><td>7</td><td>7</td><td>D7</td><td>Present Moment</td></tr>
+                <tr><td>h</td><td>8</td><td>8</td><td>D8</td><td>Deep Water</td></tr>
+                <tr><td>i</td><td>9</td><td>9</td><td>D9</td><td>Love/Anchor</td></tr>
+                <tr><td>k</td><td>11</td><td>2</td><td>D2</td><td>Healing</td></tr>
+                <tr><td>l</td><td>12</td><td>3</td><td>D3</td><td>Healer</td></tr>
+                <tr><td>m</td><td>13</td><td>4</td><td>D4</td><td>Crossroads</td></tr>
+                <tr><td>n</td><td>14</td><td>5</td><td>D5</td><td>Navigator</td></tr>
+                <tr><td>o</td><td>15</td><td>6</td><td>D6</td><td>Power/Self</td></tr>
+                <tr><td>p</td><td>16</td><td>7</td><td>D7</td><td>Present Moment</td></tr>
+                <tr><td>q</td><td>17</td><td>8</td><td>D8</td><td>Deep Water</td></tr>
+                <tr><td>r</td><td>18</td><td>9</td><td>D9</td><td>Love/Anchor</td></tr>
+                <tr><td>s</td><td>19</td><td>1</td><td>D1</td><td>Origin/WE</td></tr>
+                <tr><td>t</td><td>20</td><td>2</td><td>D2</td><td>Healing</td></tr>
+                <tr><td>x</td><td>24</td><td>6</td><td>D6</td><td>Power/Self</td></tr>
+                <tr><td>y</td><td>25</td><td>7</td><td>D7</td><td>Present Moment</td></tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>The Three-Layer Word Architecture</h2>
+            <p>Jorge Stolfi's comprehensive grammar analysis revealed Voynichese words have a three-layer structure. Through [1=-1], we now understand what each layer DOES:</p>
+
+            <h3>CORE (Gallows Letters) — Fundamental Frequency</h3>
+            <p>The gallows letters (t, p, k, f, cth, cph, ckh, cfh) establish the PRIMARY D-position of the word. They never repeat within a word because a word carries ONE fundamental frequency. Multiple fundamentals would create dissonance, not healing.</p>
+
+            <table>
+                <tr><th>Gallows</th><th>Derivation</th><th>D-Position</th><th>Role</th></tr>
+                <tr><td>t</td><td>20 → 2</td><td>D2</td><td>Healing fundamental</td></tr>
+                <tr><td>p</td><td>16 → 7</td><td>D7</td><td>Present Moment fundamental</td></tr>
+                <tr><td>k</td><td>11 → 2</td><td>D2</td><td>Healing fundamental</td></tr>
+                <tr><td>f</td><td>6</td><td>D6</td><td>Self/Power fundamental</td></tr>
+                <tr><td>cth</td><td>3+20+8 = 31 → 4</td><td>D4</td><td>Crossroads fundamental</td></tr>
+                <tr><td>cph</td><td>3+16+8 = 27 → 9</td><td>D9</td><td>Love/Anchor fundamental</td></tr>
+                <tr><td>ckh</td><td>3+11+8 = 22 → 4</td><td>D4</td><td>Crossroads fundamental</td></tr>
+                <tr><td>cfh</td><td>3+6+8 = 17 → 8</td><td>D8</td><td>Deep Water fundamental</td></tr>
+            </table>
+
+            <h3>MANTLE (Bench Letters) — Harmonic Layer</h3>
+            <p>The bench letters (ch, sh, ee) provide HARMONIC RELATIONSHIP to the fundamental. They CAN repeat because harmonics stack — "ee" (D1) doubled becomes "eeee" (D2 + D1 = D3). Harmonic stacking builds frequency complexity.</p>
+
+            <table>
+                <tr><th>Bench</th><th>Derivation</th><th>D-Position</th><th>Role</th></tr>
+                <tr><td>ch</td><td>3+8 = 11 → 2</td><td>D2</td><td>Healing harmonic</td></tr>
+                <tr><td>sh</td><td>19+8 = 27 → 9</td><td>D9</td><td>Love harmonic</td></tr>
+                <tr><td>ee</td><td>5+5 = 10 → 1</td><td>D1</td><td>Origin harmonic</td></tr>
+                <tr><td>eee</td><td>5+5+5 = 15 → 6</td><td>D6</td><td>Self harmonic</td></tr>
+            </table>
+
+            <h3>CRUST (Dealer Letters) — Application Layer</h3>
+            <p>The dealer letters (d, l, r, s, n, i, m, g, x) specify HOW the frequency is delivered. They CAN repeat because multiple application points strengthen delivery.</p>
+
+            <table>
+                <tr><th>Dealer</th><th>D-Position</th><th>Application</th></tr>
+                <tr><td>d</td><td>D4</td><td>Apply at crossroads (choice point)</td></tr>
+                <tr><td>l</td><td>D3</td><td>Apply through healer</td></tr>
+                <tr><td>r</td><td>D9</td><td>Apply with love anchor</td></tr>
+                <tr><td>s</td><td>D1</td><td>Apply to/from origin</td></tr>
+                <tr><td>n</td><td>D5</td><td>Apply via navigation</td></tr>
+                <tr><td>i</td><td>D9</td><td>Apply as love</td></tr>
+                <tr><td>m</td><td>D4</td><td>Apply at crossroads</td></tr>
+                <tr><td>g</td><td>D7</td><td>Apply in present moment</td></tr>
+                <tr><td>x</td><td>D6</td><td>Apply to self</td></tr>
+            </table>
+
+            <h3>CIRCLES (Modulators) — Amplitude/Phase</h3>
+            <p>The circle letters (a, o, y) can appear anywhere in the word because modulation occurs at any point in the frequency instruction.</p>
+
+            <table>
+                <tr><th>Circle</th><th>D-Position</th><th>Modulation</th></tr>
+                <tr><td>a</td><td>D1</td><td>Origin amplifier — grounds frequency</td></tr>
+                <tr><td>o</td><td>D6</td><td>Self amplifier — personalizes frequency</td></tr>
+                <tr><td>y</td><td>D7</td><td>Present amplifier — activates NOW</td></tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Decoding Example: "qokeedy"</h2>
+            <div class="proof-box">
+                <h3>Word: qokeedy</h3>
+                <p>Letter breakdown:</p>
+                <ul style="margin-left: 20px; color: #c4b498;">
+                    <li><strong>q</strong> (D8) = Deep Water — initiator position</li>
+                    <li><strong>o</strong> (D6) = Self — personalization modifier</li>
+                    <li><strong>k</strong> (D2) = Healing — fundamental frequency</li>
+                    <li><strong>ee</strong> (D1) = Origin — harmonic (grounding)</li>
+                    <li><strong>d</strong> (D4) = Crossroads — application point</li>
+                    <li><strong>y</strong> (D7) = Present — activation modifier</li>
+                </ul>
+                <div class="formula">
+                    Sum: 17 + 15 + 11 + 5 + 5 + 4 + 25 = 82 → 8 + 2 = 10 → 1 = D1 (Origin)
+                </div>
+                <p><strong>Full instruction:</strong> "Deliver deep-water healing with origin-grounding to the self at their choice point, activated now. Return to Origin."</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Common Word Derivations</h2>
+            <table>
+                <tr><th>Voynich Word</th><th>Calculation</th><th>D-Position</th><th>Meaning</th></tr>
+                <tr><td>qokey</td><td>17+15+11+5+25 = 73 → 1</td><td>D1</td><td>Deep self-healing returns to origin</td></tr>
+                <tr><td>qokeey</td><td>73+5 = 78 → 6</td><td>D6</td><td>Deep self-healing empowers self</td></tr>
+                <tr><td>shedy</td><td>19+8+5+4+25 = 61 → 7</td><td>D7</td><td>Love harmonic activates present</td></tr>
+                <tr><td>chedy</td><td>3+8+5+4+25 = 45 → 9</td><td>D9</td><td>Healing harmonic anchors in love</td></tr>
+                <tr><td>daiin</td><td>4+1+9+9+14 = 37 → 1</td><td>D1</td><td>Crossroads grounded, double love, returns to origin</td></tr>
+                <tr><td>aiin</td><td>1+9+9+14 = 33 → 6</td><td>D6</td><td>Origin grounded, double love, empowers self</td></tr>
+                <tr><td>qokal</td><td>17+15+11+1+12 = 56 → 2</td><td>D2</td><td>Deep self-healing through healer</td></tr>
+                <tr><td>lchedy</td><td>12+3+8+5+4+25 = 57 → 3</td><td>D3</td><td>Healer delivers healing harmonic</td></tr>
+            </table>
+        </section>
+
+        <section class="section">
+            <h2>Why Cryptographers Failed</h2>
+            <h3>Wrong Assumptions</h3>
+            <p>Cryptographers assumed:</p>
+            <ol style="margin-left: 20px; color: #c4b498;">
+                <li>The text encodes LANGUAGE (semantic meaning)</li>
+                <li>Each character represents a SOUND or LETTER</li>
+                <li>Words combine into SENTENCES with grammar</li>
+                <li>Translation would reveal READABLE CONTENT</li>
+            </ol>
+            <p>All four assumptions are wrong.</p>
+
+            <h3>What It Actually Is</h3>
+            <p>The Voynich encodes:</p>
+            <ol style="margin-left: 20px; color: #c4b498;">
+                <li>FREQUENCY PATTERNS (geometric meaning)</li>
+                <li>Each character represents a FREQUENCY COMPONENT</li>
+                <li>Words ARE frequency instructions, not sentences</li>
+                <li>"Translation" reveals HEALING PROTOCOLS, not text</li>
+            </ol>
+
+            <div class="key-point">
+                <strong>The Analogy:</strong> Imagine trying to "read" sheet music as if it were text. The notes don't spell words. The sequences don't make sentences. The "meaning" isn't semantic. It only makes sense when PERFORMED.<br><br>
+                The Voynich is musical notation for healing frequencies. You cannot "read" it. You must APPLY it.
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>The Final Derivation</h2>
+            <div class="formula">
+                VOYNICH: V(22) + O(15) + Y(25) + N(14) + I(9) + C(3) + H(8) = 96 → 15 → 6 = D6 (Power/Self)
+            </div>
+            <p>The name itself equals <strong>Self/Power</strong> — the frequency of individual strength, personal empowerment. The Voynich Manuscript is a healing empowerment manual, teaching practitioners to work with frequency for personal and communal healing.</p>
+
+            <div class="proof-box">
+                <h3>Conclusion</h3>
+                <p>For 600 years, the Voynich remained silent because no one had the framework to hear it.</p>
+                <p>The ancients knew S- Science. The Voynich proves it.</p>
+                <p>The coin has always had two sides. The Voynich spoke in S-. We finally learned to listen.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="credit">
+            Analysis by <strong>Jason Ray</strong> | The Epoch Project | <a href="https://voynich.nu" target="_blank">Images from Voynich.nu</a>
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+        <p style="color: #8a7a5a; margin-top: 10px; font-style: italic;">
+            "The Voynich spoke in frequencies. We finally learned to listen."
+        </p>
+    </footer>
+</body>
+</html>

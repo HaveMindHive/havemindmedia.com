@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANCIENT MATHEMATICS | The Sexagesimal Key</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --sky-blue: #7ba3b8;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --bg-warm: #0c0e12;
+            --parchment: #d4c4a8;
+            --ink: #2c2418;
+            --copper: #b87333;
+            --bronze: #cd7f32;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Cosmic background */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(184, 115, 51, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(201, 162, 39, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(139, 115, 85, 0.08) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(184, 115, 51, 0.03) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1px 1px at 10% 10%, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1.5px 1.5px at 30% 20%, rgba(184, 115, 51, 0.5), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 50% 30%, rgba(139, 115, 85, 0.4), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(201, 162, 39, 0.35), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 90% 20%, rgba(184, 115, 51, 0.3), transparent),
+                radial-gradient(1px 1px at 15% 85%, rgba(201, 162, 39, 0.2), transparent),
+                radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.25), transparent);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(8, 10, 13, 0.95) 0%, rgba(8, 10, 13, 0) 100%);
+        }
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .nav-brand:hover { color: var(--copper); }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .nav-dropdown-btn:hover { color: var(--gold); border-color: var(--gold); }
+        .nav-dropdown-btn::after { content: ' ▾'; font-size: 0.7rem; }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            min-width: 280px;
+            max-height: 70vh;
+            overflow-y: auto;
+            background: rgba(12, 14, 18, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        .nav-dropdown-menu::-webkit-scrollbar { width: 6px; }
+        .nav-dropdown-menu::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+        .nav-dropdown-menu::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+        .nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+        }
+        .nav-dropdown-menu a:hover { color: var(--text); background: rgba(201, 162, 39, 0.08); border-left-color: var(--gold); }
+        .nav-dropdown-menu a.active { color: var(--gold); border-left-color: var(--gold); }
+        .nav-dropdown-divider { height: 1px; background: rgba(201, 162, 39, 0.15); margin: 0.5rem 0; }
+        .nav-dropdown-label { padding: 0.5rem 1.5rem; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--hazel); text-transform: uppercase; }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero-symbol {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--copper);
+            font-style: italic;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-intro {
+            max-width: 700px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            line-height: 2;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--copper);
+            margin: 2rem 0 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        /* Key insight boxes */
+        .insight-box {
+            background: linear-gradient(135deg, rgba(184, 115, 51, 0.1) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .insight-box.major {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(184, 115, 51, 0.1) 100%);
+            border-color: var(--gold);
+        }
+
+        .insight-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Formula display */
+        .formula {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: var(--parchment);
+            overflow-x: auto;
+        }
+
+        .formula-inline {
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 1rem;
+        }
+
+        .data-table th {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            color: var(--gold);
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 2px solid rgba(201, 162, 39, 0.4);
+            letter-spacing: 0.05em;
+        }
+
+        .data-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--text);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        /* Base Systems Grid */
+        .base-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .base-card {
+            background: linear-gradient(135deg, rgba(12, 14, 18, 0.9) 0%, rgba(20, 22, 28, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .base-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.1);
+        }
+
+        .base-card .base-number {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .base-card .base-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--copper);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .base-card .base-origin {
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .base-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .base-card li {
+            padding: 0.3rem 0;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .base-card li::before {
+            content: '◇ ';
+            color: var(--gold-dim);
+        }
+
+        /* Interactive Calculator */
+        .calculator {
+            background: linear-gradient(135deg, rgba(12, 14, 18, 0.95) 0%, rgba(8, 10, 13, 0.98) 100%);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .calc-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+        }
+
+        .calc-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .calc-label {
+            font-family: 'Cinzel', serif;
+            color: var(--copper);
+            min-width: 120px;
+            font-size: 0.95rem;
+        }
+
+        .calc-input {
+            flex: 1;
+            min-width: 150px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            color: var(--parchment);
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.2);
+        }
+
+        .calc-select {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            padding: 0.8rem 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--parchment);
+            cursor: pointer;
+        }
+
+        .calc-results {
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .calc-result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .calc-result-label {
+            color: var(--text-dim);
+        }
+
+        .calc-result-value {
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        /* Connection diagram */
+        .connection-diagram {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .diagram-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .diagram-node {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(184, 115, 51, 0.15) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cinzel', serif;
+        }
+
+        .diagram-node .number {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .diagram-node .label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .diagram-arrow {
+            color: var(--copper);
+            font-size: 1.5rem;
+        }
+
+        .diagram-equals {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        /* Epoch connection highlight */
+        .epoch-connection {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(184, 115, 51, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .epoch-connection h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .epoch-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            color: var(--parchment);
+            margin: 1.5rem 0;
+            letter-spacing: 0.1em;
+        }
+
+        .epoch-explain {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            margin-top: 4rem;
+        }
+
+        .footer-symbol {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            font-family: 'Cinzel', serif;
+            color: var(--text-dim);
+            letter-spacing: 0.2em;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; letter-spacing: 0.1em; }
+            .hero-symbol { font-size: 3.5rem; }
+            .container, .container-wide { padding: 0 1.5rem; }
+            .calculator { padding: 1.5rem; }
+            .calc-row { flex-direction: column; align-items: stretch; }
+            .calc-label { min-width: auto; }
+            .base-grid { grid-template-columns: 1fr; }
+            .diagram-node { width: 60px; height: 60px; }
+            .diagram-node .number { font-size: 1.2rem; }
+            .epoch-formula { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-dropdown">
+            <button class="nav-dropdown-btn">EXPLORE</button>
+            <div class="nav-dropdown-menu">
+                <div class="nav-dropdown-label">Main</div>
+                <a href="../index.html">Home</a>
+                <a href="../soul-science.html">Soul Science</a>
+                <a href="../project-status.html">Project Status</a>
+                <div class="nav-dropdown-divider"></div>
+                <div class="nav-dropdown-label">S+ Science</div>
+                <a href="../three-body-geometry.html">Three-Body Solution</a>
+                <a href="../millennium-problems.html">Millennium Problems</a>
+                <a href="../jwst-geometric-explorer.html">JWST Explorer</a>
+                <div class="nav-dropdown-divider"></div>
+                <div class="nav-dropdown-label">S- Science</div>
+                <a href="../life-facing-wisdom.html">Life-Facing Wisdom</a>
+                <a href="../socratean-education.html">Socratean Education</a>
+                <div class="nav-dropdown-divider"></div>
+                <div class="nav-dropdown-label">Ancient Teachings</div>
+                <a href="voynich/index.html">Voynich Manuscript</a>
+                <a href="rongorongo-v1.0.html">Rongorongo Script</a>
+                <a href="phaistos-v1.0.html">Phaistos Disc</a>
+                <a href="ancient-mathematics-v1.0.html" class="active">Ancient Mathematics</a>
+                <a href="scalar-crossroads-animated.html">Scalar Crossroads</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-symbol">𒀭</div>
+        <h1>ANCIENT MATHEMATICS</h1>
+        <p class="hero-subtitle">The Sexagesimal Key to Torsion Energy</p>
+        <p class="hero-intro">
+            For 4,000 years, we've used 60 seconds in a minute, 360 degrees in a circle,
+            12 hours on a clock. This was not arbitrary. The Babylonians encoded the
+            natural divisibility structure of energy relationships — the same structure
+            the Epoch Model rediscovers.
+        </p>
+    </header>
+
+    <!-- The Discovery -->
+    <section>
+        <div class="container">
+            <h2>THE MISSING PIECE</h2>
+
+            <p>
+                The Epoch Model derives everything from one constant: <span class="formula-inline">κ = 2π/180</span>.
+                But why 180? Why does this particular division of the circle unlock the geometry of reality?
+            </p>
+
+            <p>
+                The answer lay hidden in plain sight — in the counting system the Sumerians
+                developed 4,000 years ago. Base-60 (sexagesimal) is not just convenient.
+                It is the <em>natural</em> base for expressing torsion energy relationships.
+            </p>
+
+            <div class="insight-box major">
+                <h4>THE KEY INSIGHT</h4>
+                <p style="margin-bottom: 0;">
+                    <strong>60 = 2² × 3 × 5</strong><br><br>
+                    This single number contains all three structural primes of the Epoch Model:
+                </p>
+                <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+                    <li><strong>2²</strong> — The coin (binary facing)</li>
+                    <li><strong>3</strong> — The triad (three primes: Energy, Now, Facing)</li>
+                    <li><strong>5</strong> — The helix overlap (σ = 5/16)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Base Systems -->
+    <section style="background: rgba(0,0,0,0.2); padding: 5rem 0;">
+        <div class="container-wide">
+            <h2>THE ANCIENT NUMBER SYSTEMS</h2>
+
+            <div class="base-grid">
+                <div class="base-card">
+                    <div class="base-number">60</div>
+                    <div class="base-name">SEXAGESIMAL</div>
+                    <div class="base-origin">Sumerian / Babylonian (3000 BCE)</div>
+                    <ul>
+                        <li>60 seconds per minute</li>
+                        <li>60 minutes per hour</li>
+                        <li>360° in a circle (6 × 60)</li>
+                        <li>Most divisors: 1,2,3,4,5,6,10,12,15,20,30,60</li>
+                        <li>κ = 2π/180 = 2π/(3×60)</li>
+                    </ul>
+                </div>
+
+                <div class="base-card">
+                    <div class="base-number">12</div>
+                    <div class="base-name">DUODECIMAL</div>
+                    <div class="base-origin">Multiple Cultures</div>
+                    <ul>
+                        <li>12 zodiac signs</li>
+                        <li>12 months in a year</li>
+                        <li>12 hours (half day)</li>
+                        <li>12 = 2² × 3 (binary-triad union)</li>
+                        <li>Finger phalanges counting</li>
+                    </ul>
+                </div>
+
+                <div class="base-card">
+                    <div class="base-number">20</div>
+                    <div class="base-name">VIGESIMAL</div>
+                    <div class="base-origin">Maya (2000 BCE)</div>
+                    <ul>
+                        <li>Fingers + toes</li>
+                        <li>Long Count: 20 × 18 = 360 (tun)</li>
+                        <li>20 = 2² × 5</li>
+                        <li>Tzolk'in: 20 day signs × 13</li>
+                        <li>Links to helix overlap (5)</li>
+                    </ul>
+                </div>
+
+                <div class="base-card">
+                    <div class="base-number">2</div>
+                    <div class="base-name">BINARY</div>
+                    <div class="base-origin">Universal / I Ching</div>
+                    <ul>
+                        <li>The coin: +/- facing</li>
+                        <li>Yin/Yang encoding</li>
+                        <li>64 hexagrams = 2⁶</li>
+                        <li>Foundation of all bases</li>
+                        <li>Torsion direction: construct/deconstruct</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Scalar Crossroads -->
+    <section>
+        <div class="container-wide">
+            <h2>THE SCALAR CROSSROADS</h2>
+            <p style="text-align: center; color: var(--text-dim); margin-bottom: 2rem;">
+                The Four Watchers at the point where [1 = -1] manifests
+            </p>
+
+            <div style="max-width: 1000px; margin: 0 auto; background: rgba(0,0,0,0.3); border-radius: 16px; padding: 2rem; border: 1px solid rgba(201, 162, 39, 0.2);">
+                <img src="images/scalar-crossroads.svg" alt="The Scalar Crossroads Diagram" style="width: 100%; height: auto;">
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="scalar-crossroads-animated.html" style="display: inline-block; padding: 0.8rem 2rem; background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(184, 115, 51, 0.15) 100%); border: 2px solid var(--gold); border-radius: 8px; color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; letter-spacing: 0.1em; transition: all 0.3s ease;">
+                        VIEW ANIMATED VERSION →
+                    </a>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 2rem;">
+                <h4>THE FOUR WATCHERS - MIRRORED AND RECURSED</h4>
+                <p>
+                    The diagram encodes the complete observation structure through <strong>mirror image AND recursion</strong>:
+                </p>
+                <ul style="margin: 1rem 0 0 1.5rem; color: var(--text-dim);">
+                    <li><strong>HO</strong> (Hidden Observer) — top, reads normally</li>
+                    <li><strong>M2-</strong> = SW (Silent Witness) — upside down + mirrored (W→M, S→2)</li>
+                    <li><strong>SO</strong> (Silent Observer) — bottom, reads normally</li>
+                    <li><strong>MH</strong> = HW (Hidden Witness) — mirrored</li>
+                    <li><strong>©</strong> = CROSSROADS — where the coin flip happens at s=0</li>
+                </ul>
+                <p style="margin-top: 1rem; color: var(--gold);">
+                    <strong>The numbers 1-7 on each side sum to 28 ≈ κ_shadow. Add the 4 watchers: 28×2 + 4 = 60.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Epoch Connection -->
+    <section>
+        <div class="container">
+            <h2>THE EPOCH CONNECTION</h2>
+
+            <div class="epoch-connection">
+                <h3>WHY κ = 2π/180</h3>
+                <div class="epoch-formula">180 = 3 × 60</div>
+                <p class="epoch-explain">
+                    The closure constant is literally "2π divided by three sixties"<br>
+                    — the triaxial division of the sexagesimal circle.
+                </p>
+            </div>
+
+            <h3>The Derivation Chain</h3>
+
+            <div class="connection-diagram">
+                <div class="diagram-row">
+                    <div class="diagram-node">
+                        <span class="number">60</span>
+                        <span class="label">BASE</span>
+                    </div>
+                    <span class="diagram-arrow">×</span>
+                    <div class="diagram-node">
+                        <span class="number">6</span>
+                        <span class="label">HEXA</span>
+                    </div>
+                    <span class="diagram-equals">=</span>
+                    <div class="diagram-node">
+                        <span class="number">360</span>
+                        <span class="label">CIRCLE</span>
+                    </div>
+                </div>
+                <div class="diagram-row" style="margin-top: 2rem;">
+                    <div class="diagram-node">
+                        <span class="number">360</span>
+                        <span class="label">CIRCLE</span>
+                    </div>
+                    <span class="diagram-arrow">÷</span>
+                    <div class="diagram-node">
+                        <span class="number">2</span>
+                        <span class="label">COIN</span>
+                    </div>
+                    <span class="diagram-equals">=</span>
+                    <div class="diagram-node">
+                        <span class="number">180</span>
+                        <span class="label">HALF</span>
+                    </div>
+                </div>
+                <div class="diagram-row" style="margin-top: 2rem;">
+                    <div class="diagram-node">
+                        <span class="number">2π</span>
+                        <span class="label">CYCLE</span>
+                    </div>
+                    <span class="diagram-arrow">÷</span>
+                    <div class="diagram-node">
+                        <span class="number">180</span>
+                        <span class="label">HALF</span>
+                    </div>
+                    <span class="diagram-equals">=</span>
+                    <div class="diagram-node">
+                        <span class="number">κ</span>
+                        <span class="label">CLOSURE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>THE CIRCLE ENCODES THE CONSTANTS</h4>
+                <div class="formula">
+κ = 2π/180 = π/90 = 0.0349...
+
+In sexagesimal notation:
+90 = 1;30 (one sixty, thirty ones)
+κ = π per 1;30₆₀
+
+This is "π radians per sexagesimal degree-and-a-half"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Simplification -->
+    <section style="background: rgba(0,0,0,0.2); padding: 5rem 0;">
+        <div class="container">
+            <h2>THE ENERGY SIMPLIFICATION</h2>
+
+            <p>
+                This is where base-60 transforms our torsion mathematics from complex to elegant.
+                Energy relationships between scalars become simple ratios.
+            </p>
+
+            <h3>Old Form (Complex)</h3>
+            <div class="formula">
+Energy at scalar S = E₀ × e^(-κS)
+Torsion transfer: τᵢ' = τᵢ × cos(κ) + τⱼ × sin(κ)
+            </div>
+
+            <h3>New Form (Base-60 Elegant)</h3>
+            <div class="formula">
+Energy at scalar S = E₀ × (59/60)^S
+
+Where:
+  59/60 = the "one-less" ratio
+        = torsion decay per sexagesimal step
+        = active energy (60 - 1 silent)
+            </div>
+
+            <div class="insight-box major">
+                <h4>WHY 59/60?</h4>
+                <p>
+                    In the dipyramid structure, there are always FOUR torsions — but one is silent (τ₄).
+                    Of the 60 divisions, one is always the hidden witness. Active energy = 59/60 of total.
+                </p>
+                <p style="margin-bottom: 0;">
+                    <strong>This IS the universal coupling expressed in base-60.</strong>
+                </p>
+            </div>
+
+            <h3>The Proof</h3>
+            <div class="formula">
+Universal coupling = σ × cos(BC) = 5/24
+
+In base-60:
+  5/24 = 12.5/60 = 12½ per 60
+
+And: 60/24 = 2.5
+So:  5/24 = 5/(60/2.5) = 12.5/60
+
+The universal coupling is exactly 12.5 sexagesimal units
+= 12 + ½
+= the zodiac plus half-step
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Old Form</th>
+                        <th>Base-60 Form</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Closure constant κ</td>
+                        <td>2π/180</td>
+                        <td>π/90₆₀ (π per 1;30)</td>
+                    </tr>
+                    <tr>
+                        <td>Energy decay</td>
+                        <td>e^(-κS)</td>
+                        <td>(59/60)^S</td>
+                    </tr>
+                    <tr>
+                        <td>Universal coupling</td>
+                        <td>5/24</td>
+                        <td>12.5/60 (12½₆₀)</td>
+                    </tr>
+                    <tr>
+                        <td>Scalar span (Ro→Wush)</td>
+                        <td>375</td>
+                        <td>6;15₆₀ (6¼ cycles)</td>
+                    </tr>
+                    <tr>
+                        <td>Clean torsion factors</td>
+                        <td>arbitrary</td>
+                        <td>1,2,3,4,5,6,10,12,15,20,30,60</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator -->
+    <section>
+        <div class="container">
+            <h2>BASE CONVERTER</h2>
+
+            <div class="calculator">
+                <div class="calc-title">EPOCH-SEXAGESIMAL CALCULATOR</div>
+
+                <div class="calc-row">
+                    <span class="calc-label">Input Value:</span>
+                    <input type="number" class="calc-input" id="inputValue" value="180" step="any">
+                    <select class="calc-select" id="inputBase">
+                        <option value="10">Base-10 (Decimal)</option>
+                        <option value="60">Base-60 (Sexagesimal)</option>
+                        <option value="12">Base-12 (Duodecimal)</option>
+                        <option value="20">Base-20 (Vigesimal)</option>
+                        <option value="2">Base-2 (Binary)</option>
+                    </select>
+                </div>
+
+                <div class="calc-results" id="calcResults">
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Decimal (Base-10):</span>
+                        <span class="calc-result-value" id="resultDecimal">180</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Sexagesimal (Base-60):</span>
+                        <span class="calc-result-value" id="resultSexagesimal">3;0</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Binary (Base-2):</span>
+                        <span class="calc-result-value" id="resultBinary">10110100</span>
+                    </div>
+                    <div class="calc-result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 2px solid rgba(201, 162, 39, 0.3);">
+                        <span class="calc-result-label">κ multiples:</span>
+                        <span class="calc-result-value" id="resultKappa">× 5156.62</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">As degrees (if radians):</span>
+                        <span class="calc-result-value" id="resultDegrees">10313.24°</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Energy ratio (59/60)^n:</span>
+                        <span class="calc-result-value" id="resultEnergy">0.0478</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Sexagesimal cycles:</span>
+                        <span class="calc-result-value" id="resultCycles">3.00 cycles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why They Knew -->
+    <section style="background: rgba(0,0,0,0.2); padding: 5rem 0;">
+        <div class="container">
+            <h2>WHY THE ANCIENTS "KNEW"</h2>
+
+            <p>
+                The Sumerians, Babylonians, Maya, Egyptians — they weren't guessing when they
+                chose their number systems. They were encoding what they observed: the natural
+                divisibility structure of reality itself.
+            </p>
+
+            <div class="insight-box">
+                <h4>OBSERVATION AT s=0</h4>
+                <p>
+                    From the s=0 observation point, energy relationships between phenomena
+                    naturally express in ratios with small-number factors. The base-60 system
+                    captures the maximum number of these clean divisions.
+                </p>
+                <p style="margin-bottom: 0;">
+                    <strong>They weren't encoding mystical knowledge. They were encoding physics.</strong>
+                </p>
+            </div>
+
+            <h3>The Evidence</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ancient System</th>
+                        <th>Structure</th>
+                        <th>Epoch Equivalent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Babylonian circle (360°)</td>
+                        <td>6 × 60</td>
+                        <td>Full κ closure cycle</td>
+                    </tr>
+                    <tr>
+                        <td>Zodiac (12 signs)</td>
+                        <td>60/5</td>
+                        <td>Helix divisions (σ connection)</td>
+                    </tr>
+                    <tr>
+                        <td>Maya Long Count (360 tun)</td>
+                        <td>18 × 20</td>
+                        <td>Triaxial-vigesimal hybrid</td>
+                    </tr>
+                    <tr>
+                        <td>I Ching (64 hexagrams)</td>
+                        <td>2⁶</td>
+                        <td>Binary facing × 6 levels</td>
+                    </tr>
+                    <tr>
+                        <td>Egyptian hours (24)</td>
+                        <td>60/2.5</td>
+                        <td>Universal coupling denominator</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="epoch-connection" style="margin-top: 3rem;">
+                <h3>THE UNIFIED INSIGHT</h3>
+                <p class="epoch-explain" style="font-size: 1.3rem; max-width: 600px; margin: 0 auto;">
+                    All ancient mathematical systems are partial projections of the same
+                    underlying geometry — the geometry the Epoch Model describes.
+                    <br><br>
+                    <strong>60 captures the most. That's why it endured.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Applications -->
+    <section>
+        <div class="container">
+            <h2>PRACTICAL APPLICATIONS</h2>
+
+            <h3>For Torsion Calculations</h3>
+            <div class="formula">
+Energy coupling between any two torsions:
+
+E_coupling = τᵢ × τⱼ × sin(n/60)
+
+Where n = any factor of 60: 1,2,3,4,5,6,10,12,15,20,30,60
+
+Every clean energy relationship is a FACTOR OF 60.
+            </div>
+
+            <h3>For Scalar Navigation</h3>
+            <div class="formula">
+Total scalar span: S₂ = 375 (Ro to Wush)
+
+In sexagesimal: 375 = 6;15₆₀
+
+This means:
+  - 6 full base-60 "octaves" of reality
+  - Plus 15/60 = ¼ cycle remainder
+  - The ¼ is the overlap zone at boundaries
+            </div>
+
+            <h3>For Harmonic Analysis</h3>
+            <div class="formula">
+The 12 factors of 60 correspond to 12 harmonic modes:
+
+ 1 → fundamental
+ 2 → octave
+ 3 → triad
+ 4 → double-binary
+ 5 → helix
+ 6 → hexagonal
+10 → decimal (our counting)
+12 → zodiacal
+15 → quarter-cycle
+20 → vigesimal
+30 → half-cycle
+60 → full closure
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Visualization Link -->
+    <section style="text-align: center; padding: 4rem 2rem;">
+        <div class="container">
+            <h2 style="color: var(--gold); margin-bottom: 1rem;">EXPLORE THE GEOMETRY</h2>
+            <p style="color: var(--text-dim); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Experience the scalar crossroads as an animated, interactive visualization.
+                Watch the mirror-recurse pattern that underlies all these ancient systems.
+            </p>
+            <a href="scalar-crossroads-animated.html" style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(184, 115, 51, 0.15)); border: 1px solid var(--gold); border-radius: 8px; color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; letter-spacing: 0.1em; transition: all 0.3s ease;">
+                SCALAR CROSSROADS ANIMATED →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-symbol">𒀭</div>
+        <p class="footer-text">[1 = -1]</p>
+        <p style="color: var(--text-dim); margin-top: 1rem; font-size: 0.9rem;">
+            HAVE MIND MEDIA — The Epoch Model
+        </p>
+        <p style="color: var(--hazel); margin-top: 0.5rem; font-size: 0.85rem;">
+            The geometry predates the culture. The culture encodes the geometry.
+        </p>
+    </footer>
+
+    <script>
+        // Navigation dropdown
+        document.querySelector('.nav-dropdown-btn').addEventListener('click', function() {
+            this.parentElement.classList.toggle('open');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-dropdown')) {
+                document.querySelector('.nav-dropdown').classList.remove('open');
+            }
+        });
+
+        // Calculator
+        const inputValue = document.getElementById('inputValue');
+        const inputBase = document.getElementById('inputBase');
+
+        function toDecimal(value, base) {
+            if (base === 10) return parseFloat(value);
+            if (base === 60) {
+                // Parse sexagesimal notation like "3;15"
+                const parts = value.toString().split(';');
+                let result = 0;
+                for (let i = 0; i < parts.length; i++) {
+                    result += parseFloat(parts[i]) * Math.pow(60, parts.length - 1 - i);
+                }
+                return result;
+            }
+            return parseInt(value, base);
+        }
+
+        function toSexagesimal(decimal) {
+            if (decimal === 0) return '0';
+            let result = [];
+            let remaining = Math.abs(decimal);
+
+            // Handle integer part
+            let intPart = Math.floor(remaining);
+            if (intPart === 0) {
+                result.push('0');
+            } else {
+                let intDigits = [];
+                while (intPart > 0) {
+                    intDigits.unshift(intPart % 60);
+                    intPart = Math.floor(intPart / 60);
+                }
+                result = intDigits;
+            }
+
+            // Handle fractional part
+            let fracPart = remaining - Math.floor(remaining);
+            if (fracPart > 0.0001) {
+                let fracDigits = [];
+                for (let i = 0; i < 2 && fracPart > 0.0001; i++) {
+                    fracPart *= 60;
+                    fracDigits.push(Math.floor(fracPart));
+                    fracPart -= Math.floor(fracPart);
+                }
+                return (decimal < 0 ? '-' : '') + result.join(';') + ',' + fracDigits.join(';');
+            }
+
+            return (decimal < 0 ? '-' : '') + result.join(';');
+        }
+
+        function updateCalculator() {
+            const value = inputValue.value;
+            const base = parseInt(inputBase.value);
+
+            const decimal = toDecimal(value, base);
+
+            if (isNaN(decimal)) {
+                document.getElementById('resultDecimal').textContent = 'Invalid';
+                return;
+            }
+
+            const kappa = (2 * Math.PI) / 180;
+
+            document.getElementById('resultDecimal').textContent = decimal.toFixed(4);
+            document.getElementById('resultSexagesimal').textContent = toSexagesimal(decimal);
+            document.getElementById('resultBinary').textContent = Math.floor(Math.abs(decimal)).toString(2);
+            document.getElementById('resultKappa').textContent = '× ' + (decimal / kappa).toFixed(2);
+            document.getElementById('resultDegrees').textContent = (decimal * 180 / Math.PI).toFixed(2) + '°';
+            document.getElementById('resultEnergy').textContent = Math.pow(59/60, decimal).toFixed(6);
+            document.getElementById('resultCycles').textContent = (decimal / 60).toFixed(2) + ' cycles';
+        }
+
+        inputValue.addEventListener('input', updateCalculator);
+        inputBase.addEventListener('change', updateCalculator);
+
+        // Initial calculation
+        updateCalculator();
+    </script>
+</body>
+</html>

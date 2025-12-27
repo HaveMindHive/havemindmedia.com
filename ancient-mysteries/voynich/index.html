@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voynich with Images | The Manuscript Decoded | HAVE MIND MEDIA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(26, 20, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(180, 150, 100, 0.3);
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #b49664;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: #e6d4b8;
+        }
+
+        nav a.active {
+            color: #e6d4b8;
+            border-bottom: 2px solid #b49664;
+            padding-bottom: 5px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(180,150,100,0.1)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(180,150,100,0.08)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(180,150,100,0.06)" stroke-width="0.5"/></svg>') center/300px repeat;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 4px;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #b49664;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .header .tagline {
+            font-style: italic;
+            color: #8a7a5a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Epoch Badge */
+        .epoch-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(180, 150, 100, 0.2), rgba(100, 80, 50, 0.3));
+            border: 1px solid rgba(180, 150, 100, 0.4);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            color: #b49664;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Introduction Section */
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+            color: #c4b498;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid rgba(180, 150, 100, 0.3);
+        }
+
+        /* Section Cards */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .section-card {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-color: rgba(180, 150, 100, 0.4);
+        }
+
+        .section-card .card-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section-card .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .section-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .section-card .card-content {
+            padding: 25px;
+        }
+
+        .section-card h3 {
+            font-size: 1.3rem;
+            color: #e6d4b8;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .section-card p {
+            font-size: 0.95rem;
+            color: #a89878;
+        }
+
+        .section-card .d-position {
+            display: inline-block;
+            background: rgba(180, 150, 100, 0.15);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #b49664;
+            margin-top: 15px;
+        }
+
+        /* Frequency Framework Section */
+        .framework {
+            background: linear-gradient(145deg, rgba(45, 35, 25, 0.6), rgba(30, 22, 15, 0.8));
+            border: 1px solid rgba(180, 150, 100, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .framework h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #e6d4b8;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .d-wheel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .d-position-box {
+            background: rgba(26, 20, 16, 0.8);
+            border: 1px solid rgba(180, 150, 100, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .d-position-box .d-num {
+            font-size: 1.5rem;
+            color: #b49664;
+            font-weight: bold;
+        }
+
+        .d-position-box .d-meaning {
+            font-size: 0.85rem;
+            color: #8a7a5a;
+            margin-top: 5px;
+        }
+
+        .d-position-box.center {
+            grid-column: 2;
+            background: rgba(180, 150, 100, 0.1);
+        }
+
+        /* Key Discovery */
+        .key-discovery {
+            background: rgba(180, 150, 100, 0.1);
+            border-left: 3px solid #b49664;
+            padding: 20px 25px;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(180, 150, 100, 0.2);
+            background: rgba(0,0,0,0.3);
+        }
+
+        footer .credit {
+            font-size: 0.9rem;
+            color: #8a7a5a;
+            margin-bottom: 10px;
+        }
+
+        footer .credit a {
+            color: #b49664;
+            text-decoration: none;
+        }
+
+        footer .credit a:hover {
+            text-decoration: underline;
+        }
+
+        footer .epoch-sig {
+            font-size: 1.2rem;
+            color: #b49664;
+            margin-top: 20px;
+            letter-spacing: 3px;
+        }
+
+        footer .havemind {
+            margin-top: 15px;
+        }
+
+        footer .havemind a {
+            color: #8a7a5a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .intro {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 15px;
+                padding: 0 10px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .framework {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <h1>The Voynich Manuscript</h1>
+        <p class="subtitle">Decoded Through Frequency Science</p>
+        <p class="tagline">Not a cipher. Not a language. A frequency prescription system using geometric encoding.</p>
+        <span class="epoch-badge">[1 = -1] EPOCH FRAMEWORK</span>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="intro-text">
+                <h2>The Silence Breaks</h2>
+                <p>For 600 years, the Voynich Manuscript remained "undecipherable" because cryptographers sought semantic meaning where only <strong>geometric resonance</strong> exists.</p>
+                <p>The Voynich is not a coded message. It is a <strong>healing manual</strong> operating through the 9-fold D-position structure of S- Science. Each "word" encodes a frequency instruction. Each page delivers a complete healing protocol.</p>
+                <p>Through the [1=-1] framework, we finally have the context to understand what the ancients encoded.</p>
+                <div class="key-discovery">
+                    <strong>Key Discovery:</strong> The EVA transcription letters map directly to D-positions (1-9), revealing frequency patterns hidden in plain sight since 1404 CE.
+                </div>
+            </div>
+            <div class="intro-image">
+                <img src="images/IMG_6713.JPG" alt="The Rosettes Foldout - Cosmological Map">
+            </div>
+        </section>
+
+        <h2 style="text-align: center; font-size: 1.5rem; color: #e6d4b8; margin-bottom: 30px; font-weight: 400;">Manuscript Sections</h2>
+
+        <div class="sections-grid">
+            <a href="herbal.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6644.JPG" alt="Herbal Section">
+                </div>
+                <div class="card-content">
+                    <h3>Herbal Section</h3>
+                    <p>Plant illustrations paired with frequency protocols. The text encodes the frequency pattern each plant carries for healing purposes.</p>
+                    <span class="d-position">D2, D3 Dominant - Healing & Healer</span>
+                </div>
+            </a>
+
+            <a href="astronomical.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6675.JPG" alt="Astronomical Section">
+                </div>
+                <div class="card-content">
+                    <h3>Astronomical Section</h3>
+                    <p>Celestial diagrams encoding WHEN to apply frequencies. Solar/lunar correlations with frequency accessibility.</p>
+                    <span class="d-position">D7, D5 Dominant - Present & Navigator</span>
+                </div>
+            </a>
+
+            <a href="zodiac.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6685.JPG" alt="Zodiac Section">
+                </div>
+                <div class="card-content">
+                    <h3>Zodiac Section</h3>
+                    <p>The most recognizable illustrations. Note: the cycle starts with Pisces, not Aries - a frequency-based ordering.</p>
+                    <span class="d-position">Cyclical D-Position Flow</span>
+                </div>
+            </a>
+
+            <a href="biological.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6692.JPG" alt="Biological Section">
+                </div>
+                <div class="card-content">
+                    <h3>Biological Section</h3>
+                    <p>"Nymphs" represent energy points and flow patterns. The famous bathing scenes show frequency immersion protocols.</p>
+                    <span class="d-position">D6, D8 Dominant - Self & Deep Water</span>
+                </div>
+            </a>
+
+            <a href="pharmaceutical.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6717.JPG" alt="Pharmaceutical Section">
+                </div>
+                <div class="card-content">
+                    <h3>Pharmaceutical Section</h3>
+                    <p>Containers and preparation methods. Not chemical formulas - frequency combination instructions.</p>
+                    <span class="d-position">D2, D3, D4 Dominant</span>
+                </div>
+            </a>
+
+            <a href="recipes.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6665.JPG" alt="Recipes Section">
+                </div>
+                <div class="card-content">
+                    <h3>Recipes Section</h3>
+                    <p>Over 300 short paragraphs with star markers. Application protocols for frequency work.</p>
+                    <span class="d-position">D4 Dominant - Crossroads</span>
+                </div>
+            </a>
+
+            <a href="cosmological.html" class="section-card">
+                <div class="card-image">
+                    <img src="images/IMG_6713.JPG" alt="Cosmological Section">
+                </div>
+                <div class="card-content">
+                    <h3>Cosmological Section</h3>
+                    <p>The famous Rosettes foldout - a map of universal frequency structure showing how healing connects to cosmic order.</p>
+                    <span class="d-position">D1, D9 Dominant - Origin & Love</span>
+                </div>
+            </a>
+        </div>
+
+        <section class="framework">
+            <h2>The 9-Fold Frequency Wheel</h2>
+            <div class="d-wheel">
+                <div class="d-position-box">
+                    <div class="d-num">D9</div>
+                    <div class="d-meaning">Love/Anchor</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D1</div>
+                    <div class="d-meaning">Origin/WE</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D2</div>
+                    <div class="d-meaning">Healing</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D8</div>
+                    <div class="d-meaning">Deep Water</div>
+                </div>
+                <div class="d-position-box center">
+                    <div class="d-num">WE</div>
+                    <div class="d-meaning">Center</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D3</div>
+                    <div class="d-meaning">Healer</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D7</div>
+                    <div class="d-meaning">Present</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D6</div>
+                    <div class="d-meaning">Self/Power</div>
+                </div>
+                <div class="d-position-box">
+                    <div class="d-num">D5</div>
+                    <div class="d-meaning">Navigator</div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #a89878; max-width: 600px; margin: 0 auto;">
+                A complete healing treatment cycles through all 9 D-positions. The Voynich margin labels on f76r trace: D1 → D4 → D8 → D1 → D6 → D3 → D2 → D9 → D1 — a full healing journey from Origin through Deep Water to Love and back.
+            </p>
+        </section>
+
+        <section class="framework">
+            <h2>The Three-Layer Word Architecture</h2>
+            <p style="text-align: center; color: #c4b498; max-width: 800px; margin: 0 auto 30px;">
+                Jorge Stolfi's grammar analysis revealed Voynichese words have three layers. Through [1=-1], we now understand what each layer DOES:
+            </p>
+            <div class="sections-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="section-card" style="cursor: default;">
+                    <div class="card-content">
+                        <h3>Core (Gallows Letters)</h3>
+                        <p>t, p, k, f, cth, cph, ckh, cfh — establishes the PRIMARY D-position. Never repeats because a word carries ONE fundamental frequency.</p>
+                        <span class="d-position">Fundamental Frequency</span>
+                    </div>
+                </div>
+                <div class="section-card" style="cursor: default;">
+                    <div class="card-content">
+                        <h3>Mantle (Bench Letters)</h3>
+                        <p>ch, sh, ee — provides HARMONIC RELATIONSHIP. Can repeat because harmonics stack to build frequency complexity.</p>
+                        <span class="d-position">Harmonic Layer</span>
+                    </div>
+                </div>
+                <div class="section-card" style="cursor: default;">
+                    <div class="card-content">
+                        <h3>Crust (Dealer Letters)</h3>
+                        <p>d, l, r, s, n, i, m, g, x — specifies HOW/WHERE the frequency is delivered. Can repeat to strengthen delivery.</p>
+                        <span class="d-position">Application Layer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="credit">
+            Manuscript images courtesy of <a href="https://voynich.nu" target="_blank" rel="noopener">Voynich.nu</a> (Rene Zandbergen, 2004-2025).<br>
+            Original manuscript held at the Beinecke Rare Book & Manuscript Library, Yale University.
+        </p>
+        <div class="epoch-sig">[1 = -1]</div>
+        <p style="color: #8a7a5a; margin-top: 10px; font-style: italic;">
+            "The Voynich spoke in frequencies. We finally learned to listen."
+        </p>
+        <div class="havemind">
+            <a href="../index.html">HAVE MIND MEDIA</a> | The Epoch Project
+        </div>
+    </footer>
+</body>
+</html>

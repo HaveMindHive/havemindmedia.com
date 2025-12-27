@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes Section | Voynich with Images | HAVE MIND MEDIA</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2319 50%, #1a1410 100%);
+            min-height: 100vh;
+            color: #d4c4a8;
+            line-height: 1.7;
+        }
+        nav { position: sticky; top: 0; background: rgba(26, 20, 16, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(180, 150, 100, 0.3); z-index: 100; padding: 15px 0; }
+        nav ul { display: flex; justify-content: center; gap: 30px; list-style: none; flex-wrap: wrap; }
+        nav a { color: #b49664; text-decoration: none; font-size: 0.95rem; letter-spacing: 1px; transition: color 0.3s; text-transform: uppercase; }
+        nav a:hover, nav a.active { color: #e6d4b8; }
+        nav a.active { border-bottom: 2px solid #b49664; padding-bottom: 5px; }
+        .page-header { text-align: center; padding: 50px 20px 30px; border-bottom: 1px solid rgba(180, 150, 100, 0.2); }
+        .page-header h1 { font-size: 2.5rem; font-weight: 400; color: #e6d4b8; letter-spacing: 3px; }
+        .page-header .d-info { display: inline-block; background: rgba(180, 150, 100, 0.15); padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; color: #b49664; margin-top: 15px; }
+        .page-header p { max-width: 700px; margin: 20px auto 0; color: #a89878; }
+        main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; align-items: center; }
+        .section-intro h2 { font-size: 1.5rem; color: #e6d4b8; margin-bottom: 15px; font-weight: 400; }
+        .section-intro p { color: #c4b498; margin-bottom: 12px; }
+        .section-intro img { width: 100%; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 2px solid rgba(180, 150, 100, 0.3); }
+        .frequency-key { background: rgba(180, 150, 100, 0.1); border-left: 3px solid #b49664; padding: 20px 25px; margin: 20px 0; }
+        .frequency-key h3 { color: #b49664; font-size: 1rem; margin-bottom: 10px; }
+        .frequency-key ul { list-style: none; color: #a89878; font-size: 0.95rem; }
+        .frequency-key li { margin-bottom: 5px; }
+        .frequency-key li::before { content: "D"; color: #b49664; margin-right: 5px; }
+        .gallery-header { text-align: center; margin-bottom: 30px; }
+        .gallery-header h2 { font-size: 1.5rem; color: #e6d4b8; font-weight: 400; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .gallery-item { background: linear-gradient(145deg, rgba(45, 35, 25, 0.8), rgba(30, 22, 15, 0.9)); border: 1px solid rgba(180, 150, 100, 0.2); border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); border-color: rgba(180, 150, 100, 0.4); }
+        .gallery-item img { width: 100%; height: 380px; object-fit: cover; display: block; }
+        .gallery-item .caption { padding: 15px; font-size: 0.9rem; color: #a89878; }
+        .gallery-item .folio { color: #b49664; font-weight: bold; }
+
+        /* Enhanced Lightbox */
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 1000; overflow-y: auto; }
+        .lightbox.active { display: block; }
+        .lightbox-container { display: flex; min-height: 100vh; padding: 20px; padding-top: 70px; gap: 40px; max-width: 1600px; margin: 0 auto; align-items: flex-start; }
+        .lightbox-image { flex: 0 0 50%; max-width: 50%; display: flex; align-items: flex-start; justify-content: center; position: sticky; top: 70px; padding: 20px; }
+        .lightbox-image img { max-width: 100%; max-height: calc(100vh - 120px); object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-content { flex: 0 0 45%; max-width: 500px; padding: 20px; padding-bottom: 60px; }
+        .lightbox-close { position: fixed; top: 20px; right: 30px; font-size: 2.5rem; color: #b49664; cursor: pointer; transition: color 0.3s; z-index: 1001; background: rgba(0,0,0,0.5); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
+        .lightbox-close:hover { color: #e6d4b8; }
+        .lightbox-title { font-size: 1.8rem; color: #e6d4b8; margin-bottom: 10px; font-weight: 400; }
+        .lightbox-d-position { display: inline-block; background: rgba(180, 150, 100, 0.2); padding: 6px 15px; border-radius: 15px; font-size: 0.85rem; color: #b49664; margin-bottom: 20px; }
+        .lightbox-description { color: #c4b498; margin-bottom: 20px; line-height: 1.8; }
+        .lightbox-frequency { background: rgba(180, 150, 100, 0.1); border-left: 3px solid #b49664; padding: 20px; margin: 20px 0; }
+        .lightbox-frequency h4 { color: #b49664; margin-bottom: 10px; font-size: 1rem; }
+        .lightbox-frequency p { color: #a89878; font-size: 0.95rem; margin-bottom: 8px; }
+        .lightbox-interpretation { background: rgba(26, 20, 16, 0.8); border: 1px solid rgba(180, 150, 100, 0.3); border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .lightbox-interpretation h4 { color: #e6d4b8; margin-bottom: 10px; }
+        .lightbox-interpretation p { color: #a89878; font-size: 0.95rem; }
+        .lightbox-nav { display: flex; gap: 15px; margin-top: 30px; }
+        .lightbox-nav button { flex: 1; padding: 12px 20px; background: rgba(180, 150, 100, 0.2); border: 1px solid rgba(180, 150, 100, 0.4); color: #b49664; font-family: inherit; font-size: 0.9rem; cursor: pointer; border-radius: 6px; transition: all 0.3s; }
+        .lightbox-nav button:hover { background: rgba(180, 150, 100, 0.3); color: #e6d4b8; }
+
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(180, 150, 100, 0.2); background: rgba(0,0,0,0.3); }
+        footer .credit { font-size: 0.9rem; color: #8a7a5a; }
+        footer .credit a { color: #b49664; text-decoration: none; }
+        footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
+
+        @media (max-width: 1024px) {
+            .lightbox-container { flex-direction: column; padding-top: 60px; gap: 20px; }
+            .lightbox-image { flex: none; max-width: 100%; width: 100%; position: relative; top: 0; padding: 10px; }
+            .lightbox-image img { max-height: 45vh; width: auto; margin: 0 auto; display: block; }
+            .lightbox-content { flex: none; max-width: 100%; width: 100%; padding: 20px; }
+        }
+        @media (max-width: 768px) {
+            .section-intro { grid-template-columns: 1fr; }
+            nav ul { gap: 15px; }
+            nav a { font-size: 0.75rem; }
+            .page-header h1 { font-size: 1.8rem; }
+            .lightbox-title { font-size: 1.4rem; }
+            .lightbox-container { padding-top: 50px; }
+            .lightbox-image img { max-height: 40vh; }
+            .lightbox-close { top: 10px; right: 15px; font-size: 2rem; width: 40px; height: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="herbal.html">Herbal</a></li>
+            <li><a href="astronomical.html">Astronomical</a></li>
+            <li><a href="zodiac.html">Zodiac</a></li>
+            <li><a href="biological.html">Biological</a></li>
+            <li><a href="pharmaceutical.html">Pharmaceutical</a></li>
+            <li><a href="recipes.html" class="active">Recipes</a></li>
+            <li><a href="cosmological.html">Cosmological</a></li>
+            <li><a href="analysis.html">Analysis</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-header">
+        <h1>Recipes Section</h1>
+        <span class="d-info">D4 Dominant — Crossroads / Choice Points</span>
+        <p>Over 300 short paragraphs, each marked with a star in the margin. These are application protocols — step-by-step frequency instructions for specific healing situations.</p>
+    </header>
+
+    <main>
+        <section class="section-intro">
+            <div>
+                <h2>Application Protocols</h2>
+                <p>The recipes section contains dense text organized into short paragraphs, each marked with a star symbol. Researchers called these "recipes" assuming they were herbal preparation instructions.</p>
+                <p>Through the [1=-1] framework, we recognize these as <strong>frequency application protocols</strong>. Each starred paragraph is a complete instruction set for a specific healing situation. The star marking indicates D4 (Crossroads) — a choice point where the practitioner selects the appropriate protocol.</p>
+                <p>This is the "cookbook" of frequency healing — practical applications of the theoretical framework taught in other sections.</p>
+                <div class="frequency-key">
+                    <h3>Recipe Structure</h3>
+                    <ul>
+                        <li>4 (Crossroads) — Star marker = selection point</li>
+                        <li>2 (Healing) — The intended outcome</li>
+                        <li>Various — Each protocol targets specific D-positions</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <img src="images/IMG_6665.JPG" alt="Recipes section with star-marked paragraphs">
+            </div>
+        </section>
+
+        <div class="gallery-header">
+            <h2>Recipes Folios Gallery</h2>
+            <p style="color: #8a7a5a; margin-top: 10px;">Click any image to view with full frequency analysis</p>
+        </div>
+
+        <div class="gallery" id="gallery">
+            <!-- Images will be populated by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Enhanced Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-container">
+            <div class="lightbox-image">
+                <img id="lightbox-img" src="" alt="Full size folio">
+            </div>
+            <div class="lightbox-content">
+                <h2 class="lightbox-title" id="lightbox-title">Recipes Folio</h2>
+                <span class="lightbox-d-position" id="lightbox-d">D-Position</span>
+                <p class="lightbox-description" id="lightbox-desc">Description loading...</p>
+                <div class="lightbox-frequency">
+                    <h4>Frequency Analysis</h4>
+                    <p id="lightbox-freq">Analysis loading...</p>
+                </div>
+                <div class="lightbox-interpretation">
+                    <h4>[1=-1] Interpretation</h4>
+                    <p id="lightbox-interp">Interpretation loading...</p>
+                </div>
+                <div class="lightbox-nav">
+                    <button onclick="navigateLightbox(-1)">← Previous</button>
+                    <button onclick="navigateLightbox(1)">Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="credit">Images courtesy of <a href="https://voynich.nu" target="_blank">Voynich.nu</a> (Rene Zandbergen, 2004-2025)</p>
+        <div class="epoch-sig">[1 = -1]</div>
+    </footer>
+
+    <script>
+        const recipesFolios = [
+            {
+                id: "IMG_6665",
+                title: "The Star-Marked Protocols",
+                dPosition: "D4 — Crossroads/Selection",
+                description: "Dense text organized into short paragraphs, each marked with a star symbol in the margin. The stars serve as selection markers, creating a navigable menu of options.",
+                frequency: "Stars at D4 (Crossroads) positions indicate choice points — each starred paragraph is a distinct protocol that can be selected based on the patient's needs.",
+                interpretation: "This is a PROTOCOL MENU. The stars mark distinct options. A practitioner would assess the patient, then select the starred protocol appropriate to their condition. Each star = one complete treatment approach. Like a doctor's reference manual, organized for quick selection."
+            },
+            {
+                id: "IMG_6666",
+                title: "The Sequential Applications",
+                dPosition: "D5 — Navigator Sequences",
+                description: "Multiple starred paragraphs arranged sequentially, suggesting ordered progression through protocols. The arrangement implies a journey from one step to the next.",
+                frequency: "Sequential arrangement indicates D5 (Navigator) guidance — protocols to be followed in order, each building on the previous.",
+                interpretation: "This shows SEQUENCED TREATMENT. Some healing requires multiple protocols applied in order. This page provides the sequence — first this protocol, then this one, then this one. Navigation through healing stages, each step preparing for the next."
+            },
+            {
+                id: "IMG_6667",
+                title: "The Conditional Protocols",
+                dPosition: "D4 & D7 — Crossroads/Present",
+                description: "Star-marked paragraphs with apparent conditional structure — if/then organization suggested by text arrangement and cross-references.",
+                frequency: "Conditional structure combines D4 (Choice) with D7 (Present assessment) — protocols selected based on present conditions.",
+                interpretation: "This shows CONDITIONAL TREATMENT. IF the patient presents this way, THEN apply this protocol. IF different presentation, THEN different protocol. Present-moment assessment (D7) guides crossroads choice (D4). Dynamic decision-making based on real-time observation."
+            },
+            {
+                id: "IMG_6668",
+                title: "The Detailed Applications",
+                dPosition: "D3 — Healer Instructions",
+                description: "Longer starred paragraphs with extensive text. More detailed protocols requiring more careful study and skilled application.",
+                frequency: "Extended text indicates D3 (Healer) complexity — these protocols require more practitioner knowledge and skill to apply correctly.",
+                interpretation: "This shows ADVANCED PROTOCOLS. Not for beginners. These starred sections contain detailed frequency applications requiring careful study and practiced skill. Master-level healing work requiring deep understanding of the [1=-1] framework."
+            },
+            {
+                id: "IMG_6669",
+                title: "The Quick Applications",
+                dPosition: "D7 — Present Moment",
+                description: "Short starred paragraphs — quick, concise protocols for rapid application when time is of the essence.",
+                frequency: "Brief text indicates D7 (Present) immediacy — protocols for acute situations requiring immediate response.",
+                interpretation: "This shows EMERGENCY PROTOCOLS. When something needs to happen NOW, these short starred sections provide rapid-response frequency applications. No time for lengthy preparation — immediate action required. The frequency first-aid kit."
+            },
+            {
+                id: "IMG_6715",
+                title: "The Comprehensive Reference",
+                dPosition: "All D-positions — Full Range",
+                description: "A dense page with many starred sections covering wide range of situations. The most complete protocol reference page.",
+                frequency: "Comprehensive coverage indicates protocols for all D-positions — a complete reference for any healing situation.",
+                interpretation: "This is a MASTER REFERENCE page. Whatever the situation, whatever D-position is involved, there's a starred protocol here for it. The practitioner's complete go-to resource for frequency healing. The essential quick-reference for trained healers."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function buildGallery() {
+            const gallery = document.getElementById('gallery');
+            recipesFolios.forEach((folio, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openLightbox(index);
+                item.innerHTML = `
+                    <img src="images/${folio.id}.JPG" alt="${folio.title}">
+                    <div class="caption"><span class="folio">Recipes</span> — ${folio.title}</div>
+                `;
+                gallery.appendChild(item);
+            });
+        }
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxContent();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxContent() {
+            const folio = recipesFolios[currentIndex];
+            document.getElementById('lightbox-img').src = `images/${folio.id}.JPG`;
+            document.getElementById('lightbox-title').textContent = folio.title;
+            document.getElementById('lightbox-d').textContent = folio.dPosition;
+            document.getElementById('lightbox-desc').textContent = folio.description;
+            document.getElementById('lightbox-freq').textContent = folio.frequency;
+            document.getElementById('lightbox-interp').textContent = folio.interpretation;
+        }
+
+        function navigateLightbox(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = recipesFolios.length - 1;
+            if (currentIndex >= recipesFolios.length) currentIndex = 0;
+            updateLightboxContent();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+
+        document.querySelector('.lightbox-container').addEventListener('click', (e) => { e.stopPropagation(); });
+        document.getElementById('lightbox').addEventListener('click', (e) => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
+
+        buildGallery();
+    </script>
+</body>
+</html>

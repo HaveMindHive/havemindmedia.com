@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quad Helix | Base-60 Torsion Geometry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #050508;
+            color: #e8e8e8;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            color: #c9a227;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            letter-spacing: 0.15em;
+        }
+
+        .subtitle {
+            color: #b87333;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .formula-bar {
+            color: #7ab8d4;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .container {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .canvas-container {
+            background: #0a0a12;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* Crossroads Display */
+        .crossroads-display {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .crossroads-title {
+            text-align: center;
+            color: #c9a227;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .crossroads-scale {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3px;
+            flex-wrap: wrap;
+        }
+
+        .scale-node {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            font-family: 'Courier New', monospace;
+        }
+
+        .scale-node.active {
+            transform: scale(1.4);
+            z-index: 10;
+        }
+
+        .scale-node.center {
+            width: 40px;
+            height: 40px;
+            font-size: 1rem;
+        }
+
+        .scale-node .label {
+            position: absolute;
+            bottom: -16px;
+            font-size: 0.55rem;
+            color: #888;
+            white-space: nowrap;
+        }
+
+        .watchers-display {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .watcher {
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .watcher.ho { background: rgba(201, 162, 39, 0.2); color: #c9a227; }
+        .watcher.sw { background: rgba(184, 115, 51, 0.2); color: #b87333; }
+        .watcher.so { background: rgba(74, 144, 164, 0.2); color: #4a90a4; }
+        .watcher.hw { background: rgba(90, 154, 170, 0.2); color: #5a9aaa; }
+
+        .watcher.active {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        .energy-indicator {
+            text-align: center;
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .energy-formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            color: #c9a227;
+        }
+
+        .energy-value {
+            font-size: 0.85rem;
+            color: #7ab8d4;
+            margin-top: 0.3rem;
+        }
+
+        .legend {
+            background: #0a0a12;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 340px;
+            font-size: 0.9rem;
+        }
+
+        .legend h3 {
+            font-family: 'Cinzel', serif;
+            color: #c9a227;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-section {
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .legend-section h4 {
+            font-family: 'Cinzel', serif;
+            color: #b87333;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .math-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            background: rgba(0,0,0,0.3);
+            padding: 0.6rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .math-box .gold { color: #c9a227; }
+        .math-box .copper { color: #b87333; }
+        .math-box .blue { color: #7ab8d4; }
+
+        .controls {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .control-row label {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            min-width: 100px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            accent-color: #c9a227;
+        }
+
+        button {
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            color: #c9a227;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.05em;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: rgba(201, 162, 39, 0.3);
+        }
+
+        .node-info {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            min-height: 70px;
+        }
+
+        .node-info .label {
+            color: #c9a227;
+            font-weight: bold;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            color: #c9a227;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .back-link:hover { opacity: 1; }
+
+        .principle {
+            font-family: 'Cinzel', serif;
+            color: #c9a227;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+    <a href="ancient-mathematics-v1.0.html" class="back-link">← Ancient Mathematics</a>
+
+    <h1>QUAD-HELIX TORSION</h1>
+    <p class="subtitle">Base-60 Sexagesimal Geometry in Motion</p>
+    <div class="formula-bar">
+        κ = 2π/180 = π/90₆₀ &nbsp;|&nbsp; E(S) = E₀ × (59/60)<sup>S</sup> &nbsp;|&nbsp; Coupling = 12.5/60
+    </div>
+
+    <div class="container">
+        <div class="canvas-container">
+            <canvas id="helixCanvas" width="650" height="700"></canvas>
+
+            <!-- Crossroads Display -->
+            <div class="crossroads-display">
+                <div class="crossroads-title">© THE SCALAR CROSSROADS</div>
+                <div class="crossroads-scale" id="crossroadsScale">
+                    <!-- Numbers 7 to -7 with 0 as center -->
+                </div>
+                <div class="watchers-display">
+                    <div class="watcher ho" id="watcherHO">HO</div>
+                    <div class="watcher sw" id="watcherSW">M2-</div>
+                    <div class="watcher so" id="watcherSO">SO</div>
+                    <div class="watcher hw" id="watcherHW">MH</div>
+                </div>
+                <div class="energy-indicator">
+                    <div class="energy-formula" id="energyFormula">(59/60)^S</div>
+                    <div class="energy-value" id="energyValue">Energy: 100%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>BASE-60 HARMONICS</h3>
+
+            <div class="legend-item">
+                <div class="legend-color" style="background: #c9a227;"></div>
+                <div><strong>Factor Nodes</strong> (1,2,3,4,5,6,10,12,15,20,30,60)</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #b87333;"></div>
+                <div><strong>κ Nodes</strong> (every 6 = κ_shadow/4.77)</div>
+            </div>
+
+            <div class="legend-section">
+                <h4>Helix Structure</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #00ff88;"></div>
+                    <div><strong>S+ Axis</strong> (toward Ro, past)</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #00bcd4;"></div>
+                    <div><strong>S- Axis</strong> (toward Wush, future)</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4a2080;"></div>
+                    <div><strong>Dark Axis</strong> (inverse rotation)</div>
+                </div>
+            </div>
+
+            <div class="legend-section">
+                <h4>Sexagesimal Math</h4>
+                <div class="math-box">
+                    <span class="gold">60 = 2² × 3 × 5</span><br>
+                    Contains: Coin(2²), Triad(3), Helix(5)<br><br>
+                    <span class="copper">12 factors of 60:</span><br>
+                    1,2,3,4,5,6,10,12,15,20,30,60<br><br>
+                    <span class="blue">Energy decay:</span><br>
+                    (59/60)^S = one-less ratio<br>
+                    τ₄ always silent = 1/60
+                </div>
+            </div>
+
+            <div class="legend-section">
+                <h4>Four Watchers</h4>
+                <div class="math-box">
+                    <span class="gold">HO</span> - Hidden Observer (top)<br>
+                    <span class="copper">M2-</span> - Silent Witness (SW flipped)<br>
+                    <span class="blue">SO</span> - Silent Observer (bottom)<br>
+                    MH - Hidden Witness (HW mirrored)
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-row">
+                    <label>Rotation Speed</label>
+                    <input type="range" id="speedControl" min="0" max="100" value="20">
+                </div>
+                <div class="control-row">
+                    <label>Scalar Position</label>
+                    <input type="range" id="scalarControl" min="0" max="60" value="0">
+                </div>
+                <div class="control-row">
+                    <label>Harmonic Mode</label>
+                    <select id="harmonicSelect" style="flex:1; padding:0.3rem; background:#1a1a2e; color:#e8e8e8; border:1px solid rgba(201,162,39,0.3); border-radius:4px;">
+                        <option value="1">1 - Fundamental</option>
+                        <option value="2">2 - Octave/Coin</option>
+                        <option value="3">3 - Triad</option>
+                        <option value="5">5 - Helix</option>
+                        <option value="6" selected>6 - Hexagonal</option>
+                        <option value="12">12 - Zodiac</option>
+                        <option value="15">15 - Quarter</option>
+                        <option value="30">30 - Half</option>
+                        <option value="60">60 - Full Closure</option>
+                    </select>
+                </div>
+                <button onclick="togglePause()" id="pauseBtn">⏸ Pause</button>
+            </div>
+
+            <div class="node-info" id="nodeInfo">
+                <span class="label">Hover over nodes</span> to see sexagesimal values and harmonic relationships.
+            </div>
+        </div>
+    </div>
+
+    <p class="principle">[1 = -1]</p>
+
+    <script>
+        const canvas = document.getElementById('helixCanvas');
+        const ctx = canvas.getContext('2d');
+        const nodeInfo = document.getElementById('nodeInfo');
+
+        let time = 0;
+        let paused = false;
+        let hoveredNode = null;
+        let currentScalar = 0;
+
+        // Factors of 60 for clean harmonics
+        const FACTORS_OF_60 = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60];
+
+        // Colors
+        const colors = {
+            sPlus: '#00ff88',
+            sPlusShadow: 'rgba(0, 255, 136, 0.3)',
+            sMinus: '#00bcd4',
+            sMinusShadow: 'rgba(0, 188, 212, 0.3)',
+            dark: '#4a2080',
+            darkGlow: 'rgba(74, 32, 128, 0.4)',
+            gold: '#c9a227',
+            copper: '#b87333',
+            factorNode: '#ffd700',
+            kappaNode: '#ff6b35',
+            resonance: 'rgba(255, 215, 0, 0.15)'
+        };
+
+        // Helix parameters
+        const centerX = canvas.width / 2;
+        const amplitude = 130;
+        const verticalStep = 7;
+        const totalPoints = 100;
+
+        let nodes = [];
+
+        // Initialize crossroads scale
+        function initCrossroadsScale() {
+            const container = document.getElementById('crossroadsScale');
+            container.innerHTML = '';
+
+            for (let i = 7; i >= -7; i--) {
+                const node = document.createElement('div');
+                node.className = 'scale-node' + (i === 0 ? ' center' : '');
+                node.dataset.val = i;
+                node.innerHTML = `<span>${i}</span>` + (i === 0 ? '<span class="label">©</span>' : '');
+                container.appendChild(node);
+            }
+        }
+
+        function getControls() {
+            return {
+                speed: document.getElementById('speedControl').value / 3000,
+                scalar: parseInt(document.getElementById('scalarControl').value),
+                harmonic: parseInt(document.getElementById('harmonicSelect').value)
+            };
+        }
+
+        function toSexagesimal(decimal) {
+            if (decimal < 60) return `0;${Math.floor(decimal)}`;
+            const high = Math.floor(decimal / 60);
+            const low = Math.floor(decimal % 60);
+            return `${high};${low}`;
+        }
+
+        function energyAtScalar(S) {
+            return Math.pow(59/60, S);
+        }
+
+        function drawHelix() {
+            const ctrl = getControls();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            nodes = [];
+
+            currentScalar = ctrl.scalar;
+
+            // Background gradient
+            const gradient = ctx.createRadialGradient(centerX, canvas.height/2, 0, centerX, canvas.height/2, 400);
+            gradient.addColorStop(0, 'rgba(201, 162, 39, 0.02)');
+            gradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const phase = time;
+            const darkPhase = -time; // Opposite rotation
+
+            // Draw dark axis first (behind)
+            drawStrand(darkPhase + Math.PI, colors.dark, 0.8, true);
+            drawStrand(darkPhase, colors.darkGlow, 0.8, true);
+
+            // Draw shadow strands
+            drawStrand(phase + Math.PI + 0.5, colors.sPlusShadow, 0.6, false);
+            drawStrand(phase + 0.5, colors.sMinusShadow, 0.6, false);
+
+            // Draw main strands
+            drawStrand(phase + Math.PI, colors.sPlus, 1, false);
+            drawStrand(phase, colors.sMinus, 1, false);
+
+            // Draw connecting rungs
+            drawRungs(phase, ctrl.harmonic);
+
+            // Draw harmonic nodes based on selected mode
+            drawHarmonicNodes(phase, ctrl.harmonic);
+
+            // Draw energy decay visualization
+            drawEnergyDecay(ctrl.scalar);
+
+            // Draw labels
+            drawLabels(ctrl);
+
+            // Update displays
+            updateCrossroadsDisplay(phase);
+            updateEnergyDisplay(ctrl.scalar);
+            updateWatchersDisplay(phase);
+
+            time += ctrl.speed;
+        }
+
+        function drawStrand(phase, color, scale, isDark) {
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = isDark ? 2 : 3;
+
+            for (let i = 0; i < totalPoints; i++) {
+                const y = 50 + i * verticalStep;
+                const angle = (i * 0.15) + phase;
+                const x = centerX + Math.sin(angle) * amplitude * scale;
+
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+        }
+
+        function drawRungs(phase, harmonic) {
+            ctx.strokeStyle = colors.resonance;
+            ctx.lineWidth = 1;
+
+            // Draw rungs at harmonic intervals
+            const interval = Math.max(1, Math.floor(60 / harmonic));
+
+            for (let i = 0; i < totalPoints; i += interval) {
+                const y = 50 + i * verticalStep;
+                const angle = (i * 0.15) + phase;
+
+                const x1 = centerX + Math.sin(angle) * amplitude;
+                const x2 = centerX + Math.sin(angle + Math.PI) * amplitude;
+
+                ctx.beginPath();
+                ctx.moveTo(x1, y);
+                ctx.lineTo(x2, y);
+                ctx.stroke();
+            }
+        }
+
+        function drawHarmonicNodes(phase, harmonic) {
+            const pulseTime = time * 3;
+
+            // Calculate node interval based on harmonic
+            const nodeInterval = Math.max(2, Math.floor(totalPoints / (60 / harmonic)));
+
+            for (let i = 0; i < totalPoints; i += nodeInterval) {
+                const y = 50 + i * verticalStep;
+                const sexagesimalPos = Math.floor((i / totalPoints) * 60);
+
+                // S+ strand node
+                const angle1 = (i * 0.15) + phase + Math.PI;
+                const x1 = centerX + Math.sin(angle1) * amplitude;
+
+                // Check if this position is a factor of 60
+                const isFactor = FACTORS_OF_60.includes(sexagesimalPos) || sexagesimalPos === 0;
+                const isKappaMultiple = sexagesimalPos % 6 === 0; // κ_shadow/4.77 ≈ 6
+
+                const pulse = 1 + Math.sin(pulseTime + i * 0.5) * 0.25;
+                const baseRadius = isFactor ? 9 : (isKappaMultiple ? 7 : 5);
+                const radius = baseRadius * pulse;
+
+                // Glow
+                const glowColor = isFactor ? colors.factorNode : (isKappaMultiple ? colors.kappaNode : colors.gold);
+                const glowGradient = ctx.createRadialGradient(x1, y, 0, x1, y, radius * 3);
+                glowGradient.addColorStop(0, glowColor.replace(')', ', 0.6)').replace('rgb', 'rgba'));
+                glowGradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = glowGradient;
+                ctx.beginPath();
+                ctx.arc(x1, y, radius * 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Node
+                ctx.beginPath();
+                ctx.arc(x1, y, radius, 0, Math.PI * 2);
+                ctx.fillStyle = isFactor ? colors.factorNode : (isKappaMultiple ? colors.kappaNode : colors.gold);
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+
+                // Label
+                ctx.fillStyle = '#000';
+                ctx.font = 'bold 9px monospace';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(sexagesimalPos, x1, y);
+
+                const energy = energyAtScalar(sexagesimalPos);
+                nodes.push({
+                    x: x1, y, radius: radius * 2,
+                    type: isFactor ? 'Factor' : (isKappaMultiple ? 'Kappa' : 'Standard'),
+                    position: sexagesimalPos,
+                    sexagesimal: toSexagesimal(sexagesimalPos),
+                    energy: energy,
+                    harmonic: harmonic,
+                    isFactor: isFactor,
+                    coupling: Math.sin(sexagesimalPos / 60).toFixed(4),
+                    desc: `Position: ${sexagesimalPos}₆₀ (${toSexagesimal(sexagesimalPos)})\n` +
+                          `Energy: ${(energy * 100).toFixed(2)}%\n` +
+                          `sin(${sexagesimalPos}/60) = ${Math.sin(sexagesimalPos / 60).toFixed(4)}\n` +
+                          (isFactor ? '★ FACTOR OF 60 - Clean coupling' :
+                           (isKappaMultiple ? '◆ κ multiple' : '○ Standard position'))
+                });
+            }
+        }
+
+        function drawEnergyDecay(scalar) {
+            // Draw energy level indicator on right side
+            const barX = canvas.width - 30;
+            const barHeight = 600;
+            const barY = 50;
+
+            // Background
+            ctx.fillStyle = 'rgba(0,0,0,0.3)';
+            ctx.fillRect(barX - 10, barY, 20, barHeight);
+
+            // Energy gradient
+            const energyGrad = ctx.createLinearGradient(0, barY, 0, barY + barHeight);
+            energyGrad.addColorStop(0, colors.gold);
+            energyGrad.addColorStop(0.5, colors.copper);
+            energyGrad.addColorStop(1, '#4a2080');
+
+            const currentEnergy = energyAtScalar(scalar);
+            const fillHeight = barHeight * currentEnergy;
+
+            ctx.fillStyle = energyGrad;
+            ctx.fillRect(barX - 8, barY + barHeight - fillHeight, 16, fillHeight);
+
+            // Border
+            ctx.strokeStyle = 'rgba(201, 162, 39, 0.5)';
+            ctx.strokeRect(barX - 10, barY, 20, barHeight);
+
+            // Label
+            ctx.save();
+            ctx.translate(barX, barY + barHeight / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillStyle = '#a0a0a0';
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`E = (59/60)^${scalar} = ${(currentEnergy * 100).toFixed(1)}%`, 0, 25);
+            ctx.restore();
+        }
+
+        function drawLabels(ctrl) {
+            ctx.font = '11px monospace';
+            ctx.textAlign = 'left';
+
+            // Top labels
+            ctx.fillStyle = colors.sPlus;
+            ctx.fillText('S+ (Ro, past)', 20, 25);
+
+            ctx.fillStyle = colors.sMinus;
+            ctx.fillText('S- (Wush, future)', canvas.width - 130, 25);
+
+            // Bottom
+            ctx.fillStyle = '#a0a0a0';
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(`Harmonic Mode: ${ctrl.harmonic} (${60/ctrl.harmonic} nodes per cycle)`, centerX, canvas.height - 45);
+            ctx.fillText(`60 = 2² × 3 × 5 | 12 factors | 12 harmonic modes`, centerX, canvas.height - 30);
+
+            // Equation
+            ctx.fillStyle = '#c9a227';
+            ctx.font = '12px monospace';
+            ctx.fillText('[1 = -1]', centerX, canvas.height - 12);
+
+            // Side labels
+            ctx.save();
+            ctx.translate(15, canvas.height / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillStyle = '#7ab8d4';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('← s- (FUTURE) ————— SCALAR ————— s+ (PAST) →', 0, 0);
+            ctx.restore();
+        }
+
+        function updateCrossroadsDisplay(phase) {
+            const cyclePos = (time * 2) % (Math.PI * 2);
+            const normalizedPos = (Math.sin(cyclePos) + 1) / 2;
+            const centerIndex = normalizedPos * 14; // 15 nodes (7 to -7)
+
+            const nodes = document.querySelectorAll('.scale-node');
+            nodes.forEach((node, i) => {
+                const val = parseInt(node.dataset.val);
+                node.classList.remove('active');
+
+                const dist = Math.abs(i - centerIndex);
+                const isPrimary = dist < 1;
+                const isActive = dist < 2;
+
+                let bgColor, borderColor, textColor;
+
+                if (isPrimary) {
+                    node.classList.add('active');
+                    bgColor = 'rgba(201, 162, 39, 0.9)';
+                    borderColor = '#c9a227';
+                    textColor = '#000';
+                } else if (isActive) {
+                    bgColor = `rgba(201, 162, 39, ${0.3 + (1-dist/2) * 0.4})`;
+                    borderColor = `rgba(201, 162, 39, ${0.5 + (1-dist/2) * 0.4})`;
+                    textColor = '#fff';
+                } else if (val > 0) {
+                    bgColor = `rgba(164, 74, 74, ${0.1 + Math.abs(val)/7 * 0.2})`;
+                    borderColor = `rgba(164, 74, 74, ${0.3})`;
+                    textColor = '#a44a4a';
+                } else if (val < 0) {
+                    bgColor = `rgba(74, 144, 164, ${0.1 + Math.abs(val)/7 * 0.2})`;
+                    borderColor = `rgba(74, 144, 164, ${0.3})`;
+                    textColor = '#4a90a4';
+                } else {
+                    bgColor = 'rgba(201, 162, 39, 0.3)';
+                    borderColor = '#c9a227';
+                    textColor = '#c9a227';
+                }
+
+                node.style.background = bgColor;
+                node.style.borderColor = borderColor;
+                node.style.color = textColor;
+            });
+        }
+
+        function updateEnergyDisplay(scalar) {
+            const energy = energyAtScalar(scalar);
+            document.getElementById('energyFormula').textContent = `(59/60)^${scalar}`;
+            document.getElementById('energyValue').textContent =
+                `Energy: ${(energy * 100).toFixed(2)}% | ${toSexagesimal(energy * 60)}/60₆₀`;
+        }
+
+        function updateWatchersDisplay(phase) {
+            const cyclePos = (time * 4) % (Math.PI * 2);
+            const activeIndex = Math.floor((cyclePos / (Math.PI * 2)) * 4);
+
+            ['HO', 'SW', 'SO', 'HW'].forEach((id, i) => {
+                const el = document.getElementById('watcher' + id);
+                if (i === activeIndex) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        // Mouse interaction
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            hoveredNode = null;
+            for (const node of nodes) {
+                const dist = Math.sqrt((mouseX - node.x) ** 2 + (mouseY - node.y) ** 2);
+                if (dist < node.radius) {
+                    hoveredNode = node;
+                    break;
+                }
+            }
+
+            if (hoveredNode) {
+                nodeInfo.innerHTML = `<span class="label">${hoveredNode.type} Node</span><br>${hoveredNode.desc.replace(/\n/g, '<br>')}`;
+                canvas.style.cursor = 'pointer';
+            } else {
+                nodeInfo.innerHTML = '<span class="label">Hover over nodes</span> to see sexagesimal values and harmonic relationships.';
+                canvas.style.cursor = 'default';
+            }
+        });
+
+        function togglePause() {
+            paused = !paused;
+            document.getElementById('pauseBtn').textContent = paused ? '▶ Play' : '⏸ Pause';
+        }
+
+        function animate() {
+            if (!paused) {
+                drawHelix();
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        initCrossroadsScale();
+        animate();
+    </script>
+</body>
+</html>

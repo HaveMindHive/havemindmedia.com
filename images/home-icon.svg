@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <radialGradient id="stoneG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#4a4035"/>
+      <stop offset="70%" style="stop-color:#2a2318"/>
+      <stop offset="100%" style="stop-color:#1a1510"/>
+    </radialGradient>
+    <radialGradient id="centerG" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#3d3428"/>
+      <stop offset="100%" style="stop-color:#0a0805"/>
+    </radialGradient>
+  </defs>
+  <!-- Stone base -->
+  <circle cx="25" cy="25" r="24" fill="url(#stoneG)" stroke="#5a4a3a" stroke-width="1"/>
+  <!-- Outer ring -->
+  <circle cx="25" cy="25" r="21" fill="none" stroke="#4a3a2a" stroke-width="1"/>
+  <!-- Segments hint -->
+  <circle cx="25" cy="25" r="17" fill="none" stroke="#3a2a1a" stroke-width="0.5" stroke-dasharray="4,2"/>
+  <!-- Inner ring -->
+  <circle cx="25" cy="25" r="12" fill="none" stroke="rgba(90, 75, 60, 0.5)" stroke-width="0.5"/>
+  <!-- Center -->
+  <circle cx="25" cy="25" r="8" fill="url(#centerG)" stroke="#8b7355" stroke-width="1"/>
+  <!-- Glow -->
+  <circle cx="25" cy="25" r="9" fill="none" stroke="rgba(70, 130, 180, 0.5)" stroke-width="1"/>
+  <!-- Center symbol -->
+  <text x="25" y="28" text-anchor="middle" fill="#c9b896" font-size="8" font-family="monospace">S-</text>
+</svg>
