@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Have Mind Media</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .library-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .library-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .library-header h1 {
+            font-size: 2.5rem;
+            color: #c9a227;
+            margin-bottom: 10px;
+        }
+        .library-header .principle {
+            font-size: 1.5rem;
+            color: #7ab8d4;
+            margin-bottom: 20px;
+        }
+        .library-header p {
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .library-section {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+        }
+        .library-section h2 {
+            color: #c9a227;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .library-section .code {
+            background: rgba(0,0,0,0.3);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.8rem;
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .file-list li {
+            margin-bottom: 10px;
+        }
+        .file-list a {
+            display: block;
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            text-decoration: none;
+            color: #7ab8d4;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        .file-list a:hover {
+            background: rgba(122, 184, 212, 0.1);
+            border-color: rgba(122, 184, 212, 0.3);
+        }
+        .file-list .title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .file-list .desc {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-home a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #c9a227, #e6c84a);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .back-home a:hover {
+            transform: scale(1.05);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e6e6e6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="library-container">
+        <div class="library-header">
+            <h1>HAVE MIND MEDIA LIBRARY</h1>
+            <div class="principle">[1 = -1]</div>
+            <p>Complete archive of decoded ancient texts, physics visualizations, and teaching materials.</p>
+        </div>
+
+        <div class="section-grid">
+            <!-- Ancient Mysteries -->
+            <div class="library-section">
+                <h2><span class="code">300</span> Ancient Mysteries</h2>
+                <ul class="file-list">
+                    <li>
+                        <a href="ancient-mysteries/voynich/index.html">
+                            <div class="title">Voynich Manuscript</div>
+                            <div class="desc">9 sections decoded through scalar geometry</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/texts/rongorongo-v1.0.html">
+                            <div class="title">Rongorongo</div>
+                            <div class="desc">Easter Island script analysis</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/texts/phaistos-v1.0.html">
+                            <div class="title">Phaistos Disc</div>
+                            <div class="desc">Minoan spiral script interpretation</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html">
+                            <div class="title">Ancient Mathematics</div>
+                            <div class="desc">Babylonian, Egyptian, Mayan base systems</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Voynich Sections -->
+            <div class="library-section">
+                <h2><span class="code">310</span> Voynich Sections</h2>
+                <ul class="file-list">
+                    <li>
+                        <a href="ancient-mysteries/voynich/herbal.html">
+                            <div class="title">Herbal Section</div>
+                            <div class="desc">Botanical illustrations and plant wisdom</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/astronomical.html">
+                            <div class="title">Astronomical Section</div>
+                            <div class="desc">Star maps and celestial observations</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/biological.html">
+                            <div class="title">Biological Section</div>
+                            <div class="desc">Anatomical diagrams and body systems</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/zodiac.html">
+                            <div class="title">Zodiac Section</div>
+                            <div class="desc">Astrological and calendar systems</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/pharmaceutical.html">
+                            <div class="title">Pharmaceutical Section</div>
+                            <div class="desc">Remedy preparations and formulations</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/cosmological.html">
+                            <div class="title">Cosmological Section</div>
+                            <div class="desc">Universe structure and cosmic diagrams</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/recipes.html">
+                            <div class="title">Recipes Section</div>
+                            <div class="desc">Preparations and instructions</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ancient-mysteries/voynich/analysis.html">
+                            <div class="title">Analysis</div>
+                            <div class="desc">Decoding methodology and findings</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Physics Visualizations -->
+            <div class="library-section">
+                <h2><span class="code">200</span> Physics Visualizations</h2>
+                <ul class="file-list">
+                    <li>
+                        <a href="physics-viz/scalar-crossroads-animated.html">
+                            <div class="title">Scalar Crossroads</div>
+                            <div class="desc">Animated dimensional transformation at s=0</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="physics-viz/quad-helix-base60.html">
+                            <div class="title">Quad Helix Base-60</div>
+                            <div class="desc">Mayan mathematical spiral structure</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="physics-viz/quad-helix-base60-v2.0.html">
+                            <div class="title">Quad Helix v2.0</div>
+                            <div class="desc">Enhanced base-60 visualization</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Teaching -->
+            <div class="library-section">
+                <h2><span class="code">100</span> Teaching Documents</h2>
+                <ul class="file-list">
+                    <li>
+                        <a href="teaching/Scalar_Dimensionality_Teaching_Document.html">
+                            <div class="title">Scalar Dimensionality</div>
+                            <div class="desc">Complete framework teaching guide</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html">Return to Homepage</a>
+        </div>
+    </div>
+</body>
+</html>
