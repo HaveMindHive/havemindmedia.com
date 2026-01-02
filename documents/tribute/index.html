@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Honor Of: Cassandra King Conroy & Pat Conroy | HAVE MIND MEDIA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Blue to Black Cosmic Theme */
+            --void: #050510;
+            --deep-space: #0a0a1a;
+            --midnight: #0d1025;
+            --panel: #101428;
+            --panel-light: #161b35;
+            --panel-glow: #1a2040;
+
+            /* Accent Colors */
+            --gold: #c9a227;
+            --gold-light: #e8c547;
+            --gold-dim: #8a7019;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #4a90c2;
+            --glow-blue: #58a6ff;
+            --deep-blue: #2a4a8a;
+            --cosmic-purple: #4a3a7a;
+
+            /* Text Colors */
+            --soft-cream: #e8e4d9;
+            --text-dim: #9ba4b8;
+            --text-muted: #6e7a94;
+
+            /* Borders */
+            --border: rgba(106, 180, 245, 0.15);
+            --border-light: rgba(106, 180, 245, 0.3);
+            --border-gold: rgba(201, 162, 39, 0.3);
+
+            /* Typography */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'EB Garamond', Georgia, serif;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+        }
+
+        /* Cosmic Blue-Black Background */
+        .cosmic-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 10% 10%, rgba(106, 180, 245, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 20%, rgba(74, 58, 122, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(42, 74, 138, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(201, 162, 39, 0.03) 0%, transparent 40%),
+                radial-gradient(ellipse at 20% 90%, rgba(88, 166, 255, 0.04) 0%, transparent 40%),
+                linear-gradient(180deg,
+                    var(--void) 0%,
+                    var(--deep-space) 20%,
+                    var(--midnight) 40%,
+                    var(--panel) 70%,
+                    var(--void) 100%);
+        }
+
+        /* Subtle star effect */
+        .cosmic-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,0.25), transparent),
+                radial-gradient(1px 1px at 60% 20%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 70% 90%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.25), transparent);
+            background-size: 200px 200px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: var(--space-sm) var(--space-lg);
+            background: linear-gradient(180deg, rgba(5, 5, 16, 0.98) 0%, rgba(10, 10, 26, 0.95) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand { display: flex; flex-direction: column; }
+        .nav-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--gold); letter-spacing: 3px; }
+        .nav-logo span { color: var(--soft-cream); font-weight: 400; }
+        .nav-tagline { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+        .nav-links { display: flex; gap: var(--space-lg); }
+        .nav-links a { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--soft-cream); text-decoration: none; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--bright-blue); }
+
+        .main-content {
+            padding-top: 100px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-left: var(--space-md);
+            padding-right: var(--space-md);
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: var(--space-xxl) 0 var(--space-xl);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--soft-cream);
+            letter-spacing: 6px;
+            margin-bottom: var(--space-sm);
+            text-shadow: 0 0 60px rgba(106, 180, 245, 0.3);
+        }
+
+        .page-header .subtitle {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .section-divider {
+            font-size: 1.5rem;
+            color: var(--bright-blue);
+            letter-spacing: 20px;
+            margin: var(--space-xl) 0;
+            opacity: 0.5;
+            text-align: center;
+        }
+
+        .section-divider.gold {
+            color: var(--gold);
+        }
+
+        /* Tribute Section */
+        .tribute-section {
+            margin-bottom: var(--space-xxl);
+            padding: var(--space-xl) var(--space-lg);
+            background: linear-gradient(135deg,
+                rgba(16, 20, 40, 0.8) 0%,
+                rgba(22, 27, 53, 0.6) 50%,
+                rgba(26, 32, 64, 0.4) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .tribute-section.cassandra {
+            border-color: var(--border-gold);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(201, 162, 39, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .tribute-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .tribute-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: var(--space-xs);
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.2);
+        }
+
+        .tribute-header .years {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+        }
+
+        .tribute-header .role {
+            font-size: 1.3rem;
+            color: var(--soft-cream);
+            font-style: italic;
+            margin-top: var(--space-sm);
+        }
+
+        /* Pinned Photo Gallery */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+            padding: var(--space-lg);
+        }
+
+        .pinned-photo {
+            position: relative;
+            background: #f5f2eb;
+            padding: 12px 12px 40px 12px;
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.3),
+                0 8px 20px rgba(0, 0, 0, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+            transform: rotate(var(--rotation, 0deg));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 320px;
+        }
+
+        .pinned-photo:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.4),
+                0 20px 50px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+        }
+
+        .pinned-photo::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle at 30% 30%, #d4af37, #8b7019);
+            border-radius: 50%;
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.4),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .pinned-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pinned-photo .caption {
+            position: absolute;
+            bottom: 8px;
+            left: 12px;
+            right: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #4a4a4a;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* Biography Content */
+        .bio-content {
+            font-size: 1.15rem;
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bio-content p {
+            margin-bottom: var(--space-md);
+        }
+
+        .bio-highlight {
+            font-size: 1.25rem;
+            color: var(--soft-cream);
+            text-align: center;
+            font-style: italic;
+            margin: var(--space-xl) 0;
+            padding: var(--space-lg);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.05) 0%, transparent 100%);
+        }
+
+        /* Quote Blocks */
+        .quote-collection {
+            margin: var(--space-xl) 0;
+        }
+
+        .quote-collection h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--bright-blue);
+            letter-spacing: 3px;
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .quote-block {
+            background: linear-gradient(135deg,
+                rgba(106, 180, 245, 0.05) 0%,
+                rgba(74, 58, 122, 0.03) 50%,
+                rgba(42, 74, 138, 0.05) 100%);
+            border-left: 3px solid var(--bright-blue);
+            border-radius: 0 16px 16px 0;
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-md) 0;
+            position: relative;
+        }
+
+        .quote-block.gold-accent {
+            background: linear-gradient(135deg,
+                rgba(201, 162, 39, 0.08) 0%,
+                rgba(138, 112, 25, 0.03) 100%);
+            border-left-color: var(--gold);
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            font-family: Georgia, serif;
+            color: var(--bright-blue);
+            opacity: 0.2;
+        }
+
+        .quote-block.gold-accent::before {
+            color: var(--gold);
+        }
+
+        .quote-block p {
+            font-style: italic;
+            color: var(--soft-cream);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin: 0;
+            padding-left: var(--space-sm);
+        }
+
+        .quote-block .source {
+            font-style: normal;
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: var(--space-sm);
+            padding-left: var(--space-sm);
+        }
+
+        /* Works List */
+        .works-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin: var(--space-lg) 0;
+        }
+
+        .work-item {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(106, 180, 245, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .work-item .title {
+            font-style: italic;
+            color: var(--soft-cream);
+        }
+
+        .work-item .year {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-left: 0.5em;
+        }
+
+        /* CTA Box */
+        .cta-box {
+            text-align: center;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg,
+                rgba(201, 162, 39, 0.1) 0%,
+                rgba(106, 180, 245, 0.05) 50%,
+                rgba(74, 58, 122, 0.08) 100%);
+            border: 1px solid var(--border-gold);
+            border-radius: 20px;
+            margin: var(--space-xxl) 0;
+        }
+
+        .cta-box h3 {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-box p {
+            margin-bottom: var(--space-md);
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-xl);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--void);
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .cta-url {
+            margin-top: var(--space-md);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .cta-url a {
+            color: var(--bright-blue);
+            text-decoration: none;
+        }
+
+        /* Back Link */
+        .back-link {
+            text-align: center;
+            margin: var(--space-xl) 0;
+        }
+
+        .back-link a {
+            color: var(--bright-blue);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            border-top: 1px solid var(--border);
+            margin-top: var(--space-xxl);
+            background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 16, 0.8) 100%);
+        }
+
+        .footer-logo { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); margin-bottom: var(--space-xs); }
+        .footer-logo span { color: var(--soft-cream); font-weight: 400; }
+        .footer-runes { font-size: 1.3rem; color: var(--bright-blue); opacity: 0.3; letter-spacing: 15px; margin: var(--space-md) 0; }
+        .footer-copy { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav { padding: var(--space-sm); }
+            .nav-links { display: none; }
+            .tribute-section { padding: var(--space-lg) var(--space-md); }
+            .pinned-photo { max-width: 280px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+
+    <nav class="nav">
+        <div class="nav-brand">
+            <div class="nav-logo">HAVE <span>MIND</span> MEDIA</div>
+            <div class="nav-tagline">The Mind is in Your Mind</div>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">← Back to Home</a>
+            <a href="../../soul-science.html">Soul Science</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+
+        <header class="page-header">
+            <h1>In Honor Of</h1>
+            <p class="subtitle">The storytellers who shaped this work and this soul</p>
+        </header>
+
+        <div class="section-divider gold">◆ ◇ ◆</div>
+
+        <!-- ============================================================
+             CASSANDRA KING CONROY
+             ============================================================ -->
+        <section class="tribute-section cassandra">
+            <div class="tribute-header">
+                <h2>Cassandra King Conroy</h2>
+                <p class="years">Born February 18, 1944 • L.A. (Lower Alabama)</p>
+                <p class="role">My Mother</p>
+            </div>
+
+            <div class="bio-content">
+                <p>My mother first. Her whole life people act like she was second place coat tail rider to Pat, and that has never been true. She was a novelist before she met Pat. She was a storyteller before she could write. She knew what she wanted to be from childhood, writing stories to read aloud to her friends at recess on a peanut farm in Pinckard, Alabama. Her grandfather Jim King was the first commercial peanut farmer in the state. From that red dirt, from those deep roots, she emerged.</p>
+
+                <p>She earned her BA in English from Alabama College in 1967, then went back decades later to get her MFA in 1988 because she believed the craft deserves a lifetime of study. She taught creative writing. She worked as a human interest reporter. She always knew how to see people clearly and tell their stories with compassion.</p>
+
+                <p>Her first novel <em>Making Waves in Zion</em> came out in 1995. <em>The Sunday Wife</em> in 2002 brought her national attention. <em>The Same Sweet Girls</em>. <em>Queen of Broken Hearts</em>. <em>Moonrise</em>. Each one about women's friendships, Southern culture, the complex negotiations of love and self that define a life. She drew from her own experience, including her time as a pastor's wife in a previous marriage.</p>
+
+                <p>She met Pat at a literary conference party in Birmingham in 1996, at the refreshment table. A two-year telephone friendship. Then marriage in 1998. They remained together until he died. Her memoir about their life, <em>Tell Me a Story: My Life with Pat Conroy</em>, won the 2020 Southern Book Prize for Nonfiction.</p>
+
+                <p>In February 2025, she received the Harper Lee Award for Alabama's Distinguished Writer of the Year at the Old Courthouse Museum in Monroeville, the same courthouse that inspired <em>To Kill a Mockingbird</em>. She lives in Beaufort, South Carolina, and serves as honorary chair of the Pat Conroy Literary Center.</p>
+            </div>
+
+            <p class="bio-highlight">
+                Because you have always taught me balance, because you ARE balance, you are the coin.
+            </p>
+
+            <div class="photo-gallery">
+                <div class="pinned-photo" style="--rotation: -2deg;">
+                    <img src="images/harper-lee-award.jpg" alt="Harper Lee Award Ceremony, February 2025">
+                    <div class="caption">Harper Lee Award, Monroeville, Feb 2025</div>
+                </div>
+            </div>
+
+            <div class="quote-collection">
+                <h3>In Her Words</h3>
+
+                <div class="quote-block gold-accent">
+                    <p>Sometimes we laugh to keep from crying, but the important thing is to laugh, every chance we get.</p>
+                </div>
+
+                <div class="quote-block gold-accent">
+                    <p>There are different kinds and degrees of love, and they change over time, ripening and deepening and changing us in the process.</p>
+                    <p class="source">— <em>The Same Sweet Girls' Guide to Life: Advice from a Failed Southern Belle</em></p>
+                </div>
+
+                <div class="quote-block gold-accent">
+                    <p>Listen to me instead of your financial manager: It's okay to spend money, to save it, to give it away, to worry over it. It's just money. Your only enemy in life is time. Do be a miser with time: hoard it, treasure it, don't squander a single minute of it.</p>
+                </div>
+
+                <div class="quote-block gold-accent">
+                    <p>Be nice to people whether you mean it or not. You never know when a kind word can make a difference in another person's day, or maybe even his or her life.</p>
+                </div>
+
+                <div class="quote-block gold-accent">
+                    <p>Once you're out of the classroom, you might vow never to open another book, after being force-fed their contents for so many years. But know this: Books are the most worthy companions to take with you on this bitter-sweet journey known as life.</p>
+                </div>
+            </div>
+
+            <div class="works-list">
+                <div class="work-item"><span class="title">Making Waves in Zion</span><span class="year">1995</span></div>
+                <div class="work-item"><span class="title">The Sunday Wife</span><span class="year">2002</span></div>
+                <div class="work-item"><span class="title">The Same Sweet Girls</span><span class="year">2005</span></div>
+                <div class="work-item"><span class="title">Queen of Broken Hearts</span><span class="year">2007</span></div>
+                <div class="work-item"><span class="title">Moonrise</span><span class="year">2013</span></div>
+                <div class="work-item"><span class="title">Tell Me a Story</span><span class="year">2019</span></div>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--space-lg);">
+                <a href="https://cassandrakingconroy.com" target="_blank" style="color: var(--gold); font-size: 1rem;">cassandrakingconroy.com</a>
+            </p>
+        </section>
+
+        <div class="section-divider">◇ ◆ ◇</div>
+
+        <!-- ============================================================
+             PAT CONROY
+             ============================================================ -->
+        <section class="tribute-section">
+            <div class="tribute-header">
+                <h2>Pat Conroy</h2>
+                <p class="years">October 26, 1945 — March 4, 2016</p>
+                <p class="role">My Stepfather • My Kindred Soul • My Mother's Equal</p>
+            </div>
+
+            <div class="bio-content">
+                <p>Pat was a military brat. His family moved every year, base to base, until they settled in Beaufort, South Carolina when he was twelve. That town with its tidal marshes and moss-draped oaks became the landscape of his imagination for the rest of his life. Nearly every book he wrote returned there, because Beaufort was where he first found a home and where he would ultimately be buried.</p>
+
+                <p>His father was Donald Conroy, a Marine Corps fighter pilot from Chicago who terrorized his family with the same precision he brought to aerial combat. His mother Peggy instilled in him a love of language, reading to him constantly, teaching him that stories were how human beings made sense of their lives. His father taught him something else: that violence lived in houses, that silence was complicity, and that the only way out was through the page.</p>
+
+                <p>The Citadel nearly broke him, but it also made him a writer. <em>The Boo</em> was a love letter to the assistant commandant who protected cadets from the worst of the hazing. <em>The Lords of Discipline</em> was an indictment of institutional brutality dressed as a thriller. The Citadel never forgave him for it. <em>The Great Santini</em> brought his father roaring onto the page as Bull Meecham. <em>The Prince of Tides</em> interweaved trauma, memory, family secrets, and the redemptive power of storytelling. Both became Oscar-nominated films.</p>
+
+                <p>He wrote about himself without apology, believing that the personal was the only honest place to start. He considered himself a painter working with words. He would write 1,400 handwritten pages that his editors would then wade through to find the book hidden inside.</p>
+            </div>
+
+            <p class="bio-highlight">
+                I sat playing Bron-Yr-Aur by Led Zeppelin, watching a golden bridge to the other side shimmer on Battle Creek in our backyard, twelve feet away, as his soul left his body. I heard my mother and stepsisters gasp and cry out. And I felt him leave this world. But thankfully, it was only physically.
+            </p>
+
+            <div class="photo-gallery">
+                <div class="pinned-photo" style="--rotation: 2deg;">
+                    <img src="images/pat-cassandra-beaufort.jpg" alt="Pat and Cassandra in Beaufort">
+                    <div class="caption">Pat and Cassandra in Beaufort</div>
+                </div>
+                <div class="pinned-photo" style="--rotation: -3deg;">
+                    <img src="images/pat-cassandra-harper.jpg" alt="Pat and Cassandra with Harper Ray">
+                    <div class="caption">Pat and Cassandra with Harper Ray</div>
+                </div>
+                <div class="pinned-photo" style="--rotation: 1deg;">
+                    <img src="images/pat-beach-dog.jpg" alt="Pat on the beach">
+                    <div class="caption">Pat on the beach</div>
+                </div>
+                <div class="pinned-photo" style="--rotation: -1deg;">
+                    <img src="images/st-patrick-conroy.jpg" alt="St. Patrick Conroy">
+                    <div class="caption">St. Patrick Conroy</div>
+                </div>
+            </div>
+
+            <div class="quote-collection">
+                <h3>In His Words</h3>
+
+                <div class="quote-block">
+                    <p>It did not look like the work of God, but it might have represented the handicraft of a God with a joyous sense of humor, a dancing God who loved mischief as much as prayer, and playfulness as much as mischief.</p>
+                    <p class="source">— <em>South of Broad</em></p>
+                </div>
+
+                <div class="quote-block">
+                    <p>The secret to a good book? Saying as much as you can with as few words as possible, but still telling the whole story. And that's it.</p>
+                    <p class="source">— In conversation with his stepson</p>
+                </div>
+
+                <div class="quote-block">
+                    <p>Great teachers had great personalities and the greatest teachers had outrageous personalities. I did not like decorum or rectitude in a classroom; I preferred a highly oxygenated atmosphere, a climate of intemperance, rhetoric, and feverish melodrama. And I wanted my teachers to make me smart. A great teacher is my adversary, my conqueror, commissioned to chastise me. He leaves me tame and grateful for the new language he has purloined from other kings whose granaries are filled and whose libraries are famous. He tells me that teaching is the art of theft: of knowing what to steal and from whom.</p>
+                    <p class="source">— <em>The Lords of Discipline</em></p>
+                </div>
+
+                <div class="quote-block">
+                    <p>Bad teachers do not touch me; the great ones never leave me. They ride with me during all my days, and I pass on to others what they have imparted to me. I exchange their handy gifts with strangers on trains, and I pretend the gifts are mine. I steal from the great teachers. And the truly wonderful thing about them is they would applaud my theft, laugh at the thought of it, realizing they had taught me their larcenous skills well.</p>
+                    <p class="source">— <em>The Lords of Discipline</em></p>
+                </div>
+
+                <div class="quote-block">
+                    <p>You will never be anything but a small fry if you don't go big. You cast your lot with the masses of those who wish they would have rather than those who did when you dream big and don't have the balls to execute and the bravery to present your work, critics be damned. Go big, son. Don't believe anything. Be it.</p>
+                    <p class="source">— To his stepson Jason</p>
+                </div>
+            </div>
+
+            <div class="works-list">
+                <div class="work-item"><span class="title">The Boo</span><span class="year">1970</span></div>
+                <div class="work-item"><span class="title">The Water Is Wide</span><span class="year">1972</span></div>
+                <div class="work-item"><span class="title">The Great Santini</span><span class="year">1976</span></div>
+                <div class="work-item"><span class="title">The Lords of Discipline</span><span class="year">1980</span></div>
+                <div class="work-item"><span class="title">The Prince of Tides</span><span class="year">1986</span></div>
+                <div class="work-item"><span class="title">Beach Music</span><span class="year">1995</span></div>
+                <div class="work-item"><span class="title">My Losing Season</span><span class="year">2002</span></div>
+                <div class="work-item"><span class="title">South of Broad</span><span class="year">2009</span></div>
+            </div>
+        </section>
+
+        <div class="section-divider gold">◆ ◇ ◆</div>
+
+        <!-- ============================================================
+             PAT CONROY LITERARY CENTER
+             ============================================================ -->
+        <section class="cta-box">
+            <h3>The Pat Conroy Literary Center</h3>
+
+            <p>The Pat Conroy Literary Center in Beaufort, South Carolina, stands as a living testament to Pat's belief that stories can change lives and that great teachers never stop teaching. The Center offers writing programs, author events, educational initiatives, and a gathering place for readers and writers who share Pat's conviction that literature matters.</p>
+
+            <p>Cassandra King Conroy serves as honorary chair. The Center carries forward Pat's vision of a South that tells its own stories, in all their complexity and beauty.</p>
+
+            <p>If this work has moved you, if Pat's words have stayed with you, please consider supporting the Center's mission to keep great teaching and great storytelling alive.</p>
+
+            <a href="https://patconroyliterarycenter.org/donate" target="_blank" class="cta-button">Support the Center</a>
+
+            <p class="cta-url">
+                <a href="https://patconroyliterarycenter.org" target="_blank">www.patconroyliterarycenter.org</a>
+            </p>
+        </section>
+
+        <div class="back-link">
+            <a href="../../index.html">← Return to Home</a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">HAVE <span>MIND</span> MEDIA</div>
+        <div class="footer-runes">◯∰⧬⫰∭⧖◬⫯∮⧉△⃝∯⫲⧫◭∲⧊⫳⃟</div>
+        <div class="footer-copy">
+            <p>Jason Ray (Tormod Rayvinski), December 2024</p>
+            <p>[-1 = 0 = +1]</p>
+        </div>
+    </footer>
+
+</body>
+</html>

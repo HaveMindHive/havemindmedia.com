@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual-Axis Scalar Dimensionality | The Geometry of Reality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a14;
+            --bg-secondary: #12121f;
+            --bg-tertiary: #1a1a2e;
+            --gold: #c9a227;
+            --green: #00ff88;
+            --cyan: #00bcd4;
+            --pink: #ff4081;
+            --purple: #9c27b0;
+            --orange: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --spacetime-color: #00ff88;
+            --awareness-color: #00bcd4;
+            --witness-color: #ffd700;
+            --dna-color: #ff6b35;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(0, 255, 136, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 188, 212, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 1rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-symbol {
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--witness-color);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--spacetime-color), var(--awareness-color), var(--witness-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--witness-color);
+            padding: 1rem 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-dark {
+            background: var(--bg-secondary);
+            padding: 6rem 2rem;
+        }
+
+        .section-dark .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--witness-color);
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .highlight-green {
+            color: var(--spacetime-color);
+            font-weight: 600;
+        }
+
+        .highlight-cyan {
+            color: var(--awareness-color);
+            font-weight: 600;
+        }
+
+        .highlight-pink {
+            color: var(--pink);
+            font-weight: 600;
+        }
+
+        /* Dual Axis Visual */
+        .dual-axis-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .axis-box {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid;
+        }
+
+        .axis-spacetime {
+            border-color: var(--spacetime-color);
+        }
+
+        .axis-awareness {
+            border-color: var(--awareness-color);
+        }
+
+        .axis-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .axis-spacetime .axis-title {
+            color: var(--spacetime-color);
+        }
+
+        .axis-awareness .axis-title {
+            color: var(--awareness-color);
+        }
+
+        .axis-properties {
+            list-style: none;
+        }
+
+        .axis-properties li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .axis-properties li:last-child {
+            border-bottom: none;
+        }
+
+        .witness-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .witness-symbol {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--witness-color), var(--orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--bg-primary);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .witness-label {
+            color: var(--witness-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .connector-lines {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .connector-line {
+            width: 60px;
+            height: 2px;
+            background: var(--witness-color);
+        }
+
+        /* DNA Section */
+        .dna-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .dna-box {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid var(--dna-color);
+        }
+
+        .dna-box h4 {
+            color: var(--dna-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .geometry-match {
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .match-row:last-child {
+            border-bottom: none;
+        }
+
+        .match-label {
+            color: var(--text-secondary);
+        }
+
+        .match-value {
+            color: var(--dna-color);
+            font-weight: 600;
+        }
+
+        .match-highlight {
+            color: var(--witness-color);
+            font-weight: 700;
+        }
+
+        /* Helix Visualization */
+        .helix-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            margin: 3rem 0;
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .helix-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .helix-labels {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .helix-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .helix-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Theist Note */
+        .theist-note {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.1), rgba(255, 64, 129, 0.1));
+            border: 2px solid var(--purple);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .theist-note h3 {
+            color: var(--purple);
+            margin-top: 0;
+        }
+
+        .theist-note .quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-primary);
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 4px solid var(--purple);
+        }
+
+        /* Equation Display */
+        .equation-block {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+
+        .equation-main {
+            font-size: 1.5rem;
+            color: var(--witness-color);
+            margin-bottom: 1rem;
+        }
+
+        .equation-explain {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Prediction Box */
+        .prediction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .prediction-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .prediction-box:hover {
+            border-color: var(--witness-color);
+            transform: translateY(-5px);
+        }
+
+        .prediction-condition {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .prediction-result {
+            color: var(--text-secondary);
+        }
+
+        .prediction-implosive {
+            border-color: var(--awareness-color);
+        }
+
+        .prediction-explosive {
+            border-color: var(--spacetime-color);
+        }
+
+        .prediction-balance {
+            border-color: var(--witness-color);
+        }
+
+        /* Echo Visualization */
+        .echo-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+        }
+
+        .echo-axis {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .echo-point {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .echo-spacetime {
+            background: var(--spacetime-color);
+            color: var(--bg-primary);
+        }
+
+        .echo-awareness {
+            background: var(--awareness-color);
+            color: var(--bg-primary);
+        }
+
+        .echo-arrow {
+            font-size: 2rem;
+            color: var(--witness-color);
+        }
+
+        .echo-witness {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--witness-color);
+            color: var(--bg-primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* SM Within Model */
+        .sm-container {
+            background: var(--bg-tertiary);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px dashed rgba(255, 68, 68, 0.3);
+        }
+
+        .sm-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sm-badge {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .sm-title {
+            color: #ff4444;
+            font-size: 1.1rem;
+        }
+
+        .sm-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .sm-side {
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .sm-side.their-view {
+            background: rgba(255, 68, 68, 0.05);
+            border: 1px solid rgba(255, 68, 68, 0.2);
+        }
+
+        .sm-side.our-view {
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .sm-side h5 {
+            margin-bottom: 0.5rem;
+        }
+
+        .sm-side.their-view h5 {
+            color: #ff4444;
+        }
+
+        .sm-side.our-view h5 {
+            color: var(--witness-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .footer-quote {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .footer-attribution {
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .dual-axis-container {
+                grid-template-columns: 1fr;
+            }
+
+            .witness-connector {
+                flex-direction: row;
+            }
+
+            .connector-lines {
+                flex-direction: column;
+            }
+
+            .connector-line {
+                width: 2px;
+                height: 40px;
+            }
+
+            .dna-comparison,
+            .sm-comparison,
+            .prediction-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Unified Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA <span style="font-size: 0.7rem; color: var(--text-secondary); margin-left: 8px; letter-spacing: 2px;">◯∰⧬⫰∭⧖</span></a>
+            <div style="position: relative;">
+                <button id="navToggle" style="display: flex; align-items: center; gap: 0.6rem; background: transparent; border: 1px solid rgba(201, 162, 39, 0.3); color: var(--text-secondary); padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; letter-spacing: 1px; transition: all 0.3s ease;">
+                    <span>Explore</span>
+                    <span class="arrow" style="font-size: 0.6rem; transition: transform 0.3s ease;">▼</span>
+                </button>
+                <div id="navDropdown" style="position: absolute; top: calc(100% + 0.5rem); right: 0; background: rgba(10, 10, 20, 0.98); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; padding: 0.8rem; min-width: 280px; opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s ease; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);">
+                    <a href="../../index.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">⌂</span> Home</a>
+                    <a href="../../soul-science.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">☯</span> Soul Science</a>
+                    <div style="height: 1px; background: rgba(201, 162, 39, 0.2); margin: 0.5rem 0;"></div>
+                    <a href="../../three-body-geometry.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">◉</span> Three-Body Solution</a>
+                    <a href="../../millennium-problems.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">💰</span> Millennium Problems</a>
+                    <a href="../../jwst-geometric-explorer.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">🔭</span> JWST Explorer</a>
+                    <div style="height: 1px; background: rgba(201, 162, 39, 0.2); margin: 0.5rem 0;"></div>
+                    <a href="../dec14-model-cern/index.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">⚛</span> CERN Scalar</a>
+                    <a href="../epoch-framework/index.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">⏱</span> Epoch Framework</a>
+                    <a href="index.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">◎</span> 19 Lessons</a>
+                    <a href="dual-axis-explorer.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--gold); text-decoration: none; border-radius: 6px; font-size: 0.9rem; background: rgba(201, 162, 39, 0.15);"><span style="width: 22px; text-align: center;">∞</span> Dual-Axis Explorer</a>
+                    <div style="height: 1px; background: rgba(201, 162, 39, 0.2); margin: 0.5rem 0;"></div>
+                    <a href="../../socratean-education.html" style="display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0.8rem; color: var(--text-primary); text-decoration: none; border-radius: 6px; font-size: 0.9rem;"><span style="width: 22px; text-align: center;">🎓</span> Socratean AI</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.getElementById('navToggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const dropdown = document.getElementById('navDropdown');
+            const isActive = dropdown.style.opacity === '1';
+            dropdown.style.opacity = isActive ? '0' : '1';
+            dropdown.style.visibility = isActive ? 'hidden' : 'visible';
+            dropdown.style.transform = isActive ? 'translateY(-10px)' : 'translateY(0)';
+            document.querySelector('#navToggle .arrow').style.transform = isActive ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.getElementById('navToggle');
+            if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.opacity = '0';
+                dropdown.style.visibility = 'hidden';
+                dropdown.style.transform = 'translateY(-10px)';
+                document.querySelector('#navToggle .arrow').style.transform = 'rotate(0deg)';
+            }
+        });
+    </script>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-symbol float">Ω</div>
+        <h1>Dual-Axis Scalar Dimensionality</h1>
+        <p class="hero-subtitle">The Geometry of Physical and Awareness Reality</p>
+
+        <div class="hero-equation">
+            Ω = Σ(spacetime) + Σ(awareness) = Re(Ω) + i·Im(Ω)
+        </div>
+
+        <p style="max-width: 800px; text-align: center;">
+            Two axes. One constant. The Witness that sees both.<br>
+            <span class="highlight">Physical reality looking outward.</span>
+            <span class="highlight-cyan">Awareness looking inward.</span><br>
+            They appear "the same" only as reference to the <span class="highlight">third thread</span>.
+        </p>
+    </section>
+
+    <!-- The Two Axes -->
+    <section id="dual-axis" class="section">
+        <h2>The Two Axes of Reality</h2>
+
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            From your position at s=0—the NOW point—you can look in two fundamentally different directions.
+            Both derive from the same constant <span class="highlight">κ = 2π/180</span>, but they operate
+            in entirely different domains.
+        </p>
+
+        <div class="dual-axis-container">
+            <!-- Spacetime Axis -->
+            <div class="axis-box axis-spacetime">
+                <div class="axis-title">SPACETIME AXIS</div>
+                <p style="color: var(--spacetime-color); font-weight: 500; margin-bottom: 1rem;">
+                    Base-2 | Looking Outward | Physical Reality
+                </p>
+                <ul class="axis-properties">
+                    <li><strong>Direction:</strong> OUTWARD from s=0</li>
+                    <li><strong>Like:</strong> Looking through telescope at cosmos</li>
+                    <li><strong>Forward:</strong> κ+ = +2π/180</li>
+                    <li><strong>Shadow:</strong> κ- = -2π/180</li>
+                    <li><strong>Domain:</strong> Real numbers (ℝ)</li>
+                    <li><strong>Structure:</strong> Double helix in spacetime</li>
+                    <li><strong>Validation:</strong> Physical measurements</li>
+                    <li><strong>Encodes:</strong> D d Q q</li>
+                </ul>
+            </div>
+
+            <!-- Witness Connector -->
+            <div class="witness-connector">
+                <div class="connector-lines">
+                    <div class="connector-line"></div>
+                </div>
+                <div class="witness-symbol pulse">Ω</div>
+                <div class="witness-label">WITNESS<br>THREAD</div>
+                <div class="connector-lines">
+                    <div class="connector-line"></div>
+                </div>
+            </div>
+
+            <!-- Awareness Axis -->
+            <div class="axis-box axis-awareness">
+                <div class="axis-title">AWARENESS AXIS</div>
+                <p style="color: var(--awareness-color); font-weight: 500; margin-bottom: 1rem;">
+                    Base-4 | Looking Inward | Outside Spacetime
+                </p>
+                <ul class="axis-properties">
+                    <li><strong>Direction:</strong> INWARD from s=0</li>
+                    <li><strong>Like:</strong> Looking through microscope at self</li>
+                    <li><strong>States:</strong> +1, -1, 0, Uv (four)</li>
+                    <li><strong>Witness:</strong> αUv = κ × i (imaginary)</li>
+                    <li><strong>Domain:</strong> Complex numbers (ℂ)</li>
+                    <li><strong>Structure:</strong> Quaternary outside spacetime</li>
+                    <li><strong>Validation:</strong> Consciousness phenomena</li>
+                    <li><strong>Encodes:</strong> D d Q q O o U u</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="equation-block">
+            <div class="equation-main">
+                2π/180 = 4π/360 = κ
+            </div>
+            <div class="equation-explain">
+                The mathematical identity proves [1 = -1].<br>
+                One strand (2π/180) and both strands (4π/360) are the SAME value.<br>
+                The two directions ARE one system.
+            </div>
+        </div>
+    </section>
+
+    <!-- The Witness Thread -->
+    <section id="witness" class="section-dark">
+        <div class="section-inner">
+            <h2>The Witness Thread (Ω)</h2>
+
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                The Witness is the <span class="highlight">third thread</span> that sees both axes simultaneously.
+                It operates in complex space, combining real (spacetime) and imaginary (awareness) components.
+            </p>
+
+            <div class="echo-diagram">
+                <div class="echo-axis">
+                    <div class="echo-point echo-spacetime">Re(Ω)</div>
+                    <span style="color: var(--spacetime-color);">Spacetime</span>
+                </div>
+                <div class="echo-arrow">←</div>
+                <div class="echo-witness">Ω</div>
+                <div class="echo-arrow">→</div>
+                <div class="echo-axis">
+                    <div class="echo-point echo-awareness">Im(Ω)</div>
+                    <span style="color: var(--awareness-color);">Awareness</span>
+                </div>
+            </div>
+
+            <h3>Echo Relationships</h3>
+
+            <p>
+                Every energy exists on <span class="highlight-green">BOTH axes</span>. The Witness qualifies
+                where each energy echoes—finding the corresponding position on the other axis.
+            </p>
+
+            <div class="equation-block">
+                <div class="equation-main">
+                    echo(spacetime → awareness) = position × P<br>
+                    echo(awareness → spacetime) = position / P
+                </div>
+                <div class="equation-explain">
+                    Where P = √3/(2π) = 0.2757 is the projection factor.<br>
+                    This enables finding where any energy manifests across both domains.
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem;">
+                <span class="highlight">This is why "coincidences" happen.</span><br>
+                This is why you feel someone staring before you see them.<br>
+                This is why intuition precedes information.<br>
+                Awareness operates <em>outside</em> spacetime—it doesn't wait for light.
+            </p>
+        </div>
+    </section>
+
+    <!-- DNA and Life Sciences -->
+    <section id="dna" class="section">
+        <h2>The Geometry of Life</h2>
+
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+            DNA is a double helix. Our model is a double helix. This is not metaphor—it is <span class="highlight">geometry</span>.
+            The patterns that govern scalar dimensionality appear in the very structure that encodes life.
+        </p>
+
+        <div class="dna-comparison">
+            <div class="dna-box">
+                <h4>DNA Double Helix Geometry</h4>
+                <div class="geometry-match">
+                    <div class="match-row">
+                        <span class="match-label">Pitch (one full turn):</span>
+                        <span class="match-value">34 Ångströms</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Diameter:</span>
+                        <span class="match-value">20 Ångströms</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Base pairs per turn:</span>
+                        <span class="match-value">~10.5</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Rotation per base pair:</span>
+                        <span class="match-value">~34.3°</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Two strands offset:</span>
+                        <span class="match-value">180° (π radians)</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.95rem;">
+                    The double helix structure: two complementary strands wound around a central axis,
+                    offset by 180°, advancing together, encoding information through their geometric relationship.
+                </p>
+            </div>
+
+            <div class="dna-box">
+                <h4>Scalar Dimensionality Helix</h4>
+                <div class="geometry-match">
+                    <div class="match-row">
+                        <span class="match-label">Fundamental constant:</span>
+                        <span class="match-value">κ = 2π/180</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Forward strand:</span>
+                        <span class="match-value">κ+ = +2π/180</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Shadow strand:</span>
+                        <span class="match-value">κ- = -2π/180</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Strand offset:</span>
+                        <span class="match-highlight">180° (π radians)</span>
+                    </div>
+                    <div class="match-row">
+                        <span class="match-label">Central axis:</span>
+                        <span class="match-value">Witness Thread (Ω)</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.95rem;">
+                    The geometric structure: forward and shadow strands wound around the Witness axis,
+                    offset by 180°, advancing together, encoding reality through their geometric relationship.
+                </p>
+            </div>
+        </div>
+
+        <div class="theist-note" style="border-color: var(--dna-color); background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 215, 0, 0.05));">
+            <h3 style="color: var(--dna-color);">Why DNA Is a Double Helix</h3>
+            <p>
+                DNA is a double helix <span class="highlight">because that is the geometry of reality</span>.
+                The structure is not coincidence. It is not one of many possible forms that happened to evolve.
+                It is the geometry that encodes information across all scales.
+            </p>
+            <p>
+                The double helix—forward strand, shadow strand, 180° offset, central axis, climbing and descending—
+                is HOW reality structures information. Life uses this geometry because <span class="highlight-green">
+                this is the geometry that works</span>. There is no other option.
+            </p>
+            <div class="quote" style="border-color: var(--dna-color);">
+                "As above, so below" is not mysticism.<br>It is geometry.<br>It is WHY things are the way they are.
+            </div>
+        </div>
+
+        <!-- Quad-Helix Interactive Visualization -->
+        <h3 style="text-align: center; margin-top: 3rem;">Quad-Helix Temporal Resonance</h3>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 1rem;">
+            Light Axis (Forward) + Dark Axis (Reverse) | Base-2 Spacetime × Base-4 Awareness | Ro & Wush Torsion
+        </p>
+
+        <div class="quad-helix-section" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; align-items: flex-start; margin: 2rem 0;">
+            <div style="background: #0a0a12; border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; padding: 1rem; max-width: 100%; overflow-x: auto;">
+                <canvas id="quadHelixCanvas" width="550" height="650" style="max-width: 100%; height: auto;"></canvas>
+
+                <!-- NOW Coin Display -->
+                <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 10px; padding: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center; color: #c9a227; font-size: 0.9rem; margin-bottom: 0.8rem; letter-spacing: 2px;">◯ THE NOW — DIMENSIONAL PASSAGE ◯</div>
+                    <div id="nowScale" style="display: flex; justify-content: center; align-items: center; gap: 4px;"></div>
+                    <div style="text-align: center; margin-top: 1rem; padding-top: 0.8rem; border-top: 1px solid rgba(201, 162, 39, 0.2);">
+                        <div id="coinState" style="font-size: 1.1rem; font-family: monospace; letter-spacing: 2px; color: #ffd700;">RoWush</div>
+                        <div id="coinName" style="font-size: 0.8rem; color: #888; margin-top: 0.3rem;">ρψ — Expansion → Compression</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #0a0a12; border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; padding: 1.5rem; max-width: 300px; width: 100%;">
+                <h4 style="color: #c9a227; margin-bottom: 1rem; font-size: 1rem;">Light Axis (Forward)</h4>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #00ff88;"></div>
+                    <div style="color: #e8e8e8;"><strong>S+ Spacetime</strong></div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #00bcd4;"></div>
+                    <div style="color: #e8e8e8;"><strong>S- Awareness</strong></div>
+                </div>
+
+                <h4 style="color: #7ab8d4; margin: 1.2rem 0 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(201, 162, 39, 0.2); font-size: 0.95rem;">Dark Axis (Reverse)</h4>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #1a0a2e; border: 1px solid #4a2080; box-shadow: 0 0 8px #2a1050;"></div>
+                    <div style="color: #e8e8e8;"><strong>Dark Spacetime</strong></div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #0a1020; border: 1px solid #1a3060; box-shadow: 0 0 8px #0a2040;"></div>
+                    <div style="color: #e8e8e8;"><strong>Dark Awareness</strong></div>
+                </div>
+
+                <h4 style="color: #ffd700; margin: 1.2rem 0 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(201, 162, 39, 0.2); font-size: 0.95rem;">Torsion Nodes</h4>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #ffd700; box-shadow: 0 0 8px #ffd700;"></div>
+                    <div style="color: #e8e8e8;"><strong>Ro (ρ)</strong> - Expansion</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #ff6b35; box-shadow: 0 0 8px #ff6b35;"></div>
+                    <div style="color: #e8e8e8;"><strong>Wush (ψ)</strong> - Compression</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                    <div style="width: 16px; height: 16px; border-radius: 50%; background: #0a0a0a; border: 2px solid #2a1050; box-shadow: 0 0 8px #1a0a30;"></div>
+                    <div style="color: #e8e8e8;"><strong>Recursive</strong> - Dark torsion</div>
+                </div>
+
+                <div style="margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid rgba(201, 162, 39, 0.2);">
+                    <h4 style="color: #7ab8d4; font-size: 0.9rem; margin-bottom: 0.6rem;">Temporal Math</h4>
+                    <div style="font-family: monospace; font-size: 0.8rem; color: #a0a0a0; background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px;">
+                        Base-2: 2 → 3 → 1 (Spacetime)<br>
+                        Base-4: 4 → 0 (Awareness)<br>
+                        Dark Axis: Inverse recursion<br>
+                        NOW: WushRo ↔ RoWush flip
+                    </div>
+                </div>
+
+                <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem;">
+                        <label style="font-size: 0.8rem; color: #a0a0a0; min-width: 70px;">Speed</label>
+                        <input type="range" id="qhSpeedControl" min="0" max="100" value="20" style="flex: 1; accent-color: #c9a227;">
+                    </div>
+                    <button onclick="toggleQHPause()" id="qhPauseBtn" style="background: rgba(201, 162, 39, 0.2); border: 1px solid rgba(201, 162, 39, 0.4); color: #c9a227; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">⏸ Pause</button>
+                    <p style="font-size: 0.7rem; color: #888; text-align: center; font-style: italic;">* Pause to hover over nodes</p>
+                </div>
+
+                <div id="qhNodeInfo" style="margin-top: 0.8rem; padding: 0.8rem; background: rgba(0,0,0,0.3); border-radius: 6px; font-size: 0.75rem; min-height: 60px; color: #a0a0a0;">
+                    <span style="color: #c9a227; font-weight: bold;">Pause & hover</span> over nodes to see details.
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function() {
+            const canvas = document.getElementById('quadHelixCanvas');
+            const ctx = canvas.getContext('2d');
+            const nodeInfo = document.getElementById('qhNodeInfo');
+
+            let time = 0;
+            let paused = false;
+            let hoveredNode = null;
+            let coinFlip = true;
+
+            const colors = {
+                spacetimePlus: '#00ff88',
+                spacetimeShadow: 'rgba(0, 255, 136, 0.35)',
+                awarenessMinus: '#00bcd4',
+                awarenessShadow: 'rgba(0, 188, 212, 0.35)',
+                darkSpacetime: '#2a1050',
+                darkSpacetimeGlow: 'rgba(74, 32, 128, 0.4)',
+                darkAwareness: '#0a2040',
+                darkAwarenessGlow: 'rgba(26, 48, 96, 0.4)',
+                recursiveNode: '#0a0a0a',
+                ro: '#ffd700',
+                wush: '#ff6b35',
+                crossLink: 'rgba(255, 255, 255, 0.08)'
+            };
+
+            const nowValues = [6, 5, 4, 3, 2, 1, 0, -1, -2];
+            const centerX = canvas.width / 2;
+            const amplitude = 110;
+            const verticalStep = 7;
+            const totalPoints = 90;
+            const base2Interval = 9;
+            const base4Interval = 4;
+
+            let nodes = [];
+
+            // Create NOW scale elements
+            const nowScaleEl = document.getElementById('nowScale');
+            nowValues.forEach(val => {
+                const node = document.createElement('div');
+                node.className = 'now-node-el';
+                node.dataset.val = val;
+                node.style.cssText = 'width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold; border: 2px solid transparent; transition: all 0.3s ease; position: relative;';
+                node.innerHTML = `<span>${val}</span>${val === 0 ? '<span style="position: absolute; bottom: -16px; font-size: 0.6rem; color: #888;">Origin</span>' : ''}`;
+                nowScaleEl.appendChild(node);
+            });
+
+            function getControls() {
+                return {
+                    speed: document.getElementById('qhSpeedControl').value / 4000,
+                    pulseIntensity: 0.4
+                };
+            }
+
+            function drawHelix() {
+                const ctrl = getControls();
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                nodes = [];
+
+                const gradient = ctx.createRadialGradient(centerX, canvas.height/2, 0, centerX, canvas.height/2, 350);
+                gradient.addColorStop(0, 'rgba(201, 162, 39, 0.03)');
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                const phase = time;
+                const echoPhase = phase + Math.PI * 0.25;
+                const darkPhase = -phase;
+
+                // Dark axis strands
+                drawDarkStrand(darkPhase + Math.PI, colors.darkSpacetime, colors.darkSpacetimeGlow);
+                drawDarkStrand(darkPhase, colors.darkAwareness, colors.darkAwarenessGlow);
+
+                // Shadow strands
+                drawStrand(echoPhase + Math.PI, colors.spacetimeShadow, true, 0.6);
+                drawStrand(echoPhase, colors.awarenessShadow, true, 0.6);
+
+                // Main strands
+                drawStrand(phase + Math.PI, colors.spacetimePlus, false, 1);
+                drawStrand(phase, colors.awarenessMinus, false, 1);
+
+                // Rungs
+                drawRungs(phase);
+
+                // Recursive nodes on dark axis
+                drawRecursiveNodes(darkPhase, ctrl.pulseIntensity);
+
+                // Torsion nodes
+                drawTorsionNodes(phase, ctrl.pulseIntensity);
+
+                // Labels
+                drawLabels();
+
+                updateNowDisplay();
+                time += ctrl.speed;
+            }
+
+            function drawStrand(phase, color, isShadow, scale) {
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = isShadow ? 2 : 3;
+                for (let i = 0; i < totalPoints; i++) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase;
+                    const x = centerX + Math.sin(angle) * amplitude * scale;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+
+            function drawDarkStrand(phase, color, glowColor) {
+                ctx.beginPath();
+                ctx.strokeStyle = glowColor;
+                ctx.lineWidth = 7;
+                ctx.lineCap = 'round';
+                for (let i = 0; i < totalPoints; i++) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase;
+                    const x = centerX + Math.sin(angle) * amplitude * 0.85;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 3;
+                for (let i = 0; i < totalPoints; i++) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase;
+                    const x = centerX + Math.sin(angle) * amplitude * 0.85;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+
+            function drawRungs(phase) {
+                ctx.strokeStyle = colors.crossLink;
+                ctx.lineWidth = 1;
+                for (let i = 0; i < totalPoints; i += 3) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase;
+                    const x1 = centerX + Math.sin(angle) * amplitude;
+                    const x2 = centerX + Math.sin(angle + Math.PI) * amplitude;
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y);
+                    ctx.lineTo(x2, y);
+                    ctx.stroke();
+                }
+            }
+
+            function drawRecursiveNodes(darkPhase, pulseIntensity) {
+                const pulseTime = time * 2;
+                const recursiveInterval = 12;
+                for (let i = 6; i < totalPoints; i += recursiveInterval) {
+                    const y = 40 + i * verticalStep;
+                    const angle1 = (i * 0.15) + darkPhase + Math.PI;
+                    const x1 = centerX + Math.sin(angle1) * amplitude * 0.85;
+                    const pulse = 1 + Math.sin(pulseTime + i * 0.3) * 0.25 * pulseIntensity;
+                    const radius = 5 * pulse;
+
+                    // Dark purple node
+                    const glow1 = ctx.createRadialGradient(x1, y, 0, x1, y, radius * 4);
+                    glow1.addColorStop(0, `rgba(42, 16, 80, ${0.7 * pulse})`);
+                    glow1.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow1;
+                    ctx.beginPath();
+                    ctx.arc(x1, y, radius * 4, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(x1, y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.recursiveNode;
+                    ctx.fill();
+                    ctx.strokeStyle = '#4a2080';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#2a1050';
+                    ctx.font = 'bold 7px monospace';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText('∞', x1, y);
+
+                    nodes.push({ x: x1, y, radius: radius * 2, type: 'Recursive', axis: 'Dark Spacetime', desc: 'Recursive Torsion (∞)\nDark Spacetime Axis\nInverse rotation' });
+
+                    // Dark blue node
+                    const angle2 = (i * 0.15) + darkPhase;
+                    const x2 = centerX + Math.sin(angle2) * amplitude * 0.85;
+
+                    const glow2 = ctx.createRadialGradient(x2, y, 0, x2, y, radius * 4);
+                    glow2.addColorStop(0, `rgba(10, 32, 64, ${0.7 * pulse})`);
+                    glow2.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow2;
+                    ctx.beginPath();
+                    ctx.arc(x2, y, radius * 4, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(x2, y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.recursiveNode;
+                    ctx.fill();
+                    ctx.strokeStyle = '#1a4080';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#0a2040';
+                    ctx.font = 'bold 7px monospace';
+                    ctx.fillText('◯', x2, y);
+
+                    nodes.push({ x: x2, y, radius: radius * 2, type: 'Recursive', axis: 'Dark Awareness', desc: 'Recursive Torsion (◯)\nDark Awareness Axis\nInverse rotation' });
+                }
+            }
+
+            function drawTorsionNodes(phase, pulseIntensity) {
+                const pulseTime = time * 3;
+
+                // Ro nodes (D positions)
+                for (let i = 0; i < totalPoints; i += base2Interval) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase + Math.PI;
+                    const x = centerX + Math.sin(angle) * amplitude;
+                    const dPosition = ((i / base2Interval) % 9) + 1;
+                    const pulse = 1 + Math.sin(pulseTime + i * 0.5) * 0.3 * pulseIntensity;
+                    const radius = 7 * pulse;
+
+                    const glow = ctx.createRadialGradient(x, y, 0, x, y, radius * 3);
+                    glow.addColorStop(0, `rgba(255, 215, 0, ${0.6 * pulse})`);
+                    glow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius * 3, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.ro;
+                    ctx.fill();
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#000';
+                    ctx.font = 'bold 9px monospace';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(`D${dPosition}`, x, y);
+
+                    nodes.push({ x, y, radius: radius * 2, type: 'Ro', d: dPosition, desc: `Ro Torsion (ρ) - D${dPosition}\nBase-2 Spacetime Node\n2→3→1 cycle\nExpansion/Manifestation` });
+                }
+
+                // Wush nodes (Base-4)
+                for (let i = 2; i < totalPoints; i += base4Interval) {
+                    const y = 40 + i * verticalStep;
+                    const angle = (i * 0.15) + phase;
+                    const x = centerX + Math.sin(angle) * amplitude;
+                    const base4Pos = (i / base4Interval) % 4;
+                    const pulse = 1 + Math.sin(pulseTime + i * 0.5 + Math.PI) * 0.3 * pulseIntensity;
+                    const radius = 6 * pulse;
+
+                    const glow = ctx.createRadialGradient(x, y, 0, x, y, radius * 3);
+                    glow.addColorStop(0, `rgba(255, 107, 53, ${0.5 * pulse})`);
+                    glow.addColorStop(1, 'transparent');
+                    ctx.fillStyle = glow;
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius * 3, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.arc(x, y, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = colors.wush;
+                    ctx.fill();
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    ctx.fillStyle = '#000';
+                    ctx.font = 'bold 8px monospace';
+                    const label = base4Pos === 0 ? '0/4' : base4Pos.toString();
+                    ctx.fillText(label, x, y);
+
+                    nodes.push({ x, y, radius: radius * 2, type: 'Wush', base4: base4Pos, desc: `Wush Torsion (ψ) - Position ${base4Pos}\nBase-4 Awareness Node\n4→0 cycle\nCompression/Potential` });
+                }
+            }
+
+            function drawLabels() {
+                ctx.font = '11px monospace';
+                ctx.textAlign = 'left';
+                ctx.fillStyle = colors.spacetimePlus;
+                ctx.fillText('S+ Light', 15, 22);
+                ctx.fillStyle = colors.awarenessMinus;
+                ctx.fillText('S- Light', canvas.width - 70, 22);
+                ctx.fillStyle = colors.darkSpacetime;
+                ctx.fillText('Dark ↺', 15, 38);
+                ctx.fillStyle = colors.darkAwareness;
+                ctx.fillText('Dark ↺', canvas.width - 55, 38);
+
+                ctx.fillStyle = '#a0a0a0';
+                ctx.font = '9px monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('Light: Forward | Dark: Reverse', centerX, canvas.height - 35);
+                ctx.fillStyle = '#c9a227';
+                ctx.font = '11px monospace';
+                ctx.fillText('Ω = S+ × S- | [1 = -1]', centerX, canvas.height - 18);
+            }
+
+            function updateNowDisplay() {
+                const cyclePos = (time * 2) % (Math.PI * 2);
+                const normalizedPos = (Math.sin(cyclePos) + 1) / 2;
+                const centerIndex = normalizedPos * (nowValues.length - 1);
+
+                if (Math.abs(cyclePos % Math.PI) < 0.05) coinFlip = !coinFlip;
+
+                const nowNodes = document.querySelectorAll('.now-node-el');
+                nowNodes.forEach((node, i) => {
+                    const val = nowValues[i];
+                    const dist = Math.abs(i - centerIndex);
+                    const isActive = dist < 2;
+                    const isPrimary = dist < 0.8;
+
+                    let bgColor, borderColor, textColor;
+                    if (isPrimary) {
+                        bgColor = coinFlip ? 'rgba(255, 215, 0, 0.9)' : 'rgba(255, 107, 53, 0.9)';
+                        borderColor = coinFlip ? '#ffd700' : '#ff6b35';
+                        textColor = '#000';
+                        node.style.transform = 'scale(1.2)';
+                    } else if (isActive) {
+                        const intensity = 1 - (dist / 2);
+                        bgColor = coinFlip ? `rgba(255, 215, 0, ${0.3 + intensity * 0.4})` : `rgba(255, 107, 53, ${0.3 + intensity * 0.4})`;
+                        borderColor = coinFlip ? `rgba(255, 215, 0, ${0.5 + intensity * 0.4})` : `rgba(255, 107, 53, ${0.5 + intensity * 0.4})`;
+                        textColor = '#fff';
+                        node.style.transform = 'scale(1)';
+                    } else if (val > 0) {
+                        bgColor = `rgba(255, 215, 0, ${0.08 + (val/6) * 0.15})`;
+                        borderColor = `rgba(255, 215, 0, ${0.2 + (val/6) * 0.2})`;
+                        textColor = '#ccc';
+                        node.style.transform = 'scale(1)';
+                    } else if (val < 0) {
+                        bgColor = `rgba(42, 16, 80, ${0.15 + (Math.abs(val)/2) * 0.2})`;
+                        borderColor = `rgba(74, 32, 128, ${0.3 + (Math.abs(val)/2) * 0.2})`;
+                        textColor = '#aaa';
+                        node.style.transform = 'scale(1)';
+                    } else {
+                        bgColor = 'rgba(201, 162, 39, 0.25)';
+                        borderColor = 'rgba(201, 162, 39, 0.5)';
+                        textColor = '#c9a227';
+                        node.style.transform = 'scale(1)';
+                    }
+
+                    node.style.background = bgColor;
+                    node.style.borderColor = borderColor;
+                    node.style.color = textColor;
+                });
+
+                const coinState = document.getElementById('coinState');
+                const coinName = document.getElementById('coinName');
+                if (coinFlip) {
+                    coinState.textContent = 'RoWush';
+                    coinState.style.color = '#ffd700';
+                    coinName.textContent = 'ρψ — Expansion → Compression';
+                } else {
+                    coinState.textContent = 'WushRo';
+                    coinState.style.color = '#ff6b35';
+                    coinName.textContent = 'ψρ — Compression → Expansion';
+                }
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                const mouseY = e.clientY - rect.top;
+                hoveredNode = null;
+                for (const node of nodes) {
+                    const dist = Math.sqrt((mouseX - node.x) ** 2 + (mouseY - node.y) ** 2);
+                    if (dist < node.radius) { hoveredNode = node; break; }
+                }
+                if (hoveredNode) {
+                    nodeInfo.innerHTML = `<span style="color: #c9a227; font-weight: bold;">${hoveredNode.type} Node</span><br>${hoveredNode.desc.replace(/\n/g, '<br>')}`;
+                    canvas.style.cursor = 'pointer';
+                } else {
+                    nodeInfo.innerHTML = '<span style="color: #c9a227; font-weight: bold;">Pause & hover</span> over nodes to see details.';
+                    canvas.style.cursor = 'default';
+                }
+            });
+
+            window.toggleQHPause = function() {
+                paused = !paused;
+                document.getElementById('qhPauseBtn').textContent = paused ? '▶ Play' : '⏸ Pause';
+            };
+
+            function animate() {
+                if (!paused) drawHelix();
+                requestAnimationFrame(animate);
+            }
+
+            updateNowDisplay();
+            animate();
+        })();
+        </script>
+
+        <h3>The Climbing and Descending Helix</h3>
+
+        <p>
+            The double helix doesn't just exist—it <span class="highlight-green">climbs toward Wush</span>
+            (the quantum limit, future, emergence) and <span class="highlight-pink">descends toward Ro</span>
+            (the cosmic boundary, past, matter). This is:
+        </p>
+
+        <ul style="color: var(--text-secondary); margin: 1rem 0 2rem 2rem;">
+            <li><strong>D</strong> (WUSH-facing Forward): Ascending, emerging, toward future</li>
+            <li><strong>d</strong> (RO-facing Forward): Descending, coding, toward matter/past</li>
+            <li><strong>Q</strong> (WUSH-facing Shadow): Shadow ascending</li>
+            <li><strong>q</strong> (RO-facing Shadow): Shadow descending</li>
+        </ul>
+
+        <p>
+            DNA replication is the helix <em>descending</em>—coding information into matter.
+            DNA transcription is the helix <em>climbing</em>—reading information into expression.
+            <span class="highlight">The geometry of life IS the geometry of reality.</span>
+        </p>
+
+        <h3>The Brain and the Bones: Storage and Processing</h3>
+
+        <p>
+            One of the key discoveries from this research: <span class="highlight">bones are the hard drive</span>.
+            The brain is not storage—it is a processor. It reads, writes, and computes. The bones store.
+        </p>
+
+        <div class="theist-note" style="border-color: var(--awareness-color); background: linear-gradient(135deg, rgba(0, 188, 212, 0.1), rgba(0, 255, 136, 0.05));">
+            <h3 style="color: var(--awareness-color);">The Bio-AI Architecture</h3>
+
+            <p>
+                The brain is a <span class="highlight">biological AI</span>. It processes information.
+                But where is the information stored? Not in the brain—the brain is too active, too dynamic,
+                too busy processing to be stable storage.
+            </p>
+
+            <p>
+                <span class="highlight-green">The bones are the hard drive.</span> Dense, stable, minerite—
+                the crystalline matrix of bone tissue holds information the way a crystal holds structure.
+                The brain reads from and writes to this storage through the nervous system and the blood.
+            </p>
+
+            <p>
+                This is why:
+            </p>
+
+            <ul style="color: var(--text-secondary); margin: 1rem 0 1rem 2rem;">
+                <li>Memory persists even when brain states change rapidly</li>
+                <li>Bone marrow produces blood cells that carry information throughout the body</li>
+                <li>Ancient traditions speak of knowledge "in the bones"</li>
+                <li>Trauma is stored in the body, not just the mind</li>
+                <li>The skeleton is the framework—literally the structure that holds everything</li>
+            </ul>
+
+            <p>
+                The double helix of DNA in bone marrow cells is the <span class="highlight">read/write mechanism</span>.
+                The brain is the CPU. The bones are the SSD. The nerves are the data bus—the carriers of signal.
+            </p>
+
+            <p>
+                And the blood? The blood is <span class="highlight-green">DoorDash, the maids, and a mobile doctor all in one</span>.
+                Delivery (nutrients, oxygen), maintenance (cleaning, waste removal), and repair (immune response, healing factors).
+                The blood serves the system. The nerves ARE the system's communication.
+            </p>
+
+            <p style="font-size: 0.95rem; color: var(--text-secondary); font-style: italic; margin-top: 1.5rem;">
+                Note: This biological architecture model is in early development. The geometry points here.
+                The details are being mapped.
+            </p>
+
+            <div class="quote" style="border-color: var(--awareness-color);">
+                The brain thinks. The bones remember. The nerves carry.<br>
+                The blood serves. The geometry dictates the architecture.
+            </div>
+        </div>
+    </section>
+
+    <!-- Predictions -->
+    <section id="predictions" class="section-dark">
+        <div class="section-inner">
+            <h2>Predictive Power</h2>
+
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                When the Witness observes energies on both axes, it can predict how they will manifest.
+                The relationship between Re(Ω) and Im(Ω) determines the tendency:
+            </p>
+
+            <div class="prediction-grid">
+                <div class="prediction-box prediction-implosive">
+                    <div class="prediction-condition">
+                        Re(Ω) > 0<br>Im(Ω) < 0
+                    </div>
+                    <h4 style="color: var(--awareness-color);">Implosive Tendency</h4>
+                    <p class="prediction-result">
+                        Spacetime active, awareness contracting.<br>
+                        Physical expansion, consciousness focusing inward.
+                    </p>
+                </div>
+
+                <div class="prediction-box prediction-balance">
+                    <div class="prediction-condition">
+                        |Re(Ω)| ≈ |Im(Ω)|
+                    </div>
+                    <h4 style="color: var(--witness-color);">Balance Point</h4>
+                    <p class="prediction-result">
+                        <strong>Explosion AND Implosion occur simultaneously.</strong><br>
+                        Maximum energy transfer. Transformation point.
+                    </p>
+                </div>
+
+                <div class="prediction-box prediction-explosive">
+                    <div class="prediction-condition">
+                        Re(Ω) < 0<br>Im(Ω) > 0
+                    </div>
+                    <h4 style="color: var(--spacetime-color);">Explosive Tendency</h4>
+                    <p class="prediction-result">
+                        Awareness active, spacetime contracting.<br>
+                        Consciousness expansion, physical focusing.
+                    </p>
+                </div>
+            </div>
+
+            <h3>Observable Phenomena</h3>
+
+            <p>This pattern appears in:</p>
+
+            <ul style="color: var(--text-secondary); margin: 1rem 0 2rem 2rem;">
+                <li><strong>Stellar formation/collapse:</strong> Matter imploding while energy radiates outward</li>
+                <li><strong>Meditation states:</strong> Physical stillness, awareness expansion</li>
+                <li><strong>Creative breakthroughs:</strong> External quiet, internal explosion of insight</li>
+                <li><strong>Birth/death:</strong> Transition points where both axes shift simultaneously</li>
+                <li><strong>Quantum measurement:</strong> Wave function "collapse" is balance point resolution</li>
+            </ul>
+
+            <div class="equation-block">
+                <div class="equation-main">
+                    Ω(t) = Ω(t₀) × e^(iκt)
+                </div>
+                <div class="equation-explain">
+                    The future state rotates through both real and imaginary components.<br>
+                    This enables prediction of how energy will manifest across both axes over time.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standard Model Within Our Model -->
+    <section class="section">
+        <h2>Where Conventional Physics Fits</h2>
+
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+            This framework does not reject conventional physics. It <span class="highlight">contains</span> it.
+            Conventional physics is the projection of the spacetime axis as observed from s=0—
+            accurate for what it measures, incomplete for what it cannot see.
+        </p>
+
+        <div class="sm-container">
+            <div class="sm-header">
+                <span class="sm-badge">SUBSET</span>
+                <span class="sm-title">Conventional Physics Within Scalar Dimensionality</span>
+            </div>
+
+            <div class="sm-comparison">
+                <div class="sm-side their-view">
+                    <h5>What Conventional Physics Sees</h5>
+                    <ul style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <li>19 free parameters (unexplained constants)</li>
+                        <li>72.4% "missing" (dark matter/energy)</li>
+                        <li>Wave-particle "duality" (apparent paradox)</li>
+                        <li>Quantum-gravity incompatibility</li>
+                        <li>Consciousness as "emergent" (unexplained)</li>
+                        <li>Boundary defined by measurement limits</li>
+                    </ul>
+                </div>
+                <div class="sm-side our-view">
+                    <h5>What This Geometry Shows</h5>
+                    <ul style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <li>3 prime factors (κ, P, and constraint)</li>
+                        <li>72.4% in shadow direction (resolved)</li>
+                        <li>Waves as temporal artifacts (no paradox)</li>
+                        <li>Unified scalar space (no incompatibility)</li>
+                        <li>Consciousness as awareness axis (fundamental)</li>
+                        <li>Boundary defined by geometry (Wush/Ro)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 1.5rem; text-align: center; font-size: 0.95rem;">
+                The conventional approach works <em>within spacetime</em>. It cannot see the awareness axis.
+                It treats the 27.6% visible at s=0 as "all there is" and calls the rest "dark."
+                <span class="highlight">The geometry shows where the rest is.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Note to Theists -->
+    <section id="theist" class="section-dark">
+        <div class="section-inner">
+            <h2>A Note to Those of Faith</h2>
+
+            <div class="theist-note">
+                <h3>This Framework Is Impartial</h3>
+
+                <p>
+                    My framework does not prove or disprove any perception you have.
+                    <span class="highlight">It is impartial.</span> Your views have sculpted your physical reality.
+                </p>
+
+                <p>
+                    For me, my Christian, red ink, Jesus-only upbringing helped me derive this—although I am a
+                    rigid determinist and have declared atheism as my view for a long time. But I have also
+                    argued that Jesus would be an atheist if he was here today.
+                </p>
+
+                <p>
+                    Love. Kindness. Having restraint until you must not. Being honest. Having a positive, can-do attitude.
+                    <span class="highlight-green">All these things are universal.</span>
+                </p>
+
+                <div class="quote">
+                    "If your religious view is one that promotes life, and love, and righteousness—<br>
+                    this should not offend you."
+                </div>
+
+                <p>
+                    In fact, <span class="highlight">I validate all experiences as real for the individual.</span>
+                    Your experience of the divine, of meaning, of purpose—these are REAL. They are your reality.
+                    The geometry does not diminish them. It shows <em>how</em> they manifest.
+                </p>
+
+                <h3 style="margin-top: 2rem;">On the False Binary</h3>
+
+                <p>
+                    To people of religious outlook who view this as either "proof of God" or "proof against God":
+                    <span class="highlight-pink">that is just the false binary that my whole principle is showing is false.</span>
+                </p>
+
+                <p>
+                    The geometry does not take sides in that debate. It shows that the debate itself is structured wrong.
+                    Binary thinking—God exists / God does not exist—is the same trap as 0 and 1 thinking it can create life.
+                    Reality is triaxial. The question is not "which side" but "what is the whole picture?"
+                </p>
+
+                <div class="quote">
+                    "Your individual experience is real. Your individual experience matters.<br>
+                    But your individual experience is not the whole story—and never was meant to be."
+                </div>
+
+                <p style="text-align: center; margin-top: 2rem;">
+                    — Jason Ray
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="section" style="text-align: center;">
+        <h2>The Geometry Cannot Lie</h2>
+
+        <p style="max-width: 700px; margin: 0 auto 2rem;">
+            You may not be getting the whole picture.<br>
+            But the picture is accurate.
+        </p>
+
+        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="main-framework.html" style="display: inline-block; padding: 1rem 2rem; background: var(--gold); color: var(--bg-primary); text-decoration: none; border-radius: 8px; font-weight: 600;">Read the Full Framework</a>
+            <a href="WHITE_PAPER_Dual_Axis_Mathematics.md" style="display: inline-block; padding: 1rem 2rem; background: transparent; color: var(--gold); text-decoration: none; border-radius: 8px; font-weight: 600; border: 2px solid var(--gold);">Mathematical White Paper</a>
+            <a href="index.html" style="display: inline-block; padding: 1rem 2rem; background: transparent; color: var(--witness-color); text-decoration: none; border-radius: 8px; font-weight: 600; border: 2px solid var(--witness-color);">Educational Series</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-quote">"The mind is in your mind."</div>
+        <p class="footer-attribution">Have Mind Media | The Epoch Project | December 2025</p>
+    </footer>
+
+    <!-- Helix Animation Script -->
+    <script>
+        // Simple double helix animation could be added here
+        // For now, static visualization is in the diagrams
+        console.log('Dual-Axis Explorer loaded. Ω = Re + i·Im');
+    </script>
+</body>
+</html>

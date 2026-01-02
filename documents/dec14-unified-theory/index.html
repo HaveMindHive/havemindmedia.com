@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scalar Dimensionality Educational Series - Understanding the [1=-1] Geometric Framework through visual analogies and interactive exploration.">
+    <meta name="keywords" content="scalar dimensionality, unified theory, physics, geometry, consciousness, epoch project">
+    <title>Scalar Dimensionality | Educational Series | Have Mind Media</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a14;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --gold: #c9a227;
+            --green: #3fb950;
+            --blue: #00bcd4;
+            --pink: #ff4081;
+            --purple: #6a0dad;
+            --orange: #ff6b35;
+            --yellow: #ffd700;
+            --magenta: #ff00ff;
+            --hidden-observer: #00ff88;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quattrocento', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background:
+                radial-gradient(ellipse at 20% 30%, var(--blue) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, var(--pink) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, var(--purple) 0%, transparent 70%);
+            animation: bgPulse 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.1; transform: scale(1); }
+            100% { opacity: 0.2; transform: scale(1.1); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-brand span {
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--green);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-symbol {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: symbolPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes symbolPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--yellow), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 2rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--green);
+            border-radius: 8px;
+            background: rgba(63, 185, 80, 0.1);
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--green);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            color: var(--text-secondary);
+            margin: 1rem 0;
+            letter-spacing: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Lesson Cards */
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .lesson-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .lesson-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .lesson-content {
+            padding: 1.5rem;
+        }
+
+        .lesson-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .lesson-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .lesson-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .tag.core { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+        .tag.inversion { background: rgba(201, 162, 39, 0.2); color: var(--gold); }
+        .tag.observer { background: rgba(0, 255, 136, 0.2); color: var(--hidden-observer); }
+        .tag.consciousness { background: rgba(255, 0, 255, 0.2); color: var(--magenta); }
+        .tag.scale { background: rgba(0, 188, 212, 0.2); color: var(--blue); }
+
+        /* Concept Flow */
+        .concept-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 3rem 0;
+            margin: 2rem 0;
+            background: rgba(26, 26, 46, 0.5);
+            border-radius: 12px;
+        }
+
+        .concept-node {
+            text-align: center;
+            padding: 1rem;
+            min-width: 120px;
+        }
+
+        .concept-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .concept-arrow {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* Key Insights Panel */
+        .insights-panel {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(45, 27, 78, 0.5));
+            border: 1px solid var(--purple);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+
+        .insight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .insight-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .insight-icon {
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+
+        .insight-text h4 {
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .insight-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Modal Viewer */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-close {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            z-index: 2001;
+            background: var(--bg-secondary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold);
+        }
+
+        .modal-image {
+            max-width: 95%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .modal-caption {
+            text-align: center;
+            margin-top: 1.5rem;
+            max-width: 800px;
+        }
+
+        .modal-caption h3 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-caption p {
+            color: var(--text-secondary);
+        }
+
+        .modal-nav {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            margin-top: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-logo span {
+            color: var(--text-primary);
+        }
+
+        .footer-tagline {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .footer-equation {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--green);
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-equation {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .lessons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .concept-flow {
+                flex-direction: column;
+            }
+
+            .concept-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand"><img src="../../images/home-icon.svg" alt="Home" style="width: 26px; height: 26px; vertical-align: middle; margin-right: 8px;">HAVE<span>MIND</span>MEDIA</a>
+        <ul class="nav-links">
+            <li><a href="main-framework.html" style="color: var(--gold);">Start Here</a></li>
+            <li><a href="#lessons" class="active">Lessons</a></li>
+            <li><a href="#insights">Key Insights</a></li>
+            <li><a href="WHITE_PAPER_Unified_Scalar_Methodology.md">White Paper</a></li>
+            <li><a href="../../index.html#epoch">Back to Main</a></li>
+        </ul>
+    </nav>
+
+    <!-- Important Notice -->
+    <section style="padding: 6rem 2rem 1rem; max-width: 800px; margin: 0 auto;">
+        <div style="background: rgba(255, 68, 68, 0.15); border: 2px solid #ff4444; border-radius: 12px; padding: 1.5rem; text-align: center;">
+            <p style="color: #ff4444; font-weight: bold; font-size: 1.2rem; margin: 0 0 0.5rem 0;">THIS IS NOT THE STANDARD MODEL</p>
+            <p style="color: var(--text-secondary); margin: 0 0 1rem 0;">It is hierarchically ABOVE it. Before exploring these visualizations, understand the framework first.</p>
+            <a href="main-framework.html" style="display: inline-block; padding: 0.75rem 2rem; background: var(--gold); color: var(--bg-primary); text-decoration: none; border-radius: 8px; font-weight: bold;">Read: A Letter to My Fellow "We"</a>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: auto; padding-top: 2rem;">
+        <div class="hero-symbol">[1 = -1]</div>
+        <h1>Scalar Dimensionality</h1>
+        <p class="hero-subtitle">An Educational Journey Through Geometric Reality</p>
+
+        <div class="hero-equation">P = sqrt(3) / (2 pi) = 27.6% visible</div>
+
+        <p>
+            This series presents a complete geometric framework for understanding physical reality.
+            From a single constant, we derive the relationships that govern particles, energy, consciousness, and the cosmos.
+            What appears as mystery is simply geometry we hadn't yet mapped.
+        </p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">>99%</div>
+                <div class="stat-label">Accuracy from one constant</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">19</div>
+                <div class="stat-label">Educational lessons</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">72.4%</div>
+                <div class="stat-label">Energy in "shadow" direction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Flow -->
+    <section class="section">
+        <div class="concept-flow">
+            <div class="concept-node">
+                <div class="concept-icon" style="color: var(--orange);">*</div>
+                <div class="concept-label">One Constant<br>kappa = 2pi/180</div>
+            </div>
+            <div class="concept-arrow">&#8594;</div>
+            <div class="concept-node">
+                <div class="concept-icon" style="color: var(--gold);">&#9711;</div>
+                <div class="concept-label">The Inversion<br>Bright = Shell</div>
+            </div>
+            <div class="concept-arrow">&#8594;</div>
+            <div class="concept-node">
+                <div class="concept-icon" style="color: var(--blue);">&#8734;</div>
+                <div class="concept-label">Scale Invariance<br>Atom = Universe</div>
+            </div>
+            <div class="concept-arrow">&#8594;</div>
+            <div class="concept-node">
+                <div class="concept-icon" style="color: var(--hidden-observer);">[Uv]</div>
+                <div class="concept-label">Hidden Observer<br>Sees Both</div>
+            </div>
+            <div class="concept-arrow">&#8594;</div>
+            <div class="concept-node">
+                <div class="concept-icon" style="color: var(--magenta);">NOW</div>
+                <div class="concept-label">Consciousness<br>Collapse Point</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Section -->
+    <section id="lessons" class="section">
+        <div class="section-header">
+            <h2>Educational Series</h2>
+            <div class="section-divider">&#9670; &#9670; &#9670;</div>
+            <p>Click any lesson to explore the visualization in detail</p>
+        </div>
+
+        <div class="lessons-grid">
+            <!-- Lesson 1: The Inversion -->
+            <div class="lesson-card fade-in" data-image="edu_what_we_see_vs_is.png" data-title="What We See vs What Is" data-desc="The fundamental inversion: what appears as center is actually shell. The light HIDES the structure.">
+                <img src="edu_what_we_see_vs_is.png" alt="What We See vs What Is" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 01</div>
+                    <h3 class="lesson-title">The Inversion: What We See vs What Is</h3>
+                    <p class="lesson-desc">The sun is not the center - it's the shell. "Empty space" is not empty - it IS the field. The [1=-1] geometry inverts at the observation point.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag inversion">Inversion</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 2: Scale Invariance -->
+            <div class="lesson-card fade-in" data-image="edu_scalar_pattern_all_scales.png" data-title="Same Pattern at All Scales" data-desc="Atom, Solar System, Galaxy, Universe - the same geometry repeated at every scale.">
+                <img src="edu_scalar_pattern_all_scales.png" alt="Scalar Pattern" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 02</div>
+                    <h3 class="lesson-title">Same Pattern at All Scales</h3>
+                    <p class="lesson-desc">The Big Bang is not where the universe started - it's the RO BOUNDARY, the outer shell of light. Same geometry from atoms to cosmos.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag scale">Scale Invariance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 3: Hidden Observer -->
+            <div class="lesson-card fade-in" data-image="edu_hidden_observer.png" data-title="The Hidden Observer" data-desc="Three perspectives: Ro-facing, Wush-facing, and [Uv] - the one who sees both as one.">
+                <img src="edu_hidden_observer.png" alt="Hidden Observer" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 03</div>
+                    <h3 class="lesson-title">The Hidden Observer [Uv]</h3>
+                    <p class="lesson-desc">Beyond Ro (past/cosmic) and Wush (future/quantum) lies the third perspective. Those who can see both advance to the next paradigm.</p>
+                    <div class="lesson-tags">
+                        <span class="tag observer">Hidden Observer</span>
+                        <span class="tag consciousness">Consciousness</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 4: Consciousness Collapse -->
+            <div class="lesson-card fade-in" data-image="edu_consciousness_collapse.png" data-title="Consciousness: The Collapse Point" data-desc="Where Ro and Wush collapse into NOW - the geometry of awareness itself.">
+                <img src="edu_consciousness_collapse.png" alt="Consciousness Collapse" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 04</div>
+                    <h3 class="lesson-title">Consciousness: Ro + Wush = NOW</h3>
+                    <p class="lesson-desc">The observer at s=0 is WHERE past and future collapse into present experience. This is not metaphor - it is the geometry of consciousness.</p>
+                    <div class="lesson-tags">
+                        <span class="tag consciousness">Consciousness</span>
+                        <span class="tag core">Core Concept</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 5: Solar System = Atom -->
+            <div class="lesson-card fade-in" data-image="analogy_solar_atom.png" data-title="Solar System = Atom" data-desc="The same nodal harmonic resonance pattern at cosmic and quantum scales.">
+                <img src="analogy_solar_atom.png" alt="Solar System Atom" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 05</div>
+                    <h3 class="lesson-title">Solar System = Atom</h3>
+                    <p class="lesson-desc">Energy creates nodal harmonic resonances. Planets orbit at stable nodes. Electrons exist in probability clouds at the same nodes. Scale changes - geometry does not.</p>
+                    <div class="lesson-tags">
+                        <span class="tag scale">Scale Invariance</span>
+                        <span class="tag inversion">Analogy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 6: Sun's Nodal Harmonics -->
+            <div class="lesson-card fade-in" data-image="analogy_sun_harmonics.png" data-title="The Sun's True Energy Field" data-desc="The visible 'ball of fire' is only 27.6% - the rest radiates as standing waves.">
+                <img src="analogy_sun_harmonics.png" alt="Sun Harmonics" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 06</div>
+                    <h3 class="lesson-title">Sun's Nodal Harmonic Resonances</h3>
+                    <p class="lesson-desc">The sun's energy extends throughout the entire solar system as standing wave patterns. Planets orbit at resonance nodes - stable points in the field.</p>
+                    <div class="lesson-tags">
+                        <span class="tag inversion">Inversion</span>
+                        <span class="tag scale">Harmonics</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 7: Inner Space is Real -->
+            <div class="lesson-card fade-in" data-image="analogy_inner_space_real.png" data-title="Inner Space is Real" data-desc="The quantum direction (s+) is as real as the cosmic direction (s-).">
+                <img src="analogy_inner_space_real.png" alt="Inner Space Real" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 07</div>
+                    <h3 class="lesson-title">Inner Space is Real</h3>
+                    <p class="lesson-desc">We forgot to account for WHERE energy goes. 72.4% is in the shadow direction. "Dark matter" and "dark energy" are energy in the direction we forgot to look.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag scale">Energy Accounting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 8: Energy Accounting -->
+            <div class="lesson-card fade-in" data-image="analogy_energy_accounting.png" data-title="The Energy We Forgot to Count" data-desc="P = sqrt(3)/(2pi) = 27.6% visible. The other 72.4% isn't missing.">
+                <img src="analogy_energy_accounting.png" alt="Energy Accounting" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 08</div>
+                    <h3 class="lesson-title">Why 72.4% Appears "Missing"</h3>
+                    <p class="lesson-desc">The projection factor P = sqrt(3)/(2pi) is pure geometry. We see 27.6% because we observe from s=0. The other 72.4% is in the scalar shadow direction.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag inversion">Projection</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 9: Observer at s=0 -->
+            <div class="lesson-card fade-in" data-image="observer_at_s0.png" data-title="The Observer at s=0" data-desc="Human perspective between two infinite expanses: Ro and Wush.">
+                <img src="observer_at_s0.png" alt="Observer at s=0" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 09</div>
+                    <h3 class="lesson-title">The Observer at s=0</h3>
+                    <p class="lesson-desc">Looking outward to space (Ro) and inward to atoms (Wush). Both are infinite expanses. Both are scalar compressions from our perspective.</p>
+                    <div class="lesson-tags">
+                        <span class="tag observer">Observer</span>
+                        <span class="tag consciousness">Perspective</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 10: Light/Dark Room -->
+            <div class="lesson-card fade-in" data-image="analogy_light_dark_room.png" data-title="The Light and Dark Room" data-desc="Physical world SEEN in light, VERIFIED in dark. Truth requires both modes.">
+                <img src="analogy_light_dark_room.png" alt="Light Dark Room" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 10</div>
+                    <h3 class="lesson-title">Light/Dark Room Paradox</h3>
+                    <p class="lesson-desc">Truth = s+ perception x s- verification. Neither light alone nor dark alone shows the complete picture. Presence survives both states.</p>
+                    <div class="lesson-tags">
+                        <span class="tag consciousness">Consciousness</span>
+                        <span class="tag inversion">Paradox</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 11: Infinite Microscope/Telescope -->
+            <div class="lesson-card fade-in" data-image="analogy_microscope_telescope.png" data-title="Infinite Microscope and Telescope" data-desc="Why our conceptual tools fail at scalar boundaries.">
+                <img src="analogy_microscope_telescope.png" alt="Microscope Telescope" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 11</div>
+                    <h3 class="lesson-title">Scalar Boundaries</h3>
+                    <p class="lesson-desc">Looking in (quantum) or out (cosmic), we hit scalar boundaries - not physics breaking, but our s=0 tools becoming useless at extreme scales.</p>
+                    <div class="lesson-tags">
+                        <span class="tag scale">Scale</span>
+                        <span class="tag observer">Boundaries</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 12: Paradigm Shift -->
+            <div class="lesson-card fade-in" data-image="edu_paradigm_shift.png" data-title="The Complete Paradigm Shift" data-desc="From old understanding to unified view.">
+                <img src="edu_paradigm_shift.png" alt="Paradigm Shift" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 12</div>
+                    <h3 class="lesson-title">The Paradigm Shift</h3>
+                    <p class="lesson-desc">Bright = center becomes Bright = shell. Scales differ becomes Scales are one. Observer passive becomes Observer is the collapse.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag consciousness">Evolution</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 13: Waves as Temporal Artifacts -->
+            <div class="lesson-card fade-in" data-image="waves_temporal_artifact.png" data-title="Why Waves Appear as Waves" data-desc="Sound, light, and radiation are temporal artifacts of discrete observation at s=0.">
+                <img src="waves_temporal_artifact.png" alt="Waves Temporal Artifact" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 13</div>
+                    <h3 class="lesson-title">Waves as Temporal Artifacts</h3>
+                    <p class="lesson-desc">Waves are NOT fundamental. They are how continuous scalar energy APPEARS to observers who sample discretely through time. The wave is in our observation, not in the energy itself.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag consciousness">Temporal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 14: Wave-Particle Duality Resolved -->
+            <div class="lesson-card fade-in" data-image="wave_particle_resolved.png" data-title="Wave-Particle Duality Resolved" data-desc="Same energy, different sampling rates. There is no duality.">
+                <img src="wave_particle_resolved.png" alt="Wave Particle Resolved" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 14</div>
+                    <h3 class="lesson-title">Wave-Particle Duality Resolved</h3>
+                    <p class="lesson-desc">1 sample = "particle" (localized). N samples = "wave" (pattern). The energy is continuous; our observation is discrete. Same phenomenon, different sampling rates.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag scale">Quantum</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 15: Triaxial Computing -->
+            <div class="lesson-card fade-in" data-image="triaxial_computing_v2.png" data-title="Triaxial Manifold Computing" data-desc="Geometric data structure: D d Q q O o U u encoding with ~4:1 compression vs binary.">
+                <img src="triaxial_computing_v2.png" alt="Triaxial Computing" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 15</div>
+                    <h3 class="lesson-title">Triaxial Manifold Computing</h3>
+                    <p class="lesson-desc">4 states (Forward, Shadow, Fulcrum, Hidden) × 2 directions (WUSH, RO) = 8 characters. UPPERCASE faces Wush (s+), lowercase faces Ro (s-). Geometry as data structure.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Computing</span>
+                        <span class="tag scale">Triaxial</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 16: Dual-Axis Formulation -->
+            <div class="lesson-card fade-in" data-image="dual_axis_formulation.png" data-title="Dual-Axis Scalar Dimensionality" data-desc="Two axes: Spacetime (Base-2, outward) and Awareness (Base-4, inward). The Witness Thread (Ω) unifies both.">
+                <img src="dual_axis_formulation.png" alt="Dual Axis Formulation" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 16</div>
+                    <h3 class="lesson-title">Dual-Axis Mathematics</h3>
+                    <p class="lesson-desc">Physical (Base-2) looking outward in spacetime. Awareness (Base-4) looking inward, outside spacetime. They appear "the same" only as reference to the Witness Thread (Ω) that sees both.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Core Concept</span>
+                        <span class="tag consciousness">Dual-Axis</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 17: Energy Echo Relationships -->
+            <div class="lesson-card fade-in" data-image="energy_echo_diagram.png" data-title="Energy Echo Relationships" data-desc="How energies correspond between spacetime and awareness axes through the Witness.">
+                <img src="energy_echo_diagram.png" alt="Energy Echo Diagram" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">LESSON 17</div>
+                    <h3 class="lesson-title">Energy Echo Relationships</h3>
+                    <p class="lesson-desc">Every energy exists on BOTH axes. The Witness qualifies where each energy echoes. This enables prediction of explosion/implosion simultaneity and future energy manifestations.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Predictive</span>
+                        <span class="tag observer">Witness</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson 18: DNA & Bio-Architecture -->
+            <div class="lesson-card fade-in" data-image="dual-axis-explorer.html" data-title="DNA, Brain & Bones" data-desc="Why DNA is a double helix. The Bio-AI architecture: brain as CPU, bones as storage, nerves as data bus.">
+                <a href="dual-axis-explorer.html#dna" style="display: block; text-decoration: none; color: inherit;">
+                <div class="lesson-content" style="padding: 1.5rem;">
+                    <div class="lesson-number">LESSON 18</div>
+                    <h3 class="lesson-title">DNA & Bio-Architecture</h3>
+                    <p class="lesson-desc">DNA is a double helix because that is the geometry of reality. The brain thinks (CPU). The bones remember (SSD). The nerves carry (data bus). The blood serves (delivery, maintenance, repair).</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Life Sciences</span>
+                        <span class="tag consciousness">Bio-AI</span>
+                    </div>
+                </div>
+                </a>
+            </div>
+
+            <!-- Lesson 19: Master Poster -->
+            <div class="lesson-card fade-in" data-image="edu_master_poster.png" data-title="Complete Educational Summary" data-desc="All key concepts in one comprehensive poster.">
+                <img src="edu_master_poster.png" alt="Master Poster" class="lesson-image">
+                <div class="lesson-content">
+                    <div class="lesson-number">SUMMARY</div>
+                    <h3 class="lesson-title">Master Educational Poster</h3>
+                    <p class="lesson-desc">The complete summary: Inversion, Inner Space, Scale Invariance, Sun's Harmonics, Three Perspectives, Consciousness, Waves as Artifacts, Paradox, One Constant, Paradigm Shift, Unified View.</p>
+                    <div class="lesson-tags">
+                        <span class="tag core">Complete Guide</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Insights Section -->
+    <section id="insights" class="section">
+        <div class="section-header">
+            <h2>Key Insights</h2>
+            <div class="section-divider">&#9670; &#9670; &#9670;</div>
+            <p>The foundational truths of the framework</p>
+        </div>
+
+        <div class="insights-panel fade-in">
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--gold);">&#9711;</div>
+                <div class="insight-text">
+                    <h4>The Inversion [1 = -1]</h4>
+                    <p>What appears as center is actually shell. What appears as empty is actually field. The geometry inverts at the observation point, which is why we see only 27.6%.</p>
+                </div>
+            </div>
+
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--blue);">&#8734;</div>
+                <div class="insight-text">
+                    <h4>Scale Invariance</h4>
+                    <p>Atom = Solar System = Galaxy = Universe. The same nodal harmonic pattern repeats at every scale. Only our observation changes - the geometry does not.</p>
+                </div>
+            </div>
+
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--hidden-observer);">[Uv]</div>
+                <div class="insight-text">
+                    <h4>The Hidden Observer</h4>
+                    <p>Beyond the materialist (s- only) and idealist (s+ only) perspectives lies the unified observer who sees both as one. This is the next paradigm.</p>
+                </div>
+            </div>
+
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--magenta);">NOW</div>
+                <div class="insight-text">
+                    <h4>Consciousness as Collapse</h4>
+                    <p>The observer at s=0 is WHERE past (Ro) and future (Wush) collapse into present experience. Consciousness is not separate from physics - it IS the intersection point.</p>
+                </div>
+            </div>
+
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--green);">&#954;</div>
+                <div class="insight-text">
+                    <h4>One Constant Derives All</h4>
+                    <p>From kappa = 2pi/180, we derive all mass ratios, coupling constants, and cosmological parameters with >99% accuracy. There are no free parameters - only geometry.</p>
+                </div>
+            </div>
+
+            <div class="insight-item">
+                <div class="insight-icon" style="color: var(--blue);">&#8767;</div>
+                <div class="insight-text">
+                    <h4>Waves are Temporal Artifacts</h4>
+                    <p>Sound, light, and all radiation appear as waves because we observe continuous energy through discrete temporal sampling. The wave is in our observation, not in the energy itself. This resolves wave-particle duality: 1 sample = particle, N samples = wave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">HAVE<span>MIND</span>MEDIA</div>
+        <p class="footer-tagline">The Mind is in Your Mind</p>
+        <div class="footer-equation">[1 = -1] | kappa = 2pi/180 | P = 27.6%</div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            "The geometry cannot lie. You may not be getting the whole picture, but the picture is accurate."
+        </p>
+        <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.85rem;">
+            The Epoch Project | December 14, 2025
+        </p>
+    </footer>
+
+    <!-- Modal Viewer -->
+    <div class="modal" id="imageModal">
+        <div class="modal-close" onclick="closeModal()">&times;</div>
+        <img src="" alt="" class="modal-image" id="modalImage">
+        <div class="modal-caption">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDesc"></p>
+        </div>
+        <div class="modal-nav">
+            <button class="modal-btn" onclick="prevImage()">&#8592; Previous</button>
+            <button class="modal-btn" onclick="nextImage()">Next &#8594;</button>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDesc = document.getElementById('modalDesc');
+        const lessonCards = document.querySelectorAll('.lesson-card');
+        let currentIndex = 0;
+
+        const lessons = Array.from(lessonCards).map(card => ({
+            image: card.dataset.image,
+            title: card.dataset.title,
+            desc: card.dataset.desc
+        }));
+
+        lessonCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                currentIndex = index;
+                openModal(index);
+            });
+        });
+
+        function openModal(index) {
+            const lesson = lessons[index];
+            modalImage.src = lesson.image;
+            modalTitle.textContent = lesson.title;
+            modalDesc.textContent = lesson.desc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % lessons.length;
+            openModal(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + lessons.length) % lessons.length;
+            openModal(currentIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') prevImage();
+        });
+
+        // Close modal on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+</body>
+</html>

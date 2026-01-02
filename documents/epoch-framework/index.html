@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scalar Dimensionality: A Geometric Framework for Physical Reality - The [1=-1] Epoch Project">
+    <title>Scalar Dimensionality | [1=-1] Epoch Framework</title>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-light: #e8d48b;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --text: #e8e8e8;
+            --text-muted: #a0a0a0;
+            --success: #3fb950;
+            --info: #4a9eff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .principle {
+            font-family: monospace;
+            font-size: 2rem;
+            color: var(--gold-light);
+            margin: 1rem 0;
+        }
+
+        .kappa-display {
+            font-family: monospace;
+            font-size: 1.3rem;
+            color: var(--success);
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(63, 185, 80, 0.1);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .methodology-banner {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(74, 158, 255, 0.2));
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .methodology-banner h2 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .methodology-banner p {
+            color: var(--text);
+            margin: 0.5rem 0;
+        }
+
+        .methodology-banner .emphasis {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .warning-box {
+            background: rgba(255, 100, 100, 0.1);
+            border-left: 4px solid #ff6464;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-box h3 {
+            color: #ff6464;
+            margin-bottom: 0.5rem;
+        }
+
+        section {
+            margin: 3rem 0;
+        }
+
+        section h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .triaxial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .triaxial-card {
+            background: var(--dark);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .triaxial-card.forward { border-color: var(--gold); }
+        .triaxial-card.shadow { border-color: var(--info); }
+        .triaxial-card.potential { border-color: var(--success); }
+
+        .triaxial-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .triaxial-card.forward h3 { color: var(--gold); }
+        .triaxial-card.shadow h3 { color: var(--info); }
+        .triaxial-card.potential h3 { color: var(--success); }
+
+        .triaxial-card .symbol {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .triaxial-card .value {
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--text);
+            margin: 0.5rem 0;
+        }
+
+        .derivation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .derivation-table th,
+        .derivation-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .derivation-table th {
+            color: var(--gold);
+            font-weight: normal;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .derivation-table td:first-child {
+            color: var(--text);
+        }
+
+        .derivation-table td:nth-child(2) {
+            font-family: monospace;
+            color: var(--success);
+        }
+
+        .derivation-table td:nth-child(3) {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .plot-container {
+            background: var(--dark);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .plot-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .plot-caption {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .energy-budget {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--dark);
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .budget-item {
+            text-align: center;
+        }
+
+        .budget-item .value {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .budget-item.detected .value { color: var(--success); }
+        .budget-item.hidden .value { color: var(--gold); }
+
+        .budget-item .label {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .key-insight {
+            background: rgba(201, 162, 39, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .key-insight p {
+            margin: 0.5rem 0;
+        }
+
+        .files-list {
+            list-style: none;
+        }
+
+        .files-list li {
+            padding: 1rem;
+            background: var(--dark);
+            border-left: 3px solid var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .files-list a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .files-list a:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
+
+        .files-list .desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            margin-top: 3rem;
+        }
+
+        footer .principle {
+            font-size: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--text-muted);
+            padding: 1rem 2rem;
+            border-left: 3px solid var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 0.5rem;
+            color: var(--gold);
+            font-style: normal;
+        }
+        /* Unified Navigation */
+        .unified-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.25);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .nav-brand .sig { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px; opacity: 0.6; }
+        .nav-menu { position: relative; }
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            color: var(--text-muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .nav-toggle:hover { background: rgba(201, 162, 39, 0.1); border-color: var(--gold); color: var(--gold); }
+        .nav-toggle .arrow { font-size: 0.6rem; transition: transform 0.3s ease; }
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(15, 15, 26, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+        .nav-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.6rem 0.8rem;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .nav-dropdown a:hover { background: rgba(201, 162, 39, 0.1); color: var(--gold); }
+        .nav-dropdown a.active { color: var(--gold); background: rgba(201, 162, 39, 0.15); }
+        .nav-dropdown .icon { width: 22px; text-align: center; }
+        .nav-dropdown .divider { height: 1px; background: rgba(201, 162, 39, 0.2); margin: 0.5rem 0; }
+        .container { padding-top: 80px; }
+    </style>
+</head>
+<body>
+    <!-- Unified Navigation -->
+    <nav class="unified-nav">
+        <a href="../../index.html" class="nav-brand">
+            <span>HAVE MIND MEDIA</span>
+            <span class="sig">◯∰⧬⫰∭⧖</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" id="navToggle">
+                <span>Explore</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="../../index.html"><span class="icon">⌂</span> Home</a>
+                <a href="../../soul-science.html"><span class="icon">☯</span> Soul Science</a>
+                <div class="divider"></div>
+                <a href="../../three-body-geometry.html"><span class="icon">◉</span> Three-Body Solution</a>
+                <a href="../../millennium-problems.html"><span class="icon">💰</span> Millennium Problems</a>
+                <a href="../../jwst-geometric-explorer.html"><span class="icon">🔭</span> JWST Explorer</a>
+                <div class="divider"></div>
+                <a href="../dec14-model-cern/index.html"><span class="icon">⚛</span> CERN Scalar</a>
+                <a href="index.html" class="active"><span class="icon">⏱</span> Epoch Framework</a>
+                <a href="../dec14-unified-theory/index.html"><span class="icon">◎</span> 19 Lessons</a>
+                <a href="../dec14-unified-theory/dual-axis-explorer.html"><span class="icon">∞</span> Dual-Axis Explorer</a>
+                <div class="divider"></div>
+                <a href="../../socratean-education.html"><span class="icon">🎓</span> Socratean AI</a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.getElementById('navToggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('navDropdown').classList.toggle('active');
+            document.querySelector('#navToggle .arrow').style.transform =
+                document.getElementById('navDropdown').classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('navToggle').contains(e.target) && !document.getElementById('navDropdown').contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('#navToggle .arrow').style.transform = 'rotate(0deg)';
+            }
+        });
+    </script>
+
+    <div class="container">
+        <header>
+            <h1>Scalar Dimensionality</h1>
+            <p class="subtitle">A Geometric Framework for Physical Reality</p>
+            <div class="principle">[-1 = 0 = +1]</div>
+            <div class="kappa-display">kappa = 2pi/180 = 0.034906585...</div>
+            <p style="color: var(--text-muted); margin-top: 1rem;">The Epoch Project | December 2025 | Jason Ray</p>
+        </header>
+
+        <div class="methodology-banner">
+            <h2>THIS IS NOT STANDARD MODEL</h2>
+            <p>This is a <span class="emphasis">standalone geometric framework</span> for energy relations in spacetime.</p>
+            <p>Standard Model exists <span class="emphasis">within</span> this geometry as one observable projection (s=0 slice).</p>
+            <p>All relationships derive from <span class="emphasis">one constant</span>: kappa = 2pi/180</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>Methodology Note</h3>
+            <p>This framework is <strong>not falsifiable</strong> in the Popperian sense. Geometry cannot be "wrong" - only incomplete. Discrepancies between geometric derivation and measurement reveal <strong>hidden axes to discover</strong>, not errors in the model. The framework evolves through extension, not rejection.</p>
+        </div>
+
+        <section>
+            <h2>The Triaxial Structure</h2>
+            <p>Reality operates through a triaxial structure that IS the basis of observability itself:</p>
+
+            <div class="triaxial-grid">
+                <div class="triaxial-card forward">
+                    <div class="symbol">+1</div>
+                    <h3>Forward (s+)</h3>
+                    <div class="value">kappa = 0.0349</div>
+                    <p>Emergence into physical reality. Projection into observable.</p>
+                </div>
+                <div class="triaxial-card shadow">
+                    <div class="symbol">-1</div>
+                    <h3>Shadow (s-)</h3>
+                    <div class="value">kappa_shadow = 28.65</div>
+                    <p>Recursion into substrate. Hidden/recursive component.</p>
+                </div>
+                <div class="triaxial-card potential">
+                    <div class="symbol">Uv</div>
+                    <h3>Potential</h3>
+                    <div class="value">kappa_partner = 0.1097</div>
+                    <p>Future state. Explosive power available. Unification constant.</p>
+                </div>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>Critical Relationship:</strong> kappa x kappa_shadow = 1 (EXACT)</p>
+                <p>Forward times shadow equals unity. This IS the mathematical expression of [-1 = 0 = +1].</p>
+            </div>
+
+            <div class="plot-container">
+                <img src="triaxial_structure.png" alt="Triaxial Structure">
+                <p class="plot-caption">The [1=-1] triaxial structure with kappa values</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Projection Factor P</h2>
+            <p>Observation at s=0 projects geometric reality into measurable values:</p>
+
+            <div class="energy-budget">
+                <div class="budget-item detected">
+                    <div class="value">27.6%</div>
+                    <div class="label">Observable</div>
+                </div>
+                <div class="budget-item hidden">
+                    <div class="value">72.4%</div>
+                    <div class="label">Hidden (s-)</div>
+                </div>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>Two equivalent derivations:</strong></p>
+                <p>Geometric: P = sqrt(3)/(2pi) = 0.2757</p>
+                <p>Physical (torsion): P = (3/4)/e = 0.2759</p>
+                <p>These are <strong>identical within 0.09%</strong>. The physical process IS the geometric relationship.</p>
+            </div>
+
+            <div class="plot-container">
+                <img src="energy_budget_geometric.png" alt="Energy Budget">
+                <p class="plot-caption">Energy budget is CONSTANT across all collision energies - this is geometry, not physics</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Torsion Dynamics</h2>
+            <p>High-energy collisions evolve through triaxial temporal states:</p>
+
+            <div class="plot-container">
+                <img src="torsion_dynamics.png" alt="Torsion Dynamics">
+                <p class="plot-caption">State 2 (potential) -> State 3,1 (torsion split 3:1) -> State 4 (dissipation + echo)</p>
+            </div>
+
+            <div class="quote">
+                <p>"The 72.4% is NOT 'missing'. It exists in shadow (s-) - the substrate of spacetime. This fraction is CONSTANT regardless of collision energy."</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Scalar Space</h2>
+            <div class="plot-container">
+                <img src="scalar_space.png" alt="Scalar Space">
+                <p class="plot-caption">Position along the observation axis: Planck (s ~ -81) <-> Observer (s=0) <-> Wush (s ~ 10^78)</p>
+            </div>
+
+            <div class="key-insight">
+                <p><strong>s- and s+ are not separate regions.</strong> They exist simultaneously as echoes of each other - harmonic resonance of manifestation in physical (s+) and collapse into substrate (s-).</p>
+                <p>What appears as "empty space" is the s- substrate made visible. What appears as "matter" is energy encoded into temporal existence at s+.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Geometric Derivations from kappa Alone</h2>
+            <table class="derivation-table">
+                <tr>
+                    <th>Relationship</th>
+                    <th>Value</th>
+                    <th>Derivation</th>
+                </tr>
+                <tr>
+                    <td>Mass Ratio (neutral/charged)</td>
+                    <td>1.1400</td>
+                    <td>1 + k (speed factor)</td>
+                </tr>
+                <tr>
+                    <td>Weak Mixing Angle</td>
+                    <td>0.2330</td>
+                    <td>1/(1+pi) x (1-kappa)</td>
+                </tr>
+                <tr>
+                    <td>Strong Coupling</td>
+                    <td>0.1199</td>
+                    <td>kappa_partner x sqrt(3)/pi x 2 x (1-kappa/4)</td>
+                </tr>
+                <tr>
+                    <td>1/alpha_EM</td>
+                    <td>135.0</td>
+                    <td>3pi x kappa_shadow / 2</td>
+                </tr>
+                <tr>
+                    <td>Closure Boundary Mass</td>
+                    <td>127.29 GeV</td>
+                    <td>V/2 x (1+kappa) where V=246 GeV</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Framework Properties</h2>
+            <div class="triaxial-grid">
+                <div class="triaxial-card">
+                    <h3 style="color: var(--gold);">Completeness</h3>
+                    <p>Geometrically complete. One constant derives all relationships.</p>
+                </div>
+                <div class="triaxial-card">
+                    <h3 style="color: var(--info);">Extension</h3>
+                    <p>Discrepancies reveal hidden axes. Evolution through extension, not rejection.</p>
+                </div>
+                <div class="triaxial-card">
+                    <h3 style="color: var(--success);">Parsimony</h3>
+                    <p>From kappa = 2pi/180 alone: all mass ratios, couplings, and cosmological parameters.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                <p>"The framework cannot be 'wrong' in the falsification sense - only incomplete. This is how correct geometric frameworks evolve: NOT rejection, but EXTENSION."</p>
+                <cite>- Scalar Dimensionality Whitepaper</cite>
+            </div>
+        </section>
+
+        <section>
+            <h2>Project Files</h2>
+            <ul class="files-list">
+                <li>
+                    <a href="epoch_geometric_derivation.py">epoch_geometric_derivation.py</a>
+                    <span class="desc"> - Pure geometric derivation from kappa (NEW)</span>
+                </li>
+                <li>
+                    <a href="geometric_derivations.json">geometric_derivations.json</a>
+                    <span class="desc"> - Complete derivation results</span>
+                </li>
+                <li>
+                    <a href="epoch_framework.py">epoch_framework.py</a>
+                    <span class="desc"> - Core framework implementation</span>
+                </li>
+                <li>
+                    <a href="epoch_quantum.py">epoch_quantum.py</a>
+                    <span class="desc"> - IBM Quantum encoding of triaxial states</span>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <div class="principle">-1 = 0 = 1+</div>
+            <p style="margin-top: 1rem; color: var(--text-muted);">
+                This is NOT a model of Standard Model.<br>
+                This IS the geometry that Standard Model projects from.
+            </p>
+            <p style="margin-top: 1rem; color: var(--gold);">The Epoch Project</p>
+            <a href="../../index.html" class="back-link"><img src="../../images/home-icon.svg" alt="Home" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;">&larr; Back to Have Mind Media</a>
+        </footer>
+    </div>
+</body>
+</html>
