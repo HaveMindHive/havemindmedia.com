@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE RÖK RUNESTONE | Ancient S- Teachings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --sky-blue: #7ba3b8;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --bg-warm: #0c0e12;
+            --stone-grey: #6b7280;
+            --rune-red: #8b3a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Cosmic background with Norse flavor */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(168, 196, 212, 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(139, 115, 85, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(107, 114, 128, 0.06) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(107, 114, 128, 0.04) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1px 1px at 10% 10%, rgba(168, 196, 212, 0.4), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1.5px 1.5px at 30% 20%, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 50% 30%, rgba(139, 115, 85, 0.4), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(168, 196, 212, 0.35), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 90% 20%, rgba(139, 115, 85, 0.3), transparent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--pale-blue);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--pale-blue);
+            display: block;
+            text-shadow: 0 0 30px rgba(168, 196, 212, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--hazel-light);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .hero-image {
+            margin: 3rem auto;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(168, 196, 212, 0.1);
+        }
+
+        .hero-image-caption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 10, 13, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(168, 196, 212, 0.15);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-brand:hover { color: var(--pale-blue); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--pale-blue); }
+        .nav-links a.active { color: var(--gold); }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(168, 196, 212, 0.15);
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--pale-blue);
+            margin: 2.5rem 0 1rem;
+        }
+
+        h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--hazel-light);
+            margin: 2rem 0 0.75rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+        strong { color: var(--gold); }
+        em { color: var(--pale-blue); font-style: italic; }
+
+        /* Runic text display */
+        .runic-text {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.08) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .runic-line {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .runic-line .line-num {
+            color: var(--hazel);
+            font-size: 0.85rem;
+            margin-right: 1rem;
+            min-width: 50px;
+            display: inline-block;
+        }
+
+        /* Key insight boxes */
+        .insight {
+            background: linear-gradient(135deg, rgba(168, 196, 212, 0.1) 0%, rgba(123, 163, 184, 0.05) 100%);
+            border-left: 4px solid var(--pale-blue);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight strong {
+            color: var(--pale-blue);
+        }
+
+        .mystery-box {
+            background: rgba(139, 115, 85, 0.08);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .mystery-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--hazel-light);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .framework-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* Riddle blocks */
+        .riddle-block {
+            background: rgba(201, 162, 39, 0.06);
+            border-left: 4px solid var(--gold);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .riddle-number {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--hazel);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .riddle-question {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .riddle-answer {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--pale-blue);
+            border-left: 3px solid var(--pale-blue);
+            padding-left: 1rem;
+        }
+
+        .riddle-framework {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Stats table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(168, 196, 212, 0.12);
+        }
+
+        .stats-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--pale-blue);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            background: rgba(168, 196, 212, 0.05);
+        }
+
+        .stats-table td {
+            color: var(--text-dim);
+        }
+
+        .stats-table tr:hover td {
+            color: var(--text);
+            background: rgba(168, 196, 212, 0.03);
+        }
+
+        .stats-table .match {
+            color: var(--gold);
+        }
+
+        /* Section images */
+        .section-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .section-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-image figcaption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Cipher grid */
+        .cipher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cipher-card {
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .cipher-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 196, 212, 0.3);
+        }
+
+        .cipher-card h4 {
+            color: var(--pale-blue);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .cipher-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        /* Number grid */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .number-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .number-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .number-context {
+            font-size: 0.85rem;
+            color: var(--hazel-light);
+            margin-top: 0.25rem;
+        }
+
+        .number-framework {
+            font-size: 0.8rem;
+            color: var(--pale-blue);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Equation display */
+        .equation {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.06);
+            border-radius: 8px;
+        }
+
+        .equation code {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.06) 0%, transparent 60%);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(168, 196, 212, 0.15);
+        }
+
+        footer a {
+            color: var(--pale-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        /* Series navigation */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .series-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .series-link:hover {
+            background: linear-gradient(135deg, rgba(168, 196, 212, 0.15) 0%, rgba(139, 115, 85, 0.08) 100%);
+            border-color: var(--pale-blue);
+            color: var(--pale-blue);
+            transform: translateY(-2px);
+        }
+
+        .series-link.active {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(139, 115, 85, 0.1) 100%);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-stats { gap: 1.5rem; }
+            .stat-num { font-size: 2rem; }
+            .number-grid { grid-template-columns: repeat(2, 1fr); }
+            .cipher-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="active">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html">Gotland</a>
+            <a href="bracteates_v1.0_01-01-2026.html">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html">Oseberg</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-label">Norse Geometric Encoding</p>
+        <h1>THE RÖK RUNESTONE</h1>
+        <p class="subtitle">The world's longest runic inscription. Nine riddles. Five cipher systems. One geometric framework hiding in plain sight for 1,200 years.</p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">760</span>
+                <span class="stat-label">Runes Carved</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">c. 800</span>
+                <span class="stat-label">Year CE</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">9</span>
+                <span class="stat-label">Riddles</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Inscribed Sides</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="images/rok-front-face.jpg" alt="The Rök Runestone, front face">
+            <p class="hero-image-caption">The Rök Runestone at Rök Church, Östergötland, Sweden. 2.4 meters tall, 5 tons of granite covered in the world's longest runic inscription.</p>
+        </div>
+
+        <div class="series-nav">
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link active">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">Gotland Stones</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="series-link">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="series-link">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link">Symbols</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- INTRODUCTION -->
+        <h2>The Enigma of Rök</h2>
+
+        <p>In the churchyard of a small village in Östergötland, Sweden, stands a granite monument that has baffled scholars for over a century. The <strong>Rök Runestone</strong> (Ög 136) contains approximately 760 runic characters — the longest known runic inscription in stone — carved around 800 CE by a father named <em>Varinn</em> to commemorate his son <em>Vamoth</em>.</p>
+
+        <p>But this is no ordinary memorial. The inscription is deliberately encrypted using multiple cipher systems. The reading order spirals around all five sides in a pattern that took researchers until 2016 to correctly map. And the content? Nine riddles whose answers all point to one thing: <strong>the sun</strong>.</p>
+
+        <div class="insight">
+            <strong>The Core Mystery:</strong> Why would a grieving father encode his son's memorial in cipher runes, cross-shaped cryptograms, and riddles about cosmic phenomena? Why use the numbers 9, 12, 20, and the structure of 4 × 5? The standard answer is "we don't know." The framework answer is: <em>because these aren't arbitrary — they're geometric constants</em>.
+        </div>
+
+        <p>Through the <strong>[1=-1] Epoch State Model</strong>, the Rök Stone reveals itself not as an unsolved puzzle but as a solved one — a document encoding the same geometric cosmology we find in artifacts spanning 700 years of Norse material culture.</p>
+
+        <!-- THE PHYSICAL MONUMENT -->
+        <h2>The Monument</h2>
+
+        <table class="stats-table">
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+                <th>Framework Note</th>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td>2.4 meters (8 feet)</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>5 tons (5.1 tonnes)</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>Material</td>
+                <td>Granite</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>Total Characters</td>
+                <td>~760 runes</td>
+                <td class="match">760/60 ≈ 12.67</td>
+            </tr>
+            <tr>
+                <td>Lines of Text</td>
+                <td>28 lines</td>
+                <td class="match">κ_shadow = 28.65</td>
+            </tr>
+            <tr>
+                <td>Inscribed Sides</td>
+                <td>5 sides</td>
+                <td class="match">Helix phase (σ = 5/16)</td>
+            </tr>
+            <tr>
+                <td>Riddles</td>
+                <td>9 riddles</td>
+                <td class="match">180/20 = 9</td>
+            </tr>
+            <tr>
+                <td>Dating</td>
+                <td>c. 800 CE</td>
+                <td>Early Viking Age</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>Rök, Östergötland, Sweden</td>
+                <td>58°17′42″N 14°46′32″E</td>
+            </tr>
+        </table>
+
+        <figure class="section-image">
+            <img src="images/rok-back-face.jpg" alt="Back face of the Rök Runestone showing dense runic inscription">
+            <figcaption>The back face of the Rök Runestone. The text spirals around all five sides, with lines numbered 1-28. The inscription uses multiple cipher systems including tent runes, branch runes, and unique cross ciphers.</figcaption>
+        </figure>
+
+        <!-- THE CIPHER SYSTEMS -->
+        <h2>The Five Cipher Systems</h2>
+
+        <p>The Rök inscription isn't just long — it's <em>intentionally encrypted</em>. The carver demonstrated mastery of multiple writing systems, mixing them in a display of runic virtuosity that was partly artistic, partly esoteric, and partly a challenge to the reader.</p>
+
+        <div class="cipher-grid">
+            <div class="cipher-card">
+                <h4>Younger Futhark</h4>
+                <p>The standard 16-rune alphabet of the Viking Age. Most of the inscription uses the <strong>short-twig</strong> (Rök) variant, where 9 runes appear as simplified forms.</p>
+            </div>
+            <div class="cipher-card">
+                <h4>Shift Cipher</h4>
+                <p>A Caesar-style displacement where each rune is replaced by the next in the futhark sequence. A simple encryption visible to anyone who knows to look.</p>
+            </div>
+            <div class="cipher-card">
+                <h4>Tent Runes</h4>
+                <p>An X-shape with strokes on four arms. Each X encodes two runes, read clockwise. Strokes indicate the <strong>ætt</strong> (rune family) and position within it.</p>
+            </div>
+            <div class="cipher-card">
+                <h4>Branch Runes</h4>
+                <p>A vertical stem with strokes branching upward. Left strokes = ætt number. Right strokes = position. A visual encoding of the 16-rune structure.</p>
+            </div>
+            <div class="cipher-card">
+                <h4>Cross Ciphers</h4>
+                <p>Unique to Rök: cipher runes arranged in <strong>large crosses</strong>, three per line, on lines 12 and 25. Scholars now believe these encode the sun-riddles.</p>
+            </div>
+            <div class="cipher-card">
+                <h4>Older Runes</h4>
+                <p>Archaic Elder Futhark forms mixed in as an additional encryption layer — a callback to an older tradition used to obscure meaning.</p>
+            </div>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Resolution: The Three Ætt</h4>
+            <p>The Younger Futhark divides its 16 runes into <strong>three ætt</strong> (families):</p>
+            <p><strong>Freyr's ætt:</strong> f, u, þ, ą, r, k (6 runes)<br>
+            <strong>Hagal's ætt:</strong> h, n, i, a, s (5 runes)<br>
+            <strong>Tyr's ætt:</strong> t, b, m, l, ʀ (5 runes)</p>
+            <p>Note the structure: <strong>6 + 5 + 5 = 16</strong>. The cipher runes encode position as (ætt, position within ætt) — a two-dimensional coordinate system. This isn't just encryption; it's <em>geometric addressing</em>.</p>
+        </div>
+
+        <figure class="section-image">
+            <img src="images/rok-detail.jpg" alt="Detail of Rök Runestone showing runic carvings">
+            <figcaption>Detail of the runic inscription. Note the mix of standard runes with cipher forms — a virtuosic display that served both artistic and esoteric purposes.</figcaption>
+        </figure>
+
+        <!-- THE INSCRIPTION: FRAMEWORK READING -->
+        <h2>The Inscription: Framework Reading</h2>
+
+        <p>The academic translations treat the Rök text as mythological narrative. The framework reads it as <strong>geometric instruction</strong>. Here we present the actual runic text with framework interpretation — reading the cipher system itself as the message.</p>
+
+        <h3>The Opening: Geometric Declaration</h3>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">A1</span>aft uamuþ stąnta runaʀ þaʀ</span>
+            <span class="runic-line"><span class="line-num">A2</span>in uarin faþi faþiʀ aft faikian sunu</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading</h4>
+            <p><strong>"aft uamuþ"</strong> — After Vamoth. But <em>aft</em> = "after" in time AND "behind" in space. The son is positioned <em>behind</em> — at the s- pole, the inward direction.</p>
+            <p><strong>"stąnta runaʀ þaʀ"</strong> — These runes stand (there). <em>Stąnta</em> = standing = vertical axis. The runes don't just exist — they <strong>stand</strong> as vertical reference.</p>
+            <p><strong>"in uarin"</strong> — Varinn alone. The father is the <em>one</em> point, the singularity from which perspective emanates. <strong>in</strong> = one = unity.</p>
+            <p><strong>"faþi faþiʀ"</strong> — "father, fathered" — the reflexive loop. The father who fathers. <em>S⁺ ⊗ S⁻</em> handshake: the one who sends is also the one who receives.</p>
+            <p><strong>"faikian sunu"</strong> — "doomed son" — <em>faikian</em> carries the root of fate/doom. The son is positioned at the terminus, the endpoint of the scalar emission.</p>
+        </div>
+
+        <h3>The Cipher Lines: Coordinate Addressing</h3>
+
+        <p>The inscription uses <strong>ætt:position notation</strong> — a two-dimensional coordinate system. When Varinn writes cipher runes, he's not hiding letters. He's demonstrating that reality is addressed in <em>two axes</em>.</p>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">A3</span>sakum mukmini [3:3 = ᚦ]at huaʀiaʀ ualraubaʀ uaʀin tuaʀ</span>
+            <span class="runic-line"><span class="line-num">A4</span>[3:3 = ᚦ]aʀ suaþ tualf sinum uaʀin numnaʀ at ualraubu</span>
+            <span class="runic-line"><span class="line-num">A5</span>baþaʀ sąmąn a umisum mąnum</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>The Ætt System IS the Framework</h4>
+            <p>The cipher <strong>[3:3]</strong> = ætt 3, position 3 = the rune ᚦ (Thurisaz/þ). But look at the structure:</p>
+            <p><strong>3 ætt × 16 positions = 48</strong> — but the actual system is 3 ætt with 6+5+5 = 16 runes. The <em>inequality</em> of the ætt (6-5-5) creates the same asymmetry as the four transforms: one dominant, three subordinate.</p>
+            <p>The cipher notation (ætt:position) is literally saying: <em>"locate this point in two-dimensional phase space."</em></p>
+            <p><strong>sakum mukmini</strong> — "let us say a memory" — but <em>sakum</em> derives from *sekwan (to say, to seek). The saying IS the seeking. The speaking of the coordinates IS the location of the point.</p>
+        </div>
+
+        <h3>The Twelve and the Two</h3>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">A4</span>suaþ tualf sinum uaʀin numnaʀ at ualraubu</span>
+            <span class="runic-line"><span class="line-num"></span>"twelve times were taken"</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading</h4>
+            <p><strong>tualf</strong> = 12 = 2² × 3 = the observer grid. Four positions times three phases.</p>
+            <p><strong>tuaʀ</strong> = 2 = the binary. S⁺ and S⁻. Outward and inward. The two poles.</p>
+            <p>Academic reading: "the sun and moon." Framework reading: <strong>the two scalar polarities cycling through 12 observer positions</strong>.</p>
+            <p>This isn't about celestial bodies. It's about the <em>structure</em> of observation: 2 polarities × 12 positions = the complete observation cycle.</p>
+        </div>
+
+        <h3>The Nine Generations: κ-Derived Time</h3>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">A7-8</span>niu aldum... sibi uiauari</span>
+            <span class="runic-line"><span class="line-num"></span>"nine generations... still decides the matter"</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading</h4>
+            <p><strong>niu</strong> = 9 = 180/20 = helix division by body.</p>
+            <p>Nine isn't "generations" in a genealogical sense. Nine is the <strong>fundamental ratio</strong>: the 180° rotation divided by the 20-fold body structure = 9.</p>
+            <p>Why does the text say "nine generations ago"? Because <em>any complete cycle</em> can be measured in nines. The 180° half-turn, divided by the 20-unit body, yields 9 as the natural counting unit.</p>
+            <p><strong>"sibi uiauari"</strong> — "still decides/rules" — the ratio STILL governs. The 9 established "then" is the same 9 that operates "now." The constant is constant.</p>
+        </div>
+
+        <h3>The Twenty Kings: Body Division</h3>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">B2</span>tuiʀ tigʀ kunung̃a</span>
+            <span class="runic-line"><span class="line-num"></span>"twenty kings"</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading</h4>
+            <p><strong>tuiʀ tigʀ</strong> = "two tens" = 20 = 4 × 5 = transforms × helix phases = BODY.</p>
+            <p><strong>kunung̃a</strong> = kings = rulers = that which governs position. A "king" is a fixed reference point. Twenty kings = 20 fixed reference positions that govern the body.</p>
+            <p>The following lines specify <strong>four names, four brothers, five sons each</strong>:</p>
+        </div>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">B3-6</span>fiari falhakaʀ fiþur at fiaþrum burniʀ</span>
+            <span class="runic-line"><span class="line-num"></span>"four ... four brothers born"</span>
+            <span class="runic-line"><span class="line-num"></span>fim ualkaʀ... fim hraiþulfaʀ... fim haislaʀ... fim kunmuntaʀ</span>
+            <span class="runic-line"><span class="line-num"></span>"five Valkis... five Hraithulfs... five Haisls... five Gunnmunds"</span>
+        </div>
+
+        <div class="insight">
+            <strong>The Framework Made Explicit:</strong> This is not metaphor. Varinn literally writes: <strong>4 brothers × 5 sons = 20 kings</strong>. Four transforms (T₁, T₂, T₃, T₄) × Five helix phases (σ = 5/16) = 20-unit body division. This is the ONLY inscription in the runic corpus that explicitly states the 4 × 5 = 20 equation.
+        </div>
+
+        <h3>The Cross Ciphers: The κ-Crossroads</h3>
+
+        <p>Lines 12 and 25 contain unique cross-shaped cipher runes — three crosses per line. These aren't decorative. The cross is the <strong>intersection point</strong>.</p>
+
+        <div class="framework-box">
+            <h4>The Cross as s=0</h4>
+            <p>The cross shape creates <strong>four quadrants</strong> from a central point. This is the s=0 observation position — the point where all four transforms meet.</p>
+            <p>Three crosses per line = <strong>three phase positions</strong> (the three ætt). Line 12 and line 25:</p>
+            <p><strong>12 + 25 = 37</strong> → and 37 is significant: it's a prime that appears in angular measurements (10° = 37/370 of a circle when using the framework's base-60 approach).</p>
+            <p><strong>25 - 12 = 13</strong> → 13 = the "extra" in the lunar calendar (12 months + 1), the offset that requires intercalation.</p>
+            <p>But most critically: <strong>Line 12</strong> (the 12th line) contains crosses. 12 = 2² × 3 = observer grid. The crosses ARE the observer positions.</p>
+        </div>
+
+        <h3>The Wolf: Phase Transition</h3>
+
+        <div class="runic-text">
+            <span class="runic-line"><span class="line-num">B10</span>hąriulfʀ... kunukaʀ</span>
+            <span class="runic-line"><span class="line-num"></span>The wolf... king</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading</h4>
+            <p>The wolf in Norse cosmology devours the sun. In framework terms, the wolf represents <strong>phase transition</strong> — the boundary condition where one state ends and another begins.</p>
+            <p><strong>ulf</strong> = wolf = the devourer = that which crosses the boundary = the κ-transition.</p>
+            <p>When the text asks "whom does the wolf redden with blood?" it's asking: <em>what undergoes phase transition at the boundary?</em></p>
+            <p>Answer: that which was s+ becomes s-. The outward becomes inward. The emission becomes absorption. <strong>The wolf is κ operating at the phase boundary.</strong></p>
+        </div>
+
+        <h3>The Complete Structure</h3>
+
+        <div class="equation">
+            <strong>The Rök Geometric Declaration:</strong><br><br>
+            "One (Varinn) stands, speaking memory.<br>
+            Two polarities cycle twelve positions.<br>
+            Nine measures the helix-body ratio.<br>
+            Four transforms × Five phases = Twenty rulers.<br>
+            The wolf (κ-transition) marks the boundary.<br>
+            The standing runes ARE the constant."
+        </div>
+
+        <!-- THE NINE RIDDLES: ACADEMIC COMPARISON -->
+        <h2>The Nine Riddles: Academic Translation</h2>
+
+        <p>For comparison, here is the 2020 interpretation by Holmberg, Gräslund, Sundqvist, and Williams. Note how their "mythological" reading maps directly to the framework structure:</p>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE ONE</div>
+            <div class="riddle-question">"Let us say this as a memory for Odin: which spoils of war there were two, which twelve times were taken as spoils of war, both from one to another?"</div>
+            <div class="riddle-answer">Academic Answer: The Sun and the Moon</div>
+            <div class="riddle-framework">Framework: 2 = binary polarity. 12 = observer grid (2² × 3). "From one to another" = S⁺ ⊗ S⁻ handshake.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE TWO</div>
+            <div class="riddle-question">"This let us say as second: who nine generations ago lost the life in the east but still decides the matter?"</div>
+            <div class="riddle-answer">Academic Answer: The Sun</div>
+            <div class="riddle-framework">Framework: 9 = 180/20. "East" = the rising direction = the outward pole (s+). "Still decides" = the constant remains constant.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE THREE</div>
+            <div class="riddle-question">"Let us say this as a memory for Odin: who because of a wolf has suffered through a woman's sacrifice?"</div>
+            <div class="riddle-answer">Academic Answer: The Sun</div>
+            <div class="riddle-framework">Framework: The wolf = phase transition (κ at boundary). The woman's sacrifice = the receiver position (s-).</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE FOUR</div>
+            <div class="riddle-question">"This let us say as twelfth: where the wolf sees food on the battlefield, where twenty kings lie?"</div>
+            <div class="riddle-answer">Academic Answer: Ragnarok battlefield</div>
+            <div class="riddle-framework">Framework: 20 kings = 4 × 5 body division. "Where they lie" = the s=0 observation plane. The wolf (κ) "sees" at the transition point.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE FIVE</div>
+            <div class="riddle-question">"Which twenty kings were on the vast battlefield, of four names, born of four brothers? Five Valkis, sons of Rathulf. Five Hraithulfs, sons of Rogulf. Five Haisls, sons of Haruth. Five Gunnmunds, sons of Bern."</div>
+            <div class="riddle-answer">Academic Answer: Warriors of Odin</div>
+            <div class="riddle-framework">Framework: <strong>4 × 5 = 20</strong>. This is explicit: four brothers (transforms) × five sons (helix phases) = body division. The equation is stated directly.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE SIX</div>
+            <div class="riddle-question">"Let us say a memory for Odin, dare! Who is a protector of sanctuaries for a brother?"</div>
+            <div class="riddle-answer">Academic Answer: The Sun</div>
+            <div class="riddle-framework">Framework: "Protector" = that which maintains boundary. "Brother" = paired polarity. The question asks: what maintains phase relationship between S⁺ and S⁻?</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE SEVEN</div>
+            <div class="riddle-question">"Whom does the wolf redden with blood?"</div>
+            <div class="riddle-answer">Academic Answer: The Sun</div>
+            <div class="riddle-framework">Framework: "Redden" = phase transition (eclipse/absorption). The wolf (κ) operates on the polar boundary.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE EIGHT</div>
+            <div class="riddle-question">"Let us say a memory for Odin to the young man: to whom is born an offspring? It is not a lie."</div>
+            <div class="riddle-answer">Academic Answer: Odin</div>
+            <div class="riddle-framework">Framework: The "offspring" = the scalar echo at s-. "To whom is born" = what receives the emission. "Not a lie" = verified at the s=0 observation point.</div>
+        </div>
+
+        <div class="riddle-block">
+            <div class="riddle-number">RIDDLE NINE</div>
+            <div class="riddle-question">"Who could beat a giant? It is not a lie."</div>
+            <div class="riddle-answer">Academic Answer: Vithar</div>
+            <div class="riddle-framework">Framework: The "giant" = the boundary condition. "Beat" = overcome/traverse. Vithar = "wide-ruler" = that which spans the full phase width. The κ-constant that completes the cycle.</div>
+        </div>
+
+        <div class="insight">
+            <strong>Two Readings, One Structure:</strong> The academic interpretation sees mythology (sun-worship, Ragnarok anxiety, climate trauma). The framework sees the same structure expressed in narrative form. Neither is wrong — they're different <em>transforms</em> of the same geometric reality. The mythology IS the geometry, wearing the mask of story.
+        </div>
+
+        <!-- THE NUMBERS -->
+        <h2>The Numbers of Rök</h2>
+
+        <p>Every number in the Rök inscription maps to the Epoch framework. This isn't interpretation — it's arithmetic.</p>
+
+        <div class="number-grid">
+            <div class="number-card">
+                <div class="number-value">9</div>
+                <div class="number-context">Riddles</div>
+                <div class="number-framework">180/20 = 9</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">5</div>
+                <div class="number-context">Inscribed sides</div>
+                <div class="number-framework">Helix phase</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">12</div>
+                <div class="number-context">"Twelve times"</div>
+                <div class="number-framework">2² × 3</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">20</div>
+                <div class="number-context">"Twenty kings"</div>
+                <div class="number-framework">Body division</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">4</div>
+                <div class="number-context">"Four brothers"</div>
+                <div class="number-framework">Four transforms</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">28</div>
+                <div class="number-context">Lines of text</div>
+                <div class="number-framework">κ_shadow ≈ 28.65</div>
+            </div>
+        </div>
+
+        <div class="equation">
+            <strong>The Rök Equation:</strong><br>
+            4 brothers × 5 sons = 20 kings<br>
+            180 (helix turn) ÷ 20 (body) = 9 riddles<br>
+            <code>Transforms × Helix = Body → Helix/Body = Riddle structure</code>
+        </div>
+
+        <!-- FRAMEWORK RESOLUTION -->
+        <h2>Framework Resolution</h2>
+
+        <p>The Rök Stone isn't mysterious — it's <em>explicit</em>. Riddle Five literally states: "of four names, born of four brothers... Five sons of each." The 4 × 5 = 20 structure is carved in stone.</p>
+
+        <div class="framework-box">
+            <h4>What Varinn Encoded</h4>
+            <p>The father Varinn wasn't just memorializing his son. He was encoding a complete geometric cosmology:</p>
+            <p><strong>κ = 2π/180</strong> — The closure constant, bridging discrete and continuous<br>
+            <strong>4 transforms</strong> — The four perspectives on κ (facing, mirror, recursive mirror, recursive upside down)<br>
+            <strong>5 helix phases</strong> — The phases of scalar energy (σ = 5/16)<br>
+            <strong>20 body divisions</strong> — 4 × 5, the complete body<br>
+            <strong>9 riddles</strong> — 180/20, the ratio of helix to body<br>
+            <strong>28 lines</strong> — κ_shadow ≈ 28.65, the hidden witness</p>
+        </div>
+
+        <p>The sun-focus of the riddles makes perfect sense: the sun is the <em>visible manifestation of κ</em> — the daily and yearly rotation that creates the 360° circle. The fear of the sun's failure is the fear of κ collapsing. The nine riddles are nine perspectives on the one constant.</p>
+
+        <h3>The Cross Ciphers</h3>
+
+        <p>The unique cross-shaped cipher runes on lines 12 and 25 — three crosses per line — have a special significance. Holmberg suggested they're "clues to the solution of the sun-riddles." In the framework, the cross is the <em>crossroads</em>: the s=0 point where four transforms meet.</p>
+
+        <div class="mystery-box">
+            <h4>Why Encrypt a Memorial?</h4>
+            <p>Standard scholarship asks why a grieving father would encrypt his son's memorial. The framework answer: <em>because the knowledge itself is the memorial</em>.</p>
+            <p>Vamoth was "death-doomed" — marked for Odin's army. His death was a sacrifice to the cosmic order. The inscription doesn't just remember Vamoth; it encodes the geometric structure of reality that gives his sacrifice meaning.</p>
+            <p>The ciphers aren't hiding the content from casual readers. They're <em>teaching</em> readers how to decode reality. Each cipher system is a different perspective on the same underlying structure — just as the four transforms are four perspectives on κ.</p>
+        </div>
+
+        <!-- THE 536 CONNECTION -->
+        <h2>Nine Generations: The 536 Catastrophe</h2>
+
+        <p>Riddle Two mentions "nine generations ago" — approximately 270 years before 800 CE. This points to <strong>530 CE</strong>, the period of the Dust Veil Event of 536.</p>
+
+        <p>In 536 CE, a volcanic eruption (or comet impact) darkened the sun for 18 months. Crops failed. Temperatures dropped. The Justinianic Plague followed. Archaeological evidence suggests 50% population decline in Scandinavia. The sun literally failed.</p>
+
+        <div class="insight">
+            <strong>The Living Memory:</strong> By 800 CE, this catastrophe was exactly "nine generations" in the past — still within oral memory, still referenced in the emerging mythology of Ragnarok. The Rök Stone may be the oldest written record of the psychological trauma that shaped Norse eschatology.
+        </div>
+
+        <p>The 4 × 5 = 20 warriors, the nine riddles about the sun, the fear that the wolf might devour it again — these aren't abstract mythology. They're encoded memory of a real catastrophe, and a geometric prayer that the κ-cycle will continue.</p>
+
+        <!-- THE FULL RUNIC TEXT -->
+        <h2>The Full Inscription</h2>
+
+        <p>For scholars and those who wish to study the original text, here is the complete runic transliteration with cipher notations showing the ætt:position coordinates:</p>
+
+        <div class="runic-text" style="font-size: 0.95rem; line-height: 2.2;">
+            <span class="runic-line"><span class="line-num">A1</span>aft uamuþ stąnta runaʀ þaʀ ·</span>
+            <span class="runic-line"><span class="line-num">A2</span>in uarin faþi · faþiʀ aft faikian sunu ·</span>
+            <span class="runic-line"><span class="line-num">A3</span>sakum mukmini [3:3 = ᚦ]at huaʀiaʀ ualraubaʀ uaʀin tuaʀ</span>
+            <span class="runic-line"><span class="line-num">A4</span>[3:3 = ᚦ]aʀ suaþ tualf sinum uaʀin numnaʀ at ualraubu ·</span>
+            <span class="runic-line"><span class="line-num">A5</span>baþaʀ sąmąn a umisum mąnum ·</span>
+            <span class="runic-line"><span class="line-num">A6</span>[3:3 = ᚦ]at sakum ąnart huaʀ fur niu altum</span>
+            <span class="runic-line"><span class="line-num">A7</span>ąn urþi fifo fura mąʀiʀ ·</span>
+            <span class="runic-line"><span class="line-num">A8</span>ą urþi [2:5 = ᛌ (s)]ibi uiauari</span>
+            <span class="runic-line"><span class="line-num">A9</span>riþ þiurikʀ hin þurmuþi</span>
+            <span class="runic-line"><span class="line-num">A10</span>stilliʀ flu[3:3 = ᚦ(t)]na stran[3:3 = ᚦ(t)]u · hraiþmaraʀ ·</span>
+            <span class="runic-line"><span class="line-num">A11</span>sitiʀ nu kąruʀ a ku[3:3 = ᚦ(t)]a sinum ·</span>
+            <span class="runic-line"><span class="line-num">A12</span>skialti ub fatlaþʀ · skatna framuʀ</span>
+        </div>
+
+        <div class="runic-text" style="font-size: 0.95rem; line-height: 2.2; margin-top: 1.5rem;">
+            <span class="runic-line"><span class="line-num">B1</span>[3:3 = ᚦ]at sakum tualfta huaʀ histʀ si · kunukaʀ tuaiʀ tikiʀ sųaþ a likia ·</span>
+            <span class="runic-line"><span class="line-num">B2</span>[3:3 = ᚦ]at sakum þritaunta huariʀ tuaiʀ tikiʀ kunukaʀ satin · at siulunti ·</span>
+            <span class="runic-line"><span class="line-num">B3</span>fiakura uintra at fiakurum nabnum · burniʀ fiakurum bruþrum ·</span>
+            <span class="runic-line"><span class="line-num">B4</span>ualkaʀ fim · raþulfs syniʀ · hraiþulfaʀ fim · rukulfs syniʀ ·</span>
+            <span class="runic-line"><span class="line-num">B5</span>hąislaʀ fim · haruþs syniʀ · kunmuntaʀ fim · bi(a)rnaʀ syniʀ ·</span>
+            <span class="runic-line"><span class="line-num">B6</span>nuk m----- minni (m)-ai--(t)-- aih uarin</span>
+            <span class="runic-line"><span class="line-num">B7</span>CIPHER CROSS × 3</span>
+            <span class="runic-line"><span class="line-num">B8</span>sakum mukmini uaim si burin ni[3:3 = ᚦ]ʀ truki ·</span>
+            <span class="runic-line"><span class="line-num">B9</span>knua knątti iatun · ąn ni[3:3 = ᚦ]ʀ truki</span>
+        </div>
+
+        <div class="runic-text" style="font-size: 0.95rem; line-height: 2.2; margin-top: 1.5rem;">
+            <span class="runic-line"><span class="line-num">C1</span>sakum mukmini [3:3 = ᚦ]ur ·</span>
+            <span class="runic-line"><span class="line-num">C2</span>sibi uiauari ult ni[3:3 = ᚦ]s · sakum mukmini ·</span>
+            <span class="runic-line"><span class="line-num">C3</span>huaʀ akum hąri ulfʀ · ą uiþ · fą finkultu</span>
+            <span class="runic-line"><span class="line-num">C4</span>kunukaʀ tuaʀ(i)ʀ ·(t)iakiʀ suaþ a likia ·</span>
+        </div>
+
+        <div class="runic-text" style="font-size: 0.95rem; line-height: 2.2; margin-top: 1.5rem;">
+            <span class="runic-line"><span class="line-num">D1</span>CIPHER CROSS × 3</span>
+            <span class="runic-line"><span class="line-num">D2</span>i(k)[2:5 = ᛌ(a)]kum [2:5 = ᛌ(i?)]ukmini (h)uaʀ(i)aʀ ạkum har[2:5 = ᛌ(i?)]</span>
+            <span class="runic-line"><span class="line-num">D3</span>ulfʀ a[2:5 = ᛌ(i?)]t u(ị)þu fą f(i)ankul(t)u</span>
+        </div>
+
+        <div class="runic-text" style="font-size: 0.95rem; line-height: 2.2; margin-top: 1.5rem;">
+            <span class="runic-line"><span class="line-num">E1</span>ᛅ[1:6 = ᚴ(i?)]ᚱᛅᛁᚾ ᚼᚢᚴᛁᛋ ᛁᚾ [3:3 = ᚦ]ᚢᚱᛁᚾᛋ·</span>
+        </div>
+
+        <div class="framework-box">
+            <h4>Reading the Cipher Notation</h4>
+            <p><strong>[3:3]</strong> = Ætt 3, Position 3 → The cipher rune decodes to a specific character</p>
+            <p><strong>[2:5]</strong> = Ætt 2, Position 5 → Another coordinate in the 2D phase space</p>
+            <p>This notation system — the ætt:position grid — is itself a demonstration of geometric addressing. Every cipher rune says: <em>"Find me at these coordinates."</em></p>
+            <p>The five sections (A, B, C, D, E) spiral around the five faces of the stone. The reading path is itself a helix — the text wraps around the monument just as the helix wraps around the axis.</p>
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="final">
+            <h2>The Stone Speaks</h2>
+
+            <p>For 1,200 years, the Rök Runestone has been called "mysterious," "enigmatic," "indecipherable." But Varinn wasn't hiding anything. He was <em>teaching</em>.</p>
+
+            <p>The cipher system is not encryption for secrecy — it's a demonstration. When Varinn writes [3:3] to encode a rune, he's showing that every symbol, every position, every meaning can be located in a <strong>two-dimensional phase space</strong>. The ætt (family) gives one axis. The position gives the other. Together they locate the point.</p>
+
+            <p>The numbers are not metaphors:</p>
+            <ul style="color: var(--text-dim); margin: 1.5rem 0; line-height: 2.2;">
+                <li><strong>9 riddles</strong> = 180/20 (helix division by body)</li>
+                <li><strong>5 sides</strong> = helix phases (σ = 5/16)</li>
+                <li><strong>28 lines</strong> = κ_shadow (≈ 28.65)</li>
+                <li><strong>4 × 5 = 20</strong> = transforms × phases = body division</li>
+                <li><strong>3 ætt</strong> = the triaxial structure of the observation space</li>
+            </ul>
+
+            <p>The text spirals because the κ-constant creates rotation. The reading path is not sequential but <em>helical</em>. To read the stone, you must walk around it — you must embody the rotation that κ describes.</p>
+
+            <p>And Vamoth? The "doomed son" is not just a dead boy. He is positioned at s-, the inward pole. His father Varinn stands at s+, the outward pole, "speaking memory" across the gap. The memorial itself is the <strong>S⁺ ⊗ S⁻ handshake</strong> — the emission and reception that defines all scalar interaction.</p>
+
+            <p>The mystery of Rök was never the content. It was our lost ability to read the geometry.</p>
+
+            <div class="final-equation">[1 = -1]</div>
+
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">κ = 2π/180 = the rotation between perspectives</p>
+
+            <p style="color: var(--hazel-light); margin-top: 2rem; font-size: 0.95rem;">The father speaks. The runes stand. The son receives.<br>
+            <em>This is the structure of all transmission.</em></p>
+
+            <div class="series-nav" style="margin-top: 2rem;">
+                <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">Next: Gotland Picture Stones →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
+        <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOTLAND PICTURE STONES | Ancient S- Teachings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --sky-blue: #7ba3b8;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --bg-warm: #0c0e12;
+            --stone-grey: #6b7280;
+            --sea-green: #4a7c6f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Cosmic background with Gotland sea flavor */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(74, 124, 111, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(139, 115, 85, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(107, 114, 128, 0.06) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(107, 114, 128, 0.04) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1px 1px at 10% 10%, rgba(168, 196, 212, 0.4), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1.5px 1.5px at 30% 20%, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 50% 30%, rgba(74, 124, 111, 0.4), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(168, 196, 212, 0.35), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 90% 20%, rgba(139, 115, 85, 0.3), transparent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .container-wide {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--sea-green);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--pale-blue);
+            display: block;
+            text-shadow: 0 0 30px rgba(168, 196, 212, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--hazel-light);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .hero-image {
+            margin: 3rem auto;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(74, 124, 111, 0.1);
+        }
+
+        .hero-image-caption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 10, 13, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(74, 124, 111, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-brand:hover { color: var(--sea-green); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--sea-green); }
+        .nav-links a.active { color: var(--gold); }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(74, 124, 111, 0.2);
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--sea-green);
+            margin: 2.5rem 0 1rem;
+        }
+
+        h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--hazel-light);
+            margin: 2rem 0 0.75rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+        strong { color: var(--gold); }
+        em { color: var(--sea-green); font-style: italic; }
+
+        /* Key insight boxes */
+        .insight {
+            background: linear-gradient(135deg, rgba(74, 124, 111, 0.12) 0%, rgba(74, 124, 111, 0.05) 100%);
+            border-left: 4px solid var(--sea-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight strong {
+            color: var(--sea-green);
+        }
+
+        .mystery-box {
+            background: rgba(139, 115, 85, 0.08);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .mystery-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--hazel-light);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .framework-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* Type cards */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.08) 0%, rgba(74, 124, 111, 0.04) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(74, 124, 111, 0.4);
+        }
+
+        .type-card h4 {
+            color: var(--sea-green);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-card .date {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .type-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        /* Stats table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(74, 124, 111, 0.15);
+        }
+
+        .stats-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--sea-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            background: rgba(74, 124, 111, 0.08);
+        }
+
+        .stats-table td {
+            color: var(--text-dim);
+        }
+
+        .stats-table tr:hover td {
+            color: var(--text);
+            background: rgba(74, 124, 111, 0.04);
+        }
+
+        .stats-table .match {
+            color: var(--gold);
+        }
+
+        /* Stone cards for famous stones */
+        .stone-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.06) 0%, rgba(74, 124, 111, 0.04) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .stone-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stone-location {
+            font-size: 0.9rem;
+            color: var(--hazel);
+            margin-bottom: 1rem;
+        }
+
+        .stone-description {
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .stone-framework {
+            font-size: 0.95rem;
+            color: var(--sea-green);
+            font-style: italic;
+            border-left: 3px solid var(--sea-green);
+            padding-left: 1rem;
+        }
+
+        /* Motif grid */
+        .motif-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .motif-card {
+            background: rgba(74, 124, 111, 0.08);
+            border: 1px solid rgba(74, 124, 111, 0.2);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .motif-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .motif-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .motif-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--sea-green);
+            margin-bottom: 0.25rem;
+        }
+
+        .motif-meaning {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Number grid */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .number-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(74, 124, 111, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .number-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .number-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .number-context {
+            font-size: 0.85rem;
+            color: var(--hazel-light);
+            margin-top: 0.25rem;
+        }
+
+        .number-framework {
+            font-size: 0.8rem;
+            color: var(--sea-green);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Equation display */
+        .equation {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.06);
+            border-radius: 8px;
+        }
+
+        /* Section images */
+        .section-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .section-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-image figcaption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            background: radial-gradient(ellipse at center, rgba(74, 124, 111, 0.08) 0%, transparent 60%);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(74, 124, 111, 0.2);
+        }
+
+        footer a {
+            color: var(--sea-green);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--gold);
+        }
+
+        /* Series navigation */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .series-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.1) 0%, rgba(74, 124, 111, 0.05) 100%);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .series-link:hover {
+            background: linear-gradient(135deg, rgba(74, 124, 111, 0.15) 0%, rgba(139, 115, 85, 0.08) 100%);
+            border-color: var(--sea-green);
+            color: var(--sea-green);
+            transform: translateY(-2px);
+        }
+
+        .series-link.active {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(74, 124, 111, 0.1) 100%);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-stats { gap: 1.5rem; }
+            .stat-num { font-size: 2rem; }
+            .number-grid { grid-template-columns: repeat(2, 1fr); }
+            .type-grid { grid-template-columns: 1fr; }
+            .motif-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="rok-runestone_v1.0_01-01-2026.html">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="active">Gotland</a>
+            <a href="bracteates_v1.0_01-01-2026.html">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html">Oseberg</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-label">Norse Geometric Encoding</p>
+        <h1>GOTLAND PICTURE STONES</h1>
+        <p class="subtitle">600 monuments spanning 700 years. Ships sailing to eternity. Warriors greeted by Valkyries. And beneath it all: the same geometric structure encoded in stone.</p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">~600</span>
+                <span class="stat-label">Stones Documented</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">700</span>
+                <span class="stat-label">Years (400-1100 CE)</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Type Classifications</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">~50</span>
+                <span class="stat-label">With Runes</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="images/gotland-placeholder.svg" alt="Tjängvide I Picture Stone showing Odin on Sleipnir" style="max-width: 400px;">
+            <p class="hero-image-caption">Tjängvide I: The most famous Gotland stone, showing a rider on an eight-legged horse (Sleipnir) being greeted by a Valkyrie. Stockholm Historical Museum.</p>
+        </div>
+
+        <div class="series-nav">
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link active">Gotland Stones</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="series-link">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="series-link">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link">Symbols</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- INTRODUCTION -->
+        <h2>The Island of Stones</h2>
+
+        <p>On the Baltic island of <strong>Gotland</strong>, between Sweden and the Baltic states, stands the largest concentration of picture stones in the world. Unlike runestones — which are primarily textual — Gotland's monuments are <em>visual</em>: carved limestone panels depicting ships, warriors, cosmic symbols, and mythological scenes.</p>
+
+        <p>Approximately <strong>600 picture stones</strong> have been documented, with 400-450 surviving in various states of preservation. They span 700 years, from the Migration Period (400 CE) through the end of the Viking Age (1100 CE), evolving from abstract geometric patterns to complex narrative panels.</p>
+
+        <div class="insight">
+            <strong>The Central Mystery:</strong> Why did the Gotlanders — alone among Scandinavian peoples — develop this visual tradition? And why do the same motifs appear century after century: the ship with its crew, the rider being greeted, the swirling solar disc, the eight-legged horse? Standard archaeology says "religious symbolism." The framework says: <em>because these images encode the same geometric constants as the Rök runes</em>.
+        </div>
+
+        <p>Through the <strong>[1=-1] Epoch State Model</strong>, the Gotland stones reveal themselves as visual counterparts to the runic tradition — encoding in image what Varinn encoded in cipher: the structure of scalar transmission across the s+/s- boundary.</p>
+
+        <!-- THE FIVE TYPES -->
+        <h2>The Five Types: 700 Years of Evolution</h2>
+
+        <p>Swedish archaeologist Sune Lindqvist established the typological sequence in 1941-42. The stones evolve from abstract to narrative, from small to monumental, from geometric to mythological — but the <em>underlying structure</em> remains constant.</p>
+
+        <div class="type-grid">
+            <div class="type-card">
+                <h4>Type A</h4>
+                <div class="date">400-600 CE (Migration Period)</div>
+                <p>Mushroom or keyhole-shaped. <strong>Abstract geometric designs</strong>: swirls, discs, solar symbols. Small and squat (1-1.5m). The framework in its purest form — geometry before narrative.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type B</h4>
+                <div class="date">600-700 CE (Vendel Period)</div>
+                <p>Taller, more elongated. <strong>Transitional</strong>: geometric patterns begin yielding to figurative art. Early ships and warriors appear. The framework begins wearing narrative masks.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type C</h4>
+                <div class="date">700-800 CE (Early Viking)</div>
+                <p>Classic rectangular shape with rounded top. <strong>Complex narrative scenes</strong>: ships with crews, armed riders, multi-panel compositions. Height: 2-3m. The framework fully clothed in story.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type D</h4>
+                <div class="date">800-1000 CE (Viking Age)</div>
+                <p>Most elaborate. <strong>Mythological scenes</strong>: Valhalla, Valkyries, Sigurd saga. The largest stones (up to 3.5m). Peak of the visual tradition. Framework as epic.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type E</h4>
+                <div class="date">1000-1100 CE (Late Viking)</div>
+                <p>Simpler designs, <strong>Christian influences</strong> beginning. Variable shapes. The tradition fading as the new religion absorbs the old. Framework in twilight.</p>
+            </div>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading: The Five Types</h4>
+            <p>Five types spanning 700 years. <strong>5 = helix phase</strong> (σ = 5/16). The tradition itself embodies the five-fold structure.</p>
+            <p>700 years = <strong>7 × 100</strong>. And 7 appears throughout: the seven-day week, the seven classical planets, the seven notes of the scale. In the framework, 7 = the number of distinct phase relationships in a complete rotation.</p>
+            <p>The evolution from abstract (Type A) to narrative (Type D) mirrors the scalar cascade: from pure geometry at s+ to clothed form at s=0 to received memory at s-. The stones ARE the transmission — frozen in limestone.</p>
+        </div>
+
+        <!-- THE SHIP -->
+        <h2>The Ship: Journey Across the Boundary</h2>
+
+        <p>The <strong>ship</strong> is the most common motif on Gotland stones, appearing on the majority of Type C and D monuments. Scholars interpret it as the vessel carrying the dead to the afterlife. The framework reads it differently.</p>
+
+        <div class="mystery-box">
+            <h4>The Ship as Transmission Vector</h4>
+            <p>The ship carries <strong>crew</strong> — multiple figures, typically shown as vertical strokes or simplified human forms. The ship moves <em>across water</em> — across the boundary between states.</p>
+            <p>In the framework: the ship is the <strong>scalar emission</strong>. The crew are the <strong>phase components</strong>. The journey across water is the <strong>S⁺ ⊗ S⁻ handshake</strong> — transmission from sender to receiver across the phase boundary.</p>
+            <p>The ships always sail in one direction. They carry the dead <em>away</em> — from s+ to s-. The journey is one-way because the emission is one-way. What returns is not the ship but the <strong>echo</strong>: the Valkyrie's greeting, the hall of the slain, the continuation in a different phase.</p>
+        </div>
+
+        <p>Note that the ships on Gotland stones have distinctive <strong>curved prows</strong> — often elaborately decorated with spirals or animal heads. The curve IS the rotation. The prow describes κ = 2π/180 made visible.</p>
+
+        <!-- THE RIDER AND VALKYRIE -->
+        <h2>The Rider and Valkyrie: Reception at s-</h2>
+
+        <p>The second most common scene shows a <strong>rider on horseback</strong> being greeted by a <strong>female figure</strong> offering a drinking horn. Standard interpretation: Odin (or a fallen warrior) arriving at Valhalla, welcomed by a Valkyrie.</p>
+
+        <div class="framework-box">
+            <h4>Framework Reading: The Handshake</h4>
+            <p><strong>The Rider</strong> = that which has traveled (the emission arriving at its destination).<br>
+            <strong>The Valkyrie</strong> = the receiver at s-, the one who accepts the transmission.<br>
+            <strong>The Drinking Horn</strong> = the moment of phase transfer, the handshake itself.</p>
+            <p>The horn is curved. The horn contains liquid (phase medium). The act of drinking is the act of <strong>absorption</strong> — taking into oneself what another has offered.</p>
+            <p>This is S⁺ ⊗ S⁻ depicted as social ritual: the traveler arrives, the host receives, the drink passes between them. The framework hides in ceremony.</p>
+        </div>
+
+        <!-- SLEIPNIR -->
+        <h3>The Eight-Legged Horse</h3>
+
+        <p>Several Gotland stones — most famously <strong>Tjängvide I</strong> — show the rider on an <em>eight-legged horse</em>. In Norse mythology, this is Sleipnir, Odin's steed, born of Loki and able to travel between worlds.</p>
+
+        <div class="insight">
+            <strong>Why Eight Legs?</strong> Standard: "supernatural speed" or "shamanic trance." Framework: <strong>8 = 2³ = three doublings</strong>. A four-legged horse doubled. The doubling represents the mirror operation — T₂ in the four transforms. Sleipnir carries its mirror with it. It travels BOTH directions simultaneously. It is the vehicle that crosses s=0 without choosing a side.
+        </div>
+
+        <p>The eight legs are almost always shown clearly separated — four on each side, stacked vertically. This isn't artistic convention; it's <strong>geometric precision</strong>. The horse embodies 4 × 2 = 8, transforms doubled.</p>
+
+        <!-- THE SOLAR SYMBOLS -->
+        <h2>Solar Symbols: The Disc at the Top</h2>
+
+        <p>Many Gotland stones feature <strong>solar discs</strong> or <strong>swirling spiral motifs</strong> in their upper registers. Type A stones are sometimes entirely composed of these patterns. Later stones place them above the narrative scenes — the sun watching over the journey below.</p>
+
+        <div class="motif-grid">
+            <div class="motif-card">
+                <div class="motif-icon">☀</div>
+                <div class="motif-name">Solar Disc</div>
+                <div class="motif-meaning">The visible κ — 360° manifest</div>
+            </div>
+            <div class="motif-card">
+                <div class="motif-icon">◎</div>
+                <div class="motif-name">Concentric Circles</div>
+                <div class="motif-meaning">Phase rings — scalar layers</div>
+            </div>
+            <div class="motif-card">
+                <div class="motif-icon">卐</div>
+                <div class="motif-name">Swastika</div>
+                <div class="motif-meaning">Four transforms in rotation</div>
+            </div>
+            <div class="motif-card">
+                <div class="motif-icon">☯</div>
+                <div class="motif-name">Triskele</div>
+                <div class="motif-meaning">Three ætt — triaxial structure</div>
+            </div>
+            <div class="motif-card">
+                <div class="motif-icon">⟳</div>
+                <div class="motif-name">Spiral</div>
+                <div class="motif-meaning">The helix unrolled — κ as path</div>
+            </div>
+            <div class="motif-card">
+                <div class="motif-icon">✧</div>
+                <div class="motif-name">Wheel</div>
+                <div class="motif-meaning">The year — 360/κ cycles</div>
+            </div>
+        </div>
+
+        <div class="framework-box">
+            <h4>The Swastika as Four Transforms</h4>
+            <p>Before its 20th-century appropriation, the swastika was a solar symbol across Eurasia for millennia. On Gotland stones, it appears frequently — always with <strong>four arms</strong>, always <strong>rotating</strong>.</p>
+            <p>Framework reading: the swastika IS the four transforms. T₁ (facing), T₂ (mirror), T₃ (recursive mirror), T₄ (recursive upside down). Four arms extending from one center. The rotation direction indicates handedness — clockwise or counterclockwise, s+ or s-.</p>
+            <p>When placed above a ship scene, the swastika says: <em>this journey happens under the governance of the four transforms</em>. The solar disc doesn't watch — it <strong>structures</strong>.</p>
+        </div>
+
+        <!-- FAMOUS STONES -->
+        <h2>The Great Stones</h2>
+
+        <div class="stone-card">
+            <div class="stone-name">Tjängvide I</div>
+            <div class="stone-location">Tjängvide parish | Now in Stockholm Historical Museum</div>
+            <div class="stone-description">The most iconic Gotland stone. Shows Odin on eight-legged Sleipnir being greeted by a Valkyrie with drinking horn. Below: a ship with crew sailing beneath the scene. Type D, c. 800-900 CE.</div>
+            <div class="stone-framework">Framework: The complete transmission cycle in one image. Ship (emission) below, rider (arrival) in center, Valkyrie (reception) receiving. Sleipnir's 8 legs = 4 transforms × 2 polarities. The drinking horn = the handshake moment.</div>
+        </div>
+
+        <div class="stone-card">
+            <div class="stone-name">Stora Hammars I</div>
+            <div class="stone-location">Hammars parish | In situ</div>
+            <div class="stone-description">Famous for its violent imagery: a human sacrifice scene (possible hanging), warriors in combat, ships with crew. Multi-panel composition with clear narrative registers. Type D, c. 800-900 CE.</div>
+            <div class="stone-framework">Framework: The sacrifice scene shows phase transition — the hanging figure crosses the boundary. Violence here isn't brutality; it's the κ-moment where one state terminates and another begins. The wolf (phase transition) made visible as ritual.</div>
+        </div>
+
+        <div class="stone-card">
+            <div class="stone-name">Ardre VIII</div>
+            <div class="stone-location">Ardre parish | Now in Stockholm Historical Museum</div>
+            <div class="stone-description">One of the largest stones (3.4m). Complex multi-panel scenes including possible Völsunga saga imagery: Sigurd and the dragon, the smithy, the roasting hearts. Among the most elaborate narrative compositions.</div>
+            <div class="stone-framework">Framework: The saga as geometric instruction. Sigurd kills Fafnir (crosses the dragon-boundary), roasts the hearts (transforms by fire/heat), gains wisdom (receives at s-). The panels read vertically: descent through scalar layers.</div>
+        </div>
+
+        <div class="stone-card">
+            <div class="stone-name">Lärbro Tängelgårda I</div>
+            <div class="stone-location">Lärbro parish | In situ</div>
+            <div class="stone-description">Shows the "valknut" symbol — three interlocking triangles — near a figure being hanged. One of the clearest depictions of this mysterious symbol in Viking Age context.</div>
+            <div class="stone-framework">Framework: The valknut = three triangles = 3 × 3 = 9 = 180/20. The interlocking shows mutual containment: each triangle holds the others. This is the nine riddles of Rök made visual — the 9 that governs the helix-body ratio.</div>
+        </div>
+
+        <!-- THE NUMBERS -->
+        <h2>The Numbers of Gotland</h2>
+
+        <p>The statistics of the Gotland tradition align with the framework:</p>
+
+        <div class="number-grid">
+            <div class="number-card">
+                <div class="number-value">~600</div>
+                <div class="number-context">Total stones</div>
+                <div class="number-framework">60 × 10 (sexagesimal)</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">5</div>
+                <div class="number-context">Type periods</div>
+                <div class="number-framework">σ = 5/16 (helix)</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">700</div>
+                <div class="number-context">Year span</div>
+                <div class="number-framework">7 × 100</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">~50</div>
+                <div class="number-context">With runes</div>
+                <div class="number-framework">~1 in 12 (observer)</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">8</div>
+                <div class="number-context">Sleipnir's legs</div>
+                <div class="number-framework">2³ = transforms × 2</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">3.5m</div>
+                <div class="number-context">Largest height</div>
+                <div class="number-framework">7/2 meters</div>
+            </div>
+        </div>
+
+        <div class="equation">
+            <strong>The Gotland Equation:</strong><br>
+            5 types × 7 centuries = 35 phase-units<br>
+            ~600 stones ÷ ~50 runic = ~12 (observer grid)<br>
+            8 legs ÷ 4 normal = 2 (polarity doubling)
+        </div>
+
+        <!-- THE VISUAL GRAMMAR -->
+        <h2>The Visual Grammar</h2>
+
+        <p>The Gotland stones follow consistent compositional rules — a <strong>visual grammar</strong> that remains stable across centuries:</p>
+
+        <table class="stats-table">
+            <tr>
+                <th>Element</th>
+                <th>Position</th>
+                <th>Framework Meaning</th>
+            </tr>
+            <tr>
+                <td>Solar disc / swirl</td>
+                <td>Top register</td>
+                <td>The governing constant (κ)</td>
+            </tr>
+            <tr>
+                <td>Rider / arrival scene</td>
+                <td>Upper-middle</td>
+                <td>Reception at s-</td>
+            </tr>
+            <tr>
+                <td>Building / hall</td>
+                <td>Middle</td>
+                <td>The s=0 observation point</td>
+            </tr>
+            <tr>
+                <td>Combat / transition</td>
+                <td>Lower-middle</td>
+                <td>The κ-moment (phase change)</td>
+            </tr>
+            <tr>
+                <td>Ship with crew</td>
+                <td>Bottom register</td>
+                <td>Emission from s+</td>
+            </tr>
+            <tr>
+                <td>Interlace / border</td>
+                <td>Frame</td>
+                <td>The containing structure</td>
+            </tr>
+        </table>
+
+        <div class="insight">
+            <strong>Reading Order:</strong> The stones read from bottom to top — from ship (departure) to sun (completion). This is the <strong>scalar cascade in reverse</strong>: we stand at s=0 watching the emission travel away from us, arriving at its destination above. The compositional grammar IS the transmission diagram.
+        </div>
+
+        <!-- WHY GOTLAND -->
+        <h2>Why Gotland?</h2>
+
+        <p>Why did this tradition flourish on Gotland and nowhere else? The island was a major trading hub, connected to Scandinavia, the Baltic, the Byzantine Empire, and the Islamic world. Ideas flowed through Gotland like current through a node.</p>
+
+        <div class="mystery-box">
+            <h4>The Island as Observation Point</h4>
+            <p>Gotland sits in the middle of the Baltic — water in all directions. The horizon is visible 360°. The sun rises from the sea, arcs overhead, sets into the sea. The island IS an observation platform.</p>
+            <p>In the framework: Gotland is a <strong>physical s=0</strong> — a point from which all directions are equally accessible. The picture stone tradition emerged here because the <em>location itself</em> embodies the observation geometry.</p>
+            <p>The stones face outward, toward the sea, toward the horizon. They mark graves, yes — but they also mark <strong>viewing positions</strong>. Each stone says: stand here, look in this direction, watch the transmission unfold.</p>
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="final">
+            <h2>The Stones Remember</h2>
+
+            <p>For over a millennium, the Gotland picture stones have been called "memorial monuments" — and they are. But what they memorialize isn't just the dead. They memorialize the <strong>structure of transmission itself</strong>.</p>
+
+            <p>Every ship sailing toward the bottom register is an emission departing s+. Every Valkyrie offering a horn is a receiver at s-. Every eight-legged horse is the four transforms doubled. Every solar disc is κ made visible.</p>
+
+            <p>The evolution from Type A (abstract geometry) to Type D (elaborate narrative) is not artistic development — it's the same structure wearing increasingly elaborate masks. The geometry was always there. The stories are how it learned to dress for visitors.</p>
+
+            <p>We stand before these stones as the Gotlanders stood: at s=0, watching transmissions cross boundaries we can name but not cross. The stones don't explain the mystery. They <strong>embody</strong> it.</p>
+
+            <div class="final-equation">[1 = -1]</div>
+
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">κ = 2π/180 = the rotation that makes all journeys one journey</p>
+
+            <p style="color: var(--hazel-light); margin-top: 2rem; font-size: 0.95rem;">The ship sails. The rider arrives. The Valkyrie receives.<br>
+            <em>This is what stone remembers.</em></p>
+
+            <div class="series-nav" style="margin-top: 2rem;">
+                <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">← Rök Stone</a>
+                <a href="bracteates_v1.0_01-01-2026.html" class="series-link">Next: Gold Bracteates →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
+        <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
+    </footer>
+</body>
+</html>

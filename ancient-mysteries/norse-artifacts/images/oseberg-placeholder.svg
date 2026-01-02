@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" fill="none">
+  <rect width="600" height="350" fill="#1a1a2e"/>
+
+  <!-- Ship hull -->
+  <path d="M50 200 Q100 280 300 290 Q500 280 550 200" stroke="#8b6914" stroke-width="4" fill="none"/>
+  <path d="M70 190 Q100 260 300 270 Q500 260 530 190" stroke="#8b6914" stroke-width="3" fill="none"/>
+
+  <!-- Clinker planking lines -->
+  <path d="M80 180 Q100 240 300 250 Q500 240 520 180" stroke="#6b5310" stroke-width="1" fill="none"/>
+  <path d="M90 170 Q100 220 300 230 Q500 220 510 170" stroke="#6b5310" stroke-width="1" fill="none"/>
+  <path d="M100 160 Q100 200 300 210 Q500 200 500 160" stroke="#6b5310" stroke-width="1" fill="none"/>
+
+  <!-- Prow (curved, dragon-style) -->
+  <path d="M50 200 Q30 150 40 100 Q50 60 80 40 Q100 30 110 50" stroke="#8b6914" stroke-width="4" fill="none"/>
+  <circle cx="85" cy="35" r="8" fill="none" stroke="#8b6914" stroke-width="2"/>
+
+  <!-- Stern (curved) -->
+  <path d="M550 200 Q570 150 560 100 Q550 60 520 40 Q500 30 490 50" stroke="#8b6914" stroke-width="4" fill="none"/>
+
+  <!-- Mast position -->
+  <line x1="300" y1="270" x2="300" y2="120" stroke="#6b5310" stroke-width="3"/>
+  <line x1="250" y1="140" x2="350" y2="140" stroke="#6b5310" stroke-width="2"/>
+
+  <!-- Oar holes suggestion -->
+  <circle cx="150" cy="220" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+  <circle cx="200" cy="235" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+  <circle cx="250" cy="245" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+  <circle cx="350" cy="245" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+  <circle cx="400" cy="235" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+  <circle cx="450" cy="220" r="4" fill="#1a1a2e" stroke="#6b5310" stroke-width="1"/>
+
+  <!-- Gripping beast detail hint on prow -->
+  <path d="M60 80 Q70 70 65 60 Q55 65 60 80Z" stroke="#c9a227" stroke-width="1" fill="none"/>
+  <path d="M55 90 Q45 85 50 75" stroke="#c9a227" stroke-width="1" fill="none"/>
+
+  <!-- Museum floor line -->
+  <line x1="20" y1="310" x2="580" y2="310" stroke="#333" stroke-width="2"/>
+
+  <!-- Label -->
+  <text x="300" y="330" text-anchor="middle" fill="#666" font-family="system-ui" font-size="12">OSEBERG SHIP c. 834 CE</text>
+  <text x="300" y="345" text-anchor="middle" fill="#8b6914" font-family="system-ui" font-size="10">Placeholder for AI Generation</text>
+</svg>

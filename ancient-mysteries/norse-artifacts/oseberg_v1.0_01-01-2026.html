@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE OSEBERG SHIP | Ancient S- Teachings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --wood-brown: #6d4c3d;
+            --wood-light: #a67c52;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --oak: #8b5a2b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Cosmic background with wood tones */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(109, 76, 61, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(139, 90, 43, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(139, 115, 85, 0.06) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(109, 76, 61, 0.04) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1px 1px at 10% 10%, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1.5px 1.5px at 30% 20%, rgba(166, 124, 82, 0.5), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 50% 30%, rgba(139, 115, 85, 0.4), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(201, 162, 39, 0.35), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 90% 20%, rgba(166, 124, 82, 0.4), transparent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--wood-light);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            max-width: 750px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--wood-light);
+            display: block;
+            text-shadow: 0 0 30px rgba(166, 124, 82, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--hazel-light);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .hero-image {
+            margin: 3rem auto;
+            max-width: 600px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(166, 124, 82, 0.15);
+        }
+
+        .hero-image-caption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 10, 13, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(166, 124, 82, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--wood-light); }
+        .nav-links a.active { color: var(--gold); }
+
+        /* Sections */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(166, 124, 82, 0.2);
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--wood-light);
+            margin: 2.5rem 0 1rem;
+        }
+
+        h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--hazel-light);
+            margin: 2rem 0 0.75rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+        strong { color: var(--gold); }
+        em { color: var(--wood-light); font-style: italic; }
+
+        /* Insight boxes */
+        .insight {
+            background: linear-gradient(135deg, rgba(166, 124, 82, 0.12) 0%, rgba(139, 90, 43, 0.05) 100%);
+            border-left: 4px solid var(--wood-light);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight strong {
+            color: var(--wood-light);
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .framework-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .mystery-box {
+            background: rgba(109, 76, 61, 0.1);
+            border: 1px solid rgba(109, 76, 61, 0.25);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .mystery-box h4 {
+            color: var(--wood-light);
+            margin-top: 0;
+        }
+
+        /* Artifact cards */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .artifact-card {
+            background: linear-gradient(135deg, rgba(109, 76, 61, 0.1) 0%, rgba(139, 90, 43, 0.05) 100%);
+            border: 1px solid rgba(166, 124, 82, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .artifact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--wood-light);
+        }
+
+        .artifact-card h4 {
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-card .framework {
+            font-size: 0.9rem;
+            color: var(--pale-blue);
+            font-style: italic;
+        }
+
+        /* Carving display */
+        .carving-section {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.08) 0%, rgba(0,0,0,0.2) 100%);
+            border: 1px solid rgba(166, 124, 82, 0.25);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+        }
+
+        .carving-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .carving-location {
+            font-size: 0.9rem;
+            color: var(--hazel);
+            margin-bottom: 1rem;
+        }
+
+        .carving-description {
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .carving-framework {
+            font-size: 0.95rem;
+            color: var(--pale-blue);
+            font-style: italic;
+            border-left: 3px solid var(--pale-blue);
+            padding-left: 1rem;
+        }
+
+        /* Number grid */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .number-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(109, 76, 61, 0.06) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .number-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .number-context {
+            font-size: 0.85rem;
+            color: var(--wood-light);
+            margin-top: 0.25rem;
+        }
+
+        .number-framework {
+            font-size: 0.8rem;
+            color: var(--pale-blue);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Stats table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(166, 124, 82, 0.15);
+        }
+
+        .stats-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--wood-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(166, 124, 82, 0.08);
+        }
+
+        .stats-table td {
+            color: var(--text-dim);
+        }
+
+        .stats-table .match {
+            color: var(--gold);
+        }
+
+        /* Section images */
+        .section-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .section-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-image figcaption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Equation */
+        .equation {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.06);
+            border-radius: 8px;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(166, 124, 82, 0.3);
+            background: radial-gradient(ellipse at center, rgba(166, 124, 82, 0.1) 0%, transparent 60%);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(166, 124, 82, 0.2);
+        }
+
+        footer a {
+            color: var(--wood-light);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--gold); }
+
+        /* Series navigation */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .series-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(166, 124, 82, 0.1) 0%, rgba(109, 76, 61, 0.05) 100%);
+            border: 1px solid rgba(166, 124, 82, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .series-link:hover {
+            border-color: var(--wood-light);
+            color: var(--wood-light);
+            transform: translateY(-2px);
+        }
+
+        .series-link.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.15) 0%, rgba(109, 76, 61, 0.08) 100%);
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats { gap: 1.5rem; }
+            .stat-num { font-size: 2rem; }
+            .number-grid { grid-template-columns: repeat(2, 1fr); }
+            .artifact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="rok-runestone_v1.0_01-01-2026.html">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html">Gotland</a>
+            <a href="bracteates_v1.0_01-01-2026.html">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="active">Oseberg</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-label">Norse Geometric Encoding</p>
+        <h1>THE OSEBERG SHIP</h1>
+        <p class="subtitle">A 22-meter Viking ship buried in 834 CE with two women, fifteen horses, and the most elaborate wood carvings ever found. The framework carved in oak.</p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">834</span>
+                <span class="stat-label">CE Burial Date</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">22m</span>
+                <span class="stat-label">Ship Length</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">15</span>
+                <span class="stat-label">Oar Holes Per Side</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Carved Bedposts</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="images/oseberg-placeholder.svg" alt="The Oseberg Ship on display at the Viking Ship Museum" style="max-width: 100%;">
+            <p class="hero-image-caption">The Oseberg Ship, Viking Ship Museum, Oslo. Excavated 1904-1905. The most complete Viking Age ship burial ever discovered.</p>
+        </div>
+
+        <div class="series-nav">
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">Gotland Stones</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="series-link">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="series-link active">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link">Symbols</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- INTRODUCTION -->
+        <h2>The Ship in the Mound</h2>
+
+        <p>In 1903, a farmer near Tønsberg, Norway, struck something solid while digging. What he found was the burial mound of the <strong>Oseberg ship</strong> — a clinker-built Viking vessel 22 meters long, buried in 834 CE with two women (one aged 70-80, one 25-30), fifteen horses, four dogs, an ox cart, four sledges, beds, textiles, and an extraordinary collection of carved wooden objects.</p>
+
+        <p>The ship itself is remarkable, but it's the <strong>wood carvings</strong> that concern us here: animal-head posts, cart details, sledge terminals, furniture elements — all covered in intricate interlace patterns featuring serpents, gripping beasts, and endless knots that encode the same geometric principles we find in stone and gold.</p>
+
+        <div class="insight">
+            <strong>The Oseberg Style:</strong> Art historians use "Oseberg Style" to describe the specific visual vocabulary of the carvings: creatures that grip their own bodies, borders that become serpents, patterns that have no beginning or end. Standard interpretation: "decorative artistic tradition." Framework reading: <em>the endless patterns are visualizations of continuous rotation — κ made wood</em>.
+        </div>
+
+        <!-- THE SHIP -->
+        <h2>The Ship Itself</h2>
+
+        <table class="stats-table">
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+                <th>Framework Note</th>
+            </tr>
+            <tr>
+                <td>Length</td>
+                <td>21.58 meters (70.8 feet)</td>
+                <td class="match">~22 = 2 × 11</td>
+            </tr>
+            <tr>
+                <td>Beam (width)</td>
+                <td>5.1 meters (16.7 feet)</td>
+                <td class="match">5 = helix phase</td>
+            </tr>
+            <tr>
+                <td>Oar holes</td>
+                <td>15 per side (30 total)</td>
+                <td class="match">30 = crew positions</td>
+            </tr>
+            <tr>
+                <td>Strakes (planks)</td>
+                <td>12 per side</td>
+                <td class="match">12 = observer grid (2² × 3)</td>
+            </tr>
+            <tr>
+                <td>Burial date</td>
+                <td>834 CE (dendrochronology)</td>
+                <td>34 years after Rök (~800 CE)</td>
+            </tr>
+            <tr>
+                <td>Material</td>
+                <td>Oak</td>
+                <td>The sacred tree</td>
+            </tr>
+        </table>
+
+        <div class="framework-box">
+            <h4>Framework Reading: The Numbers</h4>
+            <p><strong>15 oar holes per side</strong> = 30 total rowing positions. 30 = 5 × 6 = helix phase × ætt structure. A crew of 30 divides into 5 groups of 6, or 6 groups of 5.</p>
+            <p><strong>12 strakes per side</strong> = 24 total hull planks. 24 = the Elder Futhark. The ship's body is structured like the runic alphabet.</p>
+            <p><strong>Width 5.1m, Length ~22m</strong>: ratio ≈ 4.3:1. Close to 4 transforms for every helix unit.</p>
+            <p>The ship isn't just transport — it's a <strong>geometric vessel</strong>. Its proportions encode the framework. Rowing it means embodying the mathematics.</p>
+        </div>
+
+        <!-- THE CARVINGS -->
+        <h2>The Carvings</h2>
+
+        <p>The Oseberg burial contained some of the most elaborate wood carvings ever found from the Viking Age. Multiple master carvers worked on different objects, each with a distinctive style but all drawing from the same visual vocabulary.</p>
+
+        <h3>The Animal-Head Posts</h3>
+
+        <div class="carving-section">
+            <div class="carving-title">The Five Bedposts</div>
+            <div class="carving-location">Found at the burial chamber | Oak, carved and polished</div>
+            <div class="carving-description">Five carved wooden posts, each terminating in a stylized animal head (usually identified as a horse, dragon, or serpent). The shafts are covered in intricate interlace patterns. These were likely attached to beds or ceremonial furniture.</div>
+            <div class="carving-framework">Framework: Five posts = five helix phases. The animal heads face outward — they're s+ emitters. The interlace on the shafts is the rotation path. Each post is a phase position made physical: stand at one, you see from that angle.</div>
+        </div>
+
+        <div class="carving-section">
+            <div class="carving-title">The "Academician" Post</div>
+            <div class="carving-location">Named for its refined, scholarly execution</div>
+            <div class="carving-description">The most technically accomplished of the animal-head posts. Clean lines, precise geometry, restrained ornamentation. The head is naturalistic while the shaft patterns are mathematically regular.</div>
+            <div class="carving-framework">Framework: This post shows the framework "straight" — minimal narrative disguise, maximum geometric clarity. The carver prioritized structure over decoration. Compare to the Rök Stone's cipher: direct encoding, minimal metaphor.</div>
+        </div>
+
+        <div class="carving-section">
+            <div class="carving-title">The "Baroque Master" Post</div>
+            <div class="carving-location">Named for its elaborate, exuberant style</div>
+            <div class="carving-description">The most densely ornamented post. Creatures grip each other in endless chains. The surface is alive with intertwining bodies. Horror vacui — no empty space.</div>
+            <div class="carving-framework">Framework: This is the framework at maximum narrative density — the same structure as the Academician post, but wearing elaborate costume. The "gripping beasts" are transforms grabbing each other: T₁ holds T₂, T₂ holds T₃, T₃ holds T₄, T₄ holds T₁. The endless loop.</div>
+        </div>
+
+        <h3>The Gripping Beast Motif</h3>
+
+        <div class="mystery-box">
+            <h4>Why Do They Grip Themselves?</h4>
+            <p>The signature motif of Oseberg style is the <strong>gripping beast</strong>: creatures whose limbs grasp their own bodies, adjacent creatures, or the border frames that contain them. Scholars note the motif but can't explain why it was so compelling to Viking Age artists.</p>
+            <p>Framework reading: <strong>The grip IS the transform</strong>. Each creature represents a phase position. The "gripping" represents the mathematical relationship between positions — how T₁ transforms into T₂, how s+ relates to s-.</p>
+            <p>When a beast grips <em>itself</em>, it shows self-reference: the transform applied to its own output. When it grips <em>another beast</em>, it shows phase coupling. When it grips <em>the border</em>, it shows the relationship between content and container, between the enclosed and the enclosure.</p>
+            <p>The gripping beasts are <strong>diagrams of mutual containment</strong>. They don't depict mythology — they depict <em>mathematical relationship</em> wearing the mask of animal combat.</p>
+        </div>
+
+        <!-- THE CART -->
+        <h2>The Ceremonial Cart</h2>
+
+        <p>The Oseberg burial contained an ornate four-wheeled cart — the only complete Viking Age cart ever found. Its body and wheels are covered in carvings showing scenes of combat, mythological imagery, and endless interlace patterns.</p>
+
+        <div class="carving-section">
+            <div class="carving-title">The Oseberg Cart</div>
+            <div class="carving-location">1.5m long body, 4 wheels | Oak</div>
+            <div class="carving-description">The cart body shows narrative scenes: a man grasping serpents, figures in combat, possible mythological references. The wheel hubs and spokes are carved. The shafts terminate in animal heads.</div>
+            <div class="carving-framework">Framework: Four wheels = four transforms. The cart moves by rotation — the wheels turn, the vehicle advances. But also: the cart itself is a transform generator. Riding in the cart means being carried through the rotation sequence. The "man grasping serpents" is the observer at s=0, holding both polarities.</div>
+        </div>
+
+        <div class="number-grid">
+            <div class="number-card">
+                <div class="number-value">4</div>
+                <div class="number-context">Wheels</div>
+                <div class="number-framework">Four transforms</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">2</div>
+                <div class="number-context">Shafts</div>
+                <div class="number-framework">Binary polarity</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">8</div>
+                <div class="number-context">Spokes per wheel</div>
+                <div class="number-framework">2³ = transforms × 2</div>
+            </div>
+        </div>
+
+        <!-- THE SLEDGES -->
+        <h2>The Four Sledges</h2>
+
+        <p>Four sledges were found in the burial, each with carved runners and terminals. Sledges were practical transport in Norwegian winters but also ceremonial vehicles.</p>
+
+        <div class="framework-box">
+            <h4>Four Sledges = Four Transforms</h4>
+            <p>Why four sledges? The standard answer: "winter travel required multiple vehicles." The framework answer: <strong>because there are four transforms</strong>.</p>
+            <p>Each sledge represents a different perspective on the same journey. The burial doesn't contain one vehicle — it contains the <strong>complete set</strong>. T₁ (facing), T₂ (mirror), T₃ (recursive mirror), T₄ (recursive upside down). Four ways to travel the same path.</p>
+            <p>The runners slide without rotating — different from wheels. Sledge-travel is <em>translation without rotation</em>. The cart rotates through transforms; the sledges translate between them. Both movements are necessary for complete traversal.</p>
+        </div>
+
+        <!-- THE WOMEN -->
+        <h2>The Two Women</h2>
+
+        <p>The burial contained two female skeletons: one aged 70-80 (with severe arthritis and cancer), one aged 25-30 (healthier at death). Their identities are debated — queen and servant? priestess and sacrifice? mother and daughter?</p>
+
+        <div class="mystery-box">
+            <h4>Why Two?</h4>
+            <p>Ship burials usually contain one individual. Oseberg contains <strong>two</strong>. Scholars debate hierarchy (which was the primary burial?) but the framework sees something simpler:</p>
+            <p><strong>Two = polarity</strong>. S⁺ and S⁻. Emission and reception. The older woman (experienced, worn, approaching death) and the younger (vital, potential, life ahead) represent the two poles of the scalar axis.</p>
+            <p>They're buried together because <em>transmission requires both</em>. The sender without receiver is incomplete. The receiver without sender has nothing to receive. The Oseberg burial encodes the handshake: S⁺ ⊗ S⁻ embodied as two women sharing a ship.</p>
+        </div>
+
+        <!-- FIFTEEN HORSES -->
+        <h3>The Fifteen Horses</h3>
+
+        <p>Fifteen horses were sacrificed and buried with the ship. This is an extraordinary number — most Norse burials with horses include one to three.</p>
+
+        <div class="equation">
+            <strong>15 horses = 15 oar positions per side</strong><br>
+            One horse for each rowing station<br>
+            The crew transformed to four-legged form
+        </div>
+
+        <p>The horses parallel the oar positions. They're not just sacrifice — they're the <strong>animal equivalent</strong> of the rowing crew. The ship that sails the water has human power; the ship that sails the otherworld has horse power. Same number, different manifestation.</p>
+
+        <!-- THE ENDLESS KNOT -->
+        <h2>The Endless Patterns</h2>
+
+        <p>Throughout the Oseberg carvings, one principle dominates: <strong>patterns without beginning or end</strong>. Interlace that loops back on itself. Serpents that bite their own tails. Borders that become creatures that become borders.</p>
+
+        <div class="framework-box">
+            <h4>Infinity in Wood</h4>
+            <p>The endless patterns encode <strong>continuous rotation</strong>. κ = 2π/180 describes a rotation that has no beginning or end — every angle leads to the next, forever.</p>
+            <p>The carvers made this visible. Follow any line in Oseberg interlace: it will eventually return to its starting point. But you can't identify <em>where</em> it started. The pattern IS the rotation — frozen in oak, but implying eternal motion.</p>
+            <p>This is why the "gripping beasts" grip each other in chains: each transform holds the next. The sequence T₁ → T₂ → T₃ → T₄ → T₁ is endless. The pattern doesn't represent infinity — it <strong>instantiates</strong> it.</p>
+        </div>
+
+        <!-- THE VALKNUT -->
+        <h3>The Valknut Appears</h3>
+
+        <p>Among the Oseberg carvings is one of the clearest examples of the <strong>valknut</strong> — three interlocking triangles. It appears on one of the bedposts near the animal head terminal.</p>
+
+        <div class="insight">
+            <strong>Three Triangles:</strong> 3 × 3 = 9 = 180/20. The valknut is the <strong>Rök ratio made visible</strong>. The interlocking shows mutual containment: each triangle holds and is held by the others. You cannot remove one without disturbing all three. This is the triaxial structure — the three ætt, the three polarities, the three that become nine.
+        </div>
+
+        <!-- THE NUMBERS SUMMARY -->
+        <h2>The Numbers of Oseberg</h2>
+
+        <div class="number-grid">
+            <div class="number-card">
+                <div class="number-value">2</div>
+                <div class="number-context">Women buried</div>
+                <div class="number-framework">S⁺ and S⁻</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">4</div>
+                <div class="number-context">Sledges</div>
+                <div class="number-framework">Four transforms</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">5</div>
+                <div class="number-context">Animal-head posts</div>
+                <div class="number-framework">Helix phases</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">12</div>
+                <div class="number-context">Strakes per side</div>
+                <div class="number-framework">2² × 3</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">15</div>
+                <div class="number-context">Horses / oar holes</div>
+                <div class="number-framework">5 × 3</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">30</div>
+                <div class="number-context">Total rowing positions</div>
+                <div class="number-framework">5 × 6</div>
+            </div>
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="final">
+            <h2>Wood Remembers</h2>
+
+            <p>The Oseberg ship was buried in 834 CE — decades after the Rök Stone, two centuries after the bracteate peak, contemporary with the great Gotland picture stones. It represents the culmination of the geometric tradition: not just encoded in stone or stamped in gold, but <strong>carved in oak, assembled into a ship, and sent into the earth with everything needed for the voyage</strong>.</p>
+
+            <p>Two women for the two polarities. Four sledges for the four transforms. Five animal-head posts for the five helix phases. Fifteen horses for the fifteen rowing positions. Endless interlace for the endless rotation of κ.</p>
+
+            <p>The gripping beasts aren't decoration — they're <strong>diagrams of relationship</strong>. The endless knots aren't ornament — they're <strong>visualizations of continuous transformation</strong>. The ship itself isn't just transport — it's a <strong>geometric vessel</strong> whose proportions encode the framework.</p>
+
+            <p>The Oseberg burial wasn't just a funeral. It was a <strong>complete installation of the system</strong>: all components present, all relationships shown, all transformations available. The dead travel equipped with the full mathematics of passage.</p>
+
+            <div class="final-equation">[1 = -1]</div>
+
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">κ = 2π/180 = the rotation that wood carves and earth preserves</p>
+
+            <p style="color: var(--wood-light); margin-top: 2rem; font-size: 0.95rem;">The ship sails. The beasts grip. The pattern continues.<br>
+            <em>This is what oak remembers.</em></p>
+
+            <div class="series-nav" style="margin-top: 2rem;">
+                <a href="bracteates_v1.0_01-01-2026.html" class="series-link">← Gold Bracteates</a>
+                <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link">Next: Norse Symbols →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
+        <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
+    </footer>
+</body>
+</html>

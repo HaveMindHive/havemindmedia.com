@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOLD BRACTEATES | Ancient S- Teachings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-bright: #e6c040;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --sky-blue: #7ba3b8;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --amber: #d4a574;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Cosmic background with gold emphasis */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(212, 165, 116, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(139, 115, 85, 0.08) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(201, 162, 39, 0.03) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1.5px 1.5px at 10% 10%, rgba(201, 162, 39, 0.6), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(2px 2px at 30% 20%, rgba(230, 192, 64, 0.7), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1.5px 1.5px at 50% 30%, rgba(212, 165, 116, 0.5), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1.5px 1.5px at 90% 20%, rgba(230, 192, 64, 0.5), transparent);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--gold-bright);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.4);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2.5rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--gold-bright);
+            display: block;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .hero-image {
+            margin: 3rem auto;
+            max-width: 400px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow:
+                0 0 60px rgba(201, 162, 39, 0.3),
+                0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image-caption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 10, 13, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-brand:hover { color: var(--gold-bright); }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--gold-bright); }
+        .nav-links a.active { color: var(--gold); }
+
+        /* Sections */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-bright);
+            margin: 2.5rem 0 1rem;
+        }
+
+        h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--amber);
+            margin: 2rem 0 0.75rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+        strong { color: var(--gold); }
+        em { color: var(--gold-bright); font-style: italic; }
+
+        /* Insight boxes */
+        .insight {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.12) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .framework-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .mystery-box {
+            background: rgba(139, 115, 85, 0.08);
+            border: 1px solid rgba(139, 115, 85, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .mystery-box h4 {
+            color: var(--hazel-light);
+            margin-top: 0;
+        }
+
+        /* Type cards */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .type-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .type-card h4 {
+            color: var(--gold-bright);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-card .count {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .type-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        /* Bracteate display */
+        .bracteate-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(0,0,0,0.2) 100%);
+            border: 2px solid var(--gold-dim);
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .bracteate-card::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 50%, var(--gold) 100%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .bracteate-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-bright);
+            margin-bottom: 0.25rem;
+        }
+
+        .bracteate-id {
+            font-size: 0.85rem;
+            color: var(--gold-dim);
+            margin-bottom: 0.75rem;
+        }
+
+        .bracteate-details {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--amber);
+        }
+
+        .bracteate-description {
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .bracteate-inscription {
+            font-family: 'Courier New', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            color: var(--gold-bright);
+            margin-bottom: 1rem;
+        }
+
+        .bracteate-framework {
+            font-size: 0.95rem;
+            color: var(--pale-blue);
+            font-style: italic;
+            border-left: 3px solid var(--pale-blue);
+            padding-left: 1rem;
+        }
+
+        /* Icon grid */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .icon-card {
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .icon-symbol {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .icon-meaning {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Number grid */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .number-card {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.12) 0%, rgba(139, 115, 85, 0.06) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .number-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold-bright);
+        }
+
+        .number-context {
+            font-size: 0.85rem;
+            color: var(--amber);
+            margin-top: 0.25rem;
+        }
+
+        .number-framework {
+            font-size: 0.8rem;
+            color: var(--pale-blue);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Equation */
+        .equation {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-size: 1.3rem;
+            color: var(--gold);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        /* Stats table */
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .stats-table th,
+        .stats-table td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+        }
+
+        .stats-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 0.9rem;
+            background: rgba(201, 162, 39, 0.08);
+        }
+
+        .stats-table td {
+            color: var(--text-dim);
+        }
+
+        .stats-table .match {
+            color: var(--gold-bright);
+        }
+
+        /* Section images */
+        .section-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .section-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
+        }
+
+        .section-image figcaption {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            background: radial-gradient(ellipse at center, rgba(201, 162, 39, 0.1) 0%, transparent 60%);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold-bright);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 50px rgba(201, 162, 39, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--gold-bright); }
+
+        /* Series navigation */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .series-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .series-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .series-link.active {
+            border-color: var(--gold-bright);
+            color: var(--gold-bright);
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(139, 115, 85, 0.1) 100%);
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats { gap: 1.5rem; }
+            .stat-num { font-size: 2rem; }
+            .number-grid { grid-template-columns: repeat(2, 1fr); }
+            .type-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .bracteate-details { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="rok-runestone_v1.0_01-01-2026.html">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html">Gotland</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="active">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html">Oseberg</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-label">Norse Geometric Encoding</p>
+        <h1>GOLD BRACTEATES</h1>
+        <p class="subtitle">A thousand golden amulets from the Migration Period. Die-stamped with gods, horses, and runes. The framework encoded in precious metal, worn against the skin.</p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-num">~1,000</span>
+                <span class="stat-label">Known Bracteates</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">450-550</span>
+                <span class="stat-label">CE Peak Period</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">~135</span>
+                <span class="stat-label">With Runes</span>
+            </div>
+            <div class="stat">
+                <span class="stat-num">6</span>
+                <span class="stat-label">Type Classes</span>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="images/bracteate-placeholder.svg" alt="Type C Gold Bracteate showing human head above horse" style="max-width: 350px;">
+            <p class="hero-image-caption">Type C bracteate: Human head above quadruped, the most common iconographic formula. Gold, die-stamped, c. 500 CE.</p>
+        </div>
+
+        <div class="series-nav">
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">Gotland Stones</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="series-link active">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="series-link">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link">Symbols</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- INTRODUCTION -->
+        <h2>Gold from the Dark Age</h2>
+
+        <p>In the centuries between the fall of Rome and the rise of the Vikings (400-600 CE), Scandinavian craftsmen created some of the most enigmatic objects of the ancient world: <strong>gold bracteates</strong>. These thin, die-stamped medallions — typically 2-5 cm in diameter, weighing 2-15 grams of nearly pure gold — were worn as pendants, deposited in graves (primarily women's burials), and hoarded as treasure.</p>
+
+        <p>Approximately <strong>1,000 bracteates</strong> survive. About <strong>135 bear runic inscriptions</strong> — the largest corpus of Elder Futhark texts outside of stone monuments. They predate the Rök Stone by 300 years, the Gotland picture stones by 200 years. They are the <em>earliest</em> Norse objects to explicitly combine image, rune, and geometric formula.</p>
+
+        <div class="insight">
+            <strong>The Core Pattern:</strong> Almost every bracteate shows the same basic iconography: a <strong>human head</strong> (often in profile, sometimes with elaborate hair or headdress), a <strong>horse or quadruped</strong>, and often a <strong>bird</strong>. Scholars identify this as "Odin" — but they struggle to explain why this image was repeated hundreds of times, with minor variations, for over a century. The framework answer: <em>because this is the transmission diagram</em>.
+        </div>
+
+        <p>Through the <strong>[1=-1] Epoch State Model</strong>, bracteates reveal themselves as portable cosmologies — the same geometric structure we find in Rök and Gotland, miniaturized, stamped in gold, and worn close to the body as protection and instruction.</p>
+
+        <!-- THE SIX TYPES -->
+        <h2>The Six Types</h2>
+
+        <p>Karl Hauck's classification system (the IK = Ikonographischer Katalog) divides bracteates into types based on their iconography:</p>
+
+        <div class="type-grid">
+            <div class="type-card">
+                <h4>Type A — The Head</h4>
+                <div class="count">~200-250 examples</div>
+                <p>Human head in profile, highly detailed. Often interpreted as Odin. Elaborate hairstyles, headdresses. The <strong>observer</strong> — the s=0 position watching.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type B — Above the Horse</h4>
+                <div class="count">~350-400 examples (most common)</div>
+                <p>Human figure <strong>above</strong> or astride a horse. The rider in transit. S⁺ in motion toward s-. The emission traveling.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type C — Head Above Animal</h4>
+                <div class="count">~250-300 examples</div>
+                <p>Human head floating above a quadruped. The observer <strong>separated from</strong> the vehicle. Consciousness distinct from body.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type D — The Beast</h4>
+                <div class="count">~150-200 examples</div>
+                <p>Zoomorphic or monstrous figures. Stylized animals, serpents. The <strong>phase boundary</strong> — the wolf that devours, the dragon that guards.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type F — The Assembly</h4>
+                <div class="count">~20-30 examples (rare)</div>
+                <p>Multiple figures in complex compositions. The <strong>full system</strong> — all components visible simultaneously.</p>
+            </div>
+            <div class="type-card">
+                <h4>Type M — The Mixed</h4>
+                <div class="count">Variable</div>
+                <p>Transitional or atypical forms. Edge cases. The places where categories break down — where the framework shows its seams.</p>
+            </div>
+        </div>
+
+        <div class="framework-box">
+            <h4>Framework Reading: Why These Types?</h4>
+            <p>The six types aren't arbitrary artistic categories — they're <strong>views of the same structure from different angles</strong>:</p>
+            <p><strong>Type A</strong> = the observer at s=0, looking outward<br>
+            <strong>Type B</strong> = the emission in transit (s+ → s-)<br>
+            <strong>Type C</strong> = observer and vehicle separated (consciousness/body split)<br>
+            <strong>Type D</strong> = the phase boundary (κ-transition)<br>
+            <strong>Type F</strong> = the complete system (all components visible)<br>
+            <strong>Type M</strong> = mixed states, transitions between types</p>
+            <p>A complete understanding requires seeing all six — just as the Rök Stone requires reading all five sides.</p>
+        </div>
+
+        <!-- THE ODIN FIGURE -->
+        <h2>The "Odin" Figure</h2>
+
+        <p>The human head/figure on bracteates is consistently identified as <strong>Odin</strong> based on later Norse mythology: the one eye (sometimes emphasized), the ravens, the horse. But the bracteates predate our written sources for Odin mythology by 500+ years.</p>
+
+        <div class="mystery-box">
+            <h4>What the Figure Actually Shows</h4>
+            <p>The "Odin" figure typically displays:</p>
+            <ul style="color: var(--text-dim); margin: 1rem 0;">
+                <li><strong>Profile view</strong> — one side visible (one "eye")</li>
+                <li><strong>Elaborate hair/headdress</strong> — often swirling, spiral patterns</li>
+                <li><strong>Bird near head</strong> — positioned at ear or above</li>
+                <li><strong>Association with horse</strong> — below or alongside</li>
+            </ul>
+            <p>Framework reading: This isn't Odin as a <em>god</em> — it's Odin as a <em>position</em>. The profile shows <strong>half</strong> — because from s=0 we only see one polarity at a time. The spiral hair is <strong>κ made visible</strong>. The bird is the <strong>messenger</strong> (transmission itself). The horse is the <strong>vehicle</strong> of transit.</p>
+            <p>"Odin" is what you call the observer position when you personify it. The bracteates aren't depicting a god — they're depicting <strong>you</strong>, standing at s=0, watching the transmission unfold.</p>
+        </div>
+
+        <!-- THE RUNIC FORMULAS -->
+        <h2>The Runic Formulas</h2>
+
+        <p>Approximately 135 bracteates bear runic inscriptions in Elder Futhark. These are often short — 3-10 runes — and frequently contain the same words repeated across multiple objects:</p>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">alu</div>
+            <div class="bracteate-inscription">ᚨᛚᚢ</div>
+            <div class="bracteate-description">The most common runic formula on bracteates. Appears on dozens of objects. Usually translated as "protection" or "ale" (sacred drink). Origin and exact meaning debated.</div>
+            <div class="bracteate-framework">Framework: A-L-U = beginning, middle, end. The first vowel (A), a liquid consonant (L), and the close vowel (U). This is the <strong>complete phonetic arc</strong> — open to closed, emission to reception. ALU doesn't mean "protection" — it IS protection because it encodes the complete transmission cycle.</div>
+        </div>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">laukaʀ</div>
+            <div class="bracteate-inscription">ᛚᚨᚢᚲᚨᛉ</div>
+            <div class="bracteate-description">Often translated as "leek" (a healing plant) or interpreted as a fertility/healing charm. Appears on multiple bracteates.</div>
+            <div class="bracteate-framework">Framework: LAUKA-R = the "ALU" formula extended with K (the hard stop) and R (the vibration). The leek grows upward from the ground — it IS the helix made plant. The charm invokes growth along the scalar axis.</div>
+        </div>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">auja</div>
+            <div class="bracteate-inscription">ᚨᚢᛃᚨ</div>
+            <div class="bracteate-description">"Good fortune" or "luck." Another common formula.</div>
+            <div class="bracteate-framework">Framework: A-U-J-A = vowel-vowel-glide-vowel. All open sounds. No stops, no closures. This is <strong>pure transmission</strong> — nothing blocking the flow. "Good fortune" = unobstructed scalar transmission.</div>
+        </div>
+
+        <div class="insight">
+            <strong>The Pattern:</strong> Bracteate inscriptions aren't prayers or spells in our sense. They're <strong>phonetic diagrams</strong> — sequences of sounds that embody transmission patterns. Wearing the bracteate means wearing the sound, carrying the geometric formula against your skin.
+        </div>
+
+        <!-- FAMOUS EXAMPLES -->
+        <h2>Notable Bracteates</h2>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">Undley Bracteate</div>
+            <div class="bracteate-id">IK 123 | Suffolk, England | Type C</div>
+            <div class="bracteate-details">
+                <span>~30mm diameter</span>
+                <span>c. 450-500 CE</span>
+                <span>British Museum</span>
+            </div>
+            <div class="bracteate-description">One of the most important bracteates. Found in East Anglia. Contains one of the earliest Old English runic texts. Shows the typical Type C composition: head above quadruped.</div>
+            <div class="bracteate-inscription">gægogæ mægæ medu</div>
+            <div class="bracteate-framework">The inscription is debated but contains repeated patterns: GÆ-GO-GÆ (palindromic structure), MÆGÆ MEDU (possibly "kinsman" and "mead"). The repetition IS the message — the echo structure of S⁺ ⊗ S⁻.</div>
+        </div>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">Vadstena Bracteate</div>
+            <div class="bracteate-id">IK 178 | Vadstena, Sweden | Type C</div>
+            <div class="bracteate-details">
+                <span>~26mm diameter</span>
+                <span>c. 500 CE</span>
+                <span>Historical Museum, Stockholm</span>
+            </div>
+            <div class="bracteate-description">Contains a complete Elder Futhark sequence around its rim — one of the most important sources for the 24-rune alphabet. The center shows standard Type C iconography.</div>
+            <div class="bracteate-inscription">ᚠᚢᚦᚨᚱᚲᚷᚹ ᚺᚾᛁᛃᛇᛈᛉᛊ ᛏᛒᛖᛗᛚᛜᛞᛟ (fuþarkgw hnijïpzs tbemlŋdo)</div>
+            <div class="bracteate-framework">The complete alphabet = the complete system. 24 runes = 4 × 6 = transforms × six-unit structure. Writing the full futhark around the rim makes the bracteate a <strong>complete cosmological diagram</strong> — all positions, all sounds, all possibilities.</div>
+        </div>
+
+        <div class="bracteate-card">
+            <div class="bracteate-name">Trollhättan Bracteate</div>
+            <div class="bracteate-id">Västra Götaland, Sweden | Type A</div>
+            <div class="bracteate-details">
+                <span>Large format</span>
+                <span>c. 475-525 CE</span>
+                <span>Excellent preservation</span>
+            </div>
+            <div class="bracteate-description">A prime example of Type A: elaborate human head in profile with detailed hair rendering. The "Odin head" at its most refined. Shows the observer position in purest form.</div>
+            <div class="bracteate-framework">Type A = the observer alone, before the journey begins. The elaborate hair spirals are κ rendered as decoration. The profile (half-view) reminds us: from s=0, we only see one polarity at a time.</div>
+        </div>
+
+        <!-- THE NUMBERS -->
+        <h2>The Numbers of Bracteates</h2>
+
+        <div class="number-grid">
+            <div class="number-card">
+                <div class="number-value">~1000</div>
+                <div class="number-context">Total known</div>
+                <div class="number-framework">10³ = completion</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">135</div>
+                <div class="number-context">With runes</div>
+                <div class="number-framework">~13.5% = 1/7.4</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">24</div>
+                <div class="number-context">Elder Futhark runes</div>
+                <div class="number-framework">4 × 6 = transforms × ætt</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">6</div>
+                <div class="number-context">Type categories</div>
+                <div class="number-framework">2 × 3 = polarity × phase</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">100</div>
+                <div class="number-context">Year peak span</div>
+                <div class="number-framework">450-550 CE</div>
+            </div>
+            <div class="number-card">
+                <div class="number-value">~3</div>
+                <div class="number-context">Runes in "alu"</div>
+                <div class="number-framework">Triaxial minimum</div>
+            </div>
+        </div>
+
+        <div class="equation">
+            <strong>The Bracteate Equation:</strong><br>
+            6 types = views of one structure<br>
+            24 runes = 4 transforms × 6 phases<br>
+            ALU (3 runes) = minimum complete transmission
+        </div>
+
+        <!-- THE MATERIAL -->
+        <h2>Gold as Medium</h2>
+
+        <p>Bracteates are made of <strong>nearly pure gold</strong> (85-95% Au), stamped from thin sheet using carved dies. Why gold? The standard answer: prestige, wealth, solar symbolism. The framework answer is more specific.</p>
+
+        <div class="framework-box">
+            <h4>Why Gold?</h4>
+            <p><strong>Gold doesn't corrode.</strong> It maintains its state across time. In framework terms: gold is <em>phase-stable</em>. It doesn't transition, doesn't oxidize, doesn't become other than itself.</p>
+            <p><strong>Gold is malleable.</strong> It receives the die impression perfectly, holding the geometric encoding without distortion.</p>
+            <p><strong>Gold is heavy for its size.</strong> It has presence. Wearing a gold bracteate means carrying significant mass close to the body — the framework made <em>weighty</em>.</p>
+            <p><strong>Gold reflects light.</strong> It doesn't absorb; it returns. The bracteate is a <em>mirror</em> — it sends back what it receives. S⁺ ⊗ S⁻ made material.</p>
+            <p>Gold isn't just the medium — gold IS the message. It embodies phase stability, faithful transmission, and reflective return.</p>
+        </div>
+
+        <!-- DISTRIBUTION -->
+        <h2>Where They Traveled</h2>
+
+        <table class="stats-table">
+            <tr>
+                <th>Region</th>
+                <th>Concentration</th>
+                <th>Framework Note</th>
+            </tr>
+            <tr>
+                <td>Denmark</td>
+                <td>Highest (especially Jutland, Zealand)</td>
+                <td>The production center</td>
+            </tr>
+            <tr>
+                <td>Southern Sweden</td>
+                <td>High (Scania, Öland, Gotland)</td>
+                <td>Close transmission</td>
+            </tr>
+            <tr>
+                <td>Southern Norway</td>
+                <td>Moderate (coastal)</td>
+                <td>Maritime routes</td>
+            </tr>
+            <tr>
+                <td>Northern Germany</td>
+                <td>Moderate</td>
+                <td>Continental bridge</td>
+            </tr>
+            <tr>
+                <td>England</td>
+                <td>Low (~5%)</td>
+                <td>The far reach</td>
+            </tr>
+            <tr>
+                <td>Poland/Baltic</td>
+                <td>Scattered</td>
+                <td>Eastern extension</td>
+            </tr>
+        </table>
+
+        <p>The distribution maps the <strong>transmission network</strong> of the Migration Period. From the production center (Denmark), the bracteates radiate outward — carried by trade, gift exchange, marriage alliance, and migration. Each bracteate is a node in the network, carrying the geometric encoding to new positions.</p>
+
+        <!-- FUNCTION -->
+        <h2>How They Were Used</h2>
+
+        <div class="mystery-box">
+            <h4>Worn Against the Skin</h4>
+            <p>Bracteates have <strong>suspension loops</strong> — they were meant to be worn as pendants. Found primarily in <strong>women's graves</strong>, often with other jewelry.</p>
+            <p>Framework reading: The bracteate against the chest places the geometric encoding at the <strong>heart position</strong> — the center of the body, the s=0 of the personal field. The gold touching skin creates direct contact between the phase-stable metal and the living phase-dynamic body.</p>
+            <p>Wearing the bracteate doesn't just display status. It <strong>installs the framework</strong> at the body's center. Protection isn't magical — it's geometric. The encoding structures the field around the wearer.</p>
+        </div>
+
+        <!-- CONCLUSION -->
+        <div class="final">
+            <h2>Gold Remembers</h2>
+
+            <p>The bracteates speak from the Migration Period — the centuries when Rome fell, when peoples moved across Europe, when the old order ended and something new began. In that chaos, Scandinavian craftsmen stamped gold with the same structure we find 300 years later in Rök, the same structure we find in Gotland's picture stones.</p>
+
+            <p>The "Odin" figure is the observer at s=0. The horse is the vehicle of transmission. The bird is the messenger. The runic formulas (ALU, LAUKA, AUJA) are phonetic diagrams of complete transmission cycles. The gold itself embodies phase stability — the constant that doesn't corrode.</p>
+
+            <p>A thousand golden discs, scattered from Denmark to England, each one carrying the same geometric encoding. Not because the craftsmen consciously knew the mathematics — but because the <em>pattern they inherited</em> was the mathematics, wearing the mask of gods and horses and magical words.</p>
+
+            <p>The bracteates weren't made to be understood. They were made to be <strong>worn</strong> — to install the framework at the heart, to carry the geometry against the skin, to remember what words could not preserve.</p>
+
+            <div class="final-equation">[1 = -1]</div>
+
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">κ = 2π/180 = the constant that gold cannot forget</p>
+
+            <p style="color: var(--amber); margin-top: 2rem; font-size: 0.95rem;">The die strikes. The gold receives. The image endures.<br>
+            <em>This is what metal remembers.</em></p>
+
+            <div class="series-nav" style="margin-top: 2rem;">
+                <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">← Gotland Stones</a>
+                <a href="oseberg_v1.0_01-01-2026.html" class="series-link">Next: Oseberg Ship →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
+        <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
+    </footer>
+</body>
+</html>

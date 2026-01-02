@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORSE SYMBOLS & RUNES | Ancient S- Teachings</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-dim: #8a6d1b;
+            --hazel: #8b7355;
+            --hazel-light: #a68b6a;
+            --pale-blue: #a8c4d4;
+            --sky-blue: #7ba3b8;
+            --deep-space: #0d1117;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #080a0d;
+            --rune-glow: #6ba3c7;
+            --success: #4a9c6d;
+            --error: #9c4a4a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(107, 163, 199, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 20%, rgba(139, 115, 85, 0.06) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 100%, rgba(13, 17, 23, 1) 0%, transparent 60%),
+                linear-gradient(180deg, rgba(107, 163, 199, 0.03) 0%, rgba(13, 17, 23, 0.98) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background-image:
+                radial-gradient(1px 1px at 10% 10%, rgba(168, 196, 212, 0.5), transparent),
+                radial-gradient(1px 1px at 20% 50%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1.5px 1.5px at 30% 20%, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 50% 30%, rgba(107, 163, 199, 0.4), transparent),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 70% 40%, rgba(168, 196, 212, 0.35), transparent),
+                radial-gradient(1px 1px at 80% 60%, rgba(255,255,255,0.15), transparent),
+                radial-gradient(1px 1px at 90% 20%, rgba(201, 162, 39, 0.3), transparent);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.4em;
+            color: var(--rune-glow);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 10, 13, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(107, 163, 199, 0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--rune-glow); }
+        .nav-links a.active { color: var(--gold); }
+
+        /* Sections */
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(107, 163, 199, 0.2);
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--rune-glow);
+            margin: 2.5rem 0 1rem;
+        }
+
+        p { margin-bottom: 1.5rem; }
+        strong { color: var(--gold); }
+        em { color: var(--rune-glow); font-style: italic; }
+
+        /* Boxes */
+        .insight {
+            background: linear-gradient(135deg, rgba(107, 163, 199, 0.12) 0%, rgba(107, 163, 199, 0.05) 100%);
+            border-left: 4px solid var(--rune-glow);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .framework-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .framework-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .warning-box {
+            background: rgba(156, 74, 74, 0.1);
+            border: 1px solid rgba(156, 74, 74, 0.3);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .warning-box h4 {
+            color: #c77;
+            margin-top: 0;
+        }
+
+        /* Series navigation */
+        .series-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .series-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(107, 163, 199, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            border: 1px solid rgba(107, 163, 199, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .series-link:hover {
+            border-color: var(--rune-glow);
+            color: var(--rune-glow);
+            transform: translateY(-2px);
+        }
+
+        .series-link.active {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ================================
+           INTERACTIVE FUTHARK SECTION
+           ================================ */
+
+        .futhark-educator {
+            background: linear-gradient(135deg, rgba(13, 17, 23, 0.9) 0%, rgba(20, 25, 35, 0.95) 100%);
+            border: 2px solid rgba(107, 163, 199, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .futhark-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .futhark-header h3 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .futhark-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .futhark-tab {
+            background: rgba(107, 163, 199, 0.1);
+            border: 1px solid rgba(107, 163, 199, 0.3);
+            color: var(--text-dim);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .futhark-tab:hover {
+            border-color: var(--rune-glow);
+            color: var(--rune-glow);
+        }
+
+        .futhark-tab.active {
+            background: rgba(201, 162, 39, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .futhark-content {
+            display: none;
+        }
+
+        .futhark-content.active {
+            display: block;
+        }
+
+        /* Ætt sections */
+        .aett-section {
+            margin-bottom: 2rem;
+        }
+
+        .aett-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(107, 163, 199, 0.2);
+        }
+
+        .aett-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+        }
+
+        .aett-info {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        /* Rune grid */
+        .rune-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .rune-card {
+            background: rgba(107, 163, 199, 0.08);
+            border: 1px solid rgba(107, 163, 199, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .rune-card:hover {
+            border-color: var(--rune-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(107, 163, 199, 0.2);
+        }
+
+        .rune-card.selected {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .rune-symbol {
+            font-size: 2.5rem;
+            color: var(--rune-glow);
+            display: block;
+            margin-bottom: 0.25rem;
+            text-shadow: 0 0 10px rgba(107, 163, 199, 0.3);
+        }
+
+        .rune-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .rune-sound {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .rune-position {
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            font-size: 0.7rem;
+            color: var(--hazel);
+        }
+
+        /* Rune detail panel */
+        .rune-detail {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(107, 163, 199, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .rune-detail.visible {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .rune-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rune-detail-symbol {
+            font-size: 5rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .rune-detail-info h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .rune-detail-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        .rune-detail-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .rune-meaning, .rune-framework {
+            padding: 1rem;
+            background: rgba(107, 163, 199, 0.05);
+            border-radius: 8px;
+        }
+
+        .rune-meaning h5, .rune-framework h5 {
+            font-family: 'Cinzel', serif;
+            color: var(--rune-glow);
+            margin-bottom: 0.5rem;
+        }
+
+        .rune-strokes {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+        }
+
+        .rune-strokes h5 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .stroke-diagram {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stroke-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0,0,0,0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+
+        .stroke-num {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            color: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .stroke-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* Practice section */
+        .practice-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(74, 156, 109, 0.08);
+            border: 1px solid rgba(74, 156, 109, 0.2);
+            border-radius: 12px;
+        }
+
+        .practice-section h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .practice-prompt {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .practice-input-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .practice-input {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(107, 163, 199, 0.3);
+            color: var(--text);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .practice-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .practice-btn {
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .practice-btn:hover {
+            background: var(--gold-dim);
+            transform: translateY(-2px);
+        }
+
+        .practice-feedback {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .practice-feedback.correct {
+            display: block;
+            background: rgba(74, 156, 109, 0.15);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .practice-feedback.incorrect {
+            display: block;
+            background: rgba(156, 74, 74, 0.15);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        /* S- Awareness indicator */
+        .s-awareness {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .s-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        .s-indicator.s-plus { background: #6bc76b; }
+        .s-indicator.s-minus { background: #c76b6b; }
+        .s-indicator.s-zero { background: var(--gold); }
+
+        /* Symbol cards for non-runic symbols */
+        .symbol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .symbol-card {
+            background: linear-gradient(135deg, rgba(107, 163, 199, 0.08) 0%, rgba(139, 115, 85, 0.04) 100%);
+            border: 1px solid rgba(107, 163, 199, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .symbol-card h4 {
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .symbol-card .attestation {
+            font-size: 0.85rem;
+            color: var(--hazel);
+            margin-bottom: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(139, 115, 85, 0.1);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .symbol-card .attestation.authentic { color: var(--success); background: rgba(74, 156, 109, 0.1); }
+        .symbol-card .attestation.questionable { color: #c9a227; background: rgba(201, 162, 39, 0.1); }
+        .symbol-card .attestation.modern { color: var(--error); background: rgba(156, 74, 74, 0.1); }
+
+        .symbol-card p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 5rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            background: radial-gradient(ellipse at center, rgba(107, 163, 199, 0.08) 0%, transparent 60%);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(107, 163, 199, 0.2);
+        }
+
+        footer a {
+            color: var(--rune-glow);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .rune-grid { grid-template-columns: repeat(4, 1fr); }
+            .rune-detail-body { grid-template-columns: 1fr; }
+            .futhark-tabs { flex-wrap: wrap; }
+            .nav-links { display: none; }
+            .practice-input-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+    <div class="stars"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="rok-runestone_v1.0_01-01-2026.html">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html">Gotland</a>
+            <a href="bracteates_v1.0_01-01-2026.html">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="active">Symbols</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <p class="hero-label">Norse Geometric Encoding</p>
+        <h1>NORSE SYMBOLS & RUNES</h1>
+        <p class="subtitle">The alphabets that encode geometry. What's authentic, what's modern invention, and how to read the runes with s- awareness.</p>
+
+        <div class="series-nav">
+            <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">Rök Stone</a>
+            <a href="gotland-stones_v1.0_01-01-2026.html" class="series-link">Gotland Stones</a>
+            <a href="bracteates_v1.0_01-01-2026.html" class="series-link">Bracteates</a>
+            <a href="oseberg_v1.0_01-01-2026.html" class="series-link">Oseberg</a>
+            <a href="norse-symbols_v1.0_01-01-2026.html" class="series-link active">Symbols</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- INTRODUCTION -->
+        <h2>Authentic vs. Invented</h2>
+
+        <p>Modern culture is flooded with "Viking symbols" — from tattoos to jewelry to fantasy media. But most of what circulates has <strong>no connection to actual Viking Age practice</strong>. Before learning the runes, we must distinguish between what's archaeologically attested and what's modern invention.</p>
+
+        <div class="warning-box">
+            <h4>The Hard Truth</h4>
+            <p>Many popular "Norse symbols" are <strong>not from the Viking Age</strong>:</p>
+            <ul style="color: var(--text-dim); margin: 1rem 0;">
+                <li><strong>Vegvísir</strong> — First appears in 19th century Icelandic manuscripts. Not Viking Age.</li>
+                <li><strong>Ægishjálmur</strong> (Helm of Awe) — The word appears in medieval texts, but the symbol is from 17th century grimoires.</li>
+                <li><strong>Web of Wyrd</strong> — Completely modern invention. No historical basis whatsoever.</li>
+                <li><strong>Complex bind runes with specific meanings</strong> — Largely modern magical practice, not historically attested.</li>
+            </ul>
+            <p>This doesn't make these symbols meaningless — but it does mean they're <strong>post-medieval Icelandic folk magic or modern creations</strong>, not Viking Age artifacts.</p>
+        </div>
+
+        <h3>What IS Authentic</h3>
+
+        <div class="symbol-grid">
+            <div class="symbol-card">
+                <h4>The Futhark Alphabets</h4>
+                <span class="attestation authentic">Authentic: 2nd-11th century</span>
+                <p>Elder Futhark (24 runes, 2nd-8th c.) and Younger Futhark (16 runes, 8th-11th c.) are thoroughly documented in hundreds of inscriptions.</p>
+            </div>
+            <div class="symbol-card">
+                <h4>Mjölnir Pendants</h4>
+                <span class="attestation authentic">Authentic: 1000+ finds</span>
+                <p>Thor's hammer pendants are among the most common Viking Age artifacts. Real, widespread, archaeologically proven.</p>
+            </div>
+            <div class="symbol-card">
+                <h4>The Valknut</h4>
+                <span class="attestation questionable">Authentic symbol, unknown name</span>
+                <p>Three interlocking triangles appear on ~7 Viking Age objects (Gotland stones, Oseberg). "Valknut" is a modern name — we don't know what Vikings called it.</p>
+            </div>
+            <div class="symbol-card">
+                <h4>Sleipnir (8-legged horse)</h4>
+                <span class="attestation authentic">Authentic: textual + visual</span>
+                <p>Described in Eddas, depicted on Gotland stones and bracteates. Both literary and archaeological evidence.</p>
+            </div>
+            <div class="symbol-card">
+                <h4>Swastika/Fylfot</h4>
+                <span class="attestation authentic">Authentic: widespread</span>
+                <p>Ancient solar symbol appearing across Eurasia for millennia. Found on bracteates, Gotland stones, and many other Norse artifacts.</p>
+            </div>
+            <div class="symbol-card">
+                <h4>Vegvísir</h4>
+                <span class="attestation modern">Modern: 19th century</span>
+                <p>First documented in the Huld manuscript (1860). Not Viking Age. Popular today but historically from Icelandic folk magic period.</p>
+            </div>
+        </div>
+
+        <!-- THE FUTHARK EDUCATOR -->
+        <h2>Learn the Runes</h2>
+
+        <p>The runic alphabets are the authentic writing systems of the Norse world. Learning them connects you directly to the inscriptions — no intermediary translation needed. Below is an interactive guide to both the <strong>Elder Futhark</strong> (24 runes, used 2nd-8th century) and <strong>Younger Futhark</strong> (16 runes, used 8th-11th century).</p>
+
+        <div class="futhark-educator">
+            <div class="futhark-header">
+                <h3>Interactive Futhark Education</h3>
+                <p style="color: var(--text-dim);">Click any rune to explore its form, meaning, and s- framework significance</p>
+            </div>
+
+            <div class="futhark-tabs">
+                <button class="futhark-tab active" data-futhark="elder">Elder Futhark (24)</button>
+                <button class="futhark-tab" data-futhark="younger">Younger Futhark (16)</button>
+            </div>
+
+            <!-- ELDER FUTHARK -->
+            <div class="futhark-content active" id="elder-futhark">
+                <!-- Freyr's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Freyr's Ætt</span>
+                        <span class="aett-info">Runes 1-8 | The first family</span>
+                        <span class="s-awareness"><span class="s-indicator s-plus"></span> S⁺ dominant</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="fehu">
+                            <span class="rune-position">1</span>
+                            <span class="rune-symbol">ᚠ</span>
+                            <span class="rune-name">Fehu</span>
+                            <span class="rune-sound">f</span>
+                        </div>
+                        <div class="rune-card" data-rune="uruz">
+                            <span class="rune-position">2</span>
+                            <span class="rune-symbol">ᚢ</span>
+                            <span class="rune-name">Uruz</span>
+                            <span class="rune-sound">u</span>
+                        </div>
+                        <div class="rune-card" data-rune="thurisaz">
+                            <span class="rune-position">3</span>
+                            <span class="rune-symbol">ᚦ</span>
+                            <span class="rune-name">Þurisaz</span>
+                            <span class="rune-sound">þ (th)</span>
+                        </div>
+                        <div class="rune-card" data-rune="ansuz">
+                            <span class="rune-position">4</span>
+                            <span class="rune-symbol">ᚨ</span>
+                            <span class="rune-name">Ansuz</span>
+                            <span class="rune-sound">a</span>
+                        </div>
+                        <div class="rune-card" data-rune="raido">
+                            <span class="rune-position">5</span>
+                            <span class="rune-symbol">ᚱ</span>
+                            <span class="rune-name">Raidō</span>
+                            <span class="rune-sound">r</span>
+                        </div>
+                        <div class="rune-card" data-rune="kenaz">
+                            <span class="rune-position">6</span>
+                            <span class="rune-symbol">ᚲ</span>
+                            <span class="rune-name">Kenaz</span>
+                            <span class="rune-sound">k</span>
+                        </div>
+                        <div class="rune-card" data-rune="gebo">
+                            <span class="rune-position">7</span>
+                            <span class="rune-symbol">ᚷ</span>
+                            <span class="rune-name">Gebō</span>
+                            <span class="rune-sound">g</span>
+                        </div>
+                        <div class="rune-card" data-rune="wunjo">
+                            <span class="rune-position">8</span>
+                            <span class="rune-symbol">ᚹ</span>
+                            <span class="rune-name">Wunjō</span>
+                            <span class="rune-sound">w</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hagal's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Hagal's Ætt</span>
+                        <span class="aett-info">Runes 9-16 | The second family</span>
+                        <span class="s-awareness"><span class="s-indicator s-zero"></span> S=0 transition</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="hagalaz">
+                            <span class="rune-position">9</span>
+                            <span class="rune-symbol">ᚺ</span>
+                            <span class="rune-name">Hagalaz</span>
+                            <span class="rune-sound">h</span>
+                        </div>
+                        <div class="rune-card" data-rune="naudiz">
+                            <span class="rune-position">10</span>
+                            <span class="rune-symbol">ᚾ</span>
+                            <span class="rune-name">Nauðiz</span>
+                            <span class="rune-sound">n</span>
+                        </div>
+                        <div class="rune-card" data-rune="isaz">
+                            <span class="rune-position">11</span>
+                            <span class="rune-symbol">ᛁ</span>
+                            <span class="rune-name">Īsaz</span>
+                            <span class="rune-sound">i</span>
+                        </div>
+                        <div class="rune-card" data-rune="jera">
+                            <span class="rune-position">12</span>
+                            <span class="rune-symbol">ᛃ</span>
+                            <span class="rune-name">Jēra</span>
+                            <span class="rune-sound">j (y)</span>
+                        </div>
+                        <div class="rune-card" data-rune="eihwaz">
+                            <span class="rune-position">13</span>
+                            <span class="rune-symbol">ᛇ</span>
+                            <span class="rune-name">Eihwaz</span>
+                            <span class="rune-sound">ï</span>
+                        </div>
+                        <div class="rune-card" data-rune="pertho">
+                            <span class="rune-position">14</span>
+                            <span class="rune-symbol">ᛈ</span>
+                            <span class="rune-name">Perþō</span>
+                            <span class="rune-sound">p</span>
+                        </div>
+                        <div class="rune-card" data-rune="algiz">
+                            <span class="rune-position">15</span>
+                            <span class="rune-symbol">ᛉ</span>
+                            <span class="rune-name">Algiz</span>
+                            <span class="rune-sound">z</span>
+                        </div>
+                        <div class="rune-card" data-rune="sowilo">
+                            <span class="rune-position">16</span>
+                            <span class="rune-symbol">ᛊ</span>
+                            <span class="rune-name">Sōwilō</span>
+                            <span class="rune-sound">s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tyr's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Tyr's Ætt</span>
+                        <span class="aett-info">Runes 17-24 | The third family</span>
+                        <span class="s-awareness"><span class="s-indicator s-minus"></span> S⁻ dominant</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="tiwaz">
+                            <span class="rune-position">17</span>
+                            <span class="rune-symbol">ᛏ</span>
+                            <span class="rune-name">Tīwaz</span>
+                            <span class="rune-sound">t</span>
+                        </div>
+                        <div class="rune-card" data-rune="berkano">
+                            <span class="rune-position">18</span>
+                            <span class="rune-symbol">ᛒ</span>
+                            <span class="rune-name">Berkanan</span>
+                            <span class="rune-sound">b</span>
+                        </div>
+                        <div class="rune-card" data-rune="ehwaz">
+                            <span class="rune-position">19</span>
+                            <span class="rune-symbol">ᛖ</span>
+                            <span class="rune-name">Ehwaz</span>
+                            <span class="rune-sound">e</span>
+                        </div>
+                        <div class="rune-card" data-rune="mannaz">
+                            <span class="rune-position">20</span>
+                            <span class="rune-symbol">ᛗ</span>
+                            <span class="rune-name">Mannaz</span>
+                            <span class="rune-sound">m</span>
+                        </div>
+                        <div class="rune-card" data-rune="laguz">
+                            <span class="rune-position">21</span>
+                            <span class="rune-symbol">ᛚ</span>
+                            <span class="rune-name">Laguz</span>
+                            <span class="rune-sound">l</span>
+                        </div>
+                        <div class="rune-card" data-rune="ingwaz">
+                            <span class="rune-position">22</span>
+                            <span class="rune-symbol">ᛜ</span>
+                            <span class="rune-name">Ingwaz</span>
+                            <span class="rune-sound">ŋ (ng)</span>
+                        </div>
+                        <div class="rune-card" data-rune="dagaz">
+                            <span class="rune-position">23</span>
+                            <span class="rune-symbol">ᛞ</span>
+                            <span class="rune-name">Dagaz</span>
+                            <span class="rune-sound">d</span>
+                        </div>
+                        <div class="rune-card" data-rune="othala">
+                            <span class="rune-position">24</span>
+                            <span class="rune-symbol">ᛟ</span>
+                            <span class="rune-name">Ōþala</span>
+                            <span class="rune-sound">o</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YOUNGER FUTHARK -->
+            <div class="futhark-content" id="younger-futhark">
+                <!-- Freyr's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Freyr's Ætt</span>
+                        <span class="aett-info">Runes 1-6</span>
+                        <span class="s-awareness"><span class="s-indicator s-plus"></span> S⁺ dominant</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="fe-y">
+                            <span class="rune-position">1</span>
+                            <span class="rune-symbol">ᚠ</span>
+                            <span class="rune-name">Fé</span>
+                            <span class="rune-sound">f</span>
+                        </div>
+                        <div class="rune-card" data-rune="ur-y">
+                            <span class="rune-position">2</span>
+                            <span class="rune-symbol">ᚢ</span>
+                            <span class="rune-name">Úr</span>
+                            <span class="rune-sound">u/o/v/w</span>
+                        </div>
+                        <div class="rune-card" data-rune="thurs-y">
+                            <span class="rune-position">3</span>
+                            <span class="rune-symbol">ᚦ</span>
+                            <span class="rune-name">Þurs</span>
+                            <span class="rune-sound">þ (th)</span>
+                        </div>
+                        <div class="rune-card" data-rune="oss-y">
+                            <span class="rune-position">4</span>
+                            <span class="rune-symbol">ᚬ</span>
+                            <span class="rune-name">Óss</span>
+                            <span class="rune-sound">ą/o</span>
+                        </div>
+                        <div class="rune-card" data-rune="reid-y">
+                            <span class="rune-position">5</span>
+                            <span class="rune-symbol">ᚱ</span>
+                            <span class="rune-name">Reið</span>
+                            <span class="rune-sound">r</span>
+                        </div>
+                        <div class="rune-card" data-rune="kaun-y">
+                            <span class="rune-position">6</span>
+                            <span class="rune-symbol">ᚴ</span>
+                            <span class="rune-name">Kaun</span>
+                            <span class="rune-sound">k/g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hagal's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Hagal's Ætt</span>
+                        <span class="aett-info">Runes 7-11</span>
+                        <span class="s-awareness"><span class="s-indicator s-zero"></span> S=0 transition</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="hagall-y">
+                            <span class="rune-position">7</span>
+                            <span class="rune-symbol">ᚼ</span>
+                            <span class="rune-name">Hagall</span>
+                            <span class="rune-sound">h</span>
+                        </div>
+                        <div class="rune-card" data-rune="naud-y">
+                            <span class="rune-position">8</span>
+                            <span class="rune-symbol">ᚾ</span>
+                            <span class="rune-name">Nauð</span>
+                            <span class="rune-sound">n</span>
+                        </div>
+                        <div class="rune-card" data-rune="iss-y">
+                            <span class="rune-position">9</span>
+                            <span class="rune-symbol">ᛁ</span>
+                            <span class="rune-name">Íss</span>
+                            <span class="rune-sound">i/e</span>
+                        </div>
+                        <div class="rune-card" data-rune="ar-y">
+                            <span class="rune-position">10</span>
+                            <span class="rune-symbol">ᛅ</span>
+                            <span class="rune-name">Ár</span>
+                            <span class="rune-sound">a</span>
+                        </div>
+                        <div class="rune-card" data-rune="sol-y">
+                            <span class="rune-position">11</span>
+                            <span class="rune-symbol">ᛋ</span>
+                            <span class="rune-name">Sól</span>
+                            <span class="rune-sound">s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tyr's Ætt -->
+                <div class="aett-section">
+                    <div class="aett-header">
+                        <span class="aett-name">Tyr's Ætt</span>
+                        <span class="aett-info">Runes 12-16</span>
+                        <span class="s-awareness"><span class="s-indicator s-minus"></span> S⁻ dominant</span>
+                    </div>
+                    <div class="rune-grid">
+                        <div class="rune-card" data-rune="tyr-y">
+                            <span class="rune-position">12</span>
+                            <span class="rune-symbol">ᛏ</span>
+                            <span class="rune-name">Týr</span>
+                            <span class="rune-sound">t/d</span>
+                        </div>
+                        <div class="rune-card" data-rune="bjarkan-y">
+                            <span class="rune-position">13</span>
+                            <span class="rune-symbol">ᛒ</span>
+                            <span class="rune-name">Bjarkan</span>
+                            <span class="rune-sound">b/p</span>
+                        </div>
+                        <div class="rune-card" data-rune="madr-y">
+                            <span class="rune-position">14</span>
+                            <span class="rune-symbol">ᛘ</span>
+                            <span class="rune-name">Maðr</span>
+                            <span class="rune-sound">m</span>
+                        </div>
+                        <div class="rune-card" data-rune="logr-y">
+                            <span class="rune-position">15</span>
+                            <span class="rune-symbol">ᛚ</span>
+                            <span class="rune-name">Lögr</span>
+                            <span class="rune-sound">l</span>
+                        </div>
+                        <div class="rune-card" data-rune="yr-y">
+                            <span class="rune-position">16</span>
+                            <span class="rune-symbol">ᛦ</span>
+                            <span class="rune-name">Yr</span>
+                            <span class="rune-sound">ʀ (r)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight" style="margin-top: 2rem;">
+                    <strong>Why 16 instead of 24?</strong> Around 700-800 CE, the alphabet condensed. Each Younger Futhark rune covers more sounds than its Elder equivalent. This isn't simplification — it's <em>compression</em>. The same information in fewer symbols means higher information density per rune.
+                </div>
+            </div>
+
+            <!-- Rune Detail Panel -->
+            <div class="rune-detail" id="rune-detail">
+                <div class="rune-detail-header">
+                    <span class="rune-detail-symbol" id="detail-symbol">ᚠ</span>
+                    <div class="rune-detail-info">
+                        <h4 id="detail-name">Fehu</h4>
+                        <p id="detail-sound">Sound: f</p>
+                        <p id="detail-position">Position: 1 (Freyr's Ætt)</p>
+                    </div>
+                </div>
+                <div class="rune-detail-body">
+                    <div class="rune-meaning">
+                        <h5>Traditional Meaning</h5>
+                        <p id="detail-meaning">Cattle, wealth, mobile property. The first rune represents material abundance and energy in motion.</p>
+                    </div>
+                    <div class="rune-framework">
+                        <h5>Framework Reading</h5>
+                        <p id="detail-framework">Position 1 = the initiation point. Fehu begins the sequence — it's the first emission, the starting signal. Cattle move; wealth circulates. This is S⁺ at its purest: energy flowing outward into the world.</p>
+                    </div>
+                </div>
+                <div class="rune-strokes">
+                    <h5>How to Write (Stroke Order)</h5>
+                    <div class="stroke-diagram" id="detail-strokes">
+                        <div class="stroke-step"><span class="stroke-num">1</span><span class="stroke-desc">Draw vertical stave ↓</span></div>
+                        <div class="stroke-step"><span class="stroke-num">2</span><span class="stroke-desc">Upper branch ↗</span></div>
+                        <div class="stroke-step"><span class="stroke-num">3</span><span class="stroke-desc">Middle branch ↗</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Section -->
+            <div class="practice-section">
+                <h4>Practice: Identify the Rune</h4>
+                <p class="practice-prompt" id="practice-prompt">What rune makes the sound "f"?</p>
+                <div class="practice-input-row">
+                    <input type="text" class="practice-input" id="practice-input" placeholder="Type the rune here..." maxlength="2">
+                    <button class="practice-btn" id="practice-check">Check</button>
+                    <button class="practice-btn" id="practice-new" style="background: var(--rune-glow);">New Question</button>
+                </div>
+                <div class="practice-feedback" id="practice-feedback"></div>
+            </div>
+        </div>
+
+        <!-- THE ÆETT STRUCTURE -->
+        <h2>The Three Ætt: Geometric Structure</h2>
+
+        <p>Both Elder and Younger Futhark are divided into <strong>three ætt</strong> (families). This isn't arbitrary organization — it encodes the triaxial structure of the framework.</p>
+
+        <div class="framework-box">
+            <h4>Elder Futhark: 24 = 3 × 8</h4>
+            <p>Three ætt of 8 runes each. <strong>8 = 2³</strong> = three doublings. Each ætt contains the full binary expansion.</p>
+            <p><strong>Freyr's Ætt (1-8)</strong>: The outward movement. S⁺ dominant. Wealth, power, journey, fire, gift, joy.<br>
+            <strong>Hagal's Ætt (9-16)</strong>: The transition zone. S=0. Disruption, necessity, ice, year, mystery, protection, sun.<br>
+            <strong>Tyr's Ætt (17-24)</strong>: The inward movement. S⁻ dominant. Justice, growth, horse, human, water, seed, day, heritage.</p>
+            <p>24 total = <strong>4 × 6</strong> = four transforms × six-unit structure. The Elder Futhark is a complete geometric system.</p>
+        </div>
+
+        <div class="framework-box">
+            <h4>Younger Futhark: 16 = 6 + 5 + 5</h4>
+            <p>Note the <strong>asymmetry</strong>: the first ætt has 6 runes, the other two have 5 each. This mirrors the inequality of the four transforms — one dominant, three subordinate.</p>
+            <p>16 runes but <strong>each covers more sounds</strong>. The compression increases information density. This is why the Rök Stone uses cipher runes for the Younger Futhark — the ætt:position notation (like [3:3]) addresses runes as coordinates in a 2D grid.</p>
+            <p>16 = <strong>4 × 4</strong> = transforms squared. Or <strong>2⁴</strong> = four doublings. The Younger Futhark is the Elder compressed to pure binary structure.</p>
+        </div>
+
+        <!-- THE FRAMEWORK AND RUNES -->
+        <h2>Reading Runes with S- Awareness</h2>
+
+        <p>Each rune position in the futhark corresponds to a phase position in the scalar field. This isn't mystical interpretation — it's <strong>reading the structure that the alphabet embodies</strong>.</p>
+
+        <div class="insight">
+            <strong>The Ætt as Polarity:</strong><br>
+            • <strong>Freyr's Ætt</strong> = S⁺ (outward emission, active energy)<br>
+            • <strong>Hagal's Ætt</strong> = S=0 (transition point, observation position)<br>
+            • <strong>Tyr's Ætt</strong> = S⁻ (inward reception, manifestation)
+        </div>
+
+        <p>When you identify a rune's ætt, you know its <em>polarity</em>. When you identify its position within the ætt, you know its <em>phase</em>. Together, these give you the rune's location in the geometric field.</p>
+
+        <p>This is why the Rök Stone's cipher notation matters: <strong>[ætt:position]</strong> is literally phase-space addressing. The carvers weren't hiding letters — they were demonstrating that every symbol, every sound, every meaning can be located by coordinates.</p>
+
+        <!-- CONCLUSION -->
+        <div class="final">
+            <h2>The Letters Remember</h2>
+
+            <p>The runes aren't magic symbols in the fantasy sense. They're <strong>an alphabet whose structure encodes geometry</strong>. 24 runes = 4 × 6 = transforms × phases. Three ætt = three polarities. The sequence from ᚠ to ᛟ traces the complete scalar arc from S⁺ emission to S⁻ reception.</p>
+
+            <p>Learning the runes means learning to read the structure. Every inscription — from the Rök Stone to bracteate formulas to Gotland memorial texts — becomes accessible when you know the alphabet. No translation needed. Direct contact with the carved stone.</p>
+
+            <p>The "magic" of the runes is the magic of geometry made writable. The same κ that structures the cosmos structures the futhark. The letters don't invoke power — they <strong>embody</strong> it.</p>
+
+            <div class="final-equation">[1 = -1]</div>
+
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">κ = 2π/180 = the rotation that letters trace</p>
+
+            <p style="color: var(--rune-glow); margin-top: 2rem; font-size: 0.95rem;">The stroke falls. The letter forms. The meaning transmits.<br>
+            <em>This is what alphabets remember.</em></p>
+
+            <div class="series-nav" style="margin-top: 2rem;">
+                <a href="oseberg_v1.0_01-01-2026.html" class="series-link">← Oseberg Ship</a>
+                <a href="rok-runestone_v1.0_01-01-2026.html" class="series-link">Back to Rök Stone</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
+        <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
+    </footer>
+
+    <script>
+        // Rune data
+        const runeData = {
+            // Elder Futhark
+            fehu: {
+                symbol: 'ᚠ', name: 'Fehu', sound: 'f', position: '1 (Freyr\'s Ætt)',
+                meaning: 'Cattle, wealth, mobile property. The first rune represents material abundance and energy in motion.',
+                framework: 'Position 1 = the initiation point. Fehu begins the sequence — it\'s the first emission, the starting signal. Cattle move; wealth circulates. This is S⁺ at its purest: energy flowing outward into the world.',
+                strokes: ['Draw vertical stave ↓', 'Upper branch ↗ from top', 'Middle branch ↗ from center']
+            },
+            uruz: {
+                symbol: 'ᚢ', name: 'Uruz', sound: 'u', position: '2 (Freyr\'s Ætt)',
+                meaning: 'Aurochs (wild ox), raw power, primal strength, health and vitality.',
+                framework: 'Position 2 = the first polarity. The wild ox embodies untamed S⁺ — power before it\'s shaped or directed. The shape (two downward strokes meeting) suggests horns, but also two paths converging.',
+                strokes: ['Left stave ↓ at angle', 'Right stave ↓ at angle', 'Meet at bottom point']
+            },
+            thurisaz: {
+                symbol: 'ᚦ', name: 'Þurisaz', sound: 'þ (th)', position: '3 (Freyr\'s Ætt)',
+                meaning: 'Giant, thorn, the god Thor. Reactive force, protection, directed power.',
+                framework: 'Position 3 = the first triangle completion. Thurisaz is defensive power — the thorn that protects, the giant that guards boundaries. This is S⁺ meeting resistance and defining its edge.',
+                strokes: ['Draw vertical stave ↓', 'Upper triangle → from top third', 'Return to stave ↵']
+            },
+            ansuz: {
+                symbol: 'ᚨ', name: 'Ansuz', sound: 'a', position: '4 (Freyr\'s Ætt)',
+                meaning: 'A god (especially Odin), divine breath, communication, signals.',
+                framework: 'Position 4 = the four transforms complete their first cycle. Ansuz is the first vowel — the open sound, the breath that carries meaning. This is how S⁺ becomes audible: through the divine opening.',
+                strokes: ['Draw vertical stave ↓', 'Upper branch ↘ from top', 'Lower branch ↘ from middle']
+            },
+            raido: {
+                symbol: 'ᚱ', name: 'Raidō', sound: 'r', position: '5 (Freyr\'s Ætt)',
+                meaning: 'Ride, journey, wagon. Movement with purpose, the right path.',
+                framework: 'Position 5 = helix phase begins. Raidō is travel — not wandering but directed motion. The horse and wagon embody σ = 5/16: movement along the helical path. This is S⁺ with direction.',
+                strokes: ['Draw vertical stave ↓', 'Upper triangle → from top', 'Leg ↘ from triangle point']
+            },
+            kenaz: {
+                symbol: 'ᚲ', name: 'Kenaz', sound: 'k', position: '6 (Freyr\'s Ætt)',
+                meaning: 'Torch, light, knowledge, revelation. The controlled flame.',
+                framework: 'Position 6 = full ætt structure (6-unit). Kenaz is fire under control — light that reveals without destroying. The shape points rightward: emission direction. S⁺ made visible as illumination.',
+                strokes: ['Upper stroke ↘ from top-left', 'Lower stroke ↗ meeting at point']
+            },
+            gebo: {
+                symbol: 'ᚷ', name: 'Gebō', sound: 'g', position: '7 (Freyr\'s Ætt)',
+                meaning: 'Gift, exchange, partnership. Sacred reciprocity.',
+                framework: 'Position 7 = the crossing. Gebō\'s X-shape shows two lines intersecting — S⁺ and S⁻ meeting. The gift given is also received. This is the first explicit handshake symbol in the futhark.',
+                strokes: ['Stroke from top-left to bottom-right ↘', 'Stroke from top-right to bottom-left ↙', 'Lines cross at center']
+            },
+            wunjo: {
+                symbol: 'ᚹ', name: 'Wunjō', sound: 'w', position: '8 (Freyr\'s Ætt)',
+                meaning: 'Joy, pleasure, harmony. The fulfillment of wishes.',
+                framework: 'Position 8 = 2³ = ætt completion. Wunjō closes the first family with joy — the feeling when transmission succeeds. S⁺ has fully expressed; now the second ætt begins the transition.',
+                strokes: ['Draw vertical stave ↓', 'Top flag ↗ from peak', 'Flag connects back ↘ to stave']
+            },
+            hagalaz: {
+                symbol: 'ᚺ', name: 'Hagalaz', sound: 'h', position: '9 (Hagal\'s Ætt)',
+                meaning: 'Hail, disruption, uncontrolled natural force. The storm.',
+                framework: 'Position 9 = 180/20 (the Rök number). Hagalaz begins the transition ætt with disruption. The H-shape shows two parallel verticals connected — the boundary between polarities. S=0 is entered through crisis.',
+                strokes: ['Left vertical stave ↓', 'Right vertical stave ↓', 'Diagonal connecting ↗ or horizontal —']
+            },
+            naudiz: {
+                symbol: 'ᚾ', name: 'Nauðiz', sound: 'n', position: '10 (Hagal\'s Ætt)',
+                meaning: 'Need, necessity, constraint. The fire-bow that creates friction.',
+                framework: 'Position 10 = completion of first decimal. Nauðiz is need — what must be done at the transition point. The crossed stave shows resistance: S⁺ meeting S⁻ generates friction, friction generates fire.',
+                strokes: ['Draw vertical stave ↓', 'Diagonal cross ↗ through center']
+            },
+            isaz: {
+                symbol: 'ᛁ', name: 'Īsaz', sound: 'i', position: '11 (Hagal\'s Ætt)',
+                meaning: 'Ice, stillness, stasis. The frozen moment.',
+                framework: 'Position 11 = the simplest rune. Just one vertical line — pure stasis. S=0 at its most reduced: no branches, no movement. Isaz is the pause before the second half, the ice that holds everything still.',
+                strokes: ['Single vertical stave ↓']
+            },
+            jera: {
+                symbol: 'ᛃ', name: 'Jēra', sound: 'j (y)', position: '12 (Hagal\'s Ætt)',
+                meaning: 'Year, harvest, the cycle of seasons. Time\'s completion.',
+                framework: 'Position 12 = 2² × 3 (observer grid). Jēra shows two shapes rotating around each other — the year-cycle. This is κ made temporal: 12 months, the eternal return. At S=0, we observe the full rotation.',
+                strokes: ['Upper chevron < pointing left', 'Lower chevron > pointing right', 'They don\'t touch (rotation gap)']
+            },
+            eihwaz: {
+                symbol: 'ᛇ', name: 'Eihwaz', sound: 'ï', position: '13 (Hagal\'s Ætt)',
+                meaning: 'Yew tree, the world-axis, life-death connection.',
+                framework: 'Position 13 = the extra, the intercalation. Eihwaz is the yew — the tree that bridges worlds. The vertical with hooks at top and bottom connects s+ (sky) to s- (roots). This is the axis itself.',
+                strokes: ['Draw vertical stave ↓', 'Top hook ↗', 'Bottom hook ↙']
+            },
+            pertho: {
+                symbol: 'ᛈ', name: 'Perþō', sound: 'p', position: '14 (Hagal\'s Ætt)',
+                meaning: 'Unknown — possibly dice cup, vulva, secret, or fate. Mystery rune.',
+                framework: 'Position 14 = approaching completion. Perþō\'s meaning is debated — appropriate for the mystery at the transition\'s heart. The cup-shape suggests reception: something is held, contained, waiting to emerge.',
+                strokes: ['Draw vertical stave ↓', 'Top cup ⊃ from top half', 'Opens rightward']
+            },
+            algiz: {
+                symbol: 'ᛉ', name: 'Algiz', sound: 'z', position: '15 (Hagal\'s Ætt)',
+                meaning: 'Elk, protection, the life-force. Raised hands or antlers.',
+                framework: 'Position 15 = 5 × 3. Algiz branches upward like antlers or raised arms — the gesture of protection and reception. At S=0\'s edge, this rune wards both directions. The shape is symmetrical: equal defense all around.',
+                strokes: ['Draw vertical stave ↓', 'Left branch ↖ from top', 'Right branch ↗ from top']
+            },
+            sowilo: {
+                symbol: 'ᛊ', name: 'Sōwilō', sound: 's', position: '16 (Hagal\'s Ætt)',
+                meaning: 'Sun, success, life-force, the solar wheel.',
+                framework: 'Position 16 = 4 × 4 (transforms squared). Sōwilō closes the transition ætt with the sun — the visible κ. The lightning-bolt shape suggests sudden illumination. The observer at S=0 finally sees the source of all rotation.',
+                strokes: ['Upper stroke ↘', 'Middle stroke ↙', 'Lower stroke ↘ (S or lightning pattern)']
+            },
+            tiwaz: {
+                symbol: 'ᛏ', name: 'Tīwaz', sound: 't', position: '17 (Tyr\'s Ætt)',
+                meaning: 'The god Tyr, justice, sacrifice, victory through right action.',
+                framework: 'Position 17 = beginning of S⁻. Tiwaz is the arrow pointing upward — but we\'re now in the reception ætt. This is directed energy arriving at its target. The sacrifice Tyr makes (his hand to the wolf) is the price of crossing.',
+                strokes: ['Draw vertical stave ↓', 'Left cap ↘ from top', 'Right cap ↙ from top']
+            },
+            berkano: {
+                symbol: 'ᛒ', name: 'Berkanan', sound: 'b', position: '18 (Tyr\'s Ætt)',
+                meaning: 'Birch tree, birth, growth, new beginnings.',
+                framework: 'Position 18 = double nine. Berkanan is the birch — the tree of beginnings, the first to grow after destruction. At S⁻, new forms emerge from received energy. The double-lobe shape suggests breasts, pregnancy, nurturing.',
+                strokes: ['Draw vertical stave ↓', 'Top lobe ⊃ from upper half', 'Bottom lobe ⊃ from lower half']
+            },
+            ehwaz: {
+                symbol: 'ᛖ', name: 'Ehwaz', sound: 'e', position: '19 (Tyr\'s Ætt)',
+                meaning: 'Horse, partnership, trust, movement together.',
+                framework: 'Position 19 = approaching 20. Ehwaz shows two verticals with connecting branches — two beings moving as one. This is the horse-and-rider unity. S⁻ receives in partnership; the arrival requires both parties.',
+                strokes: ['Two parallel vertical staves', 'Connecting branches between them']
+            },
+            mannaz: {
+                symbol: 'ᛗ', name: 'Mannaz', sound: 'm', position: '20 (Tyr\'s Ætt)',
+                meaning: 'Human being, humanity, the self, social order.',
+                framework: 'Position 20 = 4 × 5 (body division). Mannaz is the human — the complete body structure. The M-shape shows Gebō (gift/exchange) doubled: human identity is constituted through relationship. At position 20, the full body appears.',
+                strokes: ['Left stave ↓', 'Right stave ↓', 'Cross-branches connecting in M pattern']
+            },
+            laguz: {
+                symbol: 'ᛚ', name: 'Laguz', sound: 'l', position: '21 (Tyr\'s Ætt)',
+                meaning: 'Water, lake, the unconscious, flow, intuition.',
+                framework: 'Position 21 = 3 × 7. Laguz is water — the medium of transmission, the phase boundary itself. The downward hook shows energy falling into depth. At S⁻, we enter the waters that separate and connect.',
+                strokes: ['Draw vertical stave ↓', 'Top hook ↘ from peak']
+            },
+            ingwaz: {
+                symbol: 'ᛜ', name: 'Ingwaz', sound: 'ŋ (ng)', position: '22 (Tyr\'s Ætt)',
+                meaning: 'The god Ing/Freyr, fertility, internal growth, gestation.',
+                framework: 'Position 22 = 2 × 11. Ingwaz is the seed — the potential enclosed, waiting to emerge. The diamond shape is complete in itself: nothing enters, nothing leaves (yet). This is pure S⁻ containment.',
+                strokes: ['Diamond ◇ shape', 'Four strokes forming enclosed space']
+            },
+            dagaz: {
+                symbol: 'ᛞ', name: 'Dagaz', sound: 'd', position: '23 (Tyr\'s Ætt)',
+                meaning: 'Day, breakthrough, transformation, the light between.',
+                framework: 'Position 23 = approaching 24. Dagaz is the butterfly-shape — the moment of emergence. After long gestation in S⁻, the transformation completes. The figure-8 or hourglass shows the flow reversing, day following night.',
+                strokes: ['Two triangles meeting at center points', 'Or continuous figure-8 ∞']
+            },
+            othala: {
+                symbol: 'ᛟ', name: 'Ōþala', sound: 'o', position: '24 (Tyr\'s Ætt)',
+                meaning: 'Heritage, ancestral property, homeland, inheritance.',
+                framework: 'Position 24 = completion (4 × 6). Ōþala is the enclosure with feet — property that stays in the family. The futhark ends not with cosmic drama but with home: what remains when the cycle completes. S⁻ fully received, stored, passed on.',
+                strokes: ['Diamond top ◇', 'Two legs extending ↙ ↘ from bottom']
+            },
+            // Younger Futhark (abbreviated)
+            'fe-y': { symbol: 'ᚠ', name: 'Fé', sound: 'f', position: '1 (Freyr\'s Ætt)', meaning: 'Wealth, cattle. Same as Elder Fehu.', framework: 'Same position, same meaning. The compression didn\'t change first principles.', strokes: ['Vertical stave', 'Two right branches'] },
+            'ur-y': { symbol: 'ᚢ', name: 'Úr', sound: 'u/o/v/w', position: '2 (Freyr\'s Ætt)', meaning: 'Drizzle, rain, aurochs. Now covers multiple sounds.', framework: 'Compressed to carry u, o, v, w sounds. Higher information density per symbol.', strokes: ['Downward curve from top-left to bottom-right'] },
+            'thurs-y': { symbol: 'ᚦ', name: 'Þurs', sound: 'þ (th)', position: '3 (Freyr\'s Ætt)', meaning: 'Giant, thorn. Same as Elder Thurisaz.', framework: 'The boundary-keeper endures unchanged.', strokes: ['Vertical stave', 'Triangular thorn'] },
+            'oss-y': { symbol: 'ᚬ', name: 'Óss', sound: 'ą/o', position: '4 (Freyr\'s Ætt)', meaning: 'God, river-mouth, estuary.', framework: 'The nasal vowel — sound at the transition point, where breath meets voice.', strokes: ['Vertical stave', 'Small hook or dot'] },
+            'reid-y': { symbol: 'ᚱ', name: 'Reið', sound: 'r', position: '5 (Freyr\'s Ætt)', meaning: 'Ride, journey. Same as Elder Raido.', framework: 'Position 5 maintains the helix-journey meaning.', strokes: ['Vertical stave', 'Upper lobe', 'Lower leg'] },
+            'kaun-y': { symbol: 'ᚴ', name: 'Kaun', sound: 'k/g', position: '6 (Freyr\'s Ætt)', meaning: 'Sore, ulcer, boil. Negative transformation.', framework: 'The torch becomes the wound — knowledge that burns. Covers both k and g sounds.', strokes: ['Vertical stave', 'Small branch right'] },
+            'hagall-y': { symbol: 'ᚼ', name: 'Hagall', sound: 'h', position: '7 (Hagal\'s Ætt)', meaning: 'Hail. Same as Elder Hagalaz.', framework: 'The disruptor maintains position at the start of the second ætt.', strokes: ['Two verticals', 'Crossing branch'] },
+            'naud-y': { symbol: 'ᚾ', name: 'Nauð', sound: 'n', position: '8 (Hagal\'s Ætt)', meaning: 'Need, necessity. Same as Elder Naudiz.', framework: 'Constraint at the transition. The fire-drill that creates through friction.', strokes: ['Vertical stave', 'Diagonal cross'] },
+            'iss-y': { symbol: 'ᛁ', name: 'Íss', sound: 'i/e', position: '9 (Hagal\'s Ætt)', meaning: 'Ice. Now covers both i and e sounds.', framework: 'Position 9 = 180/20. The still point at the heart of the alphabet.', strokes: ['Single vertical stave'] },
+            'ar-y': { symbol: 'ᛅ', name: 'Ár', sound: 'a', position: '10 (Hagal\'s Ætt)', meaning: 'Year, plenty, harvest.', framework: 'The a-sound — the most open vowel — carries the year-cycle meaning. Completion.', strokes: ['Vertical stave', 'Upper branch right'] },
+            'sol-y': { symbol: 'ᛋ', name: 'Sól', sound: 's', position: '11 (Hagal\'s Ætt)', meaning: 'Sun. Same as Elder Sowilo.', framework: 'Position 11 in Younger = position 16 content. The sun closes the transition ætt.', strokes: ['Lightning-bolt or zig-zag'] },
+            'tyr-y': { symbol: 'ᛏ', name: 'Týr', sound: 't/d', position: '12 (Tyr\'s Ætt)', meaning: 'Tyr, victory, justice. Now covers both t and d.', framework: 'The arrow begins the third ætt. Position 12 = 2² × 3 = observer completion.', strokes: ['Vertical stave', 'Top cap'] },
+            'bjarkan-y': { symbol: 'ᛒ', name: 'Bjarkan', sound: 'b/p', position: '13 (Tyr\'s Ætt)', meaning: 'Birch, growth. Covers both b and p.', framework: 'The tree of beginnings at position 13 — the intercalary moment.', strokes: ['Vertical stave', 'Two right lobes'] },
+            'madr-y': { symbol: 'ᛘ', name: 'Maðr', sound: 'm', position: '14 (Tyr\'s Ætt)', meaning: 'Man, human being.', framework: 'The human at position 14 = approaching completion. We are near the end.', strokes: ['Two staves', 'Upper connecting branches'] },
+            'logr-y': { symbol: 'ᛚ', name: 'Lögr', sound: 'l', position: '15 (Tyr\'s Ætt)', meaning: 'Water, sea.', framework: 'Position 15 = 5 × 3. The water that carries and separates.', strokes: ['Vertical stave', 'Upper right hook'] },
+            'yr-y': { symbol: 'ᛦ', name: 'Yr', sound: 'ʀ (r)', position: '16 (Tyr\'s Ætt)', meaning: 'Yew bow, death, transformation.', framework: 'The 16th rune = 4 × 4 = transforms squared. The bow that sends arrows completes the alphabet — the final transmission.', strokes: ['Vertical stave', 'Lower forked branches'] }
+        };
+
+        // Practice questions
+        const practiceQuestions = [
+            { question: 'What rune makes the sound "f"?', answer: 'ᚠ' },
+            { question: 'What rune makes the sound "u"?', answer: 'ᚢ' },
+            { question: 'What rune makes the "th" sound?', answer: 'ᚦ' },
+            { question: 'Which rune represents ice?', answer: 'ᛁ' },
+            { question: 'Which rune represents the sun?', answer: 'ᛊ' },
+            { question: 'What is the 20th rune of Elder Futhark?', answer: 'ᛗ' },
+            { question: 'What rune makes the sound "r"?', answer: 'ᚱ' },
+            { question: 'Which rune looks like an X?', answer: 'ᚷ' },
+            { question: 'What rune represents water/lake?', answer: 'ᛚ' },
+            { question: 'Which rune represents day/breakthrough?', answer: 'ᛞ' }
+        ];
+
+        let currentQuestion = null;
+
+        // Tab switching
+        document.querySelectorAll('.futhark-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.futhark-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.futhark-content').forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                const futhark = tab.dataset.futhark;
+                document.getElementById(futhark + '-futhark').classList.add('active');
+            });
+        });
+
+        // Rune selection
+        document.querySelectorAll('.rune-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Update selection state
+                document.querySelectorAll('.rune-card').forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+
+                // Get rune data
+                const runeId = card.dataset.rune;
+                const rune = runeData[runeId];
+
+                if (rune) {
+                    // Update detail panel
+                    document.getElementById('detail-symbol').textContent = rune.symbol;
+                    document.getElementById('detail-name').textContent = rune.name;
+                    document.getElementById('detail-sound').textContent = 'Sound: ' + rune.sound;
+                    document.getElementById('detail-position').textContent = 'Position: ' + rune.position;
+                    document.getElementById('detail-meaning').textContent = rune.meaning;
+                    document.getElementById('detail-framework').textContent = rune.framework;
+
+                    // Update stroke diagram
+                    const strokesContainer = document.getElementById('detail-strokes');
+                    strokesContainer.innerHTML = rune.strokes.map((stroke, i) =>
+                        `<div class="stroke-step"><span class="stroke-num">${i + 1}</span><span class="stroke-desc">${stroke}</span></div>`
+                    ).join('');
+
+                    // Show detail panel
+                    document.getElementById('rune-detail').classList.add('visible');
+                }
+            });
+        });
+
+        // Practice functionality
+        function newQuestion() {
+            currentQuestion = practiceQuestions[Math.floor(Math.random() * practiceQuestions.length)];
+            document.getElementById('practice-prompt').textContent = currentQuestion.question;
+            document.getElementById('practice-input').value = '';
+            document.getElementById('practice-feedback').className = 'practice-feedback';
+            document.getElementById('practice-feedback').textContent = '';
+        }
+
+        document.getElementById('practice-check').addEventListener('click', () => {
+            const input = document.getElementById('practice-input').value.trim();
+            const feedback = document.getElementById('practice-feedback');
+
+            if (input === currentQuestion.answer) {
+                feedback.textContent = 'Correct! ' + currentQuestion.answer + ' is the right answer.';
+                feedback.className = 'practice-feedback correct';
+            } else {
+                feedback.textContent = 'Not quite. The answer is ' + currentQuestion.answer;
+                feedback.className = 'practice-feedback incorrect';
+            }
+        });
+
+        document.getElementById('practice-new').addEventListener('click', newQuestion);
+
+        // Initialize
+        newQuestion();
+    </script>
+</body>
+</html>

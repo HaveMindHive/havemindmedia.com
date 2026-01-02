@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none">
+  <rect width="400" height="500" fill="#1a1a2e"/>
+
+  <!-- Stone shape -->
+  <path d="M200 30 Q280 30 300 80 L320 180 Q330 280 310 380 Q290 460 200 470 Q110 460 90 380 Q70 280 80 180 L100 80 Q120 30 200 30Z" fill="#3d4a5c" stroke="#8b9a7d" stroke-width="2"/>
+
+  <!-- Ship motif -->
+  <path d="M120 280 Q200 320 280 280" stroke="#c9a227" stroke-width="3" fill="none"/>
+  <path d="M140 275 L140 240 M170 270 L170 235 M200 268 L200 230 M230 270 L230 235 M260 275 L260 240" stroke="#c9a227" stroke-width="2"/>
+  <path d="M110 285 Q100 290 95 300 L305 300 Q300 290 290 285" stroke="#c9a227" stroke-width="2" fill="none"/>
+
+  <!-- Horse figure (Sleipnir suggestion) -->
+  <ellipse cx="200" cy="160" rx="50" ry="30" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <path d="M160 145 Q150 120 160 100" stroke="#c9a227" stroke-width="2" fill="none"/>
+  <circle cx="155" cy="95" r="8" fill="none" stroke="#c9a227" stroke-width="2"/>
+
+  <!-- Rider -->
+  <circle cx="200" cy="110" r="12" fill="none" stroke="#c9a227" stroke-width="2"/>
+  <line x1="200" y1="122" x2="200" y2="155" stroke="#c9a227" stroke-width="2"/>
+
+  <!-- Valkyrie figure -->
+  <circle cx="280" cy="140" r="10" fill="none" stroke="#7ab8d4" stroke-width="2"/>
+  <path d="M280 150 L280 180 M270 160 L290 160" stroke="#7ab8d4" stroke-width="2"/>
+  <path d="M290 165 Q300 160 305 170" stroke="#7ab8d4" stroke-width="2" fill="none"/>
+
+  <!-- Interlace border -->
+  <path d="M100 350 Q150 340 200 350 Q250 360 300 350" stroke="#8b9a7d" stroke-width="1.5" fill="none"/>
+  <path d="M100 360 Q150 370 200 360 Q250 350 300 360" stroke="#8b9a7d" stroke-width="1.5" fill="none"/>
+
+  <!-- Label -->
+  <text x="200" y="420" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11">GOTLAND PICTURE STONE</text>
+  <text x="200" y="438" text-anchor="middle" fill="#8b9a7d" font-family="system-ui" font-size="10">Placeholder for AI Generation</text>
+</svg>
