@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CEDGA - Conceptual Engineering Derived from Geometry Alone. The Epoch Model framework for deriving physics from pure geometry.">
+    <title>CEDGA | Conceptual Engineering from Geometry Alone | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/unified-theme.css">
+    <style>
+        /* CEDGA-specific styles */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(70, 130, 180, 0.1);
+            border: 1px solid rgba(70, 130, 180, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--bright-blue);
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--soft-blue);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-equation {
+            font-family: 'Cambria Math', serif;
+            font-size: 1.8rem;
+            color: var(--bright-blue);
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--soft-cream);
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Status Overview */
+        .status-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .status-icon {
+            font-size: 1.5rem;
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+        }
+
+        .status-text strong {
+            display: block;
+            color: var(--soft-cream);
+        }
+
+        .status-text span {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        /* Core Concepts Grid */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .concept-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3) 0%, rgba(21, 26, 36, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .concept-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+        }
+
+        .concept-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .concept-equation {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--bright-blue);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            background: linear-gradient(180deg, rgba(26, 42, 58, 0.2) 0%, transparent 100%);
+            padding: 4rem 0;
+            margin-top: 2rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: linear-gradient(145deg, rgba(21, 26, 36, 0.6) 0%, rgba(15, 19, 24, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .tool-link:hover {
+            transform: translateX(8px);
+            border-color: var(--border-light);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .tool-link-icon {
+            font-size: 1.8rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .tool-link-text h4 {
+            font-size: 1rem;
+            color: var(--soft-cream);
+            margin-bottom: 0.2rem;
+        }
+
+        .tool-link-text p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        .tool-arrow {
+            margin-left: auto;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            transition: var(--transition-smooth);
+        }
+
+        .tool-link:hover .tool-arrow {
+            color: var(--bright-blue);
+            transform: translateX(5px);
+        }
+
+        /* Test Results Banner */
+        .test-results {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(21, 26, 36, 0.3) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .test-results h3 {
+            margin-bottom: 1rem;
+        }
+
+        .test-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 1.5rem 0;
+        }
+
+        .test-stat {
+            text-align: center;
+        }
+
+        .test-stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .test-stat-value.passed { color: #22c55e; }
+        .test-stat-value.failed { color: #ef4444; }
+        .test-stat-value.total { color: var(--bright-blue); }
+
+        .test-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* What's Proven Section */
+        .proven-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .proven-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .proven-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .proven-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .proven-content h4 {
+            font-size: 1rem;
+            color: var(--soft-cream);
+            margin-bottom: 0.3rem;
+        }
+
+        .proven-content p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        /* Research Links */
+        .research-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .research-link {
+            display: block;
+            padding: 1rem;
+            background: rgba(26, 42, 58, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .research-link:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .research-link h5 {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .research-link p {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-equation { font-size: 1.3rem; }
+            .test-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <div style="display: flex; align-items: center;">
+            <a href="https://havemindmedia.com" class="nav-brand">
+                <span class="nav-brand-text">HAVE MIND MEDIA</span>
+                <span class="nav-signature">&#9711;&Conint;&#10812;&#10992;&Cconint;&#10710;</span>
+            </a>
+            <span class="nav-subsite">CEDGA</span>
+        </div>
+        <div class="nav-menu">
+            <button class="nav-toggle" id="navToggle">
+                <span>Explore</span>
+                <span class="arrow">&#9660;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="https://havemindmedia.com" class="nav-back">
+                    <span>&#8592;</span> Back to Main Site
+                </a>
+                <div class="divider"></div>
+                <span class="nav-section-label">CEDGA Pages</span>
+                <a href="index.html">
+                    <span class="nav-icon">&#9671;</span>
+                    Home
+                </a>
+                <a href="pages/kappa-constant.html">
+                    <span class="nav-icon">&#954;</span>
+                    The &#954; Constant
+                </a>
+                <a href="pages/four-transforms.html">
+                    <span class="nav-icon">&#9872;</span>
+                    Four Transforms
+                </a>
+                <a href="pages/tetrahelix.html">
+                    <span class="nav-icon">&#128256;</span>
+                    Tetrahelix
+                </a>
+                <a href="pages/balance-law.html">
+                    <span class="nav-icon">&#8721;</span>
+                    Balance Law
+                </a>
+                <a href="pages/m4-array.html">
+                    <span class="nav-icon">&#9030;</span>
+                    M4 Array
+                </a>
+                <a href="pages/base-60.html">
+                    <span class="nav-icon">60</span>
+                    Base-60
+                </a>
+                <div class="divider"></div>
+                <span class="nav-section-label">Interactive Tools</span>
+                <a href="tools/m4-simulator.html">
+                    <span class="nav-icon">&#9881;</span>
+                    M4 Simulator
+                </a>
+                <a href="tools/cedga-visualizer.html">
+                    <span class="nav-icon">&#9741;</span>
+                    CEDGA Visualizer
+                </a>
+                <div class="divider"></div>
+                <span class="nav-section-label">Research</span>
+                <a href="research/test-analysis.html">
+                    <span class="nav-icon">&#128202;</span>
+                    Test Analysis
+                </a>
+                <a href="research/derivations.html">
+                    <span class="nav-icon">&#128221;</span>
+                    Derivations
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="hero-badge">EPOCH MODEL FRAMEWORK</span>
+            <h1>CEDGA</h1>
+            <p class="hero-subtitle">Conceptual Engineering Derived from Geometry Alone</p>
+
+            <div class="hero-equation">&#954; = 2&#960;/180 = 0.034906585...</div>
+
+            <p class="hero-desc">
+                One constant. One geometry. All physics derived, not assumed.
+                CEDGA is the methodology for building frameworks from pure geometric principles,
+                where every structure must trace back to &#954;.
+            </p>
+
+            <!-- Status Overview -->
+            <div class="status-overview">
+                <div class="status-item">
+                    <span class="status-icon">&#10003;</span>
+                    <div class="status-text">
+                        <strong>Balance Law</strong>
+                        <span>Mathematically PROVEN</span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">&#10003;</span>
+                    <div class="status-text">
+                        <strong>Transform Sum</strong>
+                        <span>Geometrically PROVEN</span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">&#10067;</span>
+                    <div class="status-text">
+                        <strong>Resolution</strong>
+                        <span>Under Testing</span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <span class="status-icon">&#10060;</span>
+                    <div class="status-text">
+                        <strong>Base-60 Magic</strong>
+                        <span>NOT demonstrated</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Concepts -->
+        <section class="section">
+            <h2 class="section-title">&#8212; CORE CONCEPTS &#8212;</h2>
+
+            <div class="concepts-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">&#954;</div>
+                    <h3>The &#954; Constant</h3>
+                    <p>The ONE input from which all geometry derives. &#954; = 2&#960;/180 is the fundamental angular unit that generates all structure.</p>
+                    <div class="concept-equation">&#954; = 2&#960;/180 &#8776; 0.0349</div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">&#9041;</div>
+                    <h3>Four Transforms</h3>
+                    <p>T&#8321; (facing), T&#8322; (mirror), T&#8323; (recursive), T&#8324; (inverted) positioned at diagonal nodes of the dipyramid.</p>
+                    <div class="concept-equation">T&#8321; + T&#8322; + T&#8323; + T&#8324; = (0, 0)</div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">&#8721;</div>
+                    <h3>Balance Law</h3>
+                    <p>The fundamental constraint: four torsions must sum to zero. This is MANDATORY for any valid derivation.</p>
+                    <div class="concept-equation">&#964;&#8321; + &#964;&#8322; + &#964;&#8323; + &#964;&#8324; = 0</div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">&#9826;</div>
+                    <h3>Triaxial Dipyramid</h3>
+                    <p>The geometric structure with 4 diagonal nodes + 4 absent cardinals + 1 central crossroads. The vessel geometry.</p>
+                    <div class="concept-equation">cos(BC) = 2/3 &#8594; 48.19&#176;</div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">&#128256;</div>
+                    <h3>Tetrahelix</h3>
+                    <p>180 scalar steps forming a complete toroidal path. The geometric structure for iterative resolution.</p>
+                    <div class="concept-equation">180 = 4 &#215; 45 steps</div>
+                </div>
+
+                <div class="concept-card">
+                    <div class="concept-icon">&#8734;</div>
+                    <h3>Base-60</h3>
+                    <p>60 = 2&#178; &#215; 3 &#215; 5 contains all structural primes. However, testing shows no computational advantage over base-10.</p>
+                    <div class="concept-equation">59/60 active ratio</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Results -->
+        <div class="test-results">
+            <h3>M4 Simulator Test Results</h3>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">January 1, 2026 - Initial Testing Complete</p>
+
+            <div class="test-stats">
+                <div class="test-stat">
+                    <div class="test-stat-value passed">3</div>
+                    <div class="test-stat-label">Passed</div>
+                </div>
+                <div class="test-stat">
+                    <div class="test-stat-value failed">2</div>
+                    <div class="test-stat-label">Failed</div>
+                </div>
+                <div class="test-stat">
+                    <div class="test-stat-value total">5</div>
+                    <div class="test-stat-label">Total Tests</div>
+                </div>
+            </div>
+
+            <a href="tools/m4-simulator.html" class="btn">View Interactive Simulator</a>
+            <a href="research/test-analysis.html" class="btn" style="margin-left: 1rem;">Read Full Analysis</a>
+        </div>
+
+        <!-- What's Proven -->
+        <section class="proven-section">
+            <h2 class="section-title">&#8212; WHAT'S ACTUALLY PROVEN &#8212;</h2>
+
+            <div class="proven-list">
+                <div class="proven-item">
+                    <span class="proven-icon" style="color: #22c55e;">&#10003;</span>
+                    <div class="proven-content">
+                        <h4>Balance Law (&#964;&#8321;+&#964;&#8322;+&#964;&#8323;+&#964;&#8324;=0)</h4>
+                        <p>0 failures in 1000 iterations. Max deviation: 1.42e-14. This is mathematical fact.</p>
+                    </div>
+                </div>
+
+                <div class="proven-item">
+                    <span class="proven-icon" style="color: #22c55e;">&#10003;</span>
+                    <div class="proven-content">
+                        <h4>Transform Sum Identity (T&#8321;+T&#8322;+T&#8323;+T&#8324;=(0,0))</h4>
+                        <p>0 failures in 100 iterations. The four transforms at diagonal positions sum to zero. Geometric necessity.</p>
+                    </div>
+                </div>
+
+                <div class="proven-item">
+                    <span class="proven-icon" style="color: #22c55e;">&#10003;</span>
+                    <div class="proven-content">
+                        <h4>Geometric Self-Consistency</h4>
+                        <p>No contradictions found in any tests. The geometry is internally consistent.</p>
+                    </div>
+                </div>
+
+                <div class="proven-item">
+                    <span class="proven-icon" style="color: #ef4444;">&#10007;</span>
+                    <div class="proven-content">
+                        <h4>"Resolution Without Iteration"</h4>
+                        <p>NOT DEMONSTRATED. 0% zero-step resolutions. Average 138.1 steps needed. The core hypothesis remains unproven.</p>
+                    </div>
+                </div>
+
+                <div class="proven-item">
+                    <span class="proven-icon" style="color: #ef4444;">&#10007;</span>
+                    <div class="proven-content">
+                        <h4>"Base-60 Computational Advantage"</h4>
+                        <p>NOT DEMONSTRATED. Average difference of 1.2e-16 between base-60 and base-10. No magic found.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Tools -->
+        <section class="tools-section">
+            <h2 class="section-title">&#8212; INTERACTIVE TOOLS &#8212;</h2>
+
+            <div class="tools-grid">
+                <a href="tools/m4-simulator.html" class="tool-link">
+                    <span class="tool-link-icon">&#9881;</span>
+                    <div class="tool-link-text">
+                        <h4>M4 Array Simulator</h4>
+                        <p>Test the triaxial dipyramid computation theory</p>
+                    </div>
+                    <span class="tool-arrow">&#8594;</span>
+                </a>
+
+                <a href="tools/cedga-visualizer.html" class="tool-link">
+                    <span class="tool-link-icon">&#9741;</span>
+                    <div class="tool-link-text">
+                        <h4>CEDGA Deep Visualizer</h4>
+                        <p>8-tab interactive exploration of core concepts</p>
+                    </div>
+                    <span class="tool-arrow">&#8594;</span>
+                </a>
+
+                <a href="tools/balance-law-demo.html" class="tool-link">
+                    <span class="tool-link-icon">&#8721;</span>
+                    <div class="tool-link-text">
+                        <h4>Balance Law Demo</h4>
+                        <p>Real-time validation of &#964;&#8321;+&#964;&#8322;+&#964;&#8323;+&#964;&#8324;=0</p>
+                    </div>
+                    <span class="tool-arrow">&#8594;</span>
+                </a>
+
+                <a href="tools/transform-explorer.html" class="tool-link">
+                    <span class="tool-link-icon">&#9872;</span>
+                    <div class="tool-link-text">
+                        <h4>Transform Explorer</h4>
+                        <p>Visualize the four diagonal transforms</p>
+                    </div>
+                    <span class="tool-arrow">&#8594;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section class="research-section">
+            <h2 class="section-title">&#8212; RESEARCH DOCUMENTS &#8212;</h2>
+
+            <div class="research-grid">
+                <a href="research/test-analysis.html" class="research-link">
+                    <h5>M4 Test Analysis</h5>
+                    <p>Complete breakdown of simulator test results</p>
+                </a>
+
+                <a href="research/derivation-vessel.html" class="research-link">
+                    <h5>Vessel Geometry Derivation</h5>
+                    <p>What IS derived vs what is ASSUMED</p>
+                </a>
+
+                <a href="research/derivation-armor.html" class="research-link">
+                    <h5>Armor Geometry Analysis</h5>
+                    <p>Honest assessment: cannot derive from &#954; alone</p>
+                </a>
+
+                <a href="research/validation-m4.html" class="research-link">
+                    <h5>M4 Array Validation</h5>
+                    <p>Proof that M4 IS properly derived from &#954;</p>
+                </a>
+
+                <a href="research/next-steps.html" class="research-link">
+                    <h5>Next Steps</h5>
+                    <p>Where the research goes from here</p>
+                </a>
+
+                <a href="research/methodology.html" class="research-link">
+                    <h5>CEDGA Methodology</h5>
+                    <p>How to properly derive from geometry</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Principle Box -->
+        <div style="text-align: center; padding: 3rem 2rem;">
+            <div style="display: inline-block; padding: 1rem 3rem; background: rgba(26, 42, 58, 0.4); border: 1px solid var(--border); border-radius: 8px;">
+                <span style="font-family: var(--font-display); font-size: 1.5rem; color: var(--bright-blue); letter-spacing: 4px;">[1 = -1]</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="unified-footer">
+        <p class="footer-logo">HAVE MIND MEDIA</p>
+        <p class="footer-tagline">The Mind is in Your Mind</p>
+        <p class="footer-signature">&#9711;&Conint;&#10812;&#10992;&Cconint;&#10710;&#9651;&#10991;&Conint;&#10825;&#9651;&#8416;&Cconint;&#10994;&#10795;&#9901;&#8882;&#10826;&#10995;&#8416;</p>
+        <p class="footer-principle">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="https://havemindmedia.com">Main Site</a>
+            <a href="https://havemindmedia.com/documents/epoch-framework">Epoch Framework</a>
+            <a href="https://havemindmedia.com/documents/dec14-unified-theory">Unified Theory</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Dropdown
+        const navToggle = document.getElementById('navToggle');
+        const navDropdown = document.getElementById('navDropdown');
+
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navDropdown.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navDropdown.contains(e.target) && !navToggle.contains(e.target)) {
+                navDropdown.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
