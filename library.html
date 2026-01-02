@@ -3,256 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library | Have Mind Media</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Complete Library | Have Mind Media</title>
     <style>
-        .library-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        .library-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .library-header h1 {
-            font-size: 2.5rem;
-            color: #c9a227;
-            margin-bottom: 10px;
-        }
-        .library-header .principle {
-            font-size: 1.5rem;
-            color: #7ab8d4;
-            margin-bottom: 20px;
-        }
-        .library-header p {
-            color: #888;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .section-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .library-section {
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            border-radius: 12px;
-            padding: 25px;
-        }
-        .library-section h2 {
-            color: #c9a227;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .library-section .code {
-            background: rgba(0,0,0,0.3);
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.8rem;
-        }
-
-        .file-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .file-list li {
-            margin-bottom: 10px;
-        }
-        .file-list a {
-            display: block;
-            padding: 12px 15px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 8px;
-            text-decoration: none;
-            color: #7ab8d4;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-        .file-list a:hover {
-            background: rgba(122, 184, 212, 0.1);
-            border-color: rgba(122, 184, 212, 0.3);
-        }
-        .file-list .title {
-            font-weight: bold;
-            margin-bottom: 3px;
-        }
-        .file-list .desc {
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        .back-home {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .back-home a {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #c9a227, #e6c84a);
-            color: #000;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        .back-home a:hover {
-            transform: scale(1.05);
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f3460 100%);
             min-height: 100vh;
             color: #e6e6e6;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
         }
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #c9a227;
+            margin-bottom: 10px;
+        }
+        .header .principle {
+            font-size: 1.5rem;
+            color: #7ab8d4;
+            margin-bottom: 10px;
+        }
+        .header p { color: #888; }
+        .header .home-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 20px;
+            color: #c9a227;
+            text-decoration: none;
+        }
+        .header .home-link:hover { background: rgba(201, 162, 39, 0.3); }
+
+        .library { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+
+        .section {
+            margin-bottom: 40px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .section-header {
+            background: rgba(201, 162, 39, 0.1);
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-header h2 {
+            color: #c9a227;
+            font-size: 1.3rem;
+            flex: 1;
+        }
+        .section-header .count {
+            background: rgba(122, 184, 212, 0.2);
+            color: #7ab8d4;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1px;
+            background: rgba(201, 162, 39, 0.1);
+        }
+        .item {
+            background: rgba(10, 10, 15, 0.8);
+            padding: 15px 20px;
+        }
+        .item a {
+            text-decoration: none;
+            color: #7ab8d4;
+            display: block;
+        }
+        .item a:hover { color: #c9a227; }
+        .item .title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .item .desc {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            margin-top: 40px;
+        }
+        .stats strong { color: #c9a227; }
     </style>
 </head>
 <body>
-    <div class="library-container">
-        <div class="library-header">
-            <h1>HAVE MIND MEDIA LIBRARY</h1>
-            <div class="principle">[1 = -1]</div>
-            <p>Complete archive of decoded ancient texts, physics visualizations, and teaching materials.</p>
-        </div>
+    <div class="header">
+        <h1>HAVE MIND MEDIA LIBRARY</h1>
+        <div class="principle">[1 = -1]</div>
+        <p>Complete catalog of all work: physics, soul science, tools, ancient mysteries, and research.</p>
+        <a href="index.html" class="home-link">← Back to Home</a>
+    </div>
 
-        <div class="section-grid">
-            <!-- Ancient Mysteries -->
-            <div class="library-section">
-                <h2><span class="code">300</span> Ancient Mysteries</h2>
-                <ul class="file-list">
-                    <li>
-                        <a href="ancient-mysteries/voynich/index.html">
-                            <div class="title">Voynich Manuscript</div>
-                            <div class="desc">9 sections decoded through scalar geometry</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/texts/rongorongo-v1.0.html">
-                            <div class="title">Rongorongo</div>
-                            <div class="desc">Easter Island script analysis</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/texts/phaistos-v1.0.html">
-                            <div class="title">Phaistos Disc</div>
-                            <div class="desc">Minoan spiral script interpretation</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html">
-                            <div class="title">Ancient Mathematics</div>
-                            <div class="desc">Babylonian, Egyptian, Mayan base systems</div>
-                        </a>
-                    </li>
-                </ul>
+    <div class="library">
+        <!-- PHYSICS & BREAKTHROUGH SCIENCE -->
+        <div class="section">
+            <div class="section-header">
+                <h2>S+ Physics & Breakthrough Science</h2>
+                <span class="count">7 pages</span>
             </div>
-
-            <!-- Voynich Sections -->
-            <div class="library-section">
-                <h2><span class="code">310</span> Voynich Sections</h2>
-                <ul class="file-list">
-                    <li>
-                        <a href="ancient-mysteries/voynich/herbal.html">
-                            <div class="title">Herbal Section</div>
-                            <div class="desc">Botanical illustrations and plant wisdom</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/astronomical.html">
-                            <div class="title">Astronomical Section</div>
-                            <div class="desc">Star maps and celestial observations</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/biological.html">
-                            <div class="title">Biological Section</div>
-                            <div class="desc">Anatomical diagrams and body systems</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/zodiac.html">
-                            <div class="title">Zodiac Section</div>
-                            <div class="desc">Astrological and calendar systems</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/pharmaceutical.html">
-                            <div class="title">Pharmaceutical Section</div>
-                            <div class="desc">Remedy preparations and formulations</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/cosmological.html">
-                            <div class="title">Cosmological Section</div>
-                            <div class="desc">Universe structure and cosmic diagrams</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/recipes.html">
-                            <div class="title">Recipes Section</div>
-                            <div class="desc">Preparations and instructions</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ancient-mysteries/voynich/analysis.html">
-                            <div class="title">Analysis</div>
-                            <div class="desc">Decoding methodology and findings</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Physics Visualizations -->
-            <div class="library-section">
-                <h2><span class="code">200</span> Physics Visualizations</h2>
-                <ul class="file-list">
-                    <li>
-                        <a href="physics-viz/scalar-crossroads-animated.html">
-                            <div class="title">Scalar Crossroads</div>
-                            <div class="desc">Animated dimensional transformation at s=0</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="physics-viz/quad-helix-base60.html">
-                            <div class="title">Quad Helix Base-60</div>
-                            <div class="desc">Mayan mathematical spiral structure</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="physics-viz/quad-helix-base60-v2.0.html">
-                            <div class="title">Quad Helix v2.0</div>
-                            <div class="desc">Enhanced base-60 visualization</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Teaching -->
-            <div class="library-section">
-                <h2><span class="code">100</span> Teaching Documents</h2>
-                <ul class="file-list">
-                    <li>
-                        <a href="teaching/Scalar_Dimensionality_Teaching_Document.html">
-                            <div class="title">Scalar Dimensionality</div>
-                            <div class="desc">Complete framework teaching guide</div>
-                        </a>
-                    </li>
-                </ul>
+            <div class="items">
+                <div class="item"><a href="physics/three-body-geometry.html">
+                    <div class="title">Three-Body Problem Solved</div>
+                    <div class="desc">300 years unsolvable - geometric solution</div>
+                </a></div>
+                <div class="item"><a href="physics/millennium-problems.html">
+                    <div class="title">Millennium Prize Problems</div>
+                    <div class="desc">$7M in prizes - geometry walks through all 6</div>
+                </a></div>
+                <div class="item"><a href="physics/jwst-geometric-explorer.html">
+                    <div class="title">JWST Geometric Explorer</div>
+                    <div class="desc">10D manifold visualization, Hubble tension explained</div>
+                </a></div>
+                <div class="item"><a href="epoch-atomic/index.html">
+                    <div class="title">Epoch Atomic Model</div>
+                    <div class="desc">Atomic structure from pure geometry - interactive 3D</div>
+                </a></div>
+                <div class="item"><a href="protein-folding/index.html">
+                    <div class="title">Protein Folding</div>
+                    <div class="desc">Geometric approach to protein structure</div>
+                </a></div>
+                <div class="item"><a href="neurodegeneration/index.html">
+                    <div class="title">Neurodegeneration</div>
+                    <div class="desc">Geometric patterns in neural decay</div>
+                </a></div>
+                <div class="item"><a href="physics-viz/scalar-crossroads-animated.html">
+                    <div class="title">Scalar Crossroads</div>
+                    <div class="desc">Animated dimensional transformation at s=0</div>
+                </a></div>
             </div>
         </div>
 
-        <div class="back-home">
-            <a href="index.html">Return to Homepage</a>
+        <!-- CEDGA FRAMEWORK -->
+        <div class="section">
+            <div class="section-header">
+                <h2>CEDGA Framework</h2>
+                <span class="count">6 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="cedga/index.html">
+                    <div class="title">CEDGA Home</div>
+                    <div class="desc">8-tab interactive framework: κ = 2π/180</div>
+                </a></div>
+                <div class="item"><a href="cedga/pages/kappa-constant.html">
+                    <div class="title">The κ Constant</div>
+                    <div class="desc">Foundation of scalar dimensionality</div>
+                </a></div>
+                <div class="item"><a href="cedga/pages/tetrahelix.html">
+                    <div class="title">Tetrahelix</div>
+                    <div class="desc">Geometric spiral structure</div>
+                </a></div>
+                <div class="item"><a href="cedga/pages/balance-law.html">
+                    <div class="title">Balance Law</div>
+                    <div class="desc">Σ = 0 closure condition</div>
+                </a></div>
+                <div class="item"><a href="cedga/tools/m4-simulator.html">
+                    <div class="title">M4 Simulator</div>
+                    <div class="desc">Interactive M4 array visualization</div>
+                </a></div>
+                <div class="item"><a href="cedga/research/test-analysis.html">
+                    <div class="title">Test Analysis</div>
+                    <div class="desc">CEDGA validation data</div>
+                </a></div>
+            </div>
         </div>
+
+        <!-- SOUL SCIENCE & EDUCATION -->
+        <div class="section">
+            <div class="section-header">
+                <h2>S- Soul Science & Education</h2>
+                <span class="count">6 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="education/soul-science.html">
+                    <div class="title">Soul Science</div>
+                    <div class="desc">The geometry of consciousness</div>
+                </a></div>
+                <div class="item"><a href="education/becoming-a-coin.html">
+                    <div class="title">Becoming a Coin</div>
+                    <div class="desc">The observer position, seeing both sides</div>
+                </a></div>
+                <div class="item"><a href="education/socratean-education.html">
+                    <div class="title">Socratean AI Education</div>
+                    <div class="desc">AI-powered Socratic learning with verification</div>
+                </a></div>
+                <div class="item"><a href="education/life-facing-wisdom.html">
+                    <div class="title">Life-Facing Wisdom</div>
+                    <div class="desc">Practical consciousness guidance</div>
+                </a></div>
+                <div class="item"><a href="education/geometry-challenge.html">
+                    <div class="title">Geometry Challenge</div>
+                    <div class="desc">Interactive geometric puzzles</div>
+                </a></div>
+                <div class="item"><a href="education/vinyl-paradox.html">
+                    <div class="title">Vinyl Paradox</div>
+                    <div class="desc">Physical vs digital consciousness</div>
+                </a></div>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE TOOLS -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Interactive Tools</h2>
+                <span class="count">16 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="tools/s-signature/s_signature_128.html">
+                    <div class="title">S-Signature 128</div>
+                    <div class="desc">Core signature assessment tool</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_assessment.html">
+                    <div class="title">S-Signature Assessment</div>
+                    <div class="desc">Full personality mapping</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_evolving.html">
+                    <div class="title">S-Signature Evolving</div>
+                    <div class="desc">Dynamic signature visualization</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_prediction.html">
+                    <div class="title">S-Signature Prediction</div>
+                    <div class="desc">Predictive modeling from signature</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_sphere.html">
+                    <div class="title">S-Signature Sphere</div>
+                    <div class="desc">3D spherical visualization</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_coin.html">
+                    <div class="title">S-Signature Coin</div>
+                    <div class="desc">Coin-based signature display</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_card.html">
+                    <div class="title">S-Signature Card</div>
+                    <div class="desc">Card-style signature output</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_oracle.html">
+                    <div class="title">S-Signature Oracle</div>
+                    <div class="desc">Signature-based guidance</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/s_signature_engine.html">
+                    <div class="title">S-Signature Engine</div>
+                    <div class="desc">Core calculation engine</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/deep_oracle.html">
+                    <div class="title">Deep Oracle</div>
+                    <div class="desc">Advanced signature interpretation</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/reductive_oracle.html">
+                    <div class="title">Reductive Oracle</div>
+                    <div class="desc">Simplified signature reading</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/cohort_engine.html">
+                    <div class="title">Cohort Engine</div>
+                    <div class="desc">Group signature analysis</div>
+                </a></div>
+                <div class="item"><a href="tools/s-signature/jason_ray_s_signature.html">
+                    <div class="title">Jason Ray S-Signature</div>
+                    <div class="desc">Personal signature demonstration</div>
+                </a></div>
+                <div class="item"><a href="tools/mind-reading/index.html">
+                    <div class="title">Mind Reading</div>
+                    <div class="desc">Card-based intuition game</div>
+                </a></div>
+                <div class="item"><a href="tools/m4-visualizer/index.html">
+                    <div class="title">M4 Visualizer</div>
+                    <div class="desc">M4 array visualization tool</div>
+                </a></div>
+                <div class="item"><a href="tools/interaction-modeler/index.html">
+                    <div class="title">Interaction Modeler</div>
+                    <div class="desc">Relationship dynamics modeling</div>
+                </a></div>
+            </div>
+        </div>
+
+        <!-- ANCIENT MYSTERIES -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Ancient Mysteries</h2>
+                <span class="count">18 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="ancient-mysteries/voynich/index.html">
+                    <div class="title">Voynich Manuscript</div>
+                    <div class="desc">World's most mysterious manuscript decoded</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/herbal.html">
+                    <div class="title">Voynich: Herbal</div>
+                    <div class="desc">Botanical illustrations</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/astronomical.html">
+                    <div class="title">Voynich: Astronomical</div>
+                    <div class="desc">Star maps and celestial observations</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/biological.html">
+                    <div class="title">Voynich: Biological</div>
+                    <div class="desc">Anatomical diagrams</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/zodiac.html">
+                    <div class="title">Voynich: Zodiac</div>
+                    <div class="desc">Astrological systems</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/pharmaceutical.html">
+                    <div class="title">Voynich: Pharmaceutical</div>
+                    <div class="desc">Remedy preparations</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/cosmological.html">
+                    <div class="title">Voynich: Cosmological</div>
+                    <div class="desc">Universe structure diagrams</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/recipes.html">
+                    <div class="title">Voynich: Recipes</div>
+                    <div class="desc">Preparations and instructions</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/voynich/analysis.html">
+                    <div class="title">Voynich: Analysis</div>
+                    <div class="desc">Decoding methodology</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/texts/rongorongo-v1.0.html">
+                    <div class="title">Rongorongo</div>
+                    <div class="desc">Easter Island script analysis</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/texts/phaistos-v1.0.html">
+                    <div class="title">Phaistos Disc</div>
+                    <div class="desc">Minoan spiral script</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html">
+                    <div class="title">Ancient Mathematics</div>
+                    <div class="desc">Babylonian, Egyptian, Mayan base systems</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html">
+                    <div class="title">Rök Runestone</div>
+                    <div class="desc">Sweden's longest runic inscription</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html">
+                    <div class="title">Gotland Stones</div>
+                    <div class="desc">Picture stones of Gotland</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html">
+                    <div class="title">Gold Bracteates</div>
+                    <div class="desc">Migration period gold medallions</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html">
+                    <div class="title">Oseberg Ship</div>
+                    <div class="desc">Viking ship burial treasures</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html">
+                    <div class="title">Norse Symbols & Runes</div>
+                    <div class="desc">Complete runic alphabet analysis</div>
+                </a></div>
+                <div class="item"><a href="ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html">
+                    <div class="title">Norse Library Card</div>
+                    <div class="desc">Index of all Norse materials</div>
+                </a></div>
+            </div>
+        </div>
+
+        <!-- RESEARCH DOCUMENTS -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Research Documents</h2>
+                <span class="count">7 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="documents/dec14-unified-theory/index.html">
+                    <div class="title">Unified Theory Index</div>
+                    <div class="desc">19 educational lessons</div>
+                </a></div>
+                <div class="item"><a href="documents/dec14-unified-theory/main-framework.html">
+                    <div class="title">Scalar Dimensionality Framework</div>
+                    <div class="desc">Complete geometric physics</div>
+                </a></div>
+                <div class="item"><a href="documents/dec14-unified-theory/dual-axis-explorer.html">
+                    <div class="title">Dual-Axis Explorer</div>
+                    <div class="desc">Base-2 spacetime meets Base-4 awareness</div>
+                </a></div>
+                <div class="item"><a href="documents/dec14-model-cern/index.html">
+                    <div class="title">CERN Validation</div>
+                    <div class="desc">Run 1 & 2 data analysis, >99% accuracy</div>
+                </a></div>
+                <div class="item"><a href="documents/epoch-framework/index.html">
+                    <div class="title">Epoch Framework</div>
+                    <div class="desc">Foundational triaxial structure</div>
+                </a></div>
+                <div class="item"><a href="documents/cern-scalar-geometry.html">
+                    <div class="title">CERN Scalar Geometry</div>
+                    <div class="desc">Particle physics through geometry</div>
+                </a></div>
+                <div class="item"><a href="documents/tribute/index.html">
+                    <div class="title">Tribute</div>
+                    <div class="desc">Dedication to Cassandra King Conroy & Pat Conroy</div>
+                </a></div>
+            </div>
+        </div>
+
+        <!-- TEACHING & VISUALIZATIONS -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Teaching & Visualizations</h2>
+                <span class="count">4 pages</span>
+            </div>
+            <div class="items">
+                <div class="item"><a href="teaching/Scalar_Dimensionality_Teaching_Document.html">
+                    <div class="title">Scalar Dimensionality Teaching</div>
+                    <div class="desc">Complete framework teaching guide</div>
+                </a></div>
+                <div class="item"><a href="physics-viz/quad-helix-base60.html">
+                    <div class="title">Quad Helix Base-60</div>
+                    <div class="desc">Mayan mathematical spiral</div>
+                </a></div>
+                <div class="item"><a href="physics-viz/quad-helix-base60-v2.0.html">
+                    <div class="title">Quad Helix v2.0</div>
+                    <div class="desc">Enhanced base-60 visualization</div>
+                </a></div>
+                <div class="item"><a href="physics-viz/scalar-crossroads-animated.html">
+                    <div class="title">Scalar Crossroads Animated</div>
+                    <div class="desc">Dimensional transformation at s=0</div>
+                </a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats">
+        <strong>65 pages</strong> across <strong>7 categories</strong> |
+        κ = 2π/180 = 0.034906585... |
+        <strong>[1 = -1]</strong>
     </div>
 </body>
 </html>
