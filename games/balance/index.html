@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>BALANCE | Have Mind Media</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #050508;
+            --gold: #c9a227;
+            --blue: #6ab4f5;
+            --text: #e6e6e6;
+            --dim: #666;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        /* LOADING SCREEN */
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .loading-spinner::before,
+        .loading-spinner::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid transparent;
+        }
+
+        .loading-spinner::before {
+            inset: 0;
+            border-top-color: var(--gold);
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-spinner::after {
+            inset: 8px;
+            border-bottom-color: var(--blue);
+            animation: spin 0.8s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--blue));
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .loading-fact {
+            max-width: 300px;
+            text-align: center;
+            color: var(--dim);
+            font-size: 0.85rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .loading-fact .highlight {
+            color: var(--gold);
+        }
+
+        /* MAIN GAME */
+        #game-screen {
+            display: none;
+            flex-direction: column;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        #game-screen.active {
+            display: flex;
+        }
+
+        /* Header */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .stage-info {
+            font-size: 0.75rem;
+            color: var(--dim);
+            letter-spacing: 1px;
+        }
+
+        .stage-info span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .lives {
+            display: flex;
+            gap: 4px;
+        }
+
+        .life {
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .life.lost {
+            opacity: 0.2;
+        }
+
+        /* Balance Meter */
+        .balance-container {
+            padding: 10px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .balance-label {
+            font-size: 0.65rem;
+            color: var(--dim);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .balance-bars {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+            height: 40px;
+        }
+
+        .balance-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .balance-bar-fill {
+            width: 100%;
+            border-radius: 4px;
+            transition: height 0.3s;
+        }
+
+        .balance-bar-fill.s-minus {
+            background: var(--gold);
+        }
+
+        .balance-bar-fill.coin {
+            background: linear-gradient(180deg, var(--gold), var(--blue));
+        }
+
+        .balance-bar-fill.s-plus {
+            background: var(--blue);
+        }
+
+        .balance-bar-label {
+            font-size: 0.6rem;
+            color: var(--dim);
+        }
+
+        /* Game Board */
+        .game-board-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .game-board {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding: 10px;
+            transition: transform 0.3s;
+        }
+
+        .game-row {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .cell {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .cell:active {
+            transform: scale(0.95);
+        }
+
+        .cell.selected {
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 162, 39, 0.3);
+        }
+
+        .cell.matched {
+            animation: matchPop 0.3s ease-out forwards;
+        }
+
+        @keyframes matchPop {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .cell.s-minus { background: rgba(201, 162, 39, 0.1); }
+        .cell.s-plus { background: rgba(106, 180, 245, 0.1); }
+        .cell.coin-type { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.1)); }
+        .cell.q-type { background: rgba(255, 50, 50, 0.2); border-color: rgba(255, 50, 50, 0.3); }
+
+        .cell.inverted {
+            filter: invert(1) hue-rotate(180deg);
+        }
+
+        .cell.flipped {
+            transform: rotate(180deg);
+        }
+
+        /* Push Zone Warning */
+        .push-zone {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(0deg, rgba(255, 50, 50, 0.2) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Message Overlay */
+        .message-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .message-overlay.active {
+            display: flex;
+        }
+
+        .message-box {
+            text-align: center;
+            padding: 30px;
+            max-width: 320px;
+        }
+
+        .message-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .message-text {
+            color: var(--dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .message-btn {
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Did You Know */
+        .dyk-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .dyk-overlay.active {
+            display: flex;
+        }
+
+        .dyk-box {
+            text-align: center;
+            padding: 30px;
+            max-width: 350px;
+        }
+
+        .dyk-label {
+            font-size: 0.7rem;
+            color: var(--blue);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .dyk-fact {
+            font-size: 1.2rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .dyk-fact .em {
+            color: var(--gold);
+        }
+
+        .dyk-continue {
+            font-size: 0.8rem;
+            color: var(--dim);
+        }
+
+        /* Dogs */
+        .dog-display {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 8, 0.95);
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .dog-display.active {
+            display: flex;
+        }
+
+        .dog-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 12px;
+            border: 2px solid var(--gold);
+        }
+
+        .dog-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .dog-desc {
+            color: var(--dim);
+            text-align: center;
+            max-width: 280px;
+        }
+
+        /* Chaos mode */
+        .chaos-mode .cell {
+            animation: chaosShake 0.1s infinite;
+        }
+
+        @keyframes chaosShake {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-2px, 2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, -2px); }
+        }
+
+        /* Footer */
+        .game-footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.7rem;
+            color: var(--dim);
+        }
+
+        .game-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 400px) {
+            .cell {
+                width: 32px;
+                height: 32px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-title">BALANCE</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-bar">
+            <div class="loading-bar-fill" id="loading-fill"></div>
+        </div>
+        <div class="loading-fact" id="loading-fact">
+            <span class="highlight">κ = 2π/180</span><br>
+            The bridge between degrees and radians
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen">
+        <div class="game-header">
+            <div class="stage-info">
+                STAGE <span id="stage-num">1</span> · LEVEL <span id="level-num">1</span>
+            </div>
+            <div class="lives" id="lives"></div>
+        </div>
+
+        <div class="balance-container">
+            <div class="balance-label">Maintain Balance</div>
+            <div class="balance-bars">
+                <div class="balance-bar">
+                    <div class="balance-bar-fill s-minus" id="bar-sminus" style="height: 30px;"></div>
+                    <div class="balance-bar-label">S-</div>
+                </div>
+                <div class="balance-bar">
+                    <div class="balance-bar-fill coin" id="bar-coin" style="height: 20px;"></div>
+                    <div class="balance-bar-label">◐</div>
+                </div>
+                <div class="balance-bar">
+                    <div class="balance-bar-fill s-plus" id="bar-splus" style="height: 10px;"></div>
+                    <div class="balance-bar-label">S+</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board-container">
+            <div class="push-zone"></div>
+            <div class="game-board" id="game-board"></div>
+        </div>
+
+        <div class="game-footer">
+            <a href="https://havemindmedia.com">havemindmedia.com</a> · [1 = -1]
+        </div>
+    </div>
+
+    <!-- Message Overlay -->
+    <div class="message-overlay" id="message-overlay">
+        <div class="message-box">
+            <div class="message-title" id="msg-title">Welcome</div>
+            <div class="message-text" id="msg-text">Balance the forces.</div>
+            <button class="message-btn" id="msg-btn">BEGIN</button>
+        </div>
+    </div>
+
+    <!-- Did You Know Overlay -->
+    <div class="dyk-overlay" id="dyk-overlay">
+        <div class="dyk-box">
+            <div class="dyk-label">DID YOU KNOW?</div>
+            <div class="dyk-fact" id="dyk-fact"></div>
+            <div class="dyk-continue">Tap anywhere to continue</div>
+        </div>
+    </div>
+
+    <!-- Dog Display -->
+    <div class="dog-display" id="dog-display">
+        <img class="dog-image" id="dog-img" src="" alt="">
+        <div class="dog-name" id="dog-name"></div>
+        <div class="dog-desc" id="dog-desc"></div>
+        <button class="message-btn" onclick="closeDogDisplay()">Continue</button>
+    </div>
+
+    <script>
+        // ==================== GAME CONFIG ====================
+        const SYMBOLS = {
+            sMinus: ['☯', '🌙', '💫', '✨', '🙏'],
+            sPlus: ['⚛', '💎', '⚡', '🔷', '🔹'],
+            coin: ['◐', '👀', '∞', '🐕', '⚖️'],
+            special: ['Q', 'q', 'ꝗ']
+        };
+
+        const FACTS = [
+            { text: '<span class="em">κ = 2π/180</span> — The constant that bridges discrete degrees to continuous radians', highlight: true },
+            { text: 'The <span class="em">observer</span> creates the observation. You are the Coin.', highlight: true },
+            { text: '<span class="em">[1 = -1]</span> — Unity contains its opposite. This is the core identity.', highlight: true },
+            { text: '<span class="em">S-</span> faces inward. <span class="em">S+</span> faces outward. <span class="em">Coin</span> sees both.', highlight: true },
+            { text: 'Balance is not <span class="em">equal</span> — it is <span class="em">proportional</span>.', highlight: true },
+            { text: 'The <span class="em">tetrahelix</span> is the geometry of life itself.', highlight: true },
+            { text: '<span class="em">Wushi</span> knows the path. She hunts with joy.', highlight: true },
+            { text: '<span class="em">Ro</span> looks up, always seeking, always ready.', highlight: true },
+            { text: 'The <span class="em">void</span> is not empty. It is full of potential.', highlight: true },
+            { text: 'Between breaths, between thoughts — that is where <span class="em">LuC</span> lives.', highlight: true }
+        ];
+
+        const DOGS = {
+            wushi: {
+                name: 'WUSHI',
+                desc: 'The happy hound huntress. Coin facing S-. She knows the soul path.',
+                img: 'images/wushi.jpg'
+            },
+            ro: {
+                name: 'RO',
+                desc: 'Always looking up. Coin facing S+. Ready for what comes.',
+                img: 'images/ro.jpg'
+            }
+        };
+
+        // ==================== GAME STATE ====================
+        let state = {
+            stage: 1,
+            level: 1,
+            lives: 5,
+            maxLives: 5,
+            board: [],
+            selected: [],
+            balance: { sMinus: 50, coin: 30, sPlus: 20 },
+            rows: 16,
+            cols: 7,
+            pushInterval: null,
+            chaosInterval: null,
+            inverted: false,
+            chaosMode: false
+        };
+
+        // ==================== ELEMENTS ====================
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingFill = document.getElementById('loading-fill');
+        const loadingFact = document.getElementById('loading-fact');
+        const gameScreen = document.getElementById('game-screen');
+        const gameBoard = document.getElementById('game-board');
+        const stageNum = document.getElementById('stage-num');
+        const levelNum = document.getElementById('level-num');
+        const livesEl = document.getElementById('lives');
+        const msgOverlay = document.getElementById('message-overlay');
+        const msgTitle = document.getElementById('msg-title');
+        const msgText = document.getElementById('msg-text');
+        const msgBtn = document.getElementById('msg-btn');
+        const dykOverlay = document.getElementById('dyk-overlay');
+        const dykFact = document.getElementById('dyk-fact');
+
+        // ==================== LOADING ====================
+        let loadProgress = 0;
+        const loadingFactsList = [...FACTS];
+
+        function updateLoadingFact() {
+            const fact = loadingFactsList[Math.floor(Math.random() * loadingFactsList.length)];
+            loadingFact.innerHTML = fact.text;
+        }
+
+        function simulateLoading() {
+            const interval = setInterval(() => {
+                loadProgress += Math.random() * 15;
+                if (loadProgress >= 100) {
+                    loadProgress = 100;
+                    loadingFill.style.width = '100%';
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        loadingScreen.classList.add('hidden');
+                        startGame();
+                    }, 500);
+                } else {
+                    loadingFill.style.width = loadProgress + '%';
+                    if (Math.random() > 0.7) updateLoadingFact();
+                }
+            }, 200);
+        }
+
+        // ==================== GAME INIT ====================
+        function startGame() {
+            gameScreen.classList.add('active');
+            showMessage('BALANCE', 'Clear triads of matching types.<br>Maintain balance: S- > Coin > S+<br>Don\'t let rows reach the bottom.', 'BEGIN', () => {
+                initLevel();
+            });
+        }
+
+        function initLevel() {
+            // Calculate rows based on stage/level
+            if (state.stage === 1) {
+                state.rows = 16 + state.level - 1;
+                state.maxLives = state.level <= 8 ? 5 : 2;
+            } else if (state.stage === 2) {
+                const rowAdds = [2, 3, 4, 6, 7, 8, 9, 8, 9, 10];
+                state.rows = 16 + (rowAdds[state.level - 1] || 2);
+                state.maxLives = 3;
+                state.inverted = true;
+            } else {
+                state.rows = 22;
+                state.maxLives = 1;
+            }
+
+            state.lives = state.maxLives;
+            state.selected = [];
+            state.balance = { sMinus: 50, coin: 30, sPlus: 20 };
+
+            updateUI();
+            generateBoard();
+            renderBoard();
+            startPush();
+        }
+
+        function generateBoard() {
+            state.board = [];
+            for (let r = 0; r < state.rows; r++) {
+                const row = [];
+                for (let c = 0; c < state.cols; c++) {
+                    row.push(generateSymbol());
+                }
+                state.board.push(row);
+            }
+
+            // Add Q in stage 2 level 10
+            if (state.stage === 2 && state.level === 10) {
+                const qRow = Math.floor(state.rows / 2);
+                const qCol = Math.floor(state.cols / 2);
+                state.board[qRow][qCol] = { symbol: 'Q', type: 'special' };
+            }
+        }
+
+        function generateSymbol() {
+            const rand = Math.random();
+            let type, symbols;
+
+            if (rand < 0.4) {
+                type = 'sMinus';
+                symbols = SYMBOLS.sMinus;
+            } else if (rand < 0.7) {
+                type = 'coin';
+                symbols = SYMBOLS.coin;
+            } else {
+                type = 'sPlus';
+                symbols = SYMBOLS.sPlus;
+            }
+
+            return {
+                symbol: symbols[Math.floor(Math.random() * symbols.length)],
+                type: type
+            };
+        }
+
+        function renderBoard() {
+            gameBoard.innerHTML = '';
+
+            // Only show bottom portion that fits
+            const visibleRows = Math.min(state.board.length, 12);
+            const startRow = Math.max(0, state.board.length - visibleRows);
+
+            for (let r = startRow; r < state.board.length; r++) {
+                const rowEl = document.createElement('div');
+                rowEl.className = 'game-row';
+
+                for (let c = 0; c < state.cols; c++) {
+                    const cell = state.board[r][c];
+                    const cellEl = document.createElement('div');
+                    cellEl.className = 'cell';
+
+                    if (cell.type === 'sMinus') cellEl.classList.add('s-minus');
+                    else if (cell.type === 'sPlus') cellEl.classList.add('s-plus');
+                    else if (cell.type === 'coin') cellEl.classList.add('coin-type');
+                    else if (cell.type === 'special') cellEl.classList.add('q-type');
+
+                    if (state.inverted && cell.type !== 'special') {
+                        cellEl.classList.add('inverted');
+                    }
+
+                    cellEl.textContent = cell.symbol;
+                    cellEl.dataset.row = r;
+                    cellEl.dataset.col = c;
+                    cellEl.addEventListener('click', () => selectCell(r, c, cellEl));
+
+                    rowEl.appendChild(cellEl);
+                }
+
+                gameBoard.appendChild(rowEl);
+            }
+        }
+
+        function selectCell(row, col, element) {
+            const key = `${row}-${col}`;
+            const idx = state.selected.findIndex(s => s.key === key);
+
+            if (idx >= 0) {
+                state.selected.splice(idx, 1);
+                element.classList.remove('selected');
+            } else if (state.selected.length < 3) {
+                state.selected.push({ row, col, key, element });
+                element.classList.add('selected');
+
+                if (state.selected.length === 3) {
+                    checkMatch();
+                }
+            }
+        }
+
+        function checkMatch() {
+            const types = state.selected.map(s => state.board[s.row][s.col].type);
+            const allSame = types.every(t => t === types[0]);
+
+            // Check if adjacent (simplified - any 3 in same/adjacent rows)
+            const rows = state.selected.map(s => s.row);
+            const rowSpread = Math.max(...rows) - Math.min(...rows);
+            const isAdjacent = rowSpread <= 1;
+
+            if (allSame && isAdjacent && types[0] !== 'special') {
+                // Match!
+                state.selected.forEach(s => {
+                    s.element.classList.add('matched');
+                    setTimeout(() => {
+                        state.board[s.row][s.col] = generateSymbol();
+                    }, 300);
+                });
+
+                // Update balance
+                updateBalance(types[0]);
+
+                setTimeout(() => {
+                    renderBoard();
+                }, 350);
+            } else if (types.includes('special')) {
+                // Q handling
+                handleQ();
+            } else {
+                // No match
+                state.selected.forEach(s => s.element.classList.remove('selected'));
+            }
+
+            state.selected = [];
+        }
+
+        function handleQ() {
+            // When Q is selected, reveal the solution
+            showMessage('THE Q REVEALS ITSELF', 'The unsolvable becomes solvable.<br>Remove the Q to continue.', 'REMOVE Q', () => {
+                // Find and remove Q
+                for (let r = 0; r < state.board.length; r++) {
+                    for (let c = 0; c < state.cols; c++) {
+                        if (state.board[r][c].symbol === 'Q') {
+                            state.board[r][c] = generateSymbol();
+                        }
+                    }
+                }
+                state.selected = [];
+                renderBoard();
+                playEvilLaugh();
+            });
+        }
+
+        function playEvilLaugh() {
+            // Visual evil laugh effect
+            document.body.style.background = '#200';
+            setTimeout(() => {
+                document.body.style.background = 'var(--bg)';
+            }, 200);
+        }
+
+        function updateBalance(matchedType) {
+            if (matchedType === 'sMinus') {
+                state.balance.sMinus = Math.min(100, state.balance.sMinus + 5);
+            } else if (matchedType === 'coin') {
+                state.balance.coin = Math.min(100, state.balance.coin + 5);
+            } else if (matchedType === 'sPlus') {
+                state.balance.sPlus = Math.min(100, state.balance.sPlus + 5);
+            }
+
+            // Decay others slightly
+            state.balance.sMinus = Math.max(0, state.balance.sMinus - 1);
+            state.balance.coin = Math.max(0, state.balance.coin - 1);
+            state.balance.sPlus = Math.max(0, state.balance.sPlus - 1);
+
+            updateBalanceBars();
+            checkBalance();
+        }
+
+        function updateBalanceBars() {
+            document.getElementById('bar-sminus').style.height = (state.balance.sMinus * 0.4) + 'px';
+            document.getElementById('bar-coin').style.height = (state.balance.coin * 0.4) + 'px';
+            document.getElementById('bar-splus').style.height = (state.balance.sPlus * 0.4) + 'px';
+        }
+
+        function checkBalance() {
+            // Ideal: sMinus > coin > sPlus
+            const { sMinus, coin, sPlus } = state.balance;
+
+            if (sMinus < coin || coin < sPlus) {
+                // Unbalanced warning
+                document.body.style.filter = 'saturate(0.5)';
+                setTimeout(() => {
+                    document.body.style.filter = '';
+                }, 500);
+            }
+        }
+
+        function startPush() {
+            clearInterval(state.pushInterval);
+            const speed = 3000 - (state.level * 100); // Faster at higher levels
+
+            state.pushInterval = setInterval(() => {
+                pushRow();
+            }, Math.max(speed, 1000));
+        }
+
+        function pushRow() {
+            // Add new row at top
+            const newRow = [];
+            for (let c = 0; c < state.cols; c++) {
+                newRow.push(generateSymbol());
+            }
+            state.board.unshift(newRow);
+
+            // Check if bottom row reached
+            if (state.board.length > 20) {
+                loseLife();
+            }
+
+            renderBoard();
+        }
+
+        function loseLife() {
+            state.lives--;
+            updateUI();
+
+            if (state.lives <= 0) {
+                gameOver();
+            } else {
+                // Remove bottom rows
+                state.board = state.board.slice(0, 16);
+                renderBoard();
+            }
+        }
+
+        function gameOver() {
+            clearInterval(state.pushInterval);
+            showMessage('UNBALANCED', `Stage ${state.stage} Level ${state.level}`, 'TRY AGAIN', () => {
+                state.level = 1;
+                initLevel();
+            });
+        }
+
+        function levelComplete() {
+            clearInterval(state.pushInterval);
+
+            if (state.level < 10) {
+                showDYK(() => {
+                    state.level++;
+                    initLevel();
+                });
+            } else if (state.stage < 3) {
+                showMessage('STAGE COMPLETE', `Stage ${state.stage} mastered!`, 'NEXT STAGE', () => {
+                    state.stage++;
+                    state.level = 1;
+                    initLevel();
+                });
+            } else {
+                showMessage('VOID MASTERED', 'You have seen both sides of the coin.', 'PLAY AGAIN', () => {
+                    state.stage = 1;
+                    state.level = 1;
+                    initLevel();
+                });
+            }
+        }
+
+        function showDYK(callback) {
+            const fact = FACTS[Math.floor(Math.random() * FACTS.length)];
+            dykFact.innerHTML = fact.text;
+            dykOverlay.classList.add('active');
+
+            const handler = () => {
+                dykOverlay.classList.remove('active');
+                dykOverlay.removeEventListener('click', handler);
+                callback();
+            };
+
+            setTimeout(() => {
+                dykOverlay.addEventListener('click', handler);
+            }, 500);
+        }
+
+        function showMessage(title, text, btnText, callback) {
+            msgTitle.textContent = title;
+            msgText.innerHTML = text;
+            msgBtn.textContent = btnText;
+            msgOverlay.classList.add('active');
+
+            msgBtn.onclick = () => {
+                msgOverlay.classList.remove('active');
+                callback();
+            };
+        }
+
+        function closeDogDisplay() {
+            document.getElementById('dog-display').classList.remove('active');
+        }
+
+        function updateUI() {
+            stageNum.textContent = state.stage;
+            levelNum.textContent = state.level;
+
+            livesEl.innerHTML = '';
+            for (let i = 0; i < state.maxLives; i++) {
+                const life = document.createElement('div');
+                life.className = 'life' + (i >= state.lives ? ' lost' : '');
+                livesEl.appendChild(life);
+            }
+
+            updateBalanceBars();
+        }
+
+        // ==================== START ====================
+        window.onload = simulateLoading;
+    </script>
+</body>
+</html>
