@@ -1,32 +1,12 @@
 /**
- * Have Mind Media - Unified Site Header Web Component
- * Navigation: S+ (Physics) | S- (Soul Science) | Coin (Tools) | Void (Library/Docs)
+ * Have Mind Media - Site Header
+ * Simple, complete navigation to all 68 pages
  * [1 = -1]
  */
 
 class SiteHeader extends HTMLElement {
-    constructor() {
-        super();
-        this.basePath = this.getBasePath();
-    }
-
     connectedCallback() {
-        this.render();
-        this.setupEventListeners();
-    }
-
-    // Calculate relative path based on page depth
-    getBasePath() {
-        const path = window.location.pathname;
-        const depth = (path.match(/\//g) || []).length - 1;
-        if (depth <= 0 || path === '/' || path.endsWith('/index.html') && depth === 1) {
-            return './';
-        }
-        return '../'.repeat(depth);
-    }
-
-    render() {
-        const bp = this.basePath;
+        const bp = this.getBasePath();
 
         this.innerHTML = `
             <style>
@@ -36,363 +16,338 @@ class SiteHeader extends HTMLElement {
                     left: 0;
                     right: 0;
                     z-index: 10000;
-                    background: rgba(3, 5, 8, 0.95);
-                    backdrop-filter: blur(12px);
-                    -webkit-backdrop-filter: blur(12px);
-                    border-bottom: 1px solid rgba(70, 130, 180, 0.25);
-                    font-family: 'Cinzel', Georgia, serif;
+                    background: rgba(3, 5, 8, 0.97);
+                    border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
                 }
-
-                .hmm-header-inner {
+                .hmm-inner {
                     max-width: 1400px;
                     margin: 0 auto;
-                    padding: 0.6rem 1.5rem;
+                    padding: 0.5rem 1rem;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
                 }
-
                 .hmm-brand {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.8rem;
                     text-decoration: none;
-                }
-
-                .hmm-brand-text {
-                    font-size: 0.95rem;
                     color: #c9a227;
-                    letter-spacing: 3px;
-                    font-weight: 500;
-                }
-
-                .hmm-brand-sig {
-                    font-size: 0.65rem;
-                    color: #a8d4f5;
-                    opacity: 0.5;
+                    font-weight: 600;
+                    font-size: 0.9rem;
                     letter-spacing: 2px;
                 }
-
+                .hmm-brand:hover { color: #e8c547; }
                 .hmm-nav {
+                    display: flex;
+                    gap: 0.25rem;
+                }
+                .hmm-nav-item {
+                    position: relative;
+                }
+                .hmm-btn {
+                    padding: 0.5rem 0.75rem;
+                    background: none;
+                    border: 1px solid transparent;
+                    border-radius: 4px;
+                    color: #e0e0e0;
+                    font-size: 0.8rem;
+                    cursor: pointer;
                     display: flex;
                     align-items: center;
                     gap: 0.3rem;
                 }
-
-                .hmm-nav-item {
-                    position: relative;
+                .hmm-btn:hover {
+                    background: rgba(201, 162, 39, 0.1);
+                    border-color: rgba(201, 162, 39, 0.3);
                 }
-
-                .hmm-nav-btn {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.4rem;
-                    padding: 0.5rem 1rem;
-                    background: transparent;
-                    border: 1px solid transparent;
-                    border-radius: 6px;
-                    color: #f0e8d8;
-                    font-family: 'Cinzel', Georgia, serif;
-                    font-size: 0.8rem;
-                    letter-spacing: 1.5px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
+                .hmm-btn.active {
+                    background: rgba(201, 162, 39, 0.15);
+                    border-color: rgba(201, 162, 39, 0.4);
+                    color: #c9a227;
                 }
-
-                .hmm-nav-btn:hover {
-                    background: rgba(70, 130, 180, 0.1);
-                    border-color: rgba(70, 130, 180, 0.3);
-                }
-
-                .hmm-nav-btn.active {
-                    background: rgba(70, 130, 180, 0.15);
-                    border-color: rgba(70, 130, 180, 0.4);
-                }
-
-                .hmm-nav-btn .icon {
-                    font-size: 0.9rem;
-                }
-
-                .hmm-nav-btn .arrow {
+                .hmm-arrow {
                     font-size: 0.5rem;
-                    transition: transform 0.3s ease;
+                    transition: transform 0.2s;
                 }
-
-                .hmm-nav-btn.active .arrow {
+                .hmm-btn.active .hmm-arrow {
                     transform: rotate(180deg);
                 }
 
-                /* Section Colors */
-                .hmm-nav-btn[data-section="s-plus"] { color: #6ab4f5; }
-                .hmm-nav-btn[data-section="s-minus"] { color: #c9a227; }
-                .hmm-nav-btn[data-section="coin"] {
-                    background: linear-gradient(90deg, #6ab4f5, #c9a227);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                    background-clip: text;
-                }
-                .hmm-nav-btn[data-section="void"] { color: #a8d4f5; }
-
                 /* Dropdown */
-                .hmm-dropdown {
+                .hmm-drop {
                     position: absolute;
-                    top: calc(100% + 0.5rem);
-                    right: 0;
-                    min-width: 240px;
-                    background: rgba(10, 13, 18, 0.98);
-                    border: 1px solid rgba(70, 130, 180, 0.3);
-                    border-radius: 10px;
-                    padding: 0.5rem;
-                    opacity: 0;
-                    visibility: hidden;
-                    transform: translateY(-8px);
-                    transition: all 0.25s ease;
-                    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-                }
-
-                .hmm-dropdown.show {
-                    opacity: 1;
-                    visibility: visible;
-                    transform: translateY(0);
-                }
-
-                .hmm-dropdown a {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.7rem;
-                    padding: 0.6rem 0.8rem;
-                    color: #f0e8d8;
-                    text-decoration: none;
+                    top: calc(100% + 4px);
+                    left: 0;
+                    min-width: 220px;
+                    max-height: 70vh;
+                    overflow-y: auto;
+                    background: rgba(15, 15, 20, 0.98);
+                    border: 1px solid rgba(201, 162, 39, 0.25);
                     border-radius: 6px;
-                    font-size: 0.85rem;
-                    transition: all 0.2s ease;
+                    padding: 0.4rem;
+                    display: none;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
                 }
-
-                .hmm-dropdown a:hover {
-                    background: rgba(70, 130, 180, 0.15);
-                    color: #6ab4f5;
+                .hmm-drop.show { display: block; }
+                .hmm-drop a {
+                    display: block;
+                    padding: 0.4rem 0.6rem;
+                    color: #d0d0d0;
+                    text-decoration: none;
+                    font-size: 0.8rem;
+                    border-radius: 3px;
                 }
-
-                .hmm-dropdown a .icon {
-                    width: 20px;
-                    text-align: center;
-                    font-size: 0.95rem;
+                .hmm-drop a:hover {
+                    background: rgba(201, 162, 39, 0.15);
+                    color: #c9a227;
                 }
-
-                .hmm-dropdown .divider {
-                    height: 1px;
-                    background: rgba(70, 130, 180, 0.2);
-                    margin: 0.4rem 0;
+                .hmm-drop .sub {
+                    padding-left: 1rem;
+                    font-size: 0.75rem;
+                    color: #999;
                 }
-
-                .hmm-dropdown .section-label {
-                    padding: 0.3rem 0.8rem;
+                .hmm-drop .sub:hover { color: #c9a227; }
+                .hmm-drop .label {
+                    padding: 0.5rem 0.6rem 0.2rem;
                     font-size: 0.65rem;
                     color: #666;
-                    letter-spacing: 1.5px;
+                    letter-spacing: 1px;
                     text-transform: uppercase;
+                }
+                .hmm-drop hr {
+                    border: none;
+                    border-top: 1px solid rgba(201, 162, 39, 0.15);
+                    margin: 0.3rem 0;
+                }
+
+                /* Explore mega dropdown */
+                .hmm-drop.mega {
+                    min-width: 600px;
+                    right: 0;
+                    left: auto;
+                }
+                .hmm-mega-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 0.5rem;
+                }
+                .hmm-mega-col {
+                    padding: 0.3rem;
+                }
+                .hmm-mega-col h4 {
+                    font-size: 0.7rem;
+                    color: #c9a227;
+                    margin: 0 0 0.3rem 0;
+                    padding: 0.2rem 0.4rem;
+                    border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
+                .hmm-mega-col a {
+                    font-size: 0.75rem;
+                    padding: 0.3rem 0.4rem;
                 }
 
                 /* Mobile */
-                .hmm-mobile-toggle {
+                .hmm-toggle {
                     display: none;
-                    padding: 0.5rem;
-                    background: transparent;
-                    border: 1px solid rgba(70, 130, 180, 0.3);
-                    border-radius: 6px;
-                    color: #f0e8d8;
+                    padding: 0.4rem;
+                    background: none;
+                    border: 1px solid rgba(201, 162, 39, 0.3);
+                    border-radius: 4px;
+                    color: #e0e0e0;
+                    font-size: 1.1rem;
                     cursor: pointer;
-                    font-size: 1.2rem;
                 }
-
                 @media (max-width: 900px) {
-                    .hmm-nav {
-                        display: none;
-                        position: absolute;
-                        top: 100%;
-                        left: 0;
-                        right: 0;
-                        background: rgba(10, 13, 18, 0.98);
-                        flex-direction: column;
-                        padding: 1rem;
-                        border-bottom: 1px solid rgba(70, 130, 180, 0.25);
-                    }
-
-                    .hmm-nav.show {
-                        display: flex;
-                    }
-
-                    .hmm-nav-item {
-                        width: 100%;
-                    }
-
-                    .hmm-nav-btn {
-                        width: 100%;
-                        justify-content: space-between;
-                    }
-
-                    .hmm-dropdown {
-                        position: static;
-                        opacity: 1;
-                        visibility: visible;
-                        transform: none;
-                        display: none;
-                        box-shadow: none;
-                        border: none;
-                        padding-left: 1rem;
-                    }
-
-                    .hmm-dropdown.show {
-                        display: block;
-                    }
-
-                    .hmm-mobile-toggle {
-                        display: block;
-                    }
-
-                    .hmm-brand-sig {
-                        display: none;
-                    }
+                    .hmm-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 15, 20, 0.98); padding: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+                    .hmm-nav.show { display: flex; }
+                    .hmm-toggle { display: block; }
+                    .hmm-btn { width: 100%; justify-content: space-between; }
+                    .hmm-drop, .hmm-drop.mega { position: static; min-width: 100%; max-height: none; box-shadow: none; border: none; padding-left: 1rem; }
+                    .hmm-mega-grid { grid-template-columns: 1fr; }
                 }
             </style>
 
             <header class="hmm-header">
-                <div class="hmm-header-inner">
-                    <a href="${bp}index.html" class="hmm-brand">
-                        <span class="hmm-brand-text">HAVE MIND MEDIA</span>
-                        <span class="hmm-brand-sig">[1 = -1]</span>
-                    </a>
+                <div class="hmm-inner">
+                    <a href="${bp}index.html" class="hmm-brand">HAVE MIND MEDIA</a>
 
-                    <button class="hmm-mobile-toggle" aria-label="Toggle menu">☰</button>
+                    <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
-                        <!-- S+ Physics -->
+                        <!-- Physics / S+ -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-nav-btn" data-section="s-plus">
-                                <span class="icon">⚛</span>
-                                <span>S+</span>
-                                <span class="arrow">▼</span>
-                            </button>
-                            <div class="hmm-dropdown">
-                                <div class="section-label">Physical Reality</div>
-                                <a href="${bp}physics/three-body-geometry.html"><span class="icon">◬</span>Three-Body Solution</a>
-                                <a href="${bp}physics/millennium-problems.html"><span class="icon">∞</span>Millennium Problems</a>
-                                <a href="${bp}physics/jwst-geometric-explorer.html"><span class="icon">🔭</span>JWST Explorer</a>
-                                <div class="divider"></div>
-                                <a href="${bp}cedga/index.html"><span class="icon">κ</span>CEDGA Framework</a>
-                                <a href="${bp}epoch-atomic/index.html"><span class="icon">⚛</span>Epoch Atomic Model</a>
-                                <a href="${bp}dna-studio/index.html"><span class="icon">🧬</span>DNA Studio</a>
-                                <div class="divider"></div>
-                                <a href="${bp}documents/dec14-model-cern/index.html"><span class="icon">◉</span>CERN Validation</a>
+                            <button class="hmm-btn">S+ Physics <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop">
+                                <div class="label">Core Physics</div>
+                                <a href="${bp}physics/three-body-geometry.html">Three-Body Solution</a>
+                                <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
+                                <a href="${bp}physics/jwst-geometric-explorer.html">JWST Explorer</a>
+                                <hr>
+                                <div class="label">Frameworks</div>
+                                <a href="${bp}cedga/index.html">CEDGA Framework</a>
+                                <a class="sub" href="${bp}cedga/pages/kappa-constant.html">Kappa Constant</a>
+                                <a class="sub" href="${bp}cedga/pages/tetrahelix.html">Tetrahelix</a>
+                                <a class="sub" href="${bp}cedga/pages/balance-law.html">Balance Law</a>
+                                <a class="sub" href="${bp}cedga/tools/m4-simulator.html">M4 Simulator</a>
+                                <a class="sub" href="${bp}cedga/research/test-analysis.html">Test Analysis</a>
+                                <hr>
+                                <div class="label">Models</div>
+                                <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
+                                <a href="${bp}dna-studio/index.html">DNA Studio</a>
+                                <a href="${bp}protein-folding/index.html">Protein Folding</a>
+                                <a href="${bp}neurodegeneration/index.html">Neurodegeneration</a>
+                                <hr>
+                                <div class="label">Visualizations</div>
+                                <a href="${bp}physics-viz/scalar-crossroads-animated.html">Scalar Crossroads</a>
+                                <a href="${bp}physics-viz/quad-helix-base60.html">Quad Helix Base-60</a>
+                                <a href="${bp}physics-viz/quad-helix-base60-v2.0.html">Quad Helix v2.0</a>
                             </div>
                         </div>
 
-                        <!-- S- Soul Science -->
+                        <!-- Soul Science / S- -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-nav-btn" data-section="s-minus">
-                                <span class="icon">☯</span>
-                                <span>S-</span>
-                                <span class="arrow">▼</span>
-                            </button>
-                            <div class="hmm-dropdown">
-                                <div class="section-label">Mother Earth Science</div>
-                                <a href="${bp}education/soul-science.html"><span class="icon">☯</span>Soul Science</a>
-                                <a href="${bp}education/becoming-a-coin.html"><span class="icon">◯</span>Becoming a Coin</a>
-                                <a href="${bp}education/mirror/index.html"><span class="icon">🪞</span>The Mirror</a>
-                                <a href="${bp}education/life-facing-wisdom.html"><span class="icon">✧</span>Life-Facing Wisdom</a>
-                                <div class="divider"></div>
-                                <div class="section-label">Ancient Mysteries</div>
-                                <a href="${bp}ancient-mysteries/voynich/index.html"><span class="icon">📜</span>Voynich Manuscript</a>
-                                <a href="${bp}ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html"><span class="icon">ᚱ</span>Norse Artifacts</a>
-                                <a href="${bp}ancient-mysteries/texts/ancient-mathematics-v1.0.html"><span class="icon">𓂀</span>Ancient Mathematics</a>
+                            <button class="hmm-btn">S- Soul <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop">
+                                <div class="label">Soul Science</div>
+                                <a href="${bp}education/soul-science.html">Soul Science</a>
+                                <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
+                                <a href="${bp}education/mirror/index.html">The Mirror</a>
+                                <a href="${bp}education/life-facing-wisdom.html">Life-Facing Wisdom</a>
+                                <a href="${bp}education/vinyl-paradox.html">Vinyl Paradox</a>
+                                <hr>
+                                <div class="label">Education</div>
+                                <a href="${bp}education/socratean-education.html">Socratean AI</a>
+                                <a href="${bp}education/geometry-challenge.html">Geometry Challenge</a>
                             </div>
                         </div>
 
-                        <!-- Coin (Tools) -->
+                        <!-- Tools / Coin -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-nav-btn" data-section="coin">
-                                <span class="icon">◐</span>
-                                <span>Coin</span>
-                                <span class="arrow">▼</span>
-                            </button>
-                            <div class="hmm-dropdown">
-                                <div class="section-label">Interactive Tools</div>
-                                <a href="${bp}tools/s-signature/s_signature_128.html"><span class="icon">𝕊</span>S-Signature 128</a>
-                                <a href="${bp}tools/s-signature/s_signature_assessment.html"><span class="icon">📊</span>S-Signature Assessment</a>
-                                <a href="${bp}tools/mind-reading/index.html"><span class="icon">🃏</span>Mind Reading</a>
-                                <a href="${bp}tools/m4-visualizer/index.html"><span class="icon">◇</span>M4 Visualizer</a>
-                                <a href="${bp}tools/interaction-modeler/index.html"><span class="icon">⇄</span>Interaction Modeler</a>
-                                <div class="divider"></div>
-                                <div class="section-label">Vision Tools</div>
-                                <a href="${bp}tools/sol-vision/index.html"><span class="icon">☀</span>Sol Vision</a>
-                                <div class="divider"></div>
-                                <div class="section-label">Education</div>
-                                <a href="${bp}education/socratean-education.html"><span class="icon">🎓</span>Socratean AI</a>
-                                <a href="${bp}education/geometry-challenge.html"><span class="icon">△</span>Geometry Challenge</a>
+                            <button class="hmm-btn">Coin Tools <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop">
+                                <div class="label">S-Signature Suite</div>
+                                <a href="${bp}tools/s-signature/s_signature_128.html">S-Signature 128</a>
+                                <a href="${bp}tools/s-signature/s_signature_assessment.html">Assessment</a>
+                                <a href="${bp}tools/s-signature/s_signature_evolving.html">Evolving</a>
+                                <a href="${bp}tools/s-signature/s_signature_prediction.html">Prediction</a>
+                                <a href="${bp}tools/s-signature/s_signature_sphere.html">Sphere</a>
+                                <a href="${bp}tools/s-signature/s_signature_coin.html">Coin</a>
+                                <a href="${bp}tools/s-signature/s_signature_card.html">Card</a>
+                                <a href="${bp}tools/s-signature/s_signature_oracle.html">Oracle</a>
+                                <a href="${bp}tools/s-signature/s_signature_engine.html">Engine</a>
+                                <a href="${bp}tools/s-signature/deep_oracle.html">Deep Oracle</a>
+                                <a href="${bp}tools/s-signature/reductive_oracle.html">Reductive Oracle</a>
+                                <a href="${bp}tools/s-signature/cohort_engine.html">Cohort Engine</a>
+                                <a href="${bp}tools/s-signature/jason_ray_s_signature.html">Jason Ray Signature</a>
+                                <hr>
+                                <div class="label">Other Tools</div>
+                                <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
+                                <a href="${bp}tools/m4-visualizer/index.html">M4 Visualizer</a>
+                                <a href="${bp}tools/interaction-modeler/index.html">Interaction Modeler</a>
+                                <a href="${bp}tools/sol-vision/index.html">Sol Vision</a>
                             </div>
                         </div>
 
-                        <!-- Void (Library/Docs) -->
+                        <!-- Explore - Mega Menu -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-nav-btn" data-section="void">
-                                <span class="icon">◌</span>
-                                <span>Void</span>
-                                <span class="arrow">▼</span>
-                            </button>
-                            <div class="hmm-dropdown">
-                                <div class="section-label">Library & Documents</div>
-                                <a href="${bp}library.html" style="background: rgba(201, 162, 39, 0.1);"><span class="icon">📚</span>Complete Library (66 pages)</a>
-                                <div class="divider"></div>
-                                <a href="${bp}documents/dec14-unified-theory/index.html"><span class="icon">📖</span>Unified Theory</a>
-                                <a href="${bp}documents/epoch-framework/index.html"><span class="icon">⧬</span>Epoch Framework</a>
-                                <a href="${bp}teaching/Scalar_Dimensionality_Teaching_Document.html"><span class="icon">📝</span>Teaching Guide</a>
-                                <div class="divider"></div>
-                                <a href="${bp}documents/tribute/index.html"><span class="icon">♡</span>Tribute</a>
+                            <button class="hmm-btn">Explore <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop mega">
+                                <div class="hmm-mega-grid">
+                                    <div class="hmm-mega-col">
+                                        <h4>Ancient Mysteries</h4>
+                                        <a href="${bp}ancient-mysteries/voynich/index.html">Voynich Manuscript</a>
+                                        <a href="${bp}ancient-mysteries/voynich/herbal.html">- Herbal</a>
+                                        <a href="${bp}ancient-mysteries/voynich/astronomical.html">- Astronomical</a>
+                                        <a href="${bp}ancient-mysteries/voynich/biological.html">- Biological</a>
+                                        <a href="${bp}ancient-mysteries/voynich/zodiac.html">- Zodiac</a>
+                                        <a href="${bp}ancient-mysteries/voynich/pharmaceutical.html">- Pharmaceutical</a>
+                                        <a href="${bp}ancient-mysteries/voynich/cosmological.html">- Cosmological</a>
+                                        <a href="${bp}ancient-mysteries/voynich/recipes.html">- Recipes</a>
+                                        <a href="${bp}ancient-mysteries/voynich/analysis.html">- Analysis</a>
+                                        <hr>
+                                        <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
+                                        <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
+                                        <a href="${bp}ancient-mysteries/texts/ancient-mathematics-v1.0.html">Ancient Mathematics</a>
+                                    </div>
+                                    <div class="hmm-mega-col">
+                                        <h4>Norse Artifacts</h4>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html">Rök Runestone</a>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html">Gotland Stones</a>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html">Gold Bracteates</a>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html">Oseberg Ship</a>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html">Norse Symbols</a>
+                                        <a href="${bp}ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html">Library Card</a>
+                                        <hr>
+                                        <h4>Documents</h4>
+                                        <a href="${bp}documents/dec14-unified-theory/index.html">Unified Theory</a>
+                                        <a href="${bp}documents/dec14-unified-theory/main-framework.html">- Main Framework</a>
+                                        <a href="${bp}documents/dec14-unified-theory/dual-axis-explorer.html">- Dual-Axis Explorer</a>
+                                        <a href="${bp}documents/dec14-model-cern/index.html">CERN Validation</a>
+                                        <a href="${bp}documents/cern-scalar-geometry.html">CERN Scalar Geometry</a>
+                                        <a href="${bp}documents/epoch-framework/index.html">Epoch Framework</a>
+                                    </div>
+                                    <div class="hmm-mega-col">
+                                        <h4>Teaching</h4>
+                                        <a href="${bp}teaching/Scalar_Dimensionality_Teaching_Document.html">Teaching Guide</a>
+                                        <hr>
+                                        <h4>Special</h4>
+                                        <a href="${bp}documents/tribute/index.html">Tribute</a>
+                                        <hr>
+                                        <h4 style="color: #c9a227;">Complete Index</h4>
+                                        <a href="${bp}library.html" style="color: #c9a227; font-weight: 600;">📚 Full Library (68 pages)</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </nav>
                 </div>
             </header>
         `;
+
+        this.setupEvents();
     }
 
-    setupEventListeners() {
-        // Desktop dropdowns
-        const navItems = this.querySelectorAll('.hmm-nav-item');
-        navItems.forEach(item => {
-            const btn = item.querySelector('.hmm-nav-btn');
-            const dropdown = item.querySelector('.hmm-dropdown');
+    getBasePath() {
+        const path = window.location.pathname;
+        const depth = (path.match(/\//g) || []).length - 1;
+        if (depth <= 0 || path === '/' || (path.endsWith('/index.html') && depth === 1)) {
+            return './';
+        }
+        return '../'.repeat(depth);
+    }
+
+    setupEvents() {
+        const items = this.querySelectorAll('.hmm-nav-item');
+        items.forEach(item => {
+            const btn = item.querySelector('.hmm-btn');
+            const drop = item.querySelector('.hmm-drop');
 
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isActive = btn.classList.contains('active');
 
-                // Close all other dropdowns
-                this.querySelectorAll('.hmm-nav-btn').forEach(b => b.classList.remove('active'));
-                this.querySelectorAll('.hmm-dropdown').forEach(d => d.classList.remove('show'));
+                // Close all
+                this.querySelectorAll('.hmm-btn').forEach(b => b.classList.remove('active'));
+                this.querySelectorAll('.hmm-drop').forEach(d => d.classList.remove('show'));
 
                 if (!isActive) {
                     btn.classList.add('active');
-                    dropdown.classList.add('show');
+                    drop.classList.add('show');
                 }
             });
         });
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!this.contains(e.target)) {
-                this.querySelectorAll('.hmm-nav-btn').forEach(b => b.classList.remove('active'));
-                this.querySelectorAll('.hmm-dropdown').forEach(d => d.classList.remove('show'));
-            }
+        document.addEventListener('click', () => {
+            this.querySelectorAll('.hmm-btn').forEach(b => b.classList.remove('active'));
+            this.querySelectorAll('.hmm-drop').forEach(d => d.classList.remove('show'));
         });
 
-        // Mobile toggle
-        const mobileToggle = this.querySelector('.hmm-mobile-toggle');
+        const toggle = this.querySelector('.hmm-toggle');
         const nav = this.querySelector('.hmm-nav');
-
-        mobileToggle.addEventListener('click', () => {
+        toggle.addEventListener('click', () => {
             nav.classList.toggle('show');
-            mobileToggle.textContent = nav.classList.contains('show') ? '✕' : '☰';
+            toggle.textContent = nav.classList.contains('show') ? '✕' : '☰';
         });
     }
 }
