@@ -323,6 +323,9 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}tools/m4-visualizer/index.html"><span class="icon">◇</span>M4 Visualizer</a>
                                 <a href="${bp}tools/interaction-modeler/index.html"><span class="icon">⇄</span>Interaction Modeler</a>
                                 <div class="divider"></div>
+                                <div class="section-label">Vision Tools</div>
+                                <a href="${bp}tools/sol-vision/index.html"><span class="icon">☀</span>Sol Vision</a>
+                                <div class="divider"></div>
                                 <div class="section-label">Education</div>
                                 <a href="${bp}education/socratean-education.html"><span class="icon">🎓</span>Socratean AI</a>
                                 <a href="${bp}education/geometry-challenge.html"><span class="icon">△</span>Geometry Challenge</a>
