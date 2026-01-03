@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/unified-theme.css">
+    <script src="js/components/site-header.js" defer></script>
+    <script src="js/components/site-footer.js" defer></script>
     <style>
         /* Homepage-specific styles */
         .main-content {
@@ -1033,46 +1035,8 @@
     <div class="stars"></div>
     <div class="vignette"></div>
 
-    <!-- Unified Navigation -->
-    <nav class="unified-nav">
-        <a href="index.html" class="nav-brand">
-            <span class="nav-brand-text">HAVE MIND MEDIA</span>
-            <span class="nav-signature">◯∰⧬⫰∭⧖</span>
-        </a>
-        <div class="nav-menu">
-            <button class="nav-toggle" id="navToggle">
-                <span>Explore</span>
-                <span class="arrow">▼</span>
-            </button>
-            <div class="nav-dropdown" id="navDropdown">
-                <!-- FULL LIBRARY -->
-                <a href="library.html" style="background: rgba(201, 162, 39, 0.15); font-weight: 600;"><span class="nav-icon">📚</span> FULL LIBRARY (65 pages)</a>
-                <div class="divider"></div>
-                <!-- S+ Physics -->
-                <span class="nav-section-label">S+ Physics</span>
-                <a href="physics/three-body-geometry.html"><span class="nav-icon">◬</span> Three-Body Solution</a>
-                <a href="physics/millennium-problems.html"><span class="nav-icon">∞</span> Millennium Problems</a>
-                <a href="epoch-atomic/index.html"><span class="nav-icon">⚛</span> Epoch Atomic Model</a>
-                <a href="cedga/index.html"><span class="nav-icon">κ</span> CEDGA Framework</a>
-                <div class="divider"></div>
-                <!-- S- Soul Science -->
-                <span class="nav-section-label">S- Soul Science</span>
-                <a href="education/soul-science.html"><span class="nav-icon">☯</span> Soul Science</a>
-                <a href="education/becoming-a-coin.html"><span class="nav-icon">◯</span> Becoming a Coin</a>
-                <a href="education/socratean-education.html"><span class="nav-icon">🎓</span> Socratean AI</a>
-                <div class="divider"></div>
-                <!-- Tools -->
-                <span class="nav-section-label">Interactive Tools</span>
-                <a href="tools/s-signature/s_signature_128.html"><span class="nav-icon">𝕊</span> S-Signature</a>
-                <a href="tools/mind-reading/index.html"><span class="nav-icon">🃏</span> Mind Reading</a>
-                <div class="divider"></div>
-                <!-- Ancient Mysteries -->
-                <span class="nav-section-label">Ancient Mysteries</span>
-                <a href="ancient-mysteries/voynich/index.html"><span class="nav-icon">📜</span> Voynich Manuscript</a>
-                <a href="ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html"><span class="nav-icon">ᚱ</span> Norse Artifacts</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Unified Navigation (Web Component) -->
+    <site-header></site-header>
 
     <!-- SVG filter for water distortion -->
     <svg style="position: absolute; width: 0; height: 0;">
@@ -1378,32 +1342,10 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="unified-footer">
-        <p class="footer-logo">HAVE MIND MEDIA</p>
-        <p class="footer-tagline">The Mind is in Your Mind</p>
-        <p class="footer-signature">◯∰⧬⫰∭⧖◬⫯∮⧉△⃝∯⫲⧫◭∲⧊⫳⃟</p>
-        <p class="footer-principle">[1 = -1]</p>
-    </footer>
+    <!-- Footer (Web Component) -->
+    <site-footer></site-footer>
 
     <script>
-        // Navigation Dropdown
-        const navToggle = document.getElementById('navToggle');
-        const navDropdown = document.getElementById('navDropdown');
-
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navDropdown.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navDropdown.contains(e.target) && !navToggle.contains(e.target)) {
-                navDropdown.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
-        });
-
         // ==========================================
         // INTRO ANIMATION
         // ==========================================

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DNA Studio | Geometric Derivation | Have Mind Media</title>
     <link rel="stylesheet" href="../css/unified-theme.css">
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
+    <script src="../js/components/site-breadcrumb.js" defer></script>
     <style>
         /* DNA Studio specific styles */
         .main-content {
@@ -434,42 +437,13 @@
     </style>
 </head>
 <body>
+    <site-header></site-header>
+    <site-breadcrumb section="S+" path="Biology > DNA Studio"></site-breadcrumb>
+
     <!-- Cosmic Background -->
     <div class="cosmic-bg"></div>
     <div class="stars"></div>
     <div class="vignette"></div>
-
-    <!-- Unified Navigation -->
-    <nav class="unified-nav">
-        <a href="../index.html" class="nav-brand">
-            <div>
-                <div class="nav-brand-text">HAVE MIND MEDIA</div>
-                <div class="nav-signature">[1 = -1]</div>
-            </div>
-        </a>
-        <div class="nav-menu">
-            <button class="nav-toggle" onclick="toggleNav()">
-                EXPLORE <span class="arrow">&#9662;</span>
-            </button>
-            <div class="nav-dropdown" id="navDropdown">
-                <span class="nav-section-label">Physics</span>
-                <a href="../physics/three-body-geometry.html"><span class="nav-icon">&#8734;</span> Three-Body Problem</a>
-                <a href="../epoch-atomic/index.html"><span class="nav-icon">&#9883;</span> Atomic Model</a>
-                <a href="../cedga/index.html"><span class="nav-icon">&#954;</span> CEDGA Framework</a>
-                <div class="divider"></div>
-                <span class="nav-section-label">Biology</span>
-                <a href="index.html"><span class="nav-icon">&#129516;</span> DNA Studio</a>
-                <a href="../protein-folding/index.html"><span class="nav-icon">&#128300;</span> Protein Folding</a>
-                <a href="../neurodegeneration/index.html"><span class="nav-icon">&#129504;</span> Neurodegeneration</a>
-                <div class="divider"></div>
-                <span class="nav-section-label">Soul Science</span>
-                <a href="../education/soul-science.html"><span class="nav-icon">&#10024;</span> Soul Science</a>
-                <a href="../education/becoming-a-coin.html"><span class="nav-icon">&#9898;</span> Becoming a Coin</a>
-                <div class="divider"></div>
-                <a href="../library.html"><span class="nav-icon">&#128218;</span> Full Library</a>
-            </div>
-        </div>
-    </nav>
 
     <main class="main-content">
         <!-- Page Header -->
@@ -1217,5 +1191,7 @@
             `;
         }
     </script>
+
+    <site-footer></site-footer>
 </body>
 </html>
