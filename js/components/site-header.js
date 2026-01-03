@@ -72,6 +72,26 @@ class SiteHeader extends HTMLElement {
                     transform: rotate(180deg);
                 }
 
+                /* Games button - prominent */
+                .hmm-games-link {
+                    padding: 0.5rem 1rem;
+                    background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(106, 180, 245, 0.2) 100%);
+                    border: 1px solid rgba(201, 162, 39, 0.4);
+                    border-radius: 20px;
+                    color: #c9a227;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+                    transition: all 0.2s;
+                }
+                .hmm-games-link:hover {
+                    background: linear-gradient(135deg, rgba(201, 162, 39, 0.3) 0%, rgba(106, 180, 245, 0.3) 100%);
+                    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.2);
+                }
+
                 /* Dropdown */
                 .hmm-drop {
                     position: absolute;
@@ -175,6 +195,9 @@ class SiteHeader extends HTMLElement {
                     <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
+                        <!-- Games - Prominent -->
+                        <a href="${bp}games/index.html" class="hmm-games-link">🧠 Mind Games</a>
+
                         <!-- Physics / S+ -->
                         <div class="hmm-nav-item">
                             <button class="hmm-btn">S+ Physics <span class="hmm-arrow">▼</span></button>

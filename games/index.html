@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Mind Games - Train your intuition with Have Mind Media. Mobile-first games that develop pattern recognition and mental clarity.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Mind Games | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #050508;
+            --card: #0d1117;
+            --border: #1e2836;
+            --text: #e6e6e6;
+            --text-dim: #888;
+            --gold: #c9a227;
+            --gold-glow: rgba(201, 162, 39, 0.3);
+            --blue: #6ab4f5;
+            --green: #50c878;
+            --purple: #a78bfa;
+        }
+
+        html, body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .main {
+            padding: 80px 16px 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .games-header {
+            text-align: center;
+            padding: 24px 0 32px;
+        }
+
+        .games-logo {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .games-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .games-tagline {
+            color: var(--blue);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Featured Game */
+        .featured-game {
+            background: linear-gradient(135deg, var(--card) 0%, #151a24 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px var(--gold-glow);
+        }
+
+        .featured-game::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--bg);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .featured-icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .featured-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .featured-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .play-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+            color: var(--bg);
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 14px 48px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .play-btn:active {
+            transform: scale(0.97);
+        }
+
+        .play-btn:hover {
+            box-shadow: 0 8px 30px var(--gold-glow);
+        }
+
+        /* Game Grid */
+        .games-section-title {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .game-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .game-card:active {
+            transform: scale(0.97);
+        }
+
+        .game-card:hover {
+            border-color: var(--blue);
+            box-shadow: 0 4px 20px rgba(106, 180, 245, 0.15);
+        }
+
+        .game-card.coming-soon {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .game-card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .game-card-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .game-card-tag {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .game-card-tag.soon {
+            color: var(--purple);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(106, 180, 245, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .cta-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cta-text {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 24px;
+            border: 1px solid var(--blue);
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .cta-btn:hover {
+            background: rgba(106, 180, 245, 0.1);
+        }
+
+        /* Philosophy */
+        .philosophy {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .philosophy .principle {
+            color: var(--blue);
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 380px) {
+            .games-title { font-size: 1.5rem; }
+            .featured-name { font-size: 1.3rem; }
+            .play-btn { padding: 12px 36px; font-size: 1rem; }
+        }
+
+        @media (min-width: 600px) {
+            .games-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <main class="main">
+        <header class="games-header">
+            <div class="games-logo">🧠</div>
+            <h1 class="games-title">MIND GAMES</h1>
+            <p class="games-tagline">Train your intuition. Trust your instincts.</p>
+        </header>
+
+        <!-- Featured Game -->
+        <a href="mind-reading/index.html" class="featured-game">
+            <div class="featured-content">
+                <span class="featured-badge">FEATURED</span>
+                <div class="featured-icon">🔮</div>
+                <h2 class="featured-name">Mind Reading</h2>
+                <p class="featured-desc">Match the hidden symbol before time runs out. Each correct answer makes the next round faster. How long can you last?</p>
+                <span class="play-btn">PLAY NOW</span>
+            </div>
+        </a>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="best-streak">--</div>
+                <div class="stat-label">Best Streak</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="games-played">--</div>
+                <div class="stat-label">Games Played</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="accuracy">--</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+        </div>
+
+        <!-- Game Grid -->
+        <h2 class="games-section-title">More Games</h2>
+        <div class="games-grid">
+            <a href="mind-reading/index.html" class="game-card">
+                <div class="game-card-icon">🔮</div>
+                <div class="game-card-name">Mind Reading</div>
+                <div class="game-card-tag">Symbol Match</div>
+            </a>
+            <div class="game-card coming-soon">
+                <div class="game-card-icon">🔢</div>
+                <div class="game-card-name">Number Sense</div>
+                <div class="game-card-tag soon">Coming Soon</div>
+            </div>
+            <div class="game-card coming-soon">
+                <div class="game-card-icon">📐</div>
+                <div class="game-card-name">Pattern Prophet</div>
+                <div class="game-card-tag soon">Coming Soon</div>
+            </div>
+            <div class="game-card coming-soon">
+                <div class="game-card-icon">🪙</div>
+                <div class="game-card-name">Coin Intuition</div>
+                <div class="game-card-tag soon">Coming Soon</div>
+            </div>
+            <div class="game-card coming-soon">
+                <div class="game-card-icon">🎨</div>
+                <div class="game-card-name">Color Sync</div>
+                <div class="game-card-tag soon">Coming Soon</div>
+            </div>
+            <div class="game-card coming-soon">
+                <div class="game-card-icon">◯</div>
+                <div class="game-card-name">Void Focus</div>
+                <div class="game-card-tag soon">Coming Soon</div>
+            </div>
+        </div>
+
+        <!-- App CTA -->
+        <div class="cta-section">
+            <h3 class="cta-title">Play Anywhere</h3>
+            <p class="cta-text">Add to your home screen for instant access. All games are free.</p>
+            <a href="#" class="cta-btn" id="install-btn">Add to Home Screen</a>
+        </div>
+
+        <!-- Philosophy -->
+        <div class="philosophy">
+            <p>These games train the part of you that knows before you think. The intuitive mind is a sacred gift.</p>
+            <p class="principle">[1 = -1]</p>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script>
+        // Load stats from localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const best = localStorage.getItem('mindreading-best') || '--';
+            const played = localStorage.getItem('games-played') || '--';
+            const accuracy = localStorage.getItem('games-accuracy') || '--';
+
+            document.getElementById('best-streak').textContent = best;
+            document.getElementById('games-played').textContent = played;
+            document.getElementById('accuracy').textContent = accuracy !== '--' ? accuracy + '%' : '--';
+        });
+
+        // PWA install prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        document.getElementById('install-btn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+            } else {
+                // Show manual instructions for iOS
+                alert('To add to home screen:\n\n1. Tap the Share button\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add"');
+            }
+        });
+    </script>
+</body>
+</html>
