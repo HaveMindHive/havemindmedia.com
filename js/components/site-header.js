@@ -215,6 +215,7 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}education/mirror/index.html">The Mirror</a>
                                 <a href="${bp}education/life-facing-wisdom.html">Life-Facing Wisdom</a>
                                 <a href="${bp}education/vinyl-paradox.html">Vinyl Paradox</a>
+                                <a href="${bp}tools/sol-vision/index.html">Sol Vision (Past Lives)</a>
                                 <hr>
                                 <div class="label">Education</div>
                                 <a href="${bp}education/socratean-education.html">Socratean AI</a>
@@ -245,7 +246,6 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
                                 <a href="${bp}tools/m4-visualizer/index.html">M4 Visualizer</a>
                                 <a href="${bp}tools/interaction-modeler/index.html">Interaction Modeler</a>
-                                <a href="${bp}tools/sol-vision/index.html">Sol Vision</a>
                             </div>
                         </div>
 
