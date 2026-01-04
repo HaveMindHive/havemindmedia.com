@@ -74,7 +74,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: -3;
+            z-index: -4;
             background:
                 radial-gradient(ellipse at 15% 20%, rgba(74, 142, 200, 0.12) 0%, transparent 50%),
                 radial-gradient(ellipse at 85% 25%, rgba(106, 180, 245, 0.08) 0%, transparent 45%),
@@ -82,6 +82,24 @@
                 radial-gradient(ellipse at 25% 80%, rgba(139, 105, 20, 0.06) 0%, transparent 40%),
                 radial-gradient(ellipse at 70% 50%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
                 radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        /* HMH Moving Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background-image:
+                linear-gradient(rgba(201, 162, 39, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 162, 39, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 25s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
         }
 
         .stars {
@@ -108,6 +126,56 @@
         @keyframes twinkle {
             0%, 100% { opacity: 0.5; }
             50% { opacity: 1; }
+        }
+
+        /* HMH Floating Orbs */
+        .orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: orbFloat 30s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--gold-deep) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--terracotta) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -15s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--indigo) 0%, transparent 70%);
+            top: 40%;
+            left: 25%;
+            animation-delay: -8s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(60px, -40px) scale(1.1); }
+            66% { transform: translate(-40px, 60px) scale(0.95); }
         }
 
         .vignette {
@@ -309,6 +377,52 @@
             opacity: 0.7;
         }
 
+        /* HMH Floating Elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(10, 13, 18, 0.9);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            animation: floatElement 8s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .float-1 {
+            top: 20%;
+            right: 8%;
+            color: var(--bright-blue);
+        }
+
+        .float-2 {
+            bottom: 25%;
+            left: 5%;
+            color: var(--gold);
+            animation-delay: -3s;
+        }
+
+        .float-3 {
+            top: 35%;
+            left: 8%;
+            color: var(--indigo);
+            animation-delay: -5s;
+        }
+
+        .float-4 {
+            bottom: 20%;
+            right: 10%;
+            color: var(--terracotta);
+            animation-delay: -2s;
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         .hero .intro {
             max-width: 720px;
             font-size: 1.15em;
@@ -498,7 +612,29 @@
         .constant-card:hover {
             border-color: var(--glow-blue);
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 162, 39, 0.1);
+        }
+
+        .constant-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.03), transparent, rgba(106, 180, 245, 0.02), transparent);
+            animation: cardRotate 15s linear infinite;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .constant-card:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes cardRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .constant-card .symbol {
@@ -506,6 +642,7 @@
             color: var(--gold);
             font-family: 'Times New Roman', serif;
             text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            position: relative;
         }
 
         .constant-card .value {
@@ -734,22 +871,79 @@
         }
 
         .ruler-visual {
-            height: 50px;
-            background: linear-gradient(90deg, var(--terracotta), var(--gold-deep));
-            border-radius: 5px;
+            height: 70px;
+            background: linear-gradient(180deg, #f5e6c8 0%, #d4c4a0 30%, #c4b090 70%, #a89070 100%);
+            border-radius: 8px;
             position: relative;
             margin: 25px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .ruler-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 3.6%,
+                rgba(139, 69, 19, 0.6) 3.6%,
+                rgba(139, 69, 19, 0.6) 3.8%
+            );
         }
 
         .ruler-visual::after {
-            content: '27 divisions = 3³ = emergence cubed';
-            display: block;
+            content: 'LOTHAL IVORY RULER · 27 divisions = 3³ = emergence cubed · 46mm total · 1.704mm per unit';
+            position: absolute;
+            bottom: -35px;
+            left: 0;
+            right: 0;
             text-align: center;
-            padding-top: 60px;
             color: var(--soft-blue);
             font-style: italic;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+        }
+
+        .ruler-marks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2%;
+        }
+
+        .ruler-marks span {
+            width: 2px;
+            background: rgba(90, 50, 20, 0.8);
+            height: 60%;
+        }
+
+        .ruler-marks span:nth-child(9n) {
+            height: 80%;
+            width: 3px;
+            background: rgba(60, 30, 10, 0.9);
+        }
+
+        .ruler-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: rgba(60, 30, 10, 0.8);
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         /* ==========================================
@@ -959,9 +1153,15 @@
     </style>
 </head>
 <body>
-    <!-- Cosmic Background -->
+    <!-- HMH Cosmic Background -->
     <div class="cosmic-bg"></div>
+    <div class="bg-grid"></div>
     <div class="stars"></div>
+    <div class="orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
     <div class="vignette"></div>
 
     <!-- Navigation -->
@@ -1007,6 +1207,12 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- HMH Floating Elements -->
+        <div class="floating-element float-1">κ = 0.0349</div>
+        <div class="floating-element float-2">√3 = 1.732</div>
+        <div class="floating-element float-3">[1 = -1]</div>
+        <div class="floating-element float-4">4:2:1</div>
+
         <div class="hero-rune">&#9040;</div>
         <h1>GEOMETRIC <span class="glow">DECIPHERMENT</span></h1>
         <p class="subtitle">of the Indus Valley Script</p>
@@ -1093,7 +1299,14 @@
 
                 <div class="measurement-panel">
                     <h4>Archaeological Evidence</h4>
-                    <div class="ruler-visual"></div>
+                    <div class="ruler-visual">
+                        <div class="ruler-marks">
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <div class="ruler-label">Lothal ~2400 BCE</div>
+                    </div>
                 </div>
 
                 <div class="formula-box">

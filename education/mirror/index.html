@@ -3,14 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Mirror | A New Understanding | Have Mind Media</title>
-    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <title>THE MIRROR - S-Minus Science | Have Mind Media</title>
+    <meta name="description" content="A new understanding of mirrors, scalar dimensionality, and the collapsed NOW. Standard Model vs Epoch Model depth calculator.">
+    <meta name="keywords" content="S-Minus Science, mirror physics, scalar dimensionality, Epoch Model, Have Mind Media">
+    <meta name="author" content="Have Mind Media">
+    <meta property="og:title" content="THE MIRROR - S-Minus Science">
+    <meta property="og:description" content="The Standard Model is incomplete. Discover scalar dimensionality and the 27.6% projection loss.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Have Mind Media">
+    <meta name="category" content="S-Minus Science">
     <style>
-        /* Mirror presentation styles */
-        .main-content {
-            position: relative;
-            z-index: 1;
+        :root {
+            --bg: #0a0a0f;
+            --bg-alt: #0d0d14;
+            --gold: #c9a227;
+            --gold-dim: #8a7020;
+            --blue: #7ab8d4;
+            --blue-dim: #4a8090;
+            --text: #e0e0e0;
+            --dim: #555;
+            --red: #d45050;
         }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+        }
+
+        /* HEADER NAV */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            background: linear-gradient(180deg, rgba(10,10,15,0.98) 0%, rgba(10,10,15,0.9) 80%, transparent 100%);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+            font-size: 1.1em;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+        }
+        .logo:hover { color: var(--text); }
+        nav a {
+            color: var(--dim);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9em;
+            font-family: 'Helvetica Neue', sans-serif;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--gold); }
+        nav a.active { color: var(--gold); }
 
         /* SECTIONS */
         .section {
@@ -19,233 +73,233 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 80px 40px 60px;
+            padding: 100px 40px 60px;
             position: relative;
         }
+        .section-dark { background: var(--bg); }
+        .section-alt { background: var(--bg-alt); }
+        .section-gold { background: linear-gradient(135deg, #0a0a0f 0%, #1a1510 100%); }
+        .section-blue { background: linear-gradient(135deg, #0a0a0f 0%, #0a1015 100%); }
 
-        .section-dark { background: var(--void); }
-        .section-gold { background: linear-gradient(135deg, var(--void) 0%, var(--earth-deep) 100%); }
-        .section-blue { background: linear-gradient(135deg, var(--void) 0%, var(--nebula-blue) 100%); }
-
-        .section h1 {
-            font-family: var(--font-display);
-            font-weight: 400;
-            font-size: 3.5em;
+        h1 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 200;
+            font-size: 4em;
             color: var(--gold);
             text-align: center;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.3em;
             margin-bottom: 20px;
         }
-
-        .section h2 {
-            font-family: var(--font-display);
-            font-weight: 400;
-            font-size: 2.2em;
+        h2 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 300;
+            font-size: 2.5em;
             color: var(--gold);
             text-align: center;
             margin-bottom: 40px;
-            letter-spacing: 0.1em;
         }
-
-        .section h3 {
-            font-family: var(--font-display);
+        h3 {
+            font-family: 'Helvetica Neue', sans-serif;
             font-weight: 400;
-            font-size: 1.4em;
-            color: var(--soft-blue);
-            margin-bottom: 20px;
+            font-size: 1.3em;
+            color: var(--blue);
+            margin-bottom: 15px;
         }
-
-        .section-subtitle {
+        .subtitle {
             font-size: 1.1em;
-            color: var(--text-dim);
-            letter-spacing: 0.15em;
+            color: var(--dim);
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            font-family: var(--font-display);
         }
 
-        .section-content {
+        .content {
             max-width: 900px;
             text-align: center;
             line-height: 2;
             font-size: 1.15em;
         }
 
-        .section-quote {
+        .image-full {
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px 0;
+            border: 1px solid #222;
+        }
+        .image-medium {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px 0;
+            border: 1px solid #222;
+        }
+
+        .quote {
             font-style: italic;
-            color: var(--soft-blue);
+            color: var(--blue);
             font-size: 1.3em;
             max-width: 700px;
             margin: 40px auto;
             padding: 30px;
             border-left: 3px solid var(--gold);
             text-align: left;
-            background: rgba(0,0,0,0.2);
-            border-radius: 0 8px 8px 0;
+            background: rgba(0,0,0,0.3);
         }
-
         .quote-source {
-            color: var(--text-dim);
-            font-size: 0.75em;
+            color: var(--dim);
+            font-size: 0.7em;
             margin-top: 15px;
             font-style: normal;
         }
 
         .big-number {
-            font-family: var(--font-display);
+            font-family: 'Helvetica Neue', sans-serif;
             font-size: 7em;
-            font-weight: 400;
+            font-weight: 100;
             color: var(--gold);
             line-height: 1;
-            letter-spacing: 0.05em;
         }
-
         .number-label {
             font-size: 1.4em;
-            color: var(--text-dim);
+            color: var(--dim);
             margin-top: 20px;
-            font-family: var(--font-display);
-            letter-spacing: 0.1em;
-        }
-
-        .diagram-box {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            padding: 40px;
-            margin: 40px 0;
-            font-family: 'Courier New', monospace;
-            white-space: pre;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: left;
-            color: var(--soft-cream);
-            border-radius: 8px;
-            overflow-x: auto;
         }
 
         .key-insight {
-            background: var(--panel);
+            background: linear-gradient(135deg, #1a1a1f 0%, #0f0f14 100%);
             border: 1px solid var(--gold);
             padding: 40px;
             margin: 40px 0;
             max-width: 800px;
-            border-radius: 8px;
+            text-align: left;
         }
-
         .key-insight strong {
             color: var(--gold);
             font-size: 1.2em;
         }
 
-        .ancient-source {
-            display: inline-block;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            padding: 15px 25px;
-            margin: 10px;
-            border-radius: 6px;
-            transition: var(--transition-smooth);
-        }
-
-        .ancient-source:hover {
-            border-color: var(--gold);
-        }
-
-        .ancient-source .name {
-            color: var(--gold);
-            font-weight: 600;
-            font-family: var(--font-display);
-        }
-
-        .ancient-source .date {
-            color: var(--text-dim);
-            font-size: 0.85em;
-        }
-
         .equation {
-            font-family: 'Times New Roman', Georgia, serif;
+            font-family: 'Times New Roman', serif;
             font-size: 2.2em;
             color: var(--gold);
-            margin: 30px 0;
+            margin: 25px 0;
         }
 
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            max-width: 900px;
+            gap: 50px;
+            max-width: 1000px;
             margin: 40px 0;
         }
-
-        .column {
-            text-align: left;
-            background: var(--panel);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+        .column { text-align: left; }
+        @media (max-width: 800px) {
+            .two-column { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 768px) {
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-
-            .section h1 {
-                font-size: 2.2em;
-            }
-
-            .section h2 {
-                font-size: 1.6em;
-            }
-
-            .big-number {
-                font-size: 4em;
-            }
-
-            .section {
-                padding: 100px 20px 60px;
-            }
-
-            .diagram-box {
-                font-size: 11px;
-                padding: 20px;
-            }
+        /* CALCULATOR */
+        .calculator {
+            background: #111;
+            border: 1px solid #333;
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            margin: 40px 0;
         }
-
-        /* NAVIGATION DOTS */
-        .nav-dots {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
         }
-
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            margin: 12px 0;
-            cursor: pointer;
-            transition: var(--transition-smooth);
+        .calc-label {
+            color: var(--dim);
+            font-size: 1em;
         }
+        .calc-value {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 1.8em;
+            font-weight: 300;
+        }
+        .calc-value.standard { color: var(--red); }
+        .calc-value.epoch { color: var(--gold); }
+        .calc-value.size { color: var(--blue); }
 
-        .nav-dot:hover, .nav-dot.active {
+        .slider-container {
+            width: 100%;
+            margin: 30px 0;
+        }
+        .slider-container input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #333;
+            border-radius: 4px;
+            outline: none;
+        }
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
             background: var(--gold);
-            transform: scale(1.3);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--dim);
+            font-size: 0.9em;
+            margin-top: 10px;
         }
 
-        @media (max-width: 768px) {
-            .nav-dots {
-                right: 10px;
-            }
-
-            .nav-dot {
-                width: 8px;
-                height: 8px;
-                margin: 8px 0;
-            }
+        .calc-visual {
+            height: 200px;
+            background: #0a0a0f;
+            border: 1px solid #222;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* COMPARISON BOX */
+        .compare-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 800px;
+            margin: 40px 0;
+            border: 1px solid #333;
+        }
+        .compare-side {
+            padding: 30px;
+        }
+        .compare-side.standard {
+            background: rgba(212, 80, 80, 0.1);
+            border-right: 1px solid #333;
+        }
+        .compare-side.epoch {
+            background: rgba(201, 162, 39, 0.1);
+        }
+        .compare-title {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.9em;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+        .compare-side.standard .compare-title { color: var(--red); }
+        .compare-side.epoch .compare-title { color: var(--gold); }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            background: #050508;
+            border-top: 1px solid #222;
+        }
+        footer a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        footer a:hover { color: var(--gold); }
 
         /* SCROLL INDICATOR */
         .scroll-indicator {
@@ -253,13 +307,10 @@
             bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--text-dim);
+            color: var(--dim);
             font-size: 0.9em;
             animation: bounce 2s infinite;
-            font-family: var(--font-display);
-            letter-spacing: 0.1em;
         }
-
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
             50% { transform: translateX(-50%) translateY(10px); }
@@ -271,452 +322,445 @@
             transform: translateY(30px);
             transition: all 0.8s ease-out;
         }
-
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* MIRROR ANIMATION */
-        .mirror-visual {
-            width: 250px;
-            height: 350px;
-            background: linear-gradient(180deg, var(--panel) 0%, var(--void) 100%);
-            border: 2px solid var(--soft-blue);
-            position: relative;
-            margin: 40px auto;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-
-        .mirror-reflection {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg,
-                rgba(201,162,39,0.15) 0%,
-                rgba(201,162,39,0.05) 50%,
-                transparent 100%);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
-        .mirror-label {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-dim);
-            font-size: 0.9em;
-            font-style: italic;
-            white-space: nowrap;
-        }
-
-        /* Back link */
-        .back-link {
+        /* NAV DOTS */
+        .nav-dots {
             position: fixed;
-            top: 80px;
-            left: 20px;
-            z-index: 999;
-            color: var(--soft-blue);
-            text-decoration: none;
-            font-family: var(--font-display);
-            font-size: 0.85em;
-            letter-spacing: 1px;
-            padding: 8px 16px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background: rgba(3, 5, 8, 0.9);
-            backdrop-filter: blur(10px);
-            transition: var(--transition-smooth);
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
         }
-
-        .back-link:hover {
-            border-color: var(--gold);
-            color: var(--gold);
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: all 0.3s;
         }
-
-        @media (max-width: 768px) {
-            .back-link {
-                top: 70px;
-                left: 10px;
-                font-size: 0.75em;
-                padding: 6px 12px;
-            }
-        }
+        .nav-dot:hover, .nav-dot.active { background: var(--gold); }
     </style>
 </head>
 <body>
-    <!-- Cosmic Background -->
-    <div class="cosmic-bg"></div>
-    <div class="stars"></div>
-    <div class="vignette"></div>
 
-    <!-- Unified Navigation -->
-    <nav class="unified-nav">
-        <a href="../../index.html" class="nav-brand">
-            <div>
-                <div class="nav-brand-text">HAVE MIND MEDIA</div>
-                <div class="nav-signature">[1 = -1]</div>
-            </div>
-        </a>
-        <div class="nav-menu">
-            <button class="nav-toggle" onclick="toggleNav()">
-                EXPLORE <span class="arrow">&#9662;</span>
-            </button>
-            <div class="nav-dropdown" id="navDropdown">
-                <span class="nav-section-label">Physics</span>
-                <a href="../../physics/three-body-geometry.html"><span class="nav-icon">&#8734;</span> Three-Body Problem</a>
-                <a href="../../dna-studio/index.html"><span class="nav-icon">&#129516;</span> DNA Studio</a>
-                <a href="../../cedga/index.html"><span class="nav-icon">&#954;</span> CEDGA Framework</a>
-                <div class="divider"></div>
-                <span class="nav-section-label">Soul Science</span>
-                <a href="../soul-science.html"><span class="nav-icon">&#10024;</span> Soul Science</a>
-                <a href="../becoming-a-coin.html"><span class="nav-icon">&#9898;</span> Becoming a Coin</a>
-                <a href="index.html"><span class="nav-icon">&#128220;</span> The Mirror</a>
-                <div class="divider"></div>
-                <a href="../../library.html"><span class="nav-icon">&#128218;</span> Full Library</a>
-            </div>
-        </div>
+<!-- HEADER -->
+<header>
+    <a href="https://www.havemindmedia.com" class="logo">HAVE MIND MEDIA</a>
+    <nav>
+        <a href="https://www.havemindmedia.com">Home</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#ancient">Ancient Wisdom</a>
+        <a href="#synthesis">Synthesis</a>
+        <a href="https://www.havemindmedia.com/s-minus-science" class="active" style="color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px;">S-Minus Science</a>
     </nav>
+</header>
 
-    <!-- Back Link -->
-    <a href="../../library.html" class="back-link">&larr; Library</a>
+<!-- NAV DOTS -->
+<div class="nav-dots">
+    <div class="nav-dot active" data-section="0"></div>
+    <div class="nav-dot" data-section="1"></div>
+    <div class="nav-dot" data-section="2"></div>
+    <div class="nav-dot" data-section="3"></div>
+    <div class="nav-dot" data-section="4"></div>
+    <div class="nav-dot" data-section="5"></div>
+    <div class="nav-dot" data-section="6"></div>
+</div>
 
-    <!-- NAVIGATION DOTS -->
-    <div class="nav-dots">
-        <div class="nav-dot active" onclick="scrollToSection(0)"></div>
-        <div class="nav-dot" onclick="scrollToSection(1)"></div>
-        <div class="nav-dot" onclick="scrollToSection(2)"></div>
-        <div class="nav-dot" onclick="scrollToSection(3)"></div>
-        <div class="nav-dot" onclick="scrollToSection(4)"></div>
-        <div class="nav-dot" onclick="scrollToSection(5)"></div>
-        <div class="nav-dot" onclick="scrollToSection(6)"></div>
-        <div class="nav-dot" onclick="scrollToSection(7)"></div>
-        <div class="nav-dot" onclick="scrollToSection(8)"></div>
+<!-- SECTION 0: HERO -->
+<div class="section section-dark" id="hero">
+    <p class="subtitle fade-in">A New Understanding</p>
+    <h1 class="fade-in">THE MIRROR</h1>
+    <p class="subtitle fade-in" style="margin-top: 30px;">Reflection, Time, and Scalar Dimensionality</p>
+
+    <img src="images/ancient-mirror.png"
+         alt="Ancient mirror" class="image-medium fade-in">
+
+    <div class="content fade-in" style="margin-top: 20px;">
+        <p>What you see in a mirror is not what physics predicts.</p>
+        <p>The Standard Model is incomplete.</p>
     </div>
 
-    <main class="main-content">
+    <div class="scroll-indicator">scroll to explore</div>
+</div>
 
-        <!-- SECTION 0: TITLE -->
-        <div class="section section-dark">
-            <p class="section-subtitle fade-in">Have Mind Media presents</p>
-            <h1 class="fade-in">THE MIRROR</h1>
-            <p class="section-subtitle fade-in" style="margin-top: 30px;">A New Understanding of Reflection, Time, and Reality</p>
+<!-- SECTION 1: THE PROBLEM -->
+<div class="section section-alt" id="problem">
+    <h2 class="fade-in">The Size Paradox</h2>
 
-            <div class="mirror-visual fade-in" style="margin-top: 50px;">
-                <div class="mirror-reflection"></div>
-                <div class="mirror-label">What do you really see?</div>
+    <img src="images/mirror-depth-diagram.png"
+         alt="Scalar depth diagram" class="image-full fade-in">
+
+    <div class="content fade-in">
+        <p>As you approach a mirror, your reflection gets <strong style="color: var(--gold);">LARGER</strong>.</p>
+        <p style="margin-top: 20px;">But the Standard Model says your virtual image is always at distance <strong>2d</strong> behind you.</p>
+        <p style="margin-top: 20px;">If you're truly at 2d, why does your SIZE change with d?</p>
+    </div>
+
+    <div class="key-insight fade-in">
+        <strong>The mirror shows you the SIZE you are at distance d.</strong><br><br>
+        But it shows you at POSITION 2d.<br><br>
+        Size and position are decoupled. This is <span style="color: var(--gold);">scalar dimensionality</span>.
+    </div>
+</div>
+
+<!-- SECTION 2: THE CALCULATOR -->
+<div class="section section-dark" id="calculator">
+    <h2 class="fade-in">Standard Model vs Epoch Model</h2>
+    <p class="subtitle fade-in">Interactive Depth Calculator</p>
+
+    <div class="calculator fade-in">
+        <div class="slider-container">
+            <label style="color: var(--gold); font-size: 1.2em;">Your Distance from Mirror</label>
+            <input type="range" id="distSlider" min="10" max="300" value="100">
+            <div class="slider-label">
+                <span>10 cm</span>
+                <span id="distDisplay" style="color: var(--gold); font-size: 1.2em;">100 cm</span>
+                <span>300 cm</span>
             </div>
-
-            <div class="scroll-indicator">scroll to begin</div>
         </div>
 
-        <!-- SECTION 1: THE ANCIENT QUESTION -->
-        <div class="section section-gold">
-            <h2 class="fade-in">The Ancients Asked</h2>
+        <div class="calc-visual">
+            <canvas id="depthCanvas" width="860" height="200"></canvas>
+        </div>
 
-            <div class="section-quote fade-in">
-                "If the inscription at Delphi had read 'SEE THYSELF' instead of 'KNOW THYSELF' &mdash; how would one accomplish this?"
-                <div class="quote-source">&mdash; Socrates, in Plato's Alcibiades I (c. 390 BCE)</div>
-            </div>
-
-            <div class="section-content fade-in">
-                <p>Socrates answered: look into the pupil of another's eye.</p>
-                <p style="margin-top: 20px;">The Greek word for pupil is <strong style="color: var(--gold);">&kappa;&omicron;&rho;&eta; (kore)</strong> &mdash; meaning "doll" or "little image."</p>
-                <p style="margin-top: 20px;">You see yourself as a tiny figure in another's eye. The eye IS a mirror.</p>
-            </div>
-
-            <div style="margin-top: 50px;" class="fade-in">
-                <div class="ancient-source">
-                    <span class="name">Plato</span><br>
-                    <span class="date">428-348 BCE</span>
+        <div class="compare-box" style="max-width: 100%; margin: 20px 0;">
+            <div class="compare-side standard">
+                <div class="compare-title">STANDARD MODEL</div>
+                <div class="calc-row">
+                    <span class="calc-label">Virtual Image Position</span>
+                    <span class="calc-value standard" id="stdPosition">200 cm</span>
                 </div>
-                <div class="ancient-source">
-                    <span class="name">Epicurus</span><br>
-                    <span class="date">341-270 BCE</span>
+                <div class="calc-row">
+                    <span class="calc-label">Apparent Size</span>
+                    <span class="calc-value standard" id="stdSize">Based on 2d</span>
                 </div>
-                <div class="ancient-source">
-                    <span class="name">Lucretius</span><br>
-                    <span class="date">99-55 BCE</span>
+                <div class="calc-row">
+                    <span class="calc-label">Time Delay</span>
+                    <span class="calc-value standard" id="stdDelay">6.67 ns</span>
                 </div>
-                <div class="ancient-source">
-                    <span class="name">Plotinus</span><br>
-                    <span class="date">204-270 CE</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- SECTION 2: THE SIMULACRA -->
-        <div class="section section-blue">
-            <h2 class="fade-in">The Atomists' Answer</h2>
-
-            <div class="section-quote fade-in">
-                "These images are like a skin, or a film, peeled from the body's surface, and they fly this way and that across the air."
-                <div class="quote-source">&mdash; Lucretius, De Rerum Natura, Book IV (c. 55 BCE)</div>
-            </div>
-
-            <div class="section-content fade-in">
-                <p>Epicurus and Lucretius proposed that all objects constantly shed <strong style="color: var(--gold);">simulacra</strong> &mdash; thin films of atoms streaming outward at incredible speed.</p>
-                <p style="margin-top: 30px;">What you see is never the object itself.</p>
-                <p style="margin-top: 10px;"><strong style="color: var(--soft-blue);">You see its shedding.</strong></p>
-            </div>
-
-            <div class="key-insight fade-in">
-                <strong>The mirror proves this theory.</strong><br><br>
-                No matter how quickly you move, the mirror instantly reflects. Because simulacra are always streaming. The mirror simply redirects the stream.
-            </div>
-        </div>
-
-        <!-- SECTION 3: THE EMANATION -->
-        <div class="section section-gold">
-            <h2 class="fade-in">The Neoplatonic Vision</h2>
-
-            <div class="section-quote fade-in">
-                "The One emanates like light from the sun, or like a reflection in a mirror &mdash; without diminishing itself."
-                <div class="quote-source">&mdash; Plotinus, Enneads (c. 270 CE)</div>
-            </div>
-
-            <div class="diagram-box fade-in">            THE ONE
-         (ineffable source)
-                &darr;
-              NOUS
-        (Divine Intelligence)
-                &darr;
-           WORLD SOUL
-                &darr;
-        INDIVIDUAL SOULS
-                &darr;
-             MATTER
-      (the mirror at the bottom)</div>
-
-            <div class="section-content fade-in">
-                <p>Matter itself is a mirror &mdash; the final surface upon which all higher reality is reflected.</p>
-                <p style="margin-top: 20px;">Each level of existence is a <em>less perfect reflection</em> of what is above.</p>
-            </div>
-        </div>
-
-        <!-- SECTION 4: THE MODERN PROBLEM -->
-        <div class="section section-dark">
-            <h2 class="fade-in">What Physics Tells Us</h2>
-
-            <div class="section-content fade-in">
-                <p>Stand 1 meter from a mirror.</p>
-                <p style="margin-top: 20px;">Light travels from you &rarr; to mirror &rarr; back to you.</p>
-                <p style="margin-top: 20px;">Total distance: 2 meters. Time: 6.67 nanoseconds.</p>
-            </div>
-
-            <div class="key-insight fade-in">
-                <strong>You never see yourself in the present.</strong><br><br>
-                You always see yourself in the past. The mirror shows who you were, not who you are.
-            </div>
-
-            <div class="equation fade-in">c<sub>effective</sub> = c / 2</div>
-
-            <div class="section-content fade-in">
-                <p style="color: var(--text-dim);">The mirror cuts light speed in half. Round trip vs one-way.</p>
-            </div>
-        </div>
-
-        <!-- SECTION 5: THE HIDDEN TRUTH -->
-        <div class="section section-gold">
-            <h2 class="fade-in">The 27.6% Problem</h2>
-
-            <div class="big-number fade-in">27.6%</div>
-            <div class="number-label fade-in">of depth is LOST</div>
-
-            <div class="section-content fade-in" style="margin-top: 50px;">
-                <p>Classical optics says your reflection should appear at distance <strong>2d</strong>.</p>
-                <p style="margin-top: 20px;">But your brain perceives it at <strong>1.724d</strong>.</p>
-                <p style="margin-top: 20px;">The difference: <strong style="color: var(--gold);">27.6%</strong></p>
-            </div>
-
-            <div class="equation fade-in">P = &radic;3 / 2&pi; = 0.27566...</div>
-
-            <div class="key-insight fade-in">
-                <strong>This matches the Epoch projection factor exactly.</strong><br><br>
-                The mirror doesn't just reflect. It PROJECTS.<br>
-                And projection always loses one dimension's worth of information.
-            </div>
-        </div>
-
-        <!-- SECTION 6: THE INVERSION -->
-        <div class="section section-blue">
-            <h2 class="fade-in">The Primary Inversion</h2>
-
-            <div class="equation fade-in" style="font-size: 3.5em;">[1 = -1]</div>
-
-            <div class="two-column fade-in">
-                <div class="column">
-                    <h3>In the Mirror</h3>
-                    <p>Left becomes Right</p>
-                    <p>X-axis inverts</p>
-                    <p>Spatial inversion: 100%</p>
-                </div>
-                <div class="column">
-                    <h3>In Time</h3>
-                    <p>Present becomes Past</p>
-                    <p>You see 6.67ns ago</p>
-                    <p>Temporal inversion: ???</p>
+                <div style="color: var(--red); margin-top: 20px; font-size: 0.9em;">
+                    Problem: Size should match 2d, but it matches d
                 </div>
             </div>
-
-            <div class="section-content fade-in" style="margin-top: 40px;">
-                <p>The mirror performs <em>spatial</em> inversion perfectly.</p>
-                <p style="margin-top: 20px;">But temporal inversion remains partial. We see the past, not the future.</p>
-                <p style="margin-top: 20px; color: var(--gold);"><strong>The 27.6% that's missing &mdash; is that where the future hides?</strong></p>
+            <div class="compare-side epoch">
+                <div class="compare-title">EPOCH MODEL</div>
+                <div class="calc-row">
+                    <span class="calc-label">Perceived Position</span>
+                    <span class="calc-value epoch" id="epochPosition">172.4 cm</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">Size Reference</span>
+                    <span class="calc-value epoch" id="epochSize">Based on d</span>
+                </div>
+                <div class="calc-row">
+                    <span class="calc-label">Projection Loss (P)</span>
+                    <span class="calc-value epoch" id="epochLoss">27.6 cm</span>
+                </div>
+                <div style="color: var(--gold); margin-top: 20px; font-size: 0.9em;">
+                    Size at d, position at 1.724d — scalar separation
+                </div>
             </div>
         </div>
 
-        <!-- SECTION 7: THE COLLAPSED NOW -->
-        <div class="section section-dark">
-            <h2 class="fade-in">The Collapsed NOW</h2>
-
-            <div class="section-content fade-in">
-                <p>The present moment is not a point.</p>
-                <p style="margin-top: 20px;">It is a <strong style="color: var(--gold);">collapsed void</strong> &mdash; where observation forces superposition into actuality.</p>
-            </div>
-
-            <div class="diagram-box fade-in">              FUTURE (s-)
-                 &uarr;
-                 |
-     WUSH &larr;&mdash;&mdash;&mdash;&mdash; NOW &mdash;&mdash;&mdash;&mdash;&rarr; RO
-                 |
-                 &darr;
-              PAST (s+)
-
-    The NOW is the crossroads.
-    All directions exist until you look.
-    Looking collapses the void.</div>
-
-            <div class="key-insight fade-in">
-                <strong>Wush Ro Compression</strong><br><br>
-                The triaxial configuration (3 spatial + 1 shadow) determines what "now" feels like.<br>
-                Dominant axis. Subordinate axes. Torsional balance.<br><br>
-                The observer doesn't just SEE reality.<br>
-                <strong>The observer COLLAPSES it.</strong>
-            </div>
+        <div class="key-insight" style="margin-top: 30px;">
+            <strong>The Key Insight:</strong><br><br>
+            The mirror shows your SIZE at distance <strong>d</strong> (where you actually are).<br>
+            But your POSITION appears at <strong>1.724d</strong> (accounting for projection loss).<br><br>
+            Standard Model says 2d but can't explain the size.<br>
+            Epoch Model says 1.724d and SIZE is referenced to d — <span style="color: var(--gold);">scalar dimensionality</span>.
         </div>
+    </div>
+</div>
 
-        <!-- SECTION 8: THE SYNTHESIS -->
-        <div class="section section-gold">
-            <h2 class="fade-in">A New Understanding</h2>
+<!-- SECTION 3: ANCIENT WISDOM -->
+<div class="section section-gold" id="ancient">
+    <h2 class="fade-in">The Ancients Knew</h2>
 
-            <div class="section-content fade-in">
-                <p>The mirror reveals what the ancients intuited:</p>
-            </div>
+    <div class="quote fade-in">
+        "The face of the person looking into the eye of another is reflected as in a mirror; and in the pupil there is a sort of image of the person looking."
+        <div class="quote-source">— Socrates, in Plato's Alcibiades I (c. 390 BCE)</div>
+    </div>
 
-            <div class="diagram-box fade-in" style="text-align: center;">
-    &boxdr;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxdl;
-    &boxv;                                                         &boxv;
-    &boxv;   PLATO:     The eye is a mirror. Soul sees soul.      &boxv;
-    &boxv;                                                         &boxv;
-    &boxv;   EPICURUS:  Reality sheds simulacra. You see films.   &boxv;
-    &boxv;                                                         &boxv;
-    &boxv;   PLOTINUS:  Matter is the final mirror. All is        &boxv;
-    &boxv;              reflection of the One.                     &boxv;
-    &boxv;                                                         &boxv;
-    &boxv;   EPOCH:     The mirror loses 27.6% &mdash; the projection   &boxv;
-    &boxv;              factor P. This is the future tendency      &boxv;
-    &boxv;              component that doesn't "make it through."  &boxv;
-    &boxv;                                                         &boxv;
-    &boxur;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxh;&boxul;</div>
-
-            <div class="section-content fade-in" style="margin-top: 40px;">
-                <p style="font-size: 1.3em; color: var(--gold);">The mirror is not just reflecting.</p>
-                <p style="font-size: 1.3em; margin-top: 10px;">It is showing you the structure of NOW itself.</p>
-                <p style="font-size: 1.3em; margin-top: 10px;">Collapsed. Projected. Inverted.</p>
-                <p style="font-size: 1.3em; margin-top: 10px; color: var(--soft-blue);">And 27.6% hidden.</p>
-            </div>
+    <div class="two-column fade-in">
+        <div class="column">
+            <h3>Plato: Eye as Mirror</h3>
+            <p>The pupil (κόρη, "little doll") contains your reflection. To know yourself, look into another's eye. Soul sees soul through reflection.</p>
         </div>
-
-        <!-- SECTION 9: CONCLUSION -->
-        <div class="section section-dark">
-            <div class="equation fade-in" style="font-size: 4.5em; margin-bottom: 40px;">[1 = -1]</div>
-
-            <div class="section-content fade-in">
-                <p style="font-size: 1.4em;">The mirror doesn't lie.</p>
-                <p style="font-size: 1.4em; margin-top: 20px;">It shows you exactly what observation IS:</p>
-                <p style="font-size: 1.4em; margin-top: 20px; color: var(--gold);">A collapsed, projected, inverted glimpse</p>
-                <p style="font-size: 1.4em; margin-top: 20px; color: var(--gold);">of something that was already becoming</p>
-                <p style="font-size: 1.4em; margin-top: 20px; color: var(--gold);">what it will be.</p>
-            </div>
-
-            <div style="margin-top: 80px;" class="fade-in">
-                <p class="section-subtitle">HAVE MIND MEDIA</p>
-                <p style="color: var(--text-dim); margin-top: 20px;">January 2026</p>
-            </div>
+        <div class="column">
+            <h3>Plotinus: Matter as Mirror</h3>
+            <p>The One emanates without diminishing, like a reflection. Matter is the final mirror at the bottom of existence. Each level less perfect than above.</p>
         </div>
+    </div>
 
-        <!-- Footer -->
-        <footer class="unified-footer">
-            <div class="footer-logo">HAVE MIND MEDIA</div>
-            <div class="footer-tagline">The Epoch Project &mdash; The Mirror</div>
-            <div class="footer-signature" style="margin: 20px 0;">
-                Sources: Plato's Alcibiades I | Lucretius' De Rerum Natura | Plotinus' Enneads
-            </div>
-            <div class="footer-principle">[1 = -1]</div>
-        </footer>
+    <div class="quote fade-in">
+        "These images are like a skin, or a film, peeled from the body's surface, and they fly this way and that across the air."
+        <div class="quote-source">— Lucretius, De Rerum Natura IV (c. 55 BCE)</div>
+    </div>
 
-    </main>
+    <div class="content fade-in">
+        <p><strong style="color: var(--gold);">Simulacra</strong> — thin atomic films constantly shed from all surfaces.</p>
+        <p style="margin-top: 15px;">What you see is never the object. You see its shedding.</p>
+        <p style="margin-top: 15px;">The mirror redirects the stream.</p>
+    </div>
+</div>
 
-    <script>
-        // Navigation Toggle
-        function toggleNav() {
-            const dropdown = document.getElementById('navDropdown');
-            const toggle = document.querySelector('.nav-toggle');
-            dropdown.classList.toggle('active');
-            toggle.classList.toggle('active');
+<!-- SECTION 4: THE 27.6% -->
+<div class="section section-dark">
+    <h2 class="fade-in">The Missing 27.6%</h2>
+
+    <div class="big-number fade-in">27.6%</div>
+    <div class="number-label fade-in">of depth is lost in projection</div>
+
+    <div class="equation fade-in">P = √3 / 2π = 0.27566...</div>
+
+    <div class="content fade-in" style="margin-top: 40px;">
+        <p>Classical optics: image at <strong>2d</strong></p>
+        <p>Perceived depth: <strong>1.724d</strong></p>
+        <p style="margin-top: 20px;">The difference: <strong style="color: var(--gold);">P × 2d = 27.6%</strong></p>
+    </div>
+
+    <div class="key-insight fade-in">
+        <strong>This is the Epoch projection factor exactly.</strong><br><br>
+        The mirror projects 3D → 2D surface → 3D perception.<br>
+        Each projection loses P.<br><br>
+        What's in that lost 27.6%? <span style="color: var(--gold);">The future tendency component.</span>
+    </div>
+</div>
+
+<!-- SECTION 5: THE COLLAPSED NOW -->
+<div class="section section-blue">
+    <h2 class="fade-in">The Collapsed NOW</h2>
+
+    <img src="images/collapsed-now.png"
+         alt="Collapsed NOW" class="image-medium fade-in">
+
+    <div class="content fade-in">
+        <p>The present moment is not a point in time.</p>
+        <p style="margin-top: 20px;">It is a <strong style="color: var(--gold);">collapsed void</strong> — the crossroads where all temporal directions meet before observation forces a configuration.</p>
+    </div>
+
+    <div class="compare-box fade-in">
+        <div class="compare-side" style="background: rgba(122,184,212,0.1); border-right: 1px solid #333;">
+            <div class="compare-title" style="color: var(--blue);">WUSH (Past-tending)</div>
+            <p>Light shows what was</p>
+            <p>s+ direction</p>
+            <p>Observable, measurable</p>
+        </div>
+        <div class="compare-side" style="background: rgba(201,162,39,0.1);">
+            <div class="compare-title" style="color: var(--gold);">RO (Future-tending)</div>
+            <p>Torsion samples tendency</p>
+            <p>s- direction</p>
+            <p>The hidden 27.6%</p>
+        </div>
+    </div>
+
+    <div class="content fade-in">
+        <p style="color: var(--dim);">The mirror shows the past (s+). The missing P contains the future (s-).</p>
+    </div>
+</div>
+
+<!-- SECTION 6: SYNTHESIS -->
+<div class="section section-gold" id="synthesis">
+    <h2 class="fade-in">The New Understanding</h2>
+
+    <div class="key-insight fade-in" style="text-align: center; max-width: 900px;">
+        <strong style="font-size: 1.5em;">The mirror reveals scalar dimensionality.</strong><br><br>
+        <p style="font-size: 1.2em; line-height: 1.8;">
+            SIZE is referenced to your actual distance (d).<br>
+            POSITION is offset by round-trip delay, minus projection loss (1.724d).<br>
+            TIME shows the past, but 27.6% carries the future tendency.<br><br>
+            <span style="color: var(--gold);">The mirror doesn't just reflect light.</span><br>
+            <span style="color: var(--gold);">It shows you the structure of NOW.</span>
+        </p>
+    </div>
+
+    <div class="equation fade-in" style="font-size: 3em; margin: 50px 0;">[1 = -1]</div>
+
+    <div class="content fade-in">
+        <p>Left becomes right. Present becomes past.</p>
+        <p style="margin-top: 15px;">The primary inversion operates in both space and time.</p>
+        <p style="margin-top: 15px;">What's hidden is as real as what's shown.</p>
+    </div>
+</div>
+
+<footer>
+    <p style="color: var(--gold); font-size: 1.8em; margin-bottom: 20px;">[1 = -1]</p>
+    <p style="color: var(--text); margin-bottom: 5px;">HAVE MIND MEDIA</p>
+    <p style="color: var(--gold); font-size: 0.9em; margin-bottom: 10px;">S-Minus Science</p>
+    <p style="color: var(--dim);">January 3, 2026</p>
+    <p style="color: var(--dim); margin-top: 15px; font-size: 0.85em;">
+        THE MIRROR - Understanding Scalar Dimensionality<br>
+        mirror_presentation_v1.0_01-03-2026
+    </p>
+    <p style="margin-top: 30px;">
+        <a href="https://www.havemindmedia.com">havemindmedia.com</a> |
+        <a href="https://www.havemindmedia.com/s-minus-science">S-Minus Science</a>
+    </p>
+    <p style="margin-top: 15px; color: var(--dim); font-size: 0.8em;">
+        Sources: <a href="https://donaldrobertson.substack.com/p/the-use-of-mirrors-in-ancient-philosophy">Ancient Mirror Philosophy</a> |
+        <a href="https://plato.stanford.edu/entries/lucretius/">Stanford: Lucretius</a> |
+        <a href="https://iep.utm.edu/plotinus/">IEP: Plotinus</a>
+    </p>
+</footer>
+
+<script>
+// Constants
+const c = 299792458; // m/s
+const P = 0.27566;
+const P_shadow = 1 - P;
+
+// Elements
+const slider = document.getElementById('distSlider');
+const canvas = document.getElementById('depthCanvas');
+const ctx = canvas.getContext('2d');
+
+function updateCalculator() {
+    const d_cm = parseInt(slider.value);
+    const d_m = d_cm / 100;
+
+    // Standard Model
+    const stdPos = d_cm * 2;
+    const stdDelay = (2 * d_m / c) * 1e9;
+
+    // Epoch Model
+    const epochPos = d_cm * 1.724;
+    const epochLoss = stdPos - epochPos;
+
+    // Update displays
+    document.getElementById('distDisplay').textContent = d_cm + ' cm';
+    document.getElementById('stdPosition').textContent = stdPos + ' cm';
+    document.getElementById('stdDelay').textContent = stdDelay.toFixed(2) + ' ns';
+    document.getElementById('stdSize').textContent = 'Angular: ' + (1/stdPos * 1000).toFixed(2);
+    document.getElementById('epochPosition').textContent = epochPos.toFixed(1) + ' cm';
+    document.getElementById('epochLoss').textContent = epochLoss.toFixed(1) + ' cm';
+    document.getElementById('epochSize').textContent = 'Angular: ' + (1/d_cm * 1000).toFixed(2);
+
+    // Draw visualization
+    drawDepthVisualization(d_cm);
+}
+
+function drawDepthVisualization(d_cm) {
+    const w = canvas.width;
+    const h = canvas.height;
+
+    ctx.fillStyle = '#0a0a0f';
+    ctx.fillRect(0, 0, w, h);
+
+    // Scale: max 300cm = ~700px
+    const scale = 2.0;
+    const mirrorX = 150;
+    const observerX = mirrorX - (d_cm * scale / 3);
+
+    // Clamp observer position
+    const obsX = Math.max(40, observerX);
+
+    // Draw observer
+    ctx.fillStyle = '#c9a227';
+    ctx.beginPath();
+    ctx.arc(obsX, h/2, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#c9a227';
+    ctx.font = '12px Helvetica';
+    ctx.textAlign = 'center';
+    ctx.fillText('YOU', obsX, h/2 + 30);
+    ctx.fillText('(size ref)', obsX, h/2 + 45);
+
+    // Draw mirror
+    ctx.strokeStyle = '#7ab8d4';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(mirrorX, 30);
+    ctx.lineTo(mirrorX, h - 30);
+    ctx.stroke();
+    ctx.fillStyle = '#7ab8d4';
+    ctx.font = '11px Helvetica';
+    ctx.fillText('MIRROR', mirrorX, 20);
+
+    // Standard model position (2d)
+    const stdX = mirrorX + (d_cm * scale / 3);
+    ctx.strokeStyle = '#d4505044';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath();
+    ctx.arc(stdX, h/2, 10, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#d45050';
+    ctx.font = '11px Helvetica';
+    ctx.fillText('Standard (2d)', stdX, h/2 + 30);
+    ctx.fillText(d_cm * 2 + 'cm', stdX, h/2 + 45);
+
+    // Epoch model position (1.724d)
+    const epochX = mirrorX + (d_cm * 0.862 * scale / 3);
+    ctx.fillStyle = '#c9a227';
+    ctx.beginPath();
+    ctx.arc(epochX, h/2, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.font = '11px Helvetica';
+    ctx.fillText('Epoch (1.724d)', epochX, h/2 - 20);
+    ctx.fillText((d_cm * 1.724).toFixed(0) + 'cm', epochX, h/2 - 35);
+
+    // Draw the "lost" zone
+    if (stdX > epochX + 20) {
+        ctx.fillStyle = 'rgba(212, 80, 80, 0.15)';
+        ctx.fillRect(epochX + 10, h/2 - 50, stdX - epochX - 10, 100);
+        ctx.fillStyle = '#d45050';
+        ctx.font = '10px Helvetica';
+        ctx.fillText('Lost: ' + ((d_cm * 2) - (d_cm * 1.724)).toFixed(0) + 'cm (P)', (epochX + stdX) / 2, h/2 + 60);
+    }
+
+    // Distance labels
+    ctx.fillStyle = '#555';
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('d = ' + d_cm + 'cm', 10, h - 10);
+}
+
+// Event listeners
+slider.addEventListener('input', updateCalculator);
+
+// Initial
+updateCalculator();
+
+// Fade in on scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
+    });
+}, { threshold: 0.15 });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-menu')) {
-                document.getElementById('navDropdown').classList.remove('active');
-                document.querySelector('.nav-toggle').classList.remove('active');
-            }
-        });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Fade in on scroll
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px'
-        };
+// Nav dots
+const sections = document.querySelectorAll('.section');
+const dots = document.querySelectorAll('.nav-dot');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.section);
+        sections[idx].scrollIntoView({ behavior: 'smooth' });
+    });
+});
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+window.addEventListener('scroll', () => {
+    let current = 0;
+    sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2) current = index;
+    });
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === current);
+    });
+});
+</script>
 
-        // Navigation dots
-        const sections = document.querySelectorAll('.section');
-        const dots = document.querySelectorAll('.nav-dot');
-
-        function scrollToSection(index) {
-            sections[index].scrollIntoView({ behavior: 'smooth' });
-        }
-
-        window.addEventListener('scroll', () => {
-            let current = 0;
-            sections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= window.innerHeight / 2) {
-                    current = index;
-                }
-            });
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === current);
-            });
-        });
-    </script>
 </body>
 </html>
