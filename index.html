@@ -75,6 +75,39 @@
             letter-spacing: 4px;
         }
 
+        .rune-sigil {
+            margin-top: 1.5rem;
+            padding: 1.2rem 2rem;
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            display: block;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .rune-sigil .rune-line {
+            display: block;
+            font-size: 1.4rem;
+            letter-spacing: 6px;
+            color: var(--gold);
+            opacity: 0.9;
+            margin: 0.3rem 0;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .rune-sigil .rune-translation {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--soft-blue);
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
         /* ==========================================
            ANIMATED INTRO BOX
            ========================================== */
@@ -266,12 +299,12 @@
 
         .dual-panels {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             .dual-panels {
                 grid-template-columns: 1fr;
             }
@@ -302,6 +335,16 @@
         .s-minus-panel:hover {
             border-color: rgba(201, 162, 39, 0.6);
             box-shadow: 0 0 30px rgba(201, 162, 39, 0.15);
+        }
+
+        .coin-panel {
+            background: linear-gradient(135deg, rgba(180, 140, 200, 0.1) 0%, rgba(26, 42, 58, 0.3) 100%);
+            border: 1px solid rgba(180, 140, 200, 0.3);
+        }
+
+        .coin-panel:hover {
+            border-color: rgba(180, 140, 200, 0.6);
+            box-shadow: 0 0 30px rgba(180, 140, 200, 0.15);
         }
 
         .panel-header {
@@ -335,6 +378,12 @@
             border: 1px solid rgba(201, 162, 39, 0.3);
         }
 
+        .coin-panel .panel-icon {
+            color: #d4a8e0;
+            background: rgba(180, 140, 200, 0.15);
+            border: 1px solid rgba(180, 140, 200, 0.3);
+        }
+
         .panel-header h3 {
             font-size: 1.4rem;
             letter-spacing: 2px;
@@ -346,6 +395,10 @@
 
         .s-minus-panel .panel-header h3 {
             color: var(--gold);
+        }
+
+        .coin-panel .panel-header h3 {
+            color: #d4a8e0;
         }
 
         .panel-desc {
@@ -383,12 +436,120 @@
             color: var(--gold);
         }
 
+        .coin-panel .panel-links a:hover {
+            background: rgba(180, 140, 200, 0.2);
+            color: #d4a8e0;
+        }
+
         .dual-science-equation {
             font-family: monospace;
             font-size: 1.1rem;
             color: var(--soft-blue);
             opacity: 0.6;
             letter-spacing: 2px;
+        }
+
+        /* New and Featured Section */
+        .featured-section {
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .featured-card {
+            display: block;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, rgba(21, 26, 36, 0.6) 0%, rgba(15, 19, 24, 0.8) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-light);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .featured-card .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.25rem 0.6rem;
+            font-size: 0.7rem;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .featured-card .badge-new {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+        }
+
+        .featured-card .badge-popular {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--bright-blue);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        .featured-card .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .featured-card h3 {
+            font-size: 1.2rem;
+            color: var(--soft-cream);
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+        }
+
+        .featured-card.tint-blue {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        .featured-card.tint-blue:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
+        }
+
+        .featured-card.tint-gold {
+            border-color: rgba(201, 162, 39, 0.3);
+        }
+        .featured-card.tint-gold:hover {
+            border-color: rgba(201, 162, 39, 0.6);
+            box-shadow: 0 12px 30px rgba(201, 162, 39, 0.15);
+        }
+
+        .featured-card.tint-coin {
+            border-color: rgba(180, 140, 200, 0.3);
+            background: linear-gradient(145deg, rgba(140, 100, 160, 0.1) 0%, rgba(15, 19, 24, 0.8) 100%);
+        }
+        .featured-card.tint-coin:hover {
+            border-color: rgba(180, 140, 200, 0.6);
+            box-shadow: 0 12px 30px rgba(180, 140, 200, 0.15);
         }
 
         /* Mayan Calendar Section */
@@ -1070,6 +1231,13 @@
             </div>
             <p class="wisdom">Where ancient wisdom meets quantum understanding</p>
             <div class="principle-box">[1 = -1]</div>
+            <div class="rune-sigil">
+                <span class="rune-line">ᚹᛖᚱᛁᛗ ᚷᛟᚦ ᛗᛟᛏᛏ</span>
+                <span class="rune-line">ᚹᛖᚱᛁᛗ ᛊᛏᛃᚱᛁᛗᛖᚾ</span>
+                <span class="rune-line">ᚹᛖᚱᛁᛗ ᚢᛈᛈ ᚺᚨᚠ</span>
+                <span class="rune-line">ᚹᛖᚱᛁᛗ ᛞᛃᚢᛈᛏ ᚹᚨᛏᚾ</span>
+                <span class="rune-translation">We are crossroads · We are navigator · We are origin · We are the deep water</span>
+            </div>
         </section>
 
         <!-- Brand Explanation -->
@@ -1086,10 +1254,10 @@
             </p>
         </section>
 
-        <!-- S+/S- Dual Science Architecture -->
+        <!-- S+/S-/COIN Triaxial Science Architecture -->
         <section class="dual-science-section">
-            <h2 class="section-title">— TWO BRANCHES OF SCIENCE —</h2>
-            <p class="dual-science-intro">[1 = -1] — The same geometry, two directions</p>
+            <h2 class="section-title">— THREE BRANCHES OF SCIENCE —</h2>
+            <p class="dual-science-intro">[1 = -1] — The same geometry, three perspectives</p>
 
             <div class="dual-panels">
                 <!-- S+ Physical Reality -->
@@ -1116,14 +1284,76 @@
                     <p class="panel-desc">Folds inward through awareness. Soul Science, ancient teachings, consciousness geometry.</p>
                     <div class="panel-links">
                         <a href="education/soul-science.html">☯ Soul Science</a>
-                        <a href="education/becoming-a-coin.html">◯ Becoming a Coin</a>
-                        <a href="education/socratean-education.html">🎓 Socratean AI</a>
                         <a href="ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
+                        <a href="education/socratean-education.html">🎓 Socratean AI</a>
+                        <a href="ancient-mysteries/indus-script/index.html">𒀭 Indus Script</a>
+                    </div>
+                </div>
+
+                <!-- COIN Science -->
+                <div class="science-panel coin-panel">
+                    <div class="panel-header">
+                        <span class="panel-icon">◯</span>
+                        <h3>COIN Science</h3>
+                    </div>
+                    <p class="panel-desc">The surface between. Where observer meets observed — coin-facing, void, and the hidden operator.</p>
+                    <div class="panel-links">
+                        <a href="coin-science/index.html">◯ COIN Science</a>
+                        <a href="education/becoming-a-coin.html">☯ Becoming a Coin</a>
+                        <a href="education/mirror/index.html">🪞 The Mirror</a>
+                        <a href="physics/vessel/index.html">⬡ Scalar Vessel</a>
                     </div>
                 </div>
             </div>
 
             <p class="dual-science-equation">κ = 2π/180 = 0.034906585...</p>
+        </section>
+
+        <!-- New and Featured -->
+        <section class="featured-section">
+            <h2 class="section-title">— NEW AND FEATURED —</h2>
+
+            <div class="featured-grid">
+                <!-- Popular: Three-Body Geometry -->
+                <a href="physics/three-body-geometry.html" class="featured-card tint-blue">
+                    <span class="card-badge badge-popular">Popular</span>
+                    <div class="card-icon">◬</div>
+                    <h3>Three-Body Geometry</h3>
+                    <p>The gravitational dance resolved through κ-geometry. Interactive orbital mechanics.</p>
+                </a>
+
+                <!-- Popular: Soul Science -->
+                <a href="education/soul-science.html" class="featured-card tint-gold">
+                    <span class="card-badge badge-popular">Popular</span>
+                    <div class="card-icon">☯</div>
+                    <h3>Soul Science</h3>
+                    <p>The complete S- framework. Journey from coin consciousness to unified awareness.</p>
+                </a>
+
+                <!-- New: Indus Script -->
+                <a href="ancient-mysteries/indus-script/index.html" class="featured-card tint-gold">
+                    <span class="card-badge badge-new">New</span>
+                    <div class="card-icon">𒀭</div>
+                    <h3>Indus Valley Script</h3>
+                    <p>Decoding humanity's oldest undeciphered writing through geometric linguistics.</p>
+                </a>
+
+                <!-- New: Vessel Geometry -->
+                <a href="physics/vessel/index.html" class="featured-card tint-blue">
+                    <span class="card-badge badge-new">New</span>
+                    <div class="card-icon">⬡</div>
+                    <h3>Scalar Vessel</h3>
+                    <p>The geometric container of consciousness. Triaxial symmetry visualization.</p>
+                </a>
+
+                <!-- New: COIN Science -->
+                <a href="coin-science/index.html" class="featured-card tint-coin">
+                    <span class="card-badge badge-new">New</span>
+                    <div class="card-icon">◯</div>
+                    <h3>COIN Science</h3>
+                    <p>The third axis of reality. Where observer meets observed — the triaxial binary explained.</p>
+                </a>
+            </div>
         </section>
 
         <!-- Navigation Grid -->

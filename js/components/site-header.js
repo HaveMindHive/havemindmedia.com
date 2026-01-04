@@ -64,6 +64,42 @@ class SiteHeader extends HTMLElement {
                     border-color: rgba(201, 162, 39, 0.4);
                     color: #c9a227;
                 }
+                .hmm-btn.hmm-coin {
+                    color: #d4a8e0;
+                }
+                .hmm-btn.hmm-coin:hover {
+                    background: rgba(180, 140, 200, 0.1);
+                    border-color: rgba(180, 140, 200, 0.3);
+                }
+                .hmm-btn.hmm-coin.active {
+                    background: rgba(180, 140, 200, 0.15);
+                    border-color: rgba(180, 140, 200, 0.4);
+                    color: #d4a8e0;
+                }
+                .hmm-btn.hmm-splus {
+                    color: #c9a227;
+                }
+                .hmm-btn.hmm-splus:hover {
+                    background: rgba(201, 162, 39, 0.1);
+                    border-color: rgba(201, 162, 39, 0.3);
+                }
+                .hmm-btn.hmm-splus.active {
+                    background: rgba(201, 162, 39, 0.15);
+                    border-color: rgba(201, 162, 39, 0.4);
+                    color: #c9a227;
+                }
+                .hmm-btn.hmm-sminus {
+                    color: #6ab4f5;
+                }
+                .hmm-btn.hmm-sminus:hover {
+                    background: rgba(106, 180, 245, 0.1);
+                    border-color: rgba(106, 180, 245, 0.3);
+                }
+                .hmm-btn.hmm-sminus.active {
+                    background: rgba(106, 180, 245, 0.15);
+                    border-color: rgba(106, 180, 245, 0.4);
+                    color: #6ab4f5;
+                }
                 .hmm-arrow {
                     font-size: 0.5rem;
                     transition: transform 0.2s;
@@ -139,6 +175,24 @@ class SiteHeader extends HTMLElement {
                     margin: 0.3rem 0;
                 }
 
+                /* S+ dropdown colors (hazel/gold) */
+                .hmm-drop.drop-splus .label { color: #c9a227; }
+                .hmm-drop.drop-splus a:hover { background: rgba(201, 162, 39, 0.15); color: #c9a227; }
+                .hmm-drop.drop-splus .sub:hover { color: #c9a227; }
+                .hmm-drop.drop-splus hr { border-top-color: rgba(201, 162, 39, 0.2); }
+
+                /* S- dropdown colors (pale blue) */
+                .hmm-drop.drop-sminus .label { color: #6ab4f5; }
+                .hmm-drop.drop-sminus a:hover { background: rgba(106, 180, 245, 0.15); color: #6ab4f5; }
+                .hmm-drop.drop-sminus .sub:hover { color: #6ab4f5; }
+                .hmm-drop.drop-sminus hr { border-top-color: rgba(106, 180, 245, 0.2); }
+
+                /* COIN dropdown colors (purple) */
+                .hmm-drop.drop-coin .label { color: #d4a8e0; }
+                .hmm-drop.drop-coin a:hover { background: rgba(180, 140, 200, 0.15); color: #d4a8e0; }
+                .hmm-drop.drop-coin .sub:hover { color: #d4a8e0; }
+                .hmm-drop.drop-coin hr { border-top-color: rgba(180, 140, 200, 0.2); }
+
                 /* Explore mega dropdown */
                 .hmm-drop.mega {
                     min-width: 600px;
@@ -200,8 +254,8 @@ class SiteHeader extends HTMLElement {
 
                         <!-- Physics / S+ -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">S+ Physics <span class="hmm-arrow">▼</span></button>
-                            <div class="hmm-drop">
+                            <button class="hmm-btn hmm-splus">S+ Physics <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop drop-splus">
                                 <div class="label">Core Physics</div>
                                 <a href="${bp}physics/three-body-geometry.html">Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
@@ -232,8 +286,8 @@ class SiteHeader extends HTMLElement {
 
                         <!-- Soul Science / S- -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">S- Soul <span class="hmm-arrow">▼</span></button>
-                            <div class="hmm-drop">
+                            <button class="hmm-btn hmm-sminus">S- Soul <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop drop-sminus">
                                 <div class="label">Soul Science</div>
                                 <a href="${bp}education/soul-science.html">Soul Science</a>
                                 <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
@@ -248,29 +302,26 @@ class SiteHeader extends HTMLElement {
                             </div>
                         </div>
 
-                        <!-- Tools / Coin -->
+                        <!-- COIN Science -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">Coin Tools <span class="hmm-arrow">▼</span></button>
-                            <div class="hmm-drop">
+                            <button class="hmm-btn hmm-coin">◯ COIN <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop drop-coin">
+                                <div class="label">COIN Science</div>
+                                <a href="${bp}coin-science/index.html">COIN Science Home</a>
+                                <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
+                                <a href="${bp}education/mirror/index.html">The Mirror</a>
+                                <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
+                                <hr>
+                                <div class="label">Tools</div>
+                                <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
+                                <a href="${bp}games/balance/index.html">Balance Game</a>
+                                <a href="${bp}tools/s-signature/s_signature_coin.html">S-Signature Coin</a>
+                                <hr>
                                 <div class="label">S-Signature Suite</div>
                                 <a href="${bp}tools/s-signature/s_signature_128.html">S-Signature 128</a>
                                 <a href="${bp}tools/s-signature/s_signature_assessment.html">Assessment</a>
-                                <a href="${bp}tools/s-signature/s_signature_evolving.html">Evolving</a>
-                                <a href="${bp}tools/s-signature/s_signature_prediction.html">Prediction</a>
-                                <a href="${bp}tools/s-signature/s_signature_sphere.html">Sphere</a>
-                                <a href="${bp}tools/s-signature/s_signature_coin.html">Coin</a>
-                                <a href="${bp}tools/s-signature/s_signature_card.html">Card</a>
                                 <a href="${bp}tools/s-signature/s_signature_oracle.html">Oracle</a>
-                                <a href="${bp}tools/s-signature/s_signature_engine.html">Engine</a>
                                 <a href="${bp}tools/s-signature/deep_oracle.html">Deep Oracle</a>
-                                <a href="${bp}tools/s-signature/reductive_oracle.html">Reductive Oracle</a>
-                                <a href="${bp}tools/s-signature/cohort_engine.html">Cohort Engine</a>
-                                <a href="${bp}tools/s-signature/jason_ray_s_signature.html">Jason Ray Signature</a>
-                                <hr>
-                                <div class="label">Other Tools</div>
-                                <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
-                                <a href="${bp}tools/m4-visualizer/index.html">M4 Visualizer</a>
-                                <a href="${bp}tools/interaction-modeler/index.html">Interaction Modeler</a>
                             </div>
                         </div>
 
