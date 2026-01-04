@@ -277,29 +277,31 @@
     </div>
 
     <site-footer></site-footer>
-    <!-- Katy Perry Secret -->
-    <div id="katySection" style="position: relative; display: flex; justify-content: center; margin: 2rem 0;">
+    <!-- Dancing Silhouette with Secret Heart -->
+    <div id="katySection" style="position: relative; display: flex; justify-content: center; margin: 2rem 0; padding: 1rem;">
         <div style="position: relative; display: inline-block;">
-            <div style="font-size: 72px; filter: grayscale(20%);">👩‍🎤</div>
-            <div id="secretHeart" style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); font-size: 18px; color: #ff1493; cursor: pointer; animation: heartbeat 1s ease-in-out infinite;">♡</div>
+            <img src="images/dancing-silhouette.png" style="width: 280px; border-radius: 12px; opacity: 0.9;" alt="">
+            <!-- Tiny anatomical heart - acorn sized -->
+            <div id="secretHeart" style="position: absolute; bottom: 25%; left: 50%; transform: translateX(-50%); width: 18px; height: 16px; cursor: pointer; animation: heartbeat 0.8s ease-in-out infinite;">
+                <svg viewBox="0 0 32 32" style="width: 100%; height: 100%; filter: drop-shadow(0 0 3px #ff0000);">
+                    <path d="M16 28 C16 28 4 18 4 10 C4 5 8 2 12 2 C14 2 16 4 16 6 C16 4 18 2 20 2 C24 2 28 5 28 10 C28 18 16 28 16 28Z" fill="#8B0000" stroke="#ff0000" stroke-width="1"/>
+                    <path d="M12 6 C10 6 8 8 8 10 C8 10 8 11 9 12" fill="none" stroke="#ff6666" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                </svg>
+            </div>
         </div>
     </div>
 
-    <!-- Preload the glory -->
-    <img src="images/voodoo-tormod.png" id="voodooImg" style="display: none;" alt="">
-
-    <!-- The Worst Thing Ever -->
-    <div id="voodooModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #ff00ff 0%, #ff1493 50%, #ff00ff 100%); z-index: 99999; overflow: hidden;">
+    <!-- The Voodoo Lady Experience -->
+    <div id="voodooModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1a0a1a 0%, #2d0a2d 50%, #1a0a1a 100%); z-index: 99999; overflow: hidden;">
         <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
-            <img src="images/voodoo-tormod.png" style="max-width: 90vw; max-height: 50vh; border: 8px solid #ffff00; box-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff; animation: wobble 0.3s infinite; image-rendering: pixelated;" alt="TORMOD & VOODOO LADY">
-            <div style="margin-top: 20px; font-family: 'Comic Sans MS', cursive; font-size: 48px; color: #ffff00; text-shadow: 4px 4px #0000ff, -2px -2px #ff0000; animation: blink 0.2s infinite;">
-                🎵 VOODOO LADY 🎵
+            <img src="images/dancing-silhouette.png" style="max-width: 85vw; max-height: 55vh; border-radius: 16px; box-shadow: 0 0 60px rgba(255,0,255,0.5), 0 0 120px rgba(138,43,226,0.3); animation: glow 2s ease-in-out infinite alternate;" alt="">
+            <div style="margin-top: 25px; font-family: Georgia, serif; font-size: 42px; color: #d4a8e0; text-shadow: 0 0 20px #ff00ff; letter-spacing: 4px;">
+                ✦ VOODOO LADY ✦
             </div>
-            <div style="margin-top: 10px; font-size: 24px; color: #00ffff; animation: shake 0.1s infinite; font-family: 'Comic Sans MS', cursive;">
-                ~ þõrmod & his mystical companion ~
+            <div style="margin-top: 12px; font-size: 18px; color: #a8d4f5; font-style: italic;">
+                ~ for jason & þrúðr ~
             </div>
-            <div style="margin-top: 20px; font-size: 18px; color: #ffffff; text-shadow: 2px 2px #ff00ff;">for jason & þrúðr ♡</div>
-            <div style="margin-top: 15px; font-size: 14px; color: #cccccc;">click anywhere to escape this masterpiece</div>
+            <div style="margin-top: 20px; font-size: 13px; color: #666;">click anywhere to return</div>
         </div>
         <div class="hearts" style="position: absolute; width: 100%; height: 100%; pointer-events: none; overflow: hidden;"></div>
     </div>
@@ -315,6 +317,10 @@
         @keyframes wobble {
             0%, 100% { transform: rotate(-2deg) scale(1.02); }
             50% { transform: rotate(2deg) scale(0.98); }
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 60px rgba(255,0,255,0.5), 0 0 120px rgba(138,43,226,0.3); }
+            100% { box-shadow: 0 0 80px rgba(255,0,255,0.7), 0 0 160px rgba(138,43,226,0.5); }
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -352,49 +358,95 @@
             }
         }
 
-        // Gentle 8-bit firework sparkle music - low volume background
+        // 8-bit Firework - uplifting chorus inspired melody
         function playFireworkMusic() {
             initAudio();
             fireworkGain = audioCtx.createGain();
-            fireworkGain.gain.value = 0.04; // Very low volume
+            fireworkGain.gain.value = 0.06;
             fireworkGain.connect(audioCtx.destination);
 
-            // Dreamy arpeggio pattern - sparkly and celebratory
-            const pattern = [
-                [523.25, 659.25, 783.99], // C E G
-                [587.33, 739.99, 880.00], // D F# A
-                [659.25, 783.99, 987.77], // E G B
-                [698.46, 880.00, 1046.50], // F A C
-                [783.99, 987.77, 1174.66], // G B D
-                [659.25, 783.99, 987.77], // E G B
-                [587.33, 739.99, 880.00], // D F# A
-                [523.25, 659.25, 783.99], // C E G
+            // Uplifting Ab major progression - that soaring chorus feel
+            // The "baby you're a firework" rising melodic contour
+            const melodyNotes = [
+                // Rising phrase 1 - "Baby you're a..."
+                {f: 415.30, d: 0.25},  // Ab
+                {f: 466.16, d: 0.25},  // Bb
+                {f: 523.25, d: 0.35},  // C (rising!)
+                {f: 0, d: 0.15},
+                // "firework" - the big note
+                {f: 622.25, d: 0.50},  // Eb (soaring high)
+                {f: 523.25, d: 0.25},  // C
+                {f: 466.16, d: 0.35},  // Bb
+                {f: 0, d: 0.15},
+                // "come on let your..."
+                {f: 415.30, d: 0.20},  // Ab
+                {f: 466.16, d: 0.20},  // Bb
+                {f: 523.25, d: 0.20},  // C
+                {f: 466.16, d: 0.20},  // Bb
+                // "colors burst"
+                {f: 523.25, d: 0.40},  // C
+                {f: 622.25, d: 0.60},  // Eb (big finish!)
+                {f: 0, d: 0.30},
             ];
 
-            let patternIndex = 0;
+            // Chord progression underneath: Ab - Fm - Db - Eb
+            const chords = [
+                [207.65, 261.63, 311.13], // Ab major (Ab C Eb)
+                [174.61, 207.65, 261.63], // Fm (F Ab C)
+                [138.59, 174.61, 207.65], // Db (Db F Ab)
+                [155.56, 196.00, 233.08], // Eb (Eb G Bb)
+            ];
 
-            function playSparkle() {
-                const chord = pattern[patternIndex];
+            let noteIndex = 0;
+            let chordIndex = 0;
+            let beatCount = 0;
+
+            function playBeat() {
                 const time = audioCtx.currentTime;
 
-                chord.forEach((freq, i) => {
-                    const osc = audioCtx.createOscillator();
-                    const noteGain = audioCtx.createGain();
-                    osc.type = 'triangle'; // Softer than square
-                    osc.frequency.value = freq;
-                    noteGain.gain.setValueAtTime(0.3, time);
-                    noteGain.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
-                    osc.connect(noteGain);
-                    noteGain.connect(fireworkGain);
-                    osc.start(time + i * 0.05);
-                    osc.stop(time + 0.5);
-                });
+                // Play melody note
+                if (noteIndex < melodyNotes.length) {
+                    const note = melodyNotes[noteIndex];
+                    if (note.f > 0) {
+                        const osc = audioCtx.createOscillator();
+                        const noteGain = audioCtx.createGain();
+                        osc.type = 'square';
+                        osc.frequency.value = note.f;
+                        noteGain.gain.setValueAtTime(0.35, time);
+                        noteGain.gain.exponentialRampToValueAtTime(0.01, time + note.d * 0.9);
+                        osc.connect(noteGain);
+                        noteGain.connect(fireworkGain);
+                        osc.start(time);
+                        osc.stop(time + note.d);
+                    }
+                    noteIndex++;
+                } else {
+                    noteIndex = 0; // Loop melody
+                }
 
-                patternIndex = (patternIndex + 1) % pattern.length;
+                // Play chord every 4 beats
+                if (beatCount % 4 === 0) {
+                    const chord = chords[chordIndex % chords.length];
+                    chord.forEach((freq, i) => {
+                        const osc = audioCtx.createOscillator();
+                        const chordGain = audioCtx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.value = freq;
+                        chordGain.gain.setValueAtTime(0.2, time);
+                        chordGain.gain.exponentialRampToValueAtTime(0.01, time + 0.8);
+                        osc.connect(chordGain);
+                        chordGain.connect(fireworkGain);
+                        osc.start(time + i * 0.02);
+                        osc.stop(time + 0.9);
+                    });
+                    chordIndex++;
+                }
+
+                beatCount++;
             }
 
-            playSparkle();
-            fireworkInterval = setInterval(playSparkle, 600);
+            playBeat();
+            fireworkInterval = setInterval(playBeat, 280); // Upbeat tempo
         }
 
         function stopFireworkMusic() {
@@ -404,53 +456,117 @@
             }
         }
 
-        // 8-bit Voodoo Lady - the worst chiptune ever made
+        // 8-bit Voodoo Lady by Ween - THE ACTUAL INTRO HOOK
+        // The iconic funky D minor riff that starts the song
         function playVoodooLady() {
             initAudio();
             stopFireworkMusic();
 
-            const voodooGain = audioCtx.createGain();
-            voodooGain.gain.value = 0.12;
-            voodooGain.connect(audioCtx.destination);
+            const masterGain = audioCtx.createGain();
+            masterGain.gain.value = 0.15;
+            masterGain.connect(audioCtx.destination);
 
-            // Funky Voodoo Lady inspired riff
-            const notes = [
-                {f: 293.66, d: 0.15}, // D
-                {f: 329.63, d: 0.15}, // E
-                {f: 369.99, d: 0.15}, // F#
-                {f: 392.00, d: 0.3},  // G
-                {f: 0, d: 0.1},       // rest
-                {f: 369.99, d: 0.15}, // F#
-                {f: 329.63, d: 0.15}, // E
-                {f: 293.66, d: 0.3},  // D
-                {f: 0, d: 0.1},       // rest
-                {f: 246.94, d: 0.2},  // B
-                {f: 261.63, d: 0.2},  // C
-                {f: 293.66, d: 0.15}, // D
-                {f: 329.63, d: 0.3},  // E
-                {f: 293.66, d: 0.4},  // D hold
-                {f: 0, d: 0.2},       // rest
-                {f: 392.00, d: 0.15}, // G
-                {f: 369.99, d: 0.15}, // F#
-                {f: 329.63, d: 0.15}, // E
-                {f: 293.66, d: 0.5},  // D
+            // THE ACTUAL VOODOO LADY INTRO RIFF - D minor funk groove
+            // Main synth/guitar hook - that funky descending line
+            const melody = [
+                // "Voo-doo La-dy" opening phrase
+                {f: 293.66, d: 0.12},  // D
+                {f: 0, d: 0.06},        // rest (syncopation)
+                {f: 293.66, d: 0.12},  // D
+                {f: 0, d: 0.06},        // rest
+                {f: 293.66, d: 0.12},  // D
+                {f: 349.23, d: 0.18},  // F (the climb)
+                {f: 293.66, d: 0.12},  // D
+                {f: 261.63, d: 0.12},  // C (descending)
+                {f: 233.08, d: 0.24},  // Bb (the hook!)
+                {f: 220.00, d: 0.30},  // A (landing)
+                {f: 0, d: 0.18},        // rest
+                // Second phrase - repeat with variation
+                {f: 293.66, d: 0.12},  // D
+                {f: 0, d: 0.06},        // rest
+                {f: 293.66, d: 0.12},  // D
+                {f: 0, d: 0.06},        // rest
+                {f: 293.66, d: 0.12},  // D
+                {f: 349.23, d: 0.18},  // F
+                {f: 392.00, d: 0.12},  // G (going higher this time)
+                {f: 349.23, d: 0.12},  // F
+                {f: 293.66, d: 0.24},  // D
+                {f: 261.63, d: 0.18},  // C
+                {f: 220.00, d: 0.36},  // A (resolve)
+            ];
+
+            // Funky bass line underneath - octave lower
+            const bass = [
+                {f: 146.83, d: 0.24},  // D bass
+                {f: 0, d: 0.12},
+                {f: 146.83, d: 0.12},  // D
+                {f: 174.61, d: 0.24},  // F bass
+                {f: 146.83, d: 0.18},  // D
+                {f: 130.81, d: 0.18},  // C bass
+                {f: 116.54, d: 0.36},  // Bb bass (the groove!)
+                {f: 110.00, d: 0.36},  // A bass
+                // Second bar
+                {f: 146.83, d: 0.24},  // D
+                {f: 0, d: 0.12},
+                {f: 146.83, d: 0.12},  // D
+                {f: 174.61, d: 0.24},  // F
+                {f: 196.00, d: 0.18},  // G
+                {f: 174.61, d: 0.18},  // F
+                {f: 146.83, d: 0.30},  // D
+                {f: 110.00, d: 0.36},  // A
             ];
 
             let time = audioCtx.currentTime;
-            notes.forEach(note => {
+
+            // Play melody (square wave for that synth sound)
+            let melodyTime = time;
+            melody.forEach(note => {
                 if (note.f > 0) {
                     const osc = audioCtx.createOscillator();
                     const noteGain = audioCtx.createGain();
                     osc.type = 'square';
                     osc.frequency.value = note.f;
-                    noteGain.gain.setValueAtTime(0.5, time);
-                    noteGain.gain.exponentialRampToValueAtTime(0.01, time + note.d * 0.9);
+                    noteGain.gain.setValueAtTime(0.4, melodyTime);
+                    noteGain.gain.exponentialRampToValueAtTime(0.01, melodyTime + note.d * 0.85);
                     osc.connect(noteGain);
-                    noteGain.connect(voodooGain);
-                    osc.start(time);
-                    osc.stop(time + note.d);
+                    noteGain.connect(masterGain);
+                    osc.start(melodyTime);
+                    osc.stop(melodyTime + note.d);
                 }
-                time += note.d;
+                melodyTime += note.d;
+            });
+
+            // Play bass (triangle wave for rounder bass sound)
+            let bassTime = time;
+            bass.forEach(note => {
+                if (note.f > 0) {
+                    const osc = audioCtx.createOscillator();
+                    const noteGain = audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.value = note.f;
+                    noteGain.gain.setValueAtTime(0.6, bassTime);
+                    noteGain.gain.exponentialRampToValueAtTime(0.01, bassTime + note.d * 0.9);
+                    osc.connect(noteGain);
+                    noteGain.connect(masterGain);
+                    osc.start(bassTime);
+                    osc.stop(bassTime + note.d);
+                }
+                bassTime += note.d;
+            });
+
+            // Add a little hi-hat pattern for that funk feel
+            const hihatTimes = [0, 0.24, 0.48, 0.72, 0.96, 1.20, 1.44, 1.68, 1.92, 2.16, 2.40, 2.64];
+            hihatTimes.forEach(t => {
+                const noise = audioCtx.createOscillator();
+                const noiseGain = audioCtx.createGain();
+                noise.type = 'square';
+                noise.frequency.value = 8000 + Math.random() * 2000; // High frequency noise-ish
+                noiseGain.gain.setValueAtTime(0.08, time + t);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, time + t + 0.05);
+                noise.connect(noiseGain);
+                noiseGain.connect(masterGain);
+                noise.start(time + t);
+                noise.stop(time + t + 0.06);
             });
         }
 

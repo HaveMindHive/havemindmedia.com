@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Geometric Analysis of Indus Valley Figurines - Dancing Girl, Priest-King, Mother Goddess through the Epoch Model lens">
+    <title>Figurine Analysis | Indus Valley Script | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Colors - Soul Science Palette */
+            --void: #030508;
+            --deep-space: #0a0d12;
+            --cosmic-dark: #0f1318;
+            --panel: #151a24;
+            --panel-light: #1a2030;
+
+            /* Earth Tones */
+            --earth-deep: #1a1510;
+            --earth-warm: #2a2318;
+            --hazel: #8b7355;
+            --hazel-light: #a89070;
+
+            /* Blues - Primary */
+            --nebula-blue: #1a2a3a;
+            --glow-blue: #4a8ec8;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #a8d4f5;
+            --pale-blue: #d0e8f8;
+
+            /* Accents */
+            --gold-deep: #8b6914;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --accent-warm: #a85a48;
+            --terracotta: #c75b39;
+            --indigo: #6a5acd;
+
+            /* Text */
+            --soft-cream: #f0e8d8;
+            --pale-cream: #faf6ee;
+            --text-dim: #8a9aaa;
+
+            /* Borders */
+            --border: rgba(70, 130, 180, 0.25);
+            --border-light: rgba(70, 130, 180, 0.4);
+
+            /* Fonts */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+
+            /* Transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -4;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(74, 142, 200, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 25%, rgba(106, 180, 245, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 60% 75%, rgba(74, 142, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 80%, rgba(139, 105, 20, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 50%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background-image:
+                linear-gradient(rgba(201, 162, 39, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 162, 39, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 25s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 100px 50px, rgba(168, 212, 245, 0.9), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(168, 212, 245, 0.8), transparent),
+                radial-gradient(1px 1px at 550px 200px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 700px 120px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 150px 300px, rgba(168, 212, 245, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 380px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 600px 450px, rgba(201, 162, 39, 0.4), transparent);
+            background-size: 1200px 600px;
+            animation: twinkle 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            animation: orbFloat 30s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--gold-deep) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--terracotta) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -15s;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--indigo) 0%, transparent 70%);
+            top: 40%;
+            left: 25%;
+            animation-delay: -8s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(60px, -40px) scale(1.1); }
+            66% { transform: translate(-40px, 60px) scale(0.95); }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(3, 5, 8, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .unified-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(3, 5, 8, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-signature {
+            font-size: 0.7rem;
+            color: var(--soft-blue);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu { position: relative; }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--soft-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(70, 130, 180, 0.1);
+            border-color: var(--border-light);
+            color: var(--bright-blue);
+        }
+
+        .nav-toggle .arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.active .arrow { transform: rotate(180deg); }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(10, 13, 18, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--bright-blue);
+        }
+
+        .nav-dropdown a.active {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+
+        .nav-dropdown .nav-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-dropdown .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 40px 60px;
+            position: relative;
+        }
+
+        .hero-rune {
+            font-size: 4em;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 25px;
+            animation: gentlePulse 5s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.03); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2em, 4.5vw, 3.5em);
+            font-weight: 500;
+            color: var(--pale-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 .glow {
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px rgba(106, 180, 245, 0.3);
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.4em;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .hero .intro {
+            max-width: 750px;
+            font-size: 1.15em;
+            color: var(--soft-cream);
+            opacity: 0.85;
+            margin-top: 25px;
+            line-height: 2;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--soft-blue);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-header .tagline {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Content Panel */
+        .content-panel {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 45px;
+            margin-bottom: 40px;
+        }
+
+        .content-panel h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--bright-blue);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .content-panel p {
+            color: var(--soft-cream);
+            opacity: 0.9;
+            margin-bottom: 18px;
+            line-height: 1.9;
+        }
+
+        .content-panel p strong {
+            color: var(--gold);
+        }
+
+        /* Layman Box */
+        .layman-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .layman-box::before {
+            content: "IN SIMPLE TERMS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .layman-box p {
+            color: var(--soft-cream);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 0 0 15px 0;
+        }
+
+        .layman-box p:last-child { margin-bottom: 0; }
+
+        .layman-box .analogy {
+            padding-top: 15px;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* Figurine Cards */
+        .figurine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .figurine-card {
+            background: rgba(3, 5, 8, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .figurine-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.05), transparent, rgba(106, 180, 245, 0.03), transparent);
+            animation: cardRotate 20s linear infinite;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .figurine-card:hover::before { opacity: 1; }
+
+        @keyframes cardRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .figurine-card:hover {
+            border-color: var(--glow-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(201, 162, 39, 0.1);
+        }
+
+        .figurine-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .figurine-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .figurine-card .dimensions {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--bright-blue);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .figurine-card .description {
+            color: var(--soft-cream);
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Geometric Analysis Box */
+        .geometric-box {
+            background: linear-gradient(135deg, rgba(106, 90, 205, 0.1) 0%, rgba(106, 90, 205, 0.03) 100%);
+            border: 1px solid rgba(106, 90, 205, 0.3);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .geometric-box::before {
+            content: "EPOCH ANALYSIS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--indigo);
+            letter-spacing: 2px;
+        }
+
+        .geometric-box h4 {
+            color: var(--bright-blue);
+            font-family: var(--font-display);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .geometric-box p {
+            color: var(--soft-cream);
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: linear-gradient(135deg, rgba(3, 5, 8, 0.8) 0%, rgba(10, 13, 18, 0.9) 100%);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-box h4 {
+            color: var(--gold);
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .equation {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background: rgba(106, 180, 245, 0.08);
+            border-radius: 6px;
+            color: var(--soft-cream);
+        }
+
+        .equation .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(10, 22, 40, 0.5);
+            border-left: 4px solid var(--bright-blue);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box.discovery {
+            border-left-color: var(--terracotta);
+            background: rgba(199, 91, 57, 0.08);
+        }
+
+        .info-box strong {
+            color: var(--gold);
+        }
+
+        /* Data Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .data-table th {
+            background: rgba(106, 180, 245, 0.15);
+            color: var(--bright-blue);
+            padding: 15px 20px;
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-cream);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(106, 180, 245, 0.05);
+        }
+
+        /* Trefoil Pattern Visual */
+        .pattern-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .pattern-item {
+            text-align: center;
+        }
+
+        .pattern-item svg {
+            margin-bottom: 15px;
+        }
+
+        .pattern-item .label {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Proportion Diagram */
+        .proportion-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        /* Footer */
+        .unified-footer {
+            text-align: center;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .footer-principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .unified-nav { padding: 0.6rem 1rem; }
+            .nav-brand-text { font-size: 0.85rem; }
+            .nav-signature { display: none; }
+            .hero { padding: 100px 20px 40px; }
+            .hero h1 { font-size: 1.8rem; }
+            .content-panel { padding: 30px 25px; }
+            .figurine-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HMH Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="bg-grid"></div>
+    <div class="stars"></div>
+    <div class="orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-text">INDUS SCRIPT</span>
+            <span class="nav-signature">[1 = -1]</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <span>EXPLORE</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="index.html">
+                    <span class="nav-icon">&#9670;</span>
+                    Overview
+                </a>
+                <a href="sign-reference.html">
+                    <span class="nav-icon">&#9674;</span>
+                    Sign Reference
+                </a>
+                <a href="epoch-mathematics.html">
+                    <span class="nav-icon">&#8734;</span>
+                    Mathematics
+                </a>
+                <a href="figurines.html" class="active">
+                    <span class="nav-icon">&#9775;</span>
+                    Figurines
+                </a>
+                <div class="divider"></div>
+                <a href="linear-a.html">
+                    <span class="nav-icon">&#9672;</span>
+                    Linear A
+                </a>
+                <a href="translator.html">
+                    <span class="nav-icon">&#9654;</span>
+                    Translator Tool
+                </a>
+                <a href="universal-language-theory.html">
+                    <span class="nav-icon">&#9788;</span>
+                    Universal Language
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-rune">&#9775;</div>
+        <h1>FIGURINE <span class="glow">ANALYSIS</span></h1>
+        <p class="subtitle">Geometry Encoded in Form</p>
+        <p class="intro">
+            The Indus Valley civilization produced thousands of figurines&mdash;from the famous Dancing Girl
+            to elaborate Mother Goddess statues. These weren't mere decorations. Through the Epoch Model lens,
+            we discover they encode the same geometric principles found in their script, weights, and architecture.
+        </p>
+    </section>
+
+    <div class="container">
+        <!-- The Major Figurines -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE THREE ARCHETYPES</h2>
+                <p class="tagline">Form encodes function across 4,500 years</p>
+            </div>
+
+            <div class="figurine-grid">
+                <div class="figurine-card">
+                    <span class="figurine-icon">&#128131;</span>
+                    <h4>THE DANCING GIRL</h4>
+                    <div class="dimensions">10.5 cm &times; 5 cm &times; 2.5 cm</div>
+                    <p class="description">Bronze statue from Mohenjo-daro, c. 2300-1750 BCE. Contrapposto stance, 24-25 bangles on left arm, 4 on right. Exaggerated proportions with unnaturally long limbs.</p>
+                </div>
+                <div class="figurine-card">
+                    <span class="figurine-icon">&#128100;</span>
+                    <h4>THE PRIEST-KING</h4>
+                    <div class="dimensions">17.5 cm &times; 11 cm</div>
+                    <p class="description">Steatite bust from Mohenjo-daro, c. 2000-1900 BCE. Trefoil-patterned cloak with circles originally filled with red pigment. Fillet headband, neatly trimmed beard.</p>
+                </div>
+                <div class="figurine-card">
+                    <span class="figurine-icon">&#128124;</span>
+                    <h4>THE MOTHER GODDESS</h4>
+                    <div class="dimensions">Various sizes, c. 2500 BCE</div>
+                    <p class="description">Terracotta figurines with distinctive fan-shaped headdresses, cup-like ear ornaments, and cone decorations. Wide hips, thin waist, heavily adorned with jewelry.</p>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>These three figurines represent the <strong>triaxial balance</strong> of Harappan society:</p>
+                <p><strong style="color: var(--terracotta);">Dancing Girl (S-):</strong> The manifest, physical world &mdash; motion, youth, earthly presence</p>
+                <p><strong style="color: var(--bright-blue);">Priest-King (S+):</strong> The observer, spiritual authority &mdash; stillness, wisdom, cosmic connection</p>
+                <p><strong style="color: var(--gold);">Mother Goddess (M+):</strong> The generative force &mdash; fertility, abundance, continuous creation</p>
+                <p class="analogy">Together, they form a complete cosmological statement: the dance of matter, the witness of consciousness, and the source of emergence.</p>
+            </div>
+        </section>
+
+        <!-- Dancing Girl Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE DANCING GIRL</h2>
+                <p class="tagline">Proportion as geometric statement</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Bangle Ratio: 24-25 to 4</h3>
+                <p>The Dancing Girl wears <strong>24-25 bangles on her left arm</strong> and <strong>4 on her right</strong>. This asymmetry is not random&mdash;it encodes fundamental ratios.</p>
+
+                <div class="formula-box">
+                    <h4>Geometric Analysis</h4>
+                    <div class="equation">Left bangles / Right bangles = 25/4 = <span class="highlight">6.25</span></div>
+                    <div class="equation">6.25 = 25/4 = (5/2)&sup2; = <span class="highlight">&#963;&sup2; &times; 64</span></div>
+                    <div class="equation">Where &#963; = 5/16 = 0.3125 (helix overlap constant)</div>
+                    <div class="equation">Also: 25 + 4 = 29 &#8776; <span class="highlight">&#954;_shadow</span> (28.65)</div>
+                </div>
+
+                <div class="geometric-box">
+                    <h4>The Contrapposto Stance</h4>
+                    <p>The Dancing Girl stands with weight distributed unevenly&mdash;the classical contrapposto pose. This creates an <strong>S-curve</strong> through the body, geometrically encoding the wave function that underlies the Epoch Model.</p>
+                    <p>The arm ratio (25:4) echoes the asymmetry of the stance itself: one side heavy, one side light. This is <strong>duality made visible</strong>&mdash;the fundamental principle that [1 = -1] requires balance through opposition.</p>
+                </div>
+
+                <div class="layman-box">
+                    <p>Why would an ancient sculptor put exactly 25 bangles on one arm and 4 on the other? It seems oddly specific.</p>
+                    <p>The total (29) is almost exactly the "hidden witness" number (&#954;_shadow = 28.65). The ratio (6.25) connects directly to the helix constant used in their weight system. This wasn't artistic whim&mdash;it was <strong>geometric encoding</strong>.</p>
+                    <p class="analogy">Think of it like embedding a secret message in jewelry. The Harappans used adornment as mathematical notation.</p>
+                </div>
+
+                <h3>Dimensional Proportions</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Value</th>
+                            <th>Ratio Analysis</th>
+                            <th>Epoch Connection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Height</td>
+                            <td>10.5 cm</td>
+                            <td>10.5 / 2.5 = 4.2</td>
+                            <td>&#8776; 4.2 (near 4:2:1 ratio base)</td>
+                        </tr>
+                        <tr>
+                            <td>Width</td>
+                            <td>5 cm</td>
+                            <td>10.5 / 5 = 2.1</td>
+                            <td>&#8776; 2:1 brick ratio</td>
+                        </tr>
+                        <tr>
+                            <td>Depth</td>
+                            <td>2.5 cm</td>
+                            <td>5 / 2.5 = 2</td>
+                            <td>Exact 2:1 correspondence</td>
+                        </tr>
+                        <tr>
+                            <td>H:W:D</td>
+                            <td>10.5:5:2.5</td>
+                            <td>= 4.2:2:1</td>
+                            <td><strong>Near-perfect 4:2:1</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box discovery">
+                    <strong>Discovery:</strong> The Dancing Girl's overall proportions (4.2:2:1) nearly match the sacred brick ratio (4:2:1). The statue is effectively a <em>human-form brick</em>&mdash;a living embodiment of the geometric standard that unified Harappan construction.
+                </div>
+            </div>
+        </section>
+
+        <!-- Priest-King Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE PRIEST-KING</h2>
+                <p class="tagline">The trefoil pattern decoded</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Sacred Cloak</h3>
+                <p>The Priest-King wears a cloak decorated with a repeating pattern of <strong>trefoils, single circles, and double circles</strong>. The interiors were originally filled with red pigment, with traces of a "blackish" (possibly originally green or blue) background.</p>
+
+                <div class="pattern-visual">
+                    <div class="pattern-item">
+                        <svg viewBox="0 0 80 80" width="80" height="80">
+                            <circle cx="40" cy="25" r="12" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="28" cy="45" r="12" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="52" cy="45" r="12" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="40" cy="38" r="4" fill="#c9a227"/>
+                        </svg>
+                        <div class="label">TREFOIL</div>
+                    </div>
+                    <div class="pattern-item">
+                        <svg viewBox="0 0 80 80" width="80" height="80">
+                            <circle cx="40" cy="40" r="20" fill="none" stroke="#6ab4f5" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="4" fill="#6ab4f5"/>
+                        </svg>
+                        <div class="label">SINGLE CIRCLE</div>
+                    </div>
+                    <div class="pattern-item">
+                        <svg viewBox="0 0 80 80" width="80" height="80">
+                            <circle cx="40" cy="40" r="25" fill="none" stroke="#c75b39" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="15" fill="none" stroke="#c75b39" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="4" fill="#c75b39"/>
+                        </svg>
+                        <div class="label">DOUBLE CIRCLE</div>
+                    </div>
+                </div>
+
+                <div class="geometric-box">
+                    <h4>Trefoil = Emergence (3)</h4>
+                    <p>The trefoil consists of <strong>three overlapping circles</strong>&mdash;a direct geometric representation of the number 3, which in the Epoch Model represents <strong>emergence</strong> (^). The triple structure also creates three <strong>vesica piscis</strong> shapes at the intersections, encoding &#8730;3.</p>
+                    <h4 style="margin-top: 20px;">Single Circle = Unity (1)</h4>
+                    <p>The simple circle represents <strong>completeness, the unit, the observer</strong>. The drilled center point marks the origin from which measurement extends.</p>
+                    <h4 style="margin-top: 20px;">Double Circle = Duality (2)</h4>
+                    <p>Concentric circles represent <strong>layers of manifestation</strong>&mdash;the inner (hidden) and outer (manifest), corresponding to &#954; and &#954;_shadow.</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>The Complete Pattern</h4>
+                    <div class="equation">Trefoil (3) + Single (1) + Double (2) = <span class="highlight">6</span></div>
+                    <div class="equation">6 = 2 &times; 3 = duality &times; emergence</div>
+                    <div class="equation">6 = first perfect number (1 + 2 + 3)</div>
+                    <div class="equation">The cloak encodes: <span class="highlight">[3, 1, 2] &rarr; Emergence, Unity, Duality</span></div>
+                </div>
+
+                <div class="layman-box">
+                    <p>The Priest-King's cloak isn't just decorative fabric&mdash;it's a <strong>walking equation</strong>.</p>
+                    <p>The three shapes (trefoil, single circle, double circle) represent the numbers 3, 1, and 2. Together they equal 6, the first "perfect" number in mathematics (a number that equals the sum of its factors).</p>
+                    <p class="analogy">Imagine wearing a shirt with Einstein's E=mc&sup2; woven into the pattern. That's essentially what the Priest-King is doing&mdash;clothing himself in mathematical truth.</p>
+                </div>
+
+                <h3>The Red Pigment</h3>
+                <p>The trefoil centers were filled with <strong>red pigment</strong>, contrasting with the stone. Red is the color of the <strong>S- axis</strong> in the triaxial model&mdash;the manifest, physical, visible world. The Priest-King literally wears emergence (3) marked in the color of manifestation.</p>
+
+                <div class="info-box discovery">
+                    <strong>Cross-Cultural Parallel:</strong> Scholars have compared the trefoil pattern to similar motifs in Egyptian, Mesopotamian, and Minoan art. This suggests a <em>shared geometric vocabulary</em> across Bronze Age civilizations&mdash;or perhaps independent discovery of the same mathematical truths.
+                </div>
+            </div>
+        </section>
+
+        <!-- Mother Goddess Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE MOTHER GODDESS</h2>
+                <p class="tagline">The fan-headdress as geometric antenna</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Fan-Shaped Headdress</h3>
+                <p>The distinctive <strong>fan-shaped headdress</strong> with cup-like protrusions is the defining feature of Harappan Mother Goddess figurines. This wasn't mere fashion&mdash;it appears on thousands of figurines across the civilization with remarkable consistency.</p>
+
+                <div class="geometric-box">
+                    <h4>Geometry of the Fan</h4>
+                    <p>The fan shape radiates outward from a central point, creating a <strong>180-degree arc</strong>&mdash;exactly half a circle. This encodes:</p>
+                    <p><strong>&#960; radians = 180 degrees</strong></p>
+                    <p>The fan is literally a <strong>half-rotation</strong>, representing the transition from hidden (&#954;_shadow) to manifest (&#954;). The formula &#954; = 2&#960;/180 directly relates these values.</p>
+                </div>
+
+                <div class="formula-box">
+                    <h4>The Headdress Equation</h4>
+                    <div class="equation">Fan span = 180&deg; = &#960; radians</div>
+                    <div class="equation">&#954; = 2&#960;/180 = <span class="highlight">&#960;/90</span></div>
+                    <div class="equation">The fan encodes the <span class="highlight">denominator of &#954;</span></div>
+                    <div class="equation">Cup protrusions (2) = <span class="highlight">numerator coefficient</span></div>
+                </div>
+
+                <h3>Dualism in Form</h3>
+                <p>Scholars note that many figurines were created from <strong>two vertically joined halves</strong>, suggesting the Harappans held a concept of dualism and self-integration&mdash;the melding of male and female principles.</p>
+
+                <div class="layman-box">
+                    <p>The Mother Goddess figurines encode <strong>the act of creation itself</strong>:</p>
+                    <p>The fan headdress (180&deg;) represents the boundary between the invisible and visible realms. The cup-shaped ear ornaments catch cosmic information. The two-half construction embodies the union of opposites that generates new life.</p>
+                    <p class="analogy">She's not just a fertility symbol&mdash;she's a diagram of how reality emerges from the void. The universe giving birth to itself, rendered in terracotta.</p>
+                </div>
+
+                <h3>Body Proportions</h3>
+                <p>The typical Mother Goddess has <strong>wide hips, thin waist, and conical breasts</strong>&mdash;an exaggerated hourglass form. This creates the same S-curve seen in the Dancing Girl's contrapposto stance.</p>
+
+                <div class="info-box">
+                    <strong>The Universal Pattern:</strong> The S-curve appears in the Dancing Girl's pose, the Mother Goddess's body, and even in the fish symbol (derived from vesica piscis). This wave-form is the <em>signature of manifestation</em>&mdash;the geometric shape that energy takes when it becomes matter.
+                </div>
+            </div>
+        </section>
+
+        <!-- Animal Figurines -->
+        <section class="section">
+            <div class="section-header">
+                <h2>ANIMAL FIGURINES</h2>
+                <p class="tagline">The sacred zoo of geometric meaning</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Zebu Bull</h3>
+                <p>Three-quarters of all Harappan animal figurines are <strong>cattle</strong>, especially the humped zebu bull. These often feature <strong>movable parts</strong>&mdash;nodding heads, rotating wheels on carts&mdash;suggesting both toy and ritual functions.</p>
+
+                <div class="geometric-box">
+                    <h4>Why the Bull?</h4>
+                    <p>The zebu's distinctive hump creates an <strong>asymmetric profile</strong>&mdash;the same principle encoded in the Dancing Girl's bangles (25:4) and the triaxial classification. The bull represents <strong>M+ (mass/quantity)</strong> in the triaxial system: physical abundance, agricultural wealth, the material foundation of civilization.</p>
+                </div>
+
+                <h3>The "Unicorn"</h3>
+                <p>The most common seal animal is the <strong>humpless "unicorn"</strong>&mdash;a bull shown in profile with what appears to be a single horn (likely two horns overlapping in the 2D representation). It appears on over 60% of all seals.</p>
+
+                <div class="layman-box">
+                    <p>The "unicorn" isn't mythical&mdash;it's <strong>geometric reduction</strong>. When you draw a two-horned animal from the side, the horns merge into one. The Harappans chose this view deliberately to emphasize <strong>unity emerging from duality</strong>.</p>
+                    <p class="analogy">Two horns becoming one is a visual representation of [1 = -1]. Opposites that, from the right perspective, are the same thing.</p>
+                </div>
+
+                <h3>The Composite Beings</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Animal</th>
+                            <th>Frequency</th>
+                            <th>Geometric Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Zebu Bull</td>
+                            <td>~75%</td>
+                            <td>M+ axis, material abundance</td>
+                        </tr>
+                        <tr>
+                            <td>Unicorn (profile bull)</td>
+                            <td>~60% of seals</td>
+                            <td>Unity from duality</td>
+                        </tr>
+                        <tr>
+                            <td>Rhinoceros</td>
+                            <td>Common</td>
+                            <td>Protection, stability</td>
+                        </tr>
+                        <tr>
+                            <td>Elephant</td>
+                            <td>Common</td>
+                            <td>Wisdom, memory, vastness</td>
+                        </tr>
+                        <tr>
+                            <td>Tiger</td>
+                            <td>Uncommon</td>
+                            <td>S- axis, fierce manifestation</td>
+                        </tr>
+                        <tr>
+                            <td>Dog</td>
+                            <td>Several varieties</td>
+                            <td>Companion, threshold guardian</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Synthesis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>SYNTHESIS</h2>
+                <p class="tagline">The figurines speak a geometric language</p>
+            </div>
+
+            <div class="content-panel" style="text-align: center;">
+                <p style="font-size: 1.2rem; color: var(--soft-cream); max-width: 800px; margin: 0 auto;">
+                    The Harappans didn't separate art from mathematics, or decoration from meaning. Every figurine&mdash;from the Dancing Girl's bangles to the Priest-King's cloak to the Mother Goddess's headdress&mdash;encodes the same geometric principles found in their bricks, weights, rulers, and script.
+                </p>
+
+                <div style="margin: 40px 0;">
+                    <p style="font-size: 2rem; color: var(--gold); font-family: monospace;">
+                        Form = Function = Geometry = Truth
+                    </p>
+                </div>
+
+                <p style="font-size: 1.1rem; color: var(--soft-blue); font-style: italic;">
+                    4,500 years later, the figurines still teach their lesson:
+                </p>
+                <p style="font-size: 2.5rem; color: var(--gold); font-family: monospace; margin-top: 20px;">
+                    [1 = -1]
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="unified-footer">
+        <div class="footer-logo">HAVE MIND MEDIA</div>
+        <div class="footer-tagline">Geometric Decipherment of Ancient Scripts</div>
+        <div class="footer-credit">Created by Jason Ray | Have Mind Media</div>
+        <div class="footer-principle">&#954; = 2&#960;/180 = 0.0349 | [1 = -1]</div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.querySelector('.nav-toggle');
+            dropdown.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu.contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
