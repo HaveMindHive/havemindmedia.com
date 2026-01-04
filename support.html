@@ -277,5 +277,123 @@
     </div>
 
     <site-footer></site-footer>
+    <!-- Secret Heart Bomb -->
+    <div id="secretHeart" style="position: fixed; bottom: 20px; right: 20px; font-size: 12px; cursor: pointer; opacity: 0.3; z-index: 9999;">♡</div>
+
+    <!-- The Worst Thing Ever -->
+    <div id="voodooModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ff00ff; z-index: 99999; overflow: hidden;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+            <div id="tormodArt" style="font-size: 8px; line-height: 8px; font-family: monospace; color: #00ff00; text-shadow: 2px 2px #ff0000; white-space: pre; animation: spin 0.5s linear infinite;">
+   .---.
+  /     \
+ | () () |
+  \  ^  /    ♡    .---.
+   |||||         /     \
+   |||||        | @   @ |
+  /     \        \  ~  /
+ |  |||  |        |||||
+ |  |||  |       /     \
+  \_____/       | VOODOO|
+   ÞÕRMOD       \_LADY_/
+            </div>
+            <div style="margin-top: 20px; font-family: 'Comic Sans MS', cursive; font-size: 48px; color: #ffff00; text-shadow: 4px 4px #0000ff; animation: blink 0.2s infinite;">
+                🎵 VOODOO LADY 🎵
+            </div>
+            <div style="margin-top: 10px; font-size: 24px; color: #00ffff; animation: shake 0.1s infinite;">
+                ~ þõrmod & his mystical companion ~
+            </div>
+            <div style="margin-top: 30px; font-size: 14px; color: #ffffff;">click anywhere to escape this nightmare</div>
+        </div>
+        <div class="hearts" style="position: absolute; width: 100%; height: 100%; pointer-events: none; overflow: hidden;"></div>
+    </div>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+        .falling-heart {
+            position: absolute;
+            font-size: 30px;
+            animation: fall 2s linear forwards;
+        }
+    </style>
+
+    <script>
+        // 8-bit Voodoo Lady - the worst chiptune ever made
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playWorstSong() {
+            const notes = [
+                {f: 293.66, d: 0.15}, // D
+                {f: 329.63, d: 0.15}, // E
+                {f: 369.99, d: 0.15}, // F#
+                {f: 392.00, d: 0.3},  // G
+                {f: 369.99, d: 0.15}, // F#
+                {f: 329.63, d: 0.15}, // E
+                {f: 293.66, d: 0.3},  // D
+                {f: 246.94, d: 0.15}, // B
+                {f: 293.66, d: 0.15}, // D
+                {f: 329.63, d: 0.3},  // E
+                {f: 293.66, d: 0.6},  // D hold
+            ];
+
+            let time = audioCtx.currentTime;
+            notes.forEach(note => {
+                // Square wave for maximum 8-bit pain
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'square';
+                osc.frequency.value = note.f;
+                gain.gain.value = 0.15;
+                gain.gain.exponentialRampToValueAtTime(0.01, time + note.d);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(time);
+                osc.stop(time + note.d);
+                time += note.d;
+            });
+        }
+
+        function spawnHearts() {
+            const container = document.querySelector('.hearts');
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'falling-heart';
+                    heart.textContent = '♡';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    container.appendChild(heart);
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 100);
+            }
+        }
+
+        document.getElementById('secretHeart').addEventListener('click', () => {
+            document.getElementById('voodooModal').style.display = 'block';
+            playWorstSong();
+            spawnHearts();
+            setInterval(spawnHearts, 2000);
+        });
+
+        document.getElementById('voodooModal').addEventListener('click', () => {
+            document.getElementById('voodooModal').style.display = 'none';
+            location.reload(); // nuclear option to stop the madness
+        });
+    </script>
 </body>
 </html>
