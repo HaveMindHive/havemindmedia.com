@@ -318,7 +318,8 @@ class SiteHeader extends HTMLElement {
                                         <a href="${bp}documents/tribute/index.html">Tribute</a>
                                         <hr>
                                         <h4 style="color: #c9a227;">Complete Index</h4>
-                                        <a href="${bp}library.html" style="color: #c9a227; font-weight: 600;">📚 Full Library (68 pages)</a>
+                                        <a href="${bp}library-wizard/index.html" style="color: #c9a227; font-weight: 600;">📖 The Library (71 pages)</a>
+                                        <a href="${bp}library.html">Legacy Library</a>
                                     </div>
                                 </div>
                             </div>

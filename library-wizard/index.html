@@ -2,1098 +2,407 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>The Library | Have Mind Media</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Have Mind Media</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        :root {
-            --bg-deep: #0a0806;
-            --bg-wood: #1a1410;
-            --gold: #c9a227;
-            --gold-dim: #8b7355;
-            --parchment: #f4e4bc;
-            --leather-red: #6b2c2c;
-            --leather-blue: #2c4a6b;
-            --leather-green: #2c5c3c;
-            --leather-purple: #4a2c6b;
-            --leather-brown: #5c4a3c;
-            --leather-gold: #6b5a2c;
-        }
-
-        html, body {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            background: var(--bg-deep);
-            color: var(--parchment);
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
             min-height: 100vh;
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
         }
 
-        /* ==================== PARTICLES ==================== */
-        .particles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-        }
+        a { color: #c9a227; text-decoration: none; }
+        a:hover { text-decoration: underline; }
 
-        .dust {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 220, 150, 0.4);
-            border-radius: 50%;
-            animation: drift 25s infinite linear;
-        }
-
-        @keyframes drift {
-            0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.7; }
-            90% { opacity: 0.7; }
-            100% { transform: translateY(-10vh) translateX(50px) rotate(360deg); opacity: 0; }
-        }
-
-        /* ==================== HEADER ==================== */
         .header {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 12px 20px;
-            background: linear-gradient(180deg, rgba(10, 8, 6, 0.98) 0%, rgba(10, 8, 6, 0.9) 80%, transparent 100%);
+            background: #0a0a0f;
+            border-bottom: 1px solid #222;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            gap: 12px;
+            z-index: 100;
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: var(--gold);
-            text-decoration: none;
-            letter-spacing: 3px;
-            white-space: nowrap;
-        }
+        .logo { color: #c9a227; font-weight: 600; font-size: 0.9rem; }
 
-        .search-box {
+        .search {
             flex: 1;
-            max-width: 300px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 8px 36px 8px 14px;
-            background: rgba(26, 20, 16, 0.95);
-            border: 1px solid var(--gold-dim);
-            border-radius: 20px;
-            color: var(--parchment);
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .search-input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
-        }
-
-        .search-input::placeholder { color: var(--gold-dim); }
-
-        .search-icon {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
+            max-width: 250px;
+            padding: 8px 12px;
+            background: #1a1a1f;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #e0e0e0;
             font-size: 0.9rem;
         }
 
-        .search-results {
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 0;
-            right: 0;
-            background: rgba(20, 16, 12, 0.98);
-            border: 1px solid var(--gold-dim);
-            border-radius: 10px;
-            max-height: 60vh;
-            overflow-y: auto;
-            display: none;
-            z-index: 200;
-        }
+        .search:focus { outline: none; border-color: #c9a227; }
 
-        .search-results.show { display: block; }
+        .main { padding: 20px 16px; max-width: 900px; margin: 0 auto; }
 
-        .search-item {
-            padding: 10px 14px;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(139, 115, 85, 0.15);
-        }
-
-        .search-item:hover { background: rgba(201, 162, 39, 0.1); }
-        .search-item:last-child { border: none; }
-
-        .search-item-title { color: var(--gold); font-weight: 600; font-size: 0.9rem; }
-        .search-item-cat { color: var(--gold-dim); font-size: 0.7rem; margin-top: 2px; }
-
-        .no-results {
-            padding: 16px;
+        h1 {
+            color: #c9a227;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
             text-align: center;
-            color: var(--gold-dim);
         }
 
-        .suggest-btn {
-            color: var(--gold);
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        /* ==================== ROOM VIEW ==================== */
-        .room {
-            min-height: 100vh;
-            padding: 80px 16px 40px;
-            background:
-                radial-gradient(ellipse at 20% 20%, rgba(255, 180, 80, 0.08) 0%, transparent 40%),
-                radial-gradient(ellipse at 80% 30%, rgba(255, 180, 80, 0.06) 0%, transparent 35%),
-                var(--bg-deep);
-        }
-
-        .room-title {
+        .subtitle {
             text-align: center;
-            padding: 20px 0 30px;
+            color: #888;
+            margin-bottom: 24px;
         }
 
-        .room-title h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            letter-spacing: 5px;
-            text-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
-        }
-
-        .room-title p {
-            color: var(--gold-dim);
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        /* ==================== DEWEY SHELVES ==================== */
-        .shelves {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .shelf {
-            background: linear-gradient(180deg, #2a1f18 0%, #1a1410 100%);
-            border: 2px solid #3d2e24;
+        /* Sections */
+        .section {
+            margin-bottom: 24px;
+            background: #111;
+            border: 1px solid #222;
             border-radius: 8px;
-            padding: 16px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #1a1a1f;
+            padding: 12px 16px;
             cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .shelf::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, transparent 40%, rgba(255, 200, 100, 0.03) 100%);
-            pointer-events: none;
-        }
-
-        .shelf:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 162, 39, 0.1);
-            border-color: var(--gold-dim);
-        }
-
-        .shelf-number {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--gold);
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            right: 14px;
-        }
-
-        .shelf-label {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            color: var(--gold);
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-
-        .shelf-books {
             display: flex;
-            gap: 3px;
-            padding: 10px 6px;
-            background: linear-gradient(180deg, #151210 0%, #0d0a08 100%);
-            border-radius: 3px;
-            overflow: hidden;
-            min-height: 70px;
-            align-items: flex-end;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #222;
         }
 
-        .mini-book {
-            width: 18px;
-            flex-shrink: 0;
-            border-radius: 1px 2px 2px 1px;
+        .section-header:hover { background: #222; }
+
+        .section-title {
+            font-weight: 600;
+            color: #c9a227;
+        }
+
+        .section-count {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .section-arrow {
+            color: #666;
             transition: transform 0.2s;
         }
 
-        .mini-book:hover { transform: translateY(-4px); }
+        .section.open .section-arrow { transform: rotate(90deg); }
 
-        .shelf-count {
-            text-align: right;
-            font-size: 0.7rem;
-            color: var(--gold-dim);
-            margin-top: 8px;
-        }
-
-        /* ==================== BOOKSHELF VIEW ==================== */
-        .bookshelf-view {
-            position: fixed;
-            inset: 0;
-            z-index: 300;
-            background: var(--bg-deep);
+        .section-books {
             display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .bookshelf-view.active { display: flex; }
-
-        .bookshelf-header {
-            padding: 70px 20px 20px;
-            background: linear-gradient(180deg, rgba(10, 8, 6, 1) 0%, rgba(10, 8, 6, 0.95) 100%);
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .bookshelf-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-            margin-bottom: 8px;
-        }
-
-        .bookshelf-subtitle {
-            color: var(--gold-dim);
-            font-size: 0.85rem;
-        }
-
-        .bookshelf-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 12px;
-        }
-
-        .nav-btn {
-            padding: 6px 16px;
-            background: transparent;
-            border: 1px solid var(--gold-dim);
-            border-radius: 15px;
-            color: var(--gold-dim);
-            font-family: inherit;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .nav-btn:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-
-        .bookshelf-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background:
-                linear-gradient(180deg, #1a1410 0%, #0d0a08 50%, #1a1410 100%),
-                repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(0,0,0,0.1) 60px, rgba(0,0,0,0.1) 61px);
-        }
-
-        .books-shelf-row {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 20px 10px;
-            margin-bottom: 15px;
-            background: linear-gradient(180deg, #1a1410 0%, #100c08 100%);
-            border-radius: 4px;
-            flex-wrap: wrap;
-            box-shadow: inset 0 -4px 8px rgba(0,0,0,0.3);
-        }
-
-        .book {
-            width: 50px;
-            height: 140px;
-            border-radius: 2px 4px 4px 2px;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-        }
-
-        .book::before {
-            content: '';
-            position: absolute;
-            left: 3px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 1px;
-        }
-
-        .book:hover {
-            transform: translateY(-15px) rotate(-2deg);
-            box-shadow: 4px 8px 20px rgba(0,0,0,0.5), 0 0 20px rgba(201, 162, 39, 0.2);
-            z-index: 10;
-        }
-
-        .book-spine {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            transform: rotate(180deg);
-            font-size: 0.55rem;
-            color: var(--parchment);
-            text-shadow: 0 0 2px rgba(0,0,0,0.8);
-            padding: 8px 2px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            max-height: 130px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        /* Book colors */
-        .book.red { background: linear-gradient(90deg, #7a3535 0%, #5a2828 50%, #4a2020 100%); }
-        .book.blue { background: linear-gradient(90deg, #354a7a 0%, #283a5a 50%, #20304a 100%); }
-        .book.green { background: linear-gradient(90deg, #356a4a 0%, #285a3a 50%, #204a30 100%); }
-        .book.purple { background: linear-gradient(90deg, #5a357a 0%, #4a285a 50%, #3a204a 100%); }
-        .book.gold { background: linear-gradient(90deg, #7a6a35 0%, #5a5028 50%, #4a4020 100%); }
-        .book.brown { background: linear-gradient(90deg, #5a4a3a 0%, #4a3a2a 50%, #3a2a1a 100%); }
-        .book.teal { background: linear-gradient(90deg, #355a6a 0%, #284a5a 50%, #203a4a 100%); }
-        .book.maroon { background: linear-gradient(90deg, #5a2a3a 0%, #4a202a 50%, #3a1820 100%); }
-
-        /* ==================== BACK BUTTON ==================== */
-        .back-btn {
-            position: fixed;
-            top: 14px;
-            left: 14px;
-            z-index: 400;
-            padding: 8px 16px;
-            background: rgba(26, 20, 16, 0.95);
-            border: 1px solid var(--gold-dim);
-            border-radius: 20px;
-            color: var(--gold);
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            cursor: pointer;
-            display: none;
-            transition: all 0.2s;
-        }
-
-        .back-btn:hover {
-            background: var(--gold);
-            color: var(--bg-deep);
-        }
-
-        .bookshelf-view.active ~ .back-btn { display: block; }
-
-        /* ==================== SPIRAL ==================== */
-        .spiral-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 500;
-            background: var(--bg-deep);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.1s;
-        }
-
-        .spiral-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .spiral {
-            width: 250vmax;
-            height: 250vmax;
-            background: conic-gradient(
-                from 0deg,
-                var(--bg-deep) 0deg,
-                var(--gold) 15deg,
-                var(--bg-deep) 30deg,
-                #8b7355 45deg,
-                var(--bg-deep) 60deg,
-                var(--gold) 75deg,
-                var(--bg-deep) 90deg
-            );
-            border-radius: 50%;
-            transform: scale(0) rotate(0deg);
-        }
-
-        .spiral-overlay.spiral-in .spiral {
-            animation: spiralIn 0.8s ease-out forwards;
-        }
-
-        .spiral-overlay.spiral-out .spiral {
-            animation: spiralOut 0.8s ease-in forwards;
-        }
-
-        @keyframes spiralIn {
-            0% { transform: scale(0) rotate(0deg); }
-            100% { transform: scale(1) rotate(540deg); }
-        }
-
-        @keyframes spiralOut {
-            0% { transform: scale(1) rotate(540deg); }
-            100% { transform: scale(0) rotate(0deg); }
-        }
-
-        /* ==================== MODAL ==================== */
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 600;
-            background: rgba(10, 8, 6, 0.95);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.active { display: flex; }
-
-        .modal-box {
-            background: linear-gradient(135deg, #2a1f18 0%, #1a1410 100%);
-            border: 2px solid var(--gold-dim);
-            border-radius: 12px;
-            padding: 24px;
-            max-width: 420px;
-            width: 100%;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: none;
-            border: none;
-            color: var(--gold-dim);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .modal-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        .form-label {
-            display: block;
-            color: var(--gold);
-            font-size: 0.8rem;
-            margin-bottom: 6px;
-        }
-
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 10px;
-            background: rgba(10, 8, 6, 0.8);
-            border: 1px solid var(--gold-dim);
-            border-radius: 6px;
-            color: var(--parchment);
-            font-family: inherit;
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
-
-        .form-textarea { min-height: 80px; resize: vertical; }
-
-        .form-tabs {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .form-tab {
-            flex: 1;
             padding: 8px;
-            background: transparent;
-            border: 1px solid var(--gold-dim);
-            color: var(--gold-dim);
-            font-family: inherit;
-            font-size: 0.8rem;
-            cursor: pointer;
+        }
+
+        .section.open .section-books { display: block; }
+
+        .book-link {
+            display: block;
+            padding: 10px 12px;
+            color: #e0e0e0;
             border-radius: 4px;
-            transition: all 0.2s;
+            transition: background 0.15s;
         }
 
-        .form-tab.active {
-            background: var(--gold);
-            color: var(--bg-deep);
-            border-color: var(--gold);
+        .book-link:hover {
+            background: #1a1a1f;
+            text-decoration: none;
+            color: #c9a227;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--gold);
-            border: none;
-            border-radius: 6px;
-            color: var(--bg-deep);
-            font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .submit-btn:hover { box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3); }
-
-        .form-success {
-            text-align: center;
-            padding: 20px;
+        /* Search results */
+        .search-results {
             display: none;
+            margin-bottom: 24px;
+            background: #111;
+            border: 1px solid #c9a227;
+            border-radius: 8px;
+            padding: 12px;
         }
 
-        .form-success.show { display: block; }
+        .search-results.active { display: block; }
 
-        /* ==================== FOOTER ==================== */
+        .search-results h3 {
+            color: #c9a227;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .no-results { color: #888; font-style: italic; }
+
+        /* Footer */
         .footer {
             text-align: center;
-            padding: 30px 20px;
-            color: var(--gold-dim);
-            font-size: 0.8rem;
+            padding: 24px 16px;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #222;
+            margin-top: 24px;
         }
 
-        .footer a { color: var(--gold); text-decoration: none; }
-
-        /* ==================== MOBILE ==================== */
-        @media (max-width: 600px) {
-            .header { flex-wrap: wrap; }
-            .search-box { max-width: 100%; order: 3; width: 100%; margin-top: 8px; }
-            .room-title h1 { font-size: 1.5rem; }
-            .book { width: 40px; height: 110px; }
-            .book-spine { font-size: 0.5rem; }
+        .suggest-section {
+            background: #1a1a1f;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 24px;
         }
+
+        .suggest-section h3 {
+            color: #c9a227;
+            margin-bottom: 12px;
+        }
+
+        .suggest-form { display: flex; flex-direction: column; gap: 10px; }
+
+        .suggest-input, .suggest-textarea {
+            padding: 10px;
+            background: #0a0a0f;
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+
+        .suggest-textarea { min-height: 80px; resize: vertical; }
+
+        .suggest-btn {
+            padding: 10px 20px;
+            background: #c9a227;
+            color: #0a0a0f;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+
+        .suggest-btn:hover { background: #d4af37; }
+
+        .success-msg { color: #4a9; display: none; }
+        .success-msg.show { display: block; }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-
-    <!-- Header -->
     <header class="header">
         <a href="../index.html" class="logo">HAVE MIND MEDIA</a>
-        <div class="search-box">
-            <input type="text" class="search-input" id="search" placeholder="Search all books...">
-            <span class="search-icon">🔍</span>
-            <div class="search-results" id="search-results"></div>
-        </div>
+        <input type="text" class="search" id="search" placeholder="Search...">
     </header>
 
-    <!-- Room View -->
-    <main class="room" id="room">
-        <div class="room-title">
-            <h1>THE LIBRARY</h1>
-            <p>70 volumes · Touch a shelf to browse</p>
+    <main class="main">
+        <h1>The Library</h1>
+        <p class="subtitle">71 pages across 13 categories</p>
+
+        <div class="search-results" id="search-results">
+            <h3>Search Results</h3>
+            <div id="results-list"></div>
         </div>
 
-        <div class="shelves" id="shelves"></div>
+        <div id="sections"></div>
+
+        <div class="suggest-section">
+            <h3>Can't find what you're looking for?</h3>
+            <form class="suggest-form" id="suggest-form">
+                <input type="email" class="suggest-input" name="email" placeholder="Your email" required>
+                <textarea class="suggest-textarea" name="message" placeholder="Suggest a research topic or hire us for custom research..." required></textarea>
+                <button type="submit" class="suggest-btn">Submit</button>
+            </form>
+            <p class="success-msg" id="success-msg">Thanks! We'll be in touch.</p>
+        </div>
 
         <div class="footer">
-            <p>Can't find it? <a href="#" id="suggest-link">Suggest research</a> · <a href="#" id="hire-link">Hire us</a></p>
-            <p style="margin-top: 8px; font-family: 'Cinzel', serif; letter-spacing: 2px;">[1 = -1]</p>
+            <p>[1 = -1] · <a href="../index.html">havemindmedia.com</a></p>
         </div>
     </main>
 
-    <!-- Bookshelf View -->
-    <div class="bookshelf-view" id="bookshelf-view">
-        <div class="bookshelf-header">
-            <div class="bookshelf-title" id="shelf-title">Section</div>
-            <div class="bookshelf-subtitle" id="shelf-subtitle">X volumes</div>
-            <div class="bookshelf-nav">
-                <button class="nav-btn" id="prev-shelf">← Prev</button>
-                <button class="nav-btn" id="next-shelf">Next →</button>
-            </div>
-        </div>
-        <div class="bookshelf-content" id="bookshelf-content"></div>
-    </div>
-
-    <button class="back-btn" id="back-btn">← Library</button>
-
-    <!-- Spiral -->
-    <div class="spiral-overlay" id="spiral">
-        <div class="spiral"></div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-box">
-            <button class="modal-close" id="modal-close">×</button>
-            <h3 class="modal-title" id="modal-title">Suggest Research</h3>
-            <form id="form">
-                <div class="form-tabs">
-                    <button type="button" class="form-tab active" data-type="suggest">Suggest</button>
-                    <button type="button" class="form-tab" data-type="hire">Hire Us</button>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-input" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Name (optional)</label>
-                    <input type="text" class="form-input" name="name">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" id="msg-label">Topic / Idea</label>
-                    <textarea class="form-textarea" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-            <div class="form-success" id="success">
-                <div style="font-size: 2.5rem; margin-bottom: 12px;">✨</div>
-                <p style="color: var(--gold);">Thank you! We'll be in touch.</p>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // ==================== COMPLETE LIBRARY DATA ====================
-        // Dewey-style: 000-099 General, 100 Physics, 200 Soul, 300 Ancient, etc.
-
         const LIBRARY = {
-            "000 · Home & General": {
-                color: "brown",
-                books: [
-                    { title: "Home", url: "../index.html" },
-                    { title: "Master Library", url: "../library.html" }
-                ]
-            },
-            "100 · Physics & Geometry": {
-                color: "blue",
-                books: [
-                    { title: "Three-Body Solution", url: "../physics/three-body-geometry.html" },
-                    { title: "Millennium Problems", url: "../physics/millennium-problems.html" },
-                    { title: "JWST Geometric Explorer", url: "../physics/jwst-geometric-explorer.html" },
-                    { title: "Scalar Crossroads", url: "../physics-viz/scalar-crossroads-animated.html" },
-                    { title: "Quad Helix Base-60", url: "../physics-viz/quad-helix-base60.html" },
-                    { title: "Quad Helix v2.0", url: "../physics-viz/quad-helix-base60-v2.0.html" }
-                ]
-            },
-            "110 · CEDGA Framework": {
-                color: "teal",
-                books: [
-                    { title: "CEDGA Overview", url: "../cedga/index.html" },
-                    { title: "Kappa Constant", url: "../cedga/pages/kappa-constant.html" },
-                    { title: "Tetrahelix", url: "../cedga/pages/tetrahelix.html" },
-                    { title: "Balance Law", url: "../cedga/pages/balance-law.html" },
-                    { title: "M4 Simulator", url: "../cedga/tools/m4-simulator.html" },
-                    { title: "Test Analysis", url: "../cedga/research/test-analysis.html" }
-                ]
-            },
-            "120 · Biological Models": {
-                color: "green",
-                books: [
-                    { title: "DNA Studio", url: "../dna-studio/index.html" },
-                    { title: "Epoch Atomic Model", url: "../epoch-atomic/index.html" },
-                    { title: "Protein Folding", url: "../protein-folding/index.html" },
-                    { title: "Neurodegeneration", url: "../neurodegeneration/index.html" }
-                ]
-            },
-            "200 · Soul Science": {
-                color: "gold",
-                books: [
-                    { title: "Soul Science", url: "../education/soul-science.html" },
-                    { title: "Becoming a Coin", url: "../education/becoming-a-coin.html" },
-                    { title: "The Mirror", url: "../education/mirror/index.html" },
-                    { title: "Life-Facing Wisdom", url: "../education/life-facing-wisdom.html" },
-                    { title: "Vinyl Paradox", url: "../education/vinyl-paradox.html" },
-                    { title: "Sol Vision", url: "../tools/sol-vision/index.html" }
-                ]
-            },
-            "210 · Education": {
-                color: "maroon",
-                books: [
-                    { title: "Socratean Education", url: "../education/socratean-education.html" },
-                    { title: "Geometry Challenge", url: "../education/geometry-challenge.html" },
-                    { title: "Teaching Guide", url: "../teaching/Scalar_Dimensionality_Teaching_Document.html" }
-                ]
-            },
-            "300 · Voynich Manuscript": {
-                color: "purple",
-                books: [
-                    { title: "Voynich Overview", url: "../ancient-mysteries/voynich/index.html" },
-                    { title: "Herbal Section", url: "../ancient-mysteries/voynich/herbal.html" },
-                    { title: "Astronomical", url: "../ancient-mysteries/voynich/astronomical.html" },
-                    { title: "Biological", url: "../ancient-mysteries/voynich/biological.html" },
-                    { title: "Cosmological", url: "../ancient-mysteries/voynich/cosmological.html" },
-                    { title: "Pharmaceutical", url: "../ancient-mysteries/voynich/pharmaceutical.html" },
-                    { title: "Zodiac", url: "../ancient-mysteries/voynich/zodiac.html" },
-                    { title: "Recipes", url: "../ancient-mysteries/voynich/recipes.html" },
-                    { title: "Analysis", url: "../ancient-mysteries/voynich/analysis.html" }
-                ]
-            },
-            "310 · Ancient Texts": {
-                color: "brown",
-                books: [
-                    { title: "Rongorongo", url: "../ancient-mysteries/texts/rongorongo-v1.0.html" },
-                    { title: "Phaistos Disc", url: "../ancient-mysteries/texts/phaistos-v1.0.html" },
-                    { title: "Ancient Mathematics", url: "../ancient-mysteries/texts/ancient-mathematics-v1.0.html" }
-                ]
-            },
-            "320 · Norse Artifacts": {
-                color: "red",
-                books: [
-                    { title: "Rök Runestone", url: "../ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html" },
-                    { title: "Gotland Stones", url: "../ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html" },
-                    { title: "Gold Bracteates", url: "../ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html" },
-                    { title: "Oseberg Ship", url: "../ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html" },
-                    { title: "Norse Symbols", url: "../ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html" },
-                    { title: "Norse Library Card", url: "../ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html" }
-                ]
-            },
-            "400 · S-Signature Tools": {
-                color: "gold",
-                books: [
-                    { title: "S-Signature 128", url: "../tools/s-signature/s_signature_128.html" },
-                    { title: "Assessment", url: "../tools/s-signature/s_signature_assessment.html" },
-                    { title: "Evolving", url: "../tools/s-signature/s_signature_evolving.html" },
-                    { title: "Prediction", url: "../tools/s-signature/s_signature_prediction.html" },
-                    { title: "Sphere", url: "../tools/s-signature/s_signature_sphere.html" },
-                    { title: "Coin", url: "../tools/s-signature/s_signature_coin.html" },
-                    { title: "Card", url: "../tools/s-signature/s_signature_card.html" },
-                    { title: "Oracle", url: "../tools/s-signature/s_signature_oracle.html" },
-                    { title: "Engine", url: "../tools/s-signature/s_signature_engine.html" },
-                    { title: "Deep Oracle", url: "../tools/s-signature/deep_oracle.html" },
-                    { title: "Reductive Oracle", url: "../tools/s-signature/reductive_oracle.html" },
-                    { title: "Cohort Engine", url: "../tools/s-signature/cohort_engine.html" },
-                    { title: "Jason Ray Signature", url: "../tools/s-signature/jason_ray_s_signature.html" }
-                ]
-            },
-            "410 · Interactive Tools": {
-                color: "green",
-                books: [
-                    { title: "Mind Reading (tools)", url: "../tools/mind-reading/index.html" },
-                    { title: "M4 Visualizer", url: "../tools/m4-visualizer/index.html" },
-                    { title: "Interaction Modeler", url: "../tools/interaction-modeler/index.html" }
-                ]
-            },
-            "500 · Mind Games": {
-                color: "purple",
-                books: [
-                    { title: "Games Hub", url: "../games/index.html" },
-                    { title: "Mind Reading", url: "../games/mind-reading/index.html" },
-                    { title: "Balance", url: "../games/balance/index.html" }
-                ]
-            },
-            "600 · Documents & Theory": {
-                color: "brown",
-                books: [
-                    { title: "Unified Theory", url: "../documents/dec14-unified-theory/index.html" },
-                    { title: "Main Framework", url: "../documents/dec14-unified-theory/main-framework.html" },
-                    { title: "Dual-Axis Explorer", url: "../documents/dec14-unified-theory/dual-axis-explorer.html" },
-                    { title: "CERN Validation", url: "../documents/dec14-model-cern/index.html" },
-                    { title: "CERN Scalar Geometry", url: "../documents/cern-scalar-geometry.html" },
-                    { title: "Epoch Framework", url: "../documents/epoch-framework/index.html" },
-                    { title: "Tribute", url: "../documents/tribute/index.html" }
-                ]
-            }
+            "Home & General": [
+                { title: "Home", url: "../index.html" },
+                { title: "Master Library", url: "../library.html" }
+            ],
+            "Physics & Geometry": [
+                { title: "Three-Body Solution", url: "../physics/three-body-geometry.html" },
+                { title: "Millennium Problems", url: "../physics/millennium-problems.html" },
+                { title: "JWST Geometric Explorer", url: "../physics/jwst-geometric-explorer.html" },
+                { title: "Scalar Crossroads", url: "../physics-viz/scalar-crossroads-animated.html" },
+                { title: "Quad Helix Base-60", url: "../physics-viz/quad-helix-base60.html" },
+                { title: "Quad Helix v2.0", url: "../physics-viz/quad-helix-base60-v2.0.html" }
+            ],
+            "CEDGA Framework": [
+                { title: "CEDGA Overview", url: "../cedga/index.html" },
+                { title: "Kappa Constant", url: "../cedga/pages/kappa-constant.html" },
+                { title: "Tetrahelix", url: "../cedga/pages/tetrahelix.html" },
+                { title: "Balance Law", url: "../cedga/pages/balance-law.html" },
+                { title: "M4 Simulator", url: "../cedga/tools/m4-simulator.html" },
+                { title: "Test Analysis", url: "../cedga/research/test-analysis.html" }
+            ],
+            "Biological Models": [
+                { title: "DNA Studio", url: "../dna-studio/index.html" },
+                { title: "Epoch Atomic Model", url: "../epoch-atomic/index.html" },
+                { title: "Protein Folding", url: "../protein-folding/index.html" },
+                { title: "Neurodegeneration", url: "../neurodegeneration/index.html" }
+            ],
+            "Soul Science": [
+                { title: "Soul Science", url: "../education/soul-science.html" },
+                { title: "Becoming a Coin", url: "../education/becoming-a-coin.html" },
+                { title: "The Mirror", url: "../education/mirror/index.html" },
+                { title: "Life-Facing Wisdom", url: "../education/life-facing-wisdom.html" },
+                { title: "Vinyl Paradox", url: "../education/vinyl-paradox.html" },
+                { title: "Sol Vision", url: "../tools/sol-vision/index.html" }
+            ],
+            "Education": [
+                { title: "Socratean Education", url: "../education/socratean-education.html" },
+                { title: "Geometry Challenge", url: "../education/geometry-challenge.html" },
+                { title: "Teaching Guide", url: "../teaching/Scalar_Dimensionality_Teaching_Document.html" }
+            ],
+            "Voynich Manuscript": [
+                { title: "Voynich Overview", url: "../ancient-mysteries/voynich/index.html" },
+                { title: "Herbal Section", url: "../ancient-mysteries/voynich/herbal.html" },
+                { title: "Astronomical", url: "../ancient-mysteries/voynich/astronomical.html" },
+                { title: "Biological", url: "../ancient-mysteries/voynich/biological.html" },
+                { title: "Cosmological", url: "../ancient-mysteries/voynich/cosmological.html" },
+                { title: "Pharmaceutical", url: "../ancient-mysteries/voynich/pharmaceutical.html" },
+                { title: "Zodiac", url: "../ancient-mysteries/voynich/zodiac.html" },
+                { title: "Recipes", url: "../ancient-mysteries/voynich/recipes.html" },
+                { title: "Analysis", url: "../ancient-mysteries/voynich/analysis.html" }
+            ],
+            "Ancient Texts": [
+                { title: "Rongorongo", url: "../ancient-mysteries/texts/rongorongo-v1.0.html" },
+                { title: "Phaistos Disc", url: "../ancient-mysteries/texts/phaistos-v1.0.html" },
+                { title: "Ancient Mathematics", url: "../ancient-mysteries/texts/ancient-mathematics-v1.0.html" }
+            ],
+            "Norse Artifacts": [
+                { title: "Rök Runestone", url: "../ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html" },
+                { title: "Gotland Stones", url: "../ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html" },
+                { title: "Gold Bracteates", url: "../ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html" },
+                { title: "Oseberg Ship", url: "../ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html" },
+                { title: "Norse Symbols", url: "../ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html" },
+                { title: "Norse Library Card", url: "../ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html" }
+            ],
+            "S-Signature Tools": [
+                { title: "S-Signature 128", url: "../tools/s-signature/s_signature_128.html" },
+                { title: "Assessment", url: "../tools/s-signature/s_signature_assessment.html" },
+                { title: "Evolving", url: "../tools/s-signature/s_signature_evolving.html" },
+                { title: "Prediction", url: "../tools/s-signature/s_signature_prediction.html" },
+                { title: "Sphere", url: "../tools/s-signature/s_signature_sphere.html" },
+                { title: "Coin", url: "../tools/s-signature/s_signature_coin.html" },
+                { title: "Card", url: "../tools/s-signature/s_signature_card.html" },
+                { title: "Oracle", url: "../tools/s-signature/s_signature_oracle.html" },
+                { title: "Engine", url: "../tools/s-signature/s_signature_engine.html" },
+                { title: "Deep Oracle", url: "../tools/s-signature/deep_oracle.html" },
+                { title: "Reductive Oracle", url: "../tools/s-signature/reductive_oracle.html" },
+                { title: "Cohort Engine", url: "../tools/s-signature/cohort_engine.html" },
+                { title: "Jason Ray Signature", url: "../tools/s-signature/jason_ray_s_signature.html" }
+            ],
+            "Interactive Tools": [
+                { title: "Mind Reading (tools)", url: "../tools/mind-reading/index.html" },
+                { title: "M4 Visualizer", url: "../tools/m4-visualizer/index.html" },
+                { title: "Interaction Modeler", url: "../tools/interaction-modeler/index.html" }
+            ],
+            "Mind Games": [
+                { title: "Games Hub", url: "../games/index.html" },
+                { title: "Mind Reading (Games)", url: "../games/mind-reading/index.html" },
+                { title: "Balance", url: "../games/balance/index.html" }
+            ],
+            "Documents & Theory": [
+                { title: "Unified Theory", url: "../documents/dec14-unified-theory/index.html" },
+                { title: "Main Framework", url: "../documents/dec14-unified-theory/main-framework.html" },
+                { title: "Dual-Axis Explorer", url: "../documents/dec14-unified-theory/dual-axis-explorer.html" },
+                { title: "CERN Validation", url: "../documents/dec14-model-cern/index.html" },
+                { title: "CERN Scalar Geometry", url: "../documents/cern-scalar-geometry.html" },
+                { title: "Epoch Framework", url: "../documents/epoch-framework/index.html" },
+                { title: "Tribute", url: "../documents/tribute/index.html" }
+            ]
         };
 
-        const SECTIONS = Object.keys(LIBRARY);
-        const COLORS = ['red', 'blue', 'green', 'purple', 'gold', 'brown', 'teal', 'maroon'];
-        let currentSection = 0;
+        // Render sections
+        const sectionsEl = document.getElementById('sections');
 
-        // Elements
-        const shelvesEl = document.getElementById('shelves');
-        const bookshelfView = document.getElementById('bookshelf-view');
-        const bookshelfContent = document.getElementById('bookshelf-content');
-        const shelfTitle = document.getElementById('shelf-title');
-        const shelfSubtitle = document.getElementById('shelf-subtitle');
-        const backBtn = document.getElementById('back-btn');
-        const spiral = document.getElementById('spiral');
+        Object.entries(LIBRARY).forEach(([name, books], idx) => {
+            const section = document.createElement('div');
+            section.className = 'section' + (idx === 0 ? ' open' : '');
+
+            section.innerHTML = `
+                <div class="section-header">
+                    <span class="section-title">${name}</span>
+                    <span class="section-count">${books.length}</span>
+                    <span class="section-arrow">▶</span>
+                </div>
+                <div class="section-books">
+                    ${books.map(b => `<a href="${b.url}" class="book-link">${b.title}</a>`).join('')}
+                </div>
+            `;
+
+            section.querySelector('.section-header').addEventListener('click', () => {
+                section.classList.toggle('open');
+            });
+
+            sectionsEl.appendChild(section);
+        });
+
+        // Search
         const searchInput = document.getElementById('search');
         const searchResults = document.getElementById('search-results');
-        const modal = document.getElementById('modal');
-        const particles = document.getElementById('particles');
+        const resultsList = document.getElementById('results-list');
 
-        // ==================== INIT ====================
-        function init() {
-            renderShelves();
-            createParticles();
-            setupEvents();
-        }
+        searchInput.addEventListener('input', (e) => {
+            const q = e.target.value.toLowerCase().trim();
 
-        function createParticles() {
-            for (let i = 0; i < 25; i++) {
-                const d = document.createElement('div');
-                d.className = 'dust';
-                d.style.left = Math.random() * 100 + '%';
-                d.style.animationDelay = Math.random() * 25 + 's';
-                d.style.animationDuration = (20 + Math.random() * 15) + 's';
-                particles.appendChild(d);
-            }
-        }
-
-        function renderShelves() {
-            shelvesEl.innerHTML = '';
-            let totalBooks = 0;
-
-            SECTIONS.forEach((section, idx) => {
-                const data = LIBRARY[section];
-                totalBooks += data.books.length;
-
-                const shelf = document.createElement('div');
-                shelf.className = 'shelf';
-                shelf.dataset.idx = idx;
-
-                // Mini books preview
-                let booksHtml = '';
-                const previewCount = Math.min(data.books.length, 12);
-                for (let i = 0; i < previewCount; i++) {
-                    const color = COLORS[(i + idx) % COLORS.length];
-                    const height = 50 + Math.random() * 20;
-                    booksHtml += `<div class="mini-book" style="background: var(--leather-${data.color}); height: ${height}px;"></div>`;
-                }
-
-                const num = section.split('·')[0].trim();
-                shelf.innerHTML = `
-                    <div class="shelf-number">${num}</div>
-                    <div class="shelf-label">${section.split('·')[1]?.trim() || section}</div>
-                    <div class="shelf-books">${booksHtml}</div>
-                    <div class="shelf-count">${data.books.length} volumes</div>
-                `;
-
-                shelf.addEventListener('click', () => openShelf(idx));
-                shelvesEl.appendChild(shelf);
-            });
-
-            document.querySelector('.room-title p').textContent = `${totalBooks} volumes · Touch a shelf to browse`;
-        }
-
-        // ==================== SHELF NAVIGATION ====================
-        function openShelf(idx) {
-            currentSection = idx;
-            spiral.classList.add('active', 'spiral-in');
-
-            setTimeout(() => {
-                renderBooks(idx);
-                bookshelfView.classList.add('active');
-                document.getElementById('room').style.display = 'none';
-            }, 400);
-
-            setTimeout(() => {
-                spiral.classList.remove('active', 'spiral-in');
-            }, 800);
-        }
-
-        function closeShelf() {
-            spiral.classList.add('active', 'spiral-out');
-
-            setTimeout(() => {
-                bookshelfView.classList.remove('active');
-                document.getElementById('room').style.display = 'block';
-            }, 400);
-
-            setTimeout(() => {
-                spiral.classList.remove('active', 'spiral-out');
-            }, 800);
-        }
-
-        function renderBooks(idx) {
-            const section = SECTIONS[idx];
-            const data = LIBRARY[section];
-
-            shelfTitle.textContent = section;
-            shelfSubtitle.textContent = `${data.books.length} volumes`;
-
-            // Group into rows of ~8 books
-            const rows = [];
-            const booksPerRow = window.innerWidth < 600 ? 5 : 8;
-            for (let i = 0; i < data.books.length; i += booksPerRow) {
-                rows.push(data.books.slice(i, i + booksPerRow));
-            }
-
-            bookshelfContent.innerHTML = rows.map(row => `
-                <div class="books-shelf-row">
-                    ${row.map((book, i) => {
-                        const color = COLORS[(i + idx) % COLORS.length];
-                        return `<div class="book ${color}" data-url="${book.url}" title="${book.title}">
-                            <span class="book-spine">${book.title}</span>
-                        </div>`;
-                    }).join('')}
-                </div>
-            `).join('');
-
-            // Book click handlers
-            bookshelfContent.querySelectorAll('.book').forEach(book => {
-                book.addEventListener('click', () => {
-                    spiral.classList.add('active', 'spiral-in');
-                    setTimeout(() => {
-                        window.location.href = book.dataset.url;
-                    }, 500);
-                });
-            });
-        }
-
-        function nextShelf() {
-            currentSection = (currentSection + 1) % SECTIONS.length;
-            renderBooks(currentSection);
-        }
-
-        function prevShelf() {
-            currentSection = (currentSection - 1 + SECTIONS.length) % SECTIONS.length;
-            renderBooks(currentSection);
-        }
-
-        // ==================== SEARCH ====================
-        function handleSearch(q) {
             if (q.length < 2) {
-                searchResults.classList.remove('show');
+                searchResults.classList.remove('active');
                 return;
             }
 
-            const results = [];
-            const query = q.toLowerCase();
-
-            for (const [section, data] of Object.entries(LIBRARY)) {
-                for (const book of data.books) {
-                    if (book.title.toLowerCase().includes(query)) {
-                        results.push({ ...book, section });
+            const matches = [];
+            Object.entries(LIBRARY).forEach(([section, books]) => {
+                books.forEach(book => {
+                    if (book.title.toLowerCase().includes(q)) {
+                        matches.push({ ...book, section });
                     }
-                }
-            }
+                });
+            });
 
-            if (results.length) {
-                searchResults.innerHTML = results.slice(0, 10).map(r => `
-                    <div class="search-item" data-url="${r.url}">
-                        <div class="search-item-title">${r.title}</div>
-                        <div class="search-item-cat">${r.section}</div>
-                    </div>
-                `).join('');
+            if (matches.length) {
+                resultsList.innerHTML = matches.map(m =>
+                    `<a href="${m.url}" class="book-link">${m.title} <span style="color:#666">— ${m.section}</span></a>`
+                ).join('');
             } else {
-                searchResults.innerHTML = `
-                    <div class="no-results">
-                        No results for "${q}"<br>
-                        <span class="suggest-btn" id="search-suggest">Suggest this topic?</span>
-                    </div>
-                `;
+                resultsList.innerHTML = '<p class="no-results">No results found. Try a different search or suggest a topic below.</p>';
             }
-            searchResults.classList.add('show');
-        }
 
-        // ==================== MODAL ====================
-        function openModal(type) {
-            document.querySelectorAll('.form-tab').forEach(t => t.classList.toggle('active', t.dataset.type === type));
-            document.getElementById('modal-title').textContent = type === 'hire' ? 'Hire Us' : 'Suggest Research';
-            document.getElementById('msg-label').textContent = type === 'hire' ? 'Project Description' : 'Topic / Idea';
-            document.getElementById('form').style.display = 'block';
-            document.getElementById('success').classList.remove('show');
-            modal.classList.add('active');
-        }
+            searchResults.classList.add('active');
+        });
 
-        function closeModal() {
-            modal.classList.remove('active');
-        }
+        // Suggest form
+        document.getElementById('suggest-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fd = new FormData(e.target);
+            const data = {
+                email: fd.get('email'),
+                message: fd.get('message'),
+                date: new Date().toISOString()
+            };
 
-        // ==================== EVENTS ====================
-        function setupEvents() {
-            backBtn.addEventListener('click', closeShelf);
-            document.getElementById('prev-shelf').addEventListener('click', prevShelf);
-            document.getElementById('next-shelf').addEventListener('click', nextShelf);
+            const subs = JSON.parse(localStorage.getItem('hmm-suggestions') || '[]');
+            subs.push(data);
+            localStorage.setItem('hmm-suggestions', JSON.stringify(subs));
 
-            // Search
-            searchInput.addEventListener('input', e => handleSearch(e.target.value));
-            searchInput.addEventListener('focus', () => { if (searchInput.value.length >= 2) searchResults.classList.add('show'); });
-            document.addEventListener('click', e => { if (!e.target.closest('.search-box')) searchResults.classList.remove('show'); });
-
-            searchResults.addEventListener('click', e => {
-                const item = e.target.closest('.search-item');
-                if (item) {
-                    spiral.classList.add('active', 'spiral-in');
-                    setTimeout(() => { window.location.href = item.dataset.url; }, 500);
-                }
-                if (e.target.id === 'search-suggest') {
-                    searchResults.classList.remove('show');
-                    openModal('suggest');
-                }
-            });
-
-            // Modal
-            document.getElementById('suggest-link').addEventListener('click', e => { e.preventDefault(); openModal('suggest'); });
-            document.getElementById('hire-link').addEventListener('click', e => { e.preventDefault(); openModal('hire'); });
-            document.getElementById('modal-close').addEventListener('click', closeModal);
-            modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-
-            document.querySelectorAll('.form-tab').forEach(tab => {
-                tab.addEventListener('click', () => openModal(tab.dataset.type));
-            });
-
-            document.getElementById('form').addEventListener('submit', e => {
-                e.preventDefault();
-                const fd = new FormData(e.target);
-                const data = { email: fd.get('email'), name: fd.get('name'), message: fd.get('message'), type: document.querySelector('.form-tab.active').dataset.type, date: new Date().toISOString() };
-                const subs = JSON.parse(localStorage.getItem('hmm-subs') || '[]');
-                subs.push(data);
-                localStorage.setItem('hmm-subs', JSON.stringify(subs));
-                e.target.style.display = 'none';
-                document.getElementById('success').classList.add('show');
-            });
-
-            // Swipe
-            let startX = 0;
-            bookshelfContent.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
-            bookshelfContent.addEventListener('touchend', e => {
-                const diff = startX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 60) { diff > 0 ? nextShelf() : prevShelf(); }
-            });
-
-            // Keyboard
-            document.addEventListener('keydown', e => {
-                if (bookshelfView.classList.contains('active')) {
-                    if (e.key === 'ArrowRight') nextShelf();
-                    if (e.key === 'ArrowLeft') prevShelf();
-                    if (e.key === 'Escape') closeShelf();
-                }
-            });
-        }
-
-        init();
+            e.target.reset();
+            document.getElementById('success-msg').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('success-msg').classList.remove('show');
+            }, 3000);
+        });
     </script>
 </body>
 </html>
