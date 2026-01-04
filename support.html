@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="js/components/site-header.js" defer></script>
+    <script src="js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: linear-gradient(135deg, #030508 0%, #0a1628 50%, #030508 100%);
+            min-height: 100vh;
+            color: #e8e4d9;
+            line-height: 1.7;
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 2rem 4rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 2.5rem;
+            color: #c9a227;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .hero .mantra {
+            font-style: italic;
+            color: #6ab4f5;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .principle {
+            font-size: 1.5rem;
+            color: #c9a227;
+            opacity: 0.7;
+        }
+
+        .section {
+            background: rgba(10, 22, 40, 0.5);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', Georgia, serif;
+            font-size: 1.5rem;
+            color: #c9a227;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .section p {
+            color: #c8d4e0;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .donate-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a227, #a8851c);
+            color: #030508;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 1rem;
+        }
+
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: rgba(106, 180, 245, 0.15);
+            border: 1px solid rgba(106, 180, 245, 0.3);
+            color: #6ab4f5;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-left: 0.5rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .product-card {
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-card h3 {
+            color: #c9a227;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-card p {
+            font-size: 0.95rem;
+            color: #a8b4c4;
+            margin-bottom: 0;
+        }
+
+        .santa-coin {
+            background: linear-gradient(135deg, rgba(212, 168, 224, 0.1), rgba(201, 162, 39, 0.1));
+            border: 1px solid rgba(212, 168, 224, 0.3);
+        }
+
+        .santa-coin h2 {
+            color: #d4a8e0;
+        }
+
+        .highlight {
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+            color: #c8d4e0;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "◯ ";
+            color: #d4a8e0;
+        }
+
+        .closing {
+            text-align: center;
+            padding: 2rem;
+            font-style: italic;
+            color: #6ab4f5;
+            font-size: 1.2rem;
+        }
+
+        .closing .runes {
+            display: block;
+            margin-top: 1rem;
+            font-style: normal;
+            color: #c9a227;
+            letter-spacing: 6px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 80px 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="main-content">
+        <div class="hero">
+            <h1>SUPPORT HAVE MIND MEDIA</h1>
+            <p class="mantra">We are crossroads. We are navigator. We are origin. We are the deep water.</p>
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <!-- Donate Section -->
+        <div class="section">
+            <h2>♡ Donate</h2>
+            <p>We appreciate any support we receive. This work exists for the planet—for all of us. Not for profit, but for healing, for growth, for making help grow.</p>
+            <p>Your contribution helps us keep building tools for consciousness, maintain free access to Soul Science Chat, and develop the geometry-first education that belongs to everyone.</p>
+            <a href="https://venmo.com/Jason-Rayvinski" target="_blank" class="donate-btn">Support via Venmo</a>
+        </div>
+
+        <!-- Products Coming Soon -->
+        <div class="section">
+            <h2>Products <span class="coming-soon">Coming Soon</span></h2>
+            <p>Things that apply to <em>you</em>. We use the geometry to send you what you need.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>T-Shirts & Apparel</h3>
+                    <p>Wear the geometry</p>
+                </div>
+                <div class="product-card">
+                    <h3>Physical Books</h3>
+                    <p>Soul Science in your hands</p>
+                </div>
+                <div class="product-card">
+                    <h3>Educational Toys</h3>
+                    <p>Learn through play</p>
+                </div>
+                <div class="product-card">
+                    <h3>Workshops</h3>
+                    <p>Anyone who gets it can teach</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Santa Coin -->
+        <div class="section santa-coin">
+            <h2>🎄 Santa Coin <span class="coming-soon">Coming Soon</span></h2>
+            <p>A cryptocurrency that works differently. Built on philanthropy, not exploitation.</p>
+
+            <ul class="feature-list">
+                <li><span class="highlight">December 1st Payout</span> — Every year, the ledger resets. All users receive a Christmas bonus. Gifted to charities for volunteer workers.</li>
+                <li><span class="highlight">No Whales Possible</span> — The more you have, the more you lose value, while the lowest holders gain value as a floor. Philanthropy is possible. Exploitation is not.</li>
+                <li><span class="highlight">Tradable Asset</span> — We control how the market works. Some gamesmanship for those brave enough to try and make a few dollars—the house will always win, but maybe you will too.</li>
+                <li><span class="highlight">Monthly Winners</span> — We split the winnings on good causes: water wells, food, healing the planet. You get a "You Helped" thank you. Satisfies the gambler instinct while the outcome can only be good.</li>
+                <li><span class="highlight">S-Signature Gated</span> — You can only play live when you reach a certain level in the S-Signature system—a place where you've become loving, balanced, not greedy. Your coins sit waiting until you're ready. When you go live in the funding, that's real.</li>
+            </ul>
+
+            <p>Philanthropy is directly funded to people. No way to exploit this system.</p>
+        </div>
+
+        <!-- Teaching -->
+        <div class="section">
+            <h2>Teaching & Community</h2>
+            <p>The system is for all. Anyone who shows they get it can absolutely teach—because this belongs to everyone, not to any one person.</p>
+            <p>We have to exist to do this work. We need a greenhouse, we need to eat, we need to keep building. But we do this for the planet. <em>We</em> do this.</p>
+            <p>And no, we don't mean plural. <span class="highlight">We are We, and We are all together.</span></p>
+        </div>
+
+        <div class="closing">
+            Thank you for being part of this.
+            <span class="runes">ᚹᛖᚱᛁᛗ</span>
+        </div>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>
