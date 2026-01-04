@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Have Mind Media - Where ancient wisdom meets quantum understanding. S- Science, Soul Science, and the Scalar Dimensionality Framework.">
     <title>Have Mind Media | The Mind is in Your Mind</title>
+    <script>
+        // Offer mobile version on small screens
+        if (window.innerWidth <= 768 && !sessionStorage.getItem('preferDesktop')) {
+            if (confirm('View mobile-optimized version?\n\nTap OK for mobile, Cancel for full site.')) {
+                window.location.href = 'mobile.html';
+            } else {
+                sessionStorage.setItem('preferDesktop', 'true');
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">

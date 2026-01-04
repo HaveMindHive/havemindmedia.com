@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Have Mind Media | Mobile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #030508 0%, #0a1628 50%, #030508 100%);
+            min-height: 100vh;
+            color: #e8e4d9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .logo {
+            font-family: Georgia, serif;
+            font-size: 1.4rem;
+            color: #c9a227;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #6ab4f5;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .principle {
+            font-family: Georgia, serif;
+            font-size: 1.8rem;
+            color: #c9a227;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .main-card {
+            background: rgba(201, 162, 39, 0.08);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .main-card h2 {
+            color: #c9a227;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .main-card p {
+            color: #a8b4c4;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .chat-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a227, #a8851c);
+            color: #030508;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .chat-btn:active {
+            transform: scale(0.98);
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: rgba(201, 162, 39, 0.3);
+            margin: 1.5rem 0;
+        }
+
+        .desktop-link {
+            color: #6ab4f5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(106, 180, 245, 0.3);
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+
+        .desktop-link:active {
+            background: rgba(106, 180, 245, 0.1);
+        }
+
+        .branches {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .branch {
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .branch:active {
+            transform: scale(0.95);
+        }
+
+        .branch.splus {
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            color: #c9a227;
+        }
+
+        .branch.sminus {
+            background: rgba(106, 180, 245, 0.15);
+            border: 1px solid rgba(106, 180, 245, 0.4);
+            color: #6ab4f5;
+        }
+
+        .branch.coin {
+            background: rgba(212, 168, 224, 0.15);
+            border: 1px solid rgba(212, 168, 224, 0.4);
+            color: #d4a8e0;
+        }
+
+        .runes {
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: #c9a227;
+            opacity: 0.6;
+            letter-spacing: 4px;
+        }
+
+        .support {
+            margin-top: 2rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 20px;
+            color: #c9a227;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 2rem;
+            font-size: 0.75rem;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">HAVE MIND MEDIA</div>
+    <div class="tagline">The Mind is in Your Mind</div>
+    <div class="principle">[1 = -1]</div>
+
+    <div class="main-card">
+        <h2>☯ Soul Science Chat</h2>
+        <p>Talk with an AI trained in geometry-first consciousness science. Ask anything.</p>
+        <a href="https://soulsciencemomma.netlify.app/" class="chat-btn">Start Chat</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <a href="index.html" class="desktop-link">View Full Desktop Site</a>
+
+    <div class="branches">
+        <a href="physics/three-body-geometry.html" class="branch splus">S+ Physics</a>
+        <a href="education/soul-science.html" class="branch sminus">S- Soul</a>
+        <a href="coin-science/index.html" class="branch coin">◯ COIN</a>
+    </div>
+
+    <div class="runes">ᚹᛖᚱᛁᛗ</div>
+
+    <a href="https://venmo.com/Jason-Rayvinski" target="_blank" class="support">♡ Support Us</a>
+
+    <div class="footer">
+        © 2026 Have Mind Media<br>
+        κ = 2π/180
+    </div>
+</body>
+</html>
