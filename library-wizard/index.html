@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Library | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-deep: #0a0806;
+            --bg-wood: #1a1410;
+            --gold: #c9a227;
+            --gold-dim: #8b7355;
+            --parchment: #f4e4bc;
+            --leather-red: #6b2c2c;
+            --leather-blue: #2c3d6b;
+            --leather-green: #2c5c3c;
+            --leather-purple: #4a2c6b;
+            --candle-glow: rgba(255, 200, 100, 0.15);
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg-deep);
+            color: var(--parchment);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ==================== AMBIENT EFFECTS ==================== */
+        .ambient-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .dust {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 220, 150, 0.3);
+            border-radius: 50%;
+            animation: float-dust 20s infinite linear;
+        }
+
+        @keyframes float-dust {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) translateX(100px); opacity: 0; }
+        }
+
+        /* ==================== HEADER ==================== */
+        .library-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: linear-gradient(180deg, rgba(10, 8, 6, 0.98) 0%, transparent 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .library-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-decoration: none;
+        }
+
+        .library-title:hover { color: #e8c547; }
+
+        .search-container {
+            position: relative;
+            width: 280px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px 40px 10px 16px;
+            background: rgba(26, 20, 16, 0.9);
+            border: 1px solid var(--gold-dim);
+            border-radius: 25px;
+            color: var(--parchment);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: var(--gold-dim);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold-dim);
+            pointer-events: none;
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            background: rgba(26, 20, 16, 0.98);
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 200;
+        }
+
+        .search-results.active { display: block; }
+
+        .search-result-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .search-result-item:last-child { border-bottom: none; }
+
+        .result-title {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .result-section {
+            font-size: 0.75rem;
+            color: var(--gold-dim);
+        }
+
+        .no-results {
+            padding: 16px;
+            text-align: center;
+            color: var(--gold-dim);
+        }
+
+        .suggest-link {
+            color: var(--gold);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* ==================== LIBRARY ROOM ==================== */
+        .library-room {
+            min-height: 100vh;
+            padding: 100px 2rem 2rem;
+            perspective: 1200px;
+            background:
+                radial-gradient(ellipse at 30% 20%, var(--candle-glow) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 30%, var(--candle-glow) 0%, transparent 35%),
+                radial-gradient(ellipse at 50% 80%, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
+                var(--bg-deep);
+        }
+
+        .room-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .room-title h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+        }
+
+        .room-title p {
+            color: var(--gold-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* ==================== BOOKSHELVES ==================== */
+        .shelves-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .bookshelf {
+            width: 320px;
+            background: linear-gradient(180deg, #2a1f18 0%, #1a1410 100%);
+            border: 3px solid #3d2e24;
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+            box-shadow:
+                inset 0 0 30px rgba(0,0,0,0.5),
+                0 10px 40px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.4s, box-shadow 0.4s;
+            transform-style: preserve-3d;
+        }
+
+        .bookshelf:hover {
+            transform: translateY(-10px) rotateX(2deg);
+            box-shadow:
+                inset 0 0 30px rgba(0,0,0,0.5),
+                0 20px 60px rgba(0,0,0,0.6),
+                0 0 40px rgba(201, 162, 39, 0.1);
+        }
+
+        .shelf-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .books-row {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 8px;
+            padding: 8px 4px;
+            background: linear-gradient(180deg, #1a1410 0%, #0d0a08 100%);
+            border-radius: 2px;
+        }
+
+        .book {
+            width: 24px;
+            height: 80px;
+            border-radius: 2px 3px 3px 2px;
+            position: relative;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 1px;
+        }
+
+        .book:hover {
+            transform: translateY(-8px) rotate(-2deg);
+        }
+
+        .book.red { background: linear-gradient(90deg, #8b3a3a 0%, #6b2c2c 50%, #5a2424 100%); }
+        .book.blue { background: linear-gradient(90deg, #3a4a7b 0%, #2c3d6b 50%, #24335a 100%); }
+        .book.green { background: linear-gradient(90deg, #3a6b4a 0%, #2c5c3c 50%, #245a34 100%); }
+        .book.purple { background: linear-gradient(90deg, #5a3a7b 0%, #4a2c6b 50%, #3d245a 100%); }
+        .book.gold { background: linear-gradient(90deg, #9a8a3a 0%, #8b7a2c 50%, #7a6a24 100%); }
+        .book.brown { background: linear-gradient(90deg, #6b5a4a 0%, #5c4a3c 50%, #4a3a2c 100%); }
+
+        .shelf-count {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--gold-dim);
+            margin-top: 0.5rem;
+        }
+
+        /* ==================== SPIRAL TRANSITION ==================== */
+        .spiral-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 500;
+            pointer-events: none;
+            opacity: 0;
+            background: var(--bg-deep);
+        }
+
+        .spiral-overlay.active {
+            pointer-events: all;
+            opacity: 1;
+        }
+
+        .spiral-container {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .spiral {
+            width: 200vmax;
+            height: 200vmax;
+            background: conic-gradient(
+                from 0deg,
+                var(--bg-deep) 0deg,
+                var(--gold) 10deg,
+                var(--bg-deep) 20deg,
+                var(--gold) 30deg,
+                var(--bg-deep) 40deg,
+                var(--gold) 50deg,
+                var(--bg-deep) 60deg
+            );
+            border-radius: 50%;
+            animation: none;
+        }
+
+        .spiral-overlay.spiraling-in .spiral {
+            animation: spiral-in 1s ease-in-out forwards;
+        }
+
+        .spiral-overlay.spiraling-out .spiral {
+            animation: spiral-out 1s ease-in-out forwards;
+        }
+
+        @keyframes spiral-in {
+            0% { transform: scale(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: scale(1) rotate(720deg); opacity: 1; }
+        }
+
+        @keyframes spiral-out {
+            0% { transform: scale(1) rotate(720deg); opacity: 1; }
+            50% { opacity: 1; }
+            100% { transform: scale(0) rotate(0deg); opacity: 0; }
+        }
+
+        /* ==================== SECTION VIEW ==================== */
+        .section-view {
+            position: fixed;
+            inset: 0;
+            z-index: 400;
+            background: var(--bg-deep);
+            padding: 80px 2rem 2rem;
+            overflow-y: auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .section-view.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-nav-btn {
+            background: none;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold-dim);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .section-nav-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .back-to-library {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 450;
+            background: rgba(26, 20, 16, 0.9);
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s;
+        }
+
+        .back-to-library:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+
+        .section-view.active ~ .back-to-library {
+            display: block;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: linear-gradient(135deg, #2a1f18 0%, #1a1410 100%);
+            border: 1px solid #3d2e24;
+            border-radius: 8px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .book-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(201, 162, 39, 0.1);
+        }
+
+        .book-card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .book-card-desc {
+            font-size: 0.85rem;
+            color: var(--gold-dim);
+            line-height: 1.5;
+        }
+
+        /* ==================== SUGGESTION MODAL ==================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 600;
+            background: rgba(10, 8, 6, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-box {
+            background: linear-gradient(135deg, #2a1f18 0%, #1a1410 100%);
+            border: 2px solid var(--gold-dim);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--gold-dim);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-close:hover { color: var(--gold); }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .modal-desc {
+            color: var(--gold-dim);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(10, 8, 6, 0.8);
+            border: 1px solid var(--gold-dim);
+            border-radius: 8px;
+            color: var(--parchment);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-tab {
+            flex: 1;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold-dim);
+            font-family: inherit;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .form-tab.active {
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-color: var(--gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+            border: none;
+            border-radius: 8px;
+            color: var(--bg-deep);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .form-success {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .form-success.active { display: block; }
+
+        .form-success-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ==================== SWIPE HINT ==================== */
+        .swipe-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-dim);
+            font-size: 0.8rem;
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        .section-view.active ~ .swipe-hint {
+            display: flex;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* ==================== MOBILE ==================== */
+        @media (max-width: 768px) {
+            .library-header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            .room-title h1 {
+                font-size: 1.8rem;
+            }
+
+            .bookshelf {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ==================== FOOTER ==================== */
+        .library-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--gold-dim);
+            font-size: 0.85rem;
+        }
+
+        .library-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .library-footer .principle {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Particles -->
+    <div class="ambient-particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="library-header">
+        <a href="../index.html" class="library-title">HAVE MIND MEDIA</a>
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search the library...">
+            <span class="search-icon">🔍</span>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </header>
+
+    <!-- Library Room -->
+    <main class="library-room" id="library-room">
+        <div class="room-title">
+            <h1>THE LIBRARY</h1>
+            <p>Ancient wisdom meets quantum understanding</p>
+        </div>
+
+        <div class="shelves-container" id="shelves-container">
+            <!-- Shelves generated by JS -->
+        </div>
+
+        <footer class="library-footer">
+            <p>Can't find what you seek? <a href="#" id="suggest-link">Suggest research</a> or <a href="#" id="hire-link">hire us</a></p>
+            <p class="principle">[1 = -1]</p>
+        </footer>
+    </main>
+
+    <!-- Section View -->
+    <div class="section-view" id="section-view">
+        <div class="section-header">
+            <h2 id="section-title">Section</h2>
+            <div class="section-nav">
+                <button class="section-nav-btn" id="prev-section">← Previous</button>
+                <button class="section-nav-btn" id="next-section">Next →</button>
+            </div>
+        </div>
+        <div class="books-grid" id="books-grid"></div>
+    </div>
+
+    <button class="back-to-library" id="back-btn">← Back to Library</button>
+    <div class="swipe-hint">← Swipe to navigate →</div>
+
+    <!-- Spiral Transition -->
+    <div class="spiral-overlay" id="spiral-overlay">
+        <div class="spiral-container">
+            <div class="spiral"></div>
+        </div>
+    </div>
+
+    <!-- Suggestion Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-box">
+            <button class="modal-close" id="modal-close">×</button>
+            <h3 class="modal-title" id="modal-title">Suggest Research</h3>
+            <p class="modal-desc" id="modal-desc">Have an idea for research? We'd love to hear it.</p>
+
+            <form id="suggestion-form">
+                <div class="form-tabs">
+                    <button type="button" class="form-tab active" data-type="suggest">Suggest Topic</button>
+                    <button type="button" class="form-tab" data-type="hire">Hire Us</button>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Your Email</label>
+                    <input type="email" class="form-input" name="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Your Name (optional)</label>
+                    <input type="text" class="form-input" name="name" placeholder="How should we address you?">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" id="topic-label">Research Topic / Idea</label>
+                    <textarea class="form-textarea" name="message" required placeholder="What would you like us to explore?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+            <div class="form-success" id="form-success">
+                <div class="form-success-icon">✨</div>
+                <h3 style="color: var(--gold); margin-bottom: 1rem;">Thank You!</h3>
+                <p style="color: var(--gold-dim);">Your message has been received. We'll be in touch.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== LIBRARY DATA ====================
+        const LIBRARY = {
+            "S+ Physics": {
+                color: "blue",
+                books: [
+                    { title: "Three-Body Solution", desc: "Geometric resolution to the three-body problem", url: "../physics/three-body-geometry.html" },
+                    { title: "Millennium Problems", desc: "Mathematical challenges through scalar geometry", url: "../physics/millennium-problems.html" },
+                    { title: "JWST Explorer", desc: "James Webb imagery through geometric lens", url: "../physics/jwst-geometric-explorer.html" },
+                    { title: "CEDGA Framework", desc: "Core geometric framework", url: "../cedga/index.html" },
+                    { title: "Kappa Constant", desc: "κ = 2π/180 - The bridge constant", url: "../cedga/pages/kappa-constant.html" },
+                    { title: "Tetrahelix", desc: "The geometry of life", url: "../cedga/pages/tetrahelix.html" },
+                    { title: "Balance Law", desc: "Equilibrium in scalar systems", url: "../cedga/pages/balance-law.html" },
+                    { title: "Epoch Atomic Model", desc: "Atoms through scalar geometry", url: "../epoch-atomic/index.html" },
+                    { title: "DNA Studio", desc: "Double helix derived from κ", url: "../dna-studio/index.html" },
+                    { title: "Protein Folding", desc: "Geometric protein dynamics", url: "../protein-folding/index.html" },
+                    { title: "Neurodegeneration", desc: "Neural geometry research", url: "../neurodegeneration/index.html" },
+                    { title: "CERN Validation", desc: "Particle physics correlation", url: "../documents/dec14-model-cern/index.html" }
+                ]
+            },
+            "S- Soul Science": {
+                color: "gold",
+                books: [
+                    { title: "Soul Science", desc: "The mother earth science", url: "../education/soul-science.html" },
+                    { title: "Becoming a Coin", desc: "Observer consciousness", url: "../education/becoming-a-coin.html" },
+                    { title: "The Mirror", desc: "Consciousness self-reflection", url: "../education/mirror/index.html" },
+                    { title: "Life-Facing Wisdom", desc: "Practical soul science", url: "../education/life-facing-wisdom.html" },
+                    { title: "Vinyl Paradox", desc: "Music and consciousness", url: "../education/vinyl-paradox.html" },
+                    { title: "Sol Vision", desc: "Past life revisitation", url: "../tools/sol-vision/index.html" }
+                ]
+            },
+            "Ancient Mysteries": {
+                color: "purple",
+                books: [
+                    { title: "Voynich Manuscript", desc: "The mysterious codex", url: "../ancient-mysteries/voynich/index.html" },
+                    { title: "Voynich: Herbal", desc: "Plant section analysis", url: "../ancient-mysteries/voynich/herbal.html" },
+                    { title: "Voynich: Astronomical", desc: "Star charts decoded", url: "../ancient-mysteries/voynich/astronomical.html" },
+                    { title: "Voynich: Biological", desc: "Body diagrams explored", url: "../ancient-mysteries/voynich/biological.html" },
+                    { title: "Voynich: Zodiac", desc: "Astrological wheels", url: "../ancient-mysteries/voynich/zodiac.html" },
+                    { title: "Rongorongo", desc: "Easter Island script", url: "../ancient-mysteries/texts/rongorongo-v1.0.html" },
+                    { title: "Phaistos Disc", desc: "Minoan mystery", url: "../ancient-mysteries/texts/phaistos-v1.0.html" },
+                    { title: "Ancient Mathematics", desc: "Lost mathematical knowledge", url: "../ancient-mysteries/texts/ancient-mathematics-v1.0.html" }
+                ]
+            },
+            "Norse Artifacts": {
+                color: "red",
+                books: [
+                    { title: "Rök Runestone", desc: "Sweden's enigmatic stone", url: "../ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html" },
+                    { title: "Gotland Stones", desc: "Picture stone mysteries", url: "../ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html" },
+                    { title: "Gold Bracteates", desc: "Sacred medallions", url: "../ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html" },
+                    { title: "Oseberg Ship", desc: "Viking burial vessel", url: "../ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html" },
+                    { title: "Norse Symbols", desc: "Runes and signs", url: "../ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html" }
+                ]
+            },
+            "Interactive Tools": {
+                color: "green",
+                books: [
+                    { title: "S-Signature 128", desc: "Your unique signature", url: "../tools/s-signature/s_signature_128.html" },
+                    { title: "S-Signature Assessment", desc: "Deep signature analysis", url: "../tools/s-signature/s_signature_assessment.html" },
+                    { title: "Mind Reading", desc: "Intuition training game", url: "../games/mind-reading/index.html" },
+                    { title: "M4 Visualizer", desc: "Four-transform viewer", url: "../tools/m4-visualizer/index.html" },
+                    { title: "Interaction Modeler", desc: "Relationship dynamics", url: "../tools/interaction-modeler/index.html" },
+                    { title: "Geometry Challenge", desc: "Test your knowledge", url: "../education/geometry-challenge.html" },
+                    { title: "Mind Games", desc: "Full games collection", url: "../games/index.html" }
+                ]
+            },
+            "Documents & Theory": {
+                color: "brown",
+                books: [
+                    { title: "Unified Theory", desc: "Complete framework", url: "../documents/dec14-unified-theory/index.html" },
+                    { title: "Main Framework", desc: "Core theory document", url: "../documents/dec14-unified-theory/main-framework.html" },
+                    { title: "Epoch Framework", desc: "Foundational concepts", url: "../documents/epoch-framework/index.html" },
+                    { title: "Teaching Guide", desc: "Scalar dimensionality", url: "../teaching/Scalar_Dimensionality_Teaching_Document.html" },
+                    { title: "Tribute", desc: "Dedication and thanks", url: "../documents/tribute/index.html" }
+                ]
+            }
+        };
+
+        const SECTIONS = Object.keys(LIBRARY);
+        let currentSection = 0;
+
+        // ==================== ELEMENTS ====================
+        const shelvesContainer = document.getElementById('shelves-container');
+        const sectionView = document.getElementById('section-view');
+        const sectionTitle = document.getElementById('section-title');
+        const booksGrid = document.getElementById('books-grid');
+        const backBtn = document.getElementById('back-btn');
+        const spiralOverlay = document.getElementById('spiral-overlay');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        const modalOverlay = document.getElementById('modal-overlay');
+        const particles = document.getElementById('particles');
+
+        // ==================== INIT ====================
+        function init() {
+            renderShelves();
+            createParticles();
+            setupEventListeners();
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 30; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'dust';
+                dust.style.left = Math.random() * 100 + '%';
+                dust.style.animationDelay = Math.random() * 20 + 's';
+                dust.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particles.appendChild(dust);
+            }
+        }
+
+        function renderShelves() {
+            shelvesContainer.innerHTML = '';
+
+            SECTIONS.forEach((section, idx) => {
+                const data = LIBRARY[section];
+                const shelf = document.createElement('div');
+                shelf.className = 'bookshelf';
+                shelf.dataset.section = idx;
+
+                const colors = ['red', 'blue', 'green', 'purple', 'gold', 'brown'];
+                const bookCount = Math.min(data.books.length, 8);
+
+                let booksHTML = '<div class="books-row">';
+                for (let i = 0; i < bookCount; i++) {
+                    const color = colors[(i + idx) % colors.length];
+                    booksHTML += `<div class="book ${color}"></div>`;
+                }
+                booksHTML += '</div>';
+
+                shelf.innerHTML = `
+                    <div class="shelf-label">${section}</div>
+                    ${booksHTML}
+                    <div class="shelf-count">${data.books.length} volumes</div>
+                `;
+
+                shelf.addEventListener('click', () => openSection(idx));
+                shelvesContainer.appendChild(shelf);
+            });
+        }
+
+        // ==================== NAVIGATION ====================
+        function openSection(idx) {
+            currentSection = idx;
+
+            // Spiral in
+            spiralOverlay.classList.add('active', 'spiraling-in');
+
+            setTimeout(() => {
+                renderSection(idx);
+                sectionView.classList.add('active');
+                backBtn.style.display = 'block';
+            }, 500);
+
+            setTimeout(() => {
+                spiralOverlay.classList.remove('active', 'spiraling-in');
+            }, 1000);
+        }
+
+        function closeSection() {
+            // Spiral out
+            spiralOverlay.classList.add('active', 'spiraling-out');
+
+            setTimeout(() => {
+                sectionView.classList.remove('active');
+                backBtn.style.display = 'none';
+            }, 500);
+
+            setTimeout(() => {
+                spiralOverlay.classList.remove('active', 'spiraling-out');
+            }, 1000);
+        }
+
+        function renderSection(idx) {
+            const section = SECTIONS[idx];
+            const data = LIBRARY[section];
+
+            sectionTitle.textContent = section;
+            booksGrid.innerHTML = '';
+
+            data.books.forEach(book => {
+                const card = document.createElement('a');
+                card.href = book.url;
+                card.className = 'book-card';
+                card.innerHTML = `
+                    <div class="book-card-title">${book.title}</div>
+                    <div class="book-card-desc">${book.desc}</div>
+                `;
+
+                // Spiral transition when clicking book
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    spiralOverlay.classList.add('active', 'spiraling-in');
+                    setTimeout(() => {
+                        window.location.href = book.url;
+                    }, 600);
+                });
+
+                booksGrid.appendChild(card);
+            });
+        }
+
+        function nextSection() {
+            currentSection = (currentSection + 1) % SECTIONS.length;
+            renderSection(currentSection);
+        }
+
+        function prevSection() {
+            currentSection = (currentSection - 1 + SECTIONS.length) % SECTIONS.length;
+            renderSection(currentSection);
+        }
+
+        // ==================== SEARCH ====================
+        function handleSearch(query) {
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = [];
+            const q = query.toLowerCase();
+
+            for (const [section, data] of Object.entries(LIBRARY)) {
+                for (const book of data.books) {
+                    if (book.title.toLowerCase().includes(q) || book.desc.toLowerCase().includes(q)) {
+                        results.push({ ...book, section });
+                    }
+                }
+            }
+
+            if (results.length > 0) {
+                searchResults.innerHTML = results.slice(0, 8).map(r => `
+                    <div class="search-result-item" data-url="${r.url}">
+                        <div class="result-title">${r.title}</div>
+                        <div class="result-section">${r.section}</div>
+                    </div>
+                `).join('');
+            } else {
+                searchResults.innerHTML = `
+                    <div class="no-results">
+                        No results for "${query}"<br>
+                        <span class="suggest-link" id="suggest-from-search">Suggest this topic?</span>
+                    </div>
+                `;
+            }
+
+            searchResults.classList.add('active');
+        }
+
+        // ==================== MODAL ====================
+        function openModal(type) {
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+            const label = document.getElementById('topic-label');
+            const tabs = document.querySelectorAll('.form-tab');
+
+            tabs.forEach(t => t.classList.toggle('active', t.dataset.type === type));
+
+            if (type === 'hire') {
+                title.textContent = 'Hire Us';
+                desc.textContent = 'Commission custom research or analysis for your project.';
+                label.textContent = 'Project Description';
+            } else {
+                title.textContent = 'Suggest Research';
+                desc.textContent = 'Have an idea for research? We\'d love to hear it.';
+                label.textContent = 'Research Topic / Idea';
+            }
+
+            document.getElementById('suggestion-form').style.display = 'block';
+            document.getElementById('form-success').classList.remove('active');
+            modalOverlay.classList.add('active');
+        }
+
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        async function handleSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+
+            // For now, store in localStorage (can connect to backend later)
+            const submissions = JSON.parse(localStorage.getItem('hmm-submissions') || '[]');
+            submissions.push({
+                email: data.get('email'),
+                name: data.get('name'),
+                message: data.get('message'),
+                type: document.querySelector('.form-tab.active').dataset.type,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('hmm-submissions', JSON.stringify(submissions));
+
+            // Show success
+            form.style.display = 'none';
+            document.getElementById('form-success').classList.add('active');
+
+            // Could also send to a webhook/API here:
+            // await fetch('https://your-api.com/submit', { method: 'POST', body: data });
+        }
+
+        // ==================== EVENTS ====================
+        function setupEventListeners() {
+            backBtn.addEventListener('click', closeSection);
+
+            document.getElementById('prev-section').addEventListener('click', prevSection);
+            document.getElementById('next-section').addEventListener('click', nextSection);
+
+            // Search
+            searchInput.addEventListener('input', (e) => handleSearch(e.target.value));
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.length >= 2) searchResults.classList.add('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-container')) {
+                    searchResults.classList.remove('active');
+                }
+            });
+
+            searchResults.addEventListener('click', (e) => {
+                const item = e.target.closest('.search-result-item');
+                if (item) {
+                    spiralOverlay.classList.add('active', 'spiraling-in');
+                    setTimeout(() => {
+                        window.location.href = item.dataset.url;
+                    }, 600);
+                }
+
+                if (e.target.id === 'suggest-from-search') {
+                    searchResults.classList.remove('active');
+                    openModal('suggest');
+                }
+            });
+
+            // Modal
+            document.getElementById('suggest-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal('suggest');
+            });
+
+            document.getElementById('hire-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal('hire');
+            });
+
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            document.querySelectorAll('.form-tab').forEach(tab => {
+                tab.addEventListener('click', () => openModal(tab.dataset.type));
+            });
+
+            document.getElementById('suggestion-form').addEventListener('submit', handleSubmit);
+
+            // Swipe
+            let touchStartX = 0;
+            sectionView.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+            });
+
+            sectionView.addEventListener('touchend', (e) => {
+                const diff = touchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSection();
+                    else prevSection();
+                }
+            });
+
+            // Keyboard
+            document.addEventListener('keydown', (e) => {
+                if (sectionView.classList.contains('active')) {
+                    if (e.key === 'ArrowRight') nextSection();
+                    if (e.key === 'ArrowLeft') prevSection();
+                    if (e.key === 'Escape') closeSection();
+                }
+            });
+        }
+
+        // ==================== START ====================
+        init();
+    </script>
+</body>
+</html>
