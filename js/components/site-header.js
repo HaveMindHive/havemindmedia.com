@@ -222,6 +222,8 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}neurodegeneration/index.html">Neurodegeneration</a>
                                 <hr>
                                 <div class="label">Visualizations</div>
+                                <a href="${bp}physics/apparent-speed-paradox/index.html">Apparent Speed Paradox</a>
+                                <a href="${bp}physics/vessel/index.html">Scalar Phasing Vessel</a>
                                 <a href="${bp}physics-viz/scalar-crossroads-animated.html">Scalar Crossroads</a>
                                 <a href="${bp}physics-viz/quad-helix-base60.html">Quad Helix Base-60</a>
                                 <a href="${bp}physics-viz/quad-helix-base60-v2.0.html">Quad Helix v2.0</a>
@@ -292,6 +294,10 @@ class SiteHeader extends HTMLElement {
                                         <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
                                         <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
                                         <a href="${bp}ancient-mysteries/texts/ancient-mathematics-v1.0.html">Ancient Mathematics</a>
+                                        <hr>
+                                        <a href="${bp}ancient-mysteries/indus-script/index.html">Indus Valley Script</a>
+                                        <a href="${bp}ancient-mysteries/indus-script/translator.html">- Translator</a>
+                                        <a href="${bp}ancient-mysteries/indus-script/sign-reference.html">- Sign Reference</a>
                                     </div>
                                     <div class="hmm-mega-col">
                                         <h4>Norse Artifacts</h4>
@@ -318,7 +324,7 @@ class SiteHeader extends HTMLElement {
                                         <a href="${bp}documents/tribute/index.html">Tribute</a>
                                         <hr>
                                         <h4 style="color: #c9a227;">Complete Index</h4>
-                                        <a href="${bp}library-wizard/index.html" style="color: #c9a227; font-weight: 600;">📖 The Library (71 pages)</a>
+                                        <a href="${bp}library-wizard/index.html" style="color: #c9a227; font-weight: 600;">📖 The Library (85 pages)</a>
                                         <a href="${bp}library.html">Legacy Library</a>
                                     </div>
                                 </div>

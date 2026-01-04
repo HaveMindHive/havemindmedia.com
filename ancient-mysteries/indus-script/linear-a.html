@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Linear A Decipherment using the κ-Framework - Geometric analysis of the Minoan script">
+    <title>Linear A Decipherment | κ-Framework Analysis | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --void: #030508;
+            --deep-space: #0a0d12;
+            --cosmic-dark: #0f1318;
+            --panel: #151a24;
+            --panel-light: #1a2030;
+            --earth-deep: #1a1510;
+            --earth-warm: #2a2318;
+            --hazel: #8b7355;
+            --nebula-blue: #1a2a3a;
+            --glow-blue: #4a8ec8;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #a8d4f5;
+            --pale-blue: #d0e8f8;
+            --gold-deep: #8b6914;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --accent-warm: #a85a48;
+            --terracotta: #c75b39;
+            --indigo: #6a5acd;
+            --soft-cream: #f0e8d8;
+            --pale-cream: #faf6ee;
+            --text-dim: #8a9aaa;
+            --border: rgba(70, 130, 180, 0.25);
+            --border-light: rgba(70, 130, 180, 0.4);
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(106, 90, 205, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(74, 142, 200, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 80%, rgba(139, 105, 20, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 100px 50px, rgba(168, 212, 245, 0.9), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(168, 212, 245, 0.8), transparent),
+                radial-gradient(1px 1px at 550px 200px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 700px 120px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 150px 300px, rgba(168, 212, 245, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 380px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 600px 450px, rgba(201, 162, 39, 0.4), transparent);
+            background-size: 1200px 600px;
+            animation: twinkle 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(3, 5, 8, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        .unified-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(3, 5, 8, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-signature {
+            font-size: 0.7rem;
+            color: var(--soft-blue);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu { position: relative; }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--soft-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(70, 130, 180, 0.1);
+            border-color: var(--border-light);
+            color: var(--bright-blue);
+        }
+
+        .nav-toggle .arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.active .arrow { transform: rotate(180deg); }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(10, 13, 18, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--bright-blue);
+        }
+
+        .nav-dropdown a.active {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+
+        .nav-dropdown .nav-icon { font-size: 1rem; width: 24px; text-align: center; }
+        .nav-dropdown .divider { height: 1px; background: var(--border); margin: 0.5rem 0; }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 40px 80px;
+            position: relative;
+        }
+
+        .hero-rune {
+            font-size: 4em;
+            color: var(--indigo);
+            opacity: 0.5;
+            margin-bottom: 25px;
+            animation: gentlePulse 5s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.03); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2em, 4vw, 3.2em);
+            font-weight: 500;
+            color: var(--pale-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 .glow {
+            color: var(--indigo);
+            text-shadow: 0 0 30px rgba(106, 90, 205, 0.4);
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero .intro {
+            max-width: 700px;
+            font-size: 1.1em;
+            color: var(--soft-cream);
+            opacity: 0.85;
+            margin-bottom: 30px;
+            line-height: 2;
+        }
+
+        .kappa-badge {
+            display: inline-block;
+            background: rgba(106, 90, 205, 0.15);
+            border: 1px solid var(--indigo);
+            color: var(--indigo);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section { padding: 70px 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            color: var(--soft-blue);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-header .tagline {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .content-panel {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 45px;
+            margin-bottom: 40px;
+        }
+
+        .content-panel h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--bright-blue);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .content-panel p {
+            color: var(--soft-cream);
+            opacity: 0.9;
+            margin-bottom: 18px;
+            line-height: 1.9;
+        }
+
+        .content-panel p strong { color: var(--gold); }
+
+        .layman-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .layman-box::before {
+            content: "IN SIMPLE TERMS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .layman-box p {
+            color: var(--soft-cream);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .layman-box .analogy {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .info-box {
+            background: rgba(10, 22, 40, 0.5);
+            border-left: 4px solid var(--bright-blue);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box.discovery {
+            border-left-color: var(--terracotta);
+            background: rgba(199, 91, 57, 0.08);
+        }
+
+        .info-box.principle {
+            border-left-color: var(--indigo);
+            background: rgba(106, 90, 205, 0.08);
+        }
+
+        .info-box strong { color: var(--gold); }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .data-table th {
+            background: rgba(106, 180, 245, 0.15);
+            color: var(--bright-blue);
+            padding: 15px 20px;
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-cream);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(106, 180, 245, 0.05);
+        }
+
+        .sign-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .sign-cell {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .sign-cell:hover {
+            border-color: var(--indigo);
+            transform: translateY(-3px);
+        }
+
+        .sign-cell .glyph {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .sign-cell .label {
+            font-size: 0.85rem;
+            color: var(--soft-blue);
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, rgba(3, 5, 8, 0.8) 0%, rgba(10, 13, 18, 0.9) 100%);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-box h4 {
+            color: var(--gold);
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .equation {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            padding: 12px 15px;
+            background: rgba(106, 180, 245, 0.08);
+            border-radius: 6px;
+            color: var(--soft-cream);
+        }
+
+        .equation .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .transform-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .transform-card:hover {
+            border-color: var(--indigo);
+            transform: translateY(-3px);
+        }
+
+        .transform-card .symbol {
+            font-size: 2rem;
+            color: var(--indigo);
+            margin-bottom: 10px;
+        }
+
+        .transform-card .name {
+            font-family: var(--font-display);
+            color: var(--bright-blue);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .transform-card .desc {
+            color: var(--soft-cream);
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--indigo), var(--bright-blue), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: var(--indigo);
+            border: 3px solid var(--void);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(106, 90, 205, 0.4);
+        }
+
+        .timeline-date {
+            font-family: var(--font-display);
+            color: var(--indigo);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item p {
+            color: var(--soft-cream);
+            opacity: 0.85;
+        }
+
+        .strategy-card {
+            background: rgba(106, 90, 205, 0.08);
+            border: 1px solid rgba(106, 90, 205, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .strategy-card h4 {
+            font-family: var(--font-display);
+            color: var(--indigo);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .strategy-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .strategy-card li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: var(--soft-cream);
+        }
+
+        .strategy-card li::before {
+            content: "◆";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        .unified-footer {
+            text-align: center;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .footer-principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .unified-nav { padding: 0.6rem 1rem; }
+            .nav-brand-text { font-size: 0.85rem; }
+            .nav-signature { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .hero h1 { font-size: 1.8rem; }
+            .content-panel { padding: 30px 25px; }
+            .sign-grid { grid-template-columns: repeat(3, 1fr); }
+            .transform-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <nav class="unified-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-text">ANCIENT SCRIPTS</span>
+            <span class="nav-signature">[1 = -1]</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <span>EXPLORE</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="index.html">
+                    <span class="nav-icon">&#9670;</span>
+                    Indus Overview
+                </a>
+                <a href="sign-reference.html">
+                    <span class="nav-icon">&#9674;</span>
+                    Sign Reference
+                </a>
+                <a href="epoch-mathematics.html">
+                    <span class="nav-icon">&#8734;</span>
+                    Mathematics
+                </a>
+                <div class="divider"></div>
+                <a href="linear-a.html" class="active">
+                    <span class="nav-icon">&#9672;</span>
+                    Linear A
+                </a>
+                <a href="translator.html">
+                    <span class="nav-icon">&#9654;</span>
+                    Translator Tool
+                </a>
+                <a href="universal-language-theory.html">
+                    <span class="nav-icon">&#9788;</span>
+                    Universal Language
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-rune">&#9041;</div>
+        <h1><span class="glow">LINEAR A</span> DECIPHERMENT</h1>
+        <p class="subtitle">The Minoan Mystery</p>
+        <p class="intro">
+            For over 120 years, Linear A has resisted all attempts at translation. While its descendant Linear B was cracked in 1952 and revealed to encode Greek, Linear A encodes an unknown language. We apply the κ-framework to approach this ancient puzzle geometrically.
+        </p>
+        <div class="kappa-badge">κ-FRAMEWORK ANALYSIS</div>
+    </section>
+
+    <div class="container">
+        <!-- Introduction -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE MINOAN SCRIPT</h2>
+                <p class="tagline">Crete, ~1800-1450 BCE</p>
+            </div>
+
+            <div class="content-panel">
+                <p>Linear A is the primary script of the <strong>Minoan civilization</strong> on Crete. Despite over a century of study and the successful decipherment of Linear B (which adapted Linear A signs to write Greek), Linear A remains undeciphered because the underlying language is unknown.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Period</td><td>~1800-1450 BCE</td></tr>
+                        <tr><td>Location</td><td>Crete, Aegean islands</td></tr>
+                        <tr><td>Civilization</td><td>Minoan</td></tr>
+                        <tr><td>Corpus Size</td><td>~1,400 inscriptions</td></tr>
+                        <tr><td>Sign Count</td><td>~90 syllabic + ~100 logograms</td></tr>
+                        <tr><td>Status</td><td style="color: var(--terracotta);">UNDECIPHERED</td></tr>
+                        <tr><td>Descendant</td><td>Linear B (deciphered 1952, encodes Greek)</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="layman-box">
+                    <p>Imagine you can READ a script (you know which symbol makes which sound) but you still can't UNDERSTAND it because the language is unknown. That's Linear A. When scholars apply the sound values from Linear B, the results aren't Greek—and aren't any other known language either.</p>
+                    <p class="analogy">It's like being able to pronounce words in a foreign language but having no dictionary to tell you what they mean.</p>
+                </div>
+            </div>
+
+            <div class="content-panel">
+                <h3>Why Standard Approaches Have Failed</h3>
+
+                <div class="info-box principle">
+                    <strong>Problem 1: Unknown Language</strong><br>
+                    Linear B encodes Mycenaean Greek. When Ventris applied Linear B sound values to Linear A, the results were not Greek—and not any other known language.
+                </div>
+
+                <div class="info-box principle">
+                    <strong>Problem 2: Short Inscriptions</strong><br>
+                    Average inscription length: 3-5 signs. Longest: ~300 signs. Not enough statistical leverage for traditional methods.
+                </div>
+
+                <div class="info-box principle">
+                    <strong>Problem 3: Circular Assumptions</strong><br>
+                    Linguists assume a language family → look for cognates → find "matches" that confirm the assumption. The geometry doesn't lie; assumptions do.
+                </div>
+
+                <div class="layman-box">
+                    <p>Most attempts at decipherment start by <em>guessing</em> what language Linear A might be related to, then looking for evidence to support that guess. This is backwards. The κ-framework starts with the geometry of the signs themselves—no guessing required.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Corpus -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE CORPUS</h2>
+                <p class="tagline">What we have to work with</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>Major Inscription Sites</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Site</th>
+                            <th>Tablets</th>
+                            <th>Type</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Hagia Triada</td><td>~150</td><td>Administrative</td><td>Largest single-site corpus</td></tr>
+                        <tr><td>Khania</td><td>~100</td><td>Administrative</td><td>Western Crete</td></tr>
+                        <tr><td>Zakros</td><td>~30</td><td>Administrative</td><td>Eastern Crete</td></tr>
+                        <tr><td>Phaistos</td><td>~20</td><td>Mixed</td><td>Includes Phaistos Disc</td></tr>
+                        <tr><td>Knossos</td><td>~30</td><td>Mixed</td><td>Palace records</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Document Types</h3>
+                <p><strong>Administrative Tablets (~80%):</strong> Commodity lists, personnel records, offering inventories, numerical notations</p>
+                <p><strong>Votive Inscriptions (~15%):</strong> Stone libation tables, ritual vessels, dedicatory objects</p>
+                <p><strong>Other (~5%):</strong> Seals, pottery marks, the unique Phaistos Disc</p>
+
+                <div class="info-box discovery">
+                    <strong>Key Finding:</strong> The numerical system IS understood. When we add up commodity lists, the totals match. This confirms the Minoans could count—the question is what they were counting and in what language they named it.
+                </div>
+            </div>
+        </section>
+
+        <!-- κ-Framework Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>κ-FRAMEWORK ANALYSIS</h2>
+                <p class="tagline">Geometric approach to decipherment</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Four Transforms</h3>
+                <p>The κ-framework analyzes signs through four geometric transforms:</p>
+
+                <div class="transform-grid">
+                    <div class="transform-card">
+                        <div class="symbol">T₁</div>
+                        <div class="name">FACING</div>
+                        <div class="desc">Direct view, standard orientation. The sign as written.</div>
+                    </div>
+                    <div class="transform-card">
+                        <div class="symbol">T₂</div>
+                        <div class="name">MIRROR</div>
+                        <div class="desc">Horizontal reflection. Signs unchanged by T₂ may encode bilabial sounds (M, P, B).</div>
+                    </div>
+                    <div class="transform-card">
+                        <div class="symbol">T₃</div>
+                        <div class="name">RECURSIVE</div>
+                        <div class="desc">Vertical reflection. Signs with vertical symmetry encode self-referential concepts.</div>
+                    </div>
+                    <div class="transform-card">
+                        <div class="symbol">T₄</div>
+                        <div class="name">SILENT</div>
+                        <div class="desc">180° rotation. Signs unchanged by T₄ may encode vowels or stable states.</div>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>Instead of guessing what sounds the signs make, we analyze their <em>shape</em>. A sign that looks the same when flipped horizontally (like the letter A) has different geometric properties than one that doesn't (like the letter R).</p>
+                    <p class="analogy">The shape of the sign tells us something about what it represents—before we even know the language.</p>
+                </div>
+
+                <h3>Sign Categories by Geometry</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Count</th>
+                            <th>Properties</th>
+                            <th>Transform Class</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Radial/Circular</td><td>~20</td><td>Rotational symmetry</td><td>T₄-invariant</td></tr>
+                        <tr><td>Bilateral</td><td>~25</td><td>Mirror symmetry</td><td>T₂-invariant</td></tr>
+                        <tr><td>Directional</td><td>~30</td><td>No symmetry</td><td>T₁-specific</td></tr>
+                        <tr><td>Compound</td><td>~15</td><td>Multiple symmetries</td><td>Mixed</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="content-panel">
+                <h3>Frequency as Torsion</h3>
+                <p>In the κ-framework, frequency isn't just statistical—it's <em>torsion</em> in the system:</p>
+
+                <div class="formula-box">
+                    <h4>Linear A Frequency Distribution</h4>
+                    <div class="equation">Rank 1: A sign (~800 occurrences, ~8%) → τ₁ (primary)</div>
+                    <div class="equation">Rank 2: RU sign (~600 occurrences, ~6%) → τ₂ (secondary)</div>
+                    <div class="equation">Rank 3: TA sign (~500 occurrences, ~5%) → τ₃ (tertiary)</div>
+                    <div class="equation">Rank 80+: Rare signs (<10 occurrences) → <span class="highlight">τ₄ (silent fourth)</span></div>
+                </div>
+
+                <div class="info-box discovery">
+                    <strong>Key Insight:</strong> The rare signs are not errors. They encode specific meanings that appear only in specific contexts. These are the keys to decipherment—the "silent fourth" that standard frequency analysis ignores.
+                </div>
+            </div>
+        </section>
+
+        <!-- The Syllabary -->
+        <section class="section">
+            <div class="section-header">
+                <h2>LINEAR A SYLLABARY</h2>
+                <p class="tagline">~90 syllabic signs</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>Vowel Signs</h3>
+                <div class="sign-grid">
+                    <div class="sign-cell">
+                        <div class="glyph">𐘀</div>
+                        <div class="label">A</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘁</div>
+                        <div class="label">E</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘂</div>
+                        <div class="label">I</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘃</div>
+                        <div class="label">O</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘄</div>
+                        <div class="label">U</div>
+                    </div>
+                </div>
+
+                <h3>Consonant-Vowel Series (Examples)</h3>
+                <div class="sign-grid">
+                    <div class="sign-cell">
+                        <div class="glyph">𐘅</div>
+                        <div class="label">DA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘊</div>
+                        <div class="label">JA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘎</div>
+                        <div class="label">KA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘓</div>
+                        <div class="label">MA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘘</div>
+                        <div class="label">NA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘝</div>
+                        <div class="label">PA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘦</div>
+                        <div class="label">RA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘫</div>
+                        <div class="label">SA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘰</div>
+                        <div class="label">TA</div>
+                    </div>
+                    <div class="sign-cell">
+                        <div class="glyph">𐘵</div>
+                        <div class="label">WA</div>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>Linear A is a <em>syllabary</em>, not an alphabet. Each sign represents a syllable (like "ka" or "ta") rather than a single sound (like "k" or "t"). Japanese hiragana works the same way.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Known Words -->
+        <section class="section">
+            <div class="section-header">
+                <h2>WORKING LEXICON</h2>
+                <p class="tagline">What we can confidently identify</p>
+            </div>
+
+            <div class="content-panel">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Linear A</th>
+                            <th>Transcription</th>
+                            <th>Proposed Meaning</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="font-size: 1.2rem;">KU-RO</td><td>kuro</td><td>Total, sum</td><td style="color: #4ade80;">HIGH</td></tr>
+                        <tr><td style="font-size: 1.2rem;">PO-TO-KU-RO</td><td>potokuro</td><td>Grand total</td><td style="color: #4ade80;">HIGH</td></tr>
+                        <tr><td style="font-size: 1.2rem;">A-SA-SA-RA</td><td>asasara</td><td>Sacred invocation</td><td style="color: var(--gold);">MEDIUM</td></tr>
+                        <tr><td style="font-size: 1.2rem;">JA-SA-SA-RA-ME</td><td>jasasarame</td><td>Extended invocation</td><td style="color: var(--gold);">MEDIUM</td></tr>
+                        <tr><td style="font-size: 1.2rem;">KI-RO</td><td>kiro</td><td>Commodity term</td><td style="color: var(--gold);">MEDIUM</td></tr>
+                        <tr><td style="font-size: 1.2rem;">DA-MA-TE</td><td>damate</td><td>Offering? Deity?</td><td style="color: var(--terracotta);">LOW</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>The KU-RO Proof:</strong> KU-RO appears hundreds of times, always with numerical totals. When we add the commodities listed, they equal the number after KU-RO. This mathematically proves KU-RO = "total."
+                </div>
+
+                <div class="layman-box">
+                    <p>We can confirm "KU-RO" means "total" because the math works out. If a tablet says "grain 30, oil 10, wine 5, KU-RO 45"—and 30+10+5=45—then KU-RO obviously means the sum.</p>
+                    <p class="analogy">It's like finding a foreign shopping list where the numbers add up. You might not know the word for "total," but you can figure it out from the math.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The A-SA-SA-RA Problem -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE A-SA-SA-RA MYSTERY</h2>
+                <p class="tagline">Ritual formula analysis</p>
+            </div>
+
+            <div class="content-panel">
+                <p>This sequence appears on libation tables in ritual contexts. Standard proposals include a deity name, a Semitic loan word (Ishtar), or a generic "goddess" title. None are confirmed.</p>
+
+                <div class="formula-box">
+                    <h4>Geometric Analysis of A-SA-SA-RA</h4>
+                    <div class="equation">A = Radial/circular sign (vowel class)</div>
+                    <div class="equation">SA = Angular sign (consonant-vowel)</div>
+                    <div class="equation">SA = Same sign repeated (<span class="highlight">TORSION DOUBLING</span>)</div>
+                    <div class="equation">RA = Angular sign, different from SA</div>
+                    <div class="equation">Structure: V-CV-CV-CV = <span class="highlight">vowel + three CV syllables</span></div>
+                </div>
+
+                <div class="info-box principle">
+                    <strong>κ-Framework Interpretation:</strong> The SA-SA reduplication is a TORSION DOUBLING. Doubled elements indicate emphasis, recursive reference, or transform locking. A-SA-SA-RA may not be a name but a FORMULA: "[Primordial/Open] + [Action-doubled/Intensified] + [Result/Direction]"
+                </div>
+
+                <p>Compare to ritual invocations in other traditions:</p>
+                <ul style="padding-left: 30px; margin: 20px 0;">
+                    <li style="margin: 10px 0;"><strong>Christian:</strong> "In the name of the Father..." + [Prayer] + "Amen"</li>
+                    <li style="margin: 10px 0;"><strong>Hebrew:</strong> "Baruch Atah Adonai..." + [Blessing] + "Amen"</li>
+                    <li style="margin: 10px 0;"><strong>Sanskrit:</strong> "Om..." + [Mantra] + "Svaha"</li>
+                </ul>
+
+                <p>A-SA-SA-RA occupies the position of DIVINE INVOCATION—the opening formula that establishes sacred context.</p>
+            </div>
+        </section>
+
+        <!-- Decipherment Strategy -->
+        <section class="section">
+            <div class="section-header">
+                <h2>DECIPHERMENT STRATEGY</h2>
+                <p class="tagline">The path forward</p>
+            </div>
+
+            <div class="content-panel">
+                <div class="strategy-card">
+                    <h4>Phase 1: Geometric Cataloging</h4>
+                    <ul>
+                        <li>Categorize all ~90 syllabic signs by geometric properties</li>
+                        <li>Identify T₁, T₂, T₃, T₄ invariant signs</li>
+                        <li>Map symmetries to phonetic classes</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Phase 2: Frequency-Torsion Mapping</h4>
+                    <ul>
+                        <li>Compute frequency distribution across corpus</li>
+                        <li>Identify natural breaks (Zipfian structure)</li>
+                        <li>Assign torsion roles (τ₁, τ₂, τ₃, τ₄)</li>
+                        <li>Focus on "silent fourth" rare signs</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Phase 3: Cross-Reference Validation</h4>
+                    <ul>
+                        <li>Test hypotheses against Eteocypriot corpus</li>
+                        <li>Check pre-Greek substrate vocabulary</li>
+                        <li>Compare with Etruscan lexicon</li>
+                        <li>Validate phonotactic plausibility</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h4>Phase 4: Synthesis</h4>
+                    <ul>
+                        <li>Sign-by-sign phonetic assignments</li>
+                        <li>Grammar sketch (morphology, syntax)</li>
+                        <li>Lexicon with confidence levels</li>
+                        <li>Sample translations with validation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- The τ₄ Hypothesis -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE τ₄ HYPOTHESIS</h2>
+                <p class="tagline">Where did the Minoan language go?</p>
+            </div>
+
+            <div class="content-panel">
+                <p><strong>Radical proposition:</strong> The Minoan language of Linear A is not extinct. It survives as the SILENT FOURTH in a later language family.</p>
+
+                <h3>Candidates for τ₄ Survival</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Language</th>
+                            <th>Region</th>
+                            <th>Connection Evidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Etruscan</td><td>Italy</td><td>Mediterranean isolate, Bronze Age origins</td></tr>
+                        <tr><td>Basque</td><td>Iberia</td><td>Pre-Indo-European isolate</td></tr>
+                        <tr><td>Pre-Greek substrate</td><td>Greece</td><td>Words with -ss- and -nth- suffixes</td></tr>
+                        <tr><td>Eteocypriot</td><td>Cyprus</td><td>Related script, undeciphered language</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box discovery">
+                    <strong>Pattern Recognition:</strong> Many Greek words have no Indo-European etymology. Words like θάλασσα (sea), λαβύρινθος (labyrinth), and κυπάρισσος (cypress) contain suffixes (-ss-, -nth-) that mark them as pre-Greek substrate—possibly Minoan loans.
+                </div>
+
+                <div class="layman-box">
+                    <p>Languages don't just disappear—they get absorbed. When Greek speakers arrived in the Aegean, they borrowed words from the people already living there. These "borrowed words" still exist in Greek today, but nobody knows what language they originally came from.</p>
+                    <p class="analogy">The Minoan language may have "gone underground"—its speakers are gone, but its vocabulary lives on hidden inside Greek, waiting to be recognized.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="section">
+            <div class="content-panel" style="text-align: center;">
+                <h3 style="font-size: 1.6rem; color: var(--gold); margin-bottom: 25px;">The Geometry Doesn't Lie</h3>
+                <p style="max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem;">
+                    Standard linguistics approaches Linear A by guessing what language it might be. The κ-framework approaches by analyzing what the signs geometrically <em>are</em>. The geometry either resolves or it doesn't. The absence of information IS the information.
+                </p>
+                <p style="font-size: 2rem; font-family: monospace; color: var(--indigo); margin-top: 30px;">
+                    [1 = -1]
+                </p>
+                <p style="font-style: italic; color: var(--soft-blue); margin-top: 20px;">
+                    "The Minoans wrote their truth in stone. The geometry preserved it."
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="unified-footer">
+        <div class="footer-logo">HAVE MIND MEDIA</div>
+        <div class="footer-tagline">Geometric Decipherment of Ancient Scripts</div>
+        <div class="footer-credit">Created by Jason Ray | Have Mind Media</div>
+        <div class="footer-principle">κ = 2π/180 = 0.0349 | [1 = -1]</div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.querySelector('.nav-toggle');
+            dropdown.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu.contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

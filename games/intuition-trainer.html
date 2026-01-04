@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intuition Trainer | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --text-light: #e0e0e0;
+            --success: #4CAF50;
+            --miss: #f44336;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .epoch-mark {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .tab:hover, .tab.active {
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-color: var(--gold);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+        .stat-value.hit { color: var(--success); }
+
+        /* Game Panel */
+        .game-panel {
+            display: none;
+            text-align: center;
+        }
+
+        .game-panel.active {
+            display: block;
+        }
+
+        .instruction {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+
+        /* Triaxial Choice Grids */
+        .choices-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 450px;
+            margin: 30px auto;
+        }
+
+        .choices-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 450px;
+            margin: 30px auto;
+        }
+
+        .choices-9 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        .choice {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .choice:hover {
+            background: rgba(255, 215, 0, 0.15);
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .choice.correct {
+            background: rgba(76, 175, 80, 0.4);
+            border-color: var(--success);
+        }
+
+        .choice.incorrect {
+            background: rgba(244, 67, 54, 0.4);
+            border-color: var(--miss);
+        }
+
+        .choice.reveal {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Color choices */
+        .color-choice {
+            border-radius: 50%;
+        }
+
+        /* Number choices */
+        .number-choice {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        /* Direction choices */
+        .direction-choice {
+            font-size: 3rem;
+        }
+
+        /* Result Display */
+        .result {
+            font-size: 2rem;
+            font-weight: bold;
+            min-height: 50px;
+            margin: 15px 0;
+        }
+
+        .result.hit { color: var(--success); }
+        .result.miss { color: var(--miss); }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--bg-deep);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Streak */
+        .streak-info {
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+
+        .streak-info span {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Timer visualization for decreasing time mode */
+        .timer-ring {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .timer-ring svg {
+            transform: rotate(-90deg);
+        }
+
+        .timer-ring circle {
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .timer-ring .bg { stroke: rgba(255, 255, 255, 0.1); }
+        .timer-ring .progress {
+            stroke: var(--gold);
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+
+        .timer-ring .time-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        /* Difficulty */
+        .difficulty-select {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .difficulty-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .difficulty-btn.active {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+
+        /* Explanation */
+        .explanation {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .explanation h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Intuition Trainer</h1>
+            <p style="opacity: 0.8;">Triaxial Training · 3, 6, or 9 Choices · Never Binary</p>
+            <p class="epoch-mark">[1 = -1]</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-game="colors">Colors</button>
+            <button class="tab" data-game="numbers">Numbers</button>
+            <button class="tab" data-game="directions">Directions</button>
+            <button class="tab" data-game="cards">Card Match</button>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-label">Rounds</div>
+                <div class="stat-value" id="rounds">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hits</div>
+                <div class="stat-value hit" id="hits">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hit Rate</div>
+                <div class="stat-value" id="hitRate">0%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">vs Chance</div>
+                <div class="stat-value" id="vsChance">--</div>
+            </div>
+        </div>
+
+        <!-- COLOR SENSE -->
+        <div class="game-panel active" id="panel-colors">
+            <p class="instruction">A color is hidden. Which one do you sense?</p>
+
+            <div class="difficulty-select">
+                <button class="difficulty-btn active" data-count="3">3 Colors (33%)</button>
+                <button class="difficulty-btn" data-count="6">6 Colors (17%)</button>
+                <button class="difficulty-btn" data-count="9">9 Colors (11%)</button>
+            </div>
+
+            <div class="choices-3" id="colorChoices"></div>
+
+            <div class="result" id="colorResult"></div>
+            <div class="streak-info">Streak: <span id="colorStreak">0</span></div>
+
+            <div class="controls">
+                <button onclick="games.colors.nextRound()">Next Color</button>
+                <button class="secondary" onclick="games.colors.reset()">Reset</button>
+            </div>
+        </div>
+
+        <!-- NUMBER FEELING -->
+        <div class="game-panel" id="panel-numbers">
+            <p class="instruction">A number is hidden. What do you feel?</p>
+
+            <div class="difficulty-select">
+                <button class="difficulty-btn active" data-count="3">1-3 (33%)</button>
+                <button class="difficulty-btn" data-count="6">1-6 (17%)</button>
+                <button class="difficulty-btn" data-count="9">1-9 (11%)</button>
+            </div>
+
+            <div class="choices-3" id="numberChoices"></div>
+
+            <div class="result" id="numberResult"></div>
+            <div class="streak-info">Streak: <span id="numberStreak">0</span></div>
+
+            <div class="controls">
+                <button onclick="games.numbers.nextRound()">Next Number</button>
+                <button class="secondary" onclick="games.numbers.reset()">Reset</button>
+            </div>
+        </div>
+
+        <!-- DIRECTIONS -->
+        <div class="game-panel" id="panel-directions">
+            <p class="instruction">An arrow points somewhere. Which direction?</p>
+
+            <div class="difficulty-select">
+                <button class="difficulty-btn" data-count="3">3 Ways</button>
+                <button class="difficulty-btn active" data-count="6">6 Ways (17%)</button>
+                <button class="difficulty-btn" data-count="9">9 Ways (11%)</button>
+            </div>
+
+            <div class="choices-6" id="directionChoices"></div>
+
+            <div class="result" id="directionResult"></div>
+            <div class="streak-info">Streak: <span id="directionStreak">0</span></div>
+
+            <div class="controls">
+                <button onclick="games.directions.nextRound()">Next Direction</button>
+                <button class="secondary" onclick="games.directions.reset()">Reset</button>
+            </div>
+        </div>
+
+        <!-- CARD MATCH (Decreasing Timer) -->
+        <div class="game-panel" id="panel-cards">
+            <p class="instruction">Find the matching card. Timer shrinks with each hit!</p>
+
+            <div class="timer-ring" id="timerRing">
+                <svg width="200" height="200">
+                    <circle class="bg" cx="100" cy="100" r="90"/>
+                    <circle class="progress" id="timerProgress" cx="100" cy="100" r="90"
+                            stroke-dasharray="565.48" stroke-dashoffset="0"/>
+                </svg>
+                <div class="time-text" id="timerText">5.0</div>
+            </div>
+
+            <div class="target-card" style="text-align: center; margin: 15px 0;">
+                <span style="font-size: 5rem;" id="targetCard">🂡</span>
+            </div>
+
+            <div class="choices-6" id="cardChoices"></div>
+
+            <div class="result" id="cardResult"></div>
+            <div class="streak-info">
+                Streak: <span id="cardStreak">0</span> |
+                Best: <span id="cardBest">0</span> |
+                Timer: <span id="currentTimer">5.0s</span>
+            </div>
+
+            <div class="controls">
+                <button onclick="games.cards.startRound()">Start Round</button>
+                <button class="secondary" onclick="games.cards.reset()">Reset</button>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <h3>Triaxial Intuition</h3>
+            <p>
+                <strong>No binary.</strong> The minimum choice count is 3 (triaxial stability).
+                Options expand to 6 or 9 for increased difficulty.
+            </p>
+            <p>
+                <strong>Chance rates:</strong> 3 choices = 33.3% | 6 choices = 16.7% | 9 choices = 11.1%
+            </p>
+            <p>
+                Train your intuition by noticing the subtle <em>feeling</em> before conscious thought engages.
+                Don't analyze. Respond from the s-bridge.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Developer: Alessandra Ray</p>
+        <p><a href="https://havemindmedia.com">havemindmedia.com</a></p>
+    </footer>
+
+    <script src="epoch-games-core.js"></script>
+    <script>
+        // ══════════════════════════════════════════════════════════════
+        // GAME DEFINITIONS
+        // ══════════════════════════════════════════════════════════════
+
+        const COLORS = {
+            3: ['#FF4444', '#44FF44', '#4444FF'],
+            6: ['#FF4444', '#FF8844', '#FFFF44', '#44FF44', '#4444FF', '#8844FF'],
+            9: ['#FF4444', '#FF8844', '#FFFF44', '#88FF44', '#44FF44', '#44FF88', '#44FFFF', '#4488FF', '#8844FF']
+        };
+
+        const DIRECTIONS = {
+            3: ['↑', '↙', '↘'],  // Triaxial
+            6: ['↑', '↗', '↘', '↓', '↙', '↖'],
+            9: ['↑', '↗', '→', '↘', '↓', '↙', '←', '↖', '●']  // 8 + center
+        };
+
+        const CARDS = ['🂡', '🂢', '🂣', '🂤', '🂥', '🂦'];  // 6 cards
+
+        // ══════════════════════════════════════════════════════════════
+        // GAMES OBJECT
+        // ══════════════════════════════════════════════════════════════
+
+        const games = {
+            colors: null,
+            numbers: null,
+            directions: null,
+            cards: null
+        };
+
+        // ══════════════════════════════════════════════════════════════
+        // BASE INTUITION GAME
+        // ══════════════════════════════════════════════════════════════
+
+        class IntuitionGame {
+            constructor(name, choicesGetter) {
+                this.name = name;
+                this.choicesGetter = choicesGetter;
+                this.choiceCount = 3;
+                this.target = null;
+                this.revealed = false;
+
+                this.stats = {
+                    rounds: 0,
+                    hits: 0,
+                    streak: 0
+                };
+
+                this.setupDifficultyButtons();
+            }
+
+            setupDifficultyButtons() {
+                const panel = document.getElementById(`panel-${this.name}`);
+                if (!panel) return;
+
+                panel.querySelectorAll('.difficulty-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        panel.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.choiceCount = parseInt(btn.dataset.count);
+                        this.nextRound();
+                    });
+                });
+            }
+
+            getChoices() {
+                return this.choicesGetter(this.choiceCount);
+            }
+
+            render() {
+                // Override in subclass
+            }
+
+            nextRound() {
+                this.revealed = false;
+                const choices = this.getChoices();
+                this.target = choices[EpochCore.randomIndex(choices.length)];
+                this.render();
+                this.clearResult();
+            }
+
+            handleChoice(chosen) {
+                if (this.revealed) return;
+                this.revealed = true;
+
+                const isHit = chosen === this.target;
+                this.stats.rounds++;
+
+                if (isHit) {
+                    this.stats.hits++;
+                    this.stats.streak++;
+                } else {
+                    this.stats.streak = 0;
+                }
+
+                this.showResult(isHit, chosen);
+                this.updateGlobalStats();
+            }
+
+            showResult(isHit, chosen) {
+                const resultEl = document.getElementById(`${this.name}Result`);
+                const streakEl = document.getElementById(`${this.name}Streak`);
+
+                resultEl.textContent = isHit ? 'HIT!' : `Miss - was ${this.formatTarget()}`;
+                resultEl.className = 'result ' + (isHit ? 'hit' : 'miss');
+                streakEl.textContent = this.stats.streak;
+
+                this.highlightChoices(chosen);
+            }
+
+            formatTarget() {
+                return this.target;
+            }
+
+            highlightChoices(chosen) {
+                // Override in subclass
+            }
+
+            clearResult() {
+                const resultEl = document.getElementById(`${this.name}Result`);
+                resultEl.textContent = '';
+                resultEl.className = 'result';
+            }
+
+            reset() {
+                this.stats = { rounds: 0, hits: 0, streak: 0 };
+                this.updateGlobalStats();
+                this.nextRound();
+            }
+
+            updateGlobalStats() {
+                let totalRounds = 0, totalHits = 0;
+                Object.values(games).forEach(g => {
+                    if (g && g.stats) {
+                        totalRounds += g.stats.rounds;
+                        totalHits += g.stats.hits;
+                    }
+                });
+
+                document.getElementById('rounds').textContent = totalRounds;
+                document.getElementById('hits').textContent = totalHits;
+
+                const hitRate = totalRounds > 0 ? (totalHits / totalRounds * 100).toFixed(1) : 0;
+                document.getElementById('hitRate').textContent = `${hitRate}%`;
+
+                // Average chance across all games
+                const avgChance = 22;  // Rough average of 33, 17, 11
+                const diff = hitRate - avgChance;
+                const vsEl = document.getElementById('vsChance');
+
+                if (totalRounds < 10) {
+                    vsEl.textContent = '--';
+                } else {
+                    vsEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+                    vsEl.style.color = diff >= 0 ? 'var(--success)' : 'var(--miss)';
+                }
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // COLOR GAME
+        // ══════════════════════════════════════════════════════════════
+
+        class ColorGame extends IntuitionGame {
+            constructor() {
+                super('colors', (count) => COLORS[count]);
+            }
+
+            render() {
+                const container = document.getElementById('colorChoices');
+                container.className = `choices-${this.choiceCount}`;
+
+                const colors = this.getChoices();
+                const shuffled = EpochCore.shuffleArray([...colors]);
+
+                container.innerHTML = shuffled.map(color => `
+                    <div class="choice color-choice"
+                         style="background: ${color};"
+                         data-value="${color}">
+                    </div>
+                `).join('');
+
+                container.querySelectorAll('.choice').forEach(el => {
+                    el.addEventListener('click', () => this.handleChoice(el.dataset.value));
+                });
+            }
+
+            formatTarget() {
+                return '●';  // Just show dot, color shown by highlight
+            }
+
+            highlightChoices(chosen) {
+                document.querySelectorAll('#colorChoices .choice').forEach(el => {
+                    const val = el.dataset.value;
+                    if (val === this.target) {
+                        el.classList.add(chosen === this.target ? 'correct' : 'reveal');
+                    } else if (val === chosen) {
+                        el.classList.add('incorrect');
+                    }
+                });
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // NUMBER GAME
+        // ══════════════════════════════════════════════════════════════
+
+        class NumberGame extends IntuitionGame {
+            constructor() {
+                super('numbers', (count) => Array.from({length: count}, (_, i) => i + 1));
+            }
+
+            render() {
+                const container = document.getElementById('numberChoices');
+                container.className = `choices-${this.choiceCount}`;
+
+                const numbers = this.getChoices();
+                const shuffled = EpochCore.shuffleArray([...numbers]);
+
+                container.innerHTML = shuffled.map(num => `
+                    <div class="choice number-choice" data-value="${num}">${num}</div>
+                `).join('');
+
+                container.querySelectorAll('.choice').forEach(el => {
+                    el.addEventListener('click', () => this.handleChoice(parseInt(el.dataset.value)));
+                });
+            }
+
+            highlightChoices(chosen) {
+                document.querySelectorAll('#numberChoices .choice').forEach(el => {
+                    const val = parseInt(el.dataset.value);
+                    if (val === this.target) {
+                        el.classList.add(chosen === this.target ? 'correct' : 'reveal');
+                    } else if (val === chosen) {
+                        el.classList.add('incorrect');
+                    }
+                });
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // DIRECTION GAME
+        // ══════════════════════════════════════════════════════════════
+
+        class DirectionGame extends IntuitionGame {
+            constructor() {
+                super('directions', (count) => DIRECTIONS[count]);
+                this.choiceCount = 6;  // Default to 6
+            }
+
+            render() {
+                const container = document.getElementById('directionChoices');
+                container.className = `choices-${this.choiceCount}`;
+
+                const dirs = this.getChoices();
+                const shuffled = EpochCore.shuffleArray([...dirs]);
+
+                container.innerHTML = shuffled.map(dir => `
+                    <div class="choice direction-choice" data-value="${dir}">${dir}</div>
+                `).join('');
+
+                container.querySelectorAll('.choice').forEach(el => {
+                    el.addEventListener('click', () => this.handleChoice(el.dataset.value));
+                });
+            }
+
+            highlightChoices(chosen) {
+                document.querySelectorAll('#directionChoices .choice').forEach(el => {
+                    const val = el.dataset.value;
+                    if (val === this.target) {
+                        el.classList.add(chosen === this.target ? 'correct' : 'reveal');
+                    } else if (val === chosen) {
+                        el.classList.add('incorrect');
+                    }
+                });
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // CARD MATCH GAME (Decreasing Timer)
+        // ══════════════════════════════════════════════════════════════
+
+        class CardMatchGame extends IntuitionGame {
+            constructor() {
+                super('cards', () => CARDS);
+                this.choiceCount = 6;
+                this.timerDuration = 5000;
+                this.timerInterval = null;
+                this.bestStreak = parseInt(localStorage.getItem('card_best_streak') || '0');
+            }
+
+            render() {
+                const container = document.getElementById('cardChoices');
+                const cards = EpochCore.shuffleArray([...CARDS]);
+
+                container.innerHTML = cards.map(card => `
+                    <div class="choice" data-value="${card}" style="font-size: 3rem;">${card}</div>
+                `).join('');
+
+                container.querySelectorAll('.choice').forEach(el => {
+                    el.addEventListener('click', () => this.handleCardChoice(el.dataset.value));
+                });
+
+                // Show target
+                document.getElementById('targetCard').textContent = this.target;
+            }
+
+            startRound() {
+                this.revealed = false;
+                const cards = CARDS;
+                this.target = cards[EpochCore.randomIndex(cards.length)];
+                this.render();
+                this.clearResult();
+                this.startTimer();
+            }
+
+            startTimer() {
+                const progress = document.getElementById('timerProgress');
+                const text = document.getElementById('timerText');
+                const circumference = 565.48;
+
+                const startTime = Date.now();
+                progress.style.strokeDashoffset = '0';
+
+                this.timerInterval = setInterval(() => {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = Math.max(0, this.timerDuration - elapsed);
+                    const percent = remaining / this.timerDuration;
+
+                    progress.style.strokeDashoffset = circumference * (1 - percent);
+                    text.textContent = (remaining / 1000).toFixed(1);
+
+                    if (remaining <= 0) {
+                        this.handleTimeout();
+                    }
+                }, 50);
+
+                document.getElementById('currentTimer').textContent = `${(this.timerDuration / 1000).toFixed(1)}s`;
+            }
+
+            stopTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            }
+
+            handleCardChoice(chosen) {
+                if (this.revealed) return;
+                this.stopTimer();
+                this.revealed = true;
+
+                const isHit = chosen === this.target;
+                this.stats.rounds++;
+
+                if (isHit) {
+                    this.stats.hits++;
+                    this.stats.streak++;
+                    // Decrease timer on hit (minimum 1 second)
+                    this.timerDuration = Math.max(1000, this.timerDuration - 200);
+
+                    if (this.stats.streak > this.bestStreak) {
+                        this.bestStreak = this.stats.streak;
+                        localStorage.setItem('card_best_streak', this.bestStreak);
+                    }
+                } else {
+                    this.stats.streak = 0;
+                    this.timerDuration = 5000;  // Reset on miss
+                }
+
+                this.showCardResult(isHit, chosen);
+                this.updateGlobalStats();
+            }
+
+            handleTimeout() {
+                this.stopTimer();
+                if (!this.revealed) {
+                    this.revealed = true;
+                    this.stats.rounds++;
+                    this.stats.streak = 0;
+                    this.timerDuration = 5000;
+                    this.showCardResult(false, null);
+                    this.highlightChoices(null);
+                    this.updateGlobalStats();
+                }
+            }
+
+            showCardResult(isHit, chosen) {
+                const resultEl = document.getElementById('cardResult');
+                resultEl.textContent = isHit ? 'HIT!' : 'Miss!';
+                resultEl.className = 'result ' + (isHit ? 'hit' : 'miss');
+
+                document.getElementById('cardStreak').textContent = this.stats.streak;
+                document.getElementById('cardBest').textContent = this.bestStreak;
+                document.getElementById('currentTimer').textContent = `${(this.timerDuration / 1000).toFixed(1)}s`;
+
+                this.highlightCardChoices(chosen);
+            }
+
+            highlightCardChoices(chosen) {
+                document.querySelectorAll('#cardChoices .choice').forEach(el => {
+                    const val = el.dataset.value;
+                    if (val === this.target) {
+                        el.classList.add(chosen === this.target ? 'correct' : 'reveal');
+                    } else if (val === chosen) {
+                        el.classList.add('incorrect');
+                    }
+                });
+            }
+
+            reset() {
+                this.stopTimer();
+                this.timerDuration = 5000;
+                super.reset();
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // INITIALIZATION
+        // ══════════════════════════════════════════════════════════════
+
+        games.colors = new ColorGame();
+        games.numbers = new NumberGame();
+        games.directions = new DirectionGame();
+        games.cards = new CardMatchGame();
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(`panel-${tab.dataset.game}`).classList.add('active');
+            });
+        });
+
+        // Initialize first rounds
+        games.colors.nextRound();
+        games.numbers.nextRound();
+        games.directions.nextRound();
+    </script>
+</body>
+</html>

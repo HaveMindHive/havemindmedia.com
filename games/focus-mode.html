@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Mode | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --focus-red: #330000;
+            --text-light: #e0e0e0;
+            --success: #4CAF50;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        /* Focus Mode Overlay */
+        .focus-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--focus-red);
+            display: none;
+            z-index: 1000;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .focus-overlay.active {
+            display: flex;
+        }
+
+        .focus-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #660000, #330000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: focusPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes focusPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .focus-timer {
+            font-size: 4rem;
+            color: rgba(255, 100, 100, 0.8);
+        }
+
+        .focus-instruction {
+            margin-top: 30px;
+            font-size: 1.3rem;
+            opacity: 0.8;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .exit-focus {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .epoch-mark {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab:hover, .tab.active {
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-color: var(--gold);
+        }
+
+        /* Game Panels */
+        .game-panel {
+            display: none;
+            text-align: center;
+        }
+
+        .game-panel.active {
+            display: block;
+        }
+
+        .instruction {
+            font-size: 1.1rem;
+            margin: 20px 0;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Image Pool */
+        .image-section {
+            margin: 30px 0;
+        }
+
+        .hidden-target {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05));
+            border: 3px solid var(--gold);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .hidden-target.revealed img {
+            display: block;
+        }
+
+        .hidden-target img {
+            display: none;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Image Choices (Triaxial: 3, 6, 9) */
+        .image-grid {
+            display: grid;
+            gap: 15px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .image-grid.cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .image-choice {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-choice:hover {
+            border-color: var(--gold);
+            transform: scale(1.03);
+        }
+
+        .image-choice img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+
+        .image-choice.correct {
+            border-color: var(--success);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+
+        .image-choice.incorrect {
+            border-color: #f44336;
+            opacity: 0.5;
+        }
+
+        .image-choice.reveal {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Impressions Input */
+        .impressions-section {
+            margin: 30px 0;
+        }
+
+        .impressions-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            color: var(--text-light);
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .impressions-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .impressions-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--bg-deep);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        button.focus-btn {
+            background: linear-gradient(135deg, #880000, #aa0000);
+            color: white;
+        }
+
+        /* Result */
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 40px;
+            margin: 15px 0;
+        }
+
+        .result.hit { color: var(--success); }
+        .result.miss { color: #f44336; }
+
+        /* Protocol Explanation */
+        .protocol {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .protocol h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .protocol p, .protocol li {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .protocol ul {
+            margin-left: 20px;
+        }
+
+        /* Audio Controls */
+        .audio-controls {
+            margin: 20px 0;
+        }
+
+        .audio-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .audio-toggle input {
+            width: 18px;
+            height: 18px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <!-- Focus Mode Overlay -->
+    <div class="focus-overlay" id="focusOverlay">
+        <button class="exit-focus" onclick="exitFocusMode()">Exit Focus</button>
+        <div class="focus-circle">
+            <div class="focus-timer" id="focusTimer">60</div>
+        </div>
+        <p class="focus-instruction" id="focusInstruction">
+            Relax your gaze on the center.<br>
+            Let impressions arise naturally.<br>
+            Don't analyze. Just receive.
+        </p>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Focus Mode</h1>
+            <p style="opacity: 0.8;">Remote Viewing Training · Sensory Focus · s-bridge Connection</p>
+            <p class="epoch-mark">[1 = -1]</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab active" data-game="viewing">Image Viewing</button>
+            <button class="tab" data-game="impressions">Free Impressions</button>
+            <button class="tab" data-game="ganzfeld">Ganzfeld Lite</button>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-label">Sessions</div>
+                <div class="stat-value" id="sessions">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hits</div>
+                <div class="stat-value" id="hits">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hit Rate</div>
+                <div class="stat-value" id="hitRate">0%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">vs 33% Chance</div>
+                <div class="stat-value" id="vsChance">--</div>
+            </div>
+        </div>
+
+        <!-- IMAGE VIEWING PANEL -->
+        <div class="game-panel active" id="panel-viewing">
+            <p class="instruction">
+                A target image has been selected.<br>
+                Enter focus mode, receive impressions, then select from 3 choices.
+            </p>
+
+            <div class="image-section">
+                <div class="hidden-target" id="hiddenTarget">
+                    <span>Target Hidden</span>
+                    <img id="targetImage" src="" alt="Target">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="focus-btn" onclick="startFocusSession(30)">Focus 30s</button>
+                <button class="focus-btn" onclick="startFocusSession(60)">Focus 60s</button>
+                <button class="focus-btn" onclick="startFocusSession(120)">Focus 2min</button>
+            </div>
+
+            <p style="margin: 15px 0; opacity: 0.7;">After focus, select your match:</p>
+
+            <div class="image-grid cols-3" id="imageChoices">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="result" id="viewingResult"></div>
+
+            <div class="controls">
+                <button onclick="newViewingSession()">New Session</button>
+                <button class="secondary" onclick="resetStats()">Reset Stats</button>
+            </div>
+        </div>
+
+        <!-- FREE IMPRESSIONS PANEL -->
+        <div class="game-panel" id="panel-impressions">
+            <p class="instruction">
+                A target image exists. Describe your impressions before seeing the choices.<br>
+                Colors, shapes, textures, feelings, movements...
+            </p>
+
+            <div class="image-section">
+                <div class="hidden-target" id="hiddenTarget2">
+                    <span>Target Hidden</span>
+                    <img id="targetImage2" src="" alt="Target">
+                </div>
+            </div>
+
+            <div class="impressions-section">
+                <textarea class="impressions-input" id="impressionsInput"
+                    placeholder="Describe your impressions here...&#10;Colors, shapes, textures, emotions, movements...&#10;Don't analyze. Just write what comes."></textarea>
+            </div>
+
+            <div class="controls">
+                <button class="focus-btn" onclick="startFocusSession(60, 'impressions')">Focus First</button>
+                <button onclick="revealImpressionsChoices()">Ready to Choose</button>
+            </div>
+
+            <div class="image-grid cols-3" id="imageChoices2" style="display: none;">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="result" id="impressionsResult"></div>
+
+            <div class="controls">
+                <button onclick="newImpressionsSession()">New Session</button>
+            </div>
+        </div>
+
+        <!-- GANZFELD LITE PANEL -->
+        <div class="game-panel" id="panel-ganzfeld">
+            <p class="instruction">
+                Simplified ganzfeld protocol.<br>
+                Red-tinted focus mode + optional pink noise audio.<br>
+                After the session, match your impressions to a target.
+            </p>
+
+            <div class="audio-controls">
+                <label class="audio-toggle">
+                    <input type="checkbox" id="audioToggle">
+                    Play pink noise during focus
+                </label>
+            </div>
+
+            <div class="image-section">
+                <div class="hidden-target" id="hiddenTarget3">
+                    <span>Target Hidden</span>
+                    <img id="targetImage3" src="" alt="Target">
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="focus-btn" onclick="startGanzfeldSession(120)">Ganzfeld 2min</button>
+                <button class="focus-btn" onclick="startGanzfeldSession(300)">Ganzfeld 5min</button>
+            </div>
+
+            <div class="impressions-section">
+                <textarea class="impressions-input" id="ganzfeldInput"
+                    placeholder="Post-session impressions..."></textarea>
+            </div>
+
+            <div class="image-grid cols-3" id="imageChoices3" style="display: none;">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="result" id="ganzfeldResult"></div>
+
+            <div class="controls">
+                <button onclick="revealGanzfeldChoices()">Show Choices</button>
+                <button onclick="newGanzfeldSession()">New Session</button>
+            </div>
+        </div>
+
+        <div class="protocol">
+            <h3>Remote Viewing Protocol (Simplified)</h3>
+            <p>Based on protocols developed during the CIA Stargate Project (1977-1995):</p>
+            <ul>
+                <li><strong>Blind target:</strong> You don't know what the target is</li>
+                <li><strong>Focus state:</strong> Mild sensory reduction to enhance reception</li>
+                <li><strong>Free impressions:</strong> Record all impressions without analysis</li>
+                <li><strong>Match to pool:</strong> Select from triaxial set (3, 6, or 9)</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>The s-bridge:</strong> Intuition operates through the s-bridge scalar mode.
+                Focus mode helps quiet the s-echo (conscious perception) to strengthen s-bridge connection.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Developer: Alessandra Ray</p>
+        <p><a href="https://havemindmedia.com">havemindmedia.com</a></p>
+    </footer>
+
+    <!-- Pink Noise Audio (generated) -->
+    <script>
+        // ══════════════════════════════════════════════════════════════
+        // IMAGE POOL (Using emoji as placeholder - replace with real images)
+        // ══════════════════════════════════════════════════════════════
+
+        // Using colored SVG data URIs as placeholder "images"
+        const IMAGES = [
+            { id: 1, name: 'Mountain', color: '#4a6fa5', emoji: '🏔️' },
+            { id: 2, name: 'Ocean', color: '#1e90ff', emoji: '🌊' },
+            { id: 3, name: 'Forest', color: '#228b22', emoji: '🌲' },
+            { id: 4, name: 'Desert', color: '#daa520', emoji: '🏜️' },
+            { id: 5, name: 'City', color: '#708090', emoji: '🏙️' },
+            { id: 6, name: 'Fire', color: '#ff4500', emoji: '🔥' },
+            { id: 7, name: 'Moon', color: '#c0c0c0', emoji: '🌙' },
+            { id: 8, name: 'Sun', color: '#ffd700', emoji: '☀️' },
+            { id: 9, name: 'Flower', color: '#ff69b4', emoji: '🌸' }
+        ];
+
+        // ══════════════════════════════════════════════════════════════
+        // STATE
+        // ══════════════════════════════════════════════════════════════
+
+        let currentTarget = null;
+        let currentChoices = [];
+        let isRevealed = false;
+        let focusInterval = null;
+        let audioContext = null;
+        let pinkNoiseNode = null;
+
+        const stats = {
+            sessions: 0,
+            hits: 0
+        };
+
+        // ══════════════════════════════════════════════════════════════
+        // UTILITY
+        // ══════════════════════════════════════════════════════════════
+
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function randomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // FOCUS MODE
+        // ══════════════════════════════════════════════════════════════
+
+        function startFocusSession(seconds, returnTo = 'viewing') {
+            const overlay = document.getElementById('focusOverlay');
+            const timer = document.getElementById('focusTimer');
+
+            overlay.classList.add('active');
+            let remaining = seconds;
+            timer.textContent = remaining;
+
+            focusInterval = setInterval(() => {
+                remaining--;
+                timer.textContent = remaining;
+
+                if (remaining <= 0) {
+                    exitFocusMode();
+                }
+            }, 1000);
+
+            // Play audio if enabled
+            if (document.getElementById('audioToggle').checked) {
+                startPinkNoise();
+            }
+        }
+
+        function exitFocusMode() {
+            clearInterval(focusInterval);
+            document.getElementById('focusOverlay').classList.remove('active');
+            stopPinkNoise();
+        }
+
+        function startGanzfeldSession(seconds) {
+            startFocusSession(seconds, 'ganzfeld');
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // PINK NOISE
+        // ══════════════════════════════════════════════════════════════
+
+        function startPinkNoise() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            const bufferSize = 4096;
+            pinkNoiseNode = audioContext.createScriptProcessor(bufferSize, 1, 1);
+
+            let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+
+            pinkNoiseNode.onaudioprocess = (e) => {
+                const output = e.outputBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    b0 = 0.99886 * b0 + white * 0.0555179;
+                    b1 = 0.99332 * b1 + white * 0.0750759;
+                    b2 = 0.96900 * b2 + white * 0.1538520;
+                    b3 = 0.86650 * b3 + white * 0.3104856;
+                    b4 = 0.55000 * b4 + white * 0.5329522;
+                    b5 = -0.7616 * b5 - white * 0.0168980;
+                    output[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+                    b6 = white * 0.115926;
+                }
+            };
+
+            pinkNoiseNode.connect(audioContext.destination);
+        }
+
+        function stopPinkNoise() {
+            if (pinkNoiseNode) {
+                pinkNoiseNode.disconnect();
+                pinkNoiseNode = null;
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // IMAGE VIEWING GAME
+        // ══════════════════════════════════════════════════════════════
+
+        function newViewingSession() {
+            isRevealed = false;
+
+            // Reset UI
+            document.getElementById('hiddenTarget').classList.remove('revealed');
+            document.getElementById('hiddenTarget').querySelector('span').style.display = 'block';
+            document.getElementById('viewingResult').textContent = '';
+            document.getElementById('viewingResult').className = 'result';
+
+            // Select target and choices (triaxial: 3)
+            const shuffled = shuffle(IMAGES);
+            currentChoices = shuffled.slice(0, 3);
+            currentTarget = randomItem(currentChoices);
+
+            // Render choices
+            renderImageChoices('imageChoices', currentChoices, handleViewingChoice);
+        }
+
+        function renderImageChoices(containerId, choices, clickHandler) {
+            const container = document.getElementById(containerId);
+            container.style.display = 'grid';
+
+            container.innerHTML = choices.map(img => `
+                <div class="image-choice" data-id="${img.id}">
+                    <span style="font-size: 4rem;">${img.emoji}</span>
+                </div>
+            `).join('');
+
+            container.querySelectorAll('.image-choice').forEach(el => {
+                el.addEventListener('click', () => clickHandler(parseInt(el.dataset.id)));
+            });
+        }
+
+        function handleViewingChoice(chosenId) {
+            if (isRevealed) return;
+            isRevealed = true;
+            stats.sessions++;
+
+            const isHit = chosenId === currentTarget.id;
+            if (isHit) stats.hits++;
+
+            // Show result
+            const resultEl = document.getElementById('viewingResult');
+            resultEl.textContent = isHit ? 'HIT!' : `Miss - Target was ${currentTarget.name}`;
+            resultEl.className = 'result ' + (isHit ? 'hit' : 'miss');
+
+            // Highlight choices
+            document.querySelectorAll('#imageChoices .image-choice').forEach(el => {
+                const id = parseInt(el.dataset.id);
+                if (id === currentTarget.id) {
+                    el.classList.add(isHit ? 'correct' : 'reveal');
+                } else if (id === chosenId) {
+                    el.classList.add('incorrect');
+                }
+            });
+
+            // Reveal target
+            document.getElementById('hiddenTarget').querySelector('span').style.display = 'none';
+            document.getElementById('hiddenTarget').innerHTML += `<span style="font-size: 6rem;">${currentTarget.emoji}</span>`;
+
+            updateStats();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // IMPRESSIONS GAME
+        // ══════════════════════════════════════════════════════════════
+
+        function newImpressionsSession() {
+            isRevealed = false;
+            document.getElementById('impressionsInput').value = '';
+            document.getElementById('imageChoices2').style.display = 'none';
+            document.getElementById('impressionsResult').textContent = '';
+            document.getElementById('hiddenTarget2').classList.remove('revealed');
+            document.getElementById('hiddenTarget2').querySelector('span').style.display = 'block';
+
+            const shuffled = shuffle(IMAGES);
+            currentChoices = shuffled.slice(0, 3);
+            currentTarget = randomItem(currentChoices);
+        }
+
+        function revealImpressionsChoices() {
+            renderImageChoices('imageChoices2', currentChoices, handleImpressionsChoice);
+        }
+
+        function handleImpressionsChoice(chosenId) {
+            if (isRevealed) return;
+            isRevealed = true;
+            stats.sessions++;
+
+            const isHit = chosenId === currentTarget.id;
+            if (isHit) stats.hits++;
+
+            const resultEl = document.getElementById('impressionsResult');
+            resultEl.textContent = isHit ? 'HIT!' : `Miss - Target was ${currentTarget.name}`;
+            resultEl.className = 'result ' + (isHit ? 'hit' : 'miss');
+
+            document.querySelectorAll('#imageChoices2 .image-choice').forEach(el => {
+                const id = parseInt(el.dataset.id);
+                if (id === currentTarget.id) {
+                    el.classList.add(isHit ? 'correct' : 'reveal');
+                } else if (id === chosenId) {
+                    el.classList.add('incorrect');
+                }
+            });
+
+            updateStats();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // GANZFELD GAME
+        // ══════════════════════════════════════════════════════════════
+
+        function newGanzfeldSession() {
+            isRevealed = false;
+            document.getElementById('ganzfeldInput').value = '';
+            document.getElementById('imageChoices3').style.display = 'none';
+            document.getElementById('ganzfeldResult').textContent = '';
+
+            const shuffled = shuffle(IMAGES);
+            currentChoices = shuffled.slice(0, 3);
+            currentTarget = randomItem(currentChoices);
+        }
+
+        function revealGanzfeldChoices() {
+            renderImageChoices('imageChoices3', currentChoices, handleGanzfeldChoice);
+        }
+
+        function handleGanzfeldChoice(chosenId) {
+            if (isRevealed) return;
+            isRevealed = true;
+            stats.sessions++;
+
+            const isHit = chosenId === currentTarget.id;
+            if (isHit) stats.hits++;
+
+            const resultEl = document.getElementById('ganzfeldResult');
+            resultEl.textContent = isHit ? 'HIT!' : `Miss - Target was ${currentTarget.name}`;
+            resultEl.className = 'result ' + (isHit ? 'hit' : 'miss');
+
+            document.querySelectorAll('#imageChoices3 .image-choice').forEach(el => {
+                const id = parseInt(el.dataset.id);
+                if (id === currentTarget.id) {
+                    el.classList.add(isHit ? 'correct' : 'reveal');
+                } else if (id === chosenId) {
+                    el.classList.add('incorrect');
+                }
+            });
+
+            updateStats();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // STATS
+        // ══════════════════════════════════════════════════════════════
+
+        function updateStats() {
+            document.getElementById('sessions').textContent = stats.sessions;
+            document.getElementById('hits').textContent = stats.hits;
+
+            const hitRate = stats.sessions > 0 ? (stats.hits / stats.sessions * 100).toFixed(1) : 0;
+            document.getElementById('hitRate').textContent = `${hitRate}%`;
+
+            const chanceRate = 33.3;
+            const diff = hitRate - chanceRate;
+            const vsEl = document.getElementById('vsChance');
+
+            if (stats.sessions < 9) {
+                vsEl.textContent = '--';
+            } else {
+                vsEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+                vsEl.style.color = diff >= 0 ? 'var(--success)' : '#f44336';
+            }
+        }
+
+        function resetStats() {
+            stats.sessions = 0;
+            stats.hits = 0;
+            updateStats();
+            newViewingSession();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // TAB SWITCHING
+        // ══════════════════════════════════════════════════════════════
+
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(`panel-${tab.dataset.game}`).classList.add('active');
+            });
+        });
+
+        // ══════════════════════════════════════════════════════════════
+        // INIT
+        // ══════════════════════════════════════════════════════════════
+
+        newViewingSession();
+        newImpressionsSession();
+        newGanzfeldSession();
+    </script>
+</body>
+</html>

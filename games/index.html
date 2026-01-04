@@ -2,434 +2,447 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="description" content="Mind Games - Train your intuition with Have Mind Media. Mobile-first games that develop pattern recognition and mental clarity.">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Mind Games | Have Mind Media</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="../js/components/site-header.js" defer></script>
-    <script src="../js/components/site-footer.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games | Have Mind Media</title>
     <style>
+        :root {
+            --gold: #FFD700;
+            --love-gold: #FFD700;
+            --shadow-crimson: #8B0000;
+            --teal: #4A9B9B;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --text-light: #e0e0e0;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        :root {
-            --bg: #050508;
-            --card: #0d1117;
-            --border: #1e2836;
-            --text: #e6e6e6;
-            --text-dim: #888;
-            --gold: #c9a227;
-            --gold-glow: rgba(201, 162, 39, 0.3);
-            --blue: #6ab4f5;
-            --green: #50c878;
-            --purple: #a78bfa;
-        }
-
-        html, body {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
             min-height: 100vh;
-            -webkit-tap-highlight-color: transparent;
+            color: var(--text-light);
         }
 
-        .main {
-            padding: 80px 16px 40px;
-            max-width: 600px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Header */
-        .games-header {
+        header {
             text-align: center;
-            padding: 24px 0 32px;
+            padding: 40px 20px;
         }
 
-        .games-logo {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-        }
-
-        .games-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--gold);
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .games-tagline {
-            color: var(--blue);
-            font-size: 1rem;
-            font-style: italic;
-        }
-
-        /* Featured Game */
-        .featured-game {
-            background: linear-gradient(135deg, var(--card) 0%, #151a24 100%);
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 24px;
-            margin-bottom: 24px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 40px var(--gold-glow);
-        }
-
-        .featured-game::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.1), transparent);
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
-        }
-
-        .featured-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .featured-badge {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--bg);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-        }
-
-        .featured-icon {
+        h1 {
             font-size: 3rem;
-            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
         }
 
-        .featured-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
         }
 
-        .featured-desc {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .play-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
-            color: var(--bg);
+        .epoch-mark {
+            color: var(--gold);
             font-size: 1.1rem;
-            font-weight: 700;
-            padding: 14px 48px;
-            border: none;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .play-btn:active {
-            transform: scale(0.97);
+        .intro {
+            max-width: 700px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 1.8;
+            opacity: 0.9;
         }
 
-        .play-btn:hover {
-            box-shadow: 0 8px 30px var(--gold-glow);
+        .principle-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: center;
         }
 
-        /* Game Grid */
-        .games-section-title {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            padding-left: 4px;
+        .principle-box h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
         }
 
+        .principle-box ul {
+            list-style: none;
+            line-height: 2;
+        }
+
+        .principle-box li::before {
+            content: '△ ';
+            color: var(--gold);
+        }
+
+        /* Games Grid */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
         .game-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px 16px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s;
+            cursor: pointer;
             text-decoration: none;
-            color: var(--text);
-            transition: all 0.2s;
-        }
-
-        .game-card:active {
-            transform: scale(0.97);
+            color: inherit;
+            display: block;
         }
 
         .game-card:hover {
-            border-color: var(--blue);
-            box-shadow: 0 4px 20px rgba(106, 180, 245, 0.15);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
         }
 
-        .game-card.coming-soon {
-            opacity: 0.5;
-            pointer-events: none;
+        .game-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
         }
 
-        .game-card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
+        .game-card h2 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
         }
 
-        .game-card-name {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 4px;
+        .game-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        .game-card-tag {
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .game-tag {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
 
-        .game-card-tag.soon {
-            color: var(--purple);
+        .game-card.featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 0, 0, 0.1));
+            border-color: var(--gold);
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 24px;
+        @media (max-width: 700px) {
+            .game-card.featured {
+                grid-column: span 1;
+            }
         }
 
-        .stat-item {
+        /* Category Headers */
+        .category {
+            margin: 50px 0 20px 0;
+        }
+
+        .category h2 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
             text-align: center;
         }
 
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .stat-box .value {
+            font-size: 2rem;
+            font-weight: bold;
             color: var(--gold);
         }
 
-        .stat-label {
-            font-size: 0.7rem;
-            color: var(--text-dim);
+        .stat-box .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* CTA Section */
-        .cta-section {
+        /* Footer */
+        footer {
             text-align: center;
-            padding: 24px;
-            background: linear-gradient(135deg, rgba(106, 180, 245, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 24px;
+            padding: 40px 20px;
+            opacity: 0.6;
         }
 
-        .cta-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .cta-text {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background: transparent;
-            color: var(--blue);
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 10px 24px;
-            border: 1px solid var(--blue);
-            border-radius: 20px;
+        footer a {
+            color: var(--gold);
             text-decoration: none;
-            transition: all 0.2s;
         }
 
-        .cta-btn:hover {
-            background: rgba(106, 180, 245, 0.1);
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 10px 25px;
+            border: 1px solid var(--gold);
+            border-radius: 25px;
+            transition: all 0.3s;
         }
 
-        /* Philosophy */
-        .philosophy {
-            text-align: center;
-            padding: 20px;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        .philosophy .principle {
-            color: var(--blue);
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        /* Mobile optimizations */
-        @media (max-width: 380px) {
-            .games-title { font-size: 1.5rem; }
-            .featured-name { font-size: 1.3rem; }
-            .play-btn { padding: 12px 36px; font-size: 1rem; }
-        }
-
-        @media (min-width: 600px) {
-            .games-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .back-link:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
         }
     </style>
 </head>
 <body>
-    <site-header></site-header>
-
-    <main class="main">
-        <header class="games-header">
-            <div class="games-logo">🧠</div>
-            <h1 class="games-title">MIND GAMES</h1>
-            <p class="games-tagline">Train your intuition. Trust your instincts.</p>
+    <div class="container">
+        <header>
+            <h1>Epoch Games</h1>
+            <p class="tagline">Train Your Intuition · Triaxial Design · No Binary</p>
+            <p class="epoch-mark">[1 = -1]</p>
         </header>
 
-        <!-- Featured Game -->
-        <a href="mind-reading/index.html" class="featured-game">
-            <div class="featured-content">
-                <span class="featured-badge">FEATURED</span>
-                <div class="featured-icon">🔮</div>
-                <h2 class="featured-name">Mind Reading</h2>
-                <p class="featured-desc">Match the hidden symbol before time runs out. Each correct answer makes the next round faster. How long can you last?</p>
-                <span class="play-btn">PLAY NOW</span>
-            </div>
-        </a>
+        <p class="intro">
+            These games are designed on <strong>Epoch Model</strong> principles. All choices are triaxial
+            (minimum 3, expanding to 6 or 9). Binary thinking is dogma—we train in the space of three.
+            Play is training. Training is awakening.
+        </p>
 
-        <!-- Stats -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value" id="best-streak">--</div>
-                <div class="stat-label">Best Streak</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="games-played">--</div>
-                <div class="stat-label">Games Played</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value" id="accuracy">--</div>
-                <div class="stat-label">Accuracy</div>
-            </div>
+        <div class="principle-box">
+            <h3>Triaxial Game Design</h3>
+            <ul>
+                <li>Never 2 choices (binary is dogma)</li>
+                <li>Always 3, 6, or 9 options</li>
+                <li>Chance rates: 33% · 17% · 11%</li>
+                <li>Track your intuition vs statistical chance</li>
+            </ul>
         </div>
 
-        <!-- Game Grid -->
-        <h2 class="games-section-title">More Games</h2>
+        <!-- FEATURED GAME -->
+        <div class="category">
+            <h2>Featured</h2>
+        </div>
+
         <div class="games-grid">
-            <a href="mind-reading/index.html" class="game-card">
-                <div class="game-card-icon">🔮</div>
-                <div class="game-card-name">Mind Reading</div>
-                <div class="game-card-tag">Symbol Match</div>
+            <a href="love-triads.html" class="game-card featured">
+                <div class="game-icon">💛🔺💛</div>
+                <h2>Love Triads</h2>
+                <p>
+                    The flagship Epoch game. Select a shadow ball, then choose three love balls to form
+                    a triangle around it. When the triad binds the shadow, all four dissolve.
+                    Love as geometric binding force.
+                </p>
+                <span class="game-tag">Match-3</span>
+                <span class="game-tag">Triaxial</span>
+                <span class="game-tag">Strategic</span>
             </a>
-            <a href="balance/index.html" class="game-card">
-                <div class="game-card-icon">⚖️</div>
-                <div class="game-card-name">Balance</div>
-                <div class="game-card-tag">Geometry Puzzle</div>
+        </div>
+
+        <!-- INTUITION TRAINING -->
+        <div class="category">
+            <h2>Intuition Training</h2>
+        </div>
+
+        <div class="games-grid">
+            <a href="epoch-symbols.html" class="game-card">
+                <div class="game-icon">△ ☆ ◎</div>
+                <h2>Epoch Symbols</h2>
+                <p>
+                    9 symbols based on Q-reduction. Test clairvoyance, precognition, or timed response.
+                    Beat the 11.1% chance rate.
+                </p>
+                <span class="game-tag">9 Symbols</span>
+                <span class="game-tag">ESP</span>
             </a>
-            <div class="game-card coming-soon">
-                <div class="game-card-icon">📐</div>
-                <div class="game-card-name">Pattern Prophet</div>
-                <div class="game-card-tag soon">Coming Soon</div>
+
+            <a href="intuition-trainer.html" class="game-card">
+                <div class="game-icon">🎨 🔢 ➡️</div>
+                <h2>Intuition Trainer</h2>
+                <p>
+                    Four training modes: Colors, Numbers, Directions, and the classic Card Match with
+                    decreasing timer. All triaxial.
+                </p>
+                <span class="game-tag">Colors</span>
+                <span class="game-tag">Numbers</span>
+                <span class="game-tag">Timed</span>
+            </a>
+
+            <a href="focus-mode.html" class="game-card">
+                <div class="game-icon">🔴 👁️ 🔴</div>
+                <h2>Focus Mode</h2>
+                <p>
+                    Remote viewing training. Enter a sensory-reduced focus state, receive impressions,
+                    then match to target pool. Based on Stargate protocols.
+                </p>
+                <span class="game-tag">Remote Viewing</span>
+                <span class="game-tag">Ganzfeld</span>
+            </a>
+
+            <a href="phaistos-archetypes.html" class="game-card">
+                <div class="game-icon">🌀 ☯ 🌀</div>
+                <h2>Phaistos Archetypes</h2>
+                <p>
+                    9 archetypal symbols inspired by the Phaistos Disc. Explore each archetype's
+                    spectrum (good/bad/coin) and learn how the Shadow Operator transforms them.
+                </p>
+                <span class="game-tag">Archetypes</span>
+                <span class="game-tag">Spectrum</span>
+                <span class="game-tag">Shadow</span>
+            </a>
+        </div>
+
+        <!-- COMING SOON -->
+        <div class="category">
+            <h2>Coming Soon</h2>
+        </div>
+
+        <div class="games-grid">
+            <div class="game-card" style="opacity: 0.5; cursor: default;">
+                <div class="game-icon">🔗</div>
+                <h2>Symbol Sender</h2>
+                <p>
+                    Two-player telepathy. One player sends, one receives. Compare hit rates across sessions.
+                </p>
+                <span class="game-tag">Multiplayer</span>
+                <span class="game-tag">Telepathy</span>
             </div>
-            <div class="game-card coming-soon">
-                <div class="game-card-icon">🪙</div>
-                <div class="game-card-name">Coin Intuition</div>
-                <div class="game-card-tag soon">Coming Soon</div>
+
+            <div class="game-card" style="opacity: 0.5; cursor: default;">
+                <div class="game-icon">🌍</div>
+                <h2>Coordinate Viewer</h2>
+                <p>
+                    Full Stargate-style coordinate remote viewing. Given coordinates, describe the location.
+                </p>
+                <span class="game-tag">Advanced</span>
+                <span class="game-tag">CRV</span>
             </div>
-            <div class="game-card coming-soon">
-                <div class="game-card-icon">🎨</div>
-                <div class="game-card-name">Color Sync</div>
-                <div class="game-card-tag soon">Coming Soon</div>
-            </div>
-            <div class="game-card coming-soon">
-                <div class="game-card-icon">◯</div>
-                <div class="game-card-name">Void Focus</div>
-                <div class="game-card-tag soon">Coming Soon</div>
+
+            <div class="game-card" style="opacity: 0.5; cursor: default;">
+                <div class="game-icon">⏱️</div>
+                <h2>Precognition Lab</h2>
+                <p>
+                    Predict outcomes before they happen. Test your ability to sense future events.
+                </p>
+                <span class="game-tag">Future Sense</span>
             </div>
         </div>
 
-        <!-- App CTA -->
-        <div class="cta-section">
-            <h3 class="cta-title">Play Anywhere</h3>
-            <p class="cta-text">Add to your home screen for instant access. All games are free.</p>
-            <a href="#" class="cta-btn" id="install-btn">Add to Home Screen</a>
+        <!-- STATS PLACEHOLDER -->
+        <div class="stats-overview">
+            <div class="stat-box">
+                <div class="value" id="totalSessions">--</div>
+                <div class="label">Total Sessions</div>
+            </div>
+            <div class="stat-box">
+                <div class="value" id="totalHits">--</div>
+                <div class="label">Total Hits</div>
+            </div>
+            <div class="stat-box">
+                <div class="value" id="overallRate">--</div>
+                <div class="label">Overall Rate</div>
+            </div>
+            <div class="stat-box">
+                <div class="value" id="aboveChance">--</div>
+                <div class="label">Above Chance</div>
+            </div>
         </div>
 
-        <!-- Philosophy -->
-        <div class="philosophy">
-            <p>These games train the part of you that knows before you think. The intuitive mind is a sacred gift.</p>
-            <p class="principle">[1 = -1]</p>
+        <div style="text-align: center; margin: 30px 0; opacity: 0.7;">
+            <p>Stats sync across games using local storage.</p>
+            <p>Your data stays on your device.</p>
         </div>
-    </main>
+    </div>
 
-    <site-footer></site-footer>
+    <footer>
+        <p><strong>[1 = -1]</strong></p>
+        <p style="margin-top: 10px;">The mind is in your mind.</p>
+        <p style="margin-top: 10px;">Have Mind Media | Developer: Alessandra Ray</p>
+        <a href="https://havemindmedia.com" class="back-link">← Back to HaveMindMedia.com</a>
+    </footer>
 
     <script>
-        // Load stats from localStorage
-        document.addEventListener('DOMContentLoaded', () => {
-            const best = localStorage.getItem('mindreading-best') || '--';
-            const played = localStorage.getItem('games-played') || '--';
-            const accuracy = localStorage.getItem('games-accuracy') || '--';
+        // Load aggregate stats from localStorage
+        function loadStats() {
+            let totalSessions = 0;
+            let totalHits = 0;
 
-            document.getElementById('best-streak').textContent = best;
-            document.getElementById('games-played').textContent = played;
-            document.getElementById('accuracy').textContent = accuracy !== '--' ? accuracy + '%' : '--';
-        });
+            // Check each game's stored stats
+            const gameKeys = [
+                'epoch_EpochSymbolsGame_stats',
+                'epoch_ColorGame_stats',
+                'epoch_NumberGame_stats',
+                'epoch_DirectionGame_stats',
+                'epoch_CardMatchGame_stats'
+            ];
 
-        // PWA install prompt
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
+            gameKeys.forEach(key => {
+                const data = localStorage.getItem(key);
+                if (data) {
+                    try {
+                        const parsed = JSON.parse(data);
+                        totalSessions += parsed.attempts || parsed.rounds || 0;
+                        totalHits += parsed.hits || 0;
+                    } catch (e) {}
+                }
+            });
 
-        document.getElementById('install-btn').addEventListener('click', async (e) => {
-            e.preventDefault();
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                deferredPrompt = null;
-            } else {
-                // Show manual instructions for iOS
-                alert('To add to home screen:\n\n1. Tap the Share button\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add"');
+            // Also check focus mode stats
+            const focusStats = localStorage.getItem('focus_mode_stats');
+            if (focusStats) {
+                try {
+                    const parsed = JSON.parse(focusStats);
+                    totalSessions += parsed.sessions || 0;
+                    totalHits += parsed.hits || 0;
+                } catch (e) {}
             }
-        });
+
+            // Update display
+            if (totalSessions > 0) {
+                document.getElementById('totalSessions').textContent = totalSessions;
+                document.getElementById('totalHits').textContent = totalHits;
+
+                const rate = (totalHits / totalSessions * 100).toFixed(1);
+                document.getElementById('overallRate').textContent = `${rate}%`;
+
+                // Assume average chance of ~20% across all games
+                const avgChance = 20;
+                const diff = rate - avgChance;
+                const aboveEl = document.getElementById('aboveChance');
+                aboveEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+                aboveEl.style.color = diff >= 0 ? '#4CAF50' : '#f44336';
+            }
+        }
+
+        loadStats();
     </script>
 </body>
 </html>

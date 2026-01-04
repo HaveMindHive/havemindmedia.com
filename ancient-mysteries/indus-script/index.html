@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Geometric Decipherment of the Indus Valley Script using the Epoch Model - deriving meaning from pure mathematics">
+    <title>Indus Valley Script | Geometric Decipherment | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Colors - Soul Science Palette */
+            --void: #030508;
+            --deep-space: #0a0d12;
+            --cosmic-dark: #0f1318;
+            --panel: #151a24;
+            --panel-light: #1a2030;
+
+            /* Earth Tones */
+            --earth-deep: #1a1510;
+            --earth-warm: #2a2318;
+            --hazel: #8b7355;
+            --hazel-light: #a89070;
+
+            /* Blues - Primary */
+            --nebula-blue: #1a2a3a;
+            --glow-blue: #4a8ec8;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #a8d4f5;
+            --pale-blue: #d0e8f8;
+
+            /* Accents */
+            --gold-deep: #8b6914;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --accent-warm: #a85a48;
+            --terracotta: #c75b39;
+            --indigo: #6a5acd;
+
+            /* Text */
+            --soft-cream: #f0e8d8;
+            --pale-cream: #faf6ee;
+            --text-dim: #8a9aaa;
+
+            /* Borders */
+            --border: rgba(70, 130, 180, 0.25);
+            --border-light: rgba(70, 130, 180, 0.4);
+
+            /* Fonts */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+
+            /* Transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* ==========================================
+           COSMIC BACKGROUND - NEBULA EFFECT
+           ========================================== */
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(74, 142, 200, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 25%, rgba(106, 180, 245, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 60% 75%, rgba(74, 142, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 80%, rgba(139, 105, 20, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 50%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 100px 50px, rgba(168, 212, 245, 0.9), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(168, 212, 245, 0.8), transparent),
+                radial-gradient(1px 1px at 550px 200px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 700px 120px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 150px 300px, rgba(168, 212, 245, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 380px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 600px 450px, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 800px 300px, rgba(168, 212, 245, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 950px 180px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 1100px 400px, rgba(201, 162, 39, 0.3), transparent);
+            background-size: 1200px 600px;
+            animation: twinkle 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(3, 5, 8, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        .unified-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(3, 5, 8, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-signature {
+            font-size: 0.7rem;
+            color: var(--soft-blue);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            position: relative;
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--soft-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(70, 130, 180, 0.1);
+            border-color: var(--border-light);
+            color: var(--bright-blue);
+        }
+
+        .nav-toggle .arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(10, 13, 18, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--bright-blue);
+        }
+
+        .nav-dropdown a.active {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+
+        .nav-dropdown .nav-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-dropdown .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 40px 90px;
+            position: relative;
+        }
+
+        .hero-rune {
+            font-size: 4em;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 25px;
+            animation: gentlePulse 5s ease-in-out infinite;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.03); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2em, 4.5vw, 3.5em);
+            font-weight: 500;
+            color: var(--pale-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .hero h1 .glow {
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px rgba(106, 180, 245, 0.3);
+        }
+
+        .hero .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.4em;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .hero .principle {
+            font-family: var(--font-display);
+            font-size: 1.3em;
+            color: var(--soft-blue);
+            margin-bottom: 35px;
+            letter-spacing: 6px;
+            opacity: 0.7;
+        }
+
+        .hero .intro {
+            max-width: 720px;
+            font-size: 1.15em;
+            color: var(--soft-cream);
+            opacity: 0.85;
+            margin-bottom: 45px;
+            line-height: 2;
+        }
+
+        .kappa-badge {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 15px 40px;
+            border-radius: 50px;
+            margin-top: 30px;
+            font-family: monospace;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            font-family: var(--font-display);
+            padding: 0.9rem 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            display: inline-block;
+            background: transparent;
+            color: var(--bright-blue);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            background: rgba(70, 130, 180, 0.15);
+            border-color: var(--bright-blue);
+            transform: translateY(-2px);
+        }
+
+        .btn-gold {
+            color: var(--gold);
+            border-color: rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-gold:hover {
+            background: rgba(201, 162, 39, 0.1);
+            border-color: var(--gold);
+        }
+
+        /* ==========================================
+           CONTENT SECTIONS
+           ========================================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--soft-blue);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-header .tagline {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================
+           LAYMAN'S TERMS BOXES
+           ========================================== */
+        .layman-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .layman-box::before {
+            content: "IN SIMPLE TERMS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .layman-box p {
+            color: var(--soft-cream);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin: 0;
+        }
+
+        .layman-box .analogy {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* ==========================================
+           CONTENT PANELS
+           ========================================== */
+        .content-panel {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 45px;
+            margin-bottom: 40px;
+        }
+
+        .content-panel h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--bright-blue);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .content-panel p {
+            color: var(--soft-cream);
+            opacity: 0.9;
+            margin-bottom: 18px;
+            line-height: 1.9;
+        }
+
+        .content-panel p strong {
+            color: var(--gold);
+        }
+
+        /* ==========================================
+           CONSTANT CARDS
+           ========================================== */
+        .constant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .constant-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .constant-card:hover {
+            border-color: var(--glow-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .constant-card .symbol {
+            font-size: 2.8rem;
+            color: var(--gold);
+            font-family: 'Times New Roman', serif;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
+        .constant-card .value {
+            font-size: 1.6rem;
+            color: var(--bright-blue);
+            font-weight: bold;
+            margin: 12px 0;
+            font-family: monospace;
+        }
+
+        .constant-card .meaning {
+            color: var(--soft-cream);
+            font-size: 0.95rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           INFO BOXES
+           ========================================== */
+        .info-box {
+            background: rgba(10, 22, 40, 0.5);
+            border-left: 4px solid var(--bright-blue);
+            padding: 25px 30px;
+            margin: 25px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box.discovery {
+            border-left-color: var(--terracotta);
+            background: rgba(199, 91, 57, 0.08);
+        }
+
+        .info-box.principle {
+            border-left-color: var(--indigo);
+            background: rgba(106, 90, 205, 0.08);
+        }
+
+        .info-box strong {
+            color: var(--gold);
+        }
+
+        /* ==========================================
+           TRIAXIAL DIAGRAM
+           ========================================== */
+        .triaxial-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 30px;
+            background: rgba(3, 5, 8, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            margin: 40px 0;
+        }
+
+        .axis-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+        }
+
+        .axis-point {
+            position: absolute;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .axis-point .label {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .axis-point .desc {
+            font-size: 0.85rem;
+            color: var(--soft-blue);
+            margin-top: 5px;
+        }
+
+        .axis-point.s-minus { top: 0; left: 50%; transform: translateX(-50%); }
+        .axis-point.s-minus .label { color: var(--terracotta); }
+
+        .axis-point.s-plus { bottom: 0; right: 0; }
+        .axis-point.s-plus .label { color: var(--bright-blue); }
+
+        .axis-point.m-plus { bottom: 0; left: 0; }
+        .axis-point.m-plus .label { color: var(--gold); }
+
+        /* ==========================================
+           FISH SYMBOL ANALYSIS
+           ========================================== */
+        .fish-showcase {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .fish-visual {
+            text-align: center;
+            padding: 40px;
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .fish-visual svg {
+            filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.3));
+        }
+
+        .fish-visual .caption {
+            margin-top: 20px;
+            color: var(--gold);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================
+           FORMULA BOX
+           ========================================== */
+        .formula-box {
+            background: linear-gradient(135deg, rgba(3, 5, 8, 0.8) 0%, rgba(10, 13, 18, 0.9) 100%);
+            border: 1px solid var(--border);
+            padding: 35px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-box h4 {
+            color: var(--gold);
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .equation {
+            font-size: 1.15rem;
+            margin: 12px 0;
+            padding: 12px 15px;
+            background: rgba(106, 180, 245, 0.08);
+            border-radius: 6px;
+            color: var(--soft-cream);
+        }
+
+        .equation .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           SIGN GALLERY
+           ========================================== */
+        .sign-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .sign-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .sign-card:hover {
+            border-color: var(--glow-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .sign-card .glyph {
+            font-size: 3.5rem;
+            color: var(--soft-cream);
+            margin-bottom: 15px;
+        }
+
+        .sign-card svg {
+            margin-bottom: 15px;
+        }
+
+        .sign-card .name {
+            font-family: var(--font-display);
+            color: var(--bright-blue);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .sign-card .geometric {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .sign-card .meaning {
+            color: var(--soft-cream);
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* ==========================================
+           MEASUREMENT VISUAL
+           ========================================== */
+        .measurement-panel {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+        }
+
+        .measurement-panel h4 {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .ruler-visual {
+            height: 50px;
+            background: linear-gradient(90deg, var(--terracotta), var(--gold-deep));
+            border-radius: 5px;
+            position: relative;
+            margin: 25px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .ruler-visual::after {
+            content: '27 divisions = 3³ = emergence cubed';
+            display: block;
+            text-align: center;
+            padding-top: 60px;
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           COMPARISON TABLE
+           ========================================== */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .data-table th {
+            background: rgba(106, 180, 245, 0.15);
+            color: var(--bright-blue);
+            padding: 15px 20px;
+            text-align: left;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .data-table td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-cream);
+        }
+
+        .data-table tr:hover td {
+            background: rgba(106, 180, 245, 0.05);
+        }
+
+        /* ==========================================
+           DERIVATION CHAIN
+           ========================================== */
+        .derivation-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 40px 30px;
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .derivation-step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .derivation-step .value {
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-family: monospace;
+        }
+
+        .derivation-step .label {
+            font-size: 0.85rem;
+            color: var(--soft-blue);
+            margin-top: 8px;
+        }
+
+        .derivation-arrow {
+            font-size: 2rem;
+            color: var(--bright-blue);
+            opacity: 0.6;
+        }
+
+        /* ==========================================
+           TIMELINE
+           ========================================== */
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+            margin: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), var(--bright-blue), var(--terracotta));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: var(--gold);
+            border: 3px solid var(--void);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+        }
+
+        .timeline-date {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item p {
+            color: var(--soft-cream);
+            opacity: 0.85;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .unified-footer {
+            text-align: center;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .footer-principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 768px) {
+            .unified-nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .nav-brand-text {
+                font-size: 0.85rem;
+            }
+
+            .nav-signature {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .content-panel {
+                padding: 30px 25px;
+            }
+
+            .fish-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .constant-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .derivation-chain {
+                flex-direction: column;
+            }
+
+            .derivation-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-text">INDUS SCRIPT</span>
+            <span class="nav-signature">[1 = -1]</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <span>EXPLORE</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="index.html" class="active">
+                    <span class="nav-icon">&#9670;</span>
+                    Overview
+                </a>
+                <a href="sign-reference.html">
+                    <span class="nav-icon">&#9674;</span>
+                    Sign Reference
+                </a>
+                <a href="epoch-mathematics.html">
+                    <span class="nav-icon">&#8734;</span>
+                    Mathematics
+                </a>
+                <div class="divider"></div>
+                <a href="linear-a.html">
+                    <span class="nav-icon">&#9672;</span>
+                    Linear A
+                </a>
+                <a href="translator.html">
+                    <span class="nav-icon">&#9654;</span>
+                    Translator Tool
+                </a>
+                <a href="universal-language-theory.html">
+                    <span class="nav-icon">&#9788;</span>
+                    Universal Language
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-rune">&#9040;</div>
+        <h1>GEOMETRIC <span class="glow">DECIPHERMENT</span></h1>
+        <p class="subtitle">of the Indus Valley Script</p>
+        <p class="principle">DERIVING MEANING FROM FIRST PRINCIPLES</p>
+        <p class="intro">
+            For over a century, the ancient Indus script has resisted all attempts at translation.
+            We approach differently: not through linguistic guesswork, but through the universal
+            language of geometry. The same mathematics that shaped their cities reveals the meaning in their signs.
+        </p>
+        <div class="kappa-badge">&#954; = 2&#960;/180 = 0.0349</div>
+        <div class="btn-group">
+            <a href="sign-reference.html" class="btn">EXPLORE SIGNS</a>
+            <a href="translator.html" class="btn btn-gold">TRY TRANSLATOR</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Introduction -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE GEOMETRIC KEY</h2>
+                <p class="tagline">Why we're approaching this differently</p>
+            </div>
+
+            <div class="content-panel">
+                <p>The Indus Valley Civilization (3300-1300 BCE) left behind approximately <strong>5,000 inscriptions</strong> containing <strong>400-700 unique signs</strong>. For over a century, the script has remained undeciphered. Traditional approaches have attempted linguistic comparison with Dravidian, Indo-Aryan, and other language families&mdash;all without definitive success.</p>
+
+                <p>This analysis takes a radically different approach: <strong>deriving meaning from geometry alone</strong>. The Harappans were master geometers. Their cities show precise right-angle planning. Their bricks maintain exact 4:2:1 ratios. Their weights follow systematic progressions. Their rulers achieve measurement precision within 0.003 inches.</p>
+
+                <div class="layman-box">
+                    <p>Imagine trying to decode a message when you don't know what language it's written in. That's the challenge with the Indus script. But here's the key insight: <strong>math is the same everywhere</strong>. The Harappan people were brilliant mathematicians&mdash;we can see it in their perfectly planned cities and precisely made tools. So instead of guessing at their language, we're reading the mathematical patterns hidden in their symbols.</p>
+                    <p class="analogy">Think of it like this: if aliens sent us a message, we might not understand their words, but if they drew a triangle, we'd know it's a triangle. The Harappans drew their math into their writing.</p>
+                </div>
+
+                <div class="info-box principle">
+                    <strong>Core Hypothesis:</strong> A civilization this geometrically sophisticated would encode their writing system using the same mathematical principles they applied everywhere else. The script is not arbitrary&mdash;it is geometric logic made visible.
+                </div>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Epoch Model Foundation</h3>
+                <p>The Epoch Model derives all physical constants from a single value. This same value appears encoded in Harappan measurements:</p>
+
+                <div class="constant-grid">
+                    <div class="constant-card">
+                        <div class="symbol">&#954;</div>
+                        <div class="value">0.0349</div>
+                        <div class="meaning">2&#960;/180 &mdash; The degree-radian bridge<br>The angle of manifestation</div>
+                    </div>
+                    <div class="constant-card">
+                        <div class="symbol">&#954;<sub>shadow</sub></div>
+                        <div class="value">28.65</div>
+                        <div class="meaning">1/&#954; &mdash; The hidden witness<br>Reciprocal emergence</div>
+                    </div>
+                    <div class="constant-card">
+                        <div class="symbol">&#963;</div>
+                        <div class="value">0.3125</div>
+                        <div class="meaning">5/16 &mdash; Helix overlap<br>DNA-like encoding</div>
+                    </div>
+                    <div class="constant-card">
+                        <div class="symbol">cos(BC)</div>
+                        <div class="value">2/3</div>
+                        <div class="meaning">Tetrahelix angle<br>Structural stability ratio</div>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>These four numbers are like the "DNA" of the universe according to the Epoch Model. They show up everywhere&mdash;in physics, in nature, and remarkably, in how the Harappans built their civilization.</p>
+                    <p class="analogy">&#954; (kappa) is about 0.035. The Harappans' standard weight? About 28 grams&mdash;almost exactly 1/&#954;. Coincidence? We think not.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Harappan Metrology -->
+        <section class="section">
+            <div class="section-header">
+                <h2>HARAPPAN METROLOGY</h2>
+                <p class="tagline">Ancient measurements reveal Epoch geometry</p>
+            </div>
+
+            <div class="content-panel">
+                <h3>The Lothal Ivory Scale</h3>
+                <p>An ivory ruler found at Lothal contains 27 lines over 46mm, giving a fundamental unit of <strong>1.704mm</strong>.</p>
+
+                <div class="measurement-panel">
+                    <h4>Archaeological Evidence</h4>
+                    <div class="ruler-visual"></div>
+                </div>
+
+                <div class="formula-box">
+                    <h4>Geometric Correspondence</h4>
+                    <div class="equation">Harappan unit: 1.704 mm</div>
+                    <div class="equation">&#954; &times; 48.83 = 1.704</div>
+                    <div class="equation">48.83 &#8776; &#954;_shadow &times; 1.704 = 48.83</div>
+                    <div class="equation"><span class="highlight">The ruler encodes &#954; and &#954;_shadow simultaneously</span></div>
+                </div>
+
+                <div class="layman-box">
+                    <p>The Harappans made incredibly precise rulers 4,000 years ago. When we analyze their measurements mathematically, we find the exact same constants (&#954; and its reciprocal) that the Epoch Model identifies as fundamental to reality.</p>
+                    <p class="analogy">It's like finding that an ancient recipe uses the same ratios as the Fibonacci sequence&mdash;it suggests they understood something deep about how nature works.</p>
+                </div>
+
+                <h3>The Weight System</h3>
+                <p>Harappan weights follow a binary-decimal hybrid progression:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Weight Ratio</th>
+                            <th>Epoch Interpretation</th>
+                            <th>Geometric Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1/20, 1/10, 1/5</td>
+                            <td>&#963;-derived fractions (5/16 base)</td>
+                            <td>Subdivision harmonics</td>
+                        </tr>
+                        <tr>
+                            <td>1, 2, 5, 10, 20</td>
+                            <td>Binary &times; 5 progression</td>
+                            <td>Human-centered scaling</td>
+                        </tr>
+                        <tr>
+                            <td>Base unit &#8776; 28g</td>
+                            <td>&#8776; &#954;_shadow grams</td>
+                            <td>Hidden witness as mass</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>The Sacred Brick Ratio: 4:2:1</h3>
+                <div class="info-box discovery">
+                    <strong>Discovery:</strong> The 4:2:1 brick ratio is the <em>tetrahelix projection</em>. When a tetrahelix (the most stable 3D helical structure) is projected onto a plane, the shadow ratios approach 4:2:1. This ratio also gives cos(BC) = 2/3 when 2/3 = 4/(4+2) = height/base in certain orientations.
+                </div>
+
+                <div class="layman-box">
+                    <p>Every single Harappan brick, across hundreds of miles and hundreds of years, was made in the same 4:2:1 ratio. That's like every country in Europe agreeing to use the same paper size for a thousand years. This wasn't random&mdash;it was a conscious choice based on geometry they understood deeply.</p>
+                    <p class="analogy">The 4:2:1 ratio creates the most structurally stable bricks, and it also encodes the same mathematical constants they used in everything else. Form and function united through geometry.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Triaxial Classification -->
+        <section class="section">
+            <div class="section-header">
+                <h2>TRIAXIAL CLASSIFICATION</h2>
+                <p class="tagline">The three-axis system for understanding signs</p>
+            </div>
+
+            <div class="content-panel">
+                <p>The Epoch Model uses a triaxial system where every phenomenon has three aspects. Applied to the Indus script, we can classify signs by their geometric character:</p>
+
+                <div class="triaxial-visual">
+                    <div class="axis-container">
+                        <svg viewBox="0 0 300 300" width="300" height="300">
+                            <!-- Triangle -->
+                            <polygon points="150,30 270,240 30,240" fill="none" stroke="rgba(106, 180, 245, 0.3)" stroke-width="2"/>
+                            <!-- Center lines -->
+                            <line x1="150" y1="30" x2="150" y2="170" stroke="rgba(199, 91, 57, 0.5)" stroke-width="1.5"/>
+                            <line x1="150" y1="170" x2="270" y2="240" stroke="rgba(106, 180, 245, 0.5)" stroke-width="1.5"/>
+                            <line x1="150" y1="170" x2="30" y2="240" stroke="rgba(201, 162, 39, 0.5)" stroke-width="1.5"/>
+                            <!-- Center point -->
+                            <circle cx="150" cy="170" r="6" fill="rgba(255, 255, 255, 0.8)"/>
+                        </svg>
+                        <div class="axis-point s-minus">
+                            <div class="label">S-</div>
+                            <div class="desc">Manifest Light</div>
+                        </div>
+                        <div class="axis-point s-plus">
+                            <div class="label">S+</div>
+                            <div class="desc">Observer</div>
+                        </div>
+                        <div class="axis-point m-plus">
+                            <div class="label">M+</div>
+                            <div class="desc">Mass/Quantity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>Think of every Indus sign as belonging to one of three categories:</p>
+                    <p><strong style="color: var(--terracotta);">S- (Things):</strong> Physical objects you can see and touch &mdash; fish, jars, people, animals. Like nouns in English.</p>
+                    <p><strong style="color: var(--bright-blue);">S+ (Actions):</strong> Things you do or states of being &mdash; walking, owning, being tall. Like verbs and adjectives.</p>
+                    <p><strong style="color: var(--gold);">M+ (Amounts):</strong> Numbers, quantities, emphasis &mdash; three, many, very. Like counting words and intensifiers.</p>
+                </div>
+
+                <h3>Statistical Evidence</h3>
+                <p>Research shows that Indus signs follow strict positional rules:</p>
+                <ul style="margin: 20px 0; padding-left: 30px; color: var(--soft-cream);">
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--gold);">23 signs</strong> account for 80% of all text-final positions (S+ grammatical endings)</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--gold);">82 signs</strong> account for 80% of text-initial positions (S- nouns/subjects)</li>
+                    <li style="margin-bottom: 10px;"><strong style="color: var(--gold);">67 signs</strong> account for 80% of total usage (M+ frequency core)</li>
+                </ul>
+
+                <div class="formula-box">
+                    <h4>Positional Ratio Analysis</h4>
+                    <div class="equation">Enders / Beginners = 23 / 82 = 0.28</div>
+                    <div class="equation">P (projection factor) = &#8730;3/(2&#960;) = 0.276</div>
+                    <div class="equation"><span class="highlight">The positional asymmetry encodes P!</span></div>
+                </div>
+
+                <div class="layman-box">
+                    <p>Just like in English where "the" almost never ends a sentence, certain Indus signs only appear at the beginning of inscriptions, and others only at the end. The ratio between these groups (0.28) almost exactly matches a fundamental geometric constant (0.276).</p>
+                    <p class="analogy">This is like discovering that the ratio of vowels to consonants in an unknown script matches the golden ratio&mdash;it tells us the writing system was designed with mathematical precision.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Fish Symbol -->
+        <section class="section">
+            <div class="section-header">
+                <h2>DECODING THE FISH SYMBOL</h2>
+                <p class="tagline">The most important sign in the script</p>
+            </div>
+
+            <div class="content-panel">
+                <div class="fish-showcase">
+                    <div class="fish-visual">
+                        <svg viewBox="0 0 120 80" width="180" height="120">
+                            <ellipse cx="55" cy="40" rx="40" ry="22" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <polygon points="90,40 115,20 115,60" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <circle cx="30" cy="37" r="5" fill="#c9a227"/>
+                            <path d="M 42 22 Q 35 40 42 58" fill="none" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                        <p class="caption">Vesica Piscis derivation</p>
+                    </div>
+                    <div>
+                        <h3>Geometric Origin: The Vesica Piscis</h3>
+                        <p>The fish symbol derives from the <em>vesica piscis</em>&mdash;the almond shape formed when two circles of equal radius overlap with each center on the other's circumference.</p>
+
+                        <div class="formula-box">
+                            <h4>Vesica Piscis Properties</h4>
+                            <div class="equation">Height/Width ratio = &#8730;3 = 1.732</div>
+                            <div class="equation">&#8730;3 = |Q| in Epoch Model</div>
+                            <div class="equation">Area ratio to circles = 2&#960;/3 - &#8730;3/2</div>
+                        </div>
+
+                        <p>The Harappans weren't just drawing fish&mdash;they were encoding <strong>&#8730;3, the magnitude of Q (qualia)</strong>, the fundamental rotation operator.</p>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>The fish is the most common symbol in Indus writing. But it's not really about fish! It's based on a geometric shape called the "vesica piscis" (Latin for "fish bladder")&mdash;the pointed oval you get when two circles overlap.</p>
+                    <p>This shape has a magical property: its height divided by its width always equals &#8730;3 (about 1.732). In the Epoch Model, &#8730;3 represents how things rotate and transform. So the fish symbol is like a mathematical "transform" button.</p>
+                    <p class="analogy">When you see "fish + 3 strokes," it doesn't mean "three fish"&mdash;it means "apply the &#8730;3 transformation to 3," which connects to stars and celestial meanings.</p>
+                </div>
+
+                <h3>The Fish + Number Combinations</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Sign</th>
+                            <th>Geometric Value</th>
+                            <th>Dravidian Cognate</th>
+                            <th>Epoch Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-size: 1.5rem;">&#128031; |</td>
+                            <td>&#8730;3 &times; 1</td>
+                            <td>"One star"</td>
+                            <td>Single Q rotation (90&deg;)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 1.5rem;">&#128031; |||</td>
+                            <td>&#8730;3 &times; 3</td>
+                            <td>"Three stars"</td>
+                            <td>Emergence (3 = ^)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 1.5rem;">&#128031; ||||||</td>
+                            <td>&#8730;3 &times; 6</td>
+                            <td>"Pleiades" (6 stars)</td>
+                            <td>6 = 2&times;3 = duality &times; emergence</td>
+                        </tr>
+                        <tr>
+                            <td style="font-size: 1.5rem;">&#128031; |||||||</td>
+                            <td>&#8730;3 &times; 7</td>
+                            <td>"Ursa Major" (7 stars)</td>
+                            <td>7 = completion/rest prime</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box discovery">
+                    <strong>Key Insight:</strong> The fish symbol functions as a <em>geometric operator</em>&mdash;it multiplies whatever follows by &#8730;3. This transforms counting numbers into Q-space values, mapping physical quantities onto rotational space.
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Reading -->
+        <section class="section">
+            <div class="section-header">
+                <h2>READING INSCRIPTIONS</h2>
+                <p class="tagline">Applying the framework to real examples</p>
+            </div>
+
+            <div class="content-panel">
+                <div class="info-box">
+                    <h3 style="color: var(--bright-blue); margin-bottom: 15px;">Sample 1: Common Seal Pattern</h3>
+                    <p style="font-size: 1.6rem; margin: 15px 0; font-family: monospace; color: var(--gold);">&#128031; ||| &#9635; &#9788;</p>
+                    <p><strong>Geometric Parsing:</strong></p>
+                    <ul style="margin: 10px 0; padding-left: 30px;">
+                        <li>&#128031; (Fish) = &#8730;3 operator, stellar/celestial domain</li>
+                        <li>||| (Three strokes) = 3, emergence, the observer number</li>
+                        <li>&#9635; (Square/enclosure) = property, bounded space</li>
+                        <li>&#9788; (Circle with rays) = completion + center, owner mark</li>
+                    </ul>
+                    <p><strong>Interpretation:</strong> "Property of [name] of the Three-Star clan" or "Belonging to the merchant of [Pleiades-associated guild]"</p>
+                </div>
+
+                <div class="layman-box">
+                    <p>Let's break down a typical seal inscription step by step:</p>
+                    <p>1. <strong>Fish symbol</strong> = tells us we're in "star territory" (celestial/mathematical domain)</p>
+                    <p>2. <strong>Three lines</strong> = the number 3, which means "emergence" or creation</p>
+                    <p>3. <strong>Square shape</strong> = property or territory</p>
+                    <p>4. <strong>Circle-sun</strong> = marks the owner</p>
+                    <p class="analogy">Together, this might read like: "This belongs to a member of the Star-Three guild" &mdash; essentially an ancient business card!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Derivation Chain -->
+        <section class="section">
+            <div class="section-header">
+                <h2>THE COMPLETE CHAIN</h2>
+                <p class="tagline">From universal constant to script</p>
+            </div>
+
+            <div class="derivation-chain">
+                <div class="derivation-step">
+                    <div class="value">&#954;</div>
+                    <div class="label">0.0349</div>
+                </div>
+                <div class="derivation-arrow">&#8594;</div>
+                <div class="derivation-step">
+                    <div class="value">1.704mm</div>
+                    <div class="label">Lothal unit</div>
+                </div>
+                <div class="derivation-arrow">&#8594;</div>
+                <div class="derivation-step">
+                    <div class="value">28g</div>
+                    <div class="label">Weight base</div>
+                </div>
+                <div class="derivation-arrow">&#8594;</div>
+                <div class="derivation-step">
+                    <div class="value">4:2:1</div>
+                    <div class="label">Brick ratio</div>
+                </div>
+                <div class="derivation-arrow">&#8594;</div>
+                <div class="derivation-step">
+                    <div class="value">&#128031;</div>
+                    <div class="label">Script</div>
+                </div>
+            </div>
+
+            <div class="content-panel" style="text-align: center;">
+                <p style="font-size: 1.3rem; color: var(--soft-blue);">
+                    <strong>The Harappans wrote in geometry because geometry is the language of reality.</strong>
+                </p>
+                <p style="font-size: 2.5rem; margin-top: 30px; font-family: monospace; color: var(--gold);">
+                    [1 = -1]
+                </p>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="section">
+            <div class="section-header">
+                <h2>HISTORICAL CONTEXT</h2>
+                <p class="tagline">4,500 years of mystery</p>
+            </div>
+
+            <div class="content-panel">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">~3300 BCE</div>
+                        <p>Early Harappan period begins. First geometric standardization of weights and measures.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">~2600 BCE</div>
+                        <p>Mature Harappan period. Cities built on precise geometric grids. Script fully developed.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">~2000 BCE</div>
+                        <p>Peak of civilization. Over 1,000 settlements. Standardized brick ratios (4:2:1) across entire region.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">~1900 BCE</div>
+                        <p>Decline begins. Climate change affects monsoon patterns. Cities gradually abandoned.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">~1300 BCE</div>
+                        <p>Late Harappan period ends. Script falls out of use. Geometric knowledge disperses.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">1924 CE</div>
+                        <p>John Marshall announces discovery. Modern decipherment attempts begin.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025 CE</div>
+                        <p>$1 million prize announced for successful decipherment. Global conference scheduled.</p>
+                    </div>
+                </div>
+
+                <div class="layman-box">
+                    <p>The Indus Valley civilization was one of the largest ancient civilizations&mdash;bigger than Egypt and Mesopotamia combined. At its peak, millions of people lived in hundreds of cities, all using the same writing system, the same weights and measures, and the same brick sizes.</p>
+                    <p>Then it faded away, and their writing was forgotten for 4,000 years. We only rediscovered it in the 1920s, and despite a century of effort (and now a million-dollar prize), no one has definitively cracked the code&mdash;until now.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" style="text-align: center;">
+            <div class="content-panel">
+                <h3 style="font-size: 1.8rem; color: var(--gold); margin-bottom: 20px;">Ready to Explore Deeper?</h3>
+                <p style="max-width: 600px; margin: 0 auto 30px;">Dive into our complete sign reference, explore the mathematical derivations, or try our interactive translator tool.</p>
+                <div class="btn-group" style="justify-content: center;">
+                    <a href="sign-reference.html" class="btn">SIGN CATALOG</a>
+                    <a href="epoch-mathematics.html" class="btn">MATHEMATICS</a>
+                    <a href="translator.html" class="btn btn-gold">TRANSLATOR</a>
+                    <a href="universal-language-theory.html" class="btn btn-gold">UNIVERSAL LANGUAGE</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="unified-footer">
+        <div class="footer-logo">HAVE MIND MEDIA</div>
+        <div class="footer-tagline">Geometric Decipherment of Ancient Scripts</div>
+        <div class="footer-credit">Created by Jason Ray | Have Mind Media</div>
+        <div class="footer-principle">&#954; = 2&#960;/180 = 0.0349 | [1 = -1]</div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.querySelector('.nav-toggle');
+            dropdown.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu.contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

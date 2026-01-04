@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete reference of Indus Valley Script signs with geometric interpretations and Epoch Model analysis">
+    <title>Indus Valley Sign Reference | Geometric Decipherment | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Colors - Soul Science Palette */
+            --void: #030508;
+            --deep-space: #0a0d12;
+            --cosmic-dark: #0f1318;
+            --panel: #151a24;
+            --panel-light: #1a2030;
+
+            /* Earth Tones */
+            --earth-deep: #1a1510;
+            --earth-warm: #2a2318;
+            --hazel: #8b7355;
+            --hazel-light: #a89070;
+
+            /* Blues - Primary */
+            --nebula-blue: #1a2a3a;
+            --glow-blue: #4a8ec8;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #a8d4f5;
+            --pale-blue: #d0e8f8;
+
+            /* Accents */
+            --gold-deep: #8b6914;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --accent-warm: #a85a48;
+            --terracotta: #c75b39;
+            --indigo: #6a5acd;
+
+            /* Text */
+            --soft-cream: #f0e8d8;
+            --pale-cream: #faf6ee;
+            --text-dim: #8a9aaa;
+
+            /* Borders */
+            --border: rgba(70, 130, 180, 0.25);
+            --border-light: rgba(70, 130, 180, 0.4);
+
+            /* Fonts */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+
+            /* Transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* ==========================================
+           COSMIC BACKGROUND - NEBULA EFFECT
+           ========================================== */
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(74, 142, 200, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 25%, rgba(106, 180, 245, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 60% 75%, rgba(74, 142, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 80%, rgba(139, 105, 20, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 50%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 100px 50px, rgba(168, 212, 245, 0.9), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(168, 212, 245, 0.8), transparent),
+                radial-gradient(1px 1px at 550px 200px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 700px 120px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 150px 300px, rgba(168, 212, 245, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 380px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 600px 450px, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 800px 300px, rgba(168, 212, 245, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 950px 180px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 1100px 400px, rgba(201, 162, 39, 0.3), transparent);
+            background-size: 1200px 600px;
+            animation: twinkle 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(3, 5, 8, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        .unified-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(3, 5, 8, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-signature {
+            font-size: 0.7rem;
+            color: var(--soft-blue);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            position: relative;
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--soft-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(70, 130, 180, 0.1);
+            border-color: var(--border-light);
+            color: var(--bright-blue);
+        }
+
+        .nav-toggle .arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(10, 13, 18, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--bright-blue);
+        }
+
+        .nav-dropdown a.active {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+
+        .nav-dropdown .nav-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-dropdown .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* ==========================================
+           HEADER SECTION
+           ========================================== */
+        .header-section {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 130px 40px 70px;
+            position: relative;
+        }
+
+        .header-section h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            color: var(--pale-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .header-section h1 .glow {
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px rgba(106, 180, 245, 0.3);
+        }
+
+        .header-section .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.3em;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .header-section .intro {
+            max-width: 720px;
+            font-size: 1.1em;
+            color: var(--soft-cream);
+            opacity: 0.85;
+            line-height: 1.9;
+        }
+
+        /* ==========================================
+           CONTAINER & SECTIONS
+           ========================================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--soft-blue);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-header .tagline {
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* ==========================================
+           LAYMAN'S TERMS BOXES
+           ========================================== */
+        .layman-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .layman-box::before {
+            content: "IN SIMPLE TERMS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .layman-box p {
+            color: var(--soft-cream);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 12px;
+        }
+
+        .layman-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .layman-box .analogy {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        /* ==========================================
+           LEGEND GRID
+           ========================================== */
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .legend-item strong {
+            color: var(--bright-blue);
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .legend-item .desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           SIGN GRID & CARDS
+           ========================================== */
+        .sign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .sign-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .sign-card:hover {
+            border-color: var(--glow-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .sign-visual {
+            text-align: center;
+            padding: 20px;
+            background: rgba(10, 13, 18, 0.5);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sign-visual svg {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 10px rgba(106, 180, 245, 0.2));
+        }
+
+        .sign-id {
+            display: inline-block;
+            background: rgba(106, 90, 205, 0.3);
+            border: 1px solid var(--indigo);
+            color: var(--soft-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        .sign-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--bright-blue);
+            margin-bottom: 12px;
+            font-family: var(--font-display);
+        }
+
+        .axis-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .axis-s-minus {
+            background: rgba(199, 91, 57, 0.2);
+            border: 1px solid var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .axis-s-plus {
+            background: rgba(106, 180, 245, 0.2);
+            border: 1px solid var(--bright-blue);
+            color: var(--bright-blue);
+        }
+
+        .axis-m-plus {
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .sign-details {
+            font-size: 0.95rem;
+        }
+
+        .sign-details dt {
+            font-weight: bold;
+            color: var(--gold);
+            margin-top: 12px;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .sign-details dd {
+            margin-left: 0;
+            margin-bottom: 8px;
+            color: var(--soft-cream);
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .epoch-value {
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* ==========================================
+           FORMULA SECTIONS
+           ========================================== */
+        .formula-section {
+            background: linear-gradient(135deg, rgba(3, 5, 8, 0.8) 0%, rgba(10, 13, 18, 0.9) 100%);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .formula-section h3 {
+            font-family: var(--font-display);
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(106, 180, 245, 0.08);
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: var(--soft-cream);
+            font-size: 1rem;
+            border-left: 3px solid var(--bright-blue);
+        }
+
+        .formula.highlight {
+            background: rgba(201, 162, 39, 0.12);
+            border-left-color: var(--gold);
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* ==========================================
+           CATEGORY INTRODUCTION
+           ========================================== */
+        .category-intro {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px 35px;
+            margin-bottom: 35px;
+            color: var(--soft-cream);
+            opacity: 0.9;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .unified-footer {
+            text-align: center;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .footer-principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 768px) {
+            .unified-nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .nav-brand-text {
+                font-size: 0.85rem;
+            }
+
+            .nav-signature {
+                display: none;
+            }
+
+            .header-section {
+                padding: 100px 20px 50px;
+            }
+
+            .sign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-text">INDUS SCRIPT</span>
+            <span class="nav-signature">[1 = -1]</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <span>EXPLORE</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="index.html">
+                    <span class="nav-icon">&#9670;</span>
+                    Overview
+                </a>
+                <a href="sign-reference.html" class="active">
+                    <span class="nav-icon">&#9674;</span>
+                    Sign Reference
+                </a>
+                <a href="epoch-mathematics.html">
+                    <span class="nav-icon">&#8734;</span>
+                    Mathematics
+                </a>
+                <div class="divider"></div>
+                <a href="linear-a.html">
+                    <span class="nav-icon">&#9672;</span>
+                    Linear A
+                </a>
+                <a href="translator.html">
+                    <span class="nav-icon">&#9654;</span>
+                    Translator Tool
+                </a>
+                <a href="universal-language-theory.html">
+                    <span class="nav-icon">&#9788;</span>
+                    Universal Language
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="header-section">
+        <h1>SIGN <span class="glow">REFERENCE</span></h1>
+        <p class="subtitle">Complete Geometric Classification</p>
+        <p class="intro">
+            A comprehensive catalog of Indus Valley signs, organized by geometric principles
+            and interpreted through the Epoch Model framework.
+        </p>
+    </section>
+
+    <div class="container">
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(199, 91, 57, 0.3); border: 2px solid var(--terracotta);"></div>
+                <div>
+                    <strong>S- (Manifest)</strong><br>
+                    <span class="desc">Physical objects, nouns</span>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(106, 180, 245, 0.3); border: 2px solid var(--bright-blue);"></div>
+                <div>
+                    <strong>S+ (Observer)</strong><br>
+                    <span class="desc">Actions, states, verbs</span>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: rgba(201, 162, 39, 0.3); border: 2px solid var(--gold);"></div>
+                <div>
+                    <strong>M+ (Mass)</strong><br>
+                    <span class="desc">Quantities, modifiers</span>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(90deg, var(--gold), var(--gold-light)); border: 2px solid var(--gold-light);"></div>
+                <div>
+                    <strong>Epoch Value</strong><br>
+                    <span class="desc">&#954;-derived constant</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="layman-box">
+            <p>Think of the Indus script as having three main "flavors" of symbols:</p>
+            <p><strong style="color: var(--terracotta);">S- (Things):</strong> These are like nouns in English. They represent physical stuff you can see and touch: fish, jars, people, bulls. They're "manifest" because they exist in the physical world.</p>
+            <p><strong style="color: var(--bright-blue);">S+ (Actions/States):</strong> These are like verbs and adjectives. They describe what things do or how they are. They represent the "observer's" perspective - how we interact with or perceive things.</p>
+            <p><strong style="color: var(--gold);">M+ (Amounts):</strong> These are numbers and quantity words. They tell you "how much" or "how many." They add weight or emphasis to other symbols.</p>
+            <p class="analogy">Together, these three types let the Harappans write complete thoughts: "Three (M+) fish (S-) belong to (S+) [person name]" - just like we might write on a business card or shipping label today!</p>
+        </div>
+
+        <!-- Numerals Section -->
+        <section id="numerals" class="section">
+            <div class="section-header">
+                <h2>I. NUMERALS (STROKE-BASED)</h2>
+                <p class="tagline">The counting foundation of the script</p>
+            </div>
+
+            <div class="sign-grid">
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="40" y1="15" x2="40" y2="65" stroke="#c9a227" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-1</span>
+                    <div class="sign-name">Single Stroke</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>1 (Unity)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">[1=-1] collapsed to single perspective</dd>
+                        <dt>Geometric</dt>
+                        <dd>Vertical line = axis, direction, singularity</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="30" y1="15" x2="30" y2="65" stroke="#c9a227" stroke-width="4"/>
+                            <line x1="50" y1="15" x2="50" y2="65" stroke="#c9a227" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-2</span>
+                    <div class="sign-name">Two Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>2 (Duality)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">[1=-1] = the fundamental paradox</dd>
+                        <dt>Geometric</dt>
+                        <dd>Parallel lines = opposition, pair, balance</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="20" y1="15" x2="20" y2="65" stroke="#c9a227" stroke-width="4"/>
+                            <line x1="40" y1="15" x2="40" y2="65" stroke="#c9a227" stroke-width="4"/>
+                            <line x1="60" y1="15" x2="60" y2="65" stroke="#c9a227" stroke-width="4"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-3</span>
+                    <div class="sign-name">Three Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>3 (Emergence)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">^ = observer position, first prime of creation</dd>
+                        <dt>Geometric</dt>
+                        <dd>Triangle vertices, stability through asymmetry</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="12" y1="15" x2="12" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="28" y1="15" x2="28" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="44" y1="15" x2="44" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="60" y1="15" x2="60" y2="65" stroke="#c9a227" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-4</span>
+                    <div class="sign-name">Four Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>4 (Stability)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">2² = Q⁴ = return to unity</dd>
+                        <dt>Geometric</dt>
+                        <dd>Square corners, material foundation</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="10" y1="15" x2="10" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="24" y1="15" x2="24" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="38" y1="15" x2="38" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="52" y1="15" x2="52" y2="65" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="66" y1="15" x2="66" y2="65" stroke="#c9a227" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-5</span>
+                    <div class="sign-name">Five Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>5 (Human/Center)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">Center prime = measuring consciousness</dd>
+                        <dt>Geometric</dt>
+                        <dd>Pentagon/hand, human interface point</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="8" y1="15" x2="8" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="20" y1="15" x2="20" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="32" y1="15" x2="32" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="44" y1="15" x2="44" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="56" y1="15" x2="56" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="68" y1="15" x2="68" y2="65" stroke="#c9a227" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-6</span>
+                    <div class="sign-name">Six Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>6 (Creation)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">2×3 = duality × emergence</dd>
+                        <dt>Astronomical</dt>
+                        <dd>Pleiades count (6 visible stars)</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="6" y1="15" x2="6" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="16" y1="15" x2="16" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="26" y1="15" x2="26" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="36" y1="15" x2="36" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="46" y1="15" x2="46" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="56" y1="15" x2="56" y2="65" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="66" y1="15" x2="66" y2="65" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">NUM-7</span>
+                    <div class="sign-name">Seven Strokes</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd>7 (Completion/Rest)</dd>
+                        <dt>Epoch Meaning</dt>
+                        <dd class="epoch-value">Rest prime = cycle completion</dd>
+                        <dt>Astronomical</dt>
+                        <dd>Ursa Major / Saptarishi (7 sages)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>The Harappans counted using simple vertical lines, just like we might tally things with hash marks. But each number had a deeper meaning:</p>
+                <p><strong>1</strong> = Unity, the starting point. <strong>2</strong> = Duality, opposites (like hot/cold, day/night). <strong>3</strong> = The first "interesting" number that creates stability (like a three-legged stool). <strong>5</strong> = Human-centered (we have 5 fingers). <strong>6 and 7</strong> = Connected to star groups they could see in the night sky.</p>
+                <p class="analogy">Think of it like how we use "dozen" for 12 eggs or "score" for 20 years - numbers can carry cultural meaning beyond just counting!</p>
+            </div>
+        </section>
+
+        <!-- Pictographic Signs -->
+        <section id="pictographic" class="section">
+            <div class="section-header">
+                <h2>II. PICTOGRAPHIC SIGNS</h2>
+                <p class="tagline">Recognizable objects from daily life</p>
+            </div>
+
+            <div class="sign-grid">
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="35" cy="40" rx="25" ry="14" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <polygon points="57,40 75,28 75,52" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <circle cx="18" cy="38" r="4" fill="#c9a227"/>
+                            <path d="M 28 30 Q 23 40 28 50" fill="none" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-FISH</span>
+                    <div class="sign-name">Fish (Meen)</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>Vesica Piscis (two overlapping circles)</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">√3 = |Q| = 1.732</dd>
+                        <dt>Function</dt>
+                        <dd>Stellar operator - multiplies following value by √3</dd>
+                        <dt>Dravidian</dt>
+                        <dd>"Meen" = fish = star (homophone)</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="40" cy="20" rx="18" ry="8" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <path d="M 22 20 Q 17 45 25 70 L 55 70 Q 63 45 58 20" fill="none" stroke="#c9a227" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-JAR</span>
+                    <div class="sign-name">Jar / Container</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>Parabolic containment curve</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">Bounded measure unit</dd>
+                        <dt>Function</dt>
+                        <dd>Quantifier - marks measured amounts</dd>
+                        <dt>Position</dt>
+                        <dd>Most common initial sign</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="18" r="10" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="40" y1="28" x2="40" y2="55" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="40" y1="38" x2="25" y2="48" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="40" y1="38" x2="55" y2="48" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="40" y1="55" x2="28" y2="75" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="40" y1="55" x2="52" y2="75" stroke="#c9a227" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-MAN</span>
+                    <div class="sign-name">Human Figure</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>5-pointed radial (pentagram implicit)</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">5 = Center Prime = Observer</dd>
+                        <dt>Function</dt>
+                        <dd>Person, self, owner, agent of action</dd>
+                        <dt>Meaning</dt>
+                        <dd>The measuring consciousness made visible</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="45" cy="45" rx="28" ry="20" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <circle cx="22" cy="42" r="10" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 14 35 L 8 20" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 30 35 L 36 20" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="30" y1="65" x2="30" y2="78" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="45" y1="65" x2="45" y2="78" stroke="#c9a227" stroke-width="2.5"/>
+                            <line x1="60" y1="62" x2="60" y2="75" stroke="#c9a227" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-BULL</span>
+                    <div class="sign-name">Bull / Unicorn</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>Power vector + horn projection</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">Directed force, &#954;-vector</dd>
+                        <dt>Function</dt>
+                        <dd>Strength, wealth, authority, clan marker</dd>
+                        <dt>Meaning</dt>
+                        <dd>Single horn = focused intention vector</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="40" y1="75" x2="40" y2="25" stroke="#c9a227" stroke-width="3"/>
+                            <path d="M 40 25 Q 25 22 28 12" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 40 25 Q 55 22 52 12" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 40 38 Q 20 35 23 25" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 40 38 Q 60 35 57 25" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 40 52 Q 15 48 18 38" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                            <path d="M 40 52 Q 65 48 62 38" fill="none" stroke="#c9a227" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-TREE</span>
+                    <div class="sign-name">Tree / Plant</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>Fractal branching pattern</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">Recursive self-similarity</dd>
+                        <dt>Function</dt>
+                        <dd>Agriculture, growth, living resource</dd>
+                        <dt>Meaning</dt>
+                        <dd>Organic multiplication, abundance</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <path d="M 15 60 Q 25 20 40 25 Q 55 20 65 60" fill="none" stroke="#c9a227" stroke-width="3"/>
+                            <line x1="25" y1="60" x2="25" y2="72" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="40" y1="55" x2="40" y2="72" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="55" y1="60" x2="55" y2="72" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">PIC-MOUND</span>
+                    <div class="sign-name">Mountain / Mound</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Geometric Origin</dt>
+                        <dd>Parabolic peak, triangular mass</dd>
+                        <dt>Epoch Value</dt>
+                        <dd class="epoch-value">^ = emergence upward</dd>
+                        <dt>Function</dt>
+                        <dd>Place marker, elevation, territory</dd>
+                        <dt>Meaning</dt>
+                        <dd>Geographic or spiritual height</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>These symbols look like the actual things they represent - we call them "pictographs" (picture-writing). But the Harappans were clever: they chose objects whose shapes also encode mathematical principles!</p>
+                <p>The <strong>fish</strong> isn't just any fish - its shape is based on the "vesica piscis," a sacred geometry shape with special mathematical properties. The <strong>jar</strong> follows a parabolic curve (like water fountains or satellite dishes). Even the <strong>tree</strong> shows "fractal" branching - the same pattern repeating at different scales.</p>
+                <p class="analogy">It's like if we designed an alphabet where the letter "O" was based on the mathematical circle, and "V" followed the angle of optimal roof construction. Form and function working together!</p>
+            </div>
+        </section>
+
+        <!-- Geometric Signs -->
+        <section id="geometric" class="section">
+            <div class="section-header">
+                <h2>III. GEOMETRIC SIGNS</h2>
+                <p class="tagline">Pure mathematical forms</p>
+            </div>
+
+            <div class="sign-grid">
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="28" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-CIRCLE</span>
+                    <div class="sign-name">Circle</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">2&#960; = complete rotation</dd>
+                        <dt>Meaning</dt>
+                        <dd>Wholeness, cycle, eternity, completion</dd>
+                        <dt>Position</dt>
+                        <dd>Often terminal - marks completed state</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="28" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                            <circle cx="40" cy="40" r="5" fill="#6ab4f5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-CIRCLEDOT</span>
+                    <div class="sign-name">Circle with Dot</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">2&#960; + origin = observed completeness</dd>
+                        <dt>Meaning</dt>
+                        <dd>Sun, eye, consciousness, owner</dd>
+                        <dt>Function</dt>
+                        <dd>Possessive marker, authority seal</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="40" y1="10" x2="40" y2="70" stroke="#6ab4f5" stroke-width="3"/>
+                            <line x1="10" y1="40" x2="70" y2="40" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-CROSS</span>
+                    <div class="sign-name">Cross (+)</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">90° intersection = perpendicular</dd>
+                        <dt>Meaning</dt>
+                        <dd>Meeting point, exchange, center, origin</dd>
+                        <dt>Function</dt>
+                        <dd>Transaction marker, junction</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="15" y1="15" x2="65" y2="65" stroke="#6ab4f5" stroke-width="3"/>
+                            <line x1="65" y1="15" x2="15" y2="65" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-X</span>
+                    <div class="sign-name">X (Diagonal Cross)</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">45° rotation of cross = &#954; domain shift</dd>
+                        <dt>Meaning</dt>
+                        <dd>Negation, cancellation, transformation</dd>
+                        <dt>Function</dt>
+                        <dd>Opposition marker, change indicator</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <rect x="15" y="15" width="50" height="50" fill="none" stroke="#c75b39" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-SQUARE</span>
+                    <div class="sign-name">Square</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">4 = 2² = first stable composite</dd>
+                        <dt>Meaning</dt>
+                        <dd>Enclosure, property, boundary, field</dd>
+                        <dt>Function</dt>
+                        <dd>Defines owned or bounded space</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <polygon points="40,12 70,68 10,68" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-TRI-UP</span>
+                    <div class="sign-name">Triangle (Upward)</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">3 = ^ = emergence</dd>
+                        <dt>Meaning</dt>
+                        <dd>Rising, increase, aspiration, fire</dd>
+                        <dt>Function</dt>
+                        <dd>Emergence operator - latent → manifest</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <polygon points="40,68 70,12 10,12" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-TRI-DOWN</span>
+                    <div class="sign-name">Triangle (Downward)</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">v = ground = -i</dd>
+                        <dt>Meaning</dt>
+                        <dd>Descending, decrease, water, grounding</dd>
+                        <dt>Function</dt>
+                        <dd>Return operator - manifest → latent</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <path d="M 15 45 Q 40 10 65 45" fill="none" stroke="#c9a227" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-ARC</span>
+                    <div class="sign-name">Arc / Bow</div>
+                    <span class="axis-tag axis-m-plus">M+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">Partial rotation (< 2&#960;)</dd>
+                        <dt>Meaning</dt>
+                        <dd>Half, partial, approximation, span</dd>
+                        <dt>Function</dt>
+                        <dd>Modifier for incomplete states</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <path d="M 10 40 Q 25 20 40 40 Q 55 60 70 40" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">GEO-WAVE</span>
+                    <div class="sign-name">Wave / S-curve</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Value</dt>
+                        <dd class="epoch-value">Sine wave = S+/S- oscillation</dd>
+                        <dt>Meaning</dt>
+                        <dd>Water, flow, alternation, continuity</dd>
+                        <dt>Function</dt>
+                        <dd>Process marker, ongoing action</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>These are pure geometric shapes - not trying to look like real objects, but expressing mathematical ideas directly:</p>
+                <p>A <strong>circle</strong> represents completeness and cycles (like the sun's daily path or the seasons). A <strong>square</strong> means boundaries and property (like a fenced field). <strong>Triangles pointing up</strong> suggest rising or growth, while <strong>triangles pointing down</strong> suggest descent or water flowing down.</p>
+                <p class="analogy">Think of them like the symbols in math: + means addition, ÷ means division. These geometric signs work the same way - they're visual operators that modify meaning!</p>
+            </div>
+        </section>
+
+        <!-- Compound Signs -->
+        <section id="compound" class="section">
+            <div class="section-header">
+                <h2>IV. COMPOUND SIGNS</h2>
+                <p class="tagline">Combined symbols with layered meaning</p>
+            </div>
+
+            <div class="formula-section">
+                <h3>Combination Rules</h3>
+                <div class="formula">Sign A ⊗ Sign B = Geometric Product</div>
+                <div class="formula">Vertical Stack = Sequential Operation (A then B)</div>
+                <div class="formula">Horizontal = Parallel/Combined Meaning</div>
+                <div class="formula">Enclosure = Containment/Domain Specification</div>
+            </div>
+
+            <div class="sign-grid">
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="30" fill="none" stroke="#6ab4f5" stroke-width="2"/>
+                            <ellipse cx="38" cy="40" rx="18" ry="10" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <polygon points="54,40 68,32 68,48" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="25" cy="38" r="3" fill="#c9a227"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-FISHCIRCLE</span>
+                    <div class="sign-name">Fish in Circle</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Fish (√3) + Circle (2&#960;)</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">√3 × 2&#960; = complete Q-rotation</dd>
+                        <dt>Meaning</dt>
+                        <dd>Full stellar cycle, year, cosmic period</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="35" cy="35" rx="20" ry="11" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <polygon points="52,35 67,26 67,44" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="20" cy="33" r="3" fill="#c9a227"/>
+                            <line x1="23" y1="58" x2="23" y2="72" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="35" y1="58" x2="35" y2="72" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="47" y1="58" x2="47" y2="72" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-FISH3</span>
+                    <div class="sign-name">Fish + Three Strokes</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Fish (√3) × 3 (emergence)</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">√3 × 3 = 5.196 ≈ &#966;³</dd>
+                        <dt>Meaning</dt>
+                        <dd>Three stars, emergent celestial, Orion's Belt?</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="35" cy="28" rx="20" ry="11" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <polygon points="52,28 67,19 67,37" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="20" cy="26" r="3" fill="#c9a227"/>
+                            <line x1="12" y1="52" x2="12" y2="70" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="22" y1="52" x2="22" y2="70" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="32" y1="52" x2="32" y2="70" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="42" y1="52" x2="42" y2="70" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="52" y1="52" x2="52" y2="70" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="62" y1="52" x2="62" y2="70" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-FISH6</span>
+                    <div class="sign-name">Fish + Six Strokes</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Fish (√3) × 6 (creation)</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">√3 × 6 = 10.39 ≈ DNA(10.5)</dd>
+                        <dt>Meaning</dt>
+                        <dd>Pleiades, six visible stars, Krittika</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <ellipse cx="40" cy="18" rx="15" ry="7" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <path d="M 25 18 Q 20 40 27 62 L 53 62 Q 60 40 55 18" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="32" y1="70" x2="32" y2="78" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="40" y1="70" x2="40" y2="78" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="48" y1="70" x2="48" y2="78" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-JAR3</span>
+                    <div class="sign-name">Jar + Three Strokes</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Container × 3</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">3 units of measure</dd>
+                        <dt>Meaning</dt>
+                        <dd>Three measures, triple portion, emergence quantity</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="15" r="8" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="40" y1="23" x2="40" y2="50" stroke="#c9a227" stroke-width="2"/>
+                            <path d="M 40 32 Q 25 25 18 12" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <path d="M 40 32 Q 55 25 62 12" fill="none" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="40" y1="50" x2="28" y2="72" stroke="#c9a227" stroke-width="2"/>
+                            <line x1="40" y1="50" x2="52" y2="72" stroke="#c9a227" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-MANUP</span>
+                    <div class="sign-name">Man with Raised Arms</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Human + upward vectors</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">5 + ^ = human emergence</dd>
+                        <dt>Meaning</dt>
+                        <dd>Offering, prayer, worship, aspiration</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <rect x="15" y="15" width="50" height="50" fill="none" stroke="#c75b39" stroke-width="2"/>
+                            <line x1="40" y1="25" x2="40" y2="55" stroke="#6ab4f5" stroke-width="2"/>
+                            <line x1="25" y1="40" x2="55" y2="40" stroke="#6ab4f5" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">CMP-SQCROSS</span>
+                    <div class="sign-name">Square with Cross</div>
+                    <span class="axis-tag axis-s-minus">S-</span>
+                    <dl class="sign-details">
+                        <dt>Composition</dt>
+                        <dd>Enclosure + intersection</dd>
+                        <dt>Value</dt>
+                        <dd class="epoch-value">4 × + = bounded exchange</dd>
+                        <dt>Meaning</dt>
+                        <dd>Marketplace, trading post, meeting place</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>The Harappans combined basic symbols to create more complex meanings - like how we make compound words in English ("fire" + "place" = "fireplace").</p>
+                <p><strong>Fish + 3 strokes</strong> doesn't mean "three fish." Instead, it's multiplying the fish's mathematical value (√3) by 3, which gives you about 5.2 - a number connected to star patterns. <strong>Fish + 6 strokes</strong> = √3 × 6 ≈ 10.4, which corresponds to the Pleiades star cluster (the "Seven Sisters," though only 6 are easily visible).</p>
+                <p class="analogy">It's like using "dozen" in English: "a baker's dozen" doesn't mean 12 bakers, it means 13 items. The Harappans were doing mathematical operations through symbol combinations!</p>
+            </div>
+        </section>
+
+        <!-- Terminal Markers -->
+        <section id="terminal" class="section">
+            <div class="section-header">
+                <h2>V. TERMINAL / GRAMMATICAL MARKERS</h2>
+                <p class="tagline">Signs that modify meaning like punctuation</p>
+            </div>
+
+            <div class="category-intro">
+                <p>These signs appear predominantly at the end of inscriptions, functioning as grammatical operators or case markers. They encode S+ (observer/action) states and tell us how to interpret the signs that come before them.</p>
+            </div>
+
+            <div class="sign-grid">
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <line x1="40" y1="20" x2="40" y2="60" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">TERM-1</span>
+                    <div class="sign-name">Final Stroke</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Position</dt>
+                        <dd>Text-final only</dd>
+                        <dt>Function</dt>
+                        <dd class="epoch-value">Singular/definite marker</dd>
+                        <dt>Grammar</dt>
+                        <dd>"The [X]" or nominative case</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <circle cx="40" cy="40" r="20" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                            <circle cx="40" cy="40" r="4" fill="#6ab4f5"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">TERM-OWN</span>
+                    <div class="sign-name">Ownership Marker</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Position</dt>
+                        <dd>Text-final</dd>
+                        <dt>Function</dt>
+                        <dd class="epoch-value">Possessive/genitive</dd>
+                        <dt>Grammar</dt>
+                        <dd>"[X]'s" or "belonging to [X]"</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <polygon points="40,20 55,50 40,45 25,50" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">TERM-ARW</span>
+                    <div class="sign-name">Arrow/Direction</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Position</dt>
+                        <dd>Text-final or medial</dd>
+                        <dt>Function</dt>
+                        <dd class="epoch-value">Directional/dative</dd>
+                        <dt>Grammar</dt>
+                        <dd>"To [X]" or "toward [X]"</dd>
+                    </dl>
+                </div>
+
+                <div class="sign-card">
+                    <div class="sign-visual">
+                        <svg viewBox="0 0 80 80">
+                            <path d="M 20 35 Q 40 55 60 35" fill="none" stroke="#6ab4f5" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <span class="sign-id">TERM-CUP</span>
+                    <div class="sign-name">Cup/Bowl Shape</div>
+                    <span class="axis-tag axis-s-plus">S+</span>
+                    <dl class="sign-details">
+                        <dt>Position</dt>
+                        <dd>Text-final</dd>
+                        <dt>Function</dt>
+                        <dd class="epoch-value">Receptive/locative</dd>
+                        <dt>Grammar</dt>
+                        <dd>"In [X]" or "at [X]"</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="layman-box">
+                <p>These are like the grammatical endings in other languages (like "-'s" for possession in English, or "-ed" for past tense). They almost always appear at the end of an inscription and tell us the relationship between things.</p>
+                <p>A <strong>circle with a dot</strong> means "belongs to" (possessive). An <strong>arrow</strong> means "sent to" or "going toward" (directional). A <strong>cup shape</strong> means "located at" or "contained in."</p>
+                <p class="analogy">Think of them like punctuation marks or prepositions: they don't have much meaning on their own, but they're crucial for understanding the sentence structure!</p>
+            </div>
+        </section>
+
+        <!-- Quick Reference -->
+        <section class="formula-section">
+            <h3>Quick Reference: Epoch-Indus Correspondences</h3>
+            <div class="formula">&#954; = 0.0349 → Lothal unit: 1.704mm (&#954; × 48.83)</div>
+            <div class="formula">&#954;<sub>shadow</sub> = 28.65 → Base weight: ~28g</div>
+            <div class="formula">&#963; = 5/16 → Weight ratios (1, 2, 5, 10, 20...)</div>
+            <div class="formula">cos(BC) = 2/3 → Brick ratio 4:2:1 projection</div>
+            <div class="formula">√3 = |Q| → Fish symbol (vesica piscis)</div>
+            <div class="formula">2&#960; → Circle (complete rotation)</div>
+            <div class="formula">10.5 = DNA → Fish + 6 strokes (√3 × 6 = 10.39)</div>
+            <div class="formula highlight">[1 = -1]</div>
+        </section>
+
+        <div class="layman-box">
+            <p><strong>The Big Picture:</strong> What makes this decipherment revolutionary is that we're not guessing at what the Harappans meant - we're reading their mathematical intent directly.</p>
+            <p>The same constant (&#954;) that appears in their rulers and weights shows up encoded in how their signs are structured. The same ratios (like 4:2:1 and √3) that governed their brick-making and city planning are built into their writing system.</p>
+            <p class="analogy">It's as if an ancient civilization left us a message written in the digits of pi - we might not speak their language, but we can recognize the math, and that tells us they understood something profound about how reality works. The Harappans wrote in geometry because geometry is universal.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="unified-footer">
+        <div class="footer-logo">HAVE MIND MEDIA</div>
+        <div class="footer-tagline">Geometric Decipherment of Ancient Scripts</div>
+        <div class="footer-credit">Created by Jason Ray | Have Mind Media</div>
+        <div class="footer-principle">&#954; = 2&#960;/180 = 0.0349 | [1 = -1]</div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.querySelector('.nav-toggle');
+            dropdown.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu.contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

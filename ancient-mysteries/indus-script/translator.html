@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Indus Valley Script Translator using the Epoch Model Geometric-Phonetic Framework">
+    <title>Indus Script Translator | Geometric-Phonetic Framework | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Core Colors - Soul Science Palette */
+            --void: #030508;
+            --deep-space: #0a0d12;
+            --cosmic-dark: #0f1318;
+            --panel: #151a24;
+            --panel-light: #1a2030;
+
+            /* Earth Tones */
+            --earth-deep: #1a1510;
+            --earth-warm: #2a2318;
+            --hazel: #8b7355;
+            --hazel-light: #a89070;
+
+            /* Blues - Primary */
+            --nebula-blue: #1a2a3a;
+            --glow-blue: #4a8ec8;
+            --bright-blue: #6ab4f5;
+            --soft-blue: #a8d4f5;
+            --pale-blue: #d0e8f8;
+
+            /* Accents */
+            --gold-deep: #8b6914;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --accent-warm: #a85a48;
+            --terracotta: #c75b39;
+            --indigo: #6a5acd;
+
+            /* Text */
+            --soft-cream: #f0e8d8;
+            --pale-cream: #faf6ee;
+            --text-dim: #8a9aaa;
+
+            /* Borders */
+            --border: rgba(70, 130, 180, 0.25);
+            --border-light: rgba(70, 130, 180, 0.4);
+
+            /* Fonts */
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+
+            /* Transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* ==========================================
+           COSMIC BACKGROUND - NEBULA EFFECT
+           ========================================== */
+        .cosmic-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(ellipse at 15% 20%, rgba(74, 142, 200, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 25%, rgba(106, 180, 245, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 60% 75%, rgba(74, 142, 200, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 80%, rgba(139, 105, 20, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 50%, rgba(26, 42, 58, 0.4) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-space) 0%, var(--void) 100%);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 100px 50px, rgba(168, 212, 245, 0.9), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(2px 2px at 400px 80px, rgba(168, 212, 245, 0.8), transparent),
+                radial-gradient(1px 1px at 550px 200px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 700px 120px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 150px 300px, rgba(168, 212, 245, 0.6), transparent),
+                radial-gradient(1px 1px at 350px 380px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 600px 450px, rgba(201, 162, 39, 0.4), transparent),
+                radial-gradient(1px 1px at 800px 300px, rgba(168, 212, 245, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 950px 180px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(1px 1px at 1100px 400px, rgba(201, 162, 39, 0.3), transparent);
+            background-size: 1200px 600px;
+            animation: twinkle 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 40%, rgba(3, 5, 8, 0.7) 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        .unified-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(3, 5, 8, 0.92);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .nav-brand-text {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-signature {
+            font-size: 0.7rem;
+            color: var(--soft-blue);
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            position: relative;
+        }
+
+        .nav-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--soft-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-toggle:hover {
+            background: rgba(70, 130, 180, 0.1);
+            border-color: var(--border-light);
+            color: var(--bright-blue);
+        }
+
+        .nav-toggle .arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: rgba(10, 13, 18, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            color: var(--soft-cream);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-dropdown a:hover {
+            background: rgba(70, 130, 180, 0.12);
+            color: var(--bright-blue);
+        }
+
+        .nav-dropdown a.active {
+            background: rgba(201, 162, 39, 0.15);
+            color: var(--gold);
+        }
+
+        .nav-dropdown .nav-icon {
+            font-size: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-dropdown .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 0.5rem 0;
+        }
+
+        /* ==========================================
+           CONTENT LAYOUT
+           ========================================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 130px 40px 60px;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2em, 4.5vw, 3.5em);
+            font-weight: 500;
+            color: var(--pale-cream);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .page-header h1 .glow {
+            color: var(--bright-blue);
+            text-shadow: 0 0 30px rgba(106, 180, 245, 0.3);
+        }
+
+        .page-header .subtitle {
+            font-family: var(--font-body);
+            font-size: 1.4em;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* ==========================================
+           LAYMAN'S TERMS BOX
+           ========================================== */
+        .layman-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.08) 0%, rgba(201, 162, 39, 0.03) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.25);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 25px 0 40px;
+            position: relative;
+        }
+
+        .layman-box::before {
+            content: "IN SIMPLE TERMS";
+            position: absolute;
+            top: -10px;
+            left: 25px;
+            background: var(--void);
+            padding: 0 12px;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .layman-box p {
+            color: var(--soft-cream);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 15px;
+        }
+
+        .layman-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .layman-box strong {
+            color: var(--gold);
+        }
+
+        /* ==========================================
+           GLASS PANELS
+           ========================================== */
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.3), rgba(42, 35, 24, 0.15));
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 30px;
+        }
+
+        .glass-panel h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--bright-blue);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .glass-panel h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .glass-panel p {
+            color: var(--soft-cream);
+            opacity: 0.9;
+            margin-bottom: 18px;
+            line-height: 1.9;
+        }
+
+        /* ==========================================
+           CONSTANTS GRID
+           ========================================== */
+        .constants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .constant-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .constant-card:hover {
+            border-color: var(--glow-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .constant-symbol {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 8px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .constant-value {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: var(--bright-blue);
+            font-weight: bold;
+            margin: 8px 0;
+        }
+
+        .constant-description {
+            font-size: 0.85em;
+            color: var(--text-dim);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           SIGN PALETTE
+           ========================================== */
+        .sign-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .sign-button {
+            background: rgba(3, 5, 8, 0.6);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sign-button:hover {
+            background: rgba(70, 130, 180, 0.15);
+            border-color: var(--bright-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(106, 180, 245, 0.3);
+        }
+
+        .sign-button:active {
+            transform: translateY(0);
+        }
+
+        .sign-svg {
+            width: 50px;
+            height: 50px;
+        }
+
+        .sign-label {
+            font-size: 0.85em;
+            font-weight: bold;
+            color: var(--soft-cream);
+        }
+
+        .sign-value {
+            font-size: 0.75em;
+            color: var(--text-dim);
+            font-family: 'Courier New', monospace;
+        }
+
+        /* ==========================================
+           INSCRIPTION DISPLAY
+           ========================================== */
+        .inscription-display {
+            background: rgba(3, 5, 8, 0.7);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px;
+            min-height: 120px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .inscription-sign {
+            position: relative;
+            padding: 10px;
+            background: rgba(26, 42, 58, 0.4);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .inscription-sign:hover {
+            background: rgba(199, 91, 57, 0.2);
+            border-color: var(--terracotta);
+        }
+
+        .inscription-sign .remove-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .inscription-sign:hover .remove-btn {
+            display: block;
+        }
+
+        .clear-btn {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            margin-top: 15px;
+            transition: var(--transition-smooth);
+        }
+
+        .clear-btn:hover {
+            background: #d43030;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           ANALYSIS SECTIONS
+           ========================================== */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .analysis-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .analysis-card h4 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        .geometric-value {
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            background: rgba(106, 180, 245, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            border-left: 3px solid var(--bright-blue);
+            color: var(--soft-cream);
+        }
+
+        .triaxial-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .axis-value {
+            text-align: center;
+            padding: 20px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            background: rgba(3, 5, 8, 0.5);
+            border: 2px solid;
+        }
+
+        .axis-s-neg {
+            border-color: var(--terracotta);
+        }
+
+        .axis-s-neg > div:first-child {
+            color: var(--terracotta);
+        }
+
+        .axis-s-pos {
+            border-color: var(--bright-blue);
+        }
+
+        .axis-s-pos > div:first-child {
+            color: var(--bright-blue);
+        }
+
+        .axis-m-pos {
+            border-color: var(--gold);
+        }
+
+        .axis-m-pos > div:first-child {
+            color: var(--gold);
+        }
+
+        .axis-value > div:nth-child(2) {
+            font-size: 1.3em;
+            margin-top: 8px;
+            color: var(--soft-cream);
+        }
+
+        .axis-value > div:nth-child(3) {
+            font-size: 0.85em;
+            margin-top: 4px;
+            opacity: 0.7;
+            font-weight: normal;
+            color: var(--text-dim);
+        }
+
+        /* ==========================================
+           PHONETIC OUTPUT
+           ========================================== */
+        .phonetic-output {
+            background: rgba(3, 5, 8, 0.6);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .phonetic-output h4 {
+            color: var(--gold);
+            font-family: var(--font-display);
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .ipa-transcription {
+            font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', sans-serif;
+            font-size: 2em;
+            color: var(--bright-blue);
+            margin: 15px 0;
+            padding: 20px;
+            background: rgba(106, 180, 245, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .formant-display {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .formant-value {
+            background: rgba(26, 42, 58, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .formant-label {
+            font-weight: bold;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+            font-family: var(--font-display);
+        }
+
+        .formant-freq {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            color: var(--bright-blue);
+        }
+
+        .audio-btn {
+            background: var(--bright-blue);
+            color: var(--void);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+            margin-top: 20px;
+            width: 100%;
+            transition: var(--transition-smooth);
+        }
+
+        .audio-btn:hover {
+            background: var(--soft-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(106, 180, 245, 0.3);
+        }
+
+        .audio-btn:disabled {
+            background: var(--text-dim);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* ==========================================
+           TEACHING TABS
+           ========================================== */
+        .teaching-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-family: var(--font-display);
+            color: var(--text-dim);
+            border-bottom: 3px solid transparent;
+            transition: var(--transition-smooth);
+            letter-spacing: 1px;
+        }
+
+        .tab-button:hover {
+            color: var(--soft-blue);
+        }
+
+        .tab-button.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lesson-card {
+            background: rgba(3, 5, 8, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-card h4 {
+            color: var(--bright-blue);
+            margin-bottom: 15px;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        .lesson-card p {
+            margin-bottom: 12px;
+        }
+
+        .lesson-card ul {
+            margin-left: 25px;
+            margin-top: 12px;
+        }
+
+        .lesson-card li {
+            margin-bottom: 8px;
+            color: var(--soft-cream);
+        }
+
+        .example-box {
+            background: rgba(106, 180, 245, 0.08);
+            border-left: 4px solid var(--bright-blue);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .example-box strong {
+            color: var(--gold);
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: rgba(201, 162, 39, 0.1);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            display: block;
+            color: var(--soft-cream);
+        }
+
+        /* ==========================================
+           SAMPLES
+           ========================================== */
+        .samples-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .sample-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .sample-card:hover {
+            box-shadow: 0 8px 25px rgba(201, 162, 39, 0.3);
+            transform: translateY(-3px);
+            border-color: var(--gold);
+        }
+
+        .sample-card h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        .sample-signs {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 20px;
+            background: rgba(26, 42, 58, 0.3);
+            border-radius: 8px;
+            align-items: center;
+        }
+
+        .sample-analysis {
+            background: rgba(106, 180, 245, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            line-height: 1.9;
+        }
+
+        .sample-analysis strong {
+            color: var(--gold);
+        }
+
+        /* ==========================================
+           PROTO-DRAVIDIAN LOOKUP
+           ========================================== */
+        .lookup-results {
+            margin-top: 20px;
+        }
+
+        .match-card {
+            background: rgba(3, 5, 8, 0.5);
+            border: 2px solid var(--bright-blue);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .match-card h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: var(--font-display);
+        }
+
+        .match-confidence {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-left: 10px;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        .confidence-high {
+            background: rgba(106, 180, 245, 0.3);
+            color: var(--bright-blue);
+            border: 1px solid var(--bright-blue);
+        }
+
+        .confidence-medium {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .confidence-low {
+            background: rgba(199, 91, 57, 0.2);
+            color: var(--terracotta);
+            border: 1px solid var(--terracotta);
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .unified-footer {
+            text-align: center;
+            padding: 60px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            color: var(--soft-blue);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+
+        .footer-principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.5;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 1024px) {
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .unified-nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .nav-brand-text {
+                font-size: 0.85rem;
+            }
+
+            .nav-signature {
+                display: none;
+            }
+
+            .page-header {
+                padding: 100px 20px 40px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .glass-panel {
+                padding: 25px 20px;
+            }
+
+            .sign-palette {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            }
+
+            .triaxial-display,
+            .formant-display {
+                grid-template-columns: 1fr;
+            }
+
+            .constants-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <a href="index.html" class="nav-brand">
+            <span class="nav-brand-text">INDUS SCRIPT</span>
+            <span class="nav-signature">[1 = -1]</span>
+        </a>
+        <div class="nav-menu">
+            <button class="nav-toggle" onclick="toggleNav()">
+                <span>EXPLORE</span>
+                <span class="arrow">&#9662;</span>
+            </button>
+            <div class="nav-dropdown" id="navDropdown">
+                <a href="index.html">
+                    <span class="nav-icon">&#9670;</span>
+                    Overview
+                </a>
+                <a href="sign-reference.html">
+                    <span class="nav-icon">&#9674;</span>
+                    Sign Reference
+                </a>
+                <a href="epoch-mathematics.html">
+                    <span class="nav-icon">&#8734;</span>
+                    Mathematics
+                </a>
+                <div class="divider"></div>
+                <a href="linear-a.html">
+                    <span class="nav-icon">&#9672;</span>
+                    Linear A
+                </a>
+                <a href="translator.html" class="active">
+                    <span class="nav-icon">&#9654;</span>
+                    Translator Tool
+                </a>
+                <a href="universal-language-theory.html">
+                    <span class="nav-icon">&#9788;</span>
+                    Universal Language
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>INDUS SCRIPT <span class="glow">TRANSLATOR</span></h1>
+        <p class="subtitle">Epoch Model Geometric-Phonetic Framework</p>
+    </div>
+
+    <div class="container">
+        <!-- Layman's Explanation -->
+        <div class="layman-box">
+            <p><strong>How to use this translator:</strong> Think of each Indus symbol as having a hidden "sound code" based on its shape. Circles make round sounds like "oo", triangles make sharp sounds like "ee", and lines add rhythm. Click on symbols below to build a word, and watch as the tool reveals what it might have sounded like 4,000 years ago!</p>
+            <p>The translator shows you three things: the <strong>geometry</strong> (the math hidden in each shape), the <strong>phonetics</strong> (what sounds those shapes make), and <strong>Proto-Dravidian matches</strong> (ancient words that might match your inscription). You can even hear the pronunciation!</p>
+        </div>
+
+        <!-- Epoch Constants -->
+        <div class="glass-panel">
+            <h2>Epoch Constants</h2>
+            <p>These mathematical values form the foundation of the geometric-phonetic mapping system:</p>
+            <div class="constants-grid">
+                <div class="constant-card">
+                    <div class="constant-symbol">&#954;</div>
+                    <div class="constant-value">0.0349</div>
+                    <div class="constant-description">Base epoch constant</div>
+                </div>
+                <div class="constant-card">
+                    <div class="constant-symbol">&#954;<sub>shadow</sub></div>
+                    <div class="constant-value">28.65</div>
+                    <div class="constant-description">Shadow constant</div>
+                </div>
+                <div class="constant-card">
+                    <div class="constant-symbol">&#963;</div>
+                    <div class="constant-value">0.3125 (5/16)</div>
+                    <div class="constant-description">Sigma ratio</div>
+                </div>
+                <div class="constant-card">
+                    <div class="constant-symbol">&#8730;3</div>
+                    <div class="constant-value">1.732</div>
+                    <div class="constant-description">Triangle geometry</div>
+                </div>
+                <div class="constant-card">
+                    <div class="constant-symbol">cos(BC)</div>
+                    <div class="constant-value">0.667 (2/3)</div>
+                    <div class="constant-description">Angular constant</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Input Panel -->
+        <div class="glass-panel">
+            <h2>1. Sign Input Panel</h2>
+            <p>Click on signs below to build an inscription. Each sign has geometric values that map to specific sounds.</p>
+
+            <div class="sign-palette" id="signPalette">
+                <!-- Signs will be populated by JavaScript -->
+            </div>
+
+            <h3>Your Inscription</h3>
+            <div class="inscription-display" id="inscriptionDisplay">
+                <p style="color: var(--text-dim); width: 100%; text-align: center;">Click signs above to begin...</p>
+            </div>
+            <button class="clear-btn" onclick="clearInscription()">Clear Inscription</button>
+        </div>
+
+        <!-- Geometric Analysis -->
+        <div class="glass-panel">
+            <h2>2. Geometric Analysis</h2>
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h4>Individual Sign Values</h4>
+                    <div id="signValues">
+                        <p style="color: var(--text-dim);">Add signs to see their values...</p>
+                    </div>
+                </div>
+                <div class="analysis-card">
+                    <h4>Compound Values</h4>
+                    <div id="compoundValues">
+                        <p style="color: var(--text-dim);">Compound analysis will appear here...</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Triaxial System Breakdown</h3>
+            <div class="triaxial-display">
+                <div class="axis-value axis-s-neg">
+                    <div>S- (Negative)</div>
+                    <div id="sNegValue">0.00</div>
+                    <div>Consonants, Nouns</div>
+                </div>
+                <div class="axis-value axis-s-pos">
+                    <div>S+ (Positive)</div>
+                    <div id="sPosValue">0.00</div>
+                    <div>Vowels, Verbs</div>
+                </div>
+                <div class="axis-value axis-m-pos">
+                    <div>M+ (Quantity)</div>
+                    <div id="mPosValue">0.00</div>
+                    <div>Duration, Tone</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phonetic Output -->
+        <div class="glass-panel">
+            <h2>3. Phonetic Output</h2>
+            <div class="phonetic-output">
+                <h4>IPA Transcription</h4>
+                <div class="ipa-transcription" id="ipaOutput">—</div>
+
+                <h4>Formant Frequencies</h4>
+                <div class="formant-display">
+                    <div class="formant-value">
+                        <span class="formant-label">F1</span>
+                        <span class="formant-freq" id="f1Value">— Hz</span>
+                    </div>
+                    <div class="formant-value">
+                        <span class="formant-label">F2</span>
+                        <span class="formant-freq" id="f2Value">— Hz</span>
+                    </div>
+                    <div class="formant-value">
+                        <span class="formant-label">F3</span>
+                        <span class="formant-freq" id="f3Value">— Hz</span>
+                    </div>
+                </div>
+
+                <button class="audio-btn" id="playAudioBtn" onclick="playAudio()">
+                    Play Pronunciation
+                </button>
+            </div>
+        </div>
+
+        <!-- Teaching Section -->
+        <div class="glass-panel">
+            <h2>4. Teaching Section</h2>
+            <div class="teaching-tabs">
+                <button class="tab-button active" onclick="switchTab('basics')">Basics</button>
+                <button class="tab-button" onclick="switchTab('geometry')">Geometry to Sound</button>
+                <button class="tab-button" onclick="switchTab('triaxial')">Triaxial System</button>
+                <button class="tab-button" onclick="switchTab('frequency')">Frequency Correlations</button>
+            </div>
+
+            <div id="tab-basics" class="tab-content active">
+                <div class="lesson-card">
+                    <h4>Understanding the Epoch Model</h4>
+                    <p>The Epoch Model proposes that Indus Valley script signs encode both geometric relationships and phonetic values. Each sign's shape corresponds to specific mathematical constants that map to acoustic frequencies.</p>
+
+                    <div class="example-box">
+                        <strong>Core Principle:</strong> Shape → Geometry → Frequency → Sound
+                        <br><br>
+                        A circle has circumference 2&#960; → maps to vowel /u/ with formants F1=328Hz, F2=820Hz
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h4>Sign Categories</h4>
+                    <p><strong>Circular Signs:</strong> Based on 2&#960;, represent rounded vowels (/u/, /o/) and labial consonants (/m/, /p/)</p>
+                    <p><strong>Triangular Signs:</strong> Based on &#8730;3, represent high front vowels (/i/, /e/) and dental consonants (/t/, /n/)</p>
+                    <p><strong>Strokes:</strong> Linear units representing the base vowel /&#601;/ (schwa), with quantity indicating duration</p>
+                    <p><strong>Jars:</strong> Proportional shapes (4:2:1 ratio) representing the open central vowel /a/</p>
+                    <p><strong>Fish:</strong> &#8730;3 geometry representing the central vowel /&#616;/ and abundance concepts</p>
+                </div>
+            </div>
+
+            <div id="tab-geometry" class="tab-content">
+                <div class="lesson-card">
+                    <h4>From Geometry to Sound</h4>
+                    <p>The geometric-phonetic mapping follows these principles:</p>
+
+                    <div class="example-box">
+                        <strong>Circle (2&#960; ≈ 6.283):</strong>
+                        <div class="formula">2&#960; → /u/ → F1=328Hz, F2=820Hz</div>
+                        <p>The rounded shape correlates with rounded vowel acoustics. The 2&#960; value scales to formant frequencies through the epoch constants.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Triangle (&#8730;3 ≈ 1.732):</strong>
+                        <div class="formula">&#8730;3 → /i/ → F1=298Hz, F2=2580Hz</div>
+                        <p>The height-to-base ratio of &#8730;3 correlates with the high F2 frequency characteristic of /i/.</p>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Jar (4:2:1 ratio ≈ 4.00):</strong>
+                        <div class="formula">4:2:1 → /a/ → F1=775Hz, F2=1240Hz</div>
+                        <p>The proportional segments map to the open vowel space, with balanced formant frequencies.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h4>Consonant Derivation</h4>
+                    <p>Consonants are derived from base shapes with modifications:</p>
+                    <ul>
+                        <li><strong>Circle base:</strong> Labial consonants /m/, /p/ (lips form circular shape)</li>
+                        <li><strong>Triangle base:</strong> Dental/alveolar /t/, /n/ (tongue position forms triangular space)</li>
+                        <li><strong>Deep signs:</strong> Retroflex consonants /&#ʈ/, /&#ɖ/ (tongue curls back)</li>
+                        <li><strong>Stroked signs:</strong> Fricatives and affricates (air flow obstruction)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="tab-triaxial" class="tab-content">
+                <div class="lesson-card">
+                    <h4>The Triaxial System</h4>
+                    <p>The Epoch Model organizes phonetic and semantic features along three axes:</p>
+
+                    <div class="example-box">
+                        <strong>S- (Negative Axis):</strong>
+                        <ul>
+                            <li>Consonants (obstruction of airflow)</li>
+                            <li>Nouns (concrete objects)</li>
+                            <li>Past tense (completed actions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>S+ (Positive Axis):</strong>
+                        <ul>
+                            <li>Vowels (open resonance)</li>
+                            <li>Verbs (actions, processes)</li>
+                            <li>Future tense (potential actions)</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>M+ (Quantity Axis):</strong>
+                        <ul>
+                            <li>Duration (vowel length)</li>
+                            <li>Tone (pitch patterns)</li>
+                            <li>Number (singular to plural)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h4>Calculating Triaxial Values</h4>
+                    <p>For any inscription, the triaxial values are calculated as:</p>
+                    <div class="formula">S- = &#931;(consonant values) × &#954;</div>
+                    <div class="formula">S+ = &#931;(vowel values) × &#963;</div>
+                    <div class="formula">M+ = &#931;(stroke counts) × &#8730;3</div>
+                    <p style="margin-top: 10px;">These values reveal the phonetic structure and semantic category of the inscription.</p>
+                </div>
+            </div>
+
+            <div id="tab-frequency" class="tab-content">
+                <div class="lesson-card">
+                    <h4>Frequency-Meaning Correlations</h4>
+                    <p>The Epoch Model proposes that acoustic frequencies correlate with semantic domains:</p>
+
+                    <div class="example-box">
+                        <strong>Low Frequency (F1 > 700Hz):</strong>
+                        <p>Open vowels /a/, /&#593;/ → Physical objects, earth, foundation</p>
+                        <p>Example: Jar signs often represent containers, measures, physical goods</p>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>High Frequency (F2 > 2000Hz):</strong>
+                        <p>Front vowels /i/, /e/ → Abstract concepts, sky, divine</p>
+                        <p>Example: Triangle signs may represent stars, deities, spiritual concepts</p>
+                    </div>
+
+                    <div class="example-box">
+                        <strong>Balanced Frequency (F1 ≈ F2):</strong>
+                        <p>Central vowels /&#601;/, /&#616;/ → Mediating concepts, transitions, processes</p>
+                        <p>Example: Fish signs represent abundance flowing between domains</p>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h4>Formant Space and Meaning</h4>
+                    <p>The vowel formant space maps to a conceptual space:</p>
+                    <ul>
+                        <li><strong>Front-High (/i/):</strong> Sky, heaven, divine realm, future</li>
+                        <li><strong>Back-High (/u/):</strong> Deep, interior, storage, past</li>
+                        <li><strong>Front-Low (/æ/):</strong> Immediate, present, visible</li>
+                        <li><strong>Back-Low (/&#593;/):</strong> Foundation, earth, tangible</li>
+                        <li><strong>Central (/&#601;/, /&#616;/):</strong> Balance, mediation, transformation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Proto-Dravidian Lookup -->
+        <div class="glass-panel">
+            <h2>5. Proto-Dravidian Lookup</h2>
+            <p>Comparing your inscription's phonetic output with known Proto-Dravidian reconstructions...</p>
+            <div class="lookup-results" id="lookupResults">
+                <p style="color: var(--text-dim);">Build an inscription to see potential Proto-Dravidian matches...</p>
+            </div>
+        </div>
+
+        <!-- Sample Inscriptions -->
+        <div class="glass-panel">
+            <h2>6. Sample Inscriptions</h2>
+            <div class="samples-grid">
+                <div class="sample-card" onclick="loadSample('pleiades')">
+                    <h3>Fish + 6 Strokes = Pleiades</h3>
+                    <div class="sample-signs">
+                        <svg width="60" height="60" viewBox="0 0 100 100">
+                            <path d="M20,50 Q30,30 50,50 Q70,30 80,50 L70,50 Q70,60 50,70 Q30,60 30,50 Z" fill="#3d5a80" stroke="#c9a227" stroke-width="2"/>
+                            <circle cx="55" cy="45" r="3" fill="white"/>
+                        </svg>
+                        <span style="font-size: 2em; align-self: center; color: var(--soft-cream);">||||||</span>
+                    </div>
+                    <div class="sample-analysis">
+                        <strong>Geometric Analysis:</strong> &#8730;3 (fish) + 6×1 (strokes) = 7.732<br>
+                        <strong>Phonetics:</strong> /&#616;/ + 6× /&#601;/ → *min&#601; or *minn&#601;<br>
+                        <strong>Proto-Dravidian:</strong> *min "star, to sparkle" → Pleiades (six visible stars)<br>
+                        <strong>Meaning:</strong> The Pleiades constellation, six sisters, time marker
+                    </div>
+                </div>
+
+                <div class="sample-card" onclick="loadSample('measure')">
+                    <h3>Jar + 3 Strokes = Measure</h3>
+                    <div class="sample-signs">
+                        <svg width="60" height="60" viewBox="0 0 100 100">
+                            <path d="M35,30 L35,70 Q35,85 50,85 Q65,85 65,70 L65,30 Q65,20 50,20 Q35,20 35,30 Z" fill="none" stroke="#8b4513" stroke-width="3"/>
+                            <line x1="35" y1="45" x2="65" y2="45" stroke="#8b4513" stroke-width="2"/>
+                            <line x1="35" y1="60" x2="65" y2="60" stroke="#8b4513" stroke-width="2"/>
+                        </svg>
+                        <span style="font-size: 2em; align-self: center; color: var(--soft-cream);">|||</span>
+                    </div>
+                    <div class="sample-analysis">
+                        <strong>Geometric Analysis:</strong> 4.00 (jar ratio) + 3×1 (strokes) = 7.00<br>
+                        <strong>Phonetics:</strong> /a/ + 3× /&#601;/ → *pala or *mūr<br>
+                        <strong>Proto-Dravidian:</strong> *mūr "three" or *pala "measure, portion"<br>
+                        <strong>Meaning:</strong> Three units of measure, a standard quantity
+                    </div>
+                </div>
+
+                <div class="sample-card" onclick="loadSample('circle-triangle')">
+                    <h3>Circle + Triangle = Divine Speech</h3>
+                    <div class="sample-signs">
+                        <svg width="60" height="60" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="30" fill="none" stroke="#3d5a80" stroke-width="3"/>
+                        </svg>
+                        <svg width="60" height="60" viewBox="0 0 100 100">
+                            <path d="M50,20 L80,70 L20,70 Z" fill="none" stroke="#6b3410" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="sample-analysis">
+                        <strong>Geometric Analysis:</strong> 2&#960; (6.283) + &#8730;3 (1.732) = 8.015<br>
+                        <strong>Phonetics:</strong> /u/ + /i/ → *kui or *puy<br>
+                        <strong>Proto-Dravidian:</strong> *kūṟu "to speak, announce" or *pū "flower, bloom"<br>
+                        <strong>Meaning:</strong> Sacred utterance, divine proclamation, or celestial flowering
+                    </div>
+                </div>
+
+                <div class="sample-card" onclick="loadSample('seven-strokes')">
+                    <h3>7 Strokes = Complete Cycle</h3>
+                    <div class="sample-signs">
+                        <span style="font-size: 2em; color: var(--soft-cream);">|||||||</span>
+                    </div>
+                    <div class="sample-analysis">
+                        <strong>Geometric Analysis:</strong> 7×1 (strokes) = 7.00<br>
+                        <strong>Phonetics:</strong> 7× /&#601;/ → *ēḻ or *elu<br>
+                        <strong>Proto-Dravidian:</strong> *ēḻ "seven" (sacred number)<br>
+                        <strong>Meaning:</strong> Seven days, seven stars (Big Dipper), complete week cycle
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="unified-footer">
+        <div class="footer-logo">HAVE MIND MEDIA</div>
+        <div class="footer-tagline">Geometric Decipherment of Ancient Scripts</div>
+        <div class="footer-credit">Created by Jason Ray | Have Mind Media</div>
+        <div class="footer-principle">&#954; = 2&#960;/180 = 0.0349 | [1 = -1]</div>
+    </footer>
+
+    <script>
+        // ===== DATA STRUCTURES =====
+
+        const CONSTANTS = {
+            kappa: 0.0349,
+            kappa_shadow: 28.65,
+            sigma: 5/16, // 0.3125
+            sqrt3: Math.sqrt(3), // 1.732...
+            tau: 2 * Math.PI, // 6.283...
+            cos_BC: 2/3 // 0.667
+        };
+
+        const SIGNS = [
+            {
+                id: 'circle',
+                name: 'Circle',
+                value: 2 * Math.PI,
+                symbol: '○',
+                phoneme: '/u/',
+                formants: { f1: 328, f2: 820, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 6.283, m_pos: 0 },
+                category: 'vowel'
+            },
+            {
+                id: 'triangle-up',
+                name: 'Triangle Up',
+                value: Math.sqrt(3),
+                symbol: '△',
+                phoneme: '/i/',
+                formants: { f1: 298, f2: 2580, f3: 3200 },
+                axis: { s_neg: 0, s_pos: 1.732, m_pos: 0 },
+                category: 'vowel'
+            },
+            {
+                id: 'triangle-down',
+                name: 'Triangle Down',
+                value: Math.sqrt(3),
+                symbol: '▽',
+                phoneme: '/e/',
+                formants: { f1: 450, f2: 2100, f3: 2900 },
+                axis: { s_neg: 0, s_pos: 1.732, m_pos: 0 },
+                category: 'vowel'
+            },
+            {
+                id: 'fish',
+                name: 'Fish',
+                value: Math.sqrt(3),
+                symbol: '🐟',
+                phoneme: '/ɨ/',
+                formants: { f1: 298, f2: 1548, f3: 2600 },
+                axis: { s_neg: 0, s_pos: 1.732, m_pos: 0 },
+                category: 'vowel'
+            },
+            {
+                id: 'jar',
+                name: 'Jar',
+                value: 4.0,
+                symbol: '⚱',
+                phoneme: '/a/',
+                formants: { f1: 775, f2: 1240, f3: 2400 },
+                axis: { s_neg: 0, s_pos: 4.0, m_pos: 0 },
+                category: 'vowel'
+            },
+            {
+                id: 'stroke-1',
+                name: '1 Stroke',
+                value: 1.0,
+                symbol: '|',
+                phoneme: '/ə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 1.0, m_pos: 1.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-2',
+                name: '2 Strokes',
+                value: 2.0,
+                symbol: '||',
+                phoneme: '/əə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 2.0, m_pos: 2.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-3',
+                name: '3 Strokes',
+                value: 3.0,
+                symbol: '|||',
+                phoneme: '/əəə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 3.0, m_pos: 3.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-4',
+                name: '4 Strokes',
+                value: 4.0,
+                symbol: '||||',
+                phoneme: '/əəəə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 4.0, m_pos: 4.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-5',
+                name: '5 Strokes',
+                value: 5.0,
+                symbol: '|||||',
+                phoneme: '/əəəəə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 5.0, m_pos: 5.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-6',
+                name: '6 Strokes',
+                value: 6.0,
+                symbol: '||||||',
+                phoneme: '/əəəəəə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 6.0, m_pos: 6.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'stroke-7',
+                name: '7 Strokes',
+                value: 7.0,
+                symbol: '|||||||',
+                phoneme: '/əəəəəəə/',
+                formants: { f1: 500, f2: 1500, f3: 2500 },
+                axis: { s_neg: 0, s_pos: 7.0, m_pos: 7.0 },
+                category: 'schwa'
+            },
+            {
+                id: 'circle-base-m',
+                name: 'Circle+M',
+                value: 2 * Math.PI,
+                symbol: '◎',
+                phoneme: '/m/',
+                formants: { f1: 250, f2: 1100, f3: 2500 },
+                axis: { s_neg: 6.283, s_pos: 0, m_pos: 0 },
+                category: 'consonant'
+            },
+            {
+                id: 'circle-base-p',
+                name: 'Circle+P',
+                value: 2 * Math.PI,
+                symbol: '⊗',
+                phoneme: '/p/',
+                formants: { f1: 200, f2: 900, f3: 2400 },
+                axis: { s_neg: 6.283, s_pos: 0, m_pos: 0 },
+                category: 'consonant'
+            },
+            {
+                id: 'triangle-base-t',
+                name: 'Triangle+T',
+                value: Math.sqrt(3),
+                symbol: '▲',
+                phoneme: '/t/',
+                formants: { f1: 220, f2: 1800, f3: 2700 },
+                axis: { s_neg: 1.732, s_pos: 0, m_pos: 0 },
+                category: 'consonant'
+            },
+            {
+                id: 'triangle-base-n',
+                name: 'Triangle+N',
+                value: Math.sqrt(3),
+                symbol: '▼',
+                phoneme: '/n/',
+                formants: { f1: 280, f2: 1700, f3: 2600 },
+                axis: { s_neg: 1.732, s_pos: 0, m_pos: 0 },
+                category: 'consonant'
+            }
+        ];
+
+        const PROTO_DRAVIDIAN = [
+            { word: '*min', meaning: 'star, sparkle, glitter', pattern: ['fish', 'stroke-6'], confidence: 'high' },
+            { word: '*mīn', meaning: 'fish, star (Pleiades)', pattern: ['fish', 'stroke-6'], confidence: 'high' },
+            { word: '*mūr', meaning: 'three', pattern: ['jar', 'stroke-3'], confidence: 'high' },
+            { word: '*pala', meaning: 'measure, portion', pattern: ['jar', 'stroke-3'], confidence: 'medium' },
+            { word: '*ēḻ', meaning: 'seven (sacred number)', pattern: ['stroke-7'], confidence: 'high' },
+            { word: '*kui', meaning: 'to speak, announce', pattern: ['circle', 'triangle-up'], confidence: 'medium' },
+            { word: '*pū', meaning: 'flower, bloom', pattern: ['circle', 'triangle-up'], confidence: 'medium' },
+            { word: '*mutu', meaning: 'old, ancient, first', pattern: ['circle-base-m', 'circle', 'triangle-base-t', 'circle'], confidence: 'low' },
+            { word: '*pu-', meaning: 'exterior, outside', pattern: ['circle-base-p', 'circle'], confidence: 'low' },
+            { word: '*tan', meaning: 'self, own', pattern: ['triangle-base-t', 'jar', 'triangle-base-n'], confidence: 'low' }
+        ];
+
+        // ===== STATE =====
+
+        let currentInscription = [];
+        let audioContext = null;
+
+        // ===== INITIALIZATION =====
+
+        function init() {
+            renderSignPalette();
+            updateAnalysis();
+        }
+
+        function renderSignPalette() {
+            const palette = document.getElementById('signPalette');
+            palette.innerHTML = '';
+
+            SIGNS.forEach(sign => {
+                const button = document.createElement('div');
+                button.className = 'sign-button';
+                button.onclick = () => addSign(sign);
+
+                const svg = createSignSVG(sign);
+                const label = document.createElement('div');
+                label.className = 'sign-label';
+                label.textContent = sign.name;
+
+                const value = document.createElement('div');
+                value.className = 'sign-value';
+                value.textContent = sign.value.toFixed(3);
+
+                button.appendChild(svg);
+                button.appendChild(label);
+                button.appendChild(value);
+                palette.appendChild(button);
+            });
+        }
+
+        function createSignSVG(sign) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'sign-svg');
+            svg.setAttribute('viewBox', '0 0 100 100');
+
+            let path;
+            switch(sign.id) {
+                case 'circle':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    path.setAttribute('cx', '50');
+                    path.setAttribute('cy', '50');
+                    path.setAttribute('r', '35');
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#3d5a80');
+                    path.setAttribute('stroke-width', '4');
+                    break;
+
+                case 'triangle-up':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M50,20 L80,70 L20,70 Z');
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#6b3410');
+                    path.setAttribute('stroke-width', '4');
+                    break;
+
+                case 'triangle-down':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M50,80 L80,30 L20,30 Z');
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#6b3410');
+                    path.setAttribute('stroke-width', '4');
+                    break;
+
+                case 'fish':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M20,50 Q30,30 50,50 Q70,30 80,50 L70,50 Q70,60 50,70 Q30,60 30,50 Z');
+                    path.setAttribute('fill', '#3d5a80');
+                    path.setAttribute('stroke', '#2c1810');
+                    path.setAttribute('stroke-width', '2');
+                    const eye = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    eye.setAttribute('cx', '55');
+                    eye.setAttribute('cy', '45');
+                    eye.setAttribute('r', '3');
+                    eye.setAttribute('fill', 'white');
+                    svg.appendChild(path);
+                    svg.appendChild(eye);
+                    return svg;
+
+                case 'jar':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M35,30 L35,70 Q35,85 50,85 Q65,85 65,70 L65,30 Q65,20 50,20 Q35,20 35,30 Z');
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#8b4513');
+                    path.setAttribute('stroke-width', '3');
+                    svg.appendChild(path);
+                    const line1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line1.setAttribute('x1', '35');
+                    line1.setAttribute('y1', '45');
+                    line1.setAttribute('x2', '65');
+                    line1.setAttribute('y2', '45');
+                    line1.setAttribute('stroke', '#8b4513');
+                    line1.setAttribute('stroke-width', '2');
+                    const line2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line2.setAttribute('x1', '35');
+                    line2.setAttribute('y1', '60');
+                    line2.setAttribute('x2', '65');
+                    line2.setAttribute('y2', '60');
+                    line2.setAttribute('stroke', '#8b4513');
+                    line2.setAttribute('stroke-width', '2');
+                    svg.appendChild(line1);
+                    svg.appendChild(line2);
+                    return svg;
+
+                case 'circle-base-m':
+                    const outerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    outerCircle.setAttribute('cx', '50');
+                    outerCircle.setAttribute('cy', '50');
+                    outerCircle.setAttribute('r', '35');
+                    outerCircle.setAttribute('fill', 'none');
+                    outerCircle.setAttribute('stroke', '#3d5a80');
+                    outerCircle.setAttribute('stroke-width', '4');
+                    const innerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    innerCircle.setAttribute('cx', '50');
+                    innerCircle.setAttribute('cy', '50');
+                    innerCircle.setAttribute('r', '15');
+                    innerCircle.setAttribute('fill', '#3d5a80');
+                    svg.appendChild(outerCircle);
+                    svg.appendChild(innerCircle);
+                    return svg;
+
+                case 'circle-base-p':
+                    const pCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                    pCircle.setAttribute('cx', '50');
+                    pCircle.setAttribute('cy', '50');
+                    pCircle.setAttribute('r', '35');
+                    pCircle.setAttribute('fill', 'none');
+                    pCircle.setAttribute('stroke', '#3d5a80');
+                    pCircle.setAttribute('stroke-width', '4');
+                    svg.appendChild(pCircle);
+                    const cross1 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    cross1.setAttribute('x1', '30');
+                    cross1.setAttribute('y1', '50');
+                    cross1.setAttribute('x2', '70');
+                    cross1.setAttribute('y2', '50');
+                    cross1.setAttribute('stroke', '#3d5a80');
+                    cross1.setAttribute('stroke-width', '3');
+                    const cross2 = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    cross2.setAttribute('x1', '50');
+                    cross2.setAttribute('y1', '30');
+                    cross2.setAttribute('x2', '50');
+                    cross2.setAttribute('y2', '70');
+                    cross2.setAttribute('stroke', '#3d5a80');
+                    cross2.setAttribute('stroke-width', '3');
+                    svg.appendChild(cross1);
+                    svg.appendChild(cross2);
+                    return svg;
+
+                case 'triangle-base-t':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M50,20 L80,70 L20,70 Z');
+                    path.setAttribute('fill', '#6b3410');
+                    path.setAttribute('stroke', '#2c1810');
+                    path.setAttribute('stroke-width', '3');
+                    break;
+
+                case 'triangle-base-n':
+                    path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    path.setAttribute('d', 'M50,80 L80,30 L20,30 Z');
+                    path.setAttribute('fill', '#6b3410');
+                    path.setAttribute('stroke', '#2c1810');
+                    path.setAttribute('stroke-width', '3');
+                    break;
+
+                default:
+                    if (sign.id.startsWith('stroke-')) {
+                        const count = parseInt(sign.id.split('-')[1]);
+                        const spacing = 80 / (count + 1);
+                        for (let i = 1; i <= count; i++) {
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', spacing * i + 10);
+                            line.setAttribute('y1', '20');
+                            line.setAttribute('x2', spacing * i + 10);
+                            line.setAttribute('y2', '80');
+                            line.setAttribute('stroke', '#c9a227');
+                            line.setAttribute('stroke-width', '4');
+                            svg.appendChild(line);
+                        }
+                        return svg;
+                    }
+            }
+
+            if (path) svg.appendChild(path);
+            return svg;
+        }
+
+        // ===== INSCRIPTION BUILDING =====
+
+        function addSign(sign) {
+            currentInscription.push(sign);
+            renderInscription();
+            updateAnalysis();
+        }
+
+        function removeSign(index) {
+            currentInscription.splice(index, 1);
+            renderInscription();
+            updateAnalysis();
+        }
+
+        function clearInscription() {
+            currentInscription = [];
+            renderInscription();
+            updateAnalysis();
+        }
+
+        function renderInscription() {
+            const display = document.getElementById('inscriptionDisplay');
+            display.innerHTML = '';
+
+            if (currentInscription.length === 0) {
+                const placeholder = document.createElement('p');
+                placeholder.style.color = 'var(--text-dim)';
+                placeholder.style.width = '100%';
+                placeholder.style.textAlign = 'center';
+                placeholder.textContent = 'Click signs above to begin...';
+                display.appendChild(placeholder);
+                return;
+            }
+
+            currentInscription.forEach((sign, index) => {
+                const signDiv = document.createElement('div');
+                signDiv.className = 'inscription-sign';
+
+                const svg = createSignSVG(sign);
+                signDiv.appendChild(svg);
+
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = '×';
+                removeBtn.onclick = () => removeSign(index);
+                signDiv.appendChild(removeBtn);
+
+                display.appendChild(signDiv);
+            });
+        }
+
+        // ===== ANALYSIS =====
+
+        function updateAnalysis() {
+            updateGeometricAnalysis();
+            updateTriaxialAnalysis();
+            updatePhoneticOutput();
+            updateProtoDravidianLookup();
+        }
+
+        function updateGeometricAnalysis() {
+            const signValuesDiv = document.getElementById('signValues');
+            const compoundValuesDiv = document.getElementById('compoundValues');
+
+            if (currentInscription.length === 0) {
+                signValuesDiv.innerHTML = '<p style="color: var(--text-dim);">Add signs to see their values...</p>';
+                compoundValuesDiv.innerHTML = '<p style="color: var(--text-dim);">Compound analysis will appear here...</p>';
+                return;
+            }
+
+            // Individual sign values
+            signValuesDiv.innerHTML = '';
+            currentInscription.forEach((sign, index) => {
+                const valueDiv = document.createElement('div');
+                valueDiv.className = 'geometric-value';
+                valueDiv.textContent = `${index + 1}. ${sign.name}: ${sign.value.toFixed(3)}`;
+                signValuesDiv.appendChild(valueDiv);
+            });
+
+            // Compound values
+            compoundValuesDiv.innerHTML = '';
+            const totalValue = currentInscription.reduce((sum, sign) => sum + sign.value, 0);
+            const productValue = currentInscription.reduce((prod, sign) => prod * sign.value, 1);
+
+            const totalDiv = document.createElement('div');
+            totalDiv.className = 'geometric-value';
+            totalDiv.innerHTML = `<strong>Sum:</strong> ${totalValue.toFixed(3)}`;
+            compoundValuesDiv.appendChild(totalDiv);
+
+            const productDiv = document.createElement('div');
+            productDiv.className = 'geometric-value';
+            productDiv.innerHTML = `<strong>Product:</strong> ${productValue.toFixed(3)}`;
+            compoundValuesDiv.appendChild(productDiv);
+
+            const modKappaDiv = document.createElement('div');
+            modKappaDiv.className = 'geometric-value';
+            modKappaDiv.innerHTML = `<strong>Sum × κ:</strong> ${(totalValue * CONSTANTS.kappa).toFixed(4)}`;
+            compoundValuesDiv.appendChild(modKappaDiv);
+        }
+
+        function updateTriaxialAnalysis() {
+            if (currentInscription.length === 0) {
+                document.getElementById('sNegValue').textContent = '0.00';
+                document.getElementById('sPosValue').textContent = '0.00';
+                document.getElementById('mPosValue').textContent = '0.00';
+                return;
+            }
+
+            let sNeg = 0, sPos = 0, mPos = 0;
+
+            currentInscription.forEach(sign => {
+                sNeg += sign.axis.s_neg * CONSTANTS.kappa;
+                sPos += sign.axis.s_pos * CONSTANTS.sigma;
+                mPos += sign.axis.m_pos * CONSTANTS.sqrt3;
+            });
+
+            document.getElementById('sNegValue').textContent = sNeg.toFixed(2);
+            document.getElementById('sPosValue').textContent = sPos.toFixed(2);
+            document.getElementById('mPosValue').textContent = mPos.toFixed(2);
+        }
+
+        function updatePhoneticOutput() {
+            const ipaOutput = document.getElementById('ipaOutput');
+            const f1Value = document.getElementById('f1Value');
+            const f2Value = document.getElementById('f2Value');
+            const f3Value = document.getElementById('f3Value');
+
+            if (currentInscription.length === 0) {
+                ipaOutput.textContent = '—';
+                f1Value.textContent = '— Hz';
+                f2Value.textContent = '— Hz';
+                f3Value.textContent = '— Hz';
+                return;
+            }
+
+            // Build IPA transcription
+            const ipa = currentInscription.map(sign => sign.phoneme).join('');
+            ipaOutput.textContent = ipa;
+
+            // Calculate average formants
+            let avgF1 = 0, avgF2 = 0, avgF3 = 0;
+            let vowelCount = 0;
+
+            currentInscription.forEach(sign => {
+                if (sign.category === 'vowel' || sign.category === 'schwa') {
+                    avgF1 += sign.formants.f1;
+                    avgF2 += sign.formants.f2;
+                    avgF3 += sign.formants.f3;
+                    vowelCount++;
+                }
+            });
+
+            if (vowelCount > 0) {
+                avgF1 /= vowelCount;
+                avgF2 /= vowelCount;
+                avgF3 /= vowelCount;
+            }
+
+            f1Value.textContent = `${Math.round(avgF1)} Hz`;
+            f2Value.textContent = `${Math.round(avgF2)} Hz`;
+            f3Value.textContent = `${Math.round(avgF3)} Hz`;
+        }
+
+        function updateProtoDravidianLookup() {
+            const resultsDiv = document.getElementById('lookupResults');
+
+            if (currentInscription.length === 0) {
+                resultsDiv.innerHTML = '<p style="color: var(--text-dim);">Build an inscription to see potential Proto-Dravidian matches...</p>';
+                return;
+            }
+
+            const inscriptionPattern = currentInscription.map(sign => sign.id);
+            const matches = [];
+
+            PROTO_DRAVIDIAN.forEach(entry => {
+                const patternMatch = arraysEqual(inscriptionPattern, entry.pattern);
+                if (patternMatch) {
+                    matches.push(entry);
+                }
+            });
+
+            resultsDiv.innerHTML = '';
+
+            if (matches.length === 0) {
+                resultsDiv.innerHTML = '<p style="color: var(--text-dim);">No exact Proto-Dravidian matches found. This may be a unique inscription or combination.</p>';
+                return;
+            }
+
+            matches.forEach(match => {
+                const card = document.createElement('div');
+                card.className = 'match-card';
+
+                const confidenceClass = `confidence-${match.confidence}`;
+
+                card.innerHTML = `
+                    <h4>${match.word}<span class="match-confidence ${confidenceClass}">${match.confidence.toUpperCase()}</span></h4>
+                    <p><strong>Meaning:</strong> ${match.meaning}</p>
+                    <p style="margin-top: 8px;"><strong>Pattern:</strong> ${match.pattern.map(id => SIGNS.find(s => s.id === id).name).join(' + ')}</p>
+                `;
+
+                resultsDiv.appendChild(card);
+            });
+        }
+
+        function arraysEqual(arr1, arr2) {
+            if (arr1.length !== arr2.length) return false;
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) return false;
+            }
+            return true;
+        }
+
+        // ===== AUDIO SYNTHESIS =====
+
+        function playAudio() {
+            if (currentInscription.length === 0) return;
+
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            const now = audioContext.currentTime;
+            let time = now;
+
+            currentInscription.forEach((sign, index) => {
+                if (sign.category === 'vowel' || sign.category === 'schwa') {
+                    playVowel(sign, time);
+                    time += 0.2; // 200ms per vowel
+                } else if (sign.category === 'consonant') {
+                    playConsonant(sign, time);
+                    time += 0.1; // 100ms per consonant
+                }
+            });
+        }
+
+        function playVowel(sign, startTime) {
+            const duration = 0.2;
+            const { f1, f2, f3 } = sign.formants;
+
+            // Create formant oscillators
+            const osc1 = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const osc3 = audioContext.createOscillator();
+
+            const gain1 = audioContext.createGain();
+            const gain2 = audioContext.createGain();
+            const gain3 = audioContext.createGain();
+
+            osc1.frequency.value = f1;
+            osc2.frequency.value = f2;
+            osc3.frequency.value = f3;
+
+            // Amplitude envelope
+            gain1.gain.setValueAtTime(0, startTime);
+            gain1.gain.linearRampToValueAtTime(0.15, startTime + 0.05);
+            gain1.gain.linearRampToValueAtTime(0.1, startTime + duration - 0.05);
+            gain1.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            gain2.gain.setValueAtTime(0, startTime);
+            gain2.gain.linearRampToValueAtTime(0.1, startTime + 0.05);
+            gain2.gain.linearRampToValueAtTime(0.07, startTime + duration - 0.05);
+            gain2.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            gain3.gain.setValueAtTime(0, startTime);
+            gain3.gain.linearRampToValueAtTime(0.05, startTime + 0.05);
+            gain3.gain.linearRampToValueAtTime(0.03, startTime + duration - 0.05);
+            gain3.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            osc1.connect(gain1).connect(audioContext.destination);
+            osc2.connect(gain2).connect(audioContext.destination);
+            osc3.connect(gain3).connect(audioContext.destination);
+
+            osc1.start(startTime);
+            osc2.start(startTime);
+            osc3.start(startTime);
+
+            osc1.stop(startTime + duration);
+            osc2.stop(startTime + duration);
+            osc3.stop(startTime + duration);
+        }
+
+        function playConsonant(sign, startTime) {
+            const duration = 0.1;
+
+            // Use noise for consonants
+            const bufferSize = audioContext.sampleRate * duration;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+
+            const noise = audioContext.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = sign.formants.f2;
+            filter.Q.value = 10;
+
+            const gain = audioContext.createGain();
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(0.05, startTime + 0.02);
+            gain.gain.linearRampToValueAtTime(0, startTime + duration);
+
+            noise.connect(filter).connect(gain).connect(audioContext.destination);
+            noise.start(startTime);
+            noise.stop(startTime + duration);
+        }
+
+        // ===== TEACHING TABS =====
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected tab
+            const selectedTab = document.getElementById(`tab-${tabName}`);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Activate button
+            event.target.classList.add('active');
+        }
+
+        // ===== SAMPLE LOADING =====
+
+        function loadSample(sampleName) {
+            currentInscription = [];
+
+            switch(sampleName) {
+                case 'pleiades':
+                    currentInscription.push(SIGNS.find(s => s.id === 'fish'));
+                    currentInscription.push(SIGNS.find(s => s.id === 'stroke-6'));
+                    break;
+
+                case 'measure':
+                    currentInscription.push(SIGNS.find(s => s.id === 'jar'));
+                    currentInscription.push(SIGNS.find(s => s.id === 'stroke-3'));
+                    break;
+
+                case 'circle-triangle':
+                    currentInscription.push(SIGNS.find(s => s.id === 'circle'));
+                    currentInscription.push(SIGNS.find(s => s.id === 'triangle-up'));
+                    break;
+
+                case 'seven-strokes':
+                    currentInscription.push(SIGNS.find(s => s.id === 'stroke-7'));
+                    break;
+            }
+
+            renderInscription();
+            updateAnalysis();
+
+            // Scroll to inscription display
+            document.getElementById('inscriptionDisplay').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // ===== NAVIGATION =====
+
+        function toggleNav() {
+            const dropdown = document.getElementById('navDropdown');
+            const toggle = document.querySelector('.nav-toggle');
+            dropdown.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu.contains(e.target)) {
+                document.getElementById('navDropdown').classList.remove('active');
+                document.querySelector('.nav-toggle').classList.remove('active');
+            }
+        });
+
+        // ===== START =====
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

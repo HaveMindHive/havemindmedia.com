@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epoch Symbols | Have Mind Media</title>
+    <style>
+        :root {
+            --primary-gold: #FFD700;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --text-light: #e0e0e0;
+            --success: #4CAF50;
+            --miss: #f44336;
+            --neutral: #4A9B9B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary-gold), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            margin: 5px 0;
+        }
+
+        .epoch-mark {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+        }
+
+        /* Mode Selection */
+        .mode-select {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .mode-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mode-btn:hover, .mode-btn.active {
+            background: var(--primary-gold);
+            color: var(--bg-deep);
+            border-color: var(--primary-gold);
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+        }
+
+        .stat-value.hit { color: var(--success); }
+        .stat-value.miss { color: var(--miss); }
+
+        /* Game Area */
+        .game-area {
+            text-align: center;
+        }
+
+        /* Target Symbol */
+        .target-section {
+            margin: 30px 0;
+        }
+
+        .target-label {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .target-symbol {
+            font-size: 8rem;
+            display: inline-block;
+            width: 180px;
+            height: 180px;
+            line-height: 180px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 3px solid var(--primary-gold);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .target-symbol.hidden {
+            background: linear-gradient(45deg, rgba(255,215,0,0.2), rgba(255,215,0,0.05));
+            color: transparent;
+        }
+
+        .target-symbol.hidden::after {
+            content: '?';
+            color: var(--primary-gold);
+            font-size: 6rem;
+        }
+
+        .target-name {
+            margin-top: 10px;
+            font-size: 1.1rem;
+            color: var(--primary-gold);
+        }
+
+        /* Timer */
+        .timer-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .timer-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-gold), #ffa500);
+            transition: width 0.1s linear;
+            border-radius: 4px;
+        }
+
+        .timer-fill.urgent {
+            background: linear-gradient(90deg, var(--miss), #ff6b6b);
+        }
+
+        /* Choice Grid - Triaxial: 3, 6, or 9 */
+        .choice-grid {
+            display: grid;
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .choice-grid.cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .choice-card {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 4rem;
+        }
+
+        .choice-card:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: var(--primary-gold);
+            transform: scale(1.05);
+        }
+
+        .choice-card .symbol-name {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        .choice-card.correct {
+            background: rgba(76, 175, 80, 0.3);
+            border-color: var(--success);
+        }
+
+        .choice-card.incorrect {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: var(--miss);
+        }
+
+        .choice-card.reveal {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Results */
+        .result-flash {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            font-weight: bold;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 100;
+        }
+
+        .result-flash.hit {
+            color: var(--success);
+            animation: flashIn 0.6s ease-out;
+        }
+
+        .result-flash.miss {
+            color: var(--miss);
+            animation: flashIn 0.6s ease-out;
+        }
+
+        @keyframes flashIn {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            30% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Streak Display */
+        .streak-display {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .streak-display span {
+            color: var(--primary-gold);
+            font-weight: bold;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .symbol-legend {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-glyph {
+            font-size: 1.5rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        .legend-info {
+            font-size: 0.85rem;
+        }
+
+        .legend-info .name {
+            font-weight: bold;
+        }
+
+        .legend-info .meaning {
+            opacity: 0.7;
+            font-size: 0.75rem;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary-gold), #ffa500);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--bg-deep);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Significance Display */
+        .significance {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .significance .label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .significance .value {
+            font-size: 1.1rem;
+            color: var(--primary-gold);
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--primary-gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Epoch Symbols</h1>
+            <p class="subtitle">9 Symbols · Triaxial Intuition · No Binary</p>
+            <p class="epoch-mark">[1 = -1]</p>
+        </header>
+
+        <div class="mode-select">
+            <button class="mode-btn active" data-mode="clairvoyance">Clairvoyance</button>
+            <button class="mode-btn" data-mode="precognition">Precognition</button>
+            <button class="mode-btn" data-mode="timed">Timed Challenge</button>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat">
+                <div class="stat-label">Attempts</div>
+                <div class="stat-value" id="attempts">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hits</div>
+                <div class="stat-value hit" id="hits">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hit Rate</div>
+                <div class="stat-value" id="hitRate">0%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">vs Chance (11.1%)</div>
+                <div class="stat-value" id="vsChance">--</div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="target-section">
+                <div class="target-label" id="targetLabel">The target symbol is:</div>
+                <div class="target-symbol" id="targetSymbol">△</div>
+                <div class="target-name" id="targetName">Triangle</div>
+            </div>
+
+            <div class="timer-bar" id="timerBar" style="display: none;">
+                <div class="timer-fill" id="timerFill"></div>
+            </div>
+
+            <div class="streak-display">
+                Current Streak: <span id="streak">0</span> | Best: <span id="bestStreak">0</span>
+            </div>
+
+            <div class="choice-grid cols-3" id="choiceGrid">
+                <!-- Choices populated by JS -->
+            </div>
+
+            <div class="controls">
+                <button onclick="game.nextRound()">Next Symbol</button>
+                <button class="secondary" onclick="game.resetStats()">Reset Stats</button>
+            </div>
+
+            <div class="significance">
+                <div class="label">Statistical Significance</div>
+                <div class="value" id="significance">Complete more rounds for analysis</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>The 9 Epoch Symbols</h3>
+            <p>Based on Q-reduction (mod 9), these symbols represent the fundamental positions in triaxial space.</p>
+
+            <div class="symbol-legend" id="symbolLegend">
+                <!-- Populated by JS -->
+            </div>
+
+            <h3 style="margin-top: 20px;">Game Modes</h3>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li><strong>Clairvoyance:</strong> Symbol is hidden. Sense which one it is.</li>
+                <li><strong>Precognition:</strong> Guess BEFORE the symbol is chosen.</li>
+                <li><strong>Timed Challenge:</strong> Decreasing timer as streak builds.</li>
+            </ul>
+
+            <p style="margin-top: 15px; opacity: 0.8;">
+                9 symbols = 11.1% chance. Triaxial design. No binary choices.
+            </p>
+        </div>
+    </div>
+
+    <div class="result-flash" id="resultFlash">HIT!</div>
+
+    <footer>
+        <p>Have Mind Media | Developer: Alessandra Ray</p>
+        <p><a href="https://havemindmedia.com">havemindmedia.com</a></p>
+    </footer>
+
+    <script src="epoch-games-core.js"></script>
+    <script>
+        class EpochSymbolsGame {
+            constructor() {
+                this.symbols = EpochCore.EPOCH_SYMBOLS;
+                this.mode = 'clairvoyance';
+                this.targetSymbol = null;
+                this.isRevealed = false;
+
+                this.stats = {
+                    attempts: 0,
+                    hits: 0,
+                    streak: 0,
+                    bestStreak: parseInt(localStorage.getItem('epoch_symbols_best') || '0')
+                };
+
+                this.timerDuration = 5000;  // ms
+                this.timerRemaining = 0;
+                this.timerInterval = null;
+
+                this.setupModeButtons();
+                this.renderLegend();
+                this.renderChoices();
+                this.nextRound();
+            }
+
+            setupModeButtons() {
+                document.querySelectorAll('.mode-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.mode = btn.dataset.mode;
+                        this.nextRound();
+                    });
+                });
+            }
+
+            renderLegend() {
+                const legend = document.getElementById('symbolLegend');
+                legend.innerHTML = this.symbols.map(s => `
+                    <div class="legend-item">
+                        <div class="legend-glyph">${s.glyph}</div>
+                        <div class="legend-info">
+                            <div class="name">${s.name}</div>
+                            <div class="meaning">${s.meaning}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            renderChoices() {
+                const grid = document.getElementById('choiceGrid');
+                grid.innerHTML = this.symbols.map(s => `
+                    <div class="choice-card" data-id="${s.id}">
+                        ${s.glyph}
+                        <div class="symbol-name">${s.name}</div>
+                    </div>
+                `).join('');
+
+                grid.querySelectorAll('.choice-card').forEach(card => {
+                    card.addEventListener('click', () => this.handleChoice(parseInt(card.dataset.id)));
+                });
+            }
+
+            nextRound() {
+                this.stopTimer();
+                this.isRevealed = false;
+
+                // Clear previous styling
+                document.querySelectorAll('.choice-card').forEach(c => {
+                    c.classList.remove('correct', 'incorrect', 'reveal');
+                });
+
+                // Select random target
+                const randomIndex = EpochCore.randomIndex(this.symbols.length);
+                this.targetSymbol = this.symbols[randomIndex];
+
+                const targetEl = document.getElementById('targetSymbol');
+                const nameEl = document.getElementById('targetName');
+                const labelEl = document.getElementById('targetLabel');
+
+                if (this.mode === 'clairvoyance') {
+                    // Hidden - user senses
+                    targetEl.textContent = '';
+                    targetEl.classList.add('hidden');
+                    nameEl.textContent = 'Focus and select...';
+                    labelEl.textContent = 'A symbol has been chosen. What do you sense?';
+                } else if (this.mode === 'precognition') {
+                    // Not yet chosen - user predicts
+                    targetEl.textContent = '';
+                    targetEl.classList.add('hidden');
+                    nameEl.textContent = 'Make your prediction...';
+                    labelEl.textContent = 'Select a symbol BEFORE it is chosen:';
+                } else if (this.mode === 'timed') {
+                    // Show target, start timer
+                    targetEl.textContent = this.targetSymbol.glyph;
+                    targetEl.classList.remove('hidden');
+                    nameEl.textContent = this.targetSymbol.name;
+                    labelEl.textContent = 'QUICK! Find this symbol:';
+                    this.startTimer();
+                }
+
+                // Shuffle choice positions
+                const grid = document.getElementById('choiceGrid');
+                const cards = Array.from(grid.children);
+                EpochCore.shuffleArray(cards).forEach(card => grid.appendChild(card));
+            }
+
+            handleChoice(symbolId) {
+                if (this.isRevealed) return;
+                this.isRevealed = true;
+                this.stopTimer();
+
+                // For precognition mode, choose the target NOW based on their selection
+                if (this.mode === 'precognition') {
+                    const randomIndex = EpochCore.randomIndex(this.symbols.length);
+                    this.targetSymbol = this.symbols[randomIndex];
+                }
+
+                const isHit = symbolId === this.targetSymbol.id;
+
+                // Update stats
+                this.stats.attempts++;
+                if (isHit) {
+                    this.stats.hits++;
+                    this.stats.streak++;
+                    if (this.stats.streak > this.stats.bestStreak) {
+                        this.stats.bestStreak = this.stats.streak;
+                        localStorage.setItem('epoch_symbols_best', this.stats.bestStreak);
+                    }
+                } else {
+                    this.stats.streak = 0;
+                }
+
+                // Visual feedback
+                this.showResult(isHit);
+                this.highlightCards(symbolId, this.targetSymbol.id);
+                this.revealTarget();
+                this.updateUI();
+
+                // In timed mode, decrease time on hit
+                if (this.mode === 'timed' && isHit) {
+                    this.timerDuration = Math.max(1500, this.timerDuration - 200);
+                }
+            }
+
+            showResult(isHit) {
+                const flash = document.getElementById('resultFlash');
+                flash.textContent = isHit ? 'HIT!' : 'MISS';
+                flash.className = 'result-flash ' + (isHit ? 'hit' : 'miss');
+                // Force reflow
+                void flash.offsetWidth;
+                flash.classList.add(isHit ? 'hit' : 'miss');
+            }
+
+            highlightCards(chosenId, correctId) {
+                document.querySelectorAll('.choice-card').forEach(card => {
+                    const id = parseInt(card.dataset.id);
+                    if (id === correctId) {
+                        card.classList.add(chosenId === correctId ? 'correct' : 'reveal');
+                    } else if (id === chosenId) {
+                        card.classList.add('incorrect');
+                    }
+                });
+            }
+
+            revealTarget() {
+                const targetEl = document.getElementById('targetSymbol');
+                const nameEl = document.getElementById('targetName');
+                const labelEl = document.getElementById('targetLabel');
+
+                targetEl.textContent = this.targetSymbol.glyph;
+                targetEl.classList.remove('hidden');
+                nameEl.textContent = this.targetSymbol.name;
+                labelEl.textContent = 'The symbol was:';
+            }
+
+            startTimer() {
+                const timerBar = document.getElementById('timerBar');
+                const timerFill = document.getElementById('timerFill');
+
+                timerBar.style.display = 'block';
+                this.timerRemaining = this.timerDuration;
+                timerFill.style.width = '100%';
+                timerFill.classList.remove('urgent');
+
+                const startTime = Date.now();
+                this.timerInterval = setInterval(() => {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = this.timerDuration - elapsed;
+                    const percent = (remaining / this.timerDuration) * 100;
+
+                    timerFill.style.width = `${Math.max(0, percent)}%`;
+
+                    if (percent < 30) {
+                        timerFill.classList.add('urgent');
+                    }
+
+                    if (remaining <= 0) {
+                        this.handleTimeout();
+                    }
+                }, 50);
+            }
+
+            stopTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+                document.getElementById('timerBar').style.display = 'none';
+            }
+
+            handleTimeout() {
+                this.stopTimer();
+                if (!this.isRevealed) {
+                    this.isRevealed = true;
+                    this.stats.attempts++;
+                    this.stats.streak = 0;
+                    this.showResult(false);
+                    this.revealTarget();
+                    this.highlightCards(-1, this.targetSymbol.id);
+                    this.updateUI();
+                    this.timerDuration = 5000;  // Reset timer on miss
+                }
+            }
+
+            updateUI() {
+                document.getElementById('attempts').textContent = this.stats.attempts;
+                document.getElementById('hits').textContent = this.stats.hits;
+                document.getElementById('streak').textContent = this.stats.streak;
+                document.getElementById('bestStreak').textContent = this.stats.bestStreak;
+
+                const hitRate = this.stats.attempts > 0
+                    ? (this.stats.hits / this.stats.attempts * 100).toFixed(1)
+                    : 0;
+                document.getElementById('hitRate').textContent = `${hitRate}%`;
+
+                // Compare to chance (1/9 = 11.1%)
+                const chanceRate = 11.1;
+                const diff = hitRate - chanceRate;
+                const vsChanceEl = document.getElementById('vsChance');
+
+                if (this.stats.attempts < 9) {
+                    vsChanceEl.textContent = '--';
+                    vsChanceEl.style.color = 'var(--primary-gold)';
+                } else {
+                    vsChanceEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+                    vsChanceEl.style.color = diff >= 0 ? 'var(--success)' : 'var(--miss)';
+                }
+
+                // Statistical significance
+                const sigEl = document.getElementById('significance');
+                if (this.stats.attempts >= 27) {  // Minimum 27 for 3 full cycles of 9
+                    const score = EpochCore.calculateIntuitionScore(
+                        this.stats.hits,
+                        this.stats.attempts,
+                        9
+                    );
+                    sigEl.textContent = score.significance;
+                } else {
+                    sigEl.textContent = `Complete ${27 - this.stats.attempts} more rounds for significance analysis`;
+                }
+            }
+
+            resetStats() {
+                this.stats = {
+                    attempts: 0,
+                    hits: 0,
+                    streak: 0,
+                    bestStreak: 0
+                };
+                localStorage.removeItem('epoch_symbols_best');
+                this.timerDuration = 5000;
+                this.updateUI();
+                this.nextRound();
+            }
+        }
+
+        const game = new EpochSymbolsGame();
+    </script>
+</body>
+</html>

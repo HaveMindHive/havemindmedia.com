@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Triads | Have Mind Media</title>
+    <style>
+        :root {
+            --love-gold: #FFD700;
+            --shadow-crimson: #8B0000;
+            --neutral-teal: #4A9B9B;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --text-light: #e0e0e0;
+            --glow-love: rgba(255, 215, 0, 0.6);
+            --glow-shadow: rgba(139, 0, 0, 0.6);
+            --meter-fill: linear-gradient(90deg, #FFD700, #FFA500, #FF6B6B);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--love-gold), #fff, var(--love-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .epoch-mark {
+            font-size: 0.85rem;
+            color: var(--love-gold);
+            margin-top: 5px;
+        }
+
+        /* Love Meter */
+        .love-meter-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .meter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .meter-label {
+            font-size: 0.9rem;
+            color: var(--love-gold);
+            font-weight: bold;
+        }
+
+        .level-display {
+            font-size: 1.1rem;
+            color: var(--love-gold);
+        }
+
+        .level-display span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .love-meter {
+            height: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .love-meter-fill {
+            height: 100%;
+            background: var(--meter-fill);
+            border-radius: 15px;
+            transition: width 0.5s ease-out;
+            position: relative;
+        }
+
+        .love-meter-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3), transparent);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .meter-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Score Panel */
+        .score-panel {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-label {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--love-gold);
+        }
+
+        /* Affirmation Display */
+        .affirmation {
+            text-align: center;
+            min-height: 50px;
+            padding: 10px;
+            font-size: 1.1rem;
+            color: var(--love-gold);
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .affirmation.show {
+            opacity: 1;
+            animation: affirmPulse 0.5s ease-out;
+        }
+
+        @keyframes affirmPulse {
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Game Board */
+        .board-header {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .board-header .remaining {
+            color: var(--shadow-crimson);
+            font-weight: bold;
+        }
+
+        .game-board {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s, opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .ball:hover {
+            transform: scale(1.1);
+        }
+
+        .ball.neutral {
+            background: radial-gradient(circle at 30% 30%, #6bc9c9, var(--neutral-teal));
+            box-shadow: 0 4px 15px rgba(74, 155, 155, 0.4);
+        }
+
+        .ball.love {
+            background: radial-gradient(circle at 30% 30%, #fff9c4, var(--love-gold));
+            box-shadow: 0 4px 20px var(--glow-love);
+            animation: lovePulse 2s ease-in-out infinite;
+        }
+
+        .ball.shadow {
+            background: radial-gradient(circle at 30% 30%, #c62828, var(--shadow-crimson));
+            box-shadow: 0 4px 20px var(--glow-shadow);
+            animation: shadowPulse 1.5s ease-in-out infinite;
+        }
+
+        .ball.selected {
+            transform: scale(1.15);
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+
+        .ball.binding {
+            animation: bindingGlow 0.5s ease-out forwards;
+        }
+
+        @keyframes lovePulse {
+            0%, 100% { box-shadow: 0 4px 20px var(--glow-love); }
+            50% { box-shadow: 0 4px 35px var(--glow-love), 0 0 50px rgba(255, 215, 0, 0.3); }
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% { box-shadow: 0 4px 20px var(--glow-shadow); }
+            50% { box-shadow: 0 4px 30px var(--glow-shadow), 0 0 40px rgba(139, 0, 0, 0.4); }
+        }
+
+        @keyframes bindingGlow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); box-shadow: 0 0 40px var(--glow-love); }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        /* Triangle Preview */
+        .triangle-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .instructions h3 {
+            color: var(--love-gold);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .key {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 3px 8px;
+        }
+
+        .ball-mini {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .ball-mini.shadow { background: var(--shadow-crimson); }
+        .ball-mini.love { background: var(--love-gold); }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--love-gold), #ffa500);
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #1a0a2e;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Level Up Overlay */
+        .level-up-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .level-up-overlay.show {
+            display: flex;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .level-up-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 40px;
+        }
+
+        .level-up-content h2 {
+            font-size: 3rem;
+            color: var(--love-gold);
+            margin-bottom: 20px;
+            animation: levelPop 0.5s ease-out;
+        }
+
+        @keyframes levelPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .level-up-content .teaching {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+
+        .level-up-content .teaching em {
+            color: var(--love-gold);
+            font-style: normal;
+        }
+
+        .level-up-content button {
+            margin-top: 20px;
+        }
+
+        /* Victory Screen */
+        .victory-content h2 {
+            font-size: 2.5rem;
+        }
+
+        .victory-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .victory-stat {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .victory-stat .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .victory-stat .value {
+            font-size: 1.8rem;
+            color: var(--love-gold);
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--love-gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Love Triads</h1>
+            <p class="tagline">Bind the shadow with triaxial harmony</p>
+            <p class="epoch-mark">[1 = -1]</p>
+        </header>
+
+        <!-- Love Meter -->
+        <div class="love-meter-container">
+            <div class="meter-header">
+                <span class="meter-label">Love Meter</span>
+                <span class="level-display">Level <span id="currentLevel">1</span></span>
+            </div>
+            <div class="love-meter">
+                <div class="love-meter-fill" id="loveMeterFill" style="width: 0%"></div>
+                <span class="meter-text" id="meterText">0 / 100</span>
+            </div>
+        </div>
+
+        <div class="score-panel">
+            <div class="score-item">
+                <div class="score-label">Score</div>
+                <div class="score-value" id="score">0</div>
+            </div>
+            <div class="score-item">
+                <div class="score-label">Bindings</div>
+                <div class="score-value" id="bindings">0</div>
+            </div>
+            <div class="score-item">
+                <div class="score-label">Combo</div>
+                <div class="score-value" id="combo">0x</div>
+            </div>
+        </div>
+
+        <!-- Affirmation Display -->
+        <div class="affirmation" id="affirmation"></div>
+
+        <div class="board-header">
+            <span class="remaining" id="shadowsRemaining">0</span> shadows remaining
+        </div>
+
+        <div class="game-board" id="gameBoard">
+            <svg class="triangle-preview" id="trianglePreview"></svg>
+        </div>
+
+        <div class="controls">
+            <button onclick="game.newGame()">New Game</button>
+            <button class="secondary" onclick="game.resetSelection()">Clear Selection</button>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <p>
+                Click a <span class="key"><span class="ball-mini shadow"></span> Shadow</span> then
+                select THREE <span class="key"><span class="ball-mini love"></span> Love</span> balls
+                to form a triangle around it. Clear all shadows to level up!
+            </p>
+        </div>
+    </div>
+
+    <!-- Level Up Overlay -->
+    <div class="level-up-overlay" id="levelUpOverlay">
+        <div class="level-up-content" id="levelUpContent">
+            <h2 id="levelUpTitle">Level 2!</h2>
+            <p class="teaching" id="levelUpTeaching">
+                Teaching content here...
+            </p>
+            <button onclick="game.startLevel()">Continue</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Developer: Alessandra Ray</p>
+        <p><a href="index.html">← Back to Games</a></p>
+    </footer>
+
+    <script src="epoch-games-core.js"></script>
+    <script>
+        // ══════════════════════════════════════════════════════════════
+        // AFFIRMATIONS & TEACHINGS
+        // ══════════════════════════════════════════════════════════════
+
+        const AFFIRMATIONS = [
+            "Love binds what isolation could not.",
+            "Three points create what two cannot.",
+            "The shadow dissolves in harmony.",
+            "You chose connection over separation.",
+            "Triaxial stability transforms all.",
+            "Love is geometric. Love is structure.",
+            "What was separate is now whole.",
+            "The triad completes what was broken.",
+            "Binding through love, not force.",
+            "Harmony dissolves disharmony.",
+            "You see the triangle others miss.",
+            "Connection transforms isolation.",
+            "Love finds its geometry.",
+            "Three loves, one transformation.",
+            "The shadow needed the triad.",
+            "You brought balance to chaos.",
+            "Unity through triaxial harmony.",
+            "Love as geometric healing.",
+            "The binding was always possible.",
+            "You recognized the pattern."
+        ];
+
+        const TEACHINGS = {
+            2: {
+                title: "Level 2 - Triaxial Nature",
+                text: "In the Epoch Model, <em>nothing exists in isolation</em>. Binary thinking (good/evil, us/them) is unstable. Only when THREE points connect does stability emerge. Your love triads demonstrate this truth."
+            },
+            3: {
+                title: "Level 3 - The Binding",
+                text: "Shadow balls represent <em>isolation</em>—not evil itself, but disconnection. When three love points form a triangle around the shadow, you're not destroying it. You're <em>integrating</em> it through geometric completion."
+            },
+            4: {
+                title: "Level 4 - [1 = -1]",
+                text: "The Epoch equation <em>[1 = -1]</em> means apparent opposites are the same thing viewed from different positions. Shadow (+1) and Love (-1) together make zero—<em>transcendence</em>, not destruction."
+            },
+            5: {
+                title: "Level 5 - No Binary",
+                text: "Notice: you never choose between just two options. Binary is dogma. Reality is <em>triaxial</em>. Three axes. Three points of love. This is how the universe actually works—the Standard Model is just the s=0 projection."
+            },
+            6: {
+                title: "Level 6 - Triangle Types",
+                text: "Equilateral triads (3x) show <em>perfect harmony</em>—three loves equally balanced. Isoceles (2x) shows <em>balanced relationship</em>. Scalene (1x) is functional but not optimal. Your geometry reveals your understanding."
+            },
+            7: {
+                title: "Level 7 - Love as Structure",
+                text: "Love isn't just an emotion—it's a <em>geometric binding force</em>. Just as the Boerdijk-Coxeter tetrahelix creates stable structure through triangular faces, love creates stable relationships through triaxial connection."
+            },
+            8: {
+                title: "Level 8 - The Witness",
+                text: "κ_shadow = 28.65—the hidden witness. When you form a love triad, you're not just selecting balls. You're <em>witnessing</em> the geometry that was always there, waiting to be seen and activated."
+            },
+            9: {
+                title: "Level 9 - Integration Master",
+                text: "You've mastered the fundamentals. Every shadow you've bound wasn't eliminated—it was <em>integrated</em>. This is the work: not to fight what seems dark, but to surround it with enough love to transform it."
+            },
+            10: {
+                title: "Level 10 - The Geometry Generates",
+                text: "The geometry generates the geometry. You didn't create these patterns—you <em>discovered</em> them. The love triads existed as potential. Your awareness collapsed that potential into reality. This is how consciousness works."
+            }
+        };
+
+        // Default teaching for levels without specific content
+        const DEFAULT_TEACHING = {
+            title: "Keep Going!",
+            text: "Each binding strengthens your understanding. The patterns become clearer. The geometry reveals itself to those who practice seeing."
+        };
+
+        // ══════════════════════════════════════════════════════════════
+        // GAME CLASS
+        // ══════════════════════════════════════════════════════════════
+
+        class LoveTriadsGame {
+            constructor() {
+                this.board = document.getElementById('gameBoard');
+                this.trianglePreview = document.getElementById('trianglePreview');
+
+                this.gridSize = 7;  // 7x7 grid
+                this.cellSize = 0;
+                this.balls = [];
+                this.selectedShadow = null;
+                this.selectedLoves = [];
+
+                this.score = 0;
+                this.totalBindings = 0;
+                this.combo = 0;
+                this.level = 1;
+
+                // Love Meter
+                this.lovePoints = 0;
+                this.loveToNextLevel = 100;
+
+                this.newGame();
+            }
+
+            newGame() {
+                this.level = 1;
+                this.score = 0;
+                this.totalBindings = 0;
+                this.combo = 0;
+                this.lovePoints = 0;
+                this.updateLoveMeter();
+                this.startLevel();
+            }
+
+            startLevel() {
+                this.balls = [];
+                this.selectedShadow = null;
+                this.selectedLoves = [];
+                this.combo = 0;
+
+                // Close any overlay
+                document.getElementById('levelUpOverlay').classList.remove('show');
+
+                // Calculate ball counts for this level
+                const shadowCount = Math.min(2 + this.level, 10);
+                const loveCount = shadowCount * 4 + Math.floor(Math.random() * 4);
+                const totalCells = this.gridSize * this.gridSize;
+                const neutralCount = Math.max(0, totalCells - shadowCount - loveCount);
+
+                // Generate ball types
+                const types = [];
+                for (let i = 0; i < shadowCount; i++) types.push('shadow');
+                for (let i = 0; i < loveCount; i++) types.push('love');
+                for (let i = 0; i < neutralCount; i++) types.push('neutral');
+
+                // Shuffle
+                const shuffled = EpochCore.shuffleArray(types);
+
+                // Create balls
+                let index = 0;
+                for (let row = 0; row < this.gridSize; row++) {
+                    for (let col = 0; col < this.gridSize; col++) {
+                        if (index < shuffled.length) {
+                            this.balls.push({
+                                id: index,
+                                type: shuffled[index],
+                                row,
+                                col,
+                                x: 0,
+                                y: 0
+                            });
+                            index++;
+                        }
+                    }
+                }
+
+                this.render();
+                this.updateUI();
+                this.showAffirmation('');
+            }
+
+            render() {
+                this.board.innerHTML = '<svg class="triangle-preview" id="trianglePreview"></svg>';
+                this.trianglePreview = document.getElementById('trianglePreview');
+
+                const rect = this.board.getBoundingClientRect();
+                this.cellSize = rect.width / this.gridSize;
+                const ballSize = this.cellSize * 0.75;
+                const offset = (this.cellSize - ballSize) / 2;
+
+                this.balls.forEach(ball => {
+                    const x = ball.col * this.cellSize + offset;
+                    const y = ball.row * this.cellSize + offset;
+                    ball.x = ball.col * this.cellSize + this.cellSize / 2;
+                    ball.y = ball.row * this.cellSize + this.cellSize / 2;
+
+                    const el = document.createElement('div');
+                    el.className = `ball ${ball.type}`;
+                    el.style.left = `${x}px`;
+                    el.style.top = `${y}px`;
+                    el.style.width = `${ballSize}px`;
+                    el.style.height = `${ballSize}px`;
+                    el.dataset.id = ball.id;
+
+                    el.addEventListener('click', () => this.handleBallClick(ball));
+
+                    if (this.selectedShadow && this.selectedShadow.id === ball.id) {
+                        el.classList.add('selected');
+                    }
+                    if (this.selectedLoves.find(l => l.id === ball.id)) {
+                        el.classList.add('selected');
+                    }
+
+                    this.board.appendChild(el);
+                });
+
+                this.drawTrianglePreview();
+            }
+
+            handleBallClick(ball) {
+                if (ball.type === 'shadow') {
+                    if (this.selectedShadow && this.selectedShadow.id === ball.id) {
+                        this.selectedShadow = null;
+                        this.selectedLoves = [];
+                    } else {
+                        this.selectedShadow = ball;
+                        this.selectedLoves = [];
+                    }
+                } else if (ball.type === 'love' && this.selectedShadow) {
+                    const existingIndex = this.selectedLoves.findIndex(l => l.id === ball.id);
+                    if (existingIndex >= 0) {
+                        this.selectedLoves.splice(existingIndex, 1);
+                    } else if (this.selectedLoves.length < 3) {
+                        this.selectedLoves.push(ball);
+                    }
+
+                    if (this.selectedLoves.length === 3) {
+                        this.checkTriad();
+                    }
+                }
+
+                this.render();
+            }
+
+            drawTrianglePreview() {
+                if (this.selectedLoves.length < 2) {
+                    this.trianglePreview.innerHTML = '';
+                    return;
+                }
+
+                let pathD = `M ${this.selectedLoves[0].x} ${this.selectedLoves[0].y}`;
+                for (let i = 1; i < this.selectedLoves.length; i++) {
+                    pathD += ` L ${this.selectedLoves[i].x} ${this.selectedLoves[i].y}`;
+                }
+                if (this.selectedLoves.length === 3) {
+                    pathD += ' Z';
+                }
+
+                this.trianglePreview.innerHTML = `
+                    <path d="${pathD}"
+                          fill="${this.selectedLoves.length === 3 ? 'rgba(255, 215, 0, 0.2)' : 'none'}"
+                          stroke="rgba(255, 215, 0, 0.8)"
+                          stroke-width="3"
+                          stroke-dasharray="${this.selectedLoves.length === 3 ? 'none' : '10,5'}"/>
+                `;
+            }
+
+            checkTriad() {
+                const p1 = { x: this.selectedLoves[0].x, y: this.selectedLoves[0].y };
+                const p2 = { x: this.selectedLoves[1].x, y: this.selectedLoves[1].y };
+                const p3 = { x: this.selectedLoves[2].x, y: this.selectedLoves[2].y };
+                const shadow = { x: this.selectedShadow.x, y: this.selectedShadow.y };
+
+                if (EpochCore.isPointInTriangle(shadow.x, shadow.y, p1, p2, p3)) {
+                    const triangleType = EpochCore.classifyTriangle(p1, p2, p3);
+                    this.bindTriad(triangleType);
+                } else {
+                    this.showAffirmation('Shadow must be inside the triangle. Try again!');
+                    this.selectedLoves = [];
+                    this.combo = 0;
+                    this.render();
+                }
+            }
+
+            bindTriad(triangleType) {
+                const multiplier = triangleType.multiplier;
+                const basePoints = 100;
+                const comboBonus = this.combo * 50;
+                const points = (basePoints + comboBonus) * multiplier;
+
+                this.score += points;
+                this.totalBindings++;
+                this.combo++;
+
+                // Add love points to meter
+                const loveGain = 20 * multiplier + (this.combo * 5);
+                this.addLovePoints(loveGain);
+
+                // Show affirmation
+                const affirmation = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
+                this.showAffirmation(affirmation);
+
+                // Animate binding
+                const idsToRemove = [
+                    this.selectedShadow.id,
+                    ...this.selectedLoves.map(l => l.id)
+                ];
+
+                // Add binding animation class
+                document.querySelectorAll('.ball.selected').forEach(el => {
+                    el.classList.add('binding');
+                });
+
+                setTimeout(() => {
+                    this.balls = this.balls.filter(b => !idsToRemove.includes(b.id));
+                    this.selectedShadow = null;
+                    this.selectedLoves = [];
+
+                    const shadowsRemaining = this.balls.filter(b => b.type === 'shadow').length;
+
+                    if (shadowsRemaining === 0) {
+                        // Level complete!
+                        this.level++;
+                        this.showLevelUp();
+                    } else {
+                        this.reflow();
+                    }
+
+                    this.updateUI();
+                }, 500);
+            }
+
+            addLovePoints(points) {
+                this.lovePoints += points;
+
+                // Check for level up
+                while (this.lovePoints >= this.loveToNextLevel) {
+                    this.lovePoints -= this.loveToNextLevel;
+                    this.loveToNextLevel = Math.floor(this.loveToNextLevel * 1.2);
+                }
+
+                this.updateLoveMeter();
+            }
+
+            updateLoveMeter() {
+                const percent = (this.lovePoints / this.loveToNextLevel) * 100;
+                document.getElementById('loveMeterFill').style.width = `${percent}%`;
+                document.getElementById('meterText').textContent = `${this.lovePoints} / ${this.loveToNextLevel}`;
+                document.getElementById('currentLevel').textContent = this.level;
+            }
+
+            reflow() {
+                for (let col = 0; col < this.gridSize; col++) {
+                    const colBalls = this.balls
+                        .filter(b => b.col === col)
+                        .sort((a, b) => b.row - a.row);
+
+                    let nextRow = this.gridSize - 1;
+                    colBalls.forEach(ball => {
+                        ball.row = nextRow;
+                        nextRow--;
+                    });
+                }
+                this.render();
+            }
+
+            showAffirmation(text) {
+                const el = document.getElementById('affirmation');
+                el.textContent = text;
+                el.classList.remove('show');
+                if (text) {
+                    void el.offsetWidth;
+                    el.classList.add('show');
+                }
+            }
+
+            showLevelUp() {
+                const overlay = document.getElementById('levelUpOverlay');
+                const teaching = TEACHINGS[this.level] || DEFAULT_TEACHING;
+
+                document.getElementById('levelUpTitle').textContent = teaching.title;
+                document.getElementById('levelUpTeaching').innerHTML = teaching.text;
+
+                overlay.classList.add('show');
+            }
+
+            resetSelection() {
+                this.selectedShadow = null;
+                this.selectedLoves = [];
+                this.render();
+            }
+
+            updateUI() {
+                document.getElementById('score').textContent = this.score;
+                document.getElementById('bindings').textContent = this.totalBindings;
+                document.getElementById('combo').textContent = `${this.combo}x`;
+
+                const shadowsRemaining = this.balls.filter(b => b.type === 'shadow').length;
+                document.getElementById('shadowsRemaining').textContent = shadowsRemaining;
+            }
+        }
+
+        // Initialize game
+        const game = new LoveTriadsGame();
+    </script>
+</body>
+</html>
