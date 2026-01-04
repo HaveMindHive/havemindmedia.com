@@ -277,8 +277,13 @@
     </div>
 
     <site-footer></site-footer>
-    <!-- Secret Heart Bomb -->
-    <div id="secretHeart" style="position: fixed; bottom: 20px; right: 20px; font-size: 12px; cursor: pointer; opacity: 0.3; z-index: 9999;">♡</div>
+    <!-- Katy Perry Secret -->
+    <div id="katySection" style="position: relative; display: flex; justify-content: center; margin: 2rem 0;">
+        <div style="position: relative; display: inline-block;">
+            <div style="font-size: 72px; filter: grayscale(20%);">👩‍🎤</div>
+            <div id="secretHeart" style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); font-size: 18px; color: #ff1493; cursor: pointer; animation: heartbeat 1s ease-in-out infinite;">♡</div>
+        </div>
+    </div>
 
     <!-- The Worst Thing Ever -->
     <div id="voodooModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ff00ff; z-index: 99999; overflow: hidden;">
@@ -302,12 +307,20 @@
             <div style="margin-top: 10px; font-size: 24px; color: #00ffff; animation: shake 0.1s infinite;">
                 ~ þõrmod & his mystical companion ~
             </div>
-            <div style="margin-top: 30px; font-size: 14px; color: #ffffff;">click anywhere to escape this nightmare</div>
+            <div style="margin-top: 20px; font-size: 16px; color: #ffffff;">for jason & þrúðr ♡</div>
+            <div style="margin-top: 10px; font-size: 14px; color: #cccccc;">click anywhere to escape</div>
         </div>
         <div class="hearts" style="position: absolute; width: 100%; height: 100%; pointer-events: none; overflow: hidden;"></div>
     </div>
 
     <style>
+        @keyframes heartbeat {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            15% { transform: translateX(-50%) scale(1.3); }
+            30% { transform: translateX(-50%) scale(1); }
+            45% { transform: translateX(-50%) scale(1.2); }
+            60% { transform: translateX(-50%) scale(1); }
+        }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -333,43 +346,122 @@
     </style>
 
     <script>
-        // 8-bit Voodoo Lady - the worst chiptune ever made
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        // Audio context for all music
+        let audioCtx = null;
+        let fireworkInterval = null;
+        let fireworkGain = null;
 
-        function playWorstSong() {
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        // Gentle 8-bit firework sparkle music - low volume background
+        function playFireworkMusic() {
+            initAudio();
+            fireworkGain = audioCtx.createGain();
+            fireworkGain.gain.value = 0.04; // Very low volume
+            fireworkGain.connect(audioCtx.destination);
+
+            // Dreamy arpeggio pattern - sparkly and celebratory
+            const pattern = [
+                [523.25, 659.25, 783.99], // C E G
+                [587.33, 739.99, 880.00], // D F# A
+                [659.25, 783.99, 987.77], // E G B
+                [698.46, 880.00, 1046.50], // F A C
+                [783.99, 987.77, 1174.66], // G B D
+                [659.25, 783.99, 987.77], // E G B
+                [587.33, 739.99, 880.00], // D F# A
+                [523.25, 659.25, 783.99], // C E G
+            ];
+
+            let patternIndex = 0;
+
+            function playSparkle() {
+                const chord = pattern[patternIndex];
+                const time = audioCtx.currentTime;
+
+                chord.forEach((freq, i) => {
+                    const osc = audioCtx.createOscillator();
+                    const noteGain = audioCtx.createGain();
+                    osc.type = 'triangle'; // Softer than square
+                    osc.frequency.value = freq;
+                    noteGain.gain.setValueAtTime(0.3, time);
+                    noteGain.gain.exponentialRampToValueAtTime(0.01, time + 0.4);
+                    osc.connect(noteGain);
+                    noteGain.connect(fireworkGain);
+                    osc.start(time + i * 0.05);
+                    osc.stop(time + 0.5);
+                });
+
+                patternIndex = (patternIndex + 1) % pattern.length;
+            }
+
+            playSparkle();
+            fireworkInterval = setInterval(playSparkle, 600);
+        }
+
+        function stopFireworkMusic() {
+            if (fireworkInterval) {
+                clearInterval(fireworkInterval);
+                fireworkInterval = null;
+            }
+        }
+
+        // 8-bit Voodoo Lady - the worst chiptune ever made
+        function playVoodooLady() {
+            initAudio();
+            stopFireworkMusic();
+
+            const voodooGain = audioCtx.createGain();
+            voodooGain.gain.value = 0.12;
+            voodooGain.connect(audioCtx.destination);
+
+            // Funky Voodoo Lady inspired riff
             const notes = [
                 {f: 293.66, d: 0.15}, // D
                 {f: 329.63, d: 0.15}, // E
                 {f: 369.99, d: 0.15}, // F#
                 {f: 392.00, d: 0.3},  // G
+                {f: 0, d: 0.1},       // rest
                 {f: 369.99, d: 0.15}, // F#
                 {f: 329.63, d: 0.15}, // E
                 {f: 293.66, d: 0.3},  // D
-                {f: 246.94, d: 0.15}, // B
+                {f: 0, d: 0.1},       // rest
+                {f: 246.94, d: 0.2},  // B
+                {f: 261.63, d: 0.2},  // C
                 {f: 293.66, d: 0.15}, // D
                 {f: 329.63, d: 0.3},  // E
-                {f: 293.66, d: 0.6},  // D hold
+                {f: 293.66, d: 0.4},  // D hold
+                {f: 0, d: 0.2},       // rest
+                {f: 392.00, d: 0.15}, // G
+                {f: 369.99, d: 0.15}, // F#
+                {f: 329.63, d: 0.15}, // E
+                {f: 293.66, d: 0.5},  // D
             ];
 
             let time = audioCtx.currentTime;
             notes.forEach(note => {
-                // Square wave for maximum 8-bit pain
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'square';
-                osc.frequency.value = note.f;
-                gain.gain.value = 0.15;
-                gain.gain.exponentialRampToValueAtTime(0.01, time + note.d);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start(time);
-                osc.stop(time + note.d);
+                if (note.f > 0) {
+                    const osc = audioCtx.createOscillator();
+                    const noteGain = audioCtx.createGain();
+                    osc.type = 'square';
+                    osc.frequency.value = note.f;
+                    noteGain.gain.setValueAtTime(0.5, time);
+                    noteGain.gain.exponentialRampToValueAtTime(0.01, time + note.d * 0.9);
+                    osc.connect(noteGain);
+                    noteGain.connect(voodooGain);
+                    osc.start(time);
+                    osc.stop(time + note.d);
+                }
                 time += note.d;
             });
         }
 
         function spawnHearts() {
             const container = document.querySelector('.hearts');
+            if (!container) return;
             for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
@@ -383,16 +475,27 @@
             }
         }
 
-        document.getElementById('secretHeart').addEventListener('click', () => {
+        // Start firework music when page loads (user interaction needed first)
+        let musicStarted = false;
+        document.addEventListener('click', function startMusic() {
+            if (!musicStarted) {
+                playFireworkMusic();
+                musicStarted = true;
+            }
+        }, { once: true });
+
+        // Heart bomb trigger
+        document.getElementById('secretHeart').addEventListener('click', (e) => {
+            e.stopPropagation();
             document.getElementById('voodooModal').style.display = 'block';
-            playWorstSong();
+            playVoodooLady();
             spawnHearts();
             setInterval(spawnHearts, 2000);
         });
 
         document.getElementById('voodooModal').addEventListener('click', () => {
             document.getElementById('voodooModal').style.display = 'none';
-            location.reload(); // nuclear option to stop the madness
+            location.reload();
         });
     </script>
 </body>
