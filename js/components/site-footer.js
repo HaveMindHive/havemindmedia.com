@@ -160,6 +160,25 @@ class SiteFooter extends HTMLElement {
                     color: #c9a227;
                 }
 
+                .hmm-footer-support {
+                    display: inline-block;
+                    margin-top: 0.8rem;
+                    padding: 0.5rem 1.2rem;
+                    background: rgba(201, 162, 39, 0.15);
+                    border: 1px solid rgba(201, 162, 39, 0.4);
+                    border-radius: 20px;
+                    color: #c9a227;
+                    text-decoration: none;
+                    font-size: 0.85rem;
+                    letter-spacing: 1px;
+                    transition: all 0.3s ease;
+                }
+
+                .hmm-footer-support:hover {
+                    background: rgba(201, 162, 39, 0.25);
+                    color: #e6d4b8;
+                }
+
                 @media (max-width: 900px) {
                     .hmm-footer-top {
                         grid-template-columns: 1fr;
@@ -195,6 +214,7 @@ class SiteFooter extends HTMLElement {
                             <div class="hmm-footer-logo">HAVE MIND MEDIA</div>
                             <div class="hmm-footer-tagline">The Mind is in Your Mind</div>
                             <div class="hmm-footer-sig">◯∰⧬⫰∭⧖</div>
+                            <a href="https://venmo.com/Jason-Rayvinski" target="_blank" class="hmm-footer-support">♡ Support Us</a>
                         </div>
 
                         <div class="hmm-footer-links">
