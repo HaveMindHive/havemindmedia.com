@@ -340,26 +340,46 @@
 
     <div style="text-align: center; margin: 20px 0;">
         <label style="color: var(--gold); display: block; margin-bottom: 10px;">Distance to Mirror:</label>
-        <input type="range" id="mirrorDistance" min="10" max="200" value="100" style="width: 80%; max-width: 300px; vertical-align: middle;">
-        <span id="distanceValue" style="color: var(--blue); display: block; margin-top: 10px; font-size: 1.2em;">100 cm</span>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 10px;">
+            <button id="unitCm" onclick="setUnit('cm')" style="padding: 8px 20px; background: var(--gold); color: #000; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">cm</button>
+            <button id="unitM" onclick="setUnit('m')" style="padding: 8px 20px; background: #333; color: #888; border: 1px solid #555; border-radius: 4px; cursor: pointer;">m</button>
+        </div>
+        <input type="range" id="mirrorDistance" min="10" max="200" value="100" style="width: 80%; max-width: 400px; vertical-align: middle;">
+        <span id="distanceValue" style="color: var(--blue); display: block; margin-top: 10px; font-size: 1.2em;">100 cm (1.0 m)</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; font-family: monospace; font-size: 12px;">
+    <!-- Model Comparison -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+        <div style="background: linear-gradient(135deg, #1a1515 0%, #1a1a1f 100%); border: 1px solid #ff6b6b33; border-radius: 8px; padding: 20px;">
+            <h4 style="color: #ff6b6b; text-align: center; margin-bottom: 15px; font-family: sans-serif; font-weight: normal;">STANDARD MODEL</h4>
+            <div style="text-align: center; font-family: monospace;">
+                <div style="color: var(--dim); font-size: 0.85em;">Predicted Depth</div>
+                <div id="classicalDepth" style="color: #ff6b6b; font-size: 1.5em; margin: 5px 0;">200 cm</div>
+                <div style="color: #ff6b6b55; font-size: 0.8em;">d × 2 = 2d</div>
+            </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #1a1a15 0%, #1a1a1f 100%); border: 1px solid var(--gold); border-radius: 8px; padding: 20px;">
+            <h4 style="color: var(--gold); text-align: center; margin-bottom: 15px; font-family: sans-serif; font-weight: normal;">EPOCH MODEL ✓</h4>
+            <div style="text-align: center; font-family: monospace;">
+                <div style="color: var(--dim); font-size: 0.85em;">Actual Depth (Observed)</div>
+                <div id="perceivedDepth" style="color: var(--gold); font-size: 1.5em; margin: 5px 0;">172.4 cm</div>
+                <div style="color: var(--gold); opacity: 0.5; font-size: 0.8em;">d × 1.724 = d(2 - 2P)</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; font-family: monospace; font-size: 12px;">
         <div style="text-align: center;">
-            <div style="color: var(--dim);">Classical Depth</div>
-            <div id="classicalDepth" style="color: #ff6b6b; font-size: 1.3em;">200 cm</div>
+            <div style="color: var(--dim);">Light Round-Trip</div>
+            <div id="lightDelay" style="color: var(--blue); font-size: 1.2em;">6.67 ns</div>
         </div>
         <div style="text-align: center;">
-            <div style="color: var(--dim);">Perceived Depth</div>
-            <div id="perceivedDepth" style="color: var(--gold); font-size: 1.3em;">172.4 cm</div>
+            <div style="color: var(--dim);">Projection Loss (P)</div>
+            <div id="depthLoss" style="color: #ff6b6b; font-size: 1.2em;">27.6 cm</div>
         </div>
         <div style="text-align: center;">
-            <div style="color: var(--dim);">Light Delay</div>
-            <div id="lightDelay" style="color: var(--blue); font-size: 1.3em;">6.67 ns</div>
-        </div>
-        <div style="text-align: center;">
-            <div style="color: var(--dim);">Depth Loss (P)</div>
-            <div id="depthLoss" style="color: #ff6b6b; font-size: 1.3em;">27.6 cm</div>
+            <div style="color: var(--dim);">P Constant</div>
+            <div style="color: var(--blue); font-size: 1.2em;">27.566%</div>
         </div>
     </div>
 
@@ -381,6 +401,35 @@ const distanceSlider = document.getElementById('mirrorDistance');
 const P = 0.27566;  // Epoch projection factor
 const P_shadow = 1 - P;
 const c = 299792458;  // speed of light m/s
+let displayUnit = 'cm';  // 'cm' or 'm'
+
+// Unit toggle function
+function setUnit(unit) {
+    displayUnit = unit;
+    const cmBtn = document.getElementById('unitCm');
+    const mBtn = document.getElementById('unitM');
+    if (unit === 'cm') {
+        cmBtn.style.background = 'var(--gold)';
+        cmBtn.style.color = '#000';
+        cmBtn.style.border = 'none';
+        mBtn.style.background = '#333';
+        mBtn.style.color = '#888';
+        mBtn.style.border = '1px solid #555';
+        distanceSlider.min = 10;
+        distanceSlider.max = 200;
+        distanceSlider.value = Math.min(200, Math.max(10, distanceSlider.value));
+    } else {
+        mBtn.style.background = 'var(--gold)';
+        mBtn.style.color = '#000';
+        mBtn.style.border = 'none';
+        cmBtn.style.background = '#333';
+        cmBtn.style.color = '#888';
+        cmBtn.style.border = '1px solid #555';
+        distanceSlider.min = 10;
+        distanceSlider.max = 500;  // Up to 5 meters (500 cm)
+    }
+    updateMirrorDisplay();
+}
 
 // Responsive canvas sizing
 function resizeMirrorCanvas() {
@@ -398,21 +447,39 @@ window.addEventListener('resize', resizeMirrorCanvas);
 window.addEventListener('load', resizeMirrorCanvas);
 
 function drawMirrorDiagram(d_cm) {
-    const d = d_cm / 100;  // convert to meters
     const w = mirrorCanvas.width;
     const h = mirrorCanvas.height;
+    const centerY = h / 2;
+    const padding = 60;  // Fixed padding on each side
 
     mirrorCtx.fillStyle = '#0d0d12';
     mirrorCtx.fillRect(0, 0, w, h);
 
-    // Scale dynamically based on canvas width
-    const baseScale = w / 700;  // Scale factor relative to original 700px width
-    const scale = 2.5 * baseScale;  // px per cm, scaled
-    const mirrorX = 200 * baseScale;  // mirror position in canvas, scaled
-    const observerX = mirrorX - d_cm * scale / 2;
-    const centerY = h / 2;
+    // Calculate total horizontal span needed:
+    // Left side: observer (d_cm from mirror)
+    // Right side: classical image (d_cm behind mirror)
+    // Total span = d_cm + d_cm = 2 * d_cm
+    const totalSpan = d_cm * 2;  // observer to classical image
 
-    // Scaled sizes
+    // Calculate scale to fit everything with padding
+    const availableWidth = w - (padding * 2);
+    const scale = availableWidth / totalSpan;  // px per cm
+
+    // Mirror is at center of the span
+    const mirrorX = padding + d_cm * scale;
+
+    // Observer is d_cm to the left of mirror
+    const observerX = mirrorX - d_cm * scale;
+
+    // Classical image is d_cm to the right of mirror
+    const classicalX = mirrorX + d_cm * scale;
+
+    // Perceived image (1.724d total, so 0.862d behind mirror)
+    const perceivedBehindMirror = d_cm * 0.862;  // (1.724 - 1) * d / 2 simplified
+    const perceivedX = mirrorX + perceivedBehindMirror * scale;
+
+    // Scaled sizes based on canvas width
+    const baseScale = w / 700;
     const dotSize = Math.max(6, 8 * baseScale);
     const fontSize = Math.max(10, 12 * baseScale);
     const smallFontSize = Math.max(8, 10 * baseScale);
@@ -422,26 +489,24 @@ function drawMirrorDiagram(d_cm) {
     mirrorCtx.beginPath();
     mirrorCtx.arc(observerX, centerY, dotSize, 0, Math.PI * 2);
     mirrorCtx.fill();
-    mirrorCtx.fillStyle = '#c9a227';
     mirrorCtx.font = fontSize + 'px Helvetica';
     mirrorCtx.textAlign = 'center';
     mirrorCtx.fillText('YOU', observerX, centerY + 25 * baseScale);
 
-    // Draw mirror
+    // Draw mirror (vertical line)
     mirrorCtx.strokeStyle = '#7ab8d4';
     mirrorCtx.lineWidth = Math.max(2, 4 * baseScale);
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(mirrorX, 50 * baseScale);
-    mirrorCtx.lineTo(mirrorX, h - 50 * baseScale);
+    mirrorCtx.moveTo(mirrorX, 40 * baseScale);
+    mirrorCtx.lineTo(mirrorX, h - 40 * baseScale);
     mirrorCtx.stroke();
     mirrorCtx.fillStyle = '#7ab8d4';
     mirrorCtx.font = fontSize + 'px Helvetica';
-    mirrorCtx.fillText('MIRROR', mirrorX, 35 * baseScale);
+    mirrorCtx.fillText('MIRROR', mirrorX, 25 * baseScale);
 
-    // Classical virtual image position (2d behind observer, d behind mirror)
-    const classicalX = mirrorX + d_cm * scale / 2;
-    mirrorCtx.strokeStyle = '#ff6b6b44';
-    mirrorCtx.lineWidth = 1;
+    // Classical virtual image position (dashed outline)
+    mirrorCtx.strokeStyle = '#ff6b6b66';
+    mirrorCtx.lineWidth = 2;
     mirrorCtx.setLineDash([5 * baseScale, 5 * baseScale]);
     mirrorCtx.beginPath();
     mirrorCtx.arc(classicalX, centerY, dotSize, 0, Math.PI * 2);
@@ -449,77 +514,75 @@ function drawMirrorDiagram(d_cm) {
     mirrorCtx.setLineDash([]);
     mirrorCtx.fillStyle = '#ff6b6b';
     mirrorCtx.font = smallFontSize + 'px Helvetica';
-    mirrorCtx.fillText('Classical (2d)', classicalX, centerY + 25 * baseScale);
+    mirrorCtx.fillText('Classical', classicalX, centerY + 25 * baseScale);
+    mirrorCtx.fillText('(2d)', classicalX, centerY + 38 * baseScale);
 
-    // Perceived position (1.724d from observer)
-    const perceivedD = d_cm * 1.724 / 2;  // distance behind mirror
-    const perceivedX = mirrorX + perceivedD * scale / 2;
+    // Perceived position (solid dot)
     mirrorCtx.fillStyle = '#c9a227';
     mirrorCtx.beginPath();
     mirrorCtx.arc(perceivedX, centerY, dotSize, 0, Math.PI * 2);
     mirrorCtx.fill();
     mirrorCtx.font = smallFontSize + 'px Helvetica';
     mirrorCtx.fillText('Perceived', perceivedX, centerY + 25 * baseScale);
+    mirrorCtx.fillText('(1.724d)', perceivedX, centerY + 38 * baseScale);
 
-    // Draw light path
-    mirrorCtx.strokeStyle = '#c9a22744';
+    // Draw light path (dashed lines)
+    mirrorCtx.strokeStyle = '#c9a22766';
     mirrorCtx.lineWidth = Math.max(1, 2 * baseScale);
-    mirrorCtx.setLineDash([3 * baseScale, 3 * baseScale]);
-    const pathOffset = 10 * baseScale;
-    // To mirror
+    mirrorCtx.setLineDash([4 * baseScale, 4 * baseScale]);
+    const pathOffset = 12 * baseScale;
+
+    // To mirror (top line)
     mirrorCtx.beginPath();
     mirrorCtx.moveTo(observerX, centerY - pathOffset);
     mirrorCtx.lineTo(mirrorX, centerY - pathOffset);
     mirrorCtx.stroke();
-    // Back from mirror
+
+    // Back from mirror (bottom line)
     mirrorCtx.beginPath();
     mirrorCtx.moveTo(mirrorX, centerY + pathOffset);
     mirrorCtx.lineTo(observerX, centerY + pathOffset);
     mirrorCtx.stroke();
     mirrorCtx.setLineDash([]);
 
-    // Arrow heads
-    const arrowSize = 10 * baseScale;
-    mirrorCtx.fillStyle = '#c9a227';
-    // To mirror arrow
-    mirrorCtx.beginPath();
-    mirrorCtx.moveTo(mirrorX - arrowSize, centerY - pathOffset);
-    mirrorCtx.lineTo(mirrorX - arrowSize * 2, centerY - pathOffset - arrowSize/2);
-    mirrorCtx.lineTo(mirrorX - arrowSize * 2, centerY - pathOffset + arrowSize/2);
-    mirrorCtx.fill();
-    // Return arrow
-    mirrorCtx.beginPath();
-    mirrorCtx.moveTo(observerX + arrowSize, centerY + pathOffset);
-    mirrorCtx.lineTo(observerX + arrowSize * 2, centerY + pathOffset + arrowSize/2);
-    mirrorCtx.lineTo(observerX + arrowSize * 2, centerY + pathOffset - arrowSize/2);
-    mirrorCtx.fill();
-
-    // Labels for distances
-    mirrorCtx.fillStyle = '#666';
-    mirrorCtx.font = smallFontSize + 'px monospace';
-    mirrorCtx.textAlign = 'center';
-    const midToMirror = (observerX + mirrorX) / 2;
-    mirrorCtx.fillText('d = ' + d_cm + 'cm', midToMirror, centerY - 25 * baseScale);
-
-    // Distance measurements at bottom
-    mirrorCtx.fillStyle = '#444';
-    mirrorCtx.fillRect(30 * baseScale, h - 35 * baseScale, w - 60 * baseScale, 25 * baseScale);
+    // Distance label between observer and mirror
     mirrorCtx.fillStyle = '#888';
     mirrorCtx.font = smallFontSize + 'px monospace';
     mirrorCtx.textAlign = 'center';
-    mirrorCtx.fillText(d_cm + 'cm → mirror → ' + d_cm + 'cm back = ' + (d_cm * 2) + 'cm total (round trip)', w / 2, h - 18 * baseScale);
+    const midToMirror = (observerX + mirrorX) / 2;
+    const distLabel = displayUnit === 'm' ? 'd = ' + (d_cm / 100).toFixed(2) + ' m' : 'd = ' + d_cm + ' cm';
+    mirrorCtx.fillText(distLabel, midToMirror, centerY - 30 * baseScale);
 
-    // P and P_shadow visualization
-    const lossWidth = (classicalX - perceivedX);
-    if (lossWidth > 5 * baseScale) {
-        mirrorCtx.fillStyle = '#ff6b6b22';
-        mirrorCtx.fillRect(perceivedX, centerY - 40 * baseScale, lossWidth, 80 * baseScale);
+    // P loss visualization (shaded region between perceived and classical)
+    const lossWidth = classicalX - perceivedX;
+    if (lossWidth > 3) {
+        mirrorCtx.fillStyle = '#ff6b6b15';
+        mirrorCtx.fillRect(perceivedX, centerY - 35 * baseScale, lossWidth, 70 * baseScale);
         mirrorCtx.fillStyle = '#ff6b6b';
-        mirrorCtx.font = smallFontSize + 'px Helvetica';
+        mirrorCtx.font = (smallFontSize - 1) + 'px Helvetica';
         mirrorCtx.textAlign = 'center';
-        mirrorCtx.fillText('Lost: ' + (d_cm * P * 2).toFixed(1) + 'cm', (perceivedX + classicalX) / 2, centerY - 50 * baseScale);
-        mirrorCtx.fillText('(P = 27.6%)', (perceivedX + classicalX) / 2, centerY + 50 * baseScale);
+        const lostValue = d_cm * P * 2;
+        const lostLabel = displayUnit === 'm' ? 'Lost: ' + (lostValue / 100).toFixed(3) + 'm' : 'Lost: ' + lostValue.toFixed(1) + 'cm';
+        mirrorCtx.fillText(lostLabel, (perceivedX + classicalX) / 2, centerY - 45 * baseScale);
     }
+
+    // Bottom info bar
+    mirrorCtx.fillStyle = '#1a1a20';
+    mirrorCtx.fillRect(10, h - 30 * baseScale, w - 20, 22 * baseScale);
+    mirrorCtx.fillStyle = '#666';
+    mirrorCtx.font = (smallFontSize - 1) + 'px monospace';
+    mirrorCtx.textAlign = 'center';
+    const unit = displayUnit === 'm' ? 'm' : 'cm';
+    const dVal = displayUnit === 'm' ? (d_cm / 100).toFixed(2) : d_cm;
+    const totalVal = displayUnit === 'm' ? (d_cm * 2 / 100).toFixed(2) : (d_cm * 2);
+    mirrorCtx.fillText('Round trip: ' + dVal + unit + ' → mirror → ' + dVal + unit + ' = ' + totalVal + unit + ' total', w / 2, h - 14 * baseScale);
+}
+
+function formatValue(cm_value) {
+    if (displayUnit === 'm') {
+        return (cm_value / 100).toFixed(3) + ' m';
+    }
+    return cm_value.toFixed(1) + ' cm';
 }
 
 function updateMirrorDisplay() {
@@ -531,18 +594,27 @@ function updateMirrorDisplay() {
     const delay_ns = (2 * d_m / c) * 1e9;
     const loss = classical - perceived;
 
-    document.getElementById('distanceValue').textContent = d_cm + ' cm';
-    document.getElementById('classicalDepth').textContent = classical.toFixed(1) + ' cm';
-    document.getElementById('perceivedDepth').textContent = perceived.toFixed(1) + ' cm';
+    // Display in selected unit
+    if (displayUnit === 'm') {
+        document.getElementById('distanceValue').textContent = (d_cm / 100).toFixed(2) + ' m (' + d_cm + ' cm)';
+        document.getElementById('classicalDepth').textContent = (classical / 100).toFixed(3) + ' m';
+        document.getElementById('perceivedDepth').textContent = (perceived / 100).toFixed(3) + ' m';
+        document.getElementById('depthLoss').textContent = (loss / 100).toFixed(3) + ' m';
+    } else {
+        document.getElementById('distanceValue').textContent = d_cm + ' cm (' + (d_cm / 100).toFixed(2) + ' m)';
+        document.getElementById('classicalDepth').textContent = classical.toFixed(1) + ' cm';
+        document.getElementById('perceivedDepth').textContent = perceived.toFixed(1) + ' cm';
+        document.getElementById('depthLoss').textContent = loss.toFixed(1) + ' cm';
+    }
+
     document.getElementById('lightDelay').textContent = delay_ns.toFixed(2) + ' ns';
-    document.getElementById('depthLoss').textContent = loss.toFixed(1) + ' cm';
 
     // Comparison
     const compareD = perceived / 100;  // meters
     const compareDelayNs = (compareD / c) * 1e9;
     const extraDelay = delay_ns - compareDelayNs;
 
-    document.getElementById('compareDistance').textContent = perceived.toFixed(1) + ' cm';
+    document.getElementById('compareDistance').textContent = formatValue(perceived);
     document.getElementById('compareDelay').textContent = compareDelayNs.toFixed(2) + ' ns';
     document.getElementById('extraDelay').textContent = extraDelay.toFixed(2) + ' ns';
 

@@ -632,17 +632,27 @@ function updateCalculator() {
 function drawDepthVisualization(d_cm) {
     const w = canvas.width;
     const h = canvas.height;
+    const padding = 60;
 
     ctx.fillStyle = '#0a0a0f';
     ctx.fillRect(0, 0, w, h);
 
-    // Scale: max 300cm = ~700px
-    const scale = 2.0;
-    const mirrorX = 150;
-    const observerX = mirrorX - (d_cm * scale / 3);
+    // Adaptive scaling: total span = d (observer to mirror) + 2d (mirror to standard position) = 3d
+    const totalSpan = d_cm * 3;
+    const availableWidth = w - (padding * 2);
+    const scale = availableWidth / totalSpan;  // px per cm
 
-    // Clamp observer position
-    const obsX = Math.max(40, observerX);
+    // Mirror is at d from left edge (after observer)
+    const mirrorX = padding + d_cm * scale;
+
+    // Observer is d to the left of mirror
+    const obsX = padding;
+
+    // Standard model position (2d behind mirror = d from observer)
+    const stdX = mirrorX + d_cm * scale;
+
+    // Epoch model position (0.862d behind mirror, since perceived = 1.724d from observer)
+    const epochX = mirrorX + d_cm * 0.862 * scale;
 
     // Draw observer
     ctx.fillStyle = '#c9a227';
@@ -667,7 +677,6 @@ function drawDepthVisualization(d_cm) {
     ctx.fillText('MIRROR', mirrorX, 20);
 
     // Standard model position (2d)
-    const stdX = mirrorX + (d_cm * scale / 3);
     ctx.strokeStyle = '#d4505044';
     ctx.lineWidth = 2;
     ctx.setLineDash([5, 5]);
@@ -681,7 +690,6 @@ function drawDepthVisualization(d_cm) {
     ctx.fillText(d_cm * 2 + 'cm', stdX, h/2 + 45);
 
     // Epoch model position (1.724d)
-    const epochX = mirrorX + (d_cm * 0.862 * scale / 3);
     ctx.fillStyle = '#c9a227';
     ctx.beginPath();
     ctx.arc(epochX, h/2, 10, 0, Math.PI * 2);
@@ -691,9 +699,10 @@ function drawDepthVisualization(d_cm) {
     ctx.fillText((d_cm * 1.724).toFixed(0) + 'cm', epochX, h/2 - 35);
 
     // Draw the "lost" zone
-    if (stdX > epochX + 20) {
+    const lossWidth = stdX - epochX;
+    if (lossWidth > 20) {
         ctx.fillStyle = 'rgba(212, 80, 80, 0.15)';
-        ctx.fillRect(epochX + 10, h/2 - 50, stdX - epochX - 10, 100);
+        ctx.fillRect(epochX + 10, h/2 - 50, lossWidth - 10, 100);
         ctx.fillStyle = '#d45050';
         ctx.font = '10px Helvetica';
         ctx.fillText('Lost: ' + ((d_cm * 2) - (d_cm * 1.724)).toFixed(0) + 'cm (P)', (epochX + stdX) / 2, h/2 + 60);
