@@ -27,6 +27,28 @@
             line-height: 1.7;
         }
 
+        .home-nav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+        .home-nav a {
+            display: inline-block;
+            color: #c9a227;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #c9a227;
+            border-radius: 4px;
+            background: rgba(10, 10, 26, 0.95);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .home-nav a:hover {
+            background: #c9a227;
+            color: #0a0a1a;
+        }
+
         /* Navigation */
         .unified-nav {
             position: fixed;
@@ -197,19 +219,6 @@
             color: #888;
             font-size: 1.1rem;
             margin-bottom: 40px;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            color: #666;
-            font-size: 0.9rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
         }
 
         /* Section Styling */
@@ -1507,6 +1516,7 @@
     </style>
 </head>
 <body>
+<div class="home-nav"><a href="/">← Home</a></div>
     <!-- Navigation -->
     <nav class="unified-nav">
         <a href="index.html" class="nav-brand">
@@ -1553,7 +1563,6 @@
             Standard Model says "impossible." The math says "exactly right."<br>
             One of them is wearing the wrong glasses.
         </p>
-        <div class="scroll-hint">↓ See for yourself ↓</div>
     </section>
 
     <!-- Quick Explainer: What Are We Looking At? -->

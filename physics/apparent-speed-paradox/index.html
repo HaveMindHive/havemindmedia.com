@@ -18,6 +18,28 @@
             line-height: 1.8;
         }
 
+        .home-nav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+        .home-nav a {
+            display: inline-block;
+            color: #c9a227;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #c9a227;
+            border-radius: 4px;
+            background: rgba(10, 10, 26, 0.95);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .home-nav a:hover {
+            background: #c9a227;
+            color: #0a0a1a;
+        }
+
         .hero {
             height: 100vh;
             display: flex;
@@ -48,18 +70,6 @@
             font-size: 1.1rem;
             color: #888;
             max-width: 600px;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 2rem;
-            color: #c9a227;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
         }
 
         section {
@@ -210,12 +220,12 @@
     </style>
 </head>
 <body>
+<div class="home-nav"><a href="/">← Home</a></div>
 
     <div class="hero">
         <h1>THE APPARENT SPEED PARADOX</h1>
         <p class="subtitle">The Geometry You Already See</p>
         <p class="tagline">Every rotating object demonstrates a fundamental truth about reality. You've observed it your entire life. Now understand it.</p>
-        <div class="scroll-hint">↓</div>
     </div>
 
     <section>

@@ -26,6 +26,28 @@
             padding: 20px;
         }
 
+        .home-nav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+        }
+        .home-nav a {
+            display: inline-block;
+            color: #c9a227;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #c9a227;
+            border-radius: 4px;
+            background: rgba(10, 10, 26, 0.95);
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .home-nav a:hover {
+            background: #c9a227;
+            color: #0a0a1a;
+        }
+
         h1 {
             font-size: 2rem;
             background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
@@ -304,6 +326,7 @@
     </style>
 </head>
 <body>
+<div class="home-nav"><a href="/">← Home</a></div>
 
 <h1>CARD MATCH</h1>
 <p class="subtitle">Intuition Under Pressure</p>
