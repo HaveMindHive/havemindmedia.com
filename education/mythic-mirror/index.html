@@ -192,6 +192,257 @@
             50% { transform: translateX(-50%) translateY(10px); }
         }
 
+        /* ===== MONSTER ENTRANCE ANIMATION ===== */
+        .monster-entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .monster-entrance.exiting {
+            animation: entranceExit 1.5s ease-out forwards;
+        }
+
+        @keyframes entranceExit {
+            0% { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
+
+        /* Lightning flash overlay */
+        .lightning-flash {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .lightning-flash.flash {
+            animation: lightningStrike 0.15s ease-out;
+        }
+
+        @keyframes lightningStrike {
+            0% { opacity: 0.9; }
+            20% { opacity: 0.1; }
+            40% { opacity: 0.7; }
+            100% { opacity: 0; }
+        }
+
+        /* The Monster silhouette */
+        .monster-silhouette {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            opacity: 0;
+            filter: blur(10px);
+            transition: all 2s ease-out;
+        }
+
+        .monster-silhouette.revealed {
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        .monster-silhouette svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.3));
+        }
+
+        /* Lightning bolts */
+        .lightning-bolt {
+            position: absolute;
+            width: 4px;
+            height: 200px;
+            background: linear-gradient(to bottom,
+                transparent,
+                #6ab4f5,
+                #fff,
+                #6ab4f5,
+                transparent
+            );
+            opacity: 0;
+            filter: blur(1px);
+            box-shadow: 0 0 20px #6ab4f5, 0 0 40px #6ab4f5;
+        }
+
+        .lightning-bolt.strike {
+            animation: boltStrike 0.3s ease-out;
+        }
+
+        @keyframes boltStrike {
+            0% { opacity: 1; transform: scaleY(0); }
+            30% { opacity: 1; transform: scaleY(1); }
+            100% { opacity: 0; transform: scaleY(1); }
+        }
+
+        .lightning-bolt.left {
+            left: 20%;
+            top: 0;
+            transform: rotate(-15deg);
+        }
+
+        .lightning-bolt.right {
+            right: 20%;
+            top: 0;
+            transform: rotate(15deg);
+        }
+
+        /* Electric arcs around monster */
+        .electric-arc {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #6ab4f5, transparent);
+            opacity: 0;
+            box-shadow: 0 0 10px #6ab4f5;
+        }
+
+        .electric-arc.spark {
+            animation: arcSpark 0.2s ease-out;
+        }
+
+        @keyframes arcSpark {
+            0% { opacity: 1; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1.2); }
+            100% { opacity: 0; transform: scaleX(0.8); }
+        }
+
+        /* Entrance text */
+        .entrance-text {
+            position: absolute;
+            bottom: 15%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-out 2s;
+        }
+
+        .entrance-text.visible {
+            opacity: 1;
+        }
+
+        .entrance-quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+        }
+
+        .entrance-instruction {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            animation: pulse 2s ease-in-out infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Rain effect */
+        .rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .rain-drop {
+            position: absolute;
+            width: 1px;
+            height: 20px;
+            background: linear-gradient(to bottom, transparent, rgba(106, 180, 245, 0.3));
+            animation: rainFall linear infinite;
+        }
+
+        @keyframes rainFall {
+            0% { transform: translateY(-20px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Equation reveal */
+        .entrance-equation {
+            position: absolute;
+            top: 10%;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0;
+            transition: opacity 0.5s ease-out;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.8);
+        }
+
+        .entrance-equation.visible {
+            opacity: 1;
+        }
+
+        /* Monster eye glow */
+        .monster-eye {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #c9a227;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow:
+                0 0 10px #c9a227,
+                0 0 20px #c9a227,
+                0 0 40px rgba(201, 162, 39, 0.5);
+            transition: opacity 0.3s ease-out;
+        }
+
+        .monster-eye.glow {
+            opacity: 1;
+            animation: eyeGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes eyeGlow {
+            0%, 100% {
+                box-shadow:
+                    0 0 10px #c9a227,
+                    0 0 20px #c9a227,
+                    0 0 40px rgba(201, 162, 39, 0.5);
+            }
+            50% {
+                box-shadow:
+                    0 0 15px #c9a227,
+                    0 0 30px #c9a227,
+                    0 0 60px rgba(201, 162, 39, 0.8);
+            }
+        }
+
+        .monster-eye.left-eye {
+            top: 28%;
+            left: 42%;
+        }
+
+        .monster-eye.right-eye {
+            top: 28%;
+            right: 42%;
+        }
+
         /* Image Sections */
         .image-section {
             width: 100%;
@@ -627,6 +878,60 @@
     </style>
 </head>
 <body>
+    <!-- ===== MONSTER ENTRANCE ===== -->
+    <div class="monster-entrance" id="monsterEntrance">
+        <div class="lightning-flash" id="lightningFlash"></div>
+        <div class="lightning-bolt left" id="boltLeft"></div>
+        <div class="lightning-bolt right" id="boltRight"></div>
+        <div class="rain-container" id="rainContainer"></div>
+
+        <div class="entrance-equation" id="entranceEquation">[1 = -1]</div>
+
+        <div class="monster-silhouette" id="monsterSilhouette">
+            <!-- Monster SVG silhouette -->
+            <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head -->
+                <path d="M100 80 L110 40 L130 30 L170 30 L190 40 L200 80 L210 100 L210 160 L200 180 L100 180 L90 160 L90 100 Z"
+                      fill="#1a1a24" stroke="#c9a227" stroke-width="1" opacity="0.9"/>
+                <!-- Flat top of head (classic look) -->
+                <path d="M110 40 L130 30 L170 30 L190 40 L185 45 L115 45 Z"
+                      fill="#1a1a24" stroke="#c9a227" stroke-width="1"/>
+                <!-- Brow ridge -->
+                <path d="M105 90 L195 90 L190 100 L110 100 Z"
+                      fill="#0a0a0f" stroke="#c9a227" stroke-width="0.5"/>
+                <!-- Eye sockets (deep) -->
+                <ellipse cx="130" cy="115" rx="15" ry="12" fill="#0a0a0f"/>
+                <ellipse cx="170" cy="115" rx="15" ry="12" fill="#0a0a0f"/>
+                <!-- Stitching on forehead -->
+                <path d="M120 55 L120 75 M140 50 L140 70 M160 50 L160 70 M180 55 L180 75"
+                      stroke="#c9a227" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+                <!-- Neck bolts -->
+                <circle cx="85" cy="140" r="8" fill="#3a3a4a" stroke="#c9a227" stroke-width="1"/>
+                <circle cx="215" cy="140" r="8" fill="#3a3a4a" stroke="#c9a227" stroke-width="1"/>
+                <!-- Shoulders/Body -->
+                <path d="M70 180 L85 160 L215 160 L230 180 L250 200 L250 400 L50 400 L50 200 Z"
+                      fill="#1a1a24" stroke="#c9a227" stroke-width="1" opacity="0.8"/>
+                <!-- Stitching on body -->
+                <path d="M150 180 L150 350" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
+                <path d="M100 220 L200 220" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
+                <path d="M80 280 L220 280" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
+            </svg>
+            <div class="monster-eye left-eye" id="leftEye"></div>
+            <div class="monster-eye right-eye" id="rightEye"></div>
+        </div>
+
+        <div class="entrance-text" id="entranceText">
+            <div class="entrance-quote">"I am not your shadow. I am your mirror."</div>
+            <div class="entrance-instruction">Click anywhere to enter</div>
+        </div>
+
+        <!-- Electric arcs positioned around the monster -->
+        <div class="electric-arc" id="arc1" style="top: 35%; left: 25%; transform: rotate(-30deg);"></div>
+        <div class="electric-arc" id="arc2" style="top: 45%; right: 25%; transform: rotate(30deg);"></div>
+        <div class="electric-arc" id="arc3" style="top: 55%; left: 30%; transform: rotate(15deg);"></div>
+        <div class="electric-arc" id="arc4" style="top: 40%; right: 30%; transform: rotate(-20deg);"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav">
         <a href="/" class="nav-brand">HAVE MIND MEDIA</a>
@@ -963,6 +1268,143 @@
                 renderer.setSize(container.clientWidth, container.clientHeight);
             });
         })();
+    </script>
+
+    <!-- Monster Entrance Animation Script -->
+    <script>
+    (function() {
+        const entrance = document.getElementById('monsterEntrance');
+        const lightningFlash = document.getElementById('lightningFlash');
+        const boltLeft = document.getElementById('boltLeft');
+        const boltRight = document.getElementById('boltRight');
+        const rainContainer = document.getElementById('rainContainer');
+        const monsterSilhouette = document.getElementById('monsterSilhouette');
+        const entranceText = document.getElementById('entranceText');
+        const entranceEquation = document.getElementById('entranceEquation');
+        const leftEye = document.getElementById('leftEye');
+        const rightEye = document.getElementById('rightEye');
+        const arcs = [
+            document.getElementById('arc1'),
+            document.getElementById('arc2'),
+            document.getElementById('arc3'),
+            document.getElementById('arc4')
+        ];
+
+        // Check if entrance was already shown this session
+        if (sessionStorage.getItem('monsterEntranceShown')) {
+            entrance.style.display = 'none';
+            return;
+        }
+
+        // Create rain drops
+        function createRain() {
+            for (let i = 0; i < 100; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'rain-drop';
+                drop.style.left = Math.random() * 100 + '%';
+                drop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
+                drop.style.animationDelay = Math.random() * 2 + 's';
+                rainContainer.appendChild(drop);
+            }
+        }
+
+        // Lightning strike effect
+        function triggerLightning() {
+            lightningFlash.classList.add('flash');
+            setTimeout(() => lightningFlash.classList.remove('flash'), 150);
+        }
+
+        // Lightning bolt effect
+        function triggerBolt(bolt) {
+            bolt.classList.add('strike');
+            setTimeout(() => bolt.classList.remove('strike'), 300);
+        }
+
+        // Electric arc spark
+        function triggerArc(arc) {
+            arc.classList.add('spark');
+            setTimeout(() => arc.classList.remove('spark'), 200);
+        }
+
+        // Random arc sparking
+        function randomArcs() {
+            setInterval(() => {
+                const randomArc = arcs[Math.floor(Math.random() * arcs.length)];
+                triggerArc(randomArc);
+            }, 400);
+        }
+
+        // Animation sequence
+        function startEntranceSequence() {
+            createRain();
+
+            // Initial darkness, then first lightning
+            setTimeout(() => {
+                triggerLightning();
+                triggerBolt(boltLeft);
+            }, 500);
+
+            // Second lightning, monster starts appearing
+            setTimeout(() => {
+                triggerLightning();
+                triggerBolt(boltRight);
+            }, 1200);
+
+            // Monster reveal
+            setTimeout(() => {
+                triggerLightning();
+                monsterSilhouette.classList.add('revealed');
+                randomArcs();
+            }, 1800);
+
+            // Eyes glow
+            setTimeout(() => {
+                leftEye.classList.add('glow');
+                rightEye.classList.add('glow');
+            }, 2500);
+
+            // Equation appears
+            setTimeout(() => {
+                entranceEquation.classList.add('visible');
+            }, 3000);
+
+            // Text appears
+            setTimeout(() => {
+                entranceText.classList.add('visible');
+            }, 3200);
+
+            // Periodic lightning
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    triggerLightning();
+                    if (Math.random() > 0.5) {
+                        triggerBolt(boltLeft);
+                    } else {
+                        triggerBolt(boltRight);
+                    }
+                }
+            }, 3000);
+        }
+
+        // Start the sequence
+        startEntranceSequence();
+
+        // Click to enter
+        entrance.addEventListener('click', () => {
+            sessionStorage.setItem('monsterEntranceShown', 'true');
+            entrance.classList.add('exiting');
+            setTimeout(() => {
+                entrance.style.display = 'none';
+            }, 1500);
+        });
+
+        // Also allow Enter key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && entrance.style.display !== 'none') {
+                entrance.click();
+            }
+        });
+    })();
     </script>
 </body>
 </html>
