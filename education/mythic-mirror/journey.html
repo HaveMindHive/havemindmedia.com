@@ -401,18 +401,34 @@
         }
 
         /* Back link */
-        .back-link {
+        .nav-links {
             position: fixed;
-            top: 2rem;
-            left: 2rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            top: 1.5rem;
+            left: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
         }
 
-        .back-link:hover {
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--accent-dim);
+            border-radius: 4px;
+            background: rgba(10, 10, 15, 0.9);
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
             color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .nav-links a.home-link {
+            color: var(--accent-gold);
+            border-color: rgba(201, 162, 39, 0.4);
         }
 
         /* Responsive */
@@ -433,7 +449,10 @@
 </head>
 <body>
     <div class="progress-bar" id="progressBar"></div>
-    <a href="index.html" class="back-link">&larr; Back</a>
+    <div class="nav-links">
+        <a href="/" class="home-link">← HMM</a>
+        <a href="index.html">← Mythic Mirror</a>
+    </div>
 
     <main class="journey-container">
         <!-- Stage 1: T1 Facing -->

@@ -257,21 +257,113 @@ class SiteHeader extends HTMLElement {
                 /* Mobile */
                 .hmm-toggle {
                     display: none;
-                    padding: 0.4rem;
-                    background: none;
-                    border: 1px solid rgba(201, 162, 39, 0.3);
-                    border-radius: 4px;
-                    color: #e0e0e0;
-                    font-size: 1.1rem;
+                    padding: 0.6rem 0.8rem;
+                    background: rgba(201, 162, 39, 0.1);
+                    border: 1px solid rgba(201, 162, 39, 0.4);
+                    border-radius: 6px;
+                    color: #c9a227;
+                    font-size: 1.2rem;
                     cursor: pointer;
+                    -webkit-tap-highlight-color: transparent;
+                    touch-action: manipulation;
+                }
+                .hmm-toggle:active {
+                    background: rgba(201, 162, 39, 0.25);
                 }
                 @media (max-width: 900px) {
-                    .hmm-nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(15, 15, 20, 0.98); padding: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+                    .hmm-inner {
+                        padding: 0.6rem 1rem;
+                    }
+                    .hmm-nav {
+                        display: none;
+                        flex-direction: column;
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: rgba(10, 10, 15, 0.99);
+                        padding: 0.75rem;
+                        border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+                        max-height: 80vh;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                    }
                     .hmm-nav.show { display: flex; }
                     .hmm-toggle { display: block; }
-                    .hmm-btn { width: 100%; justify-content: space-between; }
-                    .hmm-drop, .hmm-drop.mega { position: static; min-width: 100%; max-height: none; box-shadow: none; border: none; padding-left: 1rem; }
-                    .hmm-mega-grid { grid-template-columns: 1fr; }
+                    .hmm-games-link {
+                        width: 100%;
+                        justify-content: center;
+                        padding: 0.8rem;
+                        margin-bottom: 0.5rem;
+                        font-size: 1rem;
+                    }
+                    .hmm-btn {
+                        width: 100%;
+                        justify-content: space-between;
+                        padding: 0.75rem 1rem;
+                        font-size: 0.95rem;
+                        -webkit-tap-highlight-color: transparent;
+                        touch-action: manipulation;
+                    }
+                    .hmm-btn:active {
+                        background: rgba(201, 162, 39, 0.2);
+                    }
+                    .hmm-drop {
+                        position: static;
+                        min-width: 100% !important;
+                        max-height: 60vh;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                        box-shadow: none;
+                        border: none;
+                        border-left: 2px solid rgba(201, 162, 39, 0.3);
+                        margin-left: 0.5rem;
+                        padding: 0.5rem 0 0.5rem 0.75rem;
+                        background: rgba(10, 10, 15, 0.95);
+                    }
+                    .hmm-drop.mega {
+                        position: static;
+                        min-width: 100% !important;
+                        max-height: 65vh;
+                        overflow-y: auto;
+                        -webkit-overflow-scrolling: touch;
+                        box-shadow: none;
+                        border: none;
+                        border-left: 2px solid rgba(201, 162, 39, 0.3);
+                        margin-left: 0.5rem;
+                        padding: 0.75rem;
+                        background: rgba(10, 10, 15, 0.95);
+                        border-radius: 8px;
+                    }
+                    .hmm-mega-grid {
+                        grid-template-columns: 1fr;
+                        gap: 1rem;
+                    }
+                    .hmm-mega-col h4 {
+                        font-size: 0.85rem;
+                        padding: 0.5rem;
+                    }
+                    .hmm-mega-col a {
+                        font-size: 0.9rem;
+                        padding: 0.5rem 0.6rem;
+                    }
+                    .hmm-drop a {
+                        padding: 0.6rem 0.8rem;
+                        font-size: 0.9rem;
+                    }
+                    .hmm-nested-toggle {
+                        padding: 0.6rem 0.8rem;
+                        font-size: 0.9rem;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .hmm-brand {
+                        font-size: 0.8rem;
+                        letter-spacing: 1px;
+                    }
+                    .hmm-inner {
+                        padding: 0.5rem 0.75rem;
+                    }
                 }
             </style>
 
@@ -456,43 +548,78 @@ class SiteHeader extends HTMLElement {
             const btn = item.querySelector('.hmm-btn');
             const drop = item.querySelector('.hmm-drop');
 
-            btn.addEventListener('click', (e) => {
+            // Handle both click and touch
+            const handleToggle = (e) => {
+                e.preventDefault();
                 e.stopPropagation();
                 const isActive = btn.classList.contains('active');
 
-                // Close all
-                this.querySelectorAll('.hmm-btn').forEach(b => b.classList.remove('active'));
-                this.querySelectorAll('.hmm-drop').forEach(d => d.classList.remove('show'));
+                // Close all other dropdowns
+                this.querySelectorAll('.hmm-nav-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.querySelector('.hmm-btn').classList.remove('active');
+                        otherItem.querySelector('.hmm-drop').classList.remove('show');
+                    }
+                });
 
+                // Toggle this dropdown
                 if (!isActive) {
                     btn.classList.add('active');
                     drop.classList.add('show');
+                } else {
+                    btn.classList.remove('active');
+                    drop.classList.remove('show');
                 }
-            });
+            };
+
+            btn.addEventListener('click', handleToggle);
+            btn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                handleToggle(e);
+            }, { passive: false });
         });
 
-        document.addEventListener('click', () => {
-            this.querySelectorAll('.hmm-btn').forEach(b => b.classList.remove('active'));
-            this.querySelectorAll('.hmm-drop').forEach(d => d.classList.remove('show'));
+        // Close dropdowns when clicking outside (but not on mobile nav)
+        document.addEventListener('click', (e) => {
+            if (!this.contains(e.target)) {
+                this.querySelectorAll('.hmm-btn').forEach(b => b.classList.remove('active'));
+                this.querySelectorAll('.hmm-drop').forEach(d => d.classList.remove('show'));
+            }
         });
 
         const toggle = this.querySelector('.hmm-toggle');
         const nav = this.querySelector('.hmm-nav');
-        toggle.addEventListener('click', () => {
+
+        const handleMenuToggle = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             nav.classList.toggle('show');
             toggle.textContent = nav.classList.contains('show') ? '✕' : '☰';
-        });
+        };
+
+        toggle.addEventListener('click', handleMenuToggle);
+        toggle.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            handleMenuToggle(e);
+        }, { passive: false });
 
         // Nested collapsible sections
         const nestedToggles = this.querySelectorAll('.hmm-nested-toggle');
-        nestedToggles.forEach(toggle => {
-            toggle.addEventListener('click', (e) => {
+        nestedToggles.forEach(nestedToggle => {
+            const handleNestToggle = (e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                const nestId = toggle.getAttribute('data-nest');
-                const items = this.querySelector('#nest-' + nestId);
-                toggle.classList.toggle('expanded');
-                items.classList.toggle('show');
-            });
+                const nestId = nestedToggle.getAttribute('data-nest');
+                const nestedItems = this.querySelector('#nest-' + nestId);
+                nestedToggle.classList.toggle('expanded');
+                nestedItems.classList.toggle('show');
+            };
+
+            nestedToggle.addEventListener('click', handleNestToggle);
+            nestedToggle.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                handleNestToggle(e);
+            }, { passive: false });
         });
     }
 }
