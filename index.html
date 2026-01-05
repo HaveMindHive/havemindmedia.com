@@ -26,7 +26,81 @@
         .main-content {
             position: relative;
             z-index: 1;
-            padding-top: 80px;
+            padding-top: 0;
+        }
+
+        /* ==========================================
+           OTHERWORLDLY HERO - Full viewport gateway
+           ========================================== */
+        .hero-gateway {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-gateway::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                url('images/hero/cosmic-gateway.png') center center / cover no-repeat,
+                linear-gradient(180deg, #030508 0%, #0a0f18 100%);
+            z-index: -2;
+            animation: slowPan 60s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowPan {
+            0% { transform: scale(1.05) translateY(-2%); }
+            100% { transform: scale(1.1) translateY(2%); }
+        }
+
+        .hero-gateway::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at center, transparent 30%, rgba(3, 5, 8, 0.6) 100%),
+                linear-gradient(180deg, transparent 70%, rgba(3, 5, 8, 0.98) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.6;
+            animation: scrollBounce 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+            50% { transform: translateX(-50%) translateY(10px); opacity: 0.9; }
         }
 
         /* Hero Section */
@@ -35,6 +109,8 @@
             padding: 5rem 2rem 4rem;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 5;
         }
 
         .hero-signature {
@@ -432,13 +508,31 @@
 
         /* Have Mind Media Explanation */
         .brand-section {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto 3rem;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             background: linear-gradient(135deg, rgba(26, 42, 58, 0.3) 0%, rgba(21, 26, 36, 0.5) 100%);
             border: 1px solid var(--border);
             border-radius: 16px;
             text-align: center;
+        }
+
+        .brand-visual {
+            margin: -3rem -2.5rem 2rem;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
+        }
+
+        .brand-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.9;
+            transition: opacity 0.4s ease;
+        }
+
+        .brand-visual img:hover {
+            opacity: 1;
         }
 
         .brand-section h2 {
@@ -452,6 +546,9 @@
             line-height: 1.9;
             color: var(--soft-cream);
             opacity: 0.85;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .brand-section .highlight {
@@ -1390,9 +1487,11 @@
     </svg>
 
     <main class="main-content">
-        <!-- Animated Intro Section -->
-        <section class="hero">
-            <div class="intro-animation" id="introBox">
+        <!-- Otherworldly Gateway Hero -->
+        <div class="hero-gateway">
+            <!-- Animated Intro Section -->
+            <section class="hero">
+                <div class="intro-animation" id="introBox">
                 <div class="intro-title">
                     <span class="intro-word" data-text="HAVE">HAVE</span>
                     <span class="intro-word intro-word-mind" id="introMind" data-text="MIND">MIND</span>
@@ -1417,9 +1516,14 @@
                 <span class="rune-translation">We are crossroads · We are navigator · We are origin · We are the deep water</span>
             </div>
         </section>
+            <div class="scroll-indicator"><span>Enter</span></div>
+        </div><!-- End hero-gateway -->
 
-        <!-- Brand Explanation -->
+        <!-- Brand Explanation with Consciousness Visual -->
         <section class="brand-section">
+            <div class="brand-visual">
+                <img src="images/hero/cosmic-consciousness.png" alt="Cosmic consciousness - observer at the crossroads of reality" loading="lazy">
+            </div>
             <h2>What is Have Mind Media?</h2>
             <p>
                 <span class="highlight">"Have Mind"</span> is a gentle reminder—you already possess everything
