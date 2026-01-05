@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zener Cards | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --teal: #4A9B9B;
+            --bg: #0a0a1a;
+            --bg2: #1a0a2e;
+            --text: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            opacity: 0.7;
+            margin-bottom: 5px;
+        }
+
+        .epoch-mark {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px 20px;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-box strong { color: var(--gold); }
+
+        .stats-row {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .stat .label {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .game-area {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .instruction {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            min-height: 30px;
+        }
+
+        .target-area {
+            margin-bottom: 30px;
+        }
+
+        .target-card {
+            width: 120px;
+            height: 160px;
+            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+            border: 3px solid var(--teal);
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto;
+            transition: all 0.3s;
+        }
+
+        .target-card.hidden {
+            background: linear-gradient(135deg, #3a3a5a, #2a2a4a);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .target-card.hidden::after {
+            content: '?';
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .target-card.reveal {
+            animation: revealPulse 0.5s ease-out;
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes revealPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .choice-card {
+            width: 80px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .choice-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .choice-card.selected {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .choice-card.correct {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.2);
+            animation: correctPulse 0.5s ease-out;
+        }
+
+        .choice-card.incorrect {
+            border-color: #f44336;
+            background: rgba(244, 67, 54, 0.2);
+        }
+
+        .choice-card.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .result-message {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 35px;
+        }
+
+        .result-message.hit { color: #4CAF50; }
+        .result-message.miss { color: #f44336; }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        button:disabled:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .history {
+            margin-top: 20px;
+            max-width: 500px;
+        }
+
+        .history h3 {
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .history-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .history-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .history-dot.hit { background: #4CAF50; }
+        .history-dot.miss { background: #f44336; }
+
+        .session-stats {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .above-chance { color: #4CAF50; }
+        .below-chance { color: #f44336; }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            opacity: 0.5;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .mode-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mode-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mode-btn.active {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<h1>ZENER CARDS</h1>
+<p class="subtitle">Classic ESP Test | Rhine Protocol</p>
+<p class="epoch-mark">[1 = -1]</p>
+
+<div class="info-box">
+    <strong>5 Symbols</strong> · <strong>20% Chance</strong><br>
+    Originally developed by Karl Zener & J.B. Rhine at Duke University (1930s).<br>
+    Focus your mind. Trust your first impression.
+</div>
+
+<div class="mode-toggle">
+    <button class="mode-btn active" onclick="setMode('clairvoyance')">Clairvoyance</button>
+    <button class="mode-btn" onclick="setMode('precognition')">Precognition</button>
+</div>
+
+<div class="stats-row">
+    <div class="stat">
+        <div class="value" id="hits">0</div>
+        <div class="label">Hits</div>
+    </div>
+    <div class="stat">
+        <div class="value" id="attempts">0</div>
+        <div class="label">Attempts</div>
+    </div>
+    <div class="stat">
+        <div class="value" id="rate">0%</div>
+        <div class="label">Hit Rate</div>
+    </div>
+    <div class="stat">
+        <div class="value" id="streak">0</div>
+        <div class="label">Streak</div>
+    </div>
+</div>
+
+<div class="game-area">
+    <p class="instruction" id="instruction">Select the symbol you sense</p>
+
+    <div class="target-area">
+        <div class="target-card hidden" id="target"></div>
+    </div>
+
+    <div class="choices" id="choices">
+        <!-- Cards generated by JS -->
+    </div>
+
+    <div class="result-message" id="result"></div>
+
+    <div class="controls">
+        <button id="nextBtn" onclick="nextRound()" disabled>Next Round</button>
+        <button onclick="resetSession()">Reset Session</button>
+    </div>
+</div>
+
+<div class="history">
+    <h3>Session History</h3>
+    <div class="history-row" id="history"></div>
+    <div class="session-stats" id="sessionStats"></div>
+</div>
+
+<div class="footer">
+    <p><strong>[1 = -1]</strong></p>
+    <p>Have Mind Media | Alessandra Ray</p>
+    <p><a href="index.html">← Back to Games</a></p>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// ZENER CARDS - Classic Rhine ESP Test
+// 5 symbols, 20% chance rate
+// ═══════════════════════════════════════════════════════════════════════
+
+const SYMBOLS = [
+    { id: 'circle', display: '○', name: 'Circle' },
+    { id: 'cross', display: '+', name: 'Cross' },
+    { id: 'waves', display: '≋', name: 'Waves' },
+    { id: 'square', display: '□', name: 'Square' },
+    { id: 'star', display: '★', name: 'Star' }
+];
+
+const CHANCE_RATE = 0.20; // 20% = 1 in 5
+
+let state = {
+    mode: 'clairvoyance', // or 'precognition'
+    target: null,
+    hits: 0,
+    attempts: 0,
+    streak: 0,
+    bestStreak: 0,
+    history: [],
+    roundActive: true
+};
+
+// Load saved stats
+function loadStats() {
+    const saved = localStorage.getItem('epoch_ZenerCards_stats');
+    if (saved) {
+        const data = JSON.parse(saved);
+        state.hits = data.hits || 0;
+        state.attempts = data.attempts || 0;
+        state.bestStreak = data.bestStreak || 0;
+        state.history = data.history || [];
+    }
+    updateDisplay();
+    renderHistory();
+}
+
+function saveStats() {
+    localStorage.setItem('epoch_ZenerCards_stats', JSON.stringify({
+        hits: state.hits,
+        attempts: state.attempts,
+        bestStreak: state.bestStreak,
+        history: state.history.slice(-100) // Keep last 100
+    }));
+}
+
+function setMode(mode) {
+    state.mode = mode;
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase() === mode);
+    });
+
+    if (mode === 'clairvoyance') {
+        document.getElementById('instruction').textContent = 'The target is chosen. Sense which symbol it is.';
+    } else {
+        document.getElementById('instruction').textContent = 'Choose a symbol. The target will be revealed after.';
+    }
+
+    startRound();
+}
+
+function startRound() {
+    state.roundActive = true;
+
+    // In clairvoyance mode, target is pre-selected
+    // In precognition mode, target is selected AFTER user chooses
+    if (state.mode === 'clairvoyance') {
+        state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    } else {
+        state.target = null;
+    }
+
+    // Reset UI
+    const targetCard = document.getElementById('target');
+    targetCard.className = 'target-card hidden';
+    targetCard.textContent = '';
+
+    document.getElementById('result').textContent = '';
+    document.getElementById('result').className = 'result-message';
+    document.getElementById('nextBtn').disabled = true;
+
+    renderChoices();
+}
+
+function renderChoices() {
+    const container = document.getElementById('choices');
+    container.innerHTML = '';
+
+    SYMBOLS.forEach(symbol => {
+        const card = document.createElement('div');
+        card.className = 'choice-card';
+        card.textContent = symbol.display;
+        card.title = symbol.name;
+        card.onclick = () => selectChoice(symbol);
+        container.appendChild(card);
+    });
+}
+
+function selectChoice(chosen) {
+    if (!state.roundActive) return;
+    state.roundActive = false;
+
+    // In precognition mode, select target NOW (after user chose)
+    if (state.mode === 'precognition') {
+        state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    }
+
+    state.attempts++;
+
+    // Mark selected card
+    const cards = document.querySelectorAll('.choice-card');
+    cards.forEach(card => {
+        card.classList.add('disabled');
+        if (card.textContent === chosen.display) {
+            card.classList.add('selected');
+        }
+    });
+
+    // Reveal target
+    const targetCard = document.getElementById('target');
+    targetCard.textContent = state.target.display;
+    targetCard.classList.remove('hidden');
+    targetCard.classList.add('reveal');
+
+    // Check result
+    const isHit = chosen.id === state.target.id;
+
+    setTimeout(() => {
+        if (isHit) {
+            state.hits++;
+            state.streak++;
+            if (state.streak > state.bestStreak) {
+                state.bestStreak = state.streak;
+            }
+            state.history.push(1);
+
+            document.getElementById('result').textContent = '✓ HIT!';
+            document.getElementById('result').className = 'result-message hit';
+
+            cards.forEach(card => {
+                if (card.textContent === chosen.display) {
+                    card.classList.add('correct');
+                }
+            });
+        } else {
+            state.streak = 0;
+            state.history.push(0);
+
+            document.getElementById('result').textContent = `✗ Miss - It was ${state.target.name}`;
+            document.getElementById('result').className = 'result-message miss';
+
+            cards.forEach(card => {
+                if (card.textContent === chosen.display) {
+                    card.classList.add('incorrect');
+                }
+                if (card.textContent === state.target.display) {
+                    card.classList.add('correct');
+                }
+            });
+        }
+
+        updateDisplay();
+        renderHistory();
+        saveStats();
+
+        document.getElementById('nextBtn').disabled = false;
+    }, 300);
+}
+
+function nextRound() {
+    startRound();
+}
+
+function resetSession() {
+    if (state.attempts > 0 && !confirm('Reset all stats? This cannot be undone.')) {
+        return;
+    }
+
+    state.hits = 0;
+    state.attempts = 0;
+    state.streak = 0;
+    state.history = [];
+
+    saveStats();
+    updateDisplay();
+    renderHistory();
+    startRound();
+}
+
+function updateDisplay() {
+    document.getElementById('hits').textContent = state.hits;
+    document.getElementById('attempts').textContent = state.attempts;
+    document.getElementById('streak').textContent = state.streak;
+
+    const rate = state.attempts > 0 ? (state.hits / state.attempts * 100).toFixed(1) : 0;
+    document.getElementById('rate').textContent = `${rate}%`;
+}
+
+function renderHistory() {
+    const container = document.getElementById('history');
+    container.innerHTML = '';
+
+    // Show last 50
+    const recent = state.history.slice(-50);
+    recent.forEach(result => {
+        const dot = document.createElement('div');
+        dot.className = `history-dot ${result ? 'hit' : 'miss'}`;
+        container.appendChild(dot);
+    });
+
+    // Calculate session stats
+    if (state.attempts >= 10) {
+        const rate = (state.hits / state.attempts * 100).toFixed(1);
+        const expected = (state.attempts * CHANCE_RATE).toFixed(1);
+        const diff = state.hits - (state.attempts * CHANCE_RATE);
+        const diffPercent = ((rate - CHANCE_RATE * 100)).toFixed(1);
+
+        const statsEl = document.getElementById('sessionStats');
+        const aboveBelow = diff >= 0 ? 'above' : 'below';
+        const className = diff >= 0 ? 'above-chance' : 'below-chance';
+        const sign = diff >= 0 ? '+' : '';
+
+        statsEl.innerHTML = `
+            Expected: ${expected} hits (20% chance)<br>
+            Your rate: <span class="${className}">${rate}% (${sign}${diffPercent}% ${aboveBelow} chance)</span>
+            ${state.bestStreak > 2 ? `<br>Best streak: ${state.bestStreak}` : ''}
+        `;
+    } else {
+        document.getElementById('sessionStats').textContent =
+            `Complete ${10 - state.attempts} more rounds for statistical analysis`;
+    }
+}
+
+// Initialize
+loadStats();
+startRound();
+</script>
+
+</body>
+</html>

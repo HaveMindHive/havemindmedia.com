@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Match | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --teal: #4A9B9B;
+            --bg: #0a0a1a;
+            --bg2: #1a0a2e;
+            --text: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .subtitle { opacity: 0.7; margin-bottom: 5px; }
+        .epoch-mark { color: var(--gold); font-size: 0.9rem; margin-bottom: 20px; }
+
+        .info-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px 20px;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-box strong { color: var(--gold); }
+
+        .stats-row {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .stat { text-align: center; }
+        .stat .value { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
+        .stat .label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
+
+        .game-area {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-width: 350px;
+        }
+
+        .phase-indicator {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .timer-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .timer-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 4px;
+            transition: width 0.1s linear;
+        }
+
+        .timer-fill.warning { background: #FFA726; }
+        .timer-fill.danger { background: #f44336; }
+
+        .timer-text {
+            font-size: 2rem;
+            font-weight: bold;
+            font-family: monospace;
+            margin-bottom: 20px;
+        }
+
+        .timer-text.warning { color: #FFA726; }
+        .timer-text.danger { color: #f44336; animation: timerPulse 0.5s ease-in-out infinite; }
+
+        @keyframes timerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .target-section {
+            margin-bottom: 25px;
+        }
+
+        .target-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        .target-card {
+            width: 100px;
+            height: 140px;
+            background: linear-gradient(135deg, #1a3a5c, #0d2840);
+            border: 3px solid var(--teal);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin: 0 auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .choices-section {
+            margin-bottom: 20px;
+        }
+
+        .choices-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .choice-card {
+            width: 70px;
+            height: 100px;
+            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .choice-card.face-down {
+            background: linear-gradient(135deg, #3D1F0D, #2a1508);
+            border-color: #8B4513;
+        }
+
+        .choice-card.face-down::after {
+            content: '?';
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .choice-card:hover:not(.disabled) {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            border-color: var(--gold);
+        }
+
+        .choice-card.selected {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .choice-card.correct {
+            border-color: #4CAF50;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.3), rgba(76, 175, 80, 0.1));
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+        }
+
+        .choice-card.incorrect {
+            border-color: #f44336;
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.3), rgba(244, 67, 54, 0.1));
+        }
+
+        .choice-card.disabled { pointer-events: none; }
+
+        .result-message {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 35px;
+        }
+
+        .result-message.hit { color: #4CAF50; }
+        .result-message.miss { color: #f44336; }
+        .result-message.timeout { color: #FFA726; }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+        button:disabled { opacity: 0.4; cursor: not-allowed; }
+        button:disabled:hover { background: rgba(255, 255, 255, 0.1); color: var(--text); }
+
+        .streak-display {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .streak-display .current {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .streak-display .best {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .timeout-info {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .overlay.active { display: flex; }
+        .overlay h2 { font-size: 2rem; margin-bottom: 15px; color: var(--gold); }
+        .overlay p { margin: 10px 0; max-width: 400px; line-height: 1.6; }
+
+        .overlay .final-streak {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+
+        .overlay button {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            opacity: 0.5;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .footer a { color: var(--gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<h1>CARD MATCH</h1>
+<p class="subtitle">Intuition Under Pressure</p>
+<p class="epoch-mark">[1 = -1]</p>
+
+<div class="info-box">
+    <strong>Decreasing Timer</strong> · The more you get right, the less time you have.<br>
+    Trust your gut. Don't think. React.
+</div>
+
+<div class="stats-row">
+    <div class="stat">
+        <div class="value" id="round">1</div>
+        <div class="label">Round</div>
+    </div>
+    <div class="stat">
+        <div class="value" id="timeout">5.0s</div>
+        <div class="label">Time Limit</div>
+    </div>
+</div>
+
+<div class="game-area">
+    <div class="phase-indicator" id="phase">Memorize the target card</div>
+
+    <div class="timer-bar">
+        <div class="timer-fill" id="timerFill" style="width: 100%"></div>
+    </div>
+    <div class="timer-text" id="timerText">5.0</div>
+
+    <div class="target-section">
+        <div class="target-label">TARGET</div>
+        <div class="target-card" id="targetCard"></div>
+    </div>
+
+    <div class="choices-section">
+        <div class="choices-label" id="choicesLabel">Find the matching card</div>
+        <div class="choices" id="choices"></div>
+    </div>
+
+    <div class="result-message" id="result"></div>
+
+    <div class="streak-display">
+        <div class="current">Streak: <span id="streak">0</span></div>
+        <div class="best">Best: <span id="bestStreak">0</span></div>
+    </div>
+
+    <div class="timeout-info" id="timeoutInfo">
+        Next timeout: 4.5s (if correct)
+    </div>
+
+    <div class="controls">
+        <button id="startBtn" onclick="startGame()">Start Game</button>
+    </div>
+</div>
+
+<div class="overlay" id="gameOver">
+    <h2>GAME OVER</h2>
+    <p>Your streak:</p>
+    <div class="final-streak" id="finalStreak">0</div>
+    <p id="gameOverMessage"></p>
+    <button onclick="startGame()">Try Again</button>
+</div>
+
+<div class="footer">
+    <p><strong>[1 = -1]</strong></p>
+    <p>Have Mind Media | Alessandra Ray</p>
+    <p><a href="index.html">← Back to Games</a></p>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// CARD MATCH - Decreasing Timer Intuition Game
+// The more you get right, the less time you have
+// Based on original MIND-READING SCRIPT.md
+// ═══════════════════════════════════════════════════════════════════════
+
+// Use 6 symbols (triaxial: 6 = 3×2) for the cards
+const SYMBOLS = ['★', '♦', '♠', '♥', '♣', '◆'];
+
+const INITIAL_TIMEOUT = 5.0;
+const TIMEOUT_DECREASE = 0.5;
+const MIN_TIMEOUT = 1.0;
+const MEMORIZE_TIME = 3.0;
+
+let state = {
+    phase: 'idle', // idle, memorize, choose, result
+    target: null,
+    choices: [],
+    correctIndex: -1,
+    round: 0,
+    streak: 0,
+    bestStreak: 0,
+    currentTimeout: INITIAL_TIMEOUT,
+    timeRemaining: 0,
+    timerInterval: null
+};
+
+function loadStats() {
+    const saved = localStorage.getItem('epoch_CardMatch_stats');
+    if (saved) {
+        const data = JSON.parse(saved);
+        state.bestStreak = data.bestStreak || 0;
+    }
+    document.getElementById('bestStreak').textContent = state.bestStreak;
+}
+
+function saveStats() {
+    localStorage.setItem('epoch_CardMatch_stats', JSON.stringify({
+        bestStreak: state.bestStreak
+    }));
+}
+
+function startGame() {
+    document.getElementById('gameOver').classList.remove('active');
+    document.getElementById('startBtn').style.display = 'none';
+
+    state.round = 0;
+    state.streak = 0;
+    state.currentTimeout = INITIAL_TIMEOUT;
+
+    updateDisplay();
+    nextRound();
+}
+
+function nextRound() {
+    state.round++;
+    state.phase = 'memorize';
+
+    // Pick random target
+    state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+
+    // Create choices (3 cards, one is correct) - triaxial!
+    state.choices = [];
+    state.correctIndex = Math.floor(Math.random() * 3);
+
+    for (let i = 0; i < 3; i++) {
+        if (i === state.correctIndex) {
+            state.choices.push(state.target);
+        } else {
+            // Pick a different symbol
+            let sym;
+            do {
+                sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+            } while (sym === state.target || state.choices.includes(sym));
+            state.choices.push(sym);
+        }
+    }
+
+    // Show target, hide choices
+    document.getElementById('targetCard').textContent = state.target;
+    document.getElementById('phase').textContent = 'Memorize the target card';
+    document.getElementById('choicesLabel').textContent = 'Cards will appear shortly...';
+    document.getElementById('result').textContent = '';
+    document.getElementById('result').className = 'result-message';
+
+    renderChoices(true); // face down
+    updateDisplay();
+
+    // Start memorize timer
+    state.timeRemaining = MEMORIZE_TIME;
+    startTimer(() => {
+        startChoosePhase();
+    });
+}
+
+function startChoosePhase() {
+    state.phase = 'choose';
+
+    document.getElementById('phase').textContent = 'Find the matching card!';
+    document.getElementById('choicesLabel').textContent = 'Quick! Which one matches?';
+
+    renderChoices(false); // face up (but we keep them face down visually)
+
+    // Start choice timer
+    state.timeRemaining = state.currentTimeout;
+    startTimer(() => {
+        // Time's up!
+        endRound(null);
+    });
+}
+
+function renderChoices(disabled) {
+    const container = document.getElementById('choices');
+    container.innerHTML = '';
+
+    state.choices.forEach((symbol, index) => {
+        const card = document.createElement('div');
+        card.className = 'choice-card face-down';
+        if (disabled) card.classList.add('disabled');
+        card.dataset.index = index;
+        card.onclick = () => selectCard(index);
+        container.appendChild(card);
+    });
+}
+
+function selectCard(index) {
+    if (state.phase !== 'choose') return;
+
+    clearInterval(state.timerInterval);
+    endRound(index);
+}
+
+function endRound(selectedIndex) {
+    state.phase = 'result';
+
+    const cards = document.querySelectorAll('.choice-card');
+
+    // Reveal all cards
+    cards.forEach((card, i) => {
+        card.classList.remove('face-down');
+        card.classList.add('disabled');
+        card.textContent = state.choices[i];
+
+        if (i === state.correctIndex) {
+            card.classList.add('correct');
+        }
+    });
+
+    if (selectedIndex === null) {
+        // Timeout
+        document.getElementById('result').textContent = '⏱ Time\'s up!';
+        document.getElementById('result').className = 'result-message timeout';
+        gameOver('timeout');
+    } else if (selectedIndex === state.correctIndex) {
+        // Correct!
+        cards[selectedIndex].classList.add('selected');
+
+        state.streak++;
+        if (state.streak > state.bestStreak) {
+            state.bestStreak = state.streak;
+            saveStats();
+        }
+
+        // Decrease timeout for next round
+        state.currentTimeout = Math.max(MIN_TIMEOUT, state.currentTimeout - TIMEOUT_DECREASE);
+
+        document.getElementById('result').textContent = '✓ Correct!';
+        document.getElementById('result').className = 'result-message hit';
+
+        updateDisplay();
+
+        // Brief pause, then next round
+        setTimeout(() => {
+            nextRound();
+        }, 1200);
+    } else {
+        // Wrong
+        cards[selectedIndex].classList.add('selected');
+        cards[selectedIndex].classList.add('incorrect');
+
+        document.getElementById('result').textContent = '✗ Wrong!';
+        document.getElementById('result').className = 'result-message miss';
+
+        gameOver('wrong');
+    }
+}
+
+function gameOver(reason) {
+    clearInterval(state.timerInterval);
+
+    document.getElementById('finalStreak').textContent = state.streak;
+
+    let message = '';
+    if (reason === 'timeout') {
+        message = 'You ran out of time. Speed up your intuition!';
+    } else {
+        message = state.streak > 0
+            ? `You made it ${state.streak} round${state.streak > 1 ? 's' : ''}!`
+            : 'Trust your first instinct next time.';
+    }
+
+    if (state.streak === state.bestStreak && state.streak > 0) {
+        message += ' New personal best!';
+    }
+
+    document.getElementById('gameOverMessage').textContent = message;
+    document.getElementById('gameOver').classList.add('active');
+
+    // Reset for next game
+    state.phase = 'idle';
+    document.getElementById('startBtn').style.display = 'inline-block';
+}
+
+function startTimer(onComplete) {
+    clearInterval(state.timerInterval);
+
+    const startTime = state.timeRemaining;
+    const startMs = Date.now();
+
+    updateTimerDisplay();
+
+    state.timerInterval = setInterval(() => {
+        const elapsed = (Date.now() - startMs) / 1000;
+        state.timeRemaining = Math.max(0, startTime - elapsed);
+
+        updateTimerDisplay();
+
+        if (state.timeRemaining <= 0) {
+            clearInterval(state.timerInterval);
+            onComplete();
+        }
+    }, 50);
+}
+
+function updateTimerDisplay() {
+    const maxTime = state.phase === 'memorize' ? MEMORIZE_TIME : state.currentTimeout;
+    const percent = (state.timeRemaining / maxTime) * 100;
+
+    const timerFill = document.getElementById('timerFill');
+    const timerText = document.getElementById('timerText');
+
+    timerFill.style.width = `${percent}%`;
+    timerText.textContent = state.timeRemaining.toFixed(1);
+
+    // Color coding
+    timerFill.classList.remove('warning', 'danger');
+    timerText.classList.remove('warning', 'danger');
+
+    if (state.phase === 'choose') {
+        if (state.timeRemaining <= 1.0) {
+            timerFill.classList.add('danger');
+            timerText.classList.add('danger');
+        } else if (state.timeRemaining <= 2.0) {
+            timerFill.classList.add('warning');
+            timerText.classList.add('warning');
+        }
+    }
+}
+
+function updateDisplay() {
+    document.getElementById('round').textContent = state.round;
+    document.getElementById('timeout').textContent = state.currentTimeout.toFixed(1) + 's';
+    document.getElementById('streak').textContent = state.streak;
+    document.getElementById('bestStreak').textContent = state.bestStreak;
+
+    const nextTimeout = Math.max(MIN_TIMEOUT, state.currentTimeout - TIMEOUT_DECREASE);
+    document.getElementById('timeoutInfo').textContent =
+        state.currentTimeout <= MIN_TIMEOUT
+            ? 'Maximum difficulty reached!'
+            : `Next timeout: ${nextTimeout.toFixed(1)}s (if correct)`;
+}
+
+// Initialize
+loadStats();
+updateDisplay();
+</script>
+
+</body>
+</html>

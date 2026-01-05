@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate Viewer | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --bg-deep: #0a0a1a;
+            --bg-purple: #1a0a2e;
+            --text-light: #e0e0e0;
+            --success: #4CAF50;
+            --military-green: #3d5c3d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
+            min-height: 100vh;
+            color: var(--text-light);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .epoch-mark {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Coordinate Display */
+        .coordinate-display {
+            background: linear-gradient(135deg, rgba(61, 92, 61, 0.3), rgba(61, 92, 61, 0.1));
+            border: 2px solid var(--military-green);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .coordinate-label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .coordinates {
+            font-size: 2.5rem;
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        /* Phases */
+        .phase-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .phase-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .phase-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--bg-deep);
+        }
+
+        .phase-dot.completed {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* Session Panel */
+        .session-panel {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .phase-title {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .phase-instruction {
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Impressions Input */
+        .impressions-area {
+            width: 100%;
+            min-height: 150px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            color: var(--text-light);
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        .impressions-area:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .impressions-area::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Descriptor Tags */
+        .descriptor-section {
+            margin: 20px 0;
+        }
+
+        .descriptor-category {
+            margin-bottom: 15px;
+        }
+
+        .category-label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .descriptor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .descriptor-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .descriptor-tag:hover {
+            border-color: var(--gold);
+        }
+
+        .descriptor-tag.selected {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Sketch Area */
+        .sketch-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .sketch-canvas {
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            cursor: crosshair;
+            touch-action: none;
+        }
+
+        .sketch-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .sketch-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .sketch-btn:hover {
+            border-color: var(--gold);
+        }
+
+        /* Target Reveal */
+        .target-reveal {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .target-image-container {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05));
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .target-image-container.hidden::before {
+            content: 'TARGET CLASSIFIED';
+            color: var(--gold);
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        .target-image-container span {
+            font-size: 5rem;
+        }
+
+        .target-name {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-top: 10px;
+        }
+
+        /* Triaxial Choices */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .choice-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .choice-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .choice-card .icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .choice-card.correct {
+            border-color: var(--success);
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .choice-card.incorrect {
+            border-color: #f44336;
+            opacity: 0.5;
+        }
+
+        .choice-card.reveal {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .stat { text-align: center; }
+        .stat-label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
+        .stat-value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+
+        /* Session History */
+        .session-history {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .history-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .history-dot.hit { background: var(--success); }
+        .history-dot.miss { background: #f44336; }
+
+        /* Result */
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 40px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .result.hit { color: var(--success); }
+        .result.miss { color: #f44336; }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--gold), #ffa500);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--bg-deep);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Protocol Info */
+        .protocol-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--military-green);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .protocol-box h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .protocol-box p, .protocol-box li {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        .protocol-box ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        footer a { color: var(--gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Coordinate Viewer</h1>
+            <p class="subtitle">Stargate Protocol Remote Viewing Training</p>
+            <p class="epoch-mark">[1 = -1]</p>
+        </header>
+
+        <div class="coordinate-display">
+            <div class="coordinate-label">Target Coordinates</div>
+            <div class="coordinates" id="coordinates">----/----</div>
+        </div>
+
+        <div class="phase-indicator">
+            <div class="phase-dot active" id="phase1">1</div>
+            <div class="phase-dot" id="phase2">2</div>
+            <div class="phase-dot" id="phase3">3</div>
+        </div>
+
+        <!-- PHASE 1: Initial Impressions -->
+        <div class="session-panel" id="panel-phase1">
+            <h2 class="phase-title">Phase 1: First Impressions</h2>
+            <p class="phase-instruction">
+                Look at the coordinates. Let impressions flow.<br>
+                Don't analyze. Just record what comes.
+            </p>
+
+            <div class="descriptor-section">
+                <div class="descriptor-category">
+                    <div class="category-label">Surface Textures</div>
+                    <div class="descriptor-tags" id="textures">
+                        <span class="descriptor-tag" data-val="smooth">Smooth</span>
+                        <span class="descriptor-tag" data-val="rough">Rough</span>
+                        <span class="descriptor-tag" data-val="wet">Wet</span>
+                        <span class="descriptor-tag" data-val="dry">Dry</span>
+                        <span class="descriptor-tag" data-val="hard">Hard</span>
+                        <span class="descriptor-tag" data-val="soft">Soft</span>
+                        <span class="descriptor-tag" data-val="organic">Organic</span>
+                        <span class="descriptor-tag" data-val="metallic">Metallic</span>
+                        <span class="descriptor-tag" data-val="crystalline">Crystalline</span>
+                    </div>
+                </div>
+
+                <div class="descriptor-category">
+                    <div class="category-label">Colors / Light</div>
+                    <div class="descriptor-tags" id="colors">
+                        <span class="descriptor-tag" data-val="bright">Bright</span>
+                        <span class="descriptor-tag" data-val="dark">Dark</span>
+                        <span class="descriptor-tag" data-val="blue">Blue</span>
+                        <span class="descriptor-tag" data-val="green">Green</span>
+                        <span class="descriptor-tag" data-val="red">Red</span>
+                        <span class="descriptor-tag" data-val="yellow">Yellow</span>
+                        <span class="descriptor-tag" data-val="white">White</span>
+                        <span class="descriptor-tag" data-val="brown">Brown</span>
+                        <span class="descriptor-tag" data-val="gray">Gray</span>
+                    </div>
+                </div>
+
+                <div class="descriptor-category">
+                    <div class="category-label">Dimensions / Scale</div>
+                    <div class="descriptor-tags" id="dimensions">
+                        <span class="descriptor-tag" data-val="tall">Tall</span>
+                        <span class="descriptor-tag" data-val="wide">Wide</span>
+                        <span class="descriptor-tag" data-val="small">Small</span>
+                        <span class="descriptor-tag" data-val="massive">Massive</span>
+                        <span class="descriptor-tag" data-val="vertical">Vertical</span>
+                        <span class="descriptor-tag" data-val="horizontal">Horizontal</span>
+                        <span class="descriptor-tag" data-val="angular">Angular</span>
+                        <span class="descriptor-tag" data-val="curved">Curved</span>
+                        <span class="descriptor-tag" data-val="layered">Layered</span>
+                    </div>
+                </div>
+            </div>
+
+            <textarea class="impressions-area" id="phase1Notes"
+                placeholder="Free-form impressions... shapes, feelings, sounds, movements..."></textarea>
+
+            <div class="controls">
+                <button onclick="nextPhase(2)">Continue to Phase 2</button>
+            </div>
+        </div>
+
+        <!-- PHASE 2: Sketch & Refine -->
+        <div class="session-panel" id="panel-phase2" style="display: none;">
+            <h2 class="phase-title">Phase 2: Sketch & Refine</h2>
+            <p class="phase-instruction">
+                Sketch your impressions. Draw shapes, structures, anything you perceive.<br>
+                Add more details to your written impressions.
+            </p>
+
+            <div class="sketch-section">
+                <canvas class="sketch-canvas" id="sketchCanvas" width="400" height="300"></canvas>
+                <div class="sketch-controls">
+                    <button class="sketch-btn" onclick="clearSketch()">Clear</button>
+                    <button class="sketch-btn" onclick="undoSketch()">Undo</button>
+                </div>
+            </div>
+
+            <textarea class="impressions-area" id="phase2Notes"
+                placeholder="Refined impressions... What is this place? What activity happens here?"></textarea>
+
+            <div class="controls">
+                <button onclick="nextPhase(3)">Ready to Match</button>
+                <button class="secondary" onclick="prevPhase(1)">Back</button>
+            </div>
+        </div>
+
+        <!-- PHASE 3: Match Target -->
+        <div class="session-panel" id="panel-phase3" style="display: none;">
+            <h2 class="phase-title">Phase 3: Target Match</h2>
+            <p class="phase-instruction">
+                Based on your impressions, which target matches best?<br>
+                Triaxial choice: 3 options, 33.3% chance rate.
+            </p>
+
+            <div class="choice-grid" id="choiceGrid">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="result" id="result"></div>
+
+            <div class="target-reveal" id="targetReveal" style="display: none;">
+                <p style="opacity: 0.7;">The target was:</p>
+                <div class="target-image-container" id="targetContainer">
+                    <span id="targetEmoji"></span>
+                </div>
+                <div class="target-name" id="targetName"></div>
+            </div>
+
+            <div class="controls">
+                <button onclick="newSession()">New Session</button>
+                <button class="secondary" onclick="resetStats()">Reset Stats</button>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-label">Sessions</div>
+                <div class="stat-value" id="sessions">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hits</div>
+                <div class="stat-value" id="hits">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Hit Rate</div>
+                <div class="stat-value" id="hitRate">0%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">vs 33.3%</div>
+                <div class="stat-value" id="vsChance">--</div>
+            </div>
+        </div>
+
+        <div class="session-history" id="sessionHistory"></div>
+
+        <div class="protocol-box">
+            <h3>CRV Protocol (Simplified)</h3>
+            <p>Based on Controlled Remote Viewing developed at Stanford Research Institute (1972-1995):</p>
+            <ul>
+                <li><strong>Phase 1:</strong> Initial ideogram - first raw impressions without analysis</li>
+                <li><strong>Phase 2:</strong> Sensory data - textures, colors, temperatures, sounds</li>
+                <li><strong>Phase 3:</strong> Dimensional data - sizes, shapes, spatial relationships</li>
+                <li><strong>Sketch:</strong> Let your hand draw without conscious control</li>
+                <li><strong>Match:</strong> Compare impressions to target pool (triaxial: 3 choices)</li>
+            </ul>
+            <p style="margin-top: 15px;">
+                <strong>Key principle:</strong> The target exists. Your subconscious already knows it.
+                The process is about bypassing analytical overlay to access that knowing.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Developer: Alessandra Ray</p>
+        <a href="index.html">Back to Games</a>
+    </footer>
+
+    <script>
+        // ══════════════════════════════════════════════════════════════
+        // TARGET POOLS (Triaxial: 3 targets per pool)
+        // ══════════════════════════════════════════════════════════════
+
+        const TARGET_POOLS = [
+            // Natural landmarks
+            [
+                { id: 1, name: 'Mountain Peak', emoji: '🏔️', keywords: ['tall', 'rocky', 'cold', 'angular', 'white', 'massive'] },
+                { id: 2, name: 'Ocean Beach', emoji: '🏖️', keywords: ['wet', 'bright', 'blue', 'horizontal', 'smooth', 'curved'] },
+                { id: 3, name: 'Dense Forest', emoji: '🌲', keywords: ['green', 'organic', 'tall', 'dark', 'layered', 'vertical'] }
+            ],
+            // Structures
+            [
+                { id: 4, name: 'Ancient Pyramid', emoji: '🔺', keywords: ['angular', 'massive', 'dry', 'brown', 'horizontal'] },
+                { id: 5, name: 'Modern Skyscraper', emoji: '🏙️', keywords: ['tall', 'metallic', 'vertical', 'bright', 'angular'] },
+                { id: 6, name: 'Stone Bridge', emoji: '🌉', keywords: ['horizontal', 'curved', 'hard', 'gray', 'smooth'] }
+            ],
+            // Natural phenomena
+            [
+                { id: 7, name: 'Volcano', emoji: '🌋', keywords: ['red', 'hot', 'massive', 'rough', 'bright'] },
+                { id: 8, name: 'Waterfall', emoji: '💧', keywords: ['wet', 'vertical', 'white', 'bright', 'curved', 'loud'] },
+                { id: 9, name: 'Cave', emoji: '🕳️', keywords: ['dark', 'wet', 'curved', 'layered', 'cold'] }
+            ],
+            // Water features
+            [
+                { id: 10, name: 'Frozen Lake', emoji: '❄️', keywords: ['white', 'horizontal', 'smooth', 'cold', 'bright'] },
+                { id: 11, name: 'Tropical Island', emoji: '🏝️', keywords: ['green', 'blue', 'bright', 'curved', 'organic'] },
+                { id: 12, name: 'River Delta', emoji: '🌊', keywords: ['wet', 'horizontal', 'curved', 'green', 'layered'] }
+            ],
+            // Monuments
+            [
+                { id: 13, name: 'Lighthouse', emoji: '🗼', keywords: ['tall', 'vertical', 'white', 'bright', 'cylindrical'] },
+                { id: 14, name: 'Colosseum', emoji: '🏟️', keywords: ['curved', 'massive', 'brown', 'layered', 'horizontal'] },
+                { id: 15, name: 'Stonehenge', emoji: '🪨', keywords: ['gray', 'angular', 'hard', 'vertical', 'ancient'] }
+            ],
+            // Landscapes
+            [
+                { id: 16, name: 'Desert Dunes', emoji: '🏜️', keywords: ['yellow', 'curved', 'dry', 'horizontal', 'smooth'] },
+                { id: 17, name: 'Canyon', emoji: '🏜️', keywords: ['red', 'layered', 'massive', 'vertical', 'rough'] },
+                { id: 18, name: 'Glacier', emoji: '🧊', keywords: ['white', 'cold', 'massive', 'layered', 'blue'] }
+            ]
+        ];
+
+        // ══════════════════════════════════════════════════════════════
+        // STATE
+        // ══════════════════════════════════════════════════════════════
+
+        let currentPool = null;
+        let currentTarget = null;
+        let currentPhase = 1;
+        let isRevealed = false;
+        let selectedDescriptors = { textures: [], colors: [], dimensions: [] };
+
+        // Sketch state
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+        let sketchHistory = [];
+
+        const stats = {
+            sessions: 0,
+            hits: 0,
+            history: []
+        };
+
+        // ══════════════════════════════════════════════════════════════
+        // UTILITY
+        // ══════════════════════════════════════════════════════════════
+
+        function generateCoordinates() {
+            const lat = (Math.random() * 180 - 90).toFixed(4);
+            const lon = (Math.random() * 360 - 180).toFixed(4);
+            return `${lat}/${lon}`;
+        }
+
+        function shuffle(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // SESSION MANAGEMENT
+        // ══════════════════════════════════════════════════════════════
+
+        function newSession() {
+            currentPhase = 1;
+            isRevealed = false;
+            selectedDescriptors = { textures: [], colors: [], dimensions: [] };
+
+            // Generate new coordinates
+            document.getElementById('coordinates').textContent = generateCoordinates();
+
+            // Select random pool and target
+            currentPool = shuffle(TARGET_POOLS[Math.floor(Math.random() * TARGET_POOLS.length)]);
+            currentTarget = currentPool[Math.floor(Math.random() * currentPool.length)];
+
+            // Reset UI
+            updatePhaseIndicators();
+            showPhase(1);
+            document.getElementById('phase1Notes').value = '';
+            document.getElementById('phase2Notes').value = '';
+            document.getElementById('result').textContent = '';
+            document.getElementById('targetReveal').style.display = 'none';
+            clearSketch();
+
+            // Reset descriptor selections
+            document.querySelectorAll('.descriptor-tag').forEach(tag => {
+                tag.classList.remove('selected');
+            });
+
+            // Reset choice cards
+            document.querySelectorAll('.choice-card').forEach(card => {
+                card.classList.remove('correct', 'incorrect', 'reveal');
+            });
+        }
+
+        function showPhase(phase) {
+            document.querySelectorAll('.session-panel').forEach(p => p.style.display = 'none');
+            document.getElementById(`panel-phase${phase}`).style.display = 'block';
+        }
+
+        function updatePhaseIndicators() {
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`phase${i}`);
+                dot.classList.remove('active', 'completed');
+                if (i < currentPhase) dot.classList.add('completed');
+                if (i === currentPhase) dot.classList.add('active');
+            }
+        }
+
+        function nextPhase(phase) {
+            currentPhase = phase;
+            updatePhaseIndicators();
+            showPhase(phase);
+
+            if (phase === 3) {
+                renderChoices();
+            }
+        }
+
+        function prevPhase(phase) {
+            currentPhase = phase;
+            updatePhaseIndicators();
+            showPhase(phase);
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // DESCRIPTOR SELECTION
+        // ══════════════════════════════════════════════════════════════
+
+        function setupDescriptorTags() {
+            ['textures', 'colors', 'dimensions'].forEach(category => {
+                document.getElementById(category).querySelectorAll('.descriptor-tag').forEach(tag => {
+                    tag.addEventListener('click', () => {
+                        tag.classList.toggle('selected');
+                        const val = tag.dataset.val;
+                        if (tag.classList.contains('selected')) {
+                            selectedDescriptors[category].push(val);
+                        } else {
+                            selectedDescriptors[category] = selectedDescriptors[category].filter(v => v !== val);
+                        }
+                    });
+                });
+            });
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // SKETCH FUNCTIONALITY
+        // ══════════════════════════════════════════════════════════════
+
+        function setupSketch() {
+            const canvas = document.getElementById('sketchCanvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.strokeStyle = '#FFD700';
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
+                return { x, y };
+            }
+
+            function startDraw(e) {
+                e.preventDefault();
+                isDrawing = true;
+                const pos = getPos(e);
+                lastX = pos.x;
+                lastY = pos.y;
+                saveSketchState();
+            }
+
+            function draw(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                const pos = getPos(e);
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+                lastX = pos.x;
+                lastY = pos.y;
+            }
+
+            function stopDraw() {
+                isDrawing = false;
+            }
+
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mouseleave', stopDraw);
+
+            canvas.addEventListener('touchstart', startDraw);
+            canvas.addEventListener('touchmove', draw);
+            canvas.addEventListener('touchend', stopDraw);
+        }
+
+        function saveSketchState() {
+            const canvas = document.getElementById('sketchCanvas');
+            sketchHistory.push(canvas.toDataURL());
+            if (sketchHistory.length > 20) sketchHistory.shift();
+        }
+
+        function clearSketch() {
+            const canvas = document.getElementById('sketchCanvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            sketchHistory = [];
+        }
+
+        function undoSketch() {
+            if (sketchHistory.length === 0) return;
+            sketchHistory.pop();
+            const canvas = document.getElementById('sketchCanvas');
+            const ctx = canvas.getContext('2d');
+
+            if (sketchHistory.length === 0) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            } else {
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0);
+                };
+                img.src = sketchHistory[sketchHistory.length - 1];
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // TARGET MATCHING
+        // ══════════════════════════════════════════════════════════════
+
+        function renderChoices() {
+            const grid = document.getElementById('choiceGrid');
+            grid.innerHTML = currentPool.map(target => `
+                <div class="choice-card" data-id="${target.id}">
+                    <div class="icon">${target.emoji}</div>
+                    <div>${target.name}</div>
+                </div>
+            `).join('');
+
+            grid.querySelectorAll('.choice-card').forEach(card => {
+                card.addEventListener('click', () => handleChoice(parseInt(card.dataset.id)));
+            });
+        }
+
+        function handleChoice(chosenId) {
+            if (isRevealed) return;
+            isRevealed = true;
+            stats.sessions++;
+
+            const isHit = chosenId === currentTarget.id;
+            if (isHit) stats.hits++;
+            stats.history.push(isHit);
+
+            // Show result
+            const resultEl = document.getElementById('result');
+            if (isHit) {
+                resultEl.textContent = 'HIT! Accurate remote viewing.';
+                resultEl.className = 'result hit';
+            } else {
+                resultEl.textContent = 'Miss. Review your impressions.';
+                resultEl.className = 'result miss';
+            }
+
+            // Highlight cards
+            document.querySelectorAll('.choice-card').forEach(card => {
+                const id = parseInt(card.dataset.id);
+                if (id === currentTarget.id) {
+                    card.classList.add(isHit ? 'correct' : 'reveal');
+                } else if (id === chosenId) {
+                    card.classList.add('incorrect');
+                }
+            });
+
+            // Reveal target
+            document.getElementById('targetReveal').style.display = 'block';
+            document.getElementById('targetEmoji').textContent = currentTarget.emoji;
+            document.getElementById('targetName').textContent = currentTarget.name;
+
+            updateStats();
+            saveStats();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // STATS
+        // ══════════════════════════════════════════════════════════════
+
+        function updateStats() {
+            document.getElementById('sessions').textContent = stats.sessions;
+            document.getElementById('hits').textContent = stats.hits;
+
+            const rate = stats.sessions > 0 ? (stats.hits / stats.sessions * 100).toFixed(1) : 0;
+            document.getElementById('hitRate').textContent = `${rate}%`;
+
+            const chanceRate = 33.3;
+            const diff = rate - chanceRate;
+            const vsEl = document.getElementById('vsChance');
+
+            if (stats.sessions < 9) {
+                vsEl.textContent = '--';
+                vsEl.style.color = 'var(--gold)';
+            } else {
+                vsEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+                vsEl.style.color = diff >= 0 ? 'var(--success)' : '#f44336';
+            }
+
+            // Update history
+            const historyEl = document.getElementById('sessionHistory');
+            historyEl.innerHTML = stats.history.slice(-20).map(hit =>
+                `<div class="history-dot ${hit ? 'hit' : 'miss'}"></div>`
+            ).join('');
+        }
+
+        function resetStats() {
+            stats.sessions = 0;
+            stats.hits = 0;
+            stats.history = [];
+            updateStats();
+            saveStats();
+            newSession();
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // PERSISTENCE
+        // ══════════════════════════════════════════════════════════════
+
+        function saveStats() {
+            localStorage.setItem('epoch_CoordinateViewer_stats', JSON.stringify(stats));
+        }
+
+        function loadStats() {
+            const saved = localStorage.getItem('epoch_CoordinateViewer_stats');
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                stats.sessions = parsed.sessions || 0;
+                stats.hits = parsed.hits || 0;
+                stats.history = parsed.history || [];
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════
+        // INIT
+        // ══════════════════════════════════════════════════════════════
+
+        loadStats();
+        updateStats();
+        setupDescriptorTags();
+        setupSketch();
+        newSession();
+    </script>
+</body>
+</html>

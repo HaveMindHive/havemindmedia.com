@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epoch Symbols | Have Mind Media</title>
+    <title>Color Sense | Have Mind Media</title>
     <style>
         :root {
             --gold: #FFD700;
-            --teal: #4A9B9B;
             --bg: #0a0a1a;
             --bg2: #1a0a2e;
             --text: #e0e0e0;
@@ -42,7 +41,7 @@
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 10px;
             padding: 15px 20px;
-            max-width: 550px;
+            max-width: 500px;
             text-align: center;
             margin-bottom: 20px;
             font-size: 0.9rem;
@@ -51,125 +50,142 @@
 
         .info-box strong { color: var(--gold); }
 
+        .difficulty-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .diff-btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .diff-btn.active {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .diff-btn:hover { border-color: var(--gold); }
+
         .stats-row {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .stat { text-align: center; }
-        .stat .value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
-        .stat .label { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; }
+        .stat .value { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
+        .stat .label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
 
         .game-area {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             margin-bottom: 20px;
-            max-width: 450px;
-            width: 100%;
         }
 
-        .instruction { font-size: 1rem; margin-bottom: 20px; opacity: 0.9; }
+        .instruction { font-size: 1.1rem; margin-bottom: 25px; }
 
-        .target-display {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 25px auto;
-            border-radius: 20px;
+        .color-display {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            transition: all 0.3s;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .target-display.hidden {
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
-            animation: symbolPulse 2s ease-in-out infinite;
-        }
-
-        .target-display.hidden::after {
-            content: '?';
             font-size: 4rem;
-            color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            border: 4px solid rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes symbolPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); }
-            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.25); }
+        .color-display.hidden {
+            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+            animation: gentlePulse 2s ease-in-out infinite;
         }
 
-        .target-display.reveal {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-            border-color: var(--gold);
-            animation: symbolReveal 0.5s ease-out;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        @keyframes gentlePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
         }
 
-        @keyframes symbolReveal {
-            0% { transform: scale(0.5) rotateY(180deg); opacity: 0; }
-            100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+        .color-display.reveal {
+            animation: colorReveal 0.5s ease-out;
+            box-shadow: 0 0 50px currentColor;
+        }
+
+        @keyframes colorReveal {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .choices {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 320px;
-            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
-        .choice-symbol {
-            width: 90px;
-            height: 90px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.8rem;
+        .choice-color {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.03);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            position: relative;
         }
 
-        .choice-symbol:hover {
-            transform: scale(1.08);
-            border-color: var(--gold);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        .choice-color::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            opacity: 0.7;
+            white-space: nowrap;
         }
 
-        .choice-symbol.selected {
-            transform: scale(1.1);
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+        .choice-color:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px currentColor;
         }
 
-        .choice-symbol.correct {
+        .choice-color.selected {
+            transform: scale(1.2);
+            border-color: white;
+            box-shadow: 0 0 25px currentColor;
+        }
+
+        .choice-color.correct {
             border-color: #4CAF50;
-            background: rgba(76, 175, 80, 0.2);
-            box-shadow: 0 0 25px rgba(76, 175, 80, 0.5);
+            box-shadow: 0 0 30px #4CAF50;
         }
 
-        .choice-symbol.incorrect {
+        .choice-color.incorrect {
             border-color: #f44336;
-            background: rgba(244, 67, 54, 0.15);
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
-        .choice-symbol.disabled { pointer-events: none; }
+        .choice-color.disabled { pointer-events: none; }
 
         .result-message {
-            margin-top: 15px;
-            font-size: 1.2rem;
+            margin-top: 30px;
+            font-size: 1.3rem;
             font-weight: bold;
-            min-height: 30px;
+            min-height: 35px;
         }
 
         .result-message.hit { color: #4CAF50; }
@@ -177,14 +193,13 @@
 
         .controls {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
-            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         button {
-            padding: 10px 22px;
-            font-size: 0.95rem;
+            padding: 12px 25px;
+            font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--text);
@@ -207,42 +222,17 @@
         .history-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 5px;
             justify-content: center;
         }
 
-        .history-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .history-dot { width: 12px; height: 12px; border-radius: 50%; }
         .history-dot.hit { background: #4CAF50; }
         .history-dot.miss { background: #f44336; }
 
-        .session-stats { margin-top: 15px; font-size: 0.85rem; opacity: 0.8; line-height: 1.6; }
+        .session-stats { margin-top: 15px; font-size: 0.85rem; opacity: 0.8; }
         .above-chance { color: #4CAF50; }
         .below-chance { color: #f44336; }
-
-        .symbol-key {
-            margin-top: 20px;
-            max-width: 500px;
-        }
-
-        .symbol-key h3 { color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; }
-
-        .symbol-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            font-size: 0.8rem;
-        }
-
-        .symbol-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-        }
-
-        .symbol-item .sym { font-size: 1.3rem; }
 
         .footer {
             margin-top: auto;
@@ -257,14 +247,19 @@
 </head>
 <body>
 
-<h1>EPOCH SYMBOLS</h1>
-<p class="subtitle">Q-Reduction Symbol Set | 9 Symbols</p>
+<h1>COLOR SENSE</h1>
+<p class="subtitle">Chromatic Intuition Training</p>
 <p class="epoch-mark">[1 = -1]</p>
 
 <div class="info-box">
-    <strong>9 Symbols</strong> · <strong>11.1% Chance</strong><br>
-    Derived from the Epoch Model's Q-reduction process.<br>
-    9 = 3×3 — the triaxial square manifest.
+    Feel the color before you see it.<br>
+    <strong>3 colors = 33% chance</strong> · <strong>6 colors = 17% chance</strong><br>
+    Close your eyes. What color calls to you?
+</div>
+
+<div class="difficulty-toggle">
+    <button class="diff-btn active" onclick="setDifficulty(3)">3 Colors (33%)</button>
+    <button class="diff-btn" onclick="setDifficulty(6)">6 Colors (17%)</button>
 </div>
 
 <div class="stats-row">
@@ -287,9 +282,9 @@
 </div>
 
 <div class="game-area">
-    <p class="instruction" id="instruction">Which symbol is hidden?</p>
+    <p class="instruction" id="instruction">Sense the hidden color</p>
 
-    <div class="target-display hidden" id="targetDisplay"></div>
+    <div class="color-display hidden" id="colorDisplay">?</div>
 
     <div class="choices" id="choices">
         <!-- Generated by JS -->
@@ -299,7 +294,7 @@
 
     <div class="controls">
         <button id="nextBtn" onclick="nextRound()" disabled>Next Round</button>
-        <button onclick="resetSession()">Reset</button>
+        <button onclick="resetSession()">Reset Session</button>
     </div>
 </div>
 
@@ -307,13 +302,6 @@
     <h3>Session History</h3>
     <div class="history-row" id="history"></div>
     <div class="session-stats" id="sessionStats"></div>
-</div>
-
-<div class="symbol-key">
-    <h3>The Nine Symbols</h3>
-    <div class="symbol-grid" id="symbolKey">
-        <!-- Generated by JS -->
-    </div>
 </div>
 
 <div class="footer">
@@ -324,26 +312,29 @@
 
 <script>
 // ═══════════════════════════════════════════════════════════════════════
-// EPOCH SYMBOLS - 9 Symbol Q-Reduction Set
-// 11.1% chance rate (1 in 9)
-// Based on geometric/sacred symbols from Epoch Model
+// COLOR SENSE - Chromatic Intuition Training
+// 3 colors (33%) or 6 colors (17%) - triaxial design
 // ═══════════════════════════════════════════════════════════════════════
 
-const SYMBOLS = [
-    { id: 'triangle', symbol: '△', name: 'Triangle', meaning: 'Triad / Stability' },
-    { id: 'circle', symbol: '○', name: 'Circle', meaning: 'Unity / Wholeness' },
-    { id: 'square', symbol: '□', name: 'Square', meaning: 'Foundation / Earth' },
-    { id: 'star', symbol: '☆', name: 'Star', meaning: 'Light / Guidance' },
-    { id: 'spiral', symbol: '◎', name: 'Spiral', meaning: 'Growth / Evolution' },
-    { id: 'diamond', symbol: '◇', name: 'Diamond', meaning: 'Clarity / Value' },
-    { id: 'cross', symbol: '✚', name: 'Cross', meaning: 'Intersection / Balance' },
-    { id: 'wave', symbol: '∿', name: 'Wave', meaning: 'Flow / Change' },
-    { id: 'eye', symbol: '◉', name: 'Eye', meaning: 'Witness / Awareness' }
+const COLORS_3 = [
+    { id: 'red', hex: '#E53935', name: 'Red' },
+    { id: 'blue', hex: '#1E88E5', name: 'Blue' },
+    { id: 'yellow', hex: '#FDD835', name: 'Yellow' }
 ];
 
-const CHANCE_RATE = 1/9; // 11.1%
+const COLORS_6 = [
+    { id: 'red', hex: '#E53935', name: 'Red' },
+    { id: 'orange', hex: '#FF9800', name: 'Orange' },
+    { id: 'yellow', hex: '#FDD835', name: 'Yellow' },
+    { id: 'green', hex: '#43A047', name: 'Green' },
+    { id: 'blue', hex: '#1E88E5', name: 'Blue' },
+    { id: 'purple', hex: '#8E24AA', name: 'Purple' }
+];
 
 let state = {
+    difficulty: 3,
+    colors: COLORS_3,
+    chanceRate: 1/3,
     target: null,
     hits: 0,
     attempts: 0,
@@ -354,7 +345,7 @@ let state = {
 };
 
 function loadStats() {
-    const saved = localStorage.getItem('epoch_EpochSymbols_stats');
+    const saved = localStorage.getItem('epoch_ColorSense_stats');
     if (saved) {
         const data = JSON.parse(saved);
         state.hits = data.hits || 0;
@@ -367,7 +358,7 @@ function loadStats() {
 }
 
 function saveStats() {
-    localStorage.setItem('epoch_EpochSymbols_stats', JSON.stringify({
+    localStorage.setItem('epoch_ColorSense_stats', JSON.stringify({
         hits: state.hits,
         attempts: state.attempts,
         bestStreak: state.bestStreak,
@@ -375,29 +366,31 @@ function saveStats() {
     }));
 }
 
+function setDifficulty(num) {
+    state.difficulty = num;
+    state.colors = num === 3 ? COLORS_3 : COLORS_6;
+    state.chanceRate = 1 / num;
+
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.startsWith(num.toString()));
+    });
+
+    renderChoices();
+    startRound();
+}
+
 function renderChoices() {
     const container = document.getElementById('choices');
     container.innerHTML = '';
 
-    SYMBOLS.forEach(sym => {
+    state.colors.forEach(color => {
         const el = document.createElement('div');
-        el.className = 'choice-symbol';
-        el.textContent = sym.symbol;
-        el.title = sym.name;
-        el.dataset.id = sym.id;
-        el.onclick = () => selectSymbol(sym);
-        container.appendChild(el);
-    });
-}
-
-function renderSymbolKey() {
-    const container = document.getElementById('symbolKey');
-    container.innerHTML = '';
-
-    SYMBOLS.forEach(sym => {
-        const el = document.createElement('div');
-        el.className = 'symbol-item';
-        el.innerHTML = `<span class="sym">${sym.symbol}</span> ${sym.name}`;
+        el.className = 'choice-color';
+        el.style.backgroundColor = color.hex;
+        el.style.color = color.hex;
+        el.dataset.id = color.id;
+        el.dataset.name = color.name;
+        el.onclick = () => selectColor(color);
         container.appendChild(el);
     });
 }
@@ -406,30 +399,31 @@ function startRound() {
     state.roundActive = true;
     state.target = null;
 
-    const display = document.getElementById('targetDisplay');
-    display.className = 'target-display hidden';
-    display.textContent = '';
+    const display = document.getElementById('colorDisplay');
+    display.className = 'color-display hidden';
+    display.style.backgroundColor = '';
+    display.textContent = '?';
 
     document.getElementById('result').textContent = '';
     document.getElementById('result').className = 'result-message';
     document.getElementById('nextBtn').disabled = true;
-    document.getElementById('instruction').textContent = 'Which symbol is hidden?';
+    document.getElementById('instruction').textContent = 'Sense the hidden color';
 
-    document.querySelectorAll('.choice-symbol').forEach(el => {
+    document.querySelectorAll('.choice-color').forEach(el => {
         el.classList.remove('selected', 'correct', 'incorrect', 'disabled');
     });
 }
 
-function selectSymbol(chosen) {
+function selectColor(chosen) {
     if (!state.roundActive) return;
     state.roundActive = false;
 
-    // Select target NOW (precognition style)
-    state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    // Select target NOW
+    state.target = state.colors[Math.floor(Math.random() * state.colors.length)];
     state.attempts++;
 
     // Mark selected
-    document.querySelectorAll('.choice-symbol').forEach(el => {
+    document.querySelectorAll('.choice-color').forEach(el => {
         el.classList.add('disabled');
         if (el.dataset.id === chosen.id) {
             el.classList.add('selected');
@@ -438,45 +432,44 @@ function selectSymbol(chosen) {
 
     document.getElementById('instruction').textContent = 'Revealing...';
 
+    // Brief pause, then reveal
     setTimeout(() => {
-        const display = document.getElementById('targetDisplay');
+        const display = document.getElementById('colorDisplay');
         display.classList.remove('hidden');
         display.classList.add('reveal');
-        display.textContent = state.target.symbol;
+        display.style.backgroundColor = state.target.hex;
+        display.style.color = state.target.hex;
+        display.textContent = '';
 
         const isHit = chosen.id === state.target.id;
 
         setTimeout(() => {
-            const chosenEl = document.querySelector(`[data-id="${chosen.id}"]`);
-            const targetEl = document.querySelector(`[data-id="${state.target.id}"]`);
-
             if (isHit) {
                 state.hits++;
                 state.streak++;
                 if (state.streak > state.bestStreak) state.bestStreak = state.streak;
                 state.history.push(1);
 
-                document.getElementById('result').textContent = `✓ HIT! ${state.target.name}`;
+                document.getElementById('result').textContent = '✓ HIT!';
                 document.getElementById('result').className = 'result-message hit';
-                chosenEl.classList.add('correct');
-                document.getElementById('instruction').textContent = 'Excellent intuition!';
+                document.querySelector(`[data-id="${chosen.id}"]`).classList.add('correct');
             } else {
                 state.streak = 0;
                 state.history.push(0);
 
-                document.getElementById('result').textContent = `✗ It was ${state.target.name}`;
+                document.getElementById('result').textContent = `✗ Miss - It was ${state.target.name}`;
                 document.getElementById('result').className = 'result-message miss';
-                chosenEl.classList.add('incorrect');
-                targetEl.classList.add('correct');
-                document.getElementById('instruction').textContent = 'Trust your first impression';
+                document.querySelector(`[data-id="${chosen.id}"]`).classList.add('incorrect');
+                document.querySelector(`[data-id="${state.target.id}"]`).classList.add('correct');
             }
 
+            document.getElementById('instruction').textContent = isHit ? 'Your intuition is sharp!' : 'Trust your first impression';
             updateDisplay();
             renderHistory();
             saveStats();
             document.getElementById('nextBtn').disabled = false;
         }, 300);
-    }, 700);
+    }, 800);
 }
 
 function nextRound() {
@@ -516,30 +509,31 @@ function renderHistory() {
         container.appendChild(dot);
     });
 
-    if (state.attempts >= 9) {
+    const minRounds = state.difficulty === 3 ? 9 : 6;
+    if (state.attempts >= minRounds) {
         const rate = (state.hits / state.attempts * 100).toFixed(1);
-        const expected = (state.attempts * CHANCE_RATE).toFixed(1);
-        const diff = state.hits - (state.attempts * CHANCE_RATE);
-        const diffPercent = (rate - CHANCE_RATE * 100).toFixed(1);
+        const chancePercent = (state.chanceRate * 100).toFixed(1);
+        const expected = (state.attempts * state.chanceRate).toFixed(1);
+        const diff = state.hits - (state.attempts * state.chanceRate);
+        const diffPercent = (rate - state.chanceRate * 100).toFixed(1);
 
         const className = diff >= 0 ? 'above-chance' : 'below-chance';
         const sign = diff >= 0 ? '+' : '';
 
         document.getElementById('sessionStats').innerHTML = `
-            Expected: ${expected} hits (11.1% chance)<br>
+            Expected: ${expected} hits (${chancePercent}% chance)<br>
             Your rate: <span class="${className}">${rate}% (${sign}${diffPercent}%)</span>
-            ${state.bestStreak > 1 ? `<br>Best streak: ${state.bestStreak}` : ''}
+            ${state.bestStreak > 2 ? `<br>Best streak: ${state.bestStreak}` : ''}
         `;
     } else {
         document.getElementById('sessionStats').textContent =
-            `Complete ${9 - state.attempts} more rounds for analysis`;
+            `Complete ${minRounds - state.attempts} more rounds for analysis`;
     }
 }
 
 // Initialize
 loadStats();
 renderChoices();
-renderSymbolKey();
 startRound();
 </script>
 

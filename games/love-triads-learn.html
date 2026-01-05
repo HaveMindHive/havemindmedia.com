@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Triads - Learn | Have Mind Media</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --love-gold: #FFD700;
+            --shadow-crimson: #8B0000;
+            --teal: #4A9B9B;
+            --bg: #0a0a1a;
+            --bg2: #1a0a2e;
+            --text: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .subtitle { opacity: 0.7; margin-bottom: 5px; }
+        .epoch-mark { color: var(--gold); font-size: 0.9rem; margin-bottom: 20px; }
+
+        .intro-box {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .intro-box h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .intro-box strong { color: var(--gold); }
+
+        .triangle-demo {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .triangle-demo svg {
+            max-width: 200px;
+        }
+
+        .lesson-section {
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .lesson-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-card h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lesson-card h3 .num {
+            background: var(--gold);
+            color: var(--bg);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .lesson-card p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .lesson-card ul {
+            margin-left: 20px;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        .visual-demo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .ball {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .ball.love {
+            background: radial-gradient(circle at 30% 30%, #FFE55C, var(--gold), #B8860B);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .ball.shadow {
+            background: radial-gradient(circle at 30% 30%, #AA2222, var(--shadow-crimson), #550000);
+            box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+        }
+
+        .ball.neutral {
+            background: radial-gradient(circle at 30% 30%, #6ABFBF, var(--teal), #2A6B6B);
+            box-shadow: 0 0 15px rgba(74, 155, 155, 0.5);
+        }
+
+        .equation {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+
+        .equation .symbol {
+            font-size: 1.4rem;
+            margin: 0 8px;
+            color: var(--gold);
+        }
+
+        .quiz-section {
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .quiz-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-card h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .quiz-option.incorrect {
+            border-color: #f44336;
+            background: rgba(244, 67, 54, 0.2);
+        }
+
+        .quiz-option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .quiz-feedback.show { display: block; }
+        .quiz-feedback.correct { background: rgba(76, 175, 80, 0.2); }
+        .quiz-feedback.incorrect { background: rgba(244, 67, 54, 0.2); }
+
+        .next-btn {
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: var(--gold);
+            color: var(--bg);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: none;
+        }
+
+        .next-btn.show { display: inline-block; }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .progress-bar {
+            width: 100%;
+            max-width: 600px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .completion-section {
+            text-align: center;
+            max-width: 600px;
+            display: none;
+        }
+
+        .completion-section.show { display: block; }
+
+        .completion-section h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .completion-section .score {
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+
+        .completion-section p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: var(--bg);
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            opacity: 0.5;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .footer a { color: var(--gold); text-decoration: none; }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<h1>LOVE TRIADS</h1>
+<p class="subtitle">The Geometry of Binding</p>
+<p class="epoch-mark">[1 = -1]</p>
+
+<div class="progress-bar">
+    <div class="progress-fill" id="progress" style="width: 0%"></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-box" id="intro">
+    <h2>What is a Love Triad?</h2>
+    <p>
+        In the Epoch Model, <strong>evil is isolation</strong> — a point disconnected from the whole.
+        <strong>Love is connection</strong> — the force that binds.
+    </p>
+    <p>
+        A <strong>triad</strong> is the minimum stable structure: three points forming a triangle.
+        When three love points surround an isolated shadow point, they <strong>bind and dissolve</strong> it.
+    </p>
+
+    <div class="triangle-demo">
+        <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Triangle lines -->
+            <line x1="100" y1="30" x2="30" y2="150" stroke="#FFD700" stroke-width="3" stroke-opacity="0.6"/>
+            <line x1="100" y1="30" x2="170" y2="150" stroke="#FFD700" stroke-width="3" stroke-opacity="0.6"/>
+            <line x1="30" y1="150" x2="170" y2="150" stroke="#FFD700" stroke-width="3" stroke-opacity="0.6"/>
+
+            <!-- Shadow ball (center) -->
+            <circle cx="100" cy="100" r="20" fill="url(#shadowGrad)"/>
+
+            <!-- Love balls (vertices) -->
+            <circle cx="100" cy="30" r="18" fill="url(#loveGrad)"/>
+            <circle cx="30" cy="150" r="18" fill="url(#loveGrad)"/>
+            <circle cx="170" cy="150" r="18" fill="url(#loveGrad)"/>
+
+            <defs>
+                <radialGradient id="loveGrad" cx="30%" cy="30%">
+                    <stop offset="0%" stop-color="#FFE55C"/>
+                    <stop offset="50%" stop-color="#FFD700"/>
+                    <stop offset="100%" stop-color="#B8860B"/>
+                </radialGradient>
+                <radialGradient id="shadowGrad" cx="30%" cy="30%">
+                    <stop offset="0%" stop-color="#AA2222"/>
+                    <stop offset="50%" stop-color="#8B0000"/>
+                    <stop offset="100%" stop-color="#550000"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="visual-demo">
+        <div class="ball love">💛</div>
+        <span style="font-size:1.5rem;opacity:0.6;">+</span>
+        <div class="ball love">💛</div>
+        <span style="font-size:1.5rem;opacity:0.6;">+</span>
+        <div class="ball love">💛</div>
+        <span style="font-size:1.5rem;color:var(--gold);">→</span>
+        <span style="font-size:1rem;">Binds</span>
+        <span style="font-size:1.5rem;color:var(--gold);">→</span>
+        <div class="ball shadow">🖤</div>
+    </div>
+
+    <button class="next-btn show" onclick="startLessons()">Begin Learning</button>
+</div>
+
+<!-- LESSONS -->
+<div class="lesson-section hidden" id="lessons">
+    <div class="lesson-card" id="lesson1">
+        <h3><span class="num">1</span> The Shadow Is Not Evil</h3>
+        <p>
+            In the Epoch Model, <strong>shadow (s+)</strong> is not evil. It represents:
+        </p>
+        <ul>
+            <li>Strength and boundaries</li>
+            <li>The courage to do the hard right thing</li>
+            <li>Necessary intensity and drive</li>
+            <li>Protection and structure</li>
+        </ul>
+        <p>
+            Shadow becomes problematic only when <strong>isolated</strong> — disconnected from love and witness.
+            The triad doesn't destroy shadow; it <strong>integrates</strong> it.
+        </p>
+
+        <div class="visual-demo">
+            <div class="ball shadow">💪</div>
+            <span style="font-size:1.3rem;opacity:0.5;">isolated</span>
+            <span style="font-size:1.5rem;color:var(--gold);">→</span>
+            <div class="ball love">💛</div>
+            <div class="ball shadow" style="opacity:0.5;width:40px;height:40px;">💪</div>
+            <div class="ball love">💛</div>
+            <span style="font-size:1.3rem;opacity:0.7;">integrated</span>
+        </div>
+
+        <button class="next-btn show" onclick="showLesson(2)">Continue</button>
+    </div>
+
+    <div class="lesson-card hidden" id="lesson2">
+        <h3><span class="num">2</span> Three Points Make Stability</h3>
+        <p>
+            Two points make a line — unstable, easily broken.<br>
+            Three points make a triangle — the <strong>first stable shape</strong>.
+        </p>
+        <p>
+            This is why the triad is fundamental:
+        </p>
+        <ul>
+            <li><strong>Triaxial</strong> not binary</li>
+            <li><strong>3, 6, 9</strong> — never 2</li>
+            <li>Stability through <strong>geometric completeness</strong></li>
+        </ul>
+
+        <div class="equation">
+            2 points = line (unstable)<br>
+            <strong>3 points = triangle (stable)</strong><br>
+            4 points = 2 triangles sharing an edge
+        </div>
+
+        <button class="next-btn show" onclick="showLesson(3)">Continue</button>
+    </div>
+
+    <div class="lesson-card hidden" id="lesson3">
+        <h3><span class="num">3</span> [1 = -1] — Opposites Are One</h3>
+        <p>
+            The core insight: <strong>opposites are the same thing viewed from different angles</strong>.
+        </p>
+        <p>
+            Shadow (+1) and Love (-1) appear opposite, but together they equal zero — dissolution, transcendence, completion.
+        </p>
+
+        <div class="equation">
+            <span class="symbol">+1</span> (Shadow)
+            <span class="symbol">+</span>
+            <span class="symbol">-1</span> (Love)
+            <span class="symbol">=</span>
+            <span class="symbol">0</span> (Transcendence)
+        </div>
+
+        <p>
+            The triad doesn't fight shadow. It <strong>completes</strong> the equation. Three love points + one shadow point = four points dissolving into unity.
+        </p>
+
+        <button class="next-btn show" onclick="startQuiz()">Test Your Understanding</button>
+    </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-section hidden" id="quiz">
+    <div class="quiz-card" id="q1">
+        <h3>Question 1 of 3</h3>
+        <p class="quiz-question">In the Epoch Model, what does the shadow (s+) represent?</p>
+        <div class="quiz-options">
+            <div class="quiz-option" onclick="answerQuiz(1, 0)">Pure evil that must be destroyed</div>
+            <div class="quiz-option" onclick="answerQuiz(1, 1)">Strength, boundaries, and necessary intensity</div>
+            <div class="quiz-option" onclick="answerQuiz(1, 2)">Weakness and vulnerability</div>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+        <button class="next-btn" id="next1" onclick="showQuestion(2)">Next Question</button>
+    </div>
+
+    <div class="quiz-card hidden" id="q2">
+        <h3>Question 2 of 3</h3>
+        <p class="quiz-question">Why is the triad (3 points) significant?</p>
+        <div class="quiz-options">
+            <div class="quiz-option" onclick="answerQuiz(2, 0)">It's a lucky number</div>
+            <div class="quiz-option" onclick="answerQuiz(2, 1)">It's the first stable geometric shape</div>
+            <div class="quiz-option" onclick="answerQuiz(2, 2)">Three is easier to count than four</div>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+        <button class="next-btn" id="next2" onclick="showQuestion(3)">Next Question</button>
+    </div>
+
+    <div class="quiz-card hidden" id="q3">
+        <h3>Question 3 of 3</h3>
+        <p class="quiz-question">What does [1 = -1] mean?</p>
+        <div class="quiz-options">
+            <div class="quiz-option" onclick="answerQuiz(3, 0)">Math is broken</div>
+            <div class="quiz-option" onclick="answerQuiz(3, 1)">Opposites are the same thing viewed differently</div>
+            <div class="quiz-option" onclick="answerQuiz(3, 2)">Negative numbers don't exist</div>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+        <button class="next-btn" id="next3" onclick="showCompletion()">See Results</button>
+    </div>
+</div>
+
+<!-- COMPLETION -->
+<div class="completion-section" id="completion">
+    <h2>Lesson Complete!</h2>
+    <div class="score" id="finalScore">0/3</div>
+    <p id="completionMessage"></p>
+    <p>
+        You now understand the foundation of Love Triads:<br>
+        <strong>Love as geometric binding force.</strong>
+    </p>
+    <a href="love-triads.html" class="play-btn">Play Love Triads →</a>
+    <p style="margin-top: 30px;">
+        <a href="index.html" style="color: var(--gold);">← Return to Games</a>
+    </p>
+</div>
+
+<div class="footer">
+    <p><strong>[1 = -1]</strong></p>
+    <p>Have Mind Media | Alessandra Ray</p>
+    <p><a href="index.html">← Back to Games</a></p>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// LOVE TRIADS - Learning/Teaching Game
+// Teaches the Epoch Model concept of triadic binding
+// ═══════════════════════════════════════════════════════════════════════
+
+const CORRECT_ANSWERS = {
+    1: 1, // Strength, boundaries
+    2: 1, // First stable shape
+    3: 1  // Opposites are same thing
+};
+
+const FEEDBACK = {
+    1: {
+        correct: "Exactly! Shadow (s+) represents strength, boundaries, and the courage to do hard things. It's not evil — it becomes problematic only when isolated.",
+        incorrect: "Not quite. Shadow (s+) is actually strength, boundaries, and necessary intensity. It's not evil — it only becomes problematic when isolated from love and witness."
+    },
+    2: {
+        correct: "Correct! A triangle is the minimum stable structure in geometry. Two points make an unstable line; three points create the first stable shape.",
+        incorrect: "The real answer is that a triangle (3 points) is the first stable geometric shape. Two points only make a line, which is unstable."
+    },
+    3: {
+        correct: "Yes! [1 = -1] means opposites are the same thing viewed from different perspectives. Shadow and love, together, equal zero — transcendence.",
+        incorrect: "Actually, [1 = -1] means opposites are the same thing viewed from different angles. When combined (+1 and -1), they transcend into zero — completion."
+    }
+};
+
+let state = {
+    section: 'intro',
+    lessonNum: 1,
+    score: 0,
+    answered: {}
+};
+
+function updateProgress(percent) {
+    document.getElementById('progress').style.width = `${percent}%`;
+}
+
+function startLessons() {
+    document.getElementById('intro').classList.add('hidden');
+    document.getElementById('lessons').classList.remove('hidden');
+    document.getElementById('lesson1').classList.remove('hidden');
+    state.section = 'lessons';
+    updateProgress(20);
+}
+
+function showLesson(num) {
+    for (let i = 1; i <= 3; i++) {
+        document.getElementById(`lesson${i}`).classList.add('hidden');
+    }
+    document.getElementById(`lesson${num}`).classList.remove('hidden');
+    state.lessonNum = num;
+    updateProgress(20 + (num * 15));
+}
+
+function startQuiz() {
+    document.getElementById('lessons').classList.add('hidden');
+    document.getElementById('quiz').classList.remove('hidden');
+    document.getElementById('q1').classList.remove('hidden');
+    state.section = 'quiz';
+    updateProgress(65);
+}
+
+function showQuestion(num) {
+    for (let i = 1; i <= 3; i++) {
+        document.getElementById(`q${i}`).classList.add('hidden');
+    }
+    document.getElementById(`q${num}`).classList.remove('hidden');
+    updateProgress(65 + (num * 10));
+}
+
+function answerQuiz(questionNum, answerIdx) {
+    if (state.answered[questionNum]) return;
+    state.answered[questionNum] = true;
+
+    const isCorrect = answerIdx === CORRECT_ANSWERS[questionNum];
+    if (isCorrect) state.score++;
+
+    const options = document.querySelectorAll(`#q${questionNum} .quiz-option`);
+    options.forEach((opt, i) => {
+        opt.classList.add('disabled');
+        if (i === CORRECT_ANSWERS[questionNum]) {
+            opt.classList.add('correct');
+        } else if (i === answerIdx && !isCorrect) {
+            opt.classList.add('incorrect');
+        }
+    });
+
+    const feedback = document.getElementById(`feedback${questionNum}`);
+    feedback.textContent = isCorrect ? FEEDBACK[questionNum].correct : FEEDBACK[questionNum].incorrect;
+    feedback.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+
+    document.getElementById(`next${questionNum}`).classList.add('show');
+}
+
+function showCompletion() {
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('completion').classList.add('show');
+    document.getElementById('finalScore').textContent = `${state.score}/3`;
+
+    let message = '';
+    if (state.score === 3) {
+        message = "Perfect score! You truly understand the geometry of binding.";
+    } else if (state.score === 2) {
+        message = "Great understanding! The triadic principle is taking hold.";
+    } else {
+        message = "Keep exploring. The geometry reveals itself with practice.";
+    }
+    document.getElementById('completionMessage').textContent = message;
+
+    updateProgress(100);
+
+    // Save completion
+    localStorage.setItem('epoch_LoveTriadsLearn_completed', JSON.stringify({
+        score: state.score,
+        completedAt: Date.now()
+    }));
+}
+</script>
+
+</body>
+</html>

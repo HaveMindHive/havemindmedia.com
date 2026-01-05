@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Temple of the Dancing Girl - Bronze embodiment of rhythm, freedom, and geometric proportion from the Indus Valley Civilization">
+    <title>Temple of the Dancing Girl | Indus Valley | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dancing Girl Theme - Bronze, Copper, Warmth */
+            --void: #0a0806;
+            --deep-bronze: #1a1208;
+            --warm-dark: #1f150c;
+            --copper-deep: #8b4513;
+            --copper: #b87333;
+            --copper-light: #da9f5b;
+            --bronze: #cd7f32;
+            --bronze-light: #d4a574;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --flame: #ff6b35;
+            --ember: #ff8c42;
+            --soft-cream: #f5e6d3;
+            --pale-cream: #faf3e8;
+            --text-dim: #a89078;
+            --border: rgba(184, 115, 51, 0.3);
+            --border-light: rgba(184, 115, 51, 0.5);
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --font-script: 'Satisfy', cursive;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.9;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* Temple Background - Warm Bronze Atmosphere */
+        .temple-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -5;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(184, 115, 51, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(205, 127, 50, 0.1) 0%, transparent 45%),
+                radial-gradient(ellipse at 50% 50%, rgba(139, 69, 19, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at center, var(--deep-bronze) 0%, var(--void) 100%);
+        }
+
+        /* Flickering Torch Light Effect */
+        .torch-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -4;
+            background:
+                radial-gradient(ellipse at 10% 30%, rgba(255, 107, 53, 0.08) 0%, transparent 30%),
+                radial-gradient(ellipse at 90% 30%, rgba(255, 107, 53, 0.08) 0%, transparent 30%),
+                radial-gradient(ellipse at 10% 70%, rgba(255, 140, 66, 0.06) 0%, transparent 25%),
+                radial-gradient(ellipse at 90% 70%, rgba(255, 140, 66, 0.06) 0%, transparent 25%);
+            animation: torchFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes torchFlicker {
+            0%, 100% { opacity: 0.7; }
+            25% { opacity: 0.9; }
+            50% { opacity: 0.6; }
+            75% { opacity: 1; }
+        }
+
+        /* Floating Bronze Particles */
+        .bronze-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(1.5px 1.5px at 100px 100px, rgba(205, 127, 50, 0.6), transparent),
+                radial-gradient(1px 1px at 300px 200px, rgba(184, 115, 51, 0.5), transparent),
+                radial-gradient(2px 2px at 500px 150px, rgba(212, 165, 116, 0.4), transparent),
+                radial-gradient(1px 1px at 700px 300px, rgba(255, 140, 66, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 200px 400px, rgba(205, 127, 50, 0.5), transparent),
+                radial-gradient(1px 1px at 600px 500px, rgba(184, 115, 51, 0.4), transparent);
+            background-size: 800px 600px;
+            animation: particleFloat 20s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-600px); }
+        }
+
+        /* Dancing Orbs */
+        .dance-orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .dance-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: danceMove 8s ease-in-out infinite;
+        }
+
+        .dance-orb-1 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.2) 0%, transparent 70%);
+            top: 20%; left: -10%;
+        }
+
+        .dance-orb-2 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+            top: 50%; right: -5%;
+            animation-delay: -3s;
+        }
+
+        .dance-orb-3 {
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.12) 0%, transparent 70%);
+            bottom: 10%; left: 30%;
+            animation-delay: -5s;
+        }
+
+        @keyframes danceMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -20px) rotate(5deg); }
+            50% { transform: translate(-20px, 30px) rotate(-3deg); }
+            75% { transform: translate(20px, 20px) rotate(3deg); }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 30%, rgba(10, 8, 6, 0.8) 100%);
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .temple-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(10, 8, 6, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--copper-light);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-back:hover {
+            color: var(--gold);
+        }
+
+        .nav-back .arrow {
+            font-size: 1.2rem;
+        }
+
+        .nav-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--bronze);
+            letter-spacing: 4px;
+        }
+
+        /* Hero Shrine */
+        .shrine {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .shrine-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            animation: gentleSway 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(184, 115, 51, 0.5));
+        }
+
+        @keyframes gentleSway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .shrine h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--bronze-light);
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+            text-shadow: 0 0 60px rgba(205, 127, 50, 0.4);
+        }
+
+        .shrine .epithet {
+            font-family: var(--font-script);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--copper-light);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .shrine .date {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        /* Video Container */
+        .video-shrine {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+            padding: 15px;
+        }
+
+        .video-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--void);
+            padding: 8px;
+            box-shadow:
+                0 0 0 3px var(--copper),
+                0 0 0 8px rgba(184, 115, 51, 0.15),
+                0 0 0 12px rgba(201, 162, 39, 0.08),
+                0 30px 60px rgba(0, 0, 0, 0.7),
+                0 0 80px rgba(184, 115, 51, 0.15);
+        }
+
+        .video-frame::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px;
+            right: -4px; bottom: -4px;
+            background: linear-gradient(45deg, var(--copper), var(--gold), var(--copper), var(--bronze));
+            background-size: 400% 400%;
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 6s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .video-frame video,
+        .video-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--copper-light);
+            font-size: 1.1rem;
+        }
+
+        /* Content Container */
+        .temple-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sacred Measurements Panel */
+        .measurements-altar {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(184, 115, 51, 0.08));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .measurements-altar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--copper), var(--gold), var(--copper), transparent);
+        }
+
+        .measurements-altar h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--bronze-light);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        .measurement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .measurement-item {
+            text-align: center;
+            padding: 25px;
+            background: rgba(10, 8, 6, 0.5);
+            border: 1px solid rgba(184, 115, 51, 0.2);
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .measurement-item:hover {
+            border-color: var(--copper);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(184, 115, 51, 0.15);
+        }
+
+        .measurement-item .value {
+            font-size: 2.5rem;
+            font-family: 'Georgia', serif;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .measurement-item .label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--copper-light);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .measurement-item .meaning {
+            font-size: 0.95rem;
+            color: var(--soft-cream);
+            opacity: 0.8;
+        }
+
+        /* Bangle Ratio Visualization */
+        .bangle-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 50px;
+            margin: 50px 0;
+            background: rgba(10, 8, 6, 0.6);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .arm-display {
+            text-align: center;
+        }
+
+        .arm-display .arm-label {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--copper-light);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .bangles {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: center;
+        }
+
+        .bangle {
+            width: 60px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--copper), var(--gold), var(--copper));
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(184, 115, 51, 0.4);
+        }
+
+        .bangle-count {
+            font-size: 3rem;
+            color: var(--gold);
+            font-family: 'Georgia', serif;
+            margin-top: 15px;
+        }
+
+        .ratio-equals {
+            font-size: 3rem;
+            color: var(--bronze);
+        }
+
+        .ratio-result {
+            text-align: center;
+        }
+
+        .ratio-result .value {
+            font-size: 4rem;
+            color: var(--gold);
+            font-family: 'Georgia', serif;
+        }
+
+        .ratio-result .formula {
+            font-size: 1.1rem;
+            color: var(--copper-light);
+            margin-top: 10px;
+        }
+
+        /* Wisdom Panel */
+        .wisdom-panel {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.03));
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 15px;
+            padding: 35px 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .wisdom-panel::before {
+            content: "THE DANCE SPEAKS";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--void);
+            padding: 0 15px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .wisdom-panel p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        .wisdom-panel .emphasis {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Geometric Revelation */
+        .geometric-revelation {
+            background: rgba(10, 8, 6, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px 0;
+        }
+
+        .geometric-revelation h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--bronze-light);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 20px;
+            background: rgba(184, 115, 51, 0.08);
+            border-radius: 8px;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: var(--soft-cream);
+        }
+
+        .equation-row .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* The S-Curve Section */
+        .s-curve-section {
+            text-align: center;
+            padding: 60px 40px;
+            margin: 50px 0;
+            background: linear-gradient(180deg, transparent, rgba(184, 115, 51, 0.05), transparent);
+        }
+
+        .s-curve-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--bronze-light);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+        }
+
+        .s-curve-visual {
+            font-size: 8rem;
+            color: var(--copper);
+            opacity: 0.6;
+            font-family: 'Georgia', serif;
+            margin: 30px 0;
+            animation: wavePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes wavePulse {
+            0%, 100% { transform: scaleY(1); opacity: 0.6; }
+            50% { transform: scaleY(1.1); opacity: 0.8; }
+        }
+
+        .s-curve-section p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        /* Footer Altar */
+        .temple-footer {
+            text-align: center;
+            padding: 80px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-symbol {
+            font-size: 3rem;
+            color: var(--copper);
+            margin-bottom: 20px;
+            animation: gentleSway 4s ease-in-out infinite;
+        }
+
+        .footer-mantra {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--bronze-light);
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .footer-principle {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .shrine { padding: 100px 20px 60px; }
+            .shrine h1 { font-size: 2rem; letter-spacing: 4px; }
+            .measurement-grid { grid-template-columns: 1fr; }
+            .bangle-visual { flex-direction: column; gap: 30px; }
+            .measurements-altar { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Temple Atmosphere -->
+    <div class="temple-bg"></div>
+    <div class="torch-glow"></div>
+    <div class="bronze-particles"></div>
+    <div class="dance-orbs">
+        <div class="dance-orb dance-orb-1"></div>
+        <div class="dance-orb dance-orb-2"></div>
+        <div class="dance-orb dance-orb-3"></div>
+    </div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="temple-nav">
+        <a href="figurines.html" class="nav-back">
+            <span class="arrow">&larr;</span>
+            <span>RETURN TO FIGURINES</span>
+        </a>
+        <span class="nav-title">TEMPLE OF THE DANCING GIRL</span>
+    </nav>
+
+    <!-- Hero Shrine -->
+    <section class="shrine">
+        <div class="shrine-icon">&#128131;</div>
+        <h1>THE DANCING GIRL</h1>
+        <p class="epithet">She Who Moves Between Worlds</p>
+        <p class="date">MOHENJO-DARO &middot; c. 2300-1750 BCE</p>
+
+        <!-- Video Container - Generated by HMH Media Tool via Replicate -->
+        <div class="video-shrine">
+            <div class="video-frame">
+                <video autoplay loop muted playsinline>
+                    <source src="media/dancing-girl-temple.mp4" type="video/mp4">
+                    <!-- Fallback for browsers that don't support video -->
+                    <div style="width: 100%; height: 450px; background: linear-gradient(135deg, #1a1208 0%, #2a1a10 50%, #1a1208 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 18px;">
+                        <div style="font-size: 6rem; margin-bottom: 20px;">&#128131;</div>
+                        <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #b87333; letter-spacing: 3px;">BRONZE IMMORTALITY</div>
+                    </div>
+                </video>
+            </div>
+            <p class="video-caption">"The geometry of defiance—contrapposto encoded in bronze"</p>
+        </div>
+    </section>
+
+    <!-- Temple Content -->
+    <div class="temple-content">
+        <!-- Sacred Measurements -->
+        <div class="measurements-altar">
+            <h2>SACRED MEASUREMENTS</h2>
+            <div class="measurement-grid">
+                <div class="measurement-item">
+                    <div class="value">10.5</div>
+                    <div class="label">HEIGHT (CM)</div>
+                    <div class="meaning">The manifest dimension</div>
+                </div>
+                <div class="measurement-item">
+                    <div class="value">5.0</div>
+                    <div class="label">WIDTH (CM)</div>
+                    <div class="meaning">The breath of form</div>
+                </div>
+                <div class="measurement-item">
+                    <div class="value">2.5</div>
+                    <div class="label">DEPTH (CM)</div>
+                    <div class="meaning">The hidden witness</div>
+                </div>
+            </div>
+
+            <div class="geometric-revelation" style="margin-top: 40px;">
+                <h3>THE BRICK RATIO ENCODED</h3>
+                <div class="equation-row">
+                    <span>Height : Width : Depth</span>
+                    <span>=</span>
+                    <span>10.5 : 5 : 2.5</span>
+                </div>
+                <div class="equation-row">
+                    <span>Simplified</span>
+                    <span>=</span>
+                    <span class="highlight">4.2 : 2 : 1</span>
+                </div>
+                <div class="equation-row">
+                    <span>Harappan Brick Standard</span>
+                    <span>=</span>
+                    <span class="highlight">4 : 2 : 1</span>
+                </div>
+                <div class="equation-row">
+                    <span style="color: var(--gold);">The Dancing Girl IS a human-form brick—the geometric standard made flesh.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bangle Ratio Visualization -->
+        <div class="bangle-visual">
+            <div class="arm-display">
+                <div class="arm-label">LEFT ARM</div>
+                <div class="bangles">
+                    <!-- 25 bangles represented -->
+                    <div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div>
+                    <div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div>
+                    <div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div>
+                    <div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div>
+                    <div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div><div class="bangle"></div>
+                </div>
+                <div class="bangle-count">25</div>
+            </div>
+
+            <div class="ratio-equals">÷</div>
+
+            <div class="arm-display">
+                <div class="arm-label">RIGHT ARM</div>
+                <div class="bangles">
+                    <div class="bangle"></div>
+                    <div class="bangle"></div>
+                    <div class="bangle"></div>
+                    <div class="bangle"></div>
+                </div>
+                <div class="bangle-count">4</div>
+            </div>
+
+            <div class="ratio-equals">=</div>
+
+            <div class="ratio-result">
+                <div class="value">6.25</div>
+                <div class="formula">= (5/2)² = σ² × 64</div>
+            </div>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>The asymmetry is not accident—it is <span class="emphasis">encoded meaning</span>. Twenty-five bangles on one arm, four on the other. The total (29) approaches κ_shadow (28.65). The ratio (6.25) is the square of 2.5, which equals the helix constant σ squared, multiplied by 64.</p>
+            <p style="margin-top: 20px;">She wears mathematics. She dances geometry. Every ornament is an <span class="emphasis">equation in bronze</span>.</p>
+        </div>
+
+        <!-- The S-Curve -->
+        <div class="s-curve-section">
+            <h2>THE CONTRAPPOSTO WAVE</h2>
+            <div class="s-curve-visual">∿</div>
+            <p>The Dancing Girl stands in <strong>contrapposto</strong>—weight on one leg, hip thrust, shoulders counter-rotated. This creates the <strong>S-curve</strong> through her body, the same wave-form that underlies all manifestation in the Epoch Model.</p>
+            <p style="margin-top: 25px;">The S-curve appears in the fish symbol (vesica piscis), in the Mother Goddess form, in the flow of energy becoming matter. She is not merely posing—she is <strong>the wavefunction made visible</strong>.</p>
+        </div>
+
+        <!-- The Hidden Message -->
+        <div class="geometric-revelation">
+            <h3>WHAT THE ANCIENTS ENCODED</h3>
+            <div class="equation-row">
+                <span>25 + 4 = 29 ≈ <span class="highlight">κ_shadow</span> (28.65)</span>
+            </div>
+            <div class="equation-row">
+                <span>25 / 4 = 6.25 = <span class="highlight">σ² × 64</span></span>
+            </div>
+            <div class="equation-row">
+                <span>Body ratio 4.2:2:1 ≈ <span class="highlight">Brick Standard</span> 4:2:1</span>
+            </div>
+            <div class="equation-row">
+                <span>Contrapposto stance = <span class="highlight">Wave Function</span> [1 = -1]</span>
+            </div>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>She is young—perhaps sixteen. She is confident—hand on hip, chin lifted. She wears no clothing, only bangles, showing that <span class="emphasis">mathematics needs no covering</span>. The geometry speaks for itself.</p>
+            <p style="margin-top: 20px;">For 4,000 years she has waited, frozen mid-dance, holding her secret: that form and formula are one, that proportion is meaning, that <span class="emphasis">beauty is truth encoded</span>.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="temple-footer">
+        <div class="footer-symbol">&#128131;</div>
+        <div class="footer-mantra">THE DANCE CONTINUES</div>
+        <div class="footer-principle">[1 = -1]</div>
+    </footer>
+</body>
+</html>

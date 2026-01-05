@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Temple of the Mother Goddess - The fan-headdressed source of all emergence from the Indus Valley Civilization">
+    <title>Temple of the Mother Goddess | Indus Valley | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Mother Goddess Theme - Deep Earth, Fertility, Creation */
+            --void: #050404;
+            --earth-deep: #120a08;
+            --womb-dark: #1a0f0c;
+            --terracotta: #c75b39;
+            --terracotta-light: #e07850;
+            --clay: #a0522d;
+            --ochre: #cc7722;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --rose: #bc5a6a;
+            --deep-rose: #8b3a4a;
+            --cream: #f5e6d8;
+            --soft-cream: #f0e0d0;
+            --text-dim: #a89080;
+            --border: rgba(199, 91, 57, 0.3);
+            --border-light: rgba(199, 91, 57, 0.5);
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --font-sacred: 'Tangerine', cursive;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.9;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* Temple Background - Womb-like warmth */
+        .temple-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -5;
+            background:
+                radial-gradient(ellipse at 50% 100%, rgba(199, 91, 57, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 30%, rgba(188, 90, 106, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 70% 50%, rgba(204, 119, 34, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at center, var(--earth-deep) 0%, var(--void) 100%);
+        }
+
+        /* Gentle Pulsing Glow - Like a heartbeat */
+        .heartbeat-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -4;
+            background: radial-gradient(ellipse at 50% 60%, rgba(199, 91, 57, 0.08) 0%, transparent 50%);
+            animation: heartbeat 4s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            25% { opacity: 0.6; transform: scale(1.02); }
+            30% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.03); }
+            55% { opacity: 0.5; transform: scale(1.01); }
+        }
+
+        /* Floating Particles - Like seeds or spores */
+        .fertility-particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            background:
+                radial-gradient(2px 2px at 100px 150px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1.5px 1.5px at 250px 300px, rgba(199, 91, 57, 0.4), transparent),
+                radial-gradient(2px 2px at 400px 200px, rgba(188, 90, 106, 0.3), transparent),
+                radial-gradient(1px 1px at 550px 400px, rgba(204, 119, 34, 0.4), transparent),
+                radial-gradient(2px 2px at 700px 250px, rgba(201, 162, 39, 0.3), transparent),
+                radial-gradient(1.5px 1.5px at 150px 450px, rgba(199, 91, 57, 0.4), transparent);
+            background-size: 800px 600px;
+            animation: particleRise 25s linear infinite;
+        }
+
+        @keyframes particleRise {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-600px); }
+        }
+
+        /* Creation Orbs */
+        .creation-orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .create-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: createPulse 12s ease-in-out infinite;
+        }
+
+        .create-orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(199, 91, 57, 0.18) 0%, transparent 70%);
+            bottom: -150px; left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .create-orb-2 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(188, 90, 106, 0.12) 0%, transparent 70%);
+            top: 20%; left: -50px;
+            animation-delay: -4s;
+        }
+
+        .create-orb-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            top: 30%; right: -50px;
+            animation-delay: -8s;
+        }
+
+        @keyframes createPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.7; }
+            50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 30%, rgba(5, 4, 4, 0.85) 100%);
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .temple-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(5, 4, 4, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--terracotta-light);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-back:hover { color: var(--gold); }
+        .nav-back .arrow { font-size: 1.2rem; }
+
+        .nav-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--terracotta);
+            letter-spacing: 4px;
+        }
+
+        /* Hero Shrine */
+        .shrine {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .shrine-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 40px rgba(199, 91, 57, 0.5));
+            animation: gentleGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { filter: drop-shadow(0 0 40px rgba(199, 91, 57, 0.4)); }
+            50% { filter: drop-shadow(0 0 60px rgba(199, 91, 57, 0.7)); }
+        }
+
+        .shrine h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 400;
+            color: var(--cream);
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+            text-shadow: 0 0 60px rgba(199, 91, 57, 0.3);
+        }
+
+        .shrine .epithet {
+            font-family: var(--font-sacred);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: var(--terracotta-light);
+            margin-bottom: 30px;
+        }
+
+        .shrine .date {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        /* Video Container */
+        .video-shrine {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+            padding: 15px;
+        }
+
+        .video-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--void);
+            padding: 8px;
+            box-shadow:
+                0 0 0 3px var(--terracotta),
+                0 0 0 8px rgba(199, 91, 57, 0.15),
+                0 0 0 12px rgba(201, 162, 39, 0.08),
+                0 30px 60px rgba(0, 0, 0, 0.7),
+                0 0 80px rgba(199, 91, 57, 0.15);
+        }
+
+        .video-frame::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px;
+            right: -4px; bottom: -4px;
+            background: linear-gradient(45deg, var(--terracotta), var(--gold), var(--rose), var(--ochre));
+            background-size: 400% 400%;
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 6s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .video-frame video,
+        .video-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--terracotta-light);
+            font-size: 1.1rem;
+        }
+
+        /* Content Container */
+        .temple-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The Fan Headdress */
+        .headdress-altar {
+            background: linear-gradient(135deg, rgba(139, 58, 74, 0.15), rgba(199, 91, 57, 0.08));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .headdress-altar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--terracotta), var(--gold), var(--terracotta), transparent);
+        }
+
+        .headdress-altar h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        /* Fan Visual */
+        .fan-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            margin: 30px 0;
+        }
+
+        .fan-svg-container {
+            position: relative;
+        }
+
+        .fan-label {
+            position: absolute;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .fan-label.left { left: -80px; top: 50%; transform: translateY(-50%); }
+        .fan-label.right { right: -80px; top: 50%; transform: translateY(-50%); }
+        .fan-label.top { top: -40px; left: 50%; transform: translateX(-50%); }
+
+        /* Equation Display */
+        .equation-altar {
+            background: rgba(5, 4, 4, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .equation-altar h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--cream);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 18px 25px;
+            background: rgba(199, 91, 57, 0.08);
+            border-radius: 10px;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.15rem;
+            color: var(--soft-cream);
+        }
+
+        .equation-row .highlight {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Wisdom Panel */
+        .wisdom-panel {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.03));
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 15px;
+            padding: 35px 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .wisdom-panel::before {
+            content: "THE SOURCE SPEAKS";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--void);
+            padding: 0 15px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .wisdom-panel p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        .wisdom-panel .emphasis {
+            color: var(--terracotta-light);
+            font-weight: 500;
+        }
+
+        /* Dualism Section */
+        .dualism-section {
+            background: linear-gradient(135deg, rgba(188, 90, 106, 0.1), rgba(188, 90, 106, 0.03));
+            border: 1px solid rgba(188, 90, 106, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .dualism-section::before {
+            content: "THE TWO BECOME ONE";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--void);
+            padding: 0 15px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--rose);
+            letter-spacing: 3px;
+        }
+
+        .dualism-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .half {
+            width: 120px;
+            height: 200px;
+            border-radius: 60px 0 0 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .half.left {
+            background: linear-gradient(90deg, rgba(199, 91, 57, 0.3), rgba(199, 91, 57, 0.1));
+            border: 1px solid rgba(199, 91, 57, 0.4);
+            color: var(--terracotta-light);
+        }
+
+        .half.right {
+            background: linear-gradient(270deg, rgba(70, 130, 180, 0.3), rgba(70, 130, 180, 0.1));
+            border: 1px solid rgba(70, 130, 180, 0.4);
+            border-radius: 0 60px 60px 0;
+            color: #6ab4f5;
+        }
+
+        .join-symbol {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        /* The M+ Section */
+        .m-plus-section {
+            text-align: center;
+            padding: 60px 40px;
+            margin: 50px 0;
+            background: linear-gradient(180deg, transparent, rgba(199, 91, 57, 0.05), transparent);
+        }
+
+        .m-plus-section h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 30px;
+            letter-spacing: 4px;
+        }
+
+        .axis-display {
+            font-size: 6rem;
+            color: var(--gold);
+            font-family: 'Georgia', serif;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.4);
+            margin: 30px 0;
+        }
+
+        .m-plus-section p {
+            max-width: 700px;
+            margin: 20px auto;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        /* The S-Curve Connection */
+        .s-curve-connection {
+            background: rgba(5, 4, 4, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .s-curve-connection h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .s-curve-symbol {
+            font-size: 8rem;
+            color: var(--terracotta);
+            opacity: 0.7;
+            margin: 20px 0;
+        }
+
+        .s-curve-connection p {
+            max-width: 650px;
+            margin: 20px auto;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        /* Footer */
+        .temple-footer {
+            text-align: center;
+            padding: 80px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-symbol {
+            font-size: 3rem;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .footer-mantra {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--cream);
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .footer-principle {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .shrine { padding: 100px 20px 60px; }
+            .shrine h1 { font-size: 1.8rem; letter-spacing: 4px; }
+            .dualism-visual { flex-direction: column; }
+            .half { width: 200px; height: 100px; border-radius: 50px 50px 0 0; }
+            .half.right { border-radius: 0 0 50px 50px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Temple Atmosphere -->
+    <div class="temple-bg"></div>
+    <div class="heartbeat-glow"></div>
+    <div class="fertility-particles"></div>
+    <div class="creation-orbs">
+        <div class="create-orb create-orb-1"></div>
+        <div class="create-orb create-orb-2"></div>
+        <div class="create-orb create-orb-3"></div>
+    </div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="temple-nav">
+        <a href="figurines.html" class="nav-back">
+            <span class="arrow">&larr;</span>
+            <span>RETURN TO FIGURINES</span>
+        </a>
+        <span class="nav-title">TEMPLE OF THE MOTHER GODDESS</span>
+    </nav>
+
+    <!-- Hero Shrine -->
+    <section class="shrine">
+        <div class="shrine-icon">&#128124;</div>
+        <h1>THE MOTHER GODDESS</h1>
+        <p class="epithet">She From Whom All Emerges</p>
+        <p class="date">MOHENJO-DARO &middot; c. 2500 BCE</p>
+
+        <!-- Video Container - Generated by HMH Media Tool via Replicate -->
+        <div class="video-shrine">
+            <div class="video-frame">
+                <video autoplay loop muted playsinline>
+                    <source src="media/mother-goddess-temple.mp4" type="video/mp4">
+                    <!-- Fallback -->
+                    <div style="width: 100%; height: 450px; background: linear-gradient(135deg, #120a08 0%, #1a0f0c 50%, #120a08 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 18px;">
+                        <div style="font-size: 6rem; margin-bottom: 20px;">&#128124;</div>
+                        <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #c75b39; letter-spacing: 3px;">TERRACOTTA ETERNITY</div>
+                    </div>
+                </video>
+            </div>
+            <p class="video-caption">"The fan headdress encodes π—the boundary between hidden and manifest"</p>
+        </div>
+    </section>
+
+    <!-- Temple Content -->
+    <div class="temple-content">
+        <!-- The Fan Headdress -->
+        <div class="headdress-altar">
+            <h2>THE FAN-SHAPED HEADDRESS</h2>
+
+            <div class="fan-visual">
+                <div class="fan-svg-container">
+                    <svg viewBox="0 0 300 180" width="300" height="180">
+                        <!-- The 180-degree arc -->
+                        <path d="M 30 150 A 120 120 0 0 1 270 150" fill="none" stroke="#c9a227" stroke-width="3"/>
+                        <!-- Radiating lines -->
+                        <line x1="150" y1="150" x2="30" y2="150" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="50" y2="80" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="90" y2="40" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="150" y2="30" stroke="#c9a227" stroke-width="2"/>
+                        <line x1="150" y1="150" x2="210" y2="40" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="250" y2="80" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <line x1="150" y1="150" x2="270" y2="150" stroke="#c75b39" stroke-width="1.5" opacity="0.6"/>
+                        <!-- Center point -->
+                        <circle cx="150" cy="150" r="8" fill="#c9a227"/>
+                        <!-- Cup protrusions -->
+                        <ellipse cx="50" cy="130" rx="15" ry="20" fill="none" stroke="#bc5a6a" stroke-width="2"/>
+                        <ellipse cx="250" cy="130" rx="15" ry="20" fill="none" stroke="#bc5a6a" stroke-width="2"/>
+                        <!-- Angle labels -->
+                        <text x="150" y="175" text-anchor="middle" fill="#c9a227" font-family="Georgia" font-size="14">0°</text>
+                        <text x="40" y="165" text-anchor="middle" fill="#c9a227" font-family="Georgia" font-size="12">180°</text>
+                        <text x="260" y="165" text-anchor="middle" fill="#c9a227" font-family="Georgia" font-size="12">0°</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="equation-altar">
+                <h3>THE HEADDRESS EQUATION</h3>
+                <div class="equation-row">
+                    Fan span = <span class="highlight">180°</span> = <span class="highlight">π radians</span>
+                </div>
+                <div class="equation-row">
+                    κ = 2π / <span class="highlight">180</span> = π / 90
+                </div>
+                <div class="equation-row">
+                    The fan encodes the <span class="highlight">denominator of κ</span>
+                </div>
+                <div class="equation-row">
+                    Cup protrusions (2) = <span class="highlight">numerator coefficient</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>The fan-shaped headdress isn't decoration—it's a <span class="emphasis">cosmic antenna</span>. Spanning exactly 180 degrees, it represents the <span class="emphasis">half-rotation from hidden to manifest</span>. This is the transition zone, the boundary where potential becomes actual.</p>
+            <p style="margin-top: 20px;">The formula κ = 2π/180 uses 180 as its denominator. The Mother Goddess wears this number as a crown—she is the <span class="emphasis">gateway through which κ operates</span>.</p>
+        </div>
+
+        <!-- Dualism Section -->
+        <div class="dualism-section">
+            <p style="font-size: 1.15rem; line-height: 2; color: var(--soft-cream); margin-bottom: 30px;">Scholars note that many figurines were created from <strong>two vertically joined halves</strong>—the seam visible down the center. This construction technique encodes:</p>
+
+            <div class="dualism-visual">
+                <div class="half left">FEMALE<br>YIN<br>S-</div>
+                <div class="join-symbol">+</div>
+                <div class="half right">MALE<br>YANG<br>S+</div>
+            </div>
+
+            <p style="text-align: center; margin-top: 30px; font-size: 1.2rem; color: var(--gold);">
+                Two halves → One whole → [1 = -1]
+            </p>
+        </div>
+
+        <!-- The M+ Axis -->
+        <div class="m-plus-section">
+            <h2>THE M+ AXIS</h2>
+            <div class="axis-display">M+</div>
+            <p>In the triaxial classification, the Mother Goddess represents the <strong>M+ axis</strong>: Mass, Quantity, the generative force. While the Dancing Girl (S-) moves through space and the Priest-King (S+) observes, the Mother Goddess <strong>creates</strong>.</p>
+            <p>She is fertility not in the limited biological sense, but as the <strong>principle of continuous emergence</strong>—the inexhaustible source from which all phenomena arise.</p>
+        </div>
+
+        <!-- S-Curve Connection -->
+        <div class="s-curve-connection">
+            <h3>THE UNIVERSAL S-CURVE</h3>
+            <div class="s-curve-symbol">∿</div>
+            <p>The Mother Goddess figurines share the exaggerated <strong>hourglass form</strong>—wide hips, thin waist, conical breasts. This creates the same <strong>S-curve</strong> seen in the Dancing Girl's contrapposto stance.</p>
+            <p>This wave-form is the <strong>signature of manifestation</strong>. It appears in the fish symbol, in the body forms, in the flow of energy becoming matter. The Mother Goddess IS this wave—the oscillation between states that generates reality.</p>
+        </div>
+
+        <div class="equation-altar">
+            <h3>WHAT THE ANCIENTS ENCODED</h3>
+            <div class="equation-row">
+                Fan headdress = 180° = <span class="highlight">π radians</span>
+            </div>
+            <div class="equation-row">
+                Cup protrusions = 2 = <span class="highlight">Duality principle</span>
+            </div>
+            <div class="equation-row">
+                Two-half construction = <span class="highlight">[1 = -1]</span>
+            </div>
+            <div class="equation-row">
+                Hourglass form = <span class="highlight">S-curve wavefunction</span>
+            </div>
+            <div class="equation-row">
+                M+ axis = <span class="highlight">Continuous Emergence</span>
+            </div>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>She has been called the "Mother Goddess" by scholars following John Marshall's 1931 interpretation. But her true identity is more fundamental: she is <span class="emphasis">the principle of generation itself</span>, the mathematical function that transforms potential into actual.</p>
+            <p style="margin-top: 20px;">Her fan catches the cosmic broadcast. Her two-half body unites opposites. Her S-curve form traces the wavefunction. She is not merely <span class="emphasis">a</span> goddess—she is the <span class="emphasis">act of creation</span>, frozen in terracotta.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="temple-footer">
+        <div class="footer-symbol">&#128124;</div>
+        <div class="footer-mantra">FROM HER, ALL EMERGES</div>
+        <div class="footer-principle">[1 = -1]</div>
+    </footer>
+</body>
+</html>

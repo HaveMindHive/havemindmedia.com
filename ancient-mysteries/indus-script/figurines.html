@@ -506,6 +506,34 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 40px rgba(201, 162, 39, 0.1);
         }
 
+        .figurine-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .figurine-card .enter-temple {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2), rgba(201, 162, 39, 0.1));
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 8px;
+            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-smooth);
+        }
+
+        .figurine-card:hover .enter-temple {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.4), rgba(201, 162, 39, 0.2));
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+        }
+
         .figurine-icon {
             font-size: 4rem;
             margin-bottom: 20px;
@@ -819,37 +847,56 @@
         <!-- The Major Figurines -->
         <section class="section">
             <div class="section-header">
-                <h2>THE THREE ARCHETYPES</h2>
+                <h2>THE FOUR ARCHETYPES</h2>
                 <p class="tagline">Form encodes function across 4,500 years</p>
             </div>
 
             <div class="figurine-grid">
-                <div class="figurine-card">
-                    <span class="figurine-icon">&#128131;</span>
-                    <h4>THE DANCING GIRL</h4>
-                    <div class="dimensions">10.5 cm &times; 5 cm &times; 2.5 cm</div>
-                    <p class="description">Bronze statue from Mohenjo-daro, c. 2300-1750 BCE. Contrapposto stance, 24-25 bangles on left arm, 4 on right. Exaggerated proportions with unnaturally long limbs.</p>
-                </div>
-                <div class="figurine-card">
-                    <span class="figurine-icon">&#128100;</span>
-                    <h4>THE PRIEST-KING</h4>
-                    <div class="dimensions">17.5 cm &times; 11 cm</div>
-                    <p class="description">Steatite bust from Mohenjo-daro, c. 2000-1900 BCE. Trefoil-patterned cloak with circles originally filled with red pigment. Fillet headband, neatly trimmed beard.</p>
-                </div>
-                <div class="figurine-card">
-                    <span class="figurine-icon">&#128124;</span>
-                    <h4>THE MOTHER GODDESS</h4>
-                    <div class="dimensions">Various sizes, c. 2500 BCE</div>
-                    <p class="description">Terracotta figurines with distinctive fan-shaped headdresses, cup-like ear ornaments, and cone decorations. Wide hips, thin waist, heavily adorned with jewelry.</p>
-                </div>
+                <a href="temple-dancing-girl.html" class="figurine-card-link">
+                    <div class="figurine-card">
+                        <span class="figurine-icon">&#128131;</span>
+                        <h4>THE DANCING GIRL</h4>
+                        <div class="dimensions">10.5 cm &times; 5 cm &times; 2.5 cm</div>
+                        <p class="description">Bronze statue from Mohenjo-daro, c. 2300-1750 BCE. Contrapposto stance, 24-25 bangles on left arm, 4 on right. Exaggerated proportions with unnaturally long limbs.</p>
+                        <span class="enter-temple">ENTER TEMPLE &#8594;</span>
+                    </div>
+                </a>
+                <a href="temple-priest-king.html" class="figurine-card-link">
+                    <div class="figurine-card">
+                        <span class="figurine-icon">&#128100;</span>
+                        <h4>THE PRIEST-KING</h4>
+                        <div class="dimensions">17.5 cm &times; 11 cm</div>
+                        <p class="description">Steatite bust from Mohenjo-daro, c. 2000-1900 BCE. Trefoil-patterned cloak with circles originally filled with red pigment. Fillet headband, neatly trimmed beard.</p>
+                        <span class="enter-temple">ENTER TEMPLE &#8594;</span>
+                    </div>
+                </a>
+                <a href="temple-mother-goddess.html" class="figurine-card-link">
+                    <div class="figurine-card">
+                        <span class="figurine-icon">&#128124;</span>
+                        <h4>THE MOTHER GODDESS</h4>
+                        <div class="dimensions">Various sizes, c. 2500 BCE</div>
+                        <p class="description">Terracotta figurines with distinctive fan-shaped headdresses, cup-like ear ornaments, and cone decorations. Wide hips, thin waist, heavily adorned with jewelry.</p>
+                        <span class="enter-temple">ENTER TEMPLE &#8594;</span>
+                    </div>
+                </a>
+                <a href="temple-sacred-bull.html" class="figurine-card-link">
+                    <div class="figurine-card">
+                        <span class="figurine-icon">&#128002;</span>
+                        <h4>THE SACRED BULL</h4>
+                        <div class="dimensions">Various sizes, c. 2600-1900 BCE</div>
+                        <p class="description">The zebu bull dominates Harappan iconography. From seals to figurines, this humped cattle represents material abundance and connects to the Mithraic tauroctony through the Age of Taurus.</p>
+                        <span class="enter-temple">ENTER TEMPLE &#8594;</span>
+                    </div>
+                </a>
             </div>
 
             <div class="layman-box">
-                <p>These three figurines represent the <strong>triaxial balance</strong> of Harappan society:</p>
+                <p>These four figurines represent the <strong>complete cosmological system</strong> of Harappan society:</p>
                 <p><strong style="color: var(--terracotta);">Dancing Girl (S-):</strong> The manifest, physical world &mdash; motion, youth, earthly presence</p>
                 <p><strong style="color: var(--bright-blue);">Priest-King (S+):</strong> The observer, spiritual authority &mdash; stillness, wisdom, cosmic connection</p>
                 <p><strong style="color: var(--gold);">Mother Goddess (M+):</strong> The generative force &mdash; fertility, abundance, continuous creation</p>
-                <p class="analogy">Together, they form a complete cosmological statement: the dance of matter, the witness of consciousness, and the source of emergence.</p>
+                <p><strong style="color: #9370db;">Sacred Bull (M-):</strong> The cosmic anchor &mdash; Age of Taurus, precession cycle, celestial mechanics</p>
+                <p class="analogy">Together, they form a complete cosmological statement: the dance of matter, the witness of consciousness, the source of emergence, and the celestial timekeeper marking humanity's place in the great cycle.</p>
             </div>
         </section>
 

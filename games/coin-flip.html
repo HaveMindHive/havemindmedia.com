@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Epoch Symbols | Have Mind Media</title>
+    <title>Tri-Coin Intuition | Have Mind Media</title>
     <style>
         :root {
             --gold: #FFD700;
             --teal: #4A9B9B;
+            --copper: #B87333;
+            --silver: #C0C0C0;
             --bg: #0a0a1a;
             --bg2: #1a0a2e;
             --text: #e0e0e0;
@@ -42,7 +44,7 @@
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 10px;
             padding: 15px 20px;
-            max-width: 550px;
+            max-width: 500px;
             text-align: center;
             margin-bottom: 20px;
             font-size: 0.9rem;
@@ -53,123 +55,154 @@
 
         .stats-row {
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         .stat { text-align: center; }
-        .stat .value { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
-        .stat .label { font-size: 0.7rem; opacity: 0.7; text-transform: uppercase; }
+        .stat .value { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
+        .stat .label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
 
         .game-area {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             margin-bottom: 20px;
-            max-width: 450px;
-            width: 100%;
         }
 
-        .instruction { font-size: 1rem; margin-bottom: 20px; opacity: 0.9; }
+        .instruction {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
 
-        .target-display {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 25px auto;
-            border-radius: 20px;
+        .coin-display {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px auto;
+            perspective: 1000px;
+        }
+
+        .coin {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            transition: all 0.3s;
-            border: 3px solid rgba(255, 255, 255, 0.1);
+            font-size: 3rem;
+            font-weight: bold;
+            position: absolute;
+            backface-visibility: hidden;
+            transition: transform 0.1s;
         }
 
-        .target-display.hidden {
+        .coin.gold {
+            background: radial-gradient(circle at 30% 30%, #FFE55C, var(--gold), #B8860B);
+            border: 4px solid #B8860B;
+            color: #5C4A00;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .coin.silver {
+            background: radial-gradient(circle at 30% 30%, #E8E8E8, var(--silver), #808080);
+            border: 4px solid #808080;
+            color: #404040;
+            box-shadow: 0 4px 20px rgba(192, 192, 192, 0.4);
+        }
+
+        .coin.copper {
+            background: radial-gradient(circle at 30% 30%, #D4956A, var(--copper), #8B4513);
+            border: 4px solid #8B4513;
+            color: #3D1F0D;
+            box-shadow: 0 4px 20px rgba(184, 115, 51, 0.4);
+        }
+
+        .coin.hidden {
             background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
-            animation: symbolPulse 2s ease-in-out infinite;
-        }
-
-        .target-display.hidden::after {
-            content: '?';
-            font-size: 4rem;
+            border: 4px solid rgba(255, 255, 255, 0.2);
             color: rgba(255, 255, 255, 0.2);
         }
 
-        @keyframes symbolPulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); }
-            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.25); }
+        .coin.spinning {
+            animation: coinSpin 0.15s linear infinite;
         }
 
-        .target-display.reveal {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
-            border-color: var(--gold);
-            animation: symbolReveal 0.5s ease-out;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        @keyframes coinSpin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
         }
 
-        @keyframes symbolReveal {
-            0% { transform: scale(0.5) rotateY(180deg); opacity: 0; }
-            100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+        .coin.reveal {
+            animation: coinReveal 0.5s ease-out;
+        }
+
+        @keyframes coinReveal {
+            0% { transform: scale(1) rotateY(720deg); }
+            100% { transform: scale(1) rotateY(0deg); }
         }
 
         .choices {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            max-width: 320px;
-            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
-        .choice-symbol {
-            width: 90px;
-            height: 90px;
-            border-radius: 15px;
+        .choice-btn {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             cursor: pointer;
             transition: all 0.2s;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.03);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .choice-symbol:hover {
-            transform: scale(1.08);
-            border-color: var(--gold);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        .choice-btn .label {
+            font-size: 0.7rem;
+            margin-top: 5px;
+            opacity: 0.8;
         }
 
-        .choice-symbol.selected {
+        .choice-btn.gold-choice { border-color: var(--gold); color: var(--gold); }
+        .choice-btn.silver-choice { border-color: var(--silver); color: var(--silver); }
+        .choice-btn.copper-choice { border-color: var(--copper); color: var(--copper); }
+
+        .choice-btn:hover {
             transform: scale(1.1);
-            border-color: var(--gold);
-            background: rgba(255, 215, 0, 0.15);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .choice-symbol.correct {
+        .choice-btn.selected {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px currentColor;
+        }
+
+        .choice-btn.correct {
+            background: rgba(76, 175, 80, 0.3);
             border-color: #4CAF50;
-            background: rgba(76, 175, 80, 0.2);
-            box-shadow: 0 0 25px rgba(76, 175, 80, 0.5);
         }
 
-        .choice-symbol.incorrect {
+        .choice-btn.incorrect {
+            background: rgba(244, 67, 54, 0.2);
             border-color: #f44336;
-            background: rgba(244, 67, 54, 0.15);
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
-        .choice-symbol.disabled { pointer-events: none; }
+        .choice-btn.disabled { pointer-events: none; }
 
         .result-message {
-            margin-top: 15px;
-            font-size: 1.2rem;
+            margin-top: 20px;
+            font-size: 1.3rem;
             font-weight: bold;
-            min-height: 30px;
+            min-height: 35px;
         }
 
         .result-message.hit { color: #4CAF50; }
@@ -177,14 +210,13 @@
 
         .controls {
             display: flex;
-            gap: 12px;
-            margin-top: 15px;
-            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         button {
-            padding: 10px 22px;
-            font-size: 0.95rem;
+            padding: 12px 25px;
+            font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: var(--text);
@@ -193,7 +225,12 @@
             transition: all 0.2s;
         }
 
-        button:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+        button:hover {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+        }
+
         button:disabled { opacity: 0.4; cursor: not-allowed; }
         button:disabled:hover { background: rgba(255, 255, 255, 0.1); color: var(--text); }
 
@@ -207,42 +244,27 @@
         .history-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 5px;
             justify-content: center;
         }
 
-        .history-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .history-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
         .history-dot.hit { background: #4CAF50; }
         .history-dot.miss { background: #f44336; }
 
-        .session-stats { margin-top: 15px; font-size: 0.85rem; opacity: 0.8; line-height: 1.6; }
+        .session-stats {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
         .above-chance { color: #4CAF50; }
         .below-chance { color: #f44336; }
-
-        .symbol-key {
-            margin-top: 20px;
-            max-width: 500px;
-        }
-
-        .symbol-key h3 { color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; }
-
-        .symbol-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            font-size: 0.8rem;
-        }
-
-        .symbol-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 8px;
-        }
-
-        .symbol-item .sym { font-size: 1.3rem; }
 
         .footer {
             margin-top: auto;
@@ -257,14 +279,14 @@
 </head>
 <body>
 
-<h1>EPOCH SYMBOLS</h1>
-<p class="subtitle">Q-Reduction Symbol Set | 9 Symbols</p>
+<h1>TRI-COIN</h1>
+<p class="subtitle">Triaxial Intuition | 3 Coins, 33% Chance</p>
 <p class="epoch-mark">[1 = -1]</p>
 
 <div class="info-box">
-    <strong>9 Symbols</strong> · <strong>11.1% Chance</strong><br>
-    Derived from the Epoch Model's Q-reduction process.<br>
-    9 = 3×3 — the triaxial square manifest.
+    <strong>3 Coins</strong> · <strong>33.3% Chance</strong><br>
+    Binary is dogma. We train in threes.<br>
+    Gold · Silver · Copper — which one calls to you?
 </div>
 
 <div class="stats-row">
@@ -287,19 +309,32 @@
 </div>
 
 <div class="game-area">
-    <p class="instruction" id="instruction">Which symbol is hidden?</p>
+    <p class="instruction" id="instruction">Which coin will appear?</p>
 
-    <div class="target-display hidden" id="targetDisplay"></div>
+    <div class="coin-display">
+        <div class="coin hidden" id="coin">?</div>
+    </div>
 
     <div class="choices" id="choices">
-        <!-- Generated by JS -->
+        <div class="choice-btn gold-choice" onclick="selectCoin('gold')">
+            <span>Au</span>
+            <span class="label">Gold</span>
+        </div>
+        <div class="choice-btn silver-choice" onclick="selectCoin('silver')">
+            <span>Ag</span>
+            <span class="label">Silver</span>
+        </div>
+        <div class="choice-btn copper-choice" onclick="selectCoin('copper')">
+            <span>Cu</span>
+            <span class="label">Copper</span>
+        </div>
     </div>
 
     <div class="result-message" id="result"></div>
 
     <div class="controls">
         <button id="nextBtn" onclick="nextRound()" disabled>Next Round</button>
-        <button onclick="resetSession()">Reset</button>
+        <button onclick="resetSession()">Reset Session</button>
     </div>
 </div>
 
@@ -307,13 +342,6 @@
     <h3>Session History</h3>
     <div class="history-row" id="history"></div>
     <div class="session-stats" id="sessionStats"></div>
-</div>
-
-<div class="symbol-key">
-    <h3>The Nine Symbols</h3>
-    <div class="symbol-grid" id="symbolKey">
-        <!-- Generated by JS -->
-    </div>
 </div>
 
 <div class="footer">
@@ -324,24 +352,17 @@
 
 <script>
 // ═══════════════════════════════════════════════════════════════════════
-// EPOCH SYMBOLS - 9 Symbol Q-Reduction Set
-// 11.1% chance rate (1 in 9)
-// Based on geometric/sacred symbols from Epoch Model
+// TRI-COIN - Triaxial Intuition Training
+// 3 coins (not binary!), 33.3% chance rate
 // ═══════════════════════════════════════════════════════════════════════
 
-const SYMBOLS = [
-    { id: 'triangle', symbol: '△', name: 'Triangle', meaning: 'Triad / Stability' },
-    { id: 'circle', symbol: '○', name: 'Circle', meaning: 'Unity / Wholeness' },
-    { id: 'square', symbol: '□', name: 'Square', meaning: 'Foundation / Earth' },
-    { id: 'star', symbol: '☆', name: 'Star', meaning: 'Light / Guidance' },
-    { id: 'spiral', symbol: '◎', name: 'Spiral', meaning: 'Growth / Evolution' },
-    { id: 'diamond', symbol: '◇', name: 'Diamond', meaning: 'Clarity / Value' },
-    { id: 'cross', symbol: '✚', name: 'Cross', meaning: 'Intersection / Balance' },
-    { id: 'wave', symbol: '∿', name: 'Wave', meaning: 'Flow / Change' },
-    { id: 'eye', symbol: '◉', name: 'Eye', meaning: 'Witness / Awareness' }
+const COINS = [
+    { id: 'gold', symbol: 'Au', name: 'Gold' },
+    { id: 'silver', symbol: 'Ag', name: 'Silver' },
+    { id: 'copper', symbol: 'Cu', name: 'Copper' }
 ];
 
-const CHANCE_RATE = 1/9; // 11.1%
+const CHANCE_RATE = 1/3; // 33.3%
 
 let state = {
     target: null,
@@ -354,7 +375,7 @@ let state = {
 };
 
 function loadStats() {
-    const saved = localStorage.getItem('epoch_EpochSymbols_stats');
+    const saved = localStorage.getItem('epoch_TriCoin_stats');
     if (saved) {
         const data = JSON.parse(saved);
         state.hits = data.hits || 0;
@@ -367,7 +388,7 @@ function loadStats() {
 }
 
 function saveStats() {
-    localStorage.setItem('epoch_EpochSymbols_stats', JSON.stringify({
+    localStorage.setItem('epoch_TriCoin_stats', JSON.stringify({
         hits: state.hits,
         attempts: state.attempts,
         bestStreak: state.bestStreak,
@@ -375,108 +396,85 @@ function saveStats() {
     }));
 }
 
-function renderChoices() {
-    const container = document.getElementById('choices');
-    container.innerHTML = '';
-
-    SYMBOLS.forEach(sym => {
-        const el = document.createElement('div');
-        el.className = 'choice-symbol';
-        el.textContent = sym.symbol;
-        el.title = sym.name;
-        el.dataset.id = sym.id;
-        el.onclick = () => selectSymbol(sym);
-        container.appendChild(el);
-    });
-}
-
-function renderSymbolKey() {
-    const container = document.getElementById('symbolKey');
-    container.innerHTML = '';
-
-    SYMBOLS.forEach(sym => {
-        const el = document.createElement('div');
-        el.className = 'symbol-item';
-        el.innerHTML = `<span class="sym">${sym.symbol}</span> ${sym.name}`;
-        container.appendChild(el);
-    });
-}
-
 function startRound() {
     state.roundActive = true;
     state.target = null;
 
-    const display = document.getElementById('targetDisplay');
-    display.className = 'target-display hidden';
-    display.textContent = '';
+    // Reset UI
+    const coin = document.getElementById('coin');
+    coin.className = 'coin hidden';
+    coin.textContent = '?';
 
     document.getElementById('result').textContent = '';
     document.getElementById('result').className = 'result-message';
     document.getElementById('nextBtn').disabled = true;
-    document.getElementById('instruction').textContent = 'Which symbol is hidden?';
+    document.getElementById('instruction').textContent = 'Which coin will appear?';
 
-    document.querySelectorAll('.choice-symbol').forEach(el => {
-        el.classList.remove('selected', 'correct', 'incorrect', 'disabled');
+    // Reset choice buttons
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+        btn.classList.remove('selected', 'correct', 'incorrect', 'disabled');
     });
 }
 
-function selectSymbol(chosen) {
+function selectCoin(chosenId) {
     if (!state.roundActive) return;
     state.roundActive = false;
 
-    // Select target NOW (precognition style)
-    state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    // Select target NOW (precognition style - after user chooses)
+    state.target = COINS[Math.floor(Math.random() * COINS.length)];
     state.attempts++;
 
     // Mark selected
-    document.querySelectorAll('.choice-symbol').forEach(el => {
-        el.classList.add('disabled');
-        if (el.dataset.id === chosen.id) {
-            el.classList.add('selected');
-        }
+    document.querySelectorAll('.choice-btn').forEach(btn => {
+        btn.classList.add('disabled');
     });
+    document.querySelector(`.${chosenId}-choice`).classList.add('selected');
 
+    // Animate coin spin
+    const coinEl = document.getElementById('coin');
+    coinEl.classList.remove('hidden');
+    coinEl.classList.add('spinning');
     document.getElementById('instruction').textContent = 'Revealing...';
 
+    // Spin for 1 second, then reveal
     setTimeout(() => {
-        const display = document.getElementById('targetDisplay');
-        display.classList.remove('hidden');
-        display.classList.add('reveal');
-        display.textContent = state.target.symbol;
+        coinEl.classList.remove('spinning');
+        coinEl.classList.add(state.target.id, 'reveal');
+        coinEl.textContent = state.target.symbol;
 
-        const isHit = chosen.id === state.target.id;
+        // Check result
+        const isHit = chosenId === state.target.id;
 
         setTimeout(() => {
-            const chosenEl = document.querySelector(`[data-id="${chosen.id}"]`);
-            const targetEl = document.querySelector(`[data-id="${state.target.id}"]`);
-
             if (isHit) {
                 state.hits++;
                 state.streak++;
-                if (state.streak > state.bestStreak) state.bestStreak = state.streak;
+                if (state.streak > state.bestStreak) {
+                    state.bestStreak = state.streak;
+                }
                 state.history.push(1);
 
-                document.getElementById('result').textContent = `✓ HIT! ${state.target.name}`;
+                document.getElementById('result').textContent = '✓ HIT!';
                 document.getElementById('result').className = 'result-message hit';
-                chosenEl.classList.add('correct');
-                document.getElementById('instruction').textContent = 'Excellent intuition!';
+                document.querySelector(`.${chosenId}-choice`).classList.add('correct');
             } else {
                 state.streak = 0;
                 state.history.push(0);
 
-                document.getElementById('result').textContent = `✗ It was ${state.target.name}`;
+                document.getElementById('result').textContent = `✗ Miss - It was ${state.target.name}`;
                 document.getElementById('result').className = 'result-message miss';
-                chosenEl.classList.add('incorrect');
-                targetEl.classList.add('correct');
-                document.getElementById('instruction').textContent = 'Trust your first impression';
+                document.querySelector(`.${chosenId}-choice`).classList.add('incorrect');
+                document.querySelector(`.${state.target.id}-choice`).classList.add('correct');
             }
 
+            document.getElementById('instruction').textContent = isHit ? 'Well done!' : 'Try again';
             updateDisplay();
             renderHistory();
             saveStats();
+
             document.getElementById('nextBtn').disabled = false;
         }, 300);
-    }, 700);
+    }, 1000);
 }
 
 function nextRound() {
@@ -510,7 +508,8 @@ function renderHistory() {
     const container = document.getElementById('history');
     container.innerHTML = '';
 
-    state.history.slice(-50).forEach(result => {
+    const recent = state.history.slice(-50);
+    recent.forEach(result => {
         const dot = document.createElement('div');
         dot.className = `history-dot ${result ? 'hit' : 'miss'}`;
         container.appendChild(dot);
@@ -522,13 +521,14 @@ function renderHistory() {
         const diff = state.hits - (state.attempts * CHANCE_RATE);
         const diffPercent = (rate - CHANCE_RATE * 100).toFixed(1);
 
+        const statsEl = document.getElementById('sessionStats');
         const className = diff >= 0 ? 'above-chance' : 'below-chance';
         const sign = diff >= 0 ? '+' : '';
 
-        document.getElementById('sessionStats').innerHTML = `
-            Expected: ${expected} hits (11.1% chance)<br>
+        statsEl.innerHTML = `
+            Expected: ${expected} hits (33.3% chance)<br>
             Your rate: <span class="${className}">${rate}% (${sign}${diffPercent}%)</span>
-            ${state.bestStreak > 1 ? `<br>Best streak: ${state.bestStreak}` : ''}
+            ${state.bestStreak > 2 ? `<br>Best streak: ${state.bestStreak}` : ''}
         `;
     } else {
         document.getElementById('sessionStats').textContent =
@@ -538,8 +538,6 @@ function renderHistory() {
 
 // Initialize
 loadStats();
-renderChoices();
-renderSymbolKey();
 startRound();
 </script>
 

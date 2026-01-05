@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Temple of the Priest-King - The trefoil-cloaked observer from Mohenjo-daro, embodiment of geometric wisdom">
+    <title>Temple of the Priest-King | Indus Valley | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Priest-King Theme - Deep Blues, Silver, Cosmic Authority */
+            --void: #020408;
+            --deep-night: #0a0e18;
+            --cosmic-blue: #0d1528;
+            --royal-deep: #1a2744;
+            --silver: #c0c0c0;
+            --silver-light: #e8e8e8;
+            --steel-blue: #4682b4;
+            --royal-blue: #4169e1;
+            --sapphire: #0f52ba;
+            --gold: #c9a227;
+            --gold-light: #e8c84a;
+            --red-pigment: #8b0000;
+            --soft-cream: #f0f0f0;
+            --pale-cream: #fafafa;
+            --text-dim: #8a9aaa;
+            --border: rgba(70, 130, 180, 0.3);
+            --border-light: rgba(70, 130, 180, 0.5);
+            --font-display: 'Cinzel', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--void);
+            color: var(--soft-cream);
+            line-height: 1.9;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        /* Temple Background - Cosmic Authority */
+        .temple-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -5;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(65, 105, 225, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 60%, rgba(70, 130, 180, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 80% 80%, rgba(15, 82, 186, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at center, var(--deep-night) 0%, var(--void) 100%);
+        }
+
+        /* Rotating Star Field */
+        .star-field {
+            position: fixed;
+            top: 0; left: 0;
+            width: 200%; height: 200%;
+            z-index: -4;
+            background:
+                radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.8), transparent),
+                radial-gradient(1.5px 1.5px at 150px 100px, rgba(192, 192, 192, 0.7), transparent),
+                radial-gradient(1px 1px at 250px 180px, rgba(255, 255, 255, 0.6), transparent),
+                radial-gradient(2px 2px at 350px 80px, rgba(201, 162, 39, 0.5), transparent),
+                radial-gradient(1px 1px at 450px 220px, rgba(255, 255, 255, 0.7), transparent),
+                radial-gradient(1.5px 1.5px at 100px 300px, rgba(192, 192, 192, 0.6), transparent),
+                radial-gradient(1px 1px at 300px 350px, rgba(255, 255, 255, 0.5), transparent),
+                radial-gradient(1px 1px at 500px 400px, rgba(201, 162, 39, 0.4), transparent);
+            background-size: 600px 500px;
+            animation: starRotate 120s linear infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes starRotate {
+            0% { transform: rotate(0deg) translate(-25%, -25%); }
+            100% { transform: rotate(360deg) translate(-25%, -25%); }
+        }
+
+        /* Trefoil Pattern Overlay */
+        .trefoil-pattern {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -3;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='15' r='8' fill='none' stroke='%23c9a227' stroke-width='1'/%3E%3Ccircle cx='22' cy='30' r='8' fill='none' stroke='%23c9a227' stroke-width='1'/%3E%3Ccircle cx='38' cy='30' r='8' fill='none' stroke='%23c9a227' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
+        }
+
+        /* Authority Orbs */
+        .authority-orbs {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .auth-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: orbPulse 10s ease-in-out infinite;
+        }
+
+        .auth-orb-1 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(65, 105, 225, 0.15) 0%, transparent 70%);
+            top: -150px; right: -100px;
+        }
+
+        .auth-orb-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(70, 130, 180, 0.12) 0%, transparent 70%);
+            bottom: -100px; left: -100px;
+            animation-delay: -5s;
+        }
+
+        .auth-orb-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            top: 40%; left: 50%;
+            animation-delay: -3s;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .vignette {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, transparent 0%, transparent 30%, rgba(2, 4, 8, 0.85) 100%);
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .temple-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(2, 4, 8, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-back {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: var(--steel-blue);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-back:hover { color: var(--gold); }
+        .nav-back .arrow { font-size: 1.2rem; }
+
+        .nav-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--royal-blue);
+            letter-spacing: 4px;
+        }
+
+        /* Hero Shrine */
+        .shrine {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 40px 80px;
+            position: relative;
+        }
+
+        .shrine-icon {
+            font-size: 5rem;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 40px rgba(70, 130, 180, 0.5));
+            animation: slowPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes slowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        .shrine h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            color: var(--silver-light);
+            margin-bottom: 15px;
+            letter-spacing: 10px;
+            text-shadow: 0 0 60px rgba(70, 130, 180, 0.4);
+        }
+
+        .shrine .epithet {
+            font-family: var(--font-body);
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            font-style: italic;
+            color: var(--steel-blue);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .shrine .date {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+        }
+
+        /* Video Container */
+        .video-shrine {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            position: relative;
+            padding: 15px;
+        }
+
+        .video-frame {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--void);
+            padding: 8px;
+            box-shadow:
+                0 0 0 3px var(--steel-blue),
+                0 0 0 8px rgba(70, 130, 180, 0.15),
+                0 0 0 12px rgba(201, 162, 39, 0.08),
+                0 30px 60px rgba(0, 0, 0, 0.7),
+                0 0 80px rgba(70, 130, 180, 0.15);
+        }
+
+        .video-frame::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px;
+            right: -4px; bottom: -4px;
+            background: linear-gradient(45deg, var(--steel-blue), var(--gold), var(--royal-blue), var(--silver));
+            background-size: 400% 400%;
+            border-radius: 20px;
+            z-index: -1;
+            animation: borderGlow 8s ease infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .video-frame video,
+        .video-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: var(--steel-blue);
+            font-size: 1.1rem;
+        }
+
+        /* Content Container */
+        .temple-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* The Cloak Analysis */
+        .cloak-altar {
+            background: linear-gradient(135deg, rgba(26, 39, 68, 0.4), rgba(70, 130, 180, 0.08));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .cloak-altar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--steel-blue), var(--gold), var(--steel-blue), transparent);
+        }
+
+        .cloak-altar h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--silver-light);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+
+        /* Trefoil Pattern Display */
+        .pattern-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            padding: 40px;
+            background: rgba(2, 4, 8, 0.6);
+            border-radius: 15px;
+            border: 1px solid rgba(70, 130, 180, 0.2);
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .pattern-item {
+            text-align: center;
+        }
+
+        .pattern-item svg {
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(201, 162, 39, 0.3));
+        }
+
+        .pattern-item .name {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .pattern-item .value {
+            font-size: 2.5rem;
+            color: var(--steel-blue);
+            font-family: 'Georgia', serif;
+        }
+
+        .pattern-item .meaning {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 8px;
+        }
+
+        /* Equation Display */
+        .equation-altar {
+            background: rgba(2, 4, 8, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .equation-altar h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--silver-light);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .equation-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(70, 130, 180, 0.08);
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Georgia', serif;
+            font-size: 1.4rem;
+        }
+
+        .eq-symbol {
+            color: var(--gold);
+            font-size: 2rem;
+        }
+
+        .eq-number {
+            color: var(--steel-blue);
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .eq-label {
+            color: var(--silver);
+            font-size: 1rem;
+            font-family: var(--font-display);
+            letter-spacing: 1px;
+        }
+
+        /* The Red Pigment */
+        .red-pigment-section {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.15), rgba(139, 0, 0, 0.05));
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .red-pigment-section::before {
+            content: "THE RED TRUTH";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--void);
+            padding: 0 15px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--red-pigment);
+            letter-spacing: 3px;
+        }
+
+        .red-pigment-section p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        .red-pigment-section .emphasis {
+            color: #c0392b;
+            font-weight: 500;
+        }
+
+        /* Wisdom Panel */
+        .wisdom-panel {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.03));
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 15px;
+            padding: 35px 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .wisdom-panel::before {
+            content: "THE OBSERVER SPEAKS";
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: var(--void);
+            padding: 0 15px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .wisdom-panel p {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        .wisdom-panel .emphasis {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* The Perfect Number Section */
+        .perfect-number {
+            text-align: center;
+            padding: 60px 40px;
+            margin: 50px 0;
+            background: linear-gradient(180deg, transparent, rgba(70, 130, 180, 0.05), transparent);
+        }
+
+        .perfect-number h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--silver-light);
+            margin-bottom: 30px;
+            letter-spacing: 4px;
+        }
+
+        .number-display {
+            font-size: 10rem;
+            color: var(--gold);
+            font-family: 'Georgia', serif;
+            text-shadow: 0 0 80px rgba(201, 162, 39, 0.4);
+            margin: 20px 0;
+            line-height: 1;
+        }
+
+        .number-equation {
+            font-size: 1.5rem;
+            color: var(--steel-blue);
+            font-family: 'Courier New', monospace;
+            margin: 30px 0;
+        }
+
+        .perfect-number p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--soft-cream);
+        }
+
+        /* Footer */
+        .temple-footer {
+            text-align: center;
+            padding: 80px 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-symbol {
+            font-size: 3rem;
+            color: var(--steel-blue);
+            margin-bottom: 20px;
+        }
+
+        .footer-mantra {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--silver-light);
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .footer-principle {
+            font-family: 'Courier New', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .shrine { padding: 100px 20px 60px; }
+            .shrine h1 { font-size: 2rem; letter-spacing: 4px; }
+            .pattern-display { flex-direction: column; gap: 30px; }
+            .equation-row { flex-direction: column; gap: 10px; font-size: 1.1rem; }
+            .number-display { font-size: 6rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Temple Atmosphere -->
+    <div class="temple-bg"></div>
+    <div class="star-field"></div>
+    <div class="trefoil-pattern"></div>
+    <div class="authority-orbs">
+        <div class="auth-orb auth-orb-1"></div>
+        <div class="auth-orb auth-orb-2"></div>
+        <div class="auth-orb auth-orb-3"></div>
+    </div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="temple-nav">
+        <a href="figurines.html" class="nav-back">
+            <span class="arrow">&larr;</span>
+            <span>RETURN TO FIGURINES</span>
+        </a>
+        <span class="nav-title">TEMPLE OF THE PRIEST-KING</span>
+    </nav>
+
+    <!-- Hero Shrine -->
+    <section class="shrine">
+        <div class="shrine-icon">&#128100;</div>
+        <h1>THE PRIEST-KING</h1>
+        <p class="epithet">He Who Witnesses in Silence</p>
+        <p class="date">MOHENJO-DARO &middot; c. 2000-1900 BCE</p>
+
+        <!-- Video Container - Generated by HMH Media Tool via Replicate -->
+        <div class="video-shrine">
+            <div class="video-frame">
+                <video autoplay loop muted playsinline>
+                    <source src="media/priest-king-temple.mp4" type="video/mp4">
+                    <!-- Fallback -->
+                    <div style="width: 100%; height: 450px; background: linear-gradient(135deg, #0a0e18 0%, #1a2744 50%, #0a0e18 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 18px;">
+                        <div style="font-size: 6rem; margin-bottom: 20px;">&#128100;</div>
+                        <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #4682b4; letter-spacing: 3px;">STEATITE AUTHORITY</div>
+                    </div>
+                </video>
+            </div>
+            <p class="video-caption">"He wears mathematics—the trefoil cloak of emergence"</p>
+        </div>
+    </section>
+
+    <!-- Temple Content -->
+    <div class="temple-content">
+        <!-- The Sacred Cloak -->
+        <div class="cloak-altar">
+            <h2>THE TREFOIL CLOAK</h2>
+
+            <div class="pattern-display">
+                <div class="pattern-item">
+                    <svg viewBox="0 0 100 100" width="100" height="100">
+                        <circle cx="50" cy="25" r="18" fill="none" stroke="#c9a227" stroke-width="2"/>
+                        <circle cx="32" cy="55" r="18" fill="none" stroke="#c9a227" stroke-width="2"/>
+                        <circle cx="68" cy="55" r="18" fill="none" stroke="#c9a227" stroke-width="2"/>
+                        <circle cx="50" cy="45" r="5" fill="#8b0000"/>
+                    </svg>
+                    <div class="name">TREFOIL</div>
+                    <div class="value">3</div>
+                    <div class="meaning">Emergence</div>
+                </div>
+                <div class="pattern-item">
+                    <svg viewBox="0 0 100 100" width="100" height="100">
+                        <circle cx="50" cy="50" r="30" fill="none" stroke="#4682b4" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="5" fill="#4682b4"/>
+                    </svg>
+                    <div class="name">SINGLE CIRCLE</div>
+                    <div class="value">1</div>
+                    <div class="meaning">Unity</div>
+                </div>
+                <div class="pattern-item">
+                    <svg viewBox="0 0 100 100" width="100" height="100">
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="#c0c0c0" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="20" fill="none" stroke="#c0c0c0" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="5" fill="#c0c0c0"/>
+                    </svg>
+                    <div class="name">DOUBLE CIRCLE</div>
+                    <div class="value">2</div>
+                    <div class="meaning">Duality</div>
+                </div>
+            </div>
+
+            <div class="equation-altar">
+                <h3>THE CLOAK EQUATION</h3>
+                <div class="equation-row">
+                    <span class="eq-symbol">TREFOIL</span>
+                    <span class="eq-number">3</span>
+                    <span style="color: var(--text-dim);">+</span>
+                    <span class="eq-symbol">CIRCLE</span>
+                    <span class="eq-number">1</span>
+                    <span style="color: var(--text-dim);">+</span>
+                    <span class="eq-symbol">DOUBLE</span>
+                    <span class="eq-number">2</span>
+                    <span style="color: var(--text-dim);">=</span>
+                    <span class="eq-number" style="color: var(--gold);">6</span>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: var(--steel-blue); font-style: italic;">
+                    The First Perfect Number
+                </p>
+            </div>
+        </div>
+
+        <!-- The Perfect Number -->
+        <div class="perfect-number">
+            <h2>THE PERFECT NUMBER</h2>
+            <div class="number-display">6</div>
+            <div class="number-equation">1 + 2 + 3 = 6 = 1 × 2 × 3</div>
+            <p>Six is the first <strong>perfect number</strong>—a number equal to the sum of its proper divisors. The Priest-King's cloak literally <strong>wears perfection</strong>. The pattern encodes: emergence (3), unity (1), and duality (2)—the complete triaxial system of the Epoch Model.</p>
+        </div>
+
+        <!-- The Red Pigment -->
+        <div class="red-pigment-section">
+            <p>The trefoil centers were filled with <span class="emphasis">red pigment</span>, now faded but originally vivid. Red is the color of the <strong>S- axis</strong>—the manifest, physical, visible world. The background showed traces of "blackish" material, possibly originally green or blue.</p>
+            <p style="margin-top: 20px;">The Priest-King wears <span class="emphasis">emergence marked in the color of manifestation</span>. Three circles (emergence), filled with red (physical reality), on a dark ground (the void from which all arises). He is clothed in the <strong>act of creation itself</strong>.</p>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>He is bearded, serene, eyes half-closed in what appears to be <span class="emphasis">meditation or witness</span>. His headband (fillet) suggests what may have been an elaborate headdress. His left shoulder bears the cloak; his right is bare—another asymmetry like the Dancing Girl's bangles.</p>
+            <p style="margin-top: 20px;">He represents the <span class="emphasis">S+ axis</span>: the Observer. While the Dancing Girl moves through physical space (S-), the Priest-King <span class="emphasis">watches</span>. He is consciousness itself, draped in the mathematics of reality.</p>
+        </div>
+
+        <!-- Cross-Cultural Connections -->
+        <div class="equation-altar">
+            <h3>CROSS-CULTURAL ECHOES</h3>
+            <p style="margin-bottom: 20px; color: var(--soft-cream);">Scholars have compared the trefoil pattern to similar motifs across Bronze Age civilizations:</p>
+            <div class="equation-row" style="flex-direction: column; gap: 15px; text-align: left; align-items: flex-start;">
+                <span style="color: var(--gold);">&#9672; Egyptian sacred geometry</span>
+                <span style="color: var(--steel-blue);">&#9672; Mesopotamian cylinder seals</span>
+                <span style="color: var(--silver);">&#9672; Minoan artistic traditions</span>
+                <span style="color: var(--gold);">&#9672; Later South Asian depictions of Varuna</span>
+            </div>
+            <p style="margin-top: 25px; text-align: center; color: var(--text-dim); font-style: italic;">
+                A shared geometric vocabulary—or independent discovery of the same mathematical truths?
+            </p>
+        </div>
+
+        <div class="wisdom-panel">
+            <p>For 4,000 years he has waited, stone eyes watching nothing and everything. The cloak's message is clear to those who can read geometry: <span class="emphasis">3 + 1 + 2 = 6</span>. Emergence, unity, duality, perfection.</p>
+            <p style="margin-top: 20px;">He is not a king in the political sense. He is the <span class="emphasis">principle of observation</span> made manifest—the consciousness that collapses the wavefunction, the witness without whom nothing is real.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="temple-footer">
+        <div class="footer-symbol">&#128100;</div>
+        <div class="footer-mantra">THE WITNESS REMAINS</div>
+        <div class="footer-principle">[1 = -1]</div>
+    </footer>
+</body>
+</html>
