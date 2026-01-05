@@ -435,12 +435,14 @@
 
         .monster-eye.left-eye {
             top: 28%;
-            left: 42%;
+            left: 50%;
+            transform: translateX(-35px);
         }
 
         .monster-eye.right-eye {
             top: 28%;
-            right: 42%;
+            left: 50%;
+            transform: translateX(27px);
         }
 
         /* Image Sections */
@@ -925,11 +927,11 @@
             <div class="entrance-instruction">Click anywhere to enter</div>
         </div>
 
-        <!-- Electric arcs positioned around the monster -->
-        <div class="electric-arc" id="arc1" style="top: 35%; left: 25%; transform: rotate(-30deg);"></div>
-        <div class="electric-arc" id="arc2" style="top: 45%; right: 25%; transform: rotate(30deg);"></div>
-        <div class="electric-arc" id="arc3" style="top: 55%; left: 30%; transform: rotate(15deg);"></div>
-        <div class="electric-arc" id="arc4" style="top: 40%; right: 30%; transform: rotate(-20deg);"></div>
+        <!-- Electric arcs - symmetrically positioned around the monster -->
+        <div class="electric-arc" id="arc1" style="top: 38%; left: 25%; transform: rotate(-25deg);"></div>
+        <div class="electric-arc" id="arc2" style="top: 38%; right: 25%; transform: rotate(25deg);"></div>
+        <div class="electric-arc" id="arc3" style="top: 50%; left: 28%; transform: rotate(-15deg);"></div>
+        <div class="electric-arc" id="arc4" style="top: 50%; right: 28%; transform: rotate(15deg);"></div>
     </div>
 
     <!-- Navigation -->
