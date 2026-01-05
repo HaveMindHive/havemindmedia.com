@@ -119,139 +119,161 @@
         }
 
         /* ==========================================
-           ANIMATED INTRO BOX - Premium Design
+           EPIC INTRO ANIMATION - Cinematic Experience
            ========================================== */
         .intro-animation {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 2rem;
-            padding: 3rem 2.5rem;
-            border-radius: 24px;
+            padding: 4rem 3rem;
+            border-radius: 0;
             position: relative;
             overflow: hidden;
-            background:
-                radial-gradient(ellipse at 30% 20%, rgba(106, 180, 245, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
-                linear-gradient(180deg, rgba(10, 15, 25, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
-            box-shadow:
-                0 0 0 1px rgba(106, 180, 245, 0.15),
-                0 4px 30px rgba(0, 0, 0, 0.5),
-                0 0 80px rgba(106, 180, 245, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            background: transparent;
         }
 
-        /* Animated starfield background */
+        /* Deep space void effect */
         .intro-animation::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image:
-                radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.4), transparent),
-                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.3), transparent),
-                radial-gradient(1.5px 1.5px at 90px 40px, rgba(201,162,39,0.5), transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.4), transparent),
-                radial-gradient(1.5px 1.5px at 160px 30px, rgba(106,180,245,0.5), transparent),
-                radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.3), transparent),
-                radial-gradient(1px 1px at 250px 20px, rgba(255,255,255,0.4), transparent),
-                radial-gradient(1.5px 1.5px at 280px 90px, rgba(201,162,39,0.4), transparent);
-            background-size: 300px 100px;
-            animation: starDrift 20s linear infinite;
-            opacity: 0.6;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background:
+                radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.8) 70%),
+                radial-gradient(2px 2px at 10% 20%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 90% 15%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 30% 80%, rgba(201,162,39,0.8), transparent),
+                radial-gradient(1px 1px at 70% 70%, rgba(106,180,245,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 50% 50%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 85% 85%, rgba(201,162,39,0.6), transparent),
+                radial-gradient(1px 1px at 15% 60%, rgba(106,180,245,0.6), transparent);
+            animation: cosmicRotate 60s linear infinite;
+            opacity: 0.8;
             pointer-events: none;
         }
 
-        @keyframes starDrift {
-            0% { background-position: 0 0; }
-            100% { background-position: 300px 100px; }
+        @keyframes cosmicRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        /* Subtle border glow animation */
+        /* Pulsing energy ring */
         .intro-animation::after {
             content: '';
             position: absolute;
-            top: -1px; left: -1px; right: -1px; bottom: -1px;
-            border-radius: 24px;
-            background: linear-gradient(
-                135deg,
-                rgba(106, 180, 245, 0.3) 0%,
-                transparent 25%,
-                transparent 50%,
-                rgba(201, 162, 39, 0.3) 75%,
-                rgba(106, 180, 245, 0.3) 100%
-            );
-            background-size: 400% 400%;
-            animation: borderGlow 8s ease-in-out infinite;
-            z-index: -1;
-            opacity: 0.5;
+            top: 50%; left: 50%;
+            width: 300px; height: 300px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            box-shadow:
+                0 0 60px rgba(201, 162, 39, 0.1),
+                inset 0 0 60px rgba(106, 180, 245, 0.05);
+            animation: pulseRing 4s ease-in-out infinite;
+            pointer-events: none;
         }
 
-        @keyframes borderGlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes pulseRing {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.6; }
         }
 
         .intro-title {
             font-family: 'Space Grotesk', var(--font-display), sans-serif;
-            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-size: clamp(2.2rem, 8vw, 4rem);
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.25em;
+            gap: 0.2em;
             flex-wrap: wrap;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
         .intro-word {
+            color: transparent;
             background: linear-gradient(180deg,
-                #4a7aa8 0%,
-                #6ab4f5 20%,
-                #c9a227 45%,
-                #e8c84a 55%,
-                #c9a227 70%,
-                #6ab4f5 90%,
-                #4a7aa8 100%);
-            background-size: 100% 200%;
+                rgba(106, 180, 245, 0.9) 0%,
+                rgba(255, 255, 255, 1) 30%,
+                rgba(201, 162, 39, 1) 50%,
+                rgba(255, 255, 255, 1) 70%,
+                rgba(106, 180, 245, 0.9) 100%);
+            background-size: 100% 300%;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: textShimmer 6s ease-in-out infinite;
-            text-shadow: none;
+            animation: epicShimmer 4s ease-in-out infinite;
             position: relative;
+            text-shadow: 0 0 80px rgba(201, 162, 39, 0.5);
         }
 
-        @keyframes textShimmer {
+        /* Glow layer behind each word */
+        .intro-word::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0; top: 0;
+            z-index: -1;
+            color: transparent;
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: blur(20px);
+            opacity: 0.7;
+        }
+
+        @keyframes epicShimmer {
             0%, 100% { background-position: 0% 0%; }
             50% { background-position: 0% 100%; }
         }
 
         .intro-word-mind {
-            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-block;
         }
 
         .intro-word-mind.fading {
             opacity: 0;
-            filter: blur(12px);
-            transform: scale(1.1) translateY(-5px);
+            filter: blur(20px);
+            transform: scale(1.3) translateY(-20px);
+            letter-spacing: 0.5em;
         }
 
-        .intro-word-mind.water {
-            animation: mindReveal 4s ease-out forwards, textShimmer 6s ease-in-out infinite;
+        .intro-word-mind.shatter {
+            animation: shatterReveal 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
-        @keyframes mindReveal {
-            0% { opacity: 0; filter: blur(8px); transform: scale(0.95); }
-            100% { opacity: 1; filter: blur(0); transform: scale(1); }
+        @keyframes shatterReveal {
+            0% {
+                opacity: 0;
+                filter: blur(30px);
+                transform: scale(0.5);
+                letter-spacing: -0.1em;
+            }
+            30% {
+                opacity: 0.5;
+                filter: blur(15px);
+                transform: scale(1.2);
+                letter-spacing: 0.4em;
+            }
+            60% {
+                filter: blur(5px);
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: scale(1);
+                letter-spacing: 0.2em;
+            }
         }
 
         .intro-messages {
-            min-height: 70px;
+            min-height: 100px;
             position: relative;
             text-align: center;
-            z-index: 1;
+            z-index: 10;
         }
 
         .intro-msg {
@@ -259,59 +281,104 @@
             width: 100%;
             left: 0;
             opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: clamp(1rem, 2.8vw, 1.3rem);
-            color: rgba(240, 232, 216, 0.9);
-            letter-spacing: 0.08em;
+            transform: translateY(30px) scale(0.95);
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: rgba(240, 232, 216, 0);
+            letter-spacing: 0.15em;
             font-weight: 400;
+            text-transform: uppercase;
         }
 
         .intro-msg.visible {
-            opacity: 1;
-            transform: translateY(0);
+            animation: msgReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .intro-msg.hiding {
+            animation: msgHide 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes msgReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+                filter: blur(10px);
+                color: rgba(240, 232, 216, 0);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+                color: rgba(240, 232, 216, 0.95);
+            }
+        }
+
+        @keyframes msgHide {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-30px) scale(1.05);
+                filter: blur(8px);
+            }
         }
 
         .intro-msg .hl {
             color: var(--gold);
-            font-weight: 600;
-            text-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
+            font-weight: 700;
+            text-shadow:
+                0 0 30px rgba(201, 162, 39, 0.8),
+                0 0 60px rgba(201, 162, 39, 0.4);
+            animation: hlPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes hlPulse {
+            0%, 100% { text-shadow: 0 0 30px rgba(201, 162, 39, 0.8), 0 0 60px rgba(201, 162, 39, 0.4); }
+            50% { text-shadow: 0 0 50px rgba(201, 162, 39, 1), 0 0 100px rgba(201, 162, 39, 0.6); }
         }
 
         .intro-msg.final {
-            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
-            font-weight: 600;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: 0.3em;
             background: linear-gradient(135deg,
                 #6ab4f5 0%,
-                #c9a227 40%,
-                #e8c84a 60%,
+                #ffffff 25%,
+                #c9a227 50%,
+                #ffffff 75%,
                 #6ab4f5 100%);
-            background-size: 200% 200%;
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: finalShimmer 3s ease-in-out infinite;
+            text-transform: none;
         }
 
-        @keyframes finalShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        .intro-msg.final.visible {
+            animation: msgReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards, finalGlow 3s ease-in-out infinite 1s;
+        }
+
+        @keyframes finalGlow {
+            0%, 100% { background-position: 0% 50%; filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.5)); }
+            50% { background-position: 100% 50%; filter: drop-shadow(0 0 40px rgba(106, 180, 245, 0.5)); }
         }
 
         .intro-signature {
             background: linear-gradient(90deg,
                 #6ab4f5 0%,
                 #c9a227 25%,
-                #e8c84a 50%,
+                #ffffff 50%,
                 #c9a227 75%,
                 #6ab4f5 100%);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmerSig 3s ease-in-out infinite;
-            font-size: 1.1rem;
-            letter-spacing: 3px;
+            animation: shimmerSig 2s ease-in-out infinite;
+            font-size: 1.3rem;
+            letter-spacing: 4px;
         }
 
         @keyframes shimmerSig {
@@ -321,37 +388,46 @@
 
         .intro-replay {
             display: none;
-            margin-top: 1.5rem;
-            padding: 0.6rem 1.8rem;
-            background: rgba(106, 180, 245, 0.08);
-            border: 1px solid rgba(106, 180, 245, 0.25);
-            color: #6ab4f5;
-            border-radius: 30px;
+            margin-top: 2rem;
+            padding: 0.8rem 2.5rem;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            color: var(--gold);
+            border-radius: 0;
             cursor: pointer;
-            font-size: 0.85rem;
-            letter-spacing: 0.15em;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        .intro-replay.visible { display: inline-block; }
+        .intro-replay.visible {
+            display: inline-block;
+            animation: replayFade 1s ease-out forwards;
+        }
+
+        @keyframes replayFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
         .intro-replay:hover {
-            background: rgba(106, 180, 245, 0.15);
-            border-color: rgba(106, 180, 245, 0.5);
-            box-shadow: 0 0 25px rgba(106, 180, 245, 0.2);
-            transform: translateY(-2px);
+            background: rgba(201, 162, 39, 0.15);
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+            letter-spacing: 0.4em;
         }
 
         @media (max-width: 600px) {
             .intro-animation {
-                padding: 2rem 1.5rem;
-                margin: 0 1rem 2rem;
-                border-radius: 16px;
+                padding: 3rem 1.5rem;
+                margin: 0 0 2rem;
             }
-            .intro-messages { min-height: 60px; }
-            .intro-title { letter-spacing: 0.1em; }
+            .intro-messages { min-height: 80px; }
+            .intro-title { letter-spacing: 0.1em; gap: 0.15em; }
+            .intro-animation::after { width: 200px; height: 200px; }
         }
 
         /* Have Mind Media Explanation */
@@ -1318,9 +1394,9 @@
         <section class="hero">
             <div class="intro-animation" id="introBox">
                 <div class="intro-title">
-                    <span class="intro-word">HAVE</span>
-                    <span class="intro-word intro-word-mind" id="introMind">MIND</span>
-                    <span class="intro-word">MEDIA</span>
+                    <span class="intro-word" data-text="HAVE">HAVE</span>
+                    <span class="intro-word intro-word-mind" id="introMind" data-text="MIND">MIND</span>
+                    <span class="intro-word" data-text="MEDIA">MEDIA</span>
                 </div>
                 <div class="intro-messages">
                     <div class="intro-msg" id="introMsg1">The mind is not in <span class="hl">YOUR</span> mind</div>
@@ -1687,7 +1763,7 @@
 
     <script>
         // ==========================================
-        // INTRO ANIMATION
+        // EPIC INTRO ANIMATION - Cinematic Timing
         // ==========================================
         const introMind = document.getElementById('introMind');
         const introMsgs = [
@@ -1703,39 +1779,48 @@
 
         async function showIntroMsg(idx, hold = 2500) {
             const msg = introMsgs[idx];
+            msg.classList.remove('hiding');
             msg.classList.add('visible');
             await sleep(hold);
             msg.classList.remove('visible');
-            await sleep(500);
+            msg.classList.add('hiding');
+            await sleep(600);
+            msg.classList.remove('hiding');
         }
 
         async function runIntroAnimation() {
-            // Reset
+            // Reset everything
             introReplay.classList.remove('visible');
-            introMind.classList.remove('fading', 'water');
-            introMsgs.forEach(m => m.classList.remove('visible'));
+            introMind.classList.remove('fading', 'shatter');
+            introMsgs.forEach(m => {
+                m.classList.remove('visible', 'hiding');
+            });
 
-            await sleep(800);
+            // Initial pause - let the scene breathe
+            await sleep(1200);
 
-            // Fade out MIND
+            // MIND dissolves into the void
             introMind.classList.add('fading');
-            await sleep(3000);
-
-            // Start water effect
-            introMind.classList.remove('fading');
-            introMind.classList.add('water');
-
-            // Show messages
-            await showIntroMsg(0, 2500); // "not in YOUR mind"
-            await showIntroMsg(1, 2500); // "OUR MINDS, Together"
-            await showIntroMsg(2, 2000); // "WE ARE WE"
-            await showIntroMsg(3, 2500); // signature
-
-            // Final message stays
-            introMsgs[4].classList.add('visible');
             await sleep(2000);
 
-            // Show replay
+            // Show first message while MIND is gone
+            await showIntroMsg(0, 3000); // "not in YOUR mind"
+
+            // MIND shatters back into existence
+            introMind.classList.remove('fading');
+            introMind.classList.add('shatter');
+
+            await sleep(800); // Overlap with shatter animation
+
+            await showIntroMsg(1, 3000); // "OUR MINDS, Together"
+            await showIntroMsg(2, 2500); // "WE ARE WE"
+            await showIntroMsg(3, 3000); // signature symbols
+
+            // Final revelation - stays visible
+            introMsgs[4].classList.add('visible');
+            await sleep(2500);
+
+            // Replay button fades in
             introReplay.classList.add('visible');
         }
 
@@ -1743,7 +1828,10 @@
         runIntroAnimation();
 
         // Replay button
-        introReplay.addEventListener('click', runIntroAnimation);
+        introReplay.addEventListener('click', () => {
+            introMind.classList.remove('shatter');
+            runIntroAnimation();
+        });
 
         // D-Position Data
         const dPositions = {
