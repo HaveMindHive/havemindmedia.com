@@ -119,74 +119,139 @@
         }
 
         /* ==========================================
-           ANIMATED INTRO BOX
+           ANIMATED INTRO BOX - Premium Design
            ========================================== */
         .intro-animation {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
             background:
-                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80');
-            background-size: cover;
-            background-position: center;
+                radial-gradient(ellipse at 30% 20%, rgba(106, 180, 245, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(201, 162, 39, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, rgba(10, 15, 25, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
             box-shadow:
-                0 0 30px rgba(100, 160, 220, 0.2),
-                0 0 60px rgba(80, 140, 200, 0.1),
-                inset 0 0 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(100, 160, 220, 0.2);
+                0 0 0 1px rgba(106, 180, 245, 0.15),
+                0 4px 30px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(106, 180, 245, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        /* Animated starfield background */
+        .intro-animation::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1.5px 1.5px at 90px 40px, rgba(201,162,39,0.5), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1.5px 1.5px at 160px 30px, rgba(106,180,245,0.5), transparent),
+                radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 250px 20px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1.5px 1.5px at 280px 90px, rgba(201,162,39,0.4), transparent);
+            background-size: 300px 100px;
+            animation: starDrift 20s linear infinite;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes starDrift {
+            0% { background-position: 0 0; }
+            100% { background-position: 300px 100px; }
+        }
+
+        /* Subtle border glow animation */
+        .intro-animation::after {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border-radius: 24px;
+            background: linear-gradient(
+                135deg,
+                rgba(106, 180, 245, 0.3) 0%,
+                transparent 25%,
+                transparent 50%,
+                rgba(201, 162, 39, 0.3) 75%,
+                rgba(106, 180, 245, 0.3) 100%
+            );
+            background-size: 400% 400%;
+            animation: borderGlow 8s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .intro-title {
             font-family: 'Space Grotesk', var(--font-display), sans-serif;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-size: clamp(1.8rem, 6vw, 3rem);
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.3em;
+            gap: 0.25em;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .intro-word {
             background: linear-gradient(180deg,
-                #1a3a5c 0%, #2a5a8c 15%,
-                #c9a866 40%, #d4b87a 60%,
-                #c9a866 80%, #2a5a8c 95%);
+                #4a7aa8 0%,
+                #6ab4f5 20%,
+                #c9a227 45%,
+                #e8c84a 55%,
+                #c9a227 70%,
+                #6ab4f5 90%,
+                #4a7aa8 100%);
+            background-size: 100% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            filter: drop-shadow(0 0 8px rgba(135, 180, 220, 0.5));
+            animation: textShimmer 6s ease-in-out infinite;
+            text-shadow: none;
+            position: relative;
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
         }
 
         .intro-word-mind {
-            transition: all 3s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .intro-word-mind.fading {
             opacity: 0;
-            filter: blur(8px);
-            transform: scale(1.05);
+            filter: blur(12px);
+            transform: scale(1.1) translateY(-5px);
         }
 
         .intro-word-mind.water {
-            filter: url(#water-distort-mini);
-            animation: waterReveal 8s ease-out forwards;
+            animation: mindReveal 4s ease-out forwards, textShimmer 6s ease-in-out infinite;
         }
 
-        @keyframes waterReveal {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        @keyframes mindReveal {
+            0% { opacity: 0; filter: blur(8px); transform: scale(0.95); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
         }
 
         .intro-messages {
-            min-height: 60px;
+            min-height: 70px;
             position: relative;
             text-align: center;
+            z-index: 1;
         }
 
         .intro-msg {
@@ -194,11 +259,12 @@
             width: 100%;
             left: 0;
             opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.8s ease;
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-            color: var(--soft-cream);
-            letter-spacing: 0.05em;
+            transform: translateY(15px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            color: rgba(240, 232, 216, 0.9);
+            letter-spacing: 0.08em;
+            font-weight: 400;
         }
 
         .intro-msg.visible {
@@ -209,27 +275,43 @@
         .intro-msg .hl {
             color: var(--gold);
             font-weight: 600;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
         }
 
         .intro-msg.final {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-size: clamp(1.4rem, 3.5vw, 1.8rem);
             font-weight: 600;
-            background: linear-gradient(180deg, #87b4dc 0%, #c9a866 50%, #d4b87a 100%);
+            background: linear-gradient(135deg,
+                #6ab4f5 0%,
+                #c9a227 40%,
+                #e8c84a 60%,
+                #6ab4f5 100%);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: finalShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes finalShimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .intro-signature {
             background: linear-gradient(90deg,
-                #87b4dc 0%, #c9a866 50%, #87b4dc 100%);
+                #6ab4f5 0%,
+                #c9a227 25%,
+                #e8c84a 50%,
+                #c9a227 75%,
+                #6ab4f5 100%);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmerSig 4s ease-in-out infinite;
-            font-size: 1rem;
-            letter-spacing: 2px;
+            animation: shimmerSig 3s ease-in-out infinite;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
         }
 
         @keyframes shimmerSig {
@@ -239,27 +321,37 @@
 
         .intro-replay {
             display: none;
-            margin-top: 1rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(135, 180, 220, 0.1);
-            border: 1px solid rgba(135, 180, 220, 0.3);
-            color: #87b4dc;
-            border-radius: 20px;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.8rem;
+            background: rgba(106, 180, 245, 0.08);
+            border: 1px solid rgba(106, 180, 245, 0.25);
+            color: #6ab4f5;
+            border-radius: 30px;
             cursor: pointer;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
         }
 
         .intro-replay.visible { display: inline-block; }
+
         .intro-replay:hover {
-            background: rgba(135, 180, 220, 0.2);
-            box-shadow: 0 0 15px rgba(135, 180, 220, 0.3);
+            background: rgba(106, 180, 245, 0.15);
+            border-color: rgba(106, 180, 245, 0.5);
+            box-shadow: 0 0 25px rgba(106, 180, 245, 0.2);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 600px) {
-            .intro-animation { padding: 1.5rem 1rem; margin: 0 1rem 2rem; }
-            .intro-messages { min-height: 50px; }
+            .intro-animation {
+                padding: 2rem 1.5rem;
+                margin: 0 1rem 2rem;
+                border-radius: 16px;
+            }
+            .intro-messages { min-height: 60px; }
+            .intro-title { letter-spacing: 0.1em; }
         }
 
         /* Have Mind Media Explanation */
@@ -1294,8 +1386,8 @@
                     <p class="panel-desc">Folds inward through awareness. Soul Science, ancient teachings, consciousness geometry.</p>
                     <div class="panel-links">
                         <a href="education/soul-science.html">☯ Soul Science</a>
+                        <a href="education/mythic-mirror/index.html">🪞 Mythic Mirror</a>
                         <a href="ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
-                        <a href="education/socratean-education.html">🎓 Socratean AI</a>
                         <a href="ancient-mysteries/indus-script/index.html">𒀭 Indus Script</a>
                     </div>
                 </div>
@@ -1362,6 +1454,14 @@
                     <div class="card-icon">◯</div>
                     <h3>COIN Science</h3>
                     <p>The third axis of reality. Where observer meets observed — the triaxial binary explained.</p>
+                </a>
+
+                <!-- New: Games Hub -->
+                <a href="games/index.html" class="featured-card tint-coin">
+                    <span class="card-badge badge-new">New</span>
+                    <div class="card-icon">🎮</div>
+                    <h3>Games & Experiences</h3>
+                    <p>16 interactive games testing intuition, pattern recognition, and consciousness. Triaxial design.</p>
                 </a>
             </div>
         </section>
@@ -1446,7 +1546,7 @@
                     <div class="card-content">
                         <span class="card-tag tag-edu">COMPLETE</span>
                         <h3>Full Library</h3>
-                        <p>All 65 pages organized by category. Physics, tools, mysteries, research.</p>
+                        <p>All 110+ pages organized by category. Physics, games, mysteries, research.</p>
                     </div>
                     <span class="card-arrow">→</span>
                 </a>
