@@ -414,6 +414,7 @@ class SiteHeader extends HTMLElement {
                             <button class="hmm-btn hmm-sminus">S- Soul <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop drop-sminus">
                                 <div class="label">Soul Science</div>
+                                <a href="${bp}education/mythic-mirror/index.html" style="color: #c9a227; font-weight: 600;">⚡ You Are The Monster</a>
                                 <a href="${bp}education/soul-science.html">Soul Science</a>
                                 <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
                                 <a href="${bp}education/mirror/index.html">The Mirror</a>
