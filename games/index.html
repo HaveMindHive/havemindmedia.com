@@ -88,69 +88,99 @@
             color: var(--gold);
         }
 
-        /* Games Grid */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
+        /* Games List - Clean Stacked Labels */
+        .games-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
         }
 
-        .game-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.3s;
-            cursor: pointer;
+        .game-item {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: center;
+            gap: 20px;
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.03);
             text-decoration: none;
             color: inherit;
-            display: block;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
         }
 
-        .game-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        .game-item:hover {
+            background: rgba(255, 215, 0, 0.08);
+            border-left-color: var(--gold);
+        }
+
+        .game-item.featured {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), transparent);
+            border-left-color: var(--gold);
         }
 
         .game-icon {
-            font-size: 4rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            text-align: center;
+            width: 60px;
         }
 
-        .game-card h2 {
-            font-size: 1.5rem;
+        .game-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .game-info h2 {
+            font-size: 1.1rem;
             color: var(--gold);
-            margin-bottom: 10px;
+            font-weight: 500;
+            margin: 0;
         }
 
-        .game-card p {
-            opacity: 0.8;
-            line-height: 1.6;
-            margin-bottom: 15px;
+        .game-info p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            line-height: 1.5;
+            margin: 0;
+            max-width: 500px;
+        }
+
+        .game-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .game-tag {
             display: inline-block;
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
             color: var(--gold);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            white-space: nowrap;
         }
 
-        .game-card.featured {
-            grid-column: span 2;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 0, 0, 0.1));
-            border-color: var(--gold);
+        .game-item.disabled {
+            opacity: 0.4;
+            pointer-events: none;
         }
 
         @media (max-width: 700px) {
-            .game-card.featured {
-                grid-column: span 1;
+            .game-item {
+                grid-template-columns: 50px 1fr;
+                gap: 15px;
+            }
+            .game-tags {
+                display: none;
+            }
+            .game-info p {
+                display: none;
             }
         }
 
@@ -247,53 +277,50 @@
             </ul>
         </div>
 
-        <!-- FEATURED GAME -->
+        <!-- FEATURED -->
         <div class="category">
             <h2>Featured</h2>
         </div>
-
-        <div class="games-grid">
-            <a href="love-triads.html" class="game-card featured">
-                <div class="game-icon">💛🔺💛</div>
-                <h2>Love Triads</h2>
-                <p>
-                    The flagship Epoch game. Select a shadow ball, then choose three love balls to form
-                    a triangle around it. When the triad binds the shadow, all four dissolve.
-                    Love as geometric binding force.
-                </p>
-                <span class="game-tag">Match-3</span>
-                <span class="game-tag">Triaxial</span>
-                <span class="game-tag">Strategic</span>
+        <div class="games-list">
+            <a href="love-triads.html" class="game-item featured">
+                <span class="game-icon">💛🔺💛</span>
+                <div class="game-info">
+                    <h2>Love Triads</h2>
+                    <p>The flagship Epoch game. Form triangles to bind shadow. Love as geometric binding force.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Match-3</span>
+                    <span class="game-tag">Triaxial</span>
+                </div>
             </a>
         </div>
 
-        <!-- CLASSIC ESP TESTS -->
+        <!-- CLASSIC ESP -->
         <div class="category">
             <h2>Classic ESP Tests</h2>
         </div>
-
-        <div class="games-grid">
-            <a href="zener-cards.html" class="game-card">
-                <div class="game-icon">○ + ★</div>
-                <h2>Zener Cards</h2>
-                <p>
-                    The classic Rhine protocol from Duke University (1930s). 5 symbols, 20% chance rate.
-                    Test clairvoyance or precognition.
-                </p>
-                <span class="game-tag">5 Symbols</span>
-                <span class="game-tag">20% Chance</span>
-                <span class="game-tag">Classic</span>
+        <div class="games-list">
+            <a href="zener-cards.html" class="game-item">
+                <span class="game-icon">○ + ★</span>
+                <div class="game-info">
+                    <h2>Zener Cards</h2>
+                    <p>Classic Rhine protocol. 5 symbols, 20% chance rate.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">20%</span>
+                    <span class="game-tag">Classic</span>
+                </div>
             </a>
-
-            <a href="card-match.html" class="game-card">
-                <div class="game-icon">🎴 ⏱️ 🎴</div>
-                <h2>Card Match</h2>
-                <p>
-                    Intuition under pressure. The more you get right, the less time you have.
-                    Trust your gut. Don't think. React.
-                </p>
-                <span class="game-tag">Decreasing Timer</span>
-                <span class="game-tag">Streak</span>
+            <a href="card-match.html" class="game-item">
+                <span class="game-icon">🎴⏱️</span>
+                <div class="game-info">
+                    <h2>Card Match</h2>
+                    <p>Intuition under pressure. Decreasing timer.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Timed</span>
+                    <span class="game-tag">Streak</span>
+                </div>
             </a>
         </div>
 
@@ -301,51 +328,47 @@
         <div class="category">
             <h2>Intuition Training</h2>
         </div>
-
-        <div class="games-grid">
-            <a href="coin-flip.html" class="game-card">
-                <div class="game-icon">🥇 🥈 🥉</div>
-                <h2>Tri-Coin</h2>
-                <p>
-                    Binary is dogma. We train in threes. Gold, Silver, or Copper — which coin will appear?
-                    33.3% chance rate.
-                </p>
-                <span class="game-tag">3 Coins</span>
-                <span class="game-tag">33% Chance</span>
-                <span class="game-tag">Triaxial</span>
+        <div class="games-list">
+            <a href="coin-flip.html" class="game-item">
+                <span class="game-icon">🥇🥈🥉</span>
+                <div class="game-info">
+                    <h2>Tri-Coin</h2>
+                    <p>Gold, Silver, or Copper — which coin will appear? 33.3% chance.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">33%</span>
+                    <span class="game-tag">Triaxial</span>
+                </div>
             </a>
-
-            <a href="color-sense.html" class="game-card">
-                <div class="game-icon">🔴 🔵 🟡</div>
-                <h2>Color Sense</h2>
-                <p>
-                    Feel the color before you see it. Choose 3-color mode (33%) or 6-color mode (17%).
-                    Chromatic intuition training.
-                </p>
-                <span class="game-tag">3 or 6 Colors</span>
-                <span class="game-tag">Visual</span>
+            <a href="color-sense.html" class="game-item">
+                <span class="game-icon">🔴🔵🟡</span>
+                <div class="game-info">
+                    <h2>Color Sense</h2>
+                    <p>Feel the color before you see it. 3-color or 6-color mode.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Visual</span>
+                </div>
             </a>
-
-            <a href="number-feeling.html" class="game-card">
-                <div class="game-icon">1 5 9</div>
-                <h2>Number Feeling</h2>
-                <p>
-                    9 numbers (1-9), 11.1% chance. 9 = 3×3 — the triaxial square.
-                    Feel the number. Don't think. Just know.
-                </p>
-                <span class="game-tag">9 Numbers</span>
-                <span class="game-tag">11.1% Chance</span>
+            <a href="number-feeling.html" class="game-item">
+                <span class="game-icon">1 5 9</span>
+                <div class="game-info">
+                    <h2>Number Feeling</h2>
+                    <p>9 numbers, 11.1% chance. Feel the number.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">11.1%</span>
+                </div>
             </a>
-
-            <a href="epoch-symbols.html" class="game-card">
-                <div class="game-icon">△ ☆ ◎</div>
-                <h2>Epoch Symbols</h2>
-                <p>
-                    9 symbols based on Q-reduction. Test clairvoyance, precognition, or timed response.
-                    Beat the 11.1% chance rate.
-                </p>
-                <span class="game-tag">9 Symbols</span>
-                <span class="game-tag">11.1% Chance</span>
+            <a href="epoch-symbols.html" class="game-item">
+                <span class="game-icon">△ ☆ ◎</span>
+                <div class="game-info">
+                    <h2>Epoch Symbols</h2>
+                    <p>9 symbols based on Q-reduction. Beat the 11.1% chance.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">11.1%</span>
+                </div>
             </a>
         </div>
 
@@ -353,28 +376,26 @@
         <div class="category">
             <h2>Learn the Model</h2>
         </div>
-
-        <div class="games-grid">
-            <a href="love-triads-learn.html" class="game-card">
-                <div class="game-icon">💛 📖 💛</div>
-                <h2>Love Triads - Learn</h2>
-                <p>
-                    Understand the geometry of binding. Interactive lesson + quiz on
-                    triaxial harmony, shadow integration, and [1 = -1].
-                </p>
-                <span class="game-tag">Tutorial</span>
-                <span class="game-tag">Epoch Model</span>
+        <div class="games-list">
+            <a href="love-triads-learn.html" class="game-item">
+                <span class="game-icon">💛📖</span>
+                <div class="game-info">
+                    <h2>Love Triads - Learn</h2>
+                    <p>Interactive lesson on triaxial harmony and [1 = -1].</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Tutorial</span>
+                </div>
             </a>
-
-            <a href="phaistos-archetypes.html" class="game-card">
-                <div class="game-icon">🌀 ☯ 🌀</div>
-                <h2>Phaistos Archetypes</h2>
-                <p>
-                    9 archetypal symbols inspired by the Phaistos Disc. Explore each archetype's
-                    spectrum (good/bad/coin) and learn how the Shadow Operator transforms them.
-                </p>
-                <span class="game-tag">Archetypes</span>
-                <span class="game-tag">Shadow Operator</span>
+            <a href="phaistos-archetypes.html" class="game-item">
+                <span class="game-icon">🌀☯</span>
+                <div class="game-info">
+                    <h2>Phaistos Archetypes</h2>
+                    <p>9 archetypal symbols. Explore spectrums and Shadow Operator.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Archetypes</span>
+                </div>
             </a>
         </div>
 
@@ -382,39 +403,38 @@
         <div class="category">
             <h2>Advanced Training</h2>
         </div>
-
-        <div class="games-grid">
-            <a href="symbol-sender.html" class="game-card">
-                <div class="game-icon">🌊 ∿ 🎵</div>
-                <h2>Symbol Sender</h2>
-                <p>
-                    Geometric harmonic transmission. The device transmits a word as colored waves and sound.
-                    Feel the frequency signature. Which word resonates?
-                </p>
-                <span class="game-tag">Word Harmonics</span>
-                <span class="game-tag">Audio + Visual</span>
+        <div class="games-list">
+            <a href="symbol-sender.html" class="game-item">
+                <span class="game-icon">🌊∿🎵</span>
+                <div class="game-info">
+                    <h2>Symbol Sender</h2>
+                    <p>Geometric harmonic transmission. Feel the frequency signature.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Audio</span>
+                    <span class="game-tag">Visual</span>
+                </div>
             </a>
-
-            <a href="focus-mode.html" class="game-card">
-                <div class="game-icon">🔴 👁️ 🔴</div>
-                <h2>Focus Mode</h2>
-                <p>
-                    Ganzfeld-lite remote viewing training. Red focus screen + optional pink noise.
-                    Receive impressions, then match to target pool.
-                </p>
-                <span class="game-tag">Ganzfeld</span>
-                <span class="game-tag">Remote Viewing</span>
+            <a href="focus-mode.html" class="game-item">
+                <span class="game-icon">🔴👁️</span>
+                <div class="game-info">
+                    <h2>Focus Mode</h2>
+                    <p>Ganzfeld-lite remote viewing training.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Ganzfeld</span>
+                </div>
             </a>
-
-            <a href="coordinate-viewer.html" class="game-card">
-                <div class="game-icon">📍 🌍 📍</div>
-                <h2>Coordinate Viewer</h2>
-                <p>
-                    Full Stargate-style CRV protocol. Given coordinates, record impressions through 3 phases,
-                    sketch your perceptions, then match to target.
-                </p>
-                <span class="game-tag">CRV Protocol</span>
-                <span class="game-tag">Stargate</span>
+            <a href="coordinate-viewer.html" class="game-item">
+                <span class="game-icon">📍🌍</span>
+                <div class="game-info">
+                    <h2>Coordinate Viewer</h2>
+                    <p>Full Stargate-style CRV protocol.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">CRV</span>
+                    <span class="game-tag">Stargate</span>
+                </div>
             </a>
         </div>
 
@@ -422,24 +442,26 @@
         <div class="category">
             <h2>Coming Soon</h2>
         </div>
-
-        <div class="games-grid">
-            <div class="game-card" style="opacity: 0.5; cursor: default;">
-                <div class="game-icon">⏱️</div>
-                <h2>Precognition Lab</h2>
-                <p>
-                    Predict outcomes before they happen. Test your ability to sense future events.
-                </p>
-                <span class="game-tag">Future Sense</span>
+        <div class="games-list">
+            <div class="game-item disabled">
+                <span class="game-icon">⏱️</span>
+                <div class="game-info">
+                    <h2>Precognition Lab</h2>
+                    <p>Predict outcomes before they happen.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Future</span>
+                </div>
             </div>
-
-            <div class="game-card" style="opacity: 0.5; cursor: default;">
-                <div class="game-icon">🔮</div>
-                <h2>Dream Journal</h2>
-                <p>
-                    Record and analyze dreams for precognitive content. Track symbols and verify predictions.
-                </p>
-                <span class="game-tag">Dreams</span>
+            <div class="game-item disabled">
+                <span class="game-icon">🔮</span>
+                <div class="game-info">
+                    <h2>Dream Journal</h2>
+                    <p>Record and analyze dreams for precognitive content.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">Dreams</span>
+                </div>
             </div>
         </div>
 
