@@ -171,26 +171,6 @@
             z-index: 10;
         }
 
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator::after {
-            content: '↓';
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
 
         /* ===== MONSTER ENTRANCE ANIMATION ===== */
         .monster-entrance {
@@ -957,7 +937,6 @@
             </p>
             <a href="journey.html" class="hero-cta">BEGIN THE JOURNEY</a>
         </div>
-        <div class="scroll-indicator"></div>
         <div class="equation">[1 = -1]</div>
     </section>
 
