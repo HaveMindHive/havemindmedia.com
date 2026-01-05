@@ -50,14 +50,18 @@
             border-left-color: var(--blue);
         }
         .laymen h2::before {
-            content: "FOR EVERYONE: ";
+            content: "FOR EVERYONE:";
             color: var(--blue);
             font-size: 0.6em;
+            display: block;
+            margin-bottom: 5px;
         }
         .technical h2::before {
-            content: "THE GEOMETRY: ";
+            content: "THE GEOMETRY:";
             color: var(--gold);
             font-size: 0.6em;
+            display: block;
+            margin-bottom: 5px;
         }
         .image-container {
             text-align: center;
@@ -157,9 +161,34 @@
         @media (max-width: 1400px) {
             .nav { display: none; }
         }
+        .home-link {
+            position: fixed;
+            top: 15px;
+            left: 20px;
+            z-index: 1001;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .home-link a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 8px 15px;
+            border: 1px solid var(--gold);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            background: rgba(10, 10, 15, 0.9);
+        }
+        .home-link a:hover {
+            background: var(--gold);
+            color: #000;
+        }
     </style>
 </head>
 <body>
+
+<div class="home-link">
+    <a href="/">← Home</a>
+</div>
 
 <nav class="nav">
     <a href="#mirror">The Mirror</a>
@@ -305,32 +334,32 @@
     <h2 style="text-align:center;">Interactive: Mirror Depth Simulator</h2>
     <p style="text-align:center; color: var(--dim);">Move the slider to change your distance from the mirror. Watch how perceived depth differs from classical prediction.</p>
 
-    <div style="display: flex; justify-content: center; margin: 30px 0;">
-        <canvas id="mirrorCanvas" width="700" height="400" style="border: 1px solid #333; background: #0d0d12;"></canvas>
+    <div id="mirrorCanvasContainer" style="display: flex; justify-content: center; margin: 30px 0; width: 100%; overflow: hidden;">
+        <canvas id="mirrorCanvas" style="border: 1px solid #333; background: #0d0d12; max-width: 100%;"></canvas>
     </div>
 
     <div style="text-align: center; margin: 20px 0;">
-        <label style="color: var(--gold);">Distance to Mirror: </label>
-        <input type="range" id="mirrorDistance" min="10" max="200" value="100" style="width: 300px; vertical-align: middle;">
-        <span id="distanceValue" style="color: var(--blue); margin-left: 10px;">100 cm</span>
+        <label style="color: var(--gold); display: block; margin-bottom: 10px;">Distance to Mirror:</label>
+        <input type="range" id="mirrorDistance" min="10" max="200" value="100" style="width: 80%; max-width: 300px; vertical-align: middle;">
+        <span id="distanceValue" style="color: var(--blue); display: block; margin-top: 10px; font-size: 1.2em;">100 cm</span>
     </div>
 
-    <div style="display: flex; justify-content: center; gap: 40px; margin-top: 20px; font-family: monospace; font-size: 14px;">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px; font-family: monospace; font-size: 12px;">
         <div style="text-align: center;">
             <div style="color: var(--dim);">Classical Depth</div>
-            <div id="classicalDepth" style="color: #ff6b6b; font-size: 1.4em;">200 cm</div>
+            <div id="classicalDepth" style="color: #ff6b6b; font-size: 1.3em;">200 cm</div>
         </div>
         <div style="text-align: center;">
             <div style="color: var(--dim);">Perceived Depth</div>
-            <div id="perceivedDepth" style="color: var(--gold); font-size: 1.4em;">172.4 cm</div>
+            <div id="perceivedDepth" style="color: var(--gold); font-size: 1.3em;">172.4 cm</div>
         </div>
         <div style="text-align: center;">
             <div style="color: var(--dim);">Light Delay</div>
-            <div id="lightDelay" style="color: var(--blue); font-size: 1.4em;">6.67 ns</div>
+            <div id="lightDelay" style="color: var(--blue); font-size: 1.3em;">6.67 ns</div>
         </div>
         <div style="text-align: center;">
             <div style="color: var(--dim);">Depth Loss (P)</div>
-            <div id="depthLoss" style="color: #ff6b6b; font-size: 1.4em;">27.6 cm</div>
+            <div id="depthLoss" style="color: #ff6b6b; font-size: 1.3em;">27.6 cm</div>
         </div>
     </div>
 
@@ -353,6 +382,21 @@ const P = 0.27566;  // Epoch projection factor
 const P_shadow = 1 - P;
 const c = 299792458;  // speed of light m/s
 
+// Responsive canvas sizing
+function resizeMirrorCanvas() {
+    const container = document.getElementById('mirrorCanvasContainer');
+    const containerWidth = container.clientWidth;
+    const maxWidth = Math.min(containerWidth - 20, 700);
+    const aspectRatio = 700 / 400;
+    mirrorCanvas.width = maxWidth;
+    mirrorCanvas.height = maxWidth / aspectRatio;
+    updateMirrorDisplay();
+}
+
+// Initialize and handle resize
+window.addEventListener('resize', resizeMirrorCanvas);
+window.addEventListener('load', resizeMirrorCanvas);
+
 function drawMirrorDiagram(d_cm) {
     const d = d_cm / 100;  // convert to meters
     const w = mirrorCanvas.width;
@@ -361,109 +405,120 @@ function drawMirrorDiagram(d_cm) {
     mirrorCtx.fillStyle = '#0d0d12';
     mirrorCtx.fillRect(0, 0, w, h);
 
-    // Scale: let's say 200cm = 500px
-    const scale = 2.5;  // px per cm
-    const mirrorX = 200;  // mirror position in canvas
+    // Scale dynamically based on canvas width
+    const baseScale = w / 700;  // Scale factor relative to original 700px width
+    const scale = 2.5 * baseScale;  // px per cm, scaled
+    const mirrorX = 200 * baseScale;  // mirror position in canvas, scaled
     const observerX = mirrorX - d_cm * scale / 2;
     const centerY = h / 2;
+
+    // Scaled sizes
+    const dotSize = Math.max(6, 8 * baseScale);
+    const fontSize = Math.max(10, 12 * baseScale);
+    const smallFontSize = Math.max(8, 10 * baseScale);
 
     // Draw observer (eye)
     mirrorCtx.fillStyle = '#c9a227';
     mirrorCtx.beginPath();
-    mirrorCtx.arc(observerX, centerY, 8, 0, Math.PI * 2);
+    mirrorCtx.arc(observerX, centerY, dotSize, 0, Math.PI * 2);
     mirrorCtx.fill();
     mirrorCtx.fillStyle = '#c9a227';
-    mirrorCtx.font = '12px Helvetica';
+    mirrorCtx.font = fontSize + 'px Helvetica';
     mirrorCtx.textAlign = 'center';
-    mirrorCtx.fillText('YOU', observerX, centerY + 25);
+    mirrorCtx.fillText('YOU', observerX, centerY + 25 * baseScale);
 
     // Draw mirror
     mirrorCtx.strokeStyle = '#7ab8d4';
-    mirrorCtx.lineWidth = 4;
+    mirrorCtx.lineWidth = Math.max(2, 4 * baseScale);
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(mirrorX, 50);
-    mirrorCtx.lineTo(mirrorX, h - 50);
+    mirrorCtx.moveTo(mirrorX, 50 * baseScale);
+    mirrorCtx.lineTo(mirrorX, h - 50 * baseScale);
     mirrorCtx.stroke();
     mirrorCtx.fillStyle = '#7ab8d4';
-    mirrorCtx.font = '12px Helvetica';
-    mirrorCtx.fillText('MIRROR', mirrorX, 35);
+    mirrorCtx.font = fontSize + 'px Helvetica';
+    mirrorCtx.fillText('MIRROR', mirrorX, 35 * baseScale);
 
     // Classical virtual image position (2d behind observer, d behind mirror)
     const classicalX = mirrorX + d_cm * scale / 2;
     mirrorCtx.strokeStyle = '#ff6b6b44';
     mirrorCtx.lineWidth = 1;
-    mirrorCtx.setLineDash([5, 5]);
+    mirrorCtx.setLineDash([5 * baseScale, 5 * baseScale]);
     mirrorCtx.beginPath();
-    mirrorCtx.arc(classicalX, centerY, 8, 0, Math.PI * 2);
+    mirrorCtx.arc(classicalX, centerY, dotSize, 0, Math.PI * 2);
     mirrorCtx.stroke();
     mirrorCtx.setLineDash([]);
     mirrorCtx.fillStyle = '#ff6b6b';
-    mirrorCtx.fillText('Classical (2d)', classicalX, centerY + 25);
+    mirrorCtx.font = smallFontSize + 'px Helvetica';
+    mirrorCtx.fillText('Classical (2d)', classicalX, centerY + 25 * baseScale);
 
     // Perceived position (1.724d from observer)
     const perceivedD = d_cm * 1.724 / 2;  // distance behind mirror
     const perceivedX = mirrorX + perceivedD * scale / 2;
     mirrorCtx.fillStyle = '#c9a227';
     mirrorCtx.beginPath();
-    mirrorCtx.arc(perceivedX, centerY, 8, 0, Math.PI * 2);
+    mirrorCtx.arc(perceivedX, centerY, dotSize, 0, Math.PI * 2);
     mirrorCtx.fill();
-    mirrorCtx.fillText('Perceived', perceivedX, centerY + 25);
+    mirrorCtx.font = smallFontSize + 'px Helvetica';
+    mirrorCtx.fillText('Perceived', perceivedX, centerY + 25 * baseScale);
 
     // Draw light path
     mirrorCtx.strokeStyle = '#c9a22744';
-    mirrorCtx.lineWidth = 2;
-    mirrorCtx.setLineDash([3, 3]);
+    mirrorCtx.lineWidth = Math.max(1, 2 * baseScale);
+    mirrorCtx.setLineDash([3 * baseScale, 3 * baseScale]);
+    const pathOffset = 10 * baseScale;
     // To mirror
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(observerX, centerY - 10);
-    mirrorCtx.lineTo(mirrorX, centerY - 10);
+    mirrorCtx.moveTo(observerX, centerY - pathOffset);
+    mirrorCtx.lineTo(mirrorX, centerY - pathOffset);
     mirrorCtx.stroke();
     // Back from mirror
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(mirrorX, centerY + 10);
-    mirrorCtx.lineTo(observerX, centerY + 10);
+    mirrorCtx.moveTo(mirrorX, centerY + pathOffset);
+    mirrorCtx.lineTo(observerX, centerY + pathOffset);
     mirrorCtx.stroke();
     mirrorCtx.setLineDash([]);
 
     // Arrow heads
+    const arrowSize = 10 * baseScale;
     mirrorCtx.fillStyle = '#c9a227';
     // To mirror arrow
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(mirrorX - 10, centerY - 10);
-    mirrorCtx.lineTo(mirrorX - 20, centerY - 15);
-    mirrorCtx.lineTo(mirrorX - 20, centerY - 5);
+    mirrorCtx.moveTo(mirrorX - arrowSize, centerY - pathOffset);
+    mirrorCtx.lineTo(mirrorX - arrowSize * 2, centerY - pathOffset - arrowSize/2);
+    mirrorCtx.lineTo(mirrorX - arrowSize * 2, centerY - pathOffset + arrowSize/2);
     mirrorCtx.fill();
     // Return arrow
     mirrorCtx.beginPath();
-    mirrorCtx.moveTo(observerX + 10, centerY + 10);
-    mirrorCtx.lineTo(observerX + 20, centerY + 15);
-    mirrorCtx.lineTo(observerX + 20, centerY + 5);
+    mirrorCtx.moveTo(observerX + arrowSize, centerY + pathOffset);
+    mirrorCtx.lineTo(observerX + arrowSize * 2, centerY + pathOffset + arrowSize/2);
+    mirrorCtx.lineTo(observerX + arrowSize * 2, centerY + pathOffset - arrowSize/2);
     mirrorCtx.fill();
 
     // Labels for distances
     mirrorCtx.fillStyle = '#666';
-    mirrorCtx.font = '11px monospace';
+    mirrorCtx.font = smallFontSize + 'px monospace';
+    mirrorCtx.textAlign = 'center';
     const midToMirror = (observerX + mirrorX) / 2;
-    mirrorCtx.fillText('d = ' + d_cm + 'cm', midToMirror, centerY - 25);
+    mirrorCtx.fillText('d = ' + d_cm + 'cm', midToMirror, centerY - 25 * baseScale);
 
     // Distance measurements at bottom
     mirrorCtx.fillStyle = '#444';
-    mirrorCtx.fillRect(50, h - 40, w - 100, 30);
+    mirrorCtx.fillRect(30 * baseScale, h - 35 * baseScale, w - 60 * baseScale, 25 * baseScale);
     mirrorCtx.fillStyle = '#888';
-    mirrorCtx.font = '10px monospace';
-    mirrorCtx.textAlign = 'left';
-    mirrorCtx.fillText('Light path: ' + d_cm + 'cm → mirror → ' + d_cm + 'cm back = ' + (d_cm * 2) + 'cm total (round trip)', 60, h - 20);
+    mirrorCtx.font = smallFontSize + 'px monospace';
+    mirrorCtx.textAlign = 'center';
+    mirrorCtx.fillText(d_cm + 'cm → mirror → ' + d_cm + 'cm back = ' + (d_cm * 2) + 'cm total (round trip)', w / 2, h - 18 * baseScale);
 
     // P and P_shadow visualization
     const lossWidth = (classicalX - perceivedX);
-    if (lossWidth > 5) {
+    if (lossWidth > 5 * baseScale) {
         mirrorCtx.fillStyle = '#ff6b6b22';
-        mirrorCtx.fillRect(perceivedX, centerY - 40, lossWidth, 80);
+        mirrorCtx.fillRect(perceivedX, centerY - 40 * baseScale, lossWidth, 80 * baseScale);
         mirrorCtx.fillStyle = '#ff6b6b';
-        mirrorCtx.font = '10px Helvetica';
+        mirrorCtx.font = smallFontSize + 'px Helvetica';
         mirrorCtx.textAlign = 'center';
-        mirrorCtx.fillText('Lost: ' + (d_cm * P * 2).toFixed(1) + 'cm', (perceivedX + classicalX) / 2, centerY - 50);
-        mirrorCtx.fillText('(P = 27.6%)', (perceivedX + classicalX) / 2, centerY + 50);
+        mirrorCtx.fillText('Lost: ' + (d_cm * P * 2).toFixed(1) + 'cm', (perceivedX + classicalX) / 2, centerY - 50 * baseScale);
+        mirrorCtx.fillText('(P = 27.6%)', (perceivedX + classicalX) / 2, centerY + 50 * baseScale);
     }
 }
 

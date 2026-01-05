@@ -221,6 +221,39 @@ class SiteHeader extends HTMLElement {
                     padding: 0.3rem 0.4rem;
                 }
 
+                /* Collapsible nested sections */
+                .hmm-nested-toggle {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.4rem 0.6rem;
+                    color: #d0d0d0;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    transition: all 0.2s;
+                }
+                .hmm-nested-toggle:hover {
+                    background: rgba(201, 162, 39, 0.15);
+                    color: #c9a227;
+                }
+                .hmm-nested-toggle .hmm-nest-arrow {
+                    font-size: 0.6rem;
+                    transition: transform 0.2s;
+                }
+                .hmm-nested-toggle.expanded .hmm-nest-arrow {
+                    transform: rotate(180deg);
+                }
+                .hmm-nested-items {
+                    display: none;
+                    padding-left: 0.5rem;
+                    border-left: 1px solid rgba(201, 162, 39, 0.2);
+                    margin-left: 0.5rem;
+                }
+                .hmm-nested-items.show {
+                    display: block;
+                }
+
                 /* Mobile */
                 .hmm-toggle {
                     display: none;
@@ -332,23 +365,39 @@ class SiteHeader extends HTMLElement {
                                 <div class="hmm-mega-grid">
                                     <div class="hmm-mega-col">
                                         <h4>Ancient Mysteries</h4>
-                                        <a href="${bp}ancient-mysteries/voynich/index.html">Voynich Manuscript</a>
-                                        <a href="${bp}ancient-mysteries/voynich/herbal.html">- Herbal</a>
-                                        <a href="${bp}ancient-mysteries/voynich/astronomical.html">- Astronomical</a>
-                                        <a href="${bp}ancient-mysteries/voynich/biological.html">- Biological</a>
-                                        <a href="${bp}ancient-mysteries/voynich/zodiac.html">- Zodiac</a>
-                                        <a href="${bp}ancient-mysteries/voynich/pharmaceutical.html">- Pharmaceutical</a>
-                                        <a href="${bp}ancient-mysteries/voynich/cosmological.html">- Cosmological</a>
-                                        <a href="${bp}ancient-mysteries/voynich/recipes.html">- Recipes</a>
-                                        <a href="${bp}ancient-mysteries/voynich/analysis.html">- Analysis</a>
+                                        <div class="hmm-nested">
+                                            <div class="hmm-nested-toggle" data-nest="voynich">
+                                                <span>📜 Voynich Manuscript</span>
+                                                <span class="hmm-nest-arrow">▼</span>
+                                            </div>
+                                            <div class="hmm-nested-items" id="nest-voynich">
+                                                <a href="${bp}ancient-mysteries/voynich/index.html">Overview</a>
+                                                <a href="${bp}ancient-mysteries/voynich/herbal.html">Herbal</a>
+                                                <a href="${bp}ancient-mysteries/voynich/astronomical.html">Astronomical</a>
+                                                <a href="${bp}ancient-mysteries/voynich/biological.html">Biological</a>
+                                                <a href="${bp}ancient-mysteries/voynich/zodiac.html">Zodiac</a>
+                                                <a href="${bp}ancient-mysteries/voynich/pharmaceutical.html">Pharmaceutical</a>
+                                                <a href="${bp}ancient-mysteries/voynich/cosmological.html">Cosmological</a>
+                                                <a href="${bp}ancient-mysteries/voynich/recipes.html">Recipes</a>
+                                                <a href="${bp}ancient-mysteries/voynich/analysis.html">Analysis</a>
+                                            </div>
+                                        </div>
                                         <hr>
                                         <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
                                         <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
                                         <a href="${bp}ancient-mysteries/texts/ancient-mathematics-v1.0.html">Ancient Mathematics</a>
                                         <hr>
-                                        <a href="${bp}ancient-mysteries/indus-script/index.html">Indus Valley Script</a>
-                                        <a href="${bp}ancient-mysteries/indus-script/translator.html">- Translator</a>
-                                        <a href="${bp}ancient-mysteries/indus-script/sign-reference.html">- Sign Reference</a>
+                                        <div class="hmm-nested">
+                                            <div class="hmm-nested-toggle" data-nest="indus">
+                                                <span>𒀭 Indus Valley Script</span>
+                                                <span class="hmm-nest-arrow">▼</span>
+                                            </div>
+                                            <div class="hmm-nested-items" id="nest-indus">
+                                                <a href="${bp}ancient-mysteries/indus-script/index.html">Overview</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/translator.html">Translator</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/sign-reference.html">Sign Reference</a>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="hmm-mega-col">
                                         <h4>Norse Artifacts</h4>
@@ -432,6 +481,18 @@ class SiteHeader extends HTMLElement {
         toggle.addEventListener('click', () => {
             nav.classList.toggle('show');
             toggle.textContent = nav.classList.contains('show') ? '✕' : '☰';
+        });
+
+        // Nested collapsible sections
+        const nestedToggles = this.querySelectorAll('.hmm-nested-toggle');
+        nestedToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const nestId = toggle.getAttribute('data-nest');
+                const items = this.querySelector('#nest-' + nestId);
+                toggle.classList.toggle('expanded');
+                items.classList.toggle('show');
+            });
         });
     }
 }

@@ -64,8 +64,8 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background:
-                radial-gradient(ellipse at center, transparent 30%, rgba(3, 5, 8, 0.6) 100%),
-                linear-gradient(180deg, transparent 70%, rgba(3, 5, 8, 0.98) 100%);
+                radial-gradient(ellipse at center, rgba(3, 5, 8, 0.3) 0%, rgba(3, 5, 8, 0.7) 100%),
+                linear-gradient(180deg, rgba(3, 5, 8, 0.2) 0%, transparent 30%, transparent 70%, rgba(3, 5, 8, 0.98) 100%);
             z-index: -1;
             pointer-events: none;
         }
@@ -132,7 +132,10 @@
             color: var(--gold);
             letter-spacing: 5px;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+            text-shadow:
+                0 0 40px rgba(201, 162, 39, 0.3),
+                0 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(0, 0, 0, 0.6);
         }
 
         .hero .tagline {
@@ -141,12 +144,18 @@
             font-style: italic;
             margin-bottom: 1.5rem;
             letter-spacing: 2px;
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 15px rgba(0, 0, 0, 0.5);
         }
 
         .hero .wisdom {
             font-size: 1.1rem;
             color: var(--hazel-light);
             margin-bottom: 2rem;
+            text-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 15px rgba(0, 0, 0, 0.5);
         }
 
         .principle-box {
@@ -181,7 +190,9 @@
             color: var(--gold);
             opacity: 0.9;
             margin: 0.3rem 0;
-            text-shadow: 0 0 20px rgba(201, 162, 39, 0.3);
+            text-shadow:
+                0 0 20px rgba(201, 162, 39, 0.3),
+                0 1px 3px rgba(0, 0, 0, 0.9);
         }
 
         .rune-sigil .rune-translation {
@@ -189,9 +200,10 @@
             font-size: 0.75rem;
             color: var(--soft-blue);
             letter-spacing: 2px;
-            opacity: 0.6;
+            opacity: 0.8;
             margin-top: 0.8rem;
             font-style: italic;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         /* ==========================================
@@ -539,21 +551,24 @@
             color: var(--gold);
             margin-bottom: 1.5rem;
             font-size: 1.6rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         .brand-section p {
             font-size: 1.05rem;
             line-height: 1.9;
             color: var(--soft-cream);
-            opacity: 0.85;
+            opacity: 0.9;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .brand-section .highlight {
             color: var(--bright-blue);
             font-style: italic;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
         /* S+/S- Dual Science Section */
