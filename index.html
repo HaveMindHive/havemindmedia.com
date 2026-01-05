@@ -1351,6 +1351,37 @@
         /* ============================================
            FOUNDERS SECTION
            ============================================ */
+        /* Minimal Gratitude Section */
+        .gratitude-section {
+            max-width: 600px;
+            margin: 3rem auto 2rem;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .gratitude-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--soft-cream);
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .gratitude-link {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .gratitude-link:hover {
+            opacity: 1;
+        }
+
         .founders-section {
             max-width: 1000px;
             margin: 4rem auto;
@@ -1825,40 +1856,13 @@
             </div>
         </section>
 
-        <!-- Dedication Section -->
-        <section id="dedication" class="founders-section">
-            <div class="founders-header">
-                <h2>IN HONOR OF</h2>
-                <div class="rune-divider">The storytellers who shaped this work and this soul</div>
-            </div>
-
-            <div class="founders-container">
-                <div class="founder-card">
-                    <div class="founder-image">
-                        <img src="documents/tribute/images/harper-lee-award.jpg" alt="Cassandra King Conroy" onerror="this.parentElement.style.background='linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(26, 42, 58, 0.6))'">
-                    </div>
-                    <div class="founder-info">
-                        <h3>Cassandra King Conroy</h3>
-                        <p class="title">My Mother</p>
-                        <p class="bio">Novelist, storyteller, and the first voice I ever heard reading stories aloud. Harper Lee Award recipient, 2025. Because you have always taught me balance, because you ARE balance, you are the coin.</p>
-                    </div>
-                </div>
-
-                <div class="founder-card">
-                    <div class="founder-image">
-                        <img src="documents/tribute/images/pat-cassandra-beaufort.jpg" alt="Pat Conroy" onerror="this.parentElement.style.background='linear-gradient(135deg, rgba(70, 130, 180, 0.3), rgba(26, 42, 58, 0.6))'">
-                    </div>
-                    <div class="founder-info">
-                        <h3>Pat Conroy</h3>
-                        <p class="title">My Stepfather | My Kindred Soul</p>
-                        <p class="bio">"Go big, son. Don't believe anything. Be it." Author of The Prince of Tides, The Great Santini, and the voice that taught me great teachers never stop teaching.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="documents/tribute/index.html" style="display: inline-block; padding: 12px 30px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 8px; color: var(--gold); text-decoration: none; font-family: var(--font-display); letter-spacing: 2px; transition: all 0.3s ease;">Read the Full Tribute</a>
-            </div>
+        <!-- Gratitude -->
+        <section class="gratitude-section">
+            <p class="gratitude-text">
+                To my family and friends who have loved and supported me—thank you.<br>
+                And to those who didn't: thank you for keeping the iron hot enough to render out the impurities.
+            </p>
+            <a href="documents/tribute/index.html" class="gratitude-link">Full Tribute →</a>
         </section>
     </main>
 
