@@ -43,9 +43,14 @@
         footer .epoch-sig { font-size: 1.2rem; color: #b49664; margin-top: 15px; letter-spacing: 3px; }
 
         @media (max-width: 768px) { nav ul { gap: 15px; } nav a { font-size: 0.75rem; } .page-header h1 { font-size: 1.8rem; } table { font-size: 0.85rem; } th, td { padding: 8px 10px; } }
+        .home-nav { position: fixed; top: 15px; left: 15px; z-index: 9999; }
+        .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
+        .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
 </head>
 <body>
+    <div class="home-nav"><a href="/">← Home</a></div>
+
     <nav>
         <ul>
             <li><a href="index.html">Overview</a></li>

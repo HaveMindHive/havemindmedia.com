@@ -707,9 +707,14 @@
             .bridge-arrow { transform: rotate(90deg); }
             .great-year { font-size: 3.5rem; }
         }
+        .home-nav { position: fixed; top: 15px; left: 15px; z-index: 9999; }
+        .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
+        .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
 </head>
 <body>
+    <div class="home-nav"><a href="/">← Home</a></div>
+
     <!-- Temple Atmosphere -->
     <div class="temple-bg"></div>
     <div class="zodiac-ring"></div>
@@ -952,6 +957,9 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .home-nav { position: fixed; top: 15px; left: 15px; z-index: 9999; }
+        .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
+        .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
 </body>
 </html>

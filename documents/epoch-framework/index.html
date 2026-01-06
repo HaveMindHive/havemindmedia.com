@@ -387,9 +387,13 @@
         .nav-dropdown .icon { width: 22px; text-align: center; }
         .nav-dropdown .divider { height: 1px; background: rgba(201, 162, 39, 0.2); margin: 0.5rem 0; }
         .container { padding-top: 80px; }
+        .home-nav { position: fixed; top: 15px; left: 15px; z-index: 9999; }
+        .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
+        .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
 </head>
 <body>
+    <div class="home-nav"><a href="/">← Home</a></div>
     <!-- Unified Navigation -->
     <nav class="unified-nav">
         <a href="../../index.html" class="nav-brand">
