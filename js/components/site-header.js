@@ -383,8 +383,16 @@ class SiteHeader extends HTMLElement {
                             <div class="hmm-drop drop-splus">
                                 <div class="label">Core Physics</div>
                                 <a href="${bp}documents/index.html" style="color: #c9a227; font-weight: 600;">📜 White Papers</a>
-                                <a href="${bp}physics/standard-model-failures/index.html" style="color: #f85149; font-weight: 600;">⚠ Standard Model Failures (NEW)</a>
-                                <a href="${bp}physics/atomic-derivations/index.html" style="color: #3fb950; font-weight: 600;">&#9883; Atomic Derivations</a>
+                                <a href="${bp}physics/standard-model-failures/index.html" style="color: #f85149; font-weight: 600;">⚠ Standard Model Failures</a>
+                                <a class="sub" href="${bp}physics/standard-model-failures/hierarchy-problem.html">Hierarchy Problem</a>
+                                <a class="sub" href="${bp}physics/standard-model-failures/measurement-problem.html">Measurement Problem</a>
+                                <a class="sub" href="${bp}physics/standard-model-failures/dark-matter-energy.html">Dark Matter & Energy</a>
+                                <a class="sub" href="${bp}physics/standard-model-failures/fine-structure-constant.html">Fine Structure Constant</a>
+                                <a class="sub" href="${bp}physics/standard-model-failures/proton-electron-ratio.html">Proton-Electron Ratio</a>
+                                <a href="${bp}physics/atomic-derivations/index.html" style="color: #3fb950; font-weight: 600;">⚛ Atomic Derivations</a>
+                                <a class="sub" href="${bp}physics/atomic-derivations/hydrogen.html">Hydrogen</a>
+                                <a class="sub" href="${bp}physics/atomic-derivations/helium.html">Helium</a>
+                                <a class="sub" href="${bp}physics/atomic-derivations/lithium.html">Lithium</a>
                                 <a href="${bp}physics/three-body-geometry.html">Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}physics/jwst-geometric-explorer.html">JWST Explorer</a>
@@ -396,6 +404,7 @@ class SiteHeader extends HTMLElement {
                                 <a class="sub" href="${bp}cedga/pages/balance-law.html">Balance Law</a>
                                 <a class="sub" href="${bp}cedga/tools/m4-simulator.html">M4 Simulator</a>
                                 <a class="sub" href="${bp}cedga/research/test-analysis.html">Test Analysis</a>
+                                <a class="sub" href="${bp}physics/triaxial-dipyramid-os/index.html" style="color: #3fb950;">Triaxial Dipyramid OS</a>
                                 <hr>
                                 <div class="label">Models</div>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
@@ -428,6 +437,12 @@ class SiteHeader extends HTMLElement {
                                 <div class="label">Education</div>
                                 <a href="${bp}education/socratean-education.html">Socratean AI</a>
                                 <a href="${bp}education/geometry-challenge.html">Geometry Challenge</a>
+                                <hr>
+                                <div class="label">Ancient Knowledge</div>
+                                <a href="${bp}rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html" style="color: #3fb950; font-weight: 600;">🔱 Rosetta Engine</a>
+                                <a href="${bp}ancient-mysteries/indus-script/universal-language-theory.html">Universal Language Theory</a>
+                                <a href="${bp}universal-language-generator/ulg-app_v1.0_01-06-2026.html">Universal Language Generator</a>
+                                <a href="${bp}games/symbol-sender.html">🎮 ULG Transmitter Game</a>
                             </div>
                         </div>
 
@@ -442,6 +457,8 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
                                 <hr>
                                 <div class="label">Tools</div>
+                                <a href="${bp}universal-language-generator/ulg-app_v1.0_01-06-2026.html" style="color: #3fb950; font-weight: 600;">🗣 Universal Language Generator</a>
+                                <a href="${bp}games/symbol-sender.html" style="color: #3fb950;">🎮 ULG Transmitter Game</a>
                                 <a href="${bp}tools/epoch-oracle/index.html">Epoch Oracle</a>
                                 <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
                                 <a href="${bp}games/balance/index.html">Balance Game</a>
@@ -493,6 +510,14 @@ class SiteHeader extends HTMLElement {
                                                 <a href="${bp}ancient-mysteries/indus-script/index.html">Overview</a>
                                                 <a href="${bp}ancient-mysteries/indus-script/translator.html">Translator</a>
                                                 <a href="${bp}ancient-mysteries/indus-script/sign-reference.html">Sign Reference</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/epoch-mathematics.html">Epoch Mathematics</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/universal-language-theory.html">Universal Language Theory</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/linear-a.html">Linear A Connections</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/figurines.html">Figurines</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/temple-priest-king.html">Temple: Priest King</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/temple-dancing-girl.html">Temple: Dancing Girl</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/temple-mother-goddess.html">Temple: Mother Goddess</a>
+                                                <a href="${bp}ancient-mysteries/indus-script/temple-sacred-bull.html">Temple: Sacred Bull</a>
                                             </div>
                                         </div>
                                     </div>
