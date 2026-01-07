@@ -1,0 +1,482 @@
+{
+  "meta": {
+    "version": "1.0",
+    "created": "2026-01-06",
+    "author": "Have Mind Media",
+    "project": "The Rosetta Engine",
+    "principle": "[1 = -1]"
+  },
+  "dPositions": {
+    "1": {
+      "name": "Origin / WE",
+      "meaning": "Connection, collective unity, the source from which all emerges",
+      "triaxialRole": "The origin point where all axes meet",
+      "healingFunction": "Establishing connection, grounding to source",
+      "associatedWords": ["ZERO", "MIRROR", "CONFLICT", "WE", "TOGETHER"],
+      "color": "#3fb950"
+    },
+    "2": {
+      "name": "Healing",
+      "meaning": "Restoration, medicine, the process of return to wholeness",
+      "triaxialRole": "S- dominant (inward restoration)",
+      "healingFunction": "The wound that opens for healing",
+      "associatedWords": ["DEATH", "ALONE", "RELATIONSHIP", "MEDICINE"],
+      "color": "#1abc9c"
+    },
+    "3": {
+      "name": "Healer",
+      "meaning": "The carrier, the one who transmits healing energy",
+      "triaxialRole": "Balanced S+/S- with COIN access",
+      "healingFunction": "The active agent of transformation",
+      "associatedWords": ["HOLD", "STRENGTH", "PRACTICE", "GENUINE", "OUTWARD"],
+      "color": "#ff6b6b"
+    },
+    "4": {
+      "name": "Crossroads",
+      "meaning": "Choice point, observer position, the builder",
+      "triaxialRole": "COIN dominant (observer state)",
+      "healingFunction": "The moment of decision",
+      "associatedWords": ["MANTRA", "METHODOLOGY", "SYSTEM", "BUILD"],
+      "color": "#ff6b35"
+    },
+    "5": {
+      "name": "Navigator",
+      "meaning": "Direction, way-finding, guidance",
+      "triaxialRole": "Transitional state",
+      "healingFunction": "Finding the way through",
+      "associatedWords": ["COIN", "BE THE COIN", "GUIDE", "PATH"],
+      "color": "#9b59b6",
+      "emergent": true
+    },
+    "6": {
+      "name": "Power / Self",
+      "meaning": "Personal power, authentic self, individual truth",
+      "triaxialRole": "S+ dominant (outward expression)",
+      "healingFunction": "Claiming personal sovereignty",
+      "associatedWords": ["TRUTH", "AWARENESS", "INWARD", "PERFORMANCE", "SELF"],
+      "color": "#00bcd4"
+    },
+    "7": {
+      "name": "Present Moment",
+      "meaning": "Timeless instant, presence without past or future",
+      "triaxialRole": "Perfect COIN (observer in pure presence)",
+      "healingFunction": "Presence as the healing state",
+      "associatedWords": ["FLIP", "PARADOX", "TRIAD", "COMPASSION", "NOW"],
+      "color": "#c9a227"
+    },
+    "8": {
+      "name": "Deep Water",
+      "meaning": "Hidden truth, the depths, what lies beneath",
+      "triaxialRole": "S- extreme (deepest inward)",
+      "healingFunction": "Diving into shadow for integration",
+      "associatedWords": ["UNITY", "QUANTUM", "LIE", "SURVIVE", "DEEP"],
+      "color": "#006994"
+    },
+    "9": {
+      "name": "Anchor / Love",
+      "meaning": "Unconditional love, binding force, completion",
+      "triaxialRole": "Unified field state",
+      "healingFunction": "Love as the ultimate healing force",
+      "associatedWords": ["BOTH", "HONEST", "PROTECTION", "LOVE", "COMPLETE"],
+      "color": "#c0392b",
+      "emergent": true
+    }
+  },
+  "scripts": {
+    "voynich": {
+      "id": "voynich",
+      "name": "Voynich Manuscript",
+      "period": "15th century CE?",
+      "location": "Beinecke Rare Book Library, Yale University",
+      "corpusSize": "~170,000 glyphs across 240 pages",
+      "writingSystem": "Unique 'Voynichese' with ~30 distinct characters",
+      "status": "Undeciphered",
+      "evidenceQuality": "Medium-High",
+      "description": "The Voynich Manuscript is a visual cryptography system where text provides extraction parameters and images provide the data field.",
+      "sections": {
+        "herbal": { "folioRange": "f1r-f66v", "primaryDPositions": [2, 3], "theme": "Healing plants" },
+        "astronomical": { "folioRange": "f67r-f73v", "primaryDPositions": [4, 5], "theme": "Celestial navigation" },
+        "biological": { "folioRange": "f75r-f84v", "primaryDPositions": [8], "theme": "Deep water/pools" },
+        "cosmological": { "folioRange": "f85r-f86v", "primaryDPositions": [1, 9], "theme": "Origin and completion" },
+        "pharmaceutical": { "folioRange": "f87r-f102v", "primaryDPositions": [2, 3, 6], "theme": "Medicine preparation" },
+        "recipes": { "folioRange": "f103r-f116v", "primaryDPositions": [4], "theme": "Methodology" }
+      }
+    },
+    "indus": {
+      "id": "indus",
+      "name": "Indus Valley Script",
+      "period": "2600-1900 BCE",
+      "location": "Over 4,000 inscribed objects across Pakistan/India",
+      "corpusSize": "~400-450 distinct signs",
+      "writingSystem": "Possibly logo-syllabic",
+      "status": "Undeciphered",
+      "evidenceQuality": "High",
+      "description": "The Indus Valley civilization produced seals and inscriptions showing geometric patterns that map to D-positions."
+    },
+    "linearA": {
+      "id": "linearA",
+      "name": "Linear A",
+      "period": "1800-1450 BCE",
+      "location": "Crete and Aegean islands",
+      "corpusSize": "~7,000 signs in ~1,500 inscriptions",
+      "writingSystem": "Syllabic (related to Linear B)",
+      "status": "Undeciphered (language unknown)",
+      "evidenceQuality": "Medium",
+      "description": "Minoan script showing connections to both Indus and later Greek systems."
+    },
+    "rongorongo": {
+      "id": "rongorongo",
+      "name": "Rongorongo",
+      "period": "pre-1860s CE",
+      "location": "Easter Island (Rapa Nui)",
+      "corpusSize": "~14,000 glyphs across 24 surviving tablets",
+      "writingSystem": "Logo-syllabic (probable)",
+      "status": "Undeciphered",
+      "evidenceQuality": "Medium-Low",
+      "description": "The script encodes meaning through the Q² transformation - the 180° flip between lines. RONGORONGO = D₃ = Healer.",
+      "uniqueFeature": "Reverse Boustrophedon - every other line is read upside-down (Q² = -1 transformation)"
+    },
+    "phaistos": {
+      "id": "phaistos",
+      "name": "Phaistos Disc",
+      "period": "1700 BCE?",
+      "location": "Heraklion Archaeological Museum, Crete",
+      "corpusSize": "241 tokens, 45 distinct signs",
+      "writingSystem": "Stamped (unique manufacturing method)",
+      "status": "Undeciphered",
+      "evidenceQuality": "Low-Medium",
+      "description": "Spiral arrangement embeds the triaxial system: Side A (31 groups) reads outward (S+ expansion), Side B (30 groups) reads inward (S- contraction)."
+    }
+  },
+  "symbols": [
+    {
+      "id": "voynich-gallows-01",
+      "script": "voynich",
+      "name": "Curved Gallows Character",
+      "evaCode": "k",
+      "dPosition": 3,
+      "frequency": "High in pharmaceutical section",
+      "geometricBasis": "Vertical + curve = transmission channel",
+      "context": ["pharmaceutical", "herbal"],
+      "triaxialState": { "sPlus": 0.4, "sMinus": 0.4, "coin": 0.2 },
+      "confidence": 0.75,
+      "image": "voynich-gallows-01.svg"
+    },
+    {
+      "id": "voynich-o-01",
+      "script": "voynich",
+      "name": "EVA 'o' Character",
+      "evaCode": "o",
+      "dPosition": 1,
+      "frequency": "Highest overall",
+      "geometricBasis": "Circle = source/unity",
+      "context": ["all sections"],
+      "triaxialState": { "sPlus": 0.33, "sMinus": 0.33, "coin": 0.34 },
+      "confidence": 0.85,
+      "image": "voynich-o-01.svg"
+    },
+    {
+      "id": "indus-fish-01",
+      "script": "indus",
+      "name": "Fish Sign (Basic Form)",
+      "signNumber": "M001",
+      "dPosition": 5,
+      "frequency": "Most common sign",
+      "geometricBasis": "Vesica piscis (two circles overlapping)",
+      "interpretation": "Guide, direction, measurement",
+      "triaxialState": { "sPlus": 0.5, "sMinus": 0.3, "coin": 0.2 },
+      "confidence": 0.9,
+      "image": "indus-fish-01.svg",
+      "sketchfabModel": "https://sketchfab.com/3d-models/indus-valley-seal-fish"
+    },
+    {
+      "id": "indus-seated-figure-01",
+      "script": "indus",
+      "name": "Seated Horned Figure",
+      "signNumber": "M002",
+      "dPosition": 3,
+      "frequency": "Found on major seals",
+      "geometricBasis": "Triangle (seated) + vertical (horns)",
+      "interpretation": "The Healer, proto-Shiva, mediator",
+      "triaxialState": { "sPlus": 0.3, "sMinus": 0.4, "coin": 0.3 },
+      "confidence": 0.85,
+      "image": "indus-seated-01.svg"
+    },
+    {
+      "id": "indus-bull-01",
+      "script": "indus",
+      "name": "Bull Sign",
+      "signNumber": "M003",
+      "dPosition": 6,
+      "frequency": "Common on seals",
+      "geometricBasis": "Powerful stance, individual form",
+      "interpretation": "Power, individual authority",
+      "triaxialState": { "sPlus": 0.7, "sMinus": 0.1, "coin": 0.2 },
+      "confidence": 0.8,
+      "image": "indus-bull-01.svg"
+    },
+    {
+      "id": "rongorongo-200",
+      "script": "rongorongo",
+      "name": "Standing Human Figure",
+      "barthelNumber": 200,
+      "dPosition": 2,
+      "frequency": "19.5% - Most common",
+      "geometricBasis": "Vertical human form",
+      "interpretation": "Healing, restoration",
+      "triaxialState": { "sPlus": 0.2, "sMinus": 0.6, "coin": 0.2 },
+      "confidence": 0.85,
+      "image": "rongorongo-200.svg"
+    },
+    {
+      "id": "rongorongo-61",
+      "script": "rongorongo",
+      "name": "Hand Sign 1",
+      "barthelNumber": 61,
+      "dPosition": 7,
+      "frequency": "Vowel marker",
+      "geometricBasis": "Hand gesture",
+      "interpretation": "Present Moment - part of healing arc",
+      "healingArc": true,
+      "triaxialState": { "sPlus": 0.33, "sMinus": 0.33, "coin": 0.34 },
+      "confidence": 0.7,
+      "image": "rongorongo-61.svg"
+    },
+    {
+      "id": "rongorongo-62",
+      "script": "rongorongo",
+      "name": "Hand Sign 2",
+      "barthelNumber": 62,
+      "dPosition": 8,
+      "frequency": "Vowel marker",
+      "geometricBasis": "Hand gesture",
+      "interpretation": "Deep Water - part of healing arc",
+      "healingArc": true,
+      "triaxialState": { "sPlus": 0.1, "sMinus": 0.8, "coin": 0.1 },
+      "confidence": 0.7,
+      "image": "rongorongo-62.svg"
+    },
+    {
+      "id": "rongorongo-63",
+      "script": "rongorongo",
+      "name": "Hand Sign 3",
+      "barthelNumber": 63,
+      "dPosition": 9,
+      "frequency": "Vowel marker - EMERGENT",
+      "geometricBasis": "Hand gesture",
+      "interpretation": "Anchor/Love - part of healing arc",
+      "healingArc": true,
+      "triaxialState": { "sPlus": 0.5, "sMinus": 0.5, "coin": 0.0 },
+      "confidence": 0.7,
+      "image": "rongorongo-63.svg",
+      "emergent": true
+    },
+    {
+      "id": "rongorongo-64",
+      "script": "rongorongo",
+      "name": "Hand Sign 4",
+      "barthelNumber": 64,
+      "dPosition": 1,
+      "frequency": "Vowel marker",
+      "geometricBasis": "Hand gesture",
+      "interpretation": "Origin/WE - part of healing arc",
+      "healingArc": true,
+      "triaxialState": { "sPlus": 0.33, "sMinus": 0.33, "coin": 0.34 },
+      "confidence": 0.7,
+      "image": "rongorongo-64.svg"
+    },
+    {
+      "id": "rongorongo-65",
+      "script": "rongorongo",
+      "name": "Hand Sign 5",
+      "barthelNumber": 65,
+      "dPosition": 2,
+      "frequency": "Vowel marker",
+      "geometricBasis": "Hand gesture",
+      "interpretation": "Healing - completes healing arc",
+      "healingArc": true,
+      "triaxialState": { "sPlus": 0.2, "sMinus": 0.6, "coin": 0.2 },
+      "confidence": 0.7,
+      "image": "rongorongo-65.svg"
+    },
+    {
+      "id": "rongorongo-tangata-manu",
+      "script": "rongorongo",
+      "name": "Tangata Manu (Birdman)",
+      "barthelNumber": 76,
+      "dPosition": 5,
+      "frequency": "~15 instances",
+      "geometricBasis": "Human-bird hybrid",
+      "interpretation": "Navigator/guide - EMERGENT",
+      "triaxialState": { "sPlus": 0.5, "sMinus": 0.3, "coin": 0.2 },
+      "confidence": 0.8,
+      "image": "rongorongo-birdman.svg",
+      "emergent": true
+    },
+    {
+      "id": "linearA-ab31",
+      "script": "linearA",
+      "name": "AB31 (Fish-like)",
+      "signNumber": "AB31",
+      "dPosition": 5,
+      "frequency": "Medium",
+      "geometricBasis": "Fish form",
+      "indusParallel": "Fish sign",
+      "triaxialState": { "sPlus": 0.5, "sMinus": 0.3, "coin": 0.2 },
+      "confidence": 0.6,
+      "image": "linearA-ab31.svg"
+    },
+    {
+      "id": "linearA-ab13",
+      "script": "linearA",
+      "name": "AB13 (Vessel)",
+      "signNumber": "AB13",
+      "dPosition": 8,
+      "frequency": "Medium",
+      "geometricBasis": "Container form",
+      "linearBParallel": "ME (container)",
+      "indusParallel": "Jar sign",
+      "triaxialState": { "sPlus": 0.1, "sMinus": 0.7, "coin": 0.2 },
+      "confidence": 0.6,
+      "image": "linearA-ab13.svg"
+    },
+    {
+      "id": "linearA-ab27",
+      "script": "linearA",
+      "name": "AB27 (Star)",
+      "signNumber": "AB27",
+      "dPosition": 4,
+      "frequency": "Low-Medium",
+      "geometricBasis": "Star/radial form",
+      "indusParallel": "Star sign",
+      "triaxialState": { "sPlus": 0.33, "sMinus": 0.33, "coin": 0.34 },
+      "confidence": 0.55,
+      "image": "linearA-ab27.svg"
+    },
+    {
+      "id": "linearA-ab80",
+      "script": "linearA",
+      "name": "AB80 (Human)",
+      "signNumber": "AB80",
+      "dPosition": 6,
+      "frequency": "Medium",
+      "geometricBasis": "Human figure",
+      "linearBParallel": "MA (person)",
+      "indusParallel": "Standing figure",
+      "triaxialState": { "sPlus": 0.6, "sMinus": 0.2, "coin": 0.2 },
+      "confidence": 0.6,
+      "image": "linearA-ab80.svg"
+    },
+    {
+      "id": "phaistos-walking-man",
+      "script": "phaistos",
+      "name": "Walking Man",
+      "signNumber": "01",
+      "dPosition": 6,
+      "frequency": "High",
+      "geometricBasis": "Human in motion",
+      "triaxialState": { "sPlus": 0.7, "sMinus": 0.1, "coin": 0.2 },
+      "confidence": 0.65,
+      "image": "phaistos-01.svg"
+    },
+    {
+      "id": "phaistos-head-plume",
+      "script": "phaistos",
+      "name": "Head with Plume",
+      "signNumber": "02",
+      "dPosition": 3,
+      "frequency": "High",
+      "geometricBasis": "Authority/healer figure",
+      "triaxialState": { "sPlus": 0.4, "sMinus": 0.4, "coin": 0.2 },
+      "confidence": 0.65,
+      "image": "phaistos-02.svg"
+    },
+    {
+      "id": "phaistos-shield",
+      "script": "phaistos",
+      "name": "Shield",
+      "signNumber": "12",
+      "dPosition": 6,
+      "frequency": "Medium",
+      "geometricBasis": "Protective form",
+      "triaxialState": { "sPlus": 0.6, "sMinus": 0.2, "coin": 0.2 },
+      "confidence": 0.6,
+      "image": "phaistos-12.svg"
+    },
+    {
+      "id": "phaistos-rosette",
+      "script": "phaistos",
+      "name": "Rosette",
+      "signNumber": "31",
+      "dPosition": 1,
+      "frequency": "Medium",
+      "geometricBasis": "Radial flower - origin/center",
+      "triaxialState": { "sPlus": 0.33, "sMinus": 0.33, "coin": 0.34 },
+      "confidence": 0.7,
+      "image": "phaistos-31.svg"
+    },
+    {
+      "id": "phaistos-wave",
+      "script": "phaistos",
+      "name": "Wave Pattern",
+      "signNumber": "25",
+      "dPosition": 8,
+      "frequency": "Low",
+      "geometricBasis": "Water/wave form - deep water",
+      "triaxialState": { "sPlus": 0.1, "sMinus": 0.8, "coin": 0.1 },
+      "confidence": 0.6,
+      "image": "phaistos-25.svg"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "indus-seal-pashupati",
+      "name": "Pashupati Seal (Seated Figure)",
+      "script": "indus",
+      "dPosition": 3,
+      "museum": "National Museum, New Delhi",
+      "description": "The famous 'Proto-Shiva' or Pashupati seal showing a seated horned figure",
+      "sketchfabUrl": "https://sketchfab.com/3d-models/indus-valley-seal"
+    },
+    {
+      "id": "phaistos-disc",
+      "name": "Phaistos Disc",
+      "script": "phaistos",
+      "dPosition": 4,
+      "museum": "Heraklion Archaeological Museum",
+      "description": "Unique stamped clay disc with spiral text on both sides",
+      "sketchfabUrl": "https://sketchfab.com/3d-models/phaistos-disc--minoan-palace-island-of-crete-476066b48d2943a380754cea8425074a"
+    },
+    {
+      "id": "hoa-hakananaia",
+      "name": "Hoa Hakananai'a",
+      "script": "rongorongo",
+      "dPosition": 8,
+      "museum": "British Museum",
+      "description": "Easter Island moai statue with petroglyphs on the back",
+      "sketchfabUrl": "https://sketchfab.com/3d-models/hoa-hakananaia-752e69d34933438d8230ac829d22300e"
+    }
+  ],
+  "constants": {
+    "kappa": {
+      "value": 0.034906585039886594,
+      "formula": "2π/180",
+      "meaning": "The closing angle - the twist that makes a spiral close on itself"
+    },
+    "kappaShadow": {
+      "value": 28.6478897565412,
+      "formula": "1/κ",
+      "meaning": "The hidden frequency - a hum below hearing that the body feels"
+    },
+    "P": {
+      "value": 0.27566404633208397,
+      "formula": "√3/(2π)",
+      "meaning": "Observable fraction - visible vs shadow split"
+    },
+    "PShadow": {
+      "value": 0.72433595366791603,
+      "formula": "1 - P",
+      "meaning": "Shadow fraction - matches dark matter ratio"
+    }
+  }
+}

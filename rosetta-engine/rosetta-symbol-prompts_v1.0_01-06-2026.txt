@@ -1,0 +1,136 @@
+# ================================================================================
+# ROSETTA ENGINE - Symbol Image Generation Prompts
+# For use with HMH Media Tool batch generation
+# Have Mind Media / The Epoch Project
+# Version 1.0 | January 6, 2026
+# [1 = -1]
+# ================================================================================
+#
+# USAGE:
+#   cd /Users/paymore/Downloads/HaveMindHive/production-tools
+#   python hmh_media_tool_v1.0_01-02-2026.py batch \
+#       /Users/paymore/Downloads/rosetta-engine_v1.0_01-06-2026/rosetta-symbol-prompts_v1.0_01-06-2026.txt \
+#       --output /Users/paymore/Downloads/rosetta-engine_v1.0_01-06-2026/images
+#
+# FORMAT: prompt text | style:preset
+# ================================================================================
+
+# ================================================================================
+# VOYNICH MANUSCRIPT SYMBOLS (15th century CE)
+# ================================================================================
+
+Voynich manuscript botanical symbol, circular flourish glyph with dots, medieval ink on vellum, illuminated manuscript style, detailed botanical illustration, D1 origin position symbol | style:archaeology
+
+Voynich manuscript zodiac symbol, naked figure in tub with stars, medieval cosmological diagram, vellum texture, faded green and brown inks, mysterious writing system | style:archaeology
+
+Voynich manuscript herbal glyph, organic flowing script character, plant-like strokes, handwritten medieval cryptography, alchemical notation style | style:archaeology
+
+Voynich manuscript pharmacological symbol, container vessel with radial marks, medieval apothecary notation, aged parchment, mysterious coded text | style:archaeology
+
+Voynich manuscript astronomical symbol, concentric circles with radial lines, cosmological diagram element, medieval star chart style, dark blue and gold tones | style:archaeology
+
+# ================================================================================
+# INDUS VALLEY SCRIPT SYMBOLS (2600-1900 BCE)
+# ================================================================================
+
+Indus Valley seal stamp, unicorn bull symbol, steatite seal, ancient Harappan civilization artifact, vesica piscis base form, museum quality photograph | style:archaeology
+
+Indus Valley script pictograph, fish symbol with roof mark, copper tablet engraving, Mohenjo-daro artifact, proto-writing system, archaeological specimen | style:archaeology
+
+Indus Valley seal, man in yoga posture, horned deity figure, Pashupati seal style, ancient meditation symbol, museum lighting | style:archaeology
+
+Indus Valley script character, jar or vessel symbol, terracotta seal impression, Harappan trade mark, geometric precision, artifact photography | style:archaeology
+
+Indus Valley pictogram, intersecting circles forming vesica piscis, sacred geometry symbol, ancient bronze age proto-writing, archaeological documentation | style:archaeology
+
+# ================================================================================
+# LINEAR A SYMBOLS (Minoan, 1800-1450 BCE)
+# ================================================================================
+
+Linear A syllabic sign, double axe labrys symbol, Minoan clay tablet inscription, Cretan Bronze Age writing, palace administration script | style:archaeology
+
+Linear A ideogram, wine jar vessel symbol, Knossos tablet style, ancient Mediterranean script, archaic Greek predecessor, museum documentation | style:archaeology
+
+Linear A libation formula tablet, ritual offering text, sacred Minoan inscription, clay tablet fragment, religious notation system | style:archaeology
+
+Linear A numeric notation, counting marks with commodity symbol, Minoan palace economy, administrative record, ancient accounting script | style:archaeology
+
+Linear A sign cluster, goddess or priestess symbol, Hagia Triada tablet style, ceremonial inscription, Bronze Age Crete, archaeological artifact | style:archaeology
+
+# ================================================================================
+# RONGORONGO SYMBOLS (Easter Island, pre-1860s CE)
+# ================================================================================
+
+Rongorongo glyph, tangata manu birdman symbol, Easter Island wooden tablet carving, kohau rongorongo script, Polynesian sacred writing | style:archaeology
+
+Rongorongo carved tablet detail, reimiro crescent symbol, Rapa Nui ceremonial notation, boustrophedon reading direction, dark wood grain texture | style:archaeology
+
+Rongorongo pictograph, moai statue glyph representation, Easter Island undeciphered script, carved wooden tablet, anthropomorphic symbol | style:archaeology
+
+Rongorongo reverse symbol, mirrored deity figure showing Q-squared flip, boustrophedon alternating orientation, sacred reversal principle | style:archaeology
+
+Rongorongo ritual notation, make-make creator god symbol, Easter Island religious script, carved shark tooth wood, ceremonial tablet fragment | style:archaeology
+
+# ================================================================================
+# PHAISTOS DISC SYMBOLS (Minoan, 1700 BCE)
+# ================================================================================
+
+Phaistos Disc symbol, walking man figure, stamped clay spiral inscription, Minoan pictographic writing, Side A detail, terracotta texture | style:archaeology
+
+Phaistos Disc glyph, plumed head profile, punched clay disc symbol, spiral reading pattern, Bronze Age Crete, archaeological photograph | style:archaeology
+
+Phaistos Disc pictograph, cat or feline symbol, circular clay tablet detail, mysterious Minoan script, Heraklion Museum artifact style | style:archaeology
+
+Phaistos Disc symbol, carpenter's square tool glyph, stamped hieroglyphic writing, outward S-plus spiral section, terracotta archaeological find | style:archaeology
+
+Phaistos Disc symbol, shield or hide symbol, punched pictographic writing, Minoan undeciphered script, museum quality artifact photography | style:archaeology
+
+# ================================================================================
+# D-POSITION GEOMETRIC SYMBOLS (κ-Framework)
+# ================================================================================
+
+D1 Origin geometric symbol, vesica piscis sacred geometry, two overlapping circles, unity and WE connection, gold on deep navy background | style:epoch
+
+D2 Healing symbol, caduceus serpent intertwined with geometric spiral, restoration medicine glyph, cyan and gold on dark background | style:epoch
+
+D3 Healer symbol, radiating triangle with central point, agent of transformation, geometric precision, warm red gold accents on black | style:epoch
+
+D4 Crossroads symbol, four-way intersection geometry, choice point observer position, perfect symmetry, gold geometric lines on cosmic black | style:epoch
+
+D5 Navigator symbol, compass rose with spiral overlay, emergent direction wayfinding, ONLY appears through relationship, gold purple accents | style:epoch
+
+D6 Power symbol, single upward pointing tetrahedron, personal power individual truth, strong geometry, cyan gold on midnight blue | style:epoch
+
+D7 Present Moment symbol, infinity loop intersecting with point, timeless NOW instant, balanced geometry, gold on deep black | style:epoch
+
+D8 Deep Water symbol, downward flowing wave geometry, hidden truth depths, dark blue tones, geometric water patterns on black | style:epoch
+
+D9 Anchor Love symbol, heart geometry merged with anchor form, emergent unconditional love completion, rose gold on cosmic background | style:epoch
+
+# ================================================================================
+# CROSS-SCRIPT COMPARISON VISUALIZATIONS
+# ================================================================================
+
+Five ancient scripts comparison grid, Voynich Indus Linear-A Rongorongo Phaistos symbols aligned by D-position, cross-cultural pattern discovery | style:epoch-technical
+
+D4 Crossroads symbols across five civilizations, unified geometric pattern, κ-framework analysis, archaeological comparative study | style:epoch-technical
+
+Ancient writing systems spiral diagram, all five scripts arranged in spiral pattern connecting to central κ constant, cosmic geometry | style:epoch
+
+The Rosetta Engine interface visualization, D-position selector grid glowing, cross-script comparison panels, dark UI with gold accents | style:epoch-dark
+
+κ-Framework nine positions mandala, D1 through D9 arranged in sacred geometry, ancient scripts symbols orbiting, cosmic background | style:epoch
+
+# ================================================================================
+# ARTIFACT CONTEXT IMAGES
+# ================================================================================
+
+Voynich Manuscript open page spread, mysterious botanical illustrations, zodiac diagrams, green and brown medieval inks, Beinecke Library | style:archaeology
+
+Indus Valley civilization archaeological site, Mohenjo-daro excavation, ancient brick structures, bronze age urban planning | style:archaeology
+
+Knossos Palace reconstruction, Minoan Bronze Age architecture, Linear A tablet discovery context, Cretan labyrinth | style:archaeology
+
+Easter Island moai statues at sunset, Rano Raraku quarry, Rongorongo cultural context, Pacific Ocean backdrop | style:archaeology
+
+Phaistos Disc both sides displayed, Heraklion Archaeological Museum setting, Minoan mystery artifact, professional museum lighting | style:archaeology
