@@ -1,0 +1,10 @@
+# EPOCH ORACLE Requirements
+# No additional packages needed - uses Python stdlib only
+#
+# Ollama must be installed separately: https://ollama.ai
+#
+# Recommended models (install via ollama pull <model>):
+#   - llama3.2 (basic, 2GB)
+#   - llama3.1 (recommended, 8GB)
+#   - llama3.1:70b (best, 40GB)
+#   - mixtral (excellent, 26GB)

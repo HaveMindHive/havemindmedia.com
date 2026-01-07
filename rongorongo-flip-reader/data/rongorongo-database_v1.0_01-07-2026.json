@@ -1,0 +1,645 @@
+{
+  "meta": {
+    "name": "Rongorongo Flip Reader Database",
+    "version": "1.0",
+    "date": "01-07-2026",
+    "author": "Jason Ray",
+    "organization": "Have Mind Media",
+    "project": "The Epoch Project",
+    "principle": "[1 = -1]",
+    "description": "Comprehensive database for the Rongorongo Flip Reader including Barthel glyphs, tablet corpus, D-position mappings, and healing protocols"
+  },
+
+  "constants": {
+    "kappa": {
+      "value": 0.034906585039886594,
+      "formula": "2π / 180",
+      "meaning": "Bridge constant between angular and linear domains"
+    },
+    "Q_squared": {
+      "value": -1,
+      "formula": "Q² = -1",
+      "meaning": "The flip transformation - 180° rotation"
+    },
+    "core_glyphs": {
+      "count": 52,
+      "dPosition": 7,
+      "meaning": "52 glyphs = D7 (Present Moment) - script operates in NOW-time"
+    },
+    "base_symbols": {
+      "count": 120,
+      "dPosition": 3,
+      "meaning": "120 base symbols = D3 (Healer) - healing architecture"
+    }
+  },
+
+  "barthel_glyphs": {
+    "categories": {
+      "0xx": "Basic marks and signs",
+      "1xx": "Geometric and abstract",
+      "2xx": "Human figures",
+      "3xx": "Human body parts",
+      "4xx": "Geometric/ceremonial objects",
+      "5xx": "Plants and vegetation",
+      "6xx": "Birds",
+      "7xx": "Sea creatures",
+      "8xx": "Other animals and objects"
+    },
+    "high_frequency": [
+      {
+        "barthel": 200,
+        "category": "human",
+        "description": "Standing human figure",
+        "dPosition": 2,
+        "dName": "Healing",
+        "frequency": 1.0,
+        "notes": "Most frequent glyph in entire corpus",
+        "unicode": "𓀀"
+      },
+      {
+        "barthel": 6,
+        "category": "mark",
+        "description": "Basic mark variant 6",
+        "dPosition": 6,
+        "dName": "Power/Self",
+        "frequency": 0.85,
+        "notes": "Common in sequences"
+      },
+      {
+        "barthel": 10,
+        "category": "mark",
+        "description": "Completion/ten mark",
+        "dPosition": 1,
+        "dName": "Origin/WE",
+        "frequency": 0.75,
+        "notes": "May indicate completion or unity"
+      },
+      {
+        "barthel": 3,
+        "category": "mark",
+        "description": "Triple mark",
+        "dPosition": 3,
+        "dName": "Healer",
+        "frequency": 0.70,
+        "notes": "Often in triadic groupings"
+      },
+      {
+        "barthel": 62,
+        "category": "hand",
+        "description": "Hand sign variant 2",
+        "dPosition": 8,
+        "dName": "Deep Water",
+        "frequency": 0.68,
+        "notes": "Possible vowel marker (E)",
+        "proposedVowel": "e"
+      },
+      {
+        "barthel": 400,
+        "category": "geometric",
+        "description": "Geometric base form",
+        "dPosition": 4,
+        "dName": "Crossroads",
+        "frequency": 0.65,
+        "notes": "Crossroads/intersection form"
+      },
+      {
+        "barthel": 61,
+        "category": "hand",
+        "description": "Hand sign variant 1",
+        "dPosition": 7,
+        "dName": "Present Moment",
+        "frequency": 0.62,
+        "notes": "Possible vowel marker (A)",
+        "proposedVowel": "a"
+      },
+      {
+        "barthel": 600,
+        "category": "bird",
+        "description": "Bird general form (Manutara)",
+        "dPosition": 6,
+        "dName": "Power/Self",
+        "frequency": 0.58,
+        "notes": "Sacred bird symbol"
+      },
+      {
+        "barthel": 700,
+        "category": "fish",
+        "description": "Fish general form",
+        "dPosition": 7,
+        "dName": "Present Moment",
+        "frequency": 0.52,
+        "notes": "Sea creature"
+      },
+      {
+        "barthel": 280,
+        "category": "human",
+        "description": "Human figure variant",
+        "dPosition": 1,
+        "dName": "Origin/WE",
+        "frequency": 0.48,
+        "notes": "Variant human form"
+      },
+      {
+        "barthel": 430,
+        "category": "marker",
+        "description": "Title/name marker",
+        "dPosition": 7,
+        "dName": "Present Moment",
+        "frequency": 0.45,
+        "notes": "Identified by Davletshin as title glyph"
+      },
+      {
+        "barthel": 530,
+        "category": "plant",
+        "description": "Plant-based marker",
+        "dPosition": 8,
+        "dName": "Deep Water",
+        "frequency": 0.42,
+        "notes": "Second possible title glyph"
+      },
+      {
+        "barthel": 22,
+        "category": "mark",
+        "description": "Double mark",
+        "dPosition": 4,
+        "dName": "Crossroads",
+        "frequency": 0.40,
+        "notes": "Pairing symbol"
+      },
+      {
+        "barthel": 63,
+        "category": "hand",
+        "description": "Hand sign variant 3",
+        "dPosition": 9,
+        "dName": "Anchor/Love",
+        "frequency": 0.38,
+        "notes": "Possible vowel marker (I) - D9 is rare!",
+        "proposedVowel": "i"
+      },
+      {
+        "barthel": 64,
+        "category": "hand",
+        "description": "Hand sign variant 4",
+        "dPosition": 1,
+        "dName": "Origin/WE",
+        "frequency": 0.35,
+        "notes": "Possible vowel marker (O)",
+        "proposedVowel": "o"
+      },
+      {
+        "barthel": 65,
+        "category": "hand",
+        "description": "Hand sign variant 5",
+        "dPosition": 2,
+        "dName": "Healing",
+        "frequency": 0.33,
+        "notes": "Possible vowel marker (U)",
+        "proposedVowel": "u"
+      }
+    ],
+    "hand_signs_as_vowels": {
+      "hypothesis": "The 5 hand signs (Barthel 61-65) represent the 5 Rapa Nui vowels",
+      "evidence": "Their D-positions span the wheel: 1, 2, 7, 8, 9",
+      "healing_arc": "D7 → D8 → D9 → D1 → D2 traces the path of healing itself",
+      "mapping": [
+        {"barthel": 61, "dPosition": 7, "vowel": "a", "meaning": "Present Moment → Open, manifest"},
+        {"barthel": 62, "dPosition": 8, "vowel": "e", "meaning": "Deep Water → Emergence"},
+        {"barthel": 63, "dPosition": 9, "vowel": "i", "meaning": "Anchor/Love → Brightness, connection"},
+        {"barthel": 64, "dPosition": 1, "vowel": "o", "meaning": "Origin/WE → Unity, wholeness"},
+        {"barthel": 65, "dPosition": 2, "vowel": "u", "meaning": "Healing → Depth, completion"}
+      ]
+    }
+  },
+
+  "tablets": {
+    "count": 26,
+    "total_glyphs": 14000,
+    "corpus": [
+      {
+        "id": "A",
+        "name": "Tahua",
+        "alternateNames": ["Large Santiago Tablet"],
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "91 × 11.5 × 2.5 cm",
+        "material": "Wood (Sophora toromiro)",
+        "lineCount": 8,
+        "glyphCount": 2320,
+        "condition": "Good",
+        "description": "One of the best preserved tablets, both sides inscribed",
+        "dAnalysis": {
+          "nameReduction": "TAHUA → 46 → 10 → 1",
+          "dPosition": 1,
+          "meaning": "Origin/WE - The foundational tablet"
+        }
+      },
+      {
+        "id": "B",
+        "name": "Aruku Kurenga",
+        "location": "Rome, Italy",
+        "museum": "Congregatio pro Gentium Evangelizatione",
+        "dimensions": "41 × 9 × 2.2 cm",
+        "material": "Wood",
+        "lineCount": 12,
+        "glyphCount": 1135,
+        "condition": "Good",
+        "description": "Well-documented tablet, name means 'recitation from memory'",
+        "dAnalysis": {
+          "nameReduction": "ARUKU KURENGA → 117 → 9",
+          "dPosition": 9,
+          "meaning": "Anchor/Love - A binding text"
+        }
+      },
+      {
+        "id": "C",
+        "name": "Mamari",
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "29 × 15 × 2 cm",
+        "material": "Wood",
+        "lineCount": 8,
+        "glyphCount": 1000,
+        "condition": "Damaged (one side)",
+        "description": "Contains known lunar calendar sequence - key to decipherment",
+        "dAnalysis": {
+          "nameReduction": "MAMARI → 50 → 5",
+          "dPosition": 5,
+          "meaning": "Navigator - A guiding text (EMERGENT)"
+        }
+      },
+      {
+        "id": "D",
+        "name": "Echancrée",
+        "location": "Rome, Italy",
+        "museum": "Congregatio pro Gentium Evangelizatione",
+        "dimensions": "24 × 7 cm",
+        "material": "Wood",
+        "lineCount": 5,
+        "glyphCount": 270,
+        "condition": "Fragment",
+        "description": "Notched tablet fragment"
+      },
+      {
+        "id": "E",
+        "name": "Keiti",
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "39 × 6 × 1 cm",
+        "material": "Wood",
+        "lineCount": 14,
+        "glyphCount": 822,
+        "condition": "Good",
+        "description": "Long narrow tablet with many lines",
+        "dAnalysis": {
+          "nameReduction": "KEITI → 52 → 7",
+          "dPosition": 7,
+          "meaning": "Present Moment - A NOW text"
+        }
+      },
+      {
+        "id": "G",
+        "name": "Small Santiago",
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "32 × 4 cm",
+        "material": "Wood",
+        "lineCount": 8,
+        "glyphCount": 720,
+        "condition": "Good",
+        "description": "Smaller well-preserved tablet"
+      },
+      {
+        "id": "H",
+        "name": "Large Santiago",
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "47 × 11 cm",
+        "material": "Wood",
+        "lineCount": 16,
+        "glyphCount": 1580,
+        "condition": "Good",
+        "description": "Second largest tablet by glyph count"
+      },
+      {
+        "id": "I",
+        "name": "Santiago Staff",
+        "location": "Santiago, Chile",
+        "museum": "Museo Nacional de Historia Natural",
+        "dimensions": "126 cm long",
+        "material": "Wood (staff/rod)",
+        "lineCount": null,
+        "glyphCount": 2920,
+        "condition": "Chimera (possibly composite)",
+        "description": "Ceremonial staff with spiral inscription, possibly from multiple sources"
+      },
+      {
+        "id": "K",
+        "name": "London",
+        "location": "London, UK",
+        "museum": "British Museum",
+        "dimensions": "Fragment",
+        "material": "Wood",
+        "lineCount": 8,
+        "glyphCount": 163,
+        "condition": "Fragment",
+        "description": "Small fragment in British Museum collection"
+      },
+      {
+        "id": "M",
+        "name": "Large Vienna",
+        "location": "Vienna, Austria",
+        "museum": "Weltmuseum Wien",
+        "dimensions": "28 × 7 cm",
+        "material": "Wood",
+        "lineCount": 11,
+        "glyphCount": 825,
+        "condition": "Good",
+        "description": "Well-documented Viennese tablet"
+      },
+      {
+        "id": "N",
+        "name": "Small Vienna",
+        "location": "Vienna, Austria",
+        "museum": "Weltmuseum Wien",
+        "dimensions": "24 × 4 cm",
+        "material": "Wood",
+        "lineCount": 7,
+        "glyphCount": 172,
+        "condition": "Good",
+        "description": "Smaller Viennese tablet"
+      },
+      {
+        "id": "O",
+        "name": "Berlin",
+        "location": "Berlin, Germany",
+        "museum": "Ethnologisches Museum",
+        "dimensions": "Fragment",
+        "material": "Wood",
+        "lineCount": 6,
+        "glyphCount": 103,
+        "condition": "Fragment",
+        "description": "Fragment in Berlin collection"
+      },
+      {
+        "id": "P",
+        "name": "Large St Petersburg",
+        "location": "St Petersburg, Russia",
+        "museum": "Peter the Great Museum of Anthropology and Ethnography",
+        "dimensions": "63 × 13 cm",
+        "material": "Wood",
+        "lineCount": 11,
+        "glyphCount": 1163,
+        "condition": "Good",
+        "description": "Major piece in Russian collection"
+      },
+      {
+        "id": "Q",
+        "name": "Small St Petersburg",
+        "location": "St Petersburg, Russia",
+        "museum": "Peter the Great Museum",
+        "dimensions": "44 × 9 cm",
+        "material": "Wood",
+        "lineCount": 3,
+        "glyphCount": 718,
+        "condition": "Good",
+        "description": "Smaller Russian tablet"
+      },
+      {
+        "id": "R",
+        "name": "Small Washington",
+        "location": "Washington DC, USA",
+        "museum": "Smithsonian Institution",
+        "dimensions": "Fragment",
+        "material": "Wood",
+        "lineCount": 2,
+        "glyphCount": 357,
+        "condition": "Fragment",
+        "description": "Fragment in Smithsonian"
+      },
+      {
+        "id": "S",
+        "name": "Large Washington",
+        "location": "Washington DC, USA",
+        "museum": "Smithsonian Institution",
+        "dimensions": "37 × 6 cm",
+        "material": "Wood",
+        "lineCount": 9,
+        "glyphCount": 605,
+        "condition": "Good",
+        "description": "Larger Smithsonian piece"
+      },
+      {
+        "id": "T",
+        "name": "Honolulu 1",
+        "location": "Honolulu, Hawaii, USA",
+        "museum": "Bishop Museum",
+        "dimensions": "30 × 6 cm",
+        "material": "Wood",
+        "lineCount": 6,
+        "glyphCount": 120,
+        "condition": "Fragment",
+        "description": "Hawaiian collection piece"
+      }
+    ]
+  },
+
+  "cultural_vocabulary": {
+    "script_related": [
+      {
+        "word": "RONGORONGO",
+        "meaning": "The script itself; 'recitations, chants'",
+        "calculation": "R(18)+O(15)+N(14)+G(7)+O(15)+R(18)+O(15)+N(14)+G(7)+O(15) = 138 → 12 → 3",
+        "dPosition": 3,
+        "dName": "Healer",
+        "significance": "The script IS named 'The Healer'"
+      },
+      {
+        "word": "KOHAU",
+        "meaning": "Wooden tablet, staff",
+        "calculation": "55 → 10 → 1",
+        "dPosition": 1,
+        "dName": "Origin/WE",
+        "significance": "The tablets as origin/unity"
+      },
+      {
+        "word": "TANGATA RONGORONGO",
+        "meaning": "Person who can read/chant the tablets",
+        "calculation": "202 → 4",
+        "dPosition": 4,
+        "dName": "Crossroads",
+        "significance": "The reader as observer at the crossroads"
+      }
+    ],
+    "sacred_terms": [
+      {
+        "word": "MAKE-MAKE",
+        "meaning": "Creator god",
+        "calculation": "47 → 11 → 2",
+        "dPosition": 2,
+        "dName": "Healing",
+        "significance": "Creator as healer"
+      },
+      {
+        "word": "AKU AKU",
+        "meaning": "Spirits, ancestors",
+        "calculation": "39 → 12 → 3",
+        "dPosition": 3,
+        "dName": "Healer",
+        "significance": "Ancestral healers"
+      },
+      {
+        "word": "MANUTARA",
+        "meaning": "Sooty tern (sacred bird of birdman cult)",
+        "calculation": "89 → 17 → 8",
+        "dPosition": 8,
+        "dName": "Deep Water",
+        "significance": "Sacred bird of the depths"
+      },
+      {
+        "word": "TANGATA MANU",
+        "meaning": "Bird-man (annual ritual winner)",
+        "calculation": "95 → 14 → 5",
+        "dPosition": 5,
+        "dName": "Navigator",
+        "significance": "EMERGENT position - only through ritual achievement"
+      }
+    ],
+    "place_names": [
+      {
+        "word": "RAPA NUI",
+        "meaning": "Easter Island (Great Rapa)",
+        "calculation": "80 → 8",
+        "dPosition": 8,
+        "dName": "Deep Water",
+        "significance": "Island of depths and mystery"
+      },
+      {
+        "word": "ORONGO",
+        "meaning": "Ceremonial village at Rano Kau",
+        "calculation": "81 → 9",
+        "dPosition": 9,
+        "dName": "Anchor/Love",
+        "significance": "Sacred center, binding place"
+      },
+      {
+        "word": "RANO RARAKU",
+        "meaning": "Moai quarry crater",
+        "calculation": "96 → 15 → 6",
+        "dPosition": 6,
+        "dName": "Power/Self",
+        "significance": "Place of creation, power"
+      }
+    ],
+    "artifacts": [
+      {
+        "word": "MOAI",
+        "meaning": "Stone statues",
+        "calculation": "35 → 8",
+        "dPosition": 8,
+        "dName": "Deep Water",
+        "significance": "Ancestors from the depths"
+      },
+      {
+        "word": "AHU",
+        "meaning": "Stone platform for moai",
+        "calculation": "27 → 9",
+        "dPosition": 9,
+        "dName": "Anchor/Love",
+        "significance": "Foundation, binding structure"
+      },
+      {
+        "word": "PUKAO",
+        "meaning": "Topknot/hat on moai",
+        "calculation": "65 → 11 → 2",
+        "dPosition": 2,
+        "dName": "Healing",
+        "significance": "Crown of healing"
+      }
+    ]
+  },
+
+  "d_position_distribution": {
+    "observation": "D5 (Navigator) and D9 (Anchor/Love) are underrepresented as PRIMARY glyphs",
+    "hypothesis": "These positions emerge from glyph COMBINATIONS rather than existing as primary symbols",
+    "implication": "Navigator (direction) and Love (binding) are RESULTS in this system, not inputs",
+    "distribution": {
+      "D1": {"name": "Origin/WE", "frequency": "medium", "primaryGlyphs": true},
+      "D2": {"name": "Healing", "frequency": "HIGH (dominant)", "primaryGlyphs": true},
+      "D3": {"name": "Healer", "frequency": "high", "primaryGlyphs": true},
+      "D4": {"name": "Crossroads", "frequency": "medium", "primaryGlyphs": true},
+      "D5": {"name": "Navigator", "frequency": "LOW", "primaryGlyphs": false, "emergent": true},
+      "D6": {"name": "Power/Self", "frequency": "high", "primaryGlyphs": true},
+      "D7": {"name": "Present Moment", "frequency": "high", "primaryGlyphs": true},
+      "D8": {"name": "Deep Water", "frequency": "medium", "primaryGlyphs": true},
+      "D9": {"name": "Anchor/Love", "frequency": "LOW", "primaryGlyphs": false, "emergent": true}
+    }
+  },
+
+  "reading_protocol": {
+    "traditional_method": {
+      "step1": "Hold tablet horizontally with first line readable",
+      "step2": "Read first line (direction varies by tablet)",
+      "step3": "At end of line, rotate tablet 180° toward body",
+      "step4": "Read next line (now right-side-up from new orientation)",
+      "step5": "Continue alternating throughout tablet",
+      "duration": "Full tablet reading could take hours"
+    },
+    "therapeutic_mechanism": {
+      "emdr_parallel": "The flip operates like bilateral stimulation in EMDR therapy",
+      "alternation": "S+ (potential/future) and S- (manifest/past) modes alternate",
+      "bilateral": "Physical motion engages both hemispheres",
+      "insight": "The flip IS the therapy - reading Rongorongo correctly is a healing ritual"
+    },
+    "q_cycle": {
+      "Q0": {"value": "+1", "mode": "S+", "meaning": "Manifest, forward, actual"},
+      "Q1": {"value": "+i", "mode": "transition", "meaning": "Rising, becoming"},
+      "Q2": {"value": "-1", "mode": "S-", "meaning": "Latent, inverted, the flip"},
+      "Q3": {"value": "-i", "mode": "transition", "meaning": "Descending, returning"},
+      "completion": "4 flips = 1 complete Q-cycle = return to origin"
+    },
+    "recommended_session": {
+      "preparation": "2-3 minutes - center attention, hold tablet, breathe",
+      "reading": "15-30 minutes - steady rhythm, 4-6 seconds per flip",
+      "integration": "5 minutes - reflect, journal if desired",
+      "frequency": "2-3 times per week for therapeutic benefit"
+    }
+  },
+
+  "historical_context": {
+    "tragedy_of_1862": {
+      "date": "December 24, 1862",
+      "event": "Peruvian slave raiders abducted ~1,500 Rapa Nui",
+      "impact": "Half the population taken, including nearly ALL rongorongo men",
+      "survivors": "Few returned, none could fully transmit reading tradition",
+      "lost": "The living chain of transmission was severed",
+      "preserved": "~26 tablets, observation of flip method, the name RONGORONGO"
+    },
+    "decipherment_attempts": [
+      {"year": 1864, "researcher": "Eugène Eyraud", "approach": "First documentation", "result": "No decipherment"},
+      {"year": 1870, "researcher": "Tepano Jaussen", "approach": "Native informant work", "result": "Inconsistent readings"},
+      {"year": 1932, "researcher": "Alfred Métraux", "approach": "Ethnographic analysis", "result": "Cultural context only"},
+      {"year": 1958, "researcher": "Thomas Barthel", "approach": "Systematic cataloging", "result": "599 glyphs cataloged, no decipherment"},
+      {"year": 1997, "researcher": "Steven Roger Fischer", "approach": "Procreation hypothesis", "result": "Contested, limited validation"},
+      {"year": 2010, "researcher": "Statistical approaches", "approach": "Pattern analysis", "result": "Patterns found, meanings unclear"}
+    ],
+    "why_linear_fails": [
+      "Assumes meaning is IN symbols (it emerges FROM relationship)",
+      "Treats reading as passive reception (it is active participation)",
+      "Analyzes independent of reading method (the flip IS the grammar)",
+      "Applies static analysis to dynamic process"
+    ]
+  },
+
+  "integrations": {
+    "universal_language_generator": {
+      "purpose": "ULG provides phonetic reconstruction",
+      "connection": "When glyph's D-position is identified, ULG generates candidate pronunciations",
+      "url": "../universal-language-generator/ulg-app_v1.0_01-06-2026.html"
+    },
+    "rosetta_engine": {
+      "purpose": "Cross-script pattern analysis",
+      "connection": "Rongorongo patterns can be compared to other undeciphered scripts",
+      "url": "../rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html"
+    }
+  }
+}
