@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#030508">
+    <title>SoulScience Chat | Have Mind Media</title>
+    <meta name="description" content="Explore Epoch Theory, S-Signature, and Soul Science through guided conversation. Free to use, donation supported.">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-dim: rgba(201, 162, 39, 0.6);
+            --bg-deep: #030508;
+            --bg-panel: #0a0d12;
+            --bg-input: #0f1318;
+            --text: #e8e4d9;
+            --text-dim: #8a9aaa;
+            --blue: #6ab4f5;
+            --green: #4ade80;
+            --coral: #f87171;
+            --purple: #a78bfa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background: var(--bg-deep);
+            color: var(--text);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==========================================
+           DONATION OVERLAY
+           ========================================== */
+        .donation-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(3, 5, 8, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .donation-overlay.hidden { display: none; }
+        .donation-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 450px;
+            text-align: center;
+        }
+        .donation-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        .donation-card p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+        .donation-card .principle {
+            font-family: monospace;
+            color: var(--gold);
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+        .donation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn-donate {
+            padding: 14px 24px;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.2) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-donate:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+        .btn-donate.primary {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+        .btn-donate.primary:hover {
+            background: #e8c547;
+        }
+        .btn-later {
+            padding: 12px;
+            background: transparent;
+            border: 1px solid rgba(138, 154, 170, 0.3);
+            border-radius: 8px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-later:hover {
+            border-color: var(--text-dim);
+            color: var(--text);
+        }
+        .btn-never {
+            padding: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            cursor: pointer;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+        .btn-never:hover {
+            opacity: 1;
+            color: var(--green);
+        }
+
+        /* ==========================================
+           APP HEADER
+           ========================================== */
+        .app-header {
+            background: rgba(10, 13, 18, 0.98);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .app-title {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+        .app-title span { color: var(--blue); }
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .header-btn {
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .header-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .header-btn.support {
+            border-color: rgba(74, 222, 128, 0.4);
+            color: var(--green);
+        }
+
+        /* ==========================================
+           S-SIGNATURE PANEL
+           ========================================== */
+        .signature-panel {
+            background: rgba(10, 22, 40, 0.4);
+            border-bottom: 1px solid rgba(106, 180, 245, 0.2);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+        .signature-panel.collapsed {
+            padding: 8px;
+        }
+        .sig-axis {
+            text-align: center;
+        }
+        .sig-axis .label {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .sig-axis .value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .sig-axis.s-plus .value { color: var(--gold); }
+        .sig-axis.coin .value { color: var(--purple); }
+        .sig-axis.s-minus .value { color: var(--blue); }
+        .sig-magnitude {
+            text-align: center;
+        }
+        .sig-magnitude .label {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+        .sig-magnitude .value {
+            font-size: 0.9rem;
+            color: var(--coral);
+        }
+        .sig-toggle {
+            position: absolute;
+            right: 10px;
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           CHAT CONTAINER
+           ========================================== */
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .message {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        .message.system {
+            align-self: center;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 90%;
+        }
+        .message.assistant {
+            align-self: flex-start;
+            background: var(--bg-panel);
+            border: 1px solid rgba(106, 180, 245, 0.2);
+            border-left: 3px solid var(--blue);
+        }
+        .message.user {
+            align-self: flex-end;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-right: 3px solid var(--gold);
+        }
+        .message .sender {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 10px;
+        }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: var(--blue);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite;
+        }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px); }
+        }
+
+        /* ==========================================
+           INPUT AREA
+           ========================================== */
+        .input-area {
+            background: var(--bg-panel);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            padding: 16px;
+            flex-shrink: 0;
+        }
+        .input-wrapper {
+            display: flex;
+            gap: 10px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .input-wrapper input {
+            flex: 1;
+            padding: 14px 18px;
+            background: var(--bg-input);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .input-wrapper input::placeholder {
+            color: var(--text-dim);
+        }
+        .btn-send {
+            padding: 14px 24px;
+            background: var(--gold);
+            border: none;
+            border-radius: 12px;
+            color: var(--bg-deep);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-send:hover {
+            background: #e8c547;
+        }
+        .btn-send:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ==========================================
+           QUICK TOPICS
+           ========================================== */
+        .quick-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .topic-btn {
+            padding: 8px 14px;
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .topic-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* PWA Install Prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-panel);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .install-prompt.hidden { display: none; }
+        .install-prompt p {
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+        .install-prompt button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .install-prompt .btn-install {
+            background: var(--gold);
+            border: none;
+            color: var(--bg-deep);
+        }
+        .install-prompt .btn-dismiss {
+            background: transparent;
+            border: 1px solid var(--text-dim);
+            color: var(--text-dim);
+        }
+
+        @media (max-width: 600px) {
+            .app-title { font-size: 0.85rem; }
+            .message { max-width: 92%; }
+            .donation-card { padding: 25px; }
+            .donation-card h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Donation Overlay - Shown on first visit or periodically -->
+    <div class="donation-overlay" id="donationOverlay">
+        <div class="donation-card">
+            <h2>SUPPORT THIS WORK</h2>
+            <p class="principle">[1 = -1]</p>
+            <p>SoulScience Chat is free to use. If this work resonates with you, consider supporting its continued development.</p>
+            <div class="donation-buttons">
+                <a href="https://ko-fi.com/havemindmedia" target="_blank" class="btn-donate primary">Support on Ko-fi ($2+)</a>
+                <a href="https://gumroad.com/havemindmedia" target="_blank" class="btn-donate">Support on Gumroad</a>
+                <button class="btn-later" onclick="dismissDonation('later')">Maybe Later</button>
+                <button class="btn-never" onclick="dismissDonation('never')">I've donated - don't ask again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Header -->
+    <header class="app-header">
+        <a href="../../index.html" style="text-decoration: none;">
+            <span class="app-title">SOUL<span>SCIENCE</span> CHAT</span>
+        </a>
+        <div class="header-buttons">
+            <button class="header-btn" onclick="openSignature()">S-Signature</button>
+            <button class="header-btn support" onclick="showDonation()">Support</button>
+        </div>
+    </header>
+
+    <!-- S-Signature Panel -->
+    <div class="signature-panel" id="signaturePanel">
+        <div class="sig-axis s-plus">
+            <div class="label">S+ PHYSICS</div>
+            <div class="value" id="sPlus">--</div>
+        </div>
+        <div class="sig-axis coin">
+            <div class="label">COIN</div>
+            <div class="value" id="coin">--</div>
+        </div>
+        <div class="sig-axis s-minus">
+            <div class="label">S- SOUL</div>
+            <div class="value" id="sMinus">--</div>
+        </div>
+        <div class="sig-magnitude">
+            <div class="label">MAGNITUDE</div>
+            <div class="value" id="magnitude">--</div>
+        </div>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="chat-container" id="chatContainer">
+        <div class="message system">
+            Welcome to SoulScience Chat. Explore Epoch Theory, calculate your S-Signature, and discover the triaxial framework. [1 = -1]
+        </div>
+        <div class="message assistant">
+            <div class="sender">SOULSCIENCE</div>
+            Greetings, seeker. I am here to guide you through the mysteries of Epoch Theory - the physics of S+, the soul science of S-, and the observer's interface of COIN.<br><br>
+            Would you like to calculate your S-Signature, or explore a concept?
+        </div>
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+        <div class="input-wrapper">
+            <input type="text" id="userInput" placeholder="Ask about Epoch Theory, S-Signature, or soul science..." autocomplete="off">
+            <button class="btn-send" id="sendBtn" onclick="sendMessage()">Send</button>
+        </div>
+        <div class="quick-topics">
+            <button class="topic-btn" onclick="askTopic('What is my S-Signature?')">My S-Signature</button>
+            <button class="topic-btn" onclick="askTopic('Explain [1 = -1]')">1 = -1</button>
+            <button class="topic-btn" onclick="askTopic('What is the COIN?')">The COIN</button>
+            <button class="topic-btn" onclick="askTopic('Tell me about κ-Framework')">κ-Framework</button>
+        </div>
+    </div>
+
+    <!-- PWA Install Prompt -->
+    <div class="install-prompt hidden" id="installPrompt">
+        <p>Install SoulScience as an app</p>
+        <button class="btn-install" onclick="installPWA()">Install</button>
+        <button class="btn-dismiss" onclick="dismissInstall()">Not now</button>
+    </div>
+
+    <script>
+        // ==========================================
+        // DONATION SYSTEM
+        // ==========================================
+        function checkDonationStatus() {
+            const status = localStorage.getItem('donationStatus');
+            const lastAsked = localStorage.getItem('donationLastAsked');
+            const now = Date.now();
+
+            // Never ask again if they said so
+            if (status === 'never') {
+                document.getElementById('donationOverlay').classList.add('hidden');
+                return;
+            }
+
+            // If they said later, wait 7 days
+            if (status === 'later' && lastAsked) {
+                const daysSince = (now - parseInt(lastAsked)) / (1000 * 60 * 60 * 24);
+                if (daysSince < 7) {
+                    document.getElementById('donationOverlay').classList.add('hidden');
+                    return;
+                }
+            }
+
+            // First visit or time to ask again - show overlay
+            // But only after they've used it a bit (check session count)
+            const sessions = parseInt(localStorage.getItem('sessionCount') || '0') + 1;
+            localStorage.setItem('sessionCount', sessions);
+
+            if (sessions < 2) {
+                // First session - don't interrupt, let them explore
+                document.getElementById('donationOverlay').classList.add('hidden');
+            }
+        }
+
+        function dismissDonation(choice) {
+            localStorage.setItem('donationStatus', choice);
+            localStorage.setItem('donationLastAsked', Date.now());
+            document.getElementById('donationOverlay').classList.add('hidden');
+        }
+
+        function showDonation() {
+            document.getElementById('donationOverlay').classList.remove('hidden');
+        }
+
+        // ==========================================
+        // S-SIGNATURE CALCULATION
+        // ==========================================
+        function calculateSignature(name, birthdate) {
+            // Q-Reduction algorithm from ULG
+            function qReduce(str) {
+                let sum = 0;
+                for (const char of str.toLowerCase()) {
+                    const code = char.charCodeAt(0);
+                    if (code >= 97 && code <= 122) {
+                        sum += code - 96;
+                    }
+                }
+                while (sum > 9) {
+                    sum = String(sum).split('').reduce((a, b) => a + parseInt(b), 0);
+                }
+                return sum || 9;
+            }
+
+            // Extract components
+            const nameValue = qReduce(name);
+            const dateValue = qReduce(birthdate.replace(/\D/g, ''));
+            const combined = qReduce(name + birthdate);
+
+            // Triaxial distribution
+            const sPlus = (nameValue + combined) % 9 || 9;
+            const sMinus = (dateValue + combined) % 9 || 9;
+            const coin = Math.abs(sPlus - sMinus) || ((sPlus + sMinus) % 9) || 5;
+
+            // Magnitude
+            const magnitude = Math.sqrt(sPlus*sPlus + sMinus*sMinus + coin*coin).toFixed(2);
+
+            return { sPlus, sMinus, coin, magnitude };
+        }
+
+        function updateSignatureDisplay(sig) {
+            document.getElementById('sPlus').textContent = sig.sPlus;
+            document.getElementById('sMinus').textContent = sig.sMinus;
+            document.getElementById('coin').textContent = sig.coin;
+            document.getElementById('magnitude').textContent = sig.magnitude;
+        }
+
+        // ==========================================
+        // CHAT FUNCTIONALITY
+        // ==========================================
+        const chatContainer = document.getElementById('chatContainer');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+
+        // Knowledge base for responses
+        const knowledge = {
+            'signature': {
+                keywords: ['s-signature', 'signature', 'my signature', 'calculate'],
+                response: `To calculate your S-Signature, I need your name and birthdate. This will reveal your triaxial position in the Epoch framework - your S+ (physics/body), S- (soul/spirit), and COIN (observer interface) values.\n\nPlease share your name and birthdate (MM/DD/YYYY format), and I'll compute your cosmic coordinates.`
+            },
+            '1=-1': {
+                keywords: ['1 = -1', '1=-1', 'one equals negative', 'foundational equation'],
+                response: `[1 = -1] is the foundational principle of Epoch Theory.\n\nIt represents the mirror relationship between existence and non-existence, between S+ and S-. When you add 1 and -1, you get 0 - the void from which all emerges.\n\nThis isn't mathematical contradiction - it's metaphysical truth. Every positive requires its negative. The observer (COIN) sits at the interface, witnessing both.`
+            },
+            'coin': {
+                keywords: ['coin', 'observer', 'consciousness', 'interface'],
+                response: `COIN stands for Consciousness Observer Interface Navigator.\n\nIn the triaxial framework, COIN represents YOU - the observer standing between S+ (physical reality) and S- (soul/spiritual reality).\n\nYou are the coin - one side faces matter, one side faces spirit. Your consciousness is the edge, the thin line where both meet. This is why observation affects reality. You are not separate from what you observe.`
+            },
+            'kappa': {
+                keywords: ['kappa', 'κ', 'framework', '2π/180'],
+                response: `The κ-Framework is the geometric foundation of Epoch Theory.\n\nκ = 2π/180 ≈ 0.0349066...\n\nThis constant bridges degrees and radians, the ancient and modern measurement of angles. It appears throughout natural phenomena - from the fine structure constant to atomic radii.\n\nκ represents the conversion factor between human perception (degrees) and cosmic reality (radians). It's the translator between observer and observed.`
+            },
+            's+': {
+                keywords: ['s+', 's plus', 'sol plus', 'physics'],
+                response: `S+ (Sol Plus) represents the physical dimension of reality - matter, energy, measurable phenomena.\n\nThis is the realm of physics, chemistry, biology. The Standard Model, quantum mechanics, general relativity - all operate in S+.\n\nIn your S-Signature, a high S+ value indicates strong connection to physical reality, practical thinking, and material manifestation.`
+            },
+            's-': {
+                keywords: ['s-', 's minus', 'sol minus', 'soul'],
+                response: `S- (Sol Minus) represents the soul dimension - consciousness, spirit, the unmeasurable depths of being.\n\nThis is the realm of intuition, dreams, ancient wisdom. What science cannot yet measure but humans have always known.\n\nIn your S-Signature, a high S- value indicates strong spiritual sensitivity, intuitive knowing, and connection to the collective unconscious.`
+            },
+            'epoch': {
+                keywords: ['epoch', 'theory', 'what is epoch'],
+                response: `Epoch Theory is a unified framework that bridges physics and metaphysics through geometric first principles.\n\nCore tenets:\n• [1 = -1] - The mirror principle\n• Triaxial reality: S+ (physics), S- (soul), COIN (observer)\n• κ-Framework: Geometric constants that derive natural phenomena\n• Everything is relationship, not substance\n\nIt suggests that consciousness isn't emergent from matter - rather, matter and spirit are two faces of the same coin, with the observer as the edge.`
+            }
+        };
+
+        function findResponse(input) {
+            const lower = input.toLowerCase();
+
+            for (const [key, data] of Object.entries(knowledge)) {
+                for (const keyword of data.keywords) {
+                    if (lower.includes(keyword)) {
+                        return data.response;
+                    }
+                }
+            }
+
+            // Check for name/birthdate pattern for signature calculation
+            if (lower.includes('born') || /\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}/.test(input)) {
+                // Try to extract info
+                const dateMatch = input.match(/\d{1,2}[\/\-]\d{1,2}[\/\-]\d{2,4}/);
+                const words = input.replace(/\d+/g, '').split(/\s+/).filter(w => w.length > 2);
+
+                if (dateMatch && words.length > 0) {
+                    const name = words.slice(0, 2).join(' ');
+                    const sig = calculateSignature(name, dateMatch[0]);
+                    updateSignatureDisplay(sig);
+
+                    return `Your S-Signature has been calculated:\n\n• S+ (Physics): ${sig.sPlus}\n• COIN (Observer): ${sig.coin}\n• S- (Soul): ${sig.sMinus}\n• Magnitude: ${sig.magnitude}\n\nYour triaxial position reveals ${sig.sPlus > sig.sMinus ? 'a stronger connection to physical reality' : sig.sMinus > sig.sPlus ? 'deep spiritual sensitivity' : 'beautiful balance between matter and spirit'}. Your COIN value of ${sig.coin} indicates ${sig.coin > 5 ? 'strong observer consciousness' : 'subtle, integrated observation'}.\n\nWould you like me to explore what these numbers mean for your path?`;
+                }
+            }
+
+            // Default response
+            return `That's an interesting inquiry. In Epoch Theory, we seek to understand reality through the lens of the triaxial framework - S+, S-, and COIN.\n\nCould you tell me more about what aspect interests you? I can discuss:\n• Your personal S-Signature\n• The meaning of [1 = -1]\n• The κ-Framework and its constants\n• How COIN relates to consciousness\n• The relationship between physics and soul`;
+        }
+
+        function addMessage(text, type) {
+            const msg = document.createElement('div');
+            msg.className = `message ${type}`;
+            if (type === 'assistant') {
+                msg.innerHTML = `<div class="sender">SOULSCIENCE</div>${text.replace(/\n/g, '<br>')}`;
+            } else {
+                msg.textContent = text;
+            }
+            chatContainer.appendChild(msg);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            const typing = document.createElement('div');
+            typing.className = 'message assistant';
+            typing.id = 'typingIndicator';
+            typing.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+            chatContainer.appendChild(typing);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function hideTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            userInput.value = '';
+            sendBtn.disabled = true;
+
+            showTyping();
+
+            // Simulate thinking time
+            setTimeout(() => {
+                hideTyping();
+                const response = findResponse(text);
+                addMessage(response, 'assistant');
+                sendBtn.disabled = false;
+
+                // Track interaction for donation timing
+                const interactions = parseInt(localStorage.getItem('interactions') || '0') + 1;
+                localStorage.setItem('interactions', interactions);
+            }, 1000 + Math.random() * 1500);
+        }
+
+        function askTopic(topic) {
+            userInput.value = topic;
+            sendMessage();
+        }
+
+        function openSignature() {
+            window.open('../../tools/s-signature/s_signature_engine.html', '_blank');
+        }
+
+        // Enter key to send
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !sendBtn.disabled) {
+                sendMessage();
+            }
+        });
+
+        // ==========================================
+        // PWA INSTALLATION
+        // ==========================================
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Show install prompt after a delay
+            setTimeout(() => {
+                document.getElementById('installPrompt').classList.remove('hidden');
+            }, 30000); // 30 seconds
+        });
+
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choice) => {
+                    deferredPrompt = null;
+                    document.getElementById('installPrompt').classList.add('hidden');
+                });
+            }
+        }
+
+        function dismissInstall() {
+            document.getElementById('installPrompt').classList.add('hidden');
+        }
+
+        // ==========================================
+        // INITIALIZATION
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            checkDonationStatus();
+
+            // Load saved signature if exists
+            const savedSig = localStorage.getItem('sSignature');
+            if (savedSig) {
+                try {
+                    updateSignatureDisplay(JSON.parse(savedSig));
+                } catch (e) {}
+            }
+        });
+
+        // Register service worker for PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>

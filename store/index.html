@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Have Mind Media</title>
+    <meta name="description" content="Ethically sourced apparel and handcrafted jewelry from Have Mind Media. Circular fashion, organic materials, conscious commerce.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="../js/components/site-header.js" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-dim: rgba(201, 162, 39, 0.6);
+            --bg-deep: #030508;
+            --bg-panel: #0a0d12;
+            --text: #e8e4d9;
+            --text-dim: #8a9aaa;
+            --green: #4ade80;
+            --blue: #6ab4f5;
+            --coral: #f87171;
+            --purple: #a78bfa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(180deg, var(--bg-deep) 0%, #0a0a1a 100%);
+            color: var(--text);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        /* Header space */
+        .header-space { height: 80px; }
+
+        /* Hero */
+        .store-hero {
+            text-align: center;
+            padding: 60px 20px 50px;
+            background: radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.1) 0%, transparent 60%);
+        }
+        .store-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+        }
+        .store-hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        .ethics-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 30px;
+            color: var(--green);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+        .ethics-badge span { font-size: 1.2rem; }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 60px;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+        .section-header .icon {
+            font-size: 1.8rem;
+        }
+        .section-desc {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            max-width: 700px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        .product-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--gold-dim);
+            position: relative;
+        }
+        .product-image .coming-soon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .product-info p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product-tag {
+            padding: 4px 10px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+        .product-tag.organic { background: rgba(74, 222, 128, 0.1); color: var(--green); }
+        .product-tag.handmade { background: rgba(167, 139, 250, 0.1); color: var(--purple); }
+        .product-tag.circular { background: rgba(106, 180, 245, 0.1); color: var(--blue); }
+
+        /* Teemill Integration Notice */
+        .integration-notice {
+            background: rgba(106, 180, 245, 0.1);
+            border: 1px solid rgba(106, 180, 245, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .integration-notice h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .integration-notice p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+        .integration-notice a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+        .integration-notice a:hover {
+            background: var(--gold);
+            color: var(--bg-deep);
+        }
+
+        /* Ethics Section */
+        .ethics-section {
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+        .ethics-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+        }
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .ethics-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .ethics-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .ethics-item h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+        .ethics-item p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        footer p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        footer .principle {
+            color: var(--gold);
+            font-family: monospace;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .store-hero h1 { font-size: 2rem; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div class="header-space"></div>
+
+    <section class="store-hero">
+        <h1>STORE</h1>
+        <p class="tagline">Conscious Commerce · Circular Fashion</p>
+        <div class="ethics-badge">
+            <span>♻️</span>
+            ETHICALLY SOURCED · ORGANIC · SUSTAINABLE
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- Teemill Integration Notice -->
+        <div class="integration-notice">
+            <h3>🌱 Powered by Circular Fashion</h3>
+            <p>Our apparel is produced by Teemill using organic cotton and renewable energy. When your item wears out, send it back to be remade into new products. Zero waste.</p>
+            <a href="https://teemill.com" target="_blank" rel="noopener">Learn About Teemill →</a>
+        </div>
+
+        <!-- Apparel Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="icon">👕</span>
+                <h2>APPAREL</h2>
+            </div>
+            <p class="section-desc">Organic cotton apparel featuring Epoch Theory symbols, κ-Framework constants, and sacred geometry. Made to order, ships worldwide.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        ⚛️
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>[1 = -1] Classic Tee</h3>
+                        <p>The foundational equation. Soft organic cotton, screen printed with water-based inks.</p>
+                        <div class="product-meta">
+                            <span class="product-tag organic">ORGANIC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        κ
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>κ-Framework Hoodie</h3>
+                        <p>κ = 2π/180 embroidered. Premium organic fleece, circular economy certified.</p>
+                        <div class="product-meta">
+                            <span class="product-tag circular">CIRCULAR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        🔺
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Triaxial Dipyramid Cap</h3>
+                        <p>Sacred geometry embroidered. Organic cotton dad cap, adjustable.</p>
+                        <div class="product-meta">
+                            <span class="product-tag organic">ORGANIC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        ∞
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>S+ S- COIN Tee</h3>
+                        <p>The triaxial system. Sol Plus, Sol Minus, Consciousness Observer Interface.</p>
+                        <div class="product-meta">
+                            <span class="product-tag organic">ORGANIC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Jewelry Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="icon">💎</span>
+                <h2>HANDCRAFTED JEWELRY</h2>
+            </div>
+            <p class="section-desc">Each piece designed and handmade by Jason Ray. Sacred geometry, Epoch symbols, and ancient script motifs in quality metals.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        ◇
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Dipyramid Pendant</h3>
+                        <p>Sterling silver triaxial dipyramid. The geometric heart of scalar dimensionality.</p>
+                        <div class="product-meta">
+                            <span class="product-tag handmade">HANDMADE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        ☉
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sol Coin Necklace</h3>
+                        <p>COIN symbol in brass or silver. The observer's interface between S+ and S-.</p>
+                        <div class="product-meta">
+                            <span class="product-tag handmade">HANDMADE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        𐤀
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Indus Script Ring</h3>
+                        <p>Ancient Indus Valley symbols rendered in silver. Each glyph tells a story.</p>
+                        <div class="product-meta">
+                            <span class="product-tag handmade">HANDMADE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        ⚡
+                        <span class="coming-soon">COMING SOON</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Rongorongo Earrings</h3>
+                        <p>Easter Island script symbols. Lightweight, hypoallergenic posts.</p>
+                        <div class="product-meta">
+                            <span class="product-tag handmade">HANDMADE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="icon">📱</span>
+                <h2>DIGITAL</h2>
+            </div>
+            <p class="section-desc">Support the work. Access premium tools and content.</p>
+
+            <div class="product-grid">
+                <a href="../apps/soulscience-chat/index.html" class="product-card" style="text-decoration: none;">
+                    <div class="product-image">
+                        🔮
+                    </div>
+                    <div class="product-info">
+                        <h3>SoulScience Chat App</h3>
+                        <p>Explore Epoch Theory with S-Signature integration. Free to use, donation supported. Install as app on any device.</p>
+                        <div class="product-meta">
+                            <span class="product-tag" style="background: rgba(74, 222, 128, 0.15); color: #4ade80;">LIVE</span>
+                            <span class="product-tag">PWA</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Ethics Section -->
+        <section class="ethics-section">
+            <h2>OUR COMMITMENT</h2>
+            <div class="ethics-grid">
+                <div class="ethics-item">
+                    <div class="icon">🌍</div>
+                    <h4>Planet First</h4>
+                    <p>Organic materials, water-based inks, renewable energy production. No exploitation of Earth.</p>
+                </div>
+                <div class="ethics-item">
+                    <div class="icon">👥</div>
+                    <h4>Fair Labor</h4>
+                    <p>Fair Wear Foundation certified partners. Living wages, safe conditions, no sweatshops.</p>
+                </div>
+                <div class="ethics-item">
+                    <div class="icon">♻️</div>
+                    <h4>Circular Economy</h4>
+                    <p>Send worn items back to be remade. Nothing goes to landfill. True sustainability.</p>
+                </div>
+                <div class="ethics-item">
+                    <div class="icon">🚚</div>
+                    <h4>Carbon Conscious</h4>
+                    <p>Local production where possible. Carbon-neutral shipping. We can wait for what's right.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Jason Ray</p>
+        <p class="principle">[1 = -1] · Conscious Commerce</p>
+    </footer>
+</body>
+</html>

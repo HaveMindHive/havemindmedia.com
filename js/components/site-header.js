@@ -128,6 +128,26 @@ class SiteHeader extends HTMLElement {
                     box-shadow: 0 4px 15px rgba(201, 162, 39, 0.2);
                 }
 
+                /* Store button */
+                .hmm-store-link {
+                    padding: 0.5rem 1rem;
+                    background: linear-gradient(135deg, rgba(74, 222, 128, 0.15) 0%, rgba(201, 162, 39, 0.15) 100%);
+                    border: 1px solid rgba(74, 222, 128, 0.4);
+                    border-radius: 20px;
+                    color: #4ade80;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+                    transition: all 0.2s;
+                }
+                .hmm-store-link:hover {
+                    background: linear-gradient(135deg, rgba(74, 222, 128, 0.25) 0%, rgba(201, 162, 39, 0.25) 100%);
+                    box-shadow: 0 4px 15px rgba(74, 222, 128, 0.2);
+                }
+
                 /* Dropdown */
                 .hmm-drop {
                     position: absolute;
@@ -290,7 +310,7 @@ class SiteHeader extends HTMLElement {
                     }
                     .hmm-nav.show { display: flex; }
                     .hmm-toggle { display: block; }
-                    .hmm-games-link {
+                    .hmm-games-link, .hmm-store-link {
                         width: 100%;
                         justify-content: center;
                         padding: 0.8rem;
@@ -376,6 +396,9 @@ class SiteHeader extends HTMLElement {
                     <nav class="hmm-nav">
                         <!-- Games - Prominent -->
                         <a href="${bp}games/index.html" class="hmm-games-link">🧠 Mind Games</a>
+
+                        <!-- Store -->
+                        <a href="${bp}store/index.html" class="hmm-store-link">🛒 Store</a>
 
                         <!-- Physics / S+ -->
                         <div class="hmm-nav-item">
