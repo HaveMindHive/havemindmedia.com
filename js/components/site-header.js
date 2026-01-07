@@ -382,6 +382,8 @@ class SiteHeader extends HTMLElement {
                             <button class="hmm-btn hmm-splus">S+ Physics <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop drop-splus">
                                 <div class="label">Core Physics</div>
+                                <a href="${bp}physics/standard-model-failures/index.html" style="color: #f85149; font-weight: 600;">⚠ Standard Model Failures (NEW)</a>
+                                <a href="${bp}physics/atomic-derivations/index.html" style="color: #3fb950; font-weight: 600;">&#9883; Atomic Derivations</a>
                                 <a href="${bp}physics/three-body-geometry.html">Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}physics/jwst-geometric-explorer.html">JWST Explorer</a>
