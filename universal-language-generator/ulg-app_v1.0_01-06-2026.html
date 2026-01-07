@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Universal Language Generator - A geometric phonetic system that reveals the hidden connections between sounds and meanings across all human languages.">
+    <title>THE UNIVERSAL LANGUAGE GENERATOR | Have Mind Media</title>
+
+    <link rel="stylesheet" href="css/ulg-theme_v1.0_01-06-2026.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔊</text></svg>">
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <div class="vignette"></div>
+
+    <!-- Navigation -->
+    <nav class="unified-nav">
+        <a href="ulg-app_v1.0_01-06-2026.html" class="nav-brand">
+            <span class="nav-brand-text">HAVE MIND MEDIA</span>
+            <span class="nav-signature">THE UNIVERSAL LANGUAGE GENERATOR</span>
+        </a>
+        <div class="nav-principle">[1 = -1]</div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="ulg-container">
+        <div class="main-content">
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 HERO SECTION - The Main Generator Interface
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>THE UNIVERSAL LANGUAGE GENERATOR</h1>
+                    <p class="hero-tagline">Discover the geometry hidden in every word</p>
+
+                    <!-- Main Generator Input -->
+                    <div class="generator-box">
+                        <div class="generator-input-wrapper">
+                            <input type="text" id="main-input" class="generator-input"
+                                   placeholder="Enter any word..."
+                                   autocomplete="off">
+                            <button class="generate-btn" onclick="generatePhonetic()">
+                                GENERATE
+                            </button>
+                        </div>
+                        <p class="generator-hint">Try: LOVE, WATER, MOTHER, YOUR NAME, or any word you're curious about</p>
+                    </div>
+
+                    <!-- Result Display (hidden until generated) -->
+                    <div id="result-container" class="result-container">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Visual Element -->
+                <div class="hero-visual">
+                    <div class="vowel-triangle">
+                        <div class="vowel-point vowel-i" data-vowel="i">
+                            <span class="vowel-symbol">/i/</span>
+                            <span class="vowel-label">small, near, bright</span>
+                        </div>
+                        <div class="vowel-point vowel-a" data-vowel="a">
+                            <span class="vowel-symbol">/a/</span>
+                            <span class="vowel-label">open, large, manifest</span>
+                        </div>
+                        <div class="vowel-point vowel-u" data-vowel="u">
+                            <span class="vowel-symbol">/u/</span>
+                            <span class="vowel-label">round, deep, complete</span>
+                        </div>
+                        <svg class="triangle-lines" viewBox="0 0 300 260">
+                            <polygon points="150,10 10,250 290,250" fill="none" stroke="rgba(201,162,39,0.3)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 FEATURED VIDEO - Sound Becomes Geometry
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="video-section">
+                <div class="video-container">
+                    <video autoplay loop muted playsinline class="featured-video">
+                        <source src="images/epoch_vid_epoch_abstract_visualization_of_soun_e43db5_01-06-2026.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-overlay">
+                        <p class="video-caption">Sound waves become geometric patterns — the universal language made visible</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 WHAT IS THIS SECTION - Educational Explanation
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="explanation-section">
+                <div class="explanation-card">
+                    <h2>What Is The Universal Language Generator?</h2>
+
+                    <div class="explanation-intro">
+                        <p>
+                            For 200 years, linguistics has taught that the connection between sounds and
+                            meanings is completely arbitrary. The word "dog" could just as well be "cat" —
+                            it's all convention.
+                        </p>
+                        <p>
+                            <strong>But this isn't true.</strong>
+                        </p>
+                        <p>
+                            Cross-cultural studies reveal consistent patterns: people worldwide associate
+                            "bouba" with round shapes and "kiki" with spiky ones. Words for "mother" almost
+                            universally contain /m/ sounds. Diminutives across languages use /i/ vowels.
+                            These patterns aren't coincidence — they're <em>geometry</em>.
+                        </p>
+                    </div>
+
+                    <div class="explanation-grid">
+                        <div class="explanation-item">
+                            <div class="explanation-icon">🔊</div>
+                            <h3>Sound Has Shape</h3>
+                            <p>
+                                When you say /i/ (as in "see"), your mouth forms a small cavity.
+                                Small cavity = high frequency = associated with small things.
+                                When you say /a/ (as in "father"), maximum opening = large, manifest things.
+                                The physics of sound production creates meaning.
+                            </p>
+                        </div>
+                        <div class="explanation-item">
+                            <div class="explanation-icon">🌍</div>
+                            <h3>Universal Patterns</h3>
+                            <p>
+                                "Mama" appears in virtually every language on Earth — not because of
+                                cultural borrowing, but because /m/ is the first consonant babies can
+                                produce (lips closed, like nursing). The sound IS the meaning.
+                            </p>
+                        </div>
+                        <div class="explanation-item">
+                            <div class="explanation-icon">📐</div>
+                            <h3>Nine Positions</h3>
+                            <p>
+                                Every word reduces to one of nine fundamental positions through Q-reduction
+                                (summing letters until you get a single digit). These same nine positions
+                                appear in ancient scripts, musical intervals, and biological systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 THE NINE D-POSITIONS - Interactive Guide
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="positions-section">
+                <h2>The Nine Geometric Positions</h2>
+                <p class="section-intro">
+                    Every word maps to one of these nine fundamental meanings.
+                    Click any position to explore its sounds and significance.
+                </p>
+
+                <div class="d-position-grid" id="d-position-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <!-- Position Detail Panel -->
+                <div id="position-detail" class="position-detail">
+                    <!-- Populated when a position is clicked -->
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 THE SOUND SYSTEM - Vowels and Consonants
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="sounds-section">
+                <h2>The Sound-Meaning System</h2>
+                <p class="section-intro">
+                    Every phoneme (speech sound) carries inherent meaning based on how it's produced.
+                    This isn't arbitrary assignment — it emerges from the physics of articulation.
+                </p>
+
+                <!-- Vowels -->
+                <div class="sound-category">
+                    <h3>Vowels: The Emotional Core</h3>
+                    <p class="category-intro">
+                        Vowels are the heart of syllables — continuous sounds shaped by tongue position
+                        and lip rounding. Their formant frequencies (resonance patterns) correlate with
+                        geometric constants.
+                    </p>
+
+                    <div class="phoneme-grid" id="vowel-grid">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Consonants -->
+                <div class="sound-category">
+                    <h3>Consonants: The Active Forces</h3>
+                    <p class="category-intro">
+                        Consonants are produced by obstructing airflow. How and where you obstruct
+                        determines the meaning: stops create impact, fricatives create flow,
+                        nasals create intimacy.
+                    </p>
+
+                    <div class="consonant-groups">
+                        <div class="consonant-group">
+                            <h4>Nasals — Intimacy & Boundaries</h4>
+                            <div class="phoneme-row" id="nasals-row"></div>
+                        </div>
+                        <div class="consonant-group">
+                            <h4>Stops — Impact & Force</h4>
+                            <div class="phoneme-row" id="stops-row"></div>
+                        </div>
+                        <div class="consonant-group">
+                            <h4>Fricatives — Flow & Continuity</h4>
+                            <div class="phoneme-row" id="fricatives-row"></div>
+                        </div>
+                        <div class="consonant-group">
+                            <h4>Liquids & Approximants — Smooth Movement</h4>
+                            <div class="phoneme-row" id="liquids-row"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 EVIDENCE SECTION - Cross-Linguistic Patterns
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="evidence-section">
+                <h2>The Evidence: Patterns Across Languages</h2>
+                <p class="section-intro">
+                    These patterns appear in unrelated language families across the globe.
+                    They cannot be explained by cultural borrowing — only by universal geometry.
+                </p>
+
+                <div class="evidence-grid" id="evidence-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 VOCABULARY EXPLORER
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="vocabulary-section">
+                <h2>Explore the Core Vocabulary</h2>
+                <p class="section-intro">
+                    See how fundamental concepts map to Universal Language forms.
+                    Each word breaks down into meaningful sound components.
+                </p>
+
+                <div class="vocab-categories">
+                    <button class="vocab-tab active" data-category="pronouns">Pronouns</button>
+                    <button class="vocab-tab" data-category="family">Family</button>
+                    <button class="vocab-tab" data-category="elements">Elements</button>
+                    <button class="vocab-tab" data-category="actions">Actions</button>
+                    <button class="vocab-tab" data-category="states">States</button>
+                    <button class="vocab-tab" data-category="numbers">Numbers</button>
+                </div>
+
+                <div class="vocab-display" id="vocab-display">
+                    <!-- Populated by JavaScript based on selected category -->
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 THE FRAMEWORK - Mathematical Foundation
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="framework-section">
+                <div class="framework-card">
+                    <h2>The κ-Framework</h2>
+                    <p class="framework-intro">
+                        All Universal Language Generator mathematics derive from a single constant:
+                    </p>
+
+                    <div class="framework-equation">
+                        <span class="kappa-symbol">κ</span>
+                        <span class="equals">=</span>
+                        <span class="formula">2π / 180</span>
+                        <span class="equals">=</span>
+                        <span class="value">0.0349066...</span>
+                    </div>
+
+                    <p class="framework-explanation">
+                        This is the <strong>bridge constant</strong> — the ratio that converts between
+                        angular (rotational) and linear (translational) measurement. It appears wherever
+                        circles meet lines, wherever potential becomes manifest.
+                    </p>
+
+                    <div class="derived-constants">
+                        <div class="constant-item">
+                            <span class="constant-symbol">σ = 5/16</span>
+                            <span class="constant-meaning">Helix overlap — appears in DNA structure and /u/ vowel formant ratio</span>
+                        </div>
+                        <div class="constant-item">
+                            <span class="constant-symbol">cos(BC) = 2/3</span>
+                            <span class="constant-meaning">Tetrahelix bond angle — appears in /a/ vowel formant ratio</span>
+                        </div>
+                        <div class="constant-item">
+                            <span class="constant-symbol">κ_shadow ≈ 28.65</span>
+                            <span class="constant-meaning">Predicts optimal phoneme inventory size (world languages: 25-30)</span>
+                        </div>
+                    </div>
+
+                    <div class="principle-box">
+                        <span class="principle">[1 = -1]</span>
+                        <span class="principle-meaning">Unity contains its opposite — the foundation of all duality</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════════════════════════════════════════════
+                 INTEGRATION - Connection to Other Tools
+                 ═══════════════════════════════════════════════════════════════ -->
+            <section class="integration-section">
+                <h2>Part of a Larger System</h2>
+
+                <div class="integration-grid">
+                    <div class="integration-item">
+                        <h3>🔱 Rosetta Engine</h3>
+                        <p>
+                            The ULG provides phonetic reconstruction for undeciphered scripts.
+                            When the Rosetta Engine identifies a glyph's D-position, the ULG
+                            generates candidate pronunciations.
+                        </p>
+                        <a href="../rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html" class="integration-link">
+                            Explore Rosetta Engine →
+                        </a>
+                    </div>
+                    <div class="integration-item">
+                        <h3>📜 Ancient Scripts</h3>
+                        <p>
+                            Five undeciphered writing systems (Voynich, Indus, Linear A, Rongorongo,
+                            Phaistos) may all encode the same geometric patterns — and the ULG
+                            provides the key to hearing them.
+                        </p>
+                    </div>
+                    <div class="integration-item">
+                        <h3>🧬 Biological Patterns</h3>
+                        <p>
+                            The same constants that structure language appear in DNA codons,
+                            protein folding, and neural architecture. Language is not separate
+                            from biology — it emerges from the same geometry.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="unified-footer">
+            <div class="footer-logo">HAVE MIND MEDIA</div>
+            <div class="footer-tagline">The Universal Language Generator — The Epoch Project</div>
+            <div class="footer-principle">[1 = -1]</div>
+            <p class="footer-credit">Web Application Developer: Alessandra Ray</p>
+        </footer>
+    </div>
+
+    <!-- Phoneme Detail Modal -->
+    <div id="phoneme-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-body">
+                <!-- Populated when phoneme is clicked -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/ulg-engine_v1.0_01-06-2026.js"></script>
+    <script src="js/ulg-ui_v1.0_01-06-2026.js"></script>
+</body>
+</html>

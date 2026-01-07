@@ -1,0 +1,481 @@
+{
+  "meta": {
+    "name": "Universal Language Generator Database",
+    "version": "1.0",
+    "date": "2026-01-06",
+    "organization": "Have Mind Media",
+    "project": "The Epoch Project",
+    "principle": "[1 = -1]",
+    "description": "Complete phoneme-meaning mappings, vocabulary database, and cross-linguistic evidence for the Universal Language Generator"
+  },
+
+  "constants": {
+    "kappa": {
+      "value": 0.034906585039886594,
+      "formula": "2π/180",
+      "description": "The bridge constant - converts between angular and linear domains",
+      "significance": "All framework mathematics derive from this single value"
+    },
+    "sigma": {
+      "value": 0.3125,
+      "formula": "5/16",
+      "description": "Helix overlap ratio",
+      "significance": "Appears in DNA helix, protein structure, and the F1/F2 ratio of /u/ vowel"
+    },
+    "cosBC": {
+      "value": 0.6666666666666666,
+      "formula": "2/3",
+      "description": "Tetrahelix bond angle cosine",
+      "significance": "Appears in the F1/F2 ratio of /a/ vowel - the most open vowel"
+    },
+    "sqrt3": {
+      "value": 1.7320508075688772,
+      "formula": "√3",
+      "description": "Q-magnitude - height of equilateral triangle with unit base",
+      "significance": "Appears in timing ratios and vowel triangle proportions"
+    },
+    "kappaShadow": {
+      "value": 28.64788975654116,
+      "formula": "1/κ (scaled)",
+      "description": "Inverse of kappa",
+      "significance": "Predicts optimal phoneme inventory size - world languages cluster around 25-30 phonemes"
+    }
+  },
+
+  "dPositions": {
+    "1": {
+      "name": "Origin / WE",
+      "shortName": "Origin",
+      "meaning": "Unity, beginning, togetherness, the collective",
+      "keywords": ["we", "one", "begin", "together", "unity", "source", "start", "first"],
+      "color": "#3fb950",
+      "vowel": "i",
+      "consonants": ["w", "j"],
+      "triaxial": { "sPlus": 1.0, "sMinus": 0.0, "coin": 0.0 },
+      "emergent": false,
+      "description": "D1 is the origin point - where everything begins. It represents the collective 'WE' rather than isolated individuals. The /w/ consonant embodies unity (lip rounding, flowing) while /i/ points to immediacy and presence.",
+      "crossLinguistic": [
+        "English 'we' begins with /w/",
+        "Latin 'unus' (one) contains /u/ which shares rounding with /w/",
+        "Chinese 我們 (wǒmen, 'we') begins with /w/ sound"
+      ]
+    },
+    "2": {
+      "name": "Healing",
+      "shortName": "Healing",
+      "meaning": "Restoration, medicine, making whole",
+      "keywords": ["heal", "health", "whole", "restore", "medicine", "help", "hope"],
+      "color": "#1abc9c",
+      "vowel": "e",
+      "consonants": ["h", "m"],
+      "triaxial": { "sPlus": 0.766, "sMinus": 0.174, "coin": 0.620 },
+      "emergent": false,
+      "description": "D2 is restoration and healing. The /h/ is pure breath (life force) and /m/ is intimate nurturing (mother sound). The /e/ vowel represents transition - moving from small/injured toward large/whole.",
+      "crossLinguistic": [
+        "English 'heal', 'health', 'help', 'hope', 'home' all begin with /h/",
+        "Hebrew 'chai' (life) contains /h/ sound",
+        "Greek 'therapeia' (healing) concept relates to care/nurturing"
+      ]
+    },
+    "3": {
+      "name": "Healer",
+      "shortName": "Healer",
+      "meaning": "Agent of transformation, genius, the one who changes things",
+      "keywords": ["change", "transform", "create", "genius", "agent", "name", "know"],
+      "color": "#ff6b6b",
+      "vowel": "a",
+      "consonants": ["n", "ŋ"],
+      "triaxial": { "sPlus": 0.174, "sMinus": 0.766, "coin": 0.620 },
+      "emergent": false,
+      "description": "D3 is the agent - the one who does the healing, who makes the change. While D2 is the process, D3 is the actor. The /n/ creates boundaries with the tongue (enabling distinction and transformation). The /a/ is maximum openness - full manifestation.",
+      "crossLinguistic": [
+        "Latin 'nomen' (name) - naming is the first act of transformation",
+        "Greek 'gnosis' (knowledge) - /n/ in knowing",
+        "Many agent suffixes contain nasals: English '-er', Spanish '-or'"
+      ]
+    },
+    "4": {
+      "name": "Crossroads",
+      "shortName": "Crossroads",
+      "meaning": "Choice point, intersection, the observer position",
+      "keywords": ["choice", "cross", "decide", "turn", "both", "either", "this", "that"],
+      "color": "#ff6b35",
+      "vowel": "ə",
+      "consonants": ["t", "d"],
+      "triaxial": { "sPlus": 0.5, "sMinus": 0.5, "coin": 0.707 },
+      "emergent": false,
+      "description": "D4 is the crossroads - where paths meet and choices must be made. The schwa /ə/ is the neutral vowel (neither committed to front nor back). The /t/ and /d/ are precise touches - the moment of decision, of making contact.",
+      "crossLinguistic": [
+        "English 'this', 'that', 'there' - demonstratives use /t/ and /ð/",
+        "Indo-European 'to-' demonstrative root",
+        "Latin 'duo' (two) - the number of choice"
+      ]
+    },
+    "5": {
+      "name": "Navigator",
+      "shortName": "Navigator",
+      "meaning": "Direction, purpose, way-finding, the compass",
+      "keywords": ["go", "guide", "goal", "direction", "path", "way", "course"],
+      "color": "#9b59b6",
+      "vowel": "o",
+      "consonants": ["g", "k"],
+      "triaxial": { "sPlus": 0.342, "sMinus": 0.342, "coin": 0.876 },
+      "emergent": true,
+      "emergentNote": "D5 never appears as a primary position in Rongorongo script. It only emerges from the combination of two glyphs - proving mathematically that direction requires relationship (origin AND destination).",
+      "description": "D5 is EMERGENT - you cannot navigate alone. Direction requires both starting point and destination. The /g/ and /k/ provide grounding force while /o/ points toward completion.",
+      "crossLinguistic": [
+        "English 'go', 'goal', 'guide' cluster around /g/",
+        "Greek 'hodos' (way, path) - /o/ vowel",
+        "Latin 'cogito' (I think) - directed mental action"
+      ]
+    },
+    "6": {
+      "name": "Power / Self",
+      "shortName": "Power",
+      "meaning": "Personal strength, individual truth, manifest force",
+      "keywords": ["power", "self", "I", "me", "strong", "bold", "push", "punch"],
+      "color": "#00bcd4",
+      "vowel": "a",
+      "consonants": ["p", "b"],
+      "triaxial": { "sPlus": 0.0, "sMinus": 1.0, "coin": 0.0 },
+      "emergent": false,
+      "description": "D6 is pure manifest power - the individual at full expression. The /p/ and /b/ are bilabial stops - complete closure followed by explosive release. Maximum impact. The /a/ is maximum opening.",
+      "crossLinguistic": [
+        "Universal 'papa' for father (power/authority figure)",
+        "English 'power', 'push', 'punch', 'potent' cluster around /p/",
+        "Latin 'pater' (father), 'potens' (powerful)"
+      ]
+    },
+    "7": {
+      "name": "Present Moment",
+      "shortName": "Present",
+      "meaning": "NOW, the timeless instant, pure presence",
+      "keywords": ["now", "moment", "present", "here", "instant", "current"],
+      "color": "#c9a227",
+      "vowel": "ʌ",
+      "consonants": ["n"],
+      "triaxial": { "sPlus": 0.5, "sMinus": 0.5, "coin": 0.707 },
+      "emergent": false,
+      "description": "D7 is the eternal present - the only moment that actually exists. The /ʌ/ vowel (as in 'cup', 'love') is central and grounded. The /n/ points to distinction - THIS moment.",
+      "crossLinguistic": [
+        "English 'now', 'on' contain /n/",
+        "Latin 'nunc' (now)",
+        "German 'nun' (now)"
+      ]
+    },
+    "8": {
+      "name": "Deep Water",
+      "shortName": "Depths",
+      "meaning": "Hidden truth, the depths, what lies beneath",
+      "keywords": ["deep", "water", "hidden", "truth", "within", "below", "pool"],
+      "color": "#006994",
+      "vowel": "u",
+      "consonants": ["w"],
+      "triaxial": { "sPlus": 0.174, "sMinus": 0.766, "coin": 0.620 },
+      "emergent": false,
+      "description": "D8 is where truth hides - the unconscious, the depths, the water beneath. The /u/ vowel is maximally back and rounded - enclosed, hidden. The /w/ flows like water.",
+      "crossLinguistic": [
+        "English 'water', 'well', 'wave' begin with /w/",
+        "Latin 'aqua' contains back vowels",
+        "Many languages associate /u/ with darkness, depth, enclosure"
+      ]
+    },
+    "9": {
+      "name": "Anchor / Love",
+      "shortName": "Love",
+      "meaning": "Unconditional love, completion, the force that binds",
+      "keywords": ["love", "hold", "anchor", "complete", "bond", "forever", "all"],
+      "color": "#c0392b",
+      "vowel": "u",
+      "secondaryVowel": "o",
+      "consonants": ["l", "v"],
+      "triaxial": { "sPlus": 0.5, "sMinus": 0.5, "coin": 0.0 },
+      "emergent": true,
+      "emergentNote": "D9 never appears alone in Rongorongo. Love requires self AND other - it emerges from relationship. This is mathematical proof that love is not a thing but a connection.",
+      "description": "D9 is EMERGENT like D5 - you cannot love alone. The /l/ is smooth, flowing light. The /v/ vibrates continuously - ongoing connection. The /u/ and /o/ are rounded, complete.",
+      "crossLinguistic": [
+        "English 'love', 'live', 'all' cluster around /l/",
+        "Latin 'amor' contains /o/",
+        "Greek 'agape' - unconditional love"
+      ]
+    }
+  },
+
+  "vowelSystem": {
+    "description": "The Universal Language vowel system uses 7 vowels organized in a triaxial space. The three primary vowels (/i/, /a/, /u/) form a triangle; secondary vowels fill the edges.",
+    "primaryVowels": ["i", "a", "u"],
+    "secondaryVowels": ["e", "o"],
+    "neutralVowel": "ə",
+    "specialVowel": "ʌ",
+    "vowels": {
+      "i": {
+        "ipa": "/i/",
+        "name": "Close Front Unrounded",
+        "acoustics": { "f1": 280, "f2": 2250, "ratio": 0.124 },
+        "meanings": ["small", "near", "sharp", "here", "bright", "quick", "thin"],
+        "dAffinities": [1, 7],
+        "mnemonic": "Think: 'little', 'bit', 'thin' - all have /i/ and mean small things"
+      },
+      "e": {
+        "ipa": "/e/",
+        "name": "Close-Mid Front Unrounded",
+        "acoustics": { "f1": 400, "f2": 2050, "ratio": 0.195 },
+        "meanings": ["emerging", "transitioning", "becoming", "between"],
+        "dAffinities": [2, 3],
+        "mnemonic": "The vowel of becoming - between /i/ (small) and /a/ (large)"
+      },
+      "a": {
+        "ipa": "/a/",
+        "name": "Open Central Unrounded",
+        "acoustics": { "f1": 750, "f2": 1100, "ratio": 0.682 },
+        "geometricSignificance": "F1/F2 ratio ≈ 2/3 = cos(BC) = tetrahelix bond angle",
+        "meanings": ["open", "large", "manifest", "present", "father", "power"],
+        "dAffinities": [3, 6],
+        "mnemonic": "Maximum opening - 'ah!' exclamation, 'papa', 'mama' - primal sounds"
+      },
+      "ə": {
+        "ipa": "/ə/",
+        "name": "Schwa (Mid Central)",
+        "acoustics": { "f1": 500, "f2": 1400, "ratio": 0.357 },
+        "meanings": ["neutral", "transitional", "reduced", "uncommitted"],
+        "dAffinities": [4],
+        "mnemonic": "The crossroads vowel - completely neutral, neither here nor there"
+      },
+      "o": {
+        "ipa": "/o/",
+        "name": "Close-Mid Back Rounded",
+        "acoustics": { "f1": 500, "f2": 900, "ratio": 0.556 },
+        "meanings": ["directed", "going", "toward", "rounding toward completion"],
+        "dAffinities": [5, 9],
+        "mnemonic": "The vowel of direction - 'go', 'home', 'whole'"
+      },
+      "u": {
+        "ipa": "/u/",
+        "name": "Close Back Rounded",
+        "acoustics": { "f1": 320, "f2": 1000, "ratio": 0.320 },
+        "geometricSignificance": "F1/F2 ratio ≈ 5/16 = σ = helix overlap",
+        "meanings": ["round", "complete", "enclosed", "deep", "hidden", "moon"],
+        "dAffinities": [8, 9],
+        "mnemonic": "Maximum enclosure - 'pool', 'moon', 'truth' (hidden things)"
+      },
+      "ʌ": {
+        "ipa": "/ʌ/",
+        "name": "Open-Mid Back Unrounded",
+        "acoustics": { "f1": 600, "f2": 1200, "ratio": 0.500 },
+        "meanings": ["now", "present", "grounded", "love", "blood", "one"],
+        "dAffinities": [7],
+        "mnemonic": "English uses this for primal words: 'love', 'blood', 'one', 'sun'"
+      }
+    }
+  },
+
+  "consonantSystem": {
+    "description": "Consonants are organized by manner of articulation (how air flows) and place of articulation (where constriction occurs). Each consonant carries meaning based on its physical production.",
+    "inventory": {
+      "nasals": ["m", "n"],
+      "stops": {
+        "voiceless": ["p", "t", "k"],
+        "voiced": ["b", "d", "g"]
+      },
+      "fricatives": {
+        "voiceless": ["f", "s", "ʃ", "h"],
+        "voiced": ["v"]
+      },
+      "liquids": ["l", "r"],
+      "approximants": ["w", "j"],
+      "affricates": ["tʃ", "dʒ"]
+    },
+    "totalPhonemes": 18,
+    "note": "18 consonants + 7 vowels = 25 phonemes, within the optimal range predicted by κ_shadow (~28-30)"
+  },
+
+  "vocabulary": {
+    "description": "Core vocabulary with ULG forms, D-positions, and meaning breakdowns",
+    "categories": {
+      "pronouns": {
+        "I": { "ulg": "mi", "ipa": "/mi/", "d": 6, "breakdown": "m(intimate) + i(here/self)" },
+        "me": { "ulg": "mi", "ipa": "/mi/", "d": 6, "breakdown": "m(intimate) + i(here/self)" },
+        "you": { "ulg": "tu", "ipa": "/tu/", "d": 6, "breakdown": "t(touch/point) + u(other/complete)" },
+        "we": { "ulg": "wi", "ipa": "/wi/", "d": 1, "breakdown": "w(unity) + i(here)" },
+        "they": { "ulg": "ta.li", "ipa": "/ta.li/", "d": 3, "breakdown": "t(those) + a(many) + l(others) + i(there)" }
+      },
+      "family": {
+        "mother": { "ulg": "ma.mi", "ipa": "/ma.mi/", "d": 2, "breakdown": "m(intimate) + a(large/nurturing) + m(intimate) + i(close)" },
+        "father": { "ulg": "pa.ta", "ipa": "/pa.ta/", "d": 6, "breakdown": "p(power) + a(large) + t(authority) + a(open)" },
+        "child": { "ulg": "tʃi.li", "ipa": "/tʃi.li/", "d": 3, "breakdown": "tʃ(change/new) + i(small) + l(light) + i(small)" },
+        "family": { "ulg": "ma.li", "ipa": "/ma.li/", "d": 2, "breakdown": "m(intimate) + a(together) + l(bond) + i(close)" },
+        "friend": { "ulg": "fi.we", "ipa": "/fi.we/", "d": 1, "breakdown": "f(flow) + i(close) + w(unity) + e(growing)" }
+      },
+      "elements": {
+        "water": { "ulg": "wa.tu", "ipa": "/wa.tu/", "d": 8, "breakdown": "w(wave/flow) + a(open) + t(touch) + u(round/deep)" },
+        "fire": { "ulg": "fi.ra", "ipa": "/fi.ra/", "d": 6, "breakdown": "f(flow) + i(bright) + r(energy) + a(open)" },
+        "earth": { "ulg": "e.ru", "ipa": "/e.ru/", "d": 4, "breakdown": "e(between) + r(solid) + u(round)" },
+        "air": { "ulg": "ha.ri", "ipa": "/ha.ri/", "d": 5, "breakdown": "h(breath) + a(open) + r(moving) + i(light)" },
+        "sky": { "ulg": "si.ka", "ipa": "/si.ka/", "d": 1, "breakdown": "s(light) + i(high) + k(vast) + a(open)" }
+      },
+      "celestial": {
+        "sun": { "ulg": "su.na", "ipa": "/su.na/", "d": 1, "breakdown": "s(light) + u(round) + n(point) + a(radiant)" },
+        "moon": { "ulg": "mu.no", "ipa": "/mu.no/", "d": 2, "breakdown": "m(intimate) + u(round) + n(night) + o(cycle)" },
+        "star": { "ulg": "sta.ri", "ipa": "/sta.ri/", "d": 7, "breakdown": "s(light) + t(point) + a(far) + r(shine) + i(small)" }
+      },
+      "actions": {
+        "go": { "ulg": "go", "ipa": "/go/", "d": 5, "breakdown": "g(ground/move) + o(toward)" },
+        "come": { "ulg": "ku.mi", "ipa": "/ku.mi/", "d": 1, "breakdown": "k(toward) + u(here) + m(to me) + i(close)" },
+        "give": { "ulg": "gi.va", "ipa": "/gi.va/", "d": 3, "breakdown": "g(from me) + i(outward) + v(transfer) + a(open)" },
+        "take": { "ulg": "ta.ki", "ipa": "/ta.ki/", "d": 6, "breakdown": "t(touch) + a(grasp) + k(force) + i(to me)" },
+        "see": { "ulg": "si", "ipa": "/si/", "d": 7, "breakdown": "s(light) + i(here/sharp)" },
+        "hear": { "ulg": "hi.ra", "ipa": "/hi.ra/", "d": 8, "breakdown": "h(air) + i(enter) + r(resonate) + a(open)" },
+        "speak": { "ulg": "spi.ka", "ipa": "/spi.ka/", "d": 6, "breakdown": "s(air) + p(release) + i(out) + k(sound) + a(open)" },
+        "walk": { "ulg": "wa.ki", "ipa": "/wa.ki/", "d": 8, "breakdown": "w(move) + a(along) + k(step) + i(forward)" },
+        "run": { "ulg": "ru.na", "ipa": "/ru.na/", "d": 4, "breakdown": "r(rapid) + u(motion) + n(continuous) + a(open)" }
+      },
+      "states": {
+        "love": { "ulg": "lu.vo", "ipa": "/lu.vo/", "d": 9, "breakdown": "l(light/flow) + u(complete) + v(bind) + o(whole)" },
+        "life": { "ulg": "li.va", "ipa": "/li.va/", "d": 9, "breakdown": "l(light) + i(present) + v(vital) + a(living)" },
+        "death": { "ulg": "de.θa", "ipa": "/de.θa/", "d": 8, "breakdown": "d(end) + e(transition) + θ(passing) + a(release)" },
+        "good": { "ulg": "gu.da", "ipa": "/gu.da/", "d": 2, "breakdown": "g(ground) + u(whole) + d(solid) + a(open)" },
+        "bad": { "ulg": "ba.di", "ipa": "/ba.di/", "d": 8, "breakdown": "b(broken) + a(away) + d(down) + i(wrong)" },
+        "big": { "ulg": "bi.ga", "ipa": "/bi.ga/", "d": 6, "breakdown": "b(body) + i(up) + g(great) + a(large)" },
+        "small": { "ulg": "smi.li", "ipa": "/smi.li/", "d": 3, "breakdown": "s(slight) + m(minimal) + i(tiny) + l(little) + i(small)" }
+      },
+      "nature": {
+        "tree": { "ulg": "tri.a", "ipa": "/tri.a/", "d": 4, "breakdown": "t(stand) + r(rise) + i(up) + a(branches)" },
+        "flower": { "ulg": "flo.ra", "ipa": "/flo.ra/", "d": 4, "breakdown": "f(unfold) + l(light) + o(open) + r(radiate) + a(bloom)" },
+        "mountain": { "ulg": "mon.ta", "ipa": "/mon.ta/", "d": 6, "breakdown": "m(mass) + o(up) + n(point) + t(tall) + a(great)" },
+        "river": { "ulg": "ri.va", "ipa": "/ri.va/", "d": 6, "breakdown": "r(run) + i(long) + v(flow) + a(open)" },
+        "ocean": { "ulg": "o.ʃan", "ipa": "/o.ʃan/", "d": 5, "breakdown": "o(vast) + ʃ(waves) + a(expanse) + n(endless)" }
+      },
+      "numbers": {
+        "one": { "ulg": "o.ni", "ipa": "/o.ni/", "d": 1, "breakdown": "o(whole) + n(single) + i(point)" },
+        "two": { "ulg": "tu.wo", "ipa": "/tu.wo/", "d": 2, "breakdown": "t(touch) + u(pair) + w(with) + o(both)" },
+        "three": { "ulg": "tri", "ipa": "/tri/", "d": 3, "breakdown": "t(solid) + r(stable) + i(complete)" },
+        "four": { "ulg": "fo.ra", "ipa": "/fo.ra/", "d": 4, "breakdown": "f(foundation) + o(square) + r(stable) + a(grounded)" },
+        "five": { "ulg": "fi.va", "ipa": "/fi.va/", "d": 5, "breakdown": "f(hand) + i(fingers) + v(grasp) + a(whole)" },
+        "six": { "ulg": "si.ka", "ipa": "/si.ka/", "d": 6, "breakdown": "s(six) + i(points) + k(complete) + a(form)" },
+        "seven": { "ulg": "se.va", "ipa": "/se.va/", "d": 7, "breakdown": "s(sacred) + e(mid) + v(vibrate) + a(whole)" },
+        "eight": { "ulg": "e.ta", "ipa": "/e.ta/", "d": 8, "breakdown": "e(eternal) + t(turning) + a(infinite)" },
+        "nine": { "ulg": "na.in", "ipa": "/na.in/", "d": 9, "breakdown": "n(completion) + a(all) + i(in) + n(nine)" }
+      }
+    }
+  },
+
+  "crossLinguisticEvidence": {
+    "description": "Documented patterns that appear across unrelated language families, supporting the non-arbitrary nature of sound-meaning correspondence",
+    "patterns": [
+      {
+        "pattern": "Mama/Papa Universals",
+        "phonemes": ["m", "a", "p"],
+        "observation": "Words for 'mother' cluster around /m/ + open vowel; words for 'father' cluster around /p/ or /b/ + open vowel",
+        "explanation": "These are among the first sounds infants can produce. /m/ requires only lip closure (nursing position). /p/ requires more forceful release (later development, authority figure).",
+        "examples": [
+          "English: mama, papa",
+          "Spanish: mamá, papá",
+          "Mandarin: māma, bàba",
+          "Swahili: mama, baba",
+          "Hebrew: ima, aba"
+        ]
+      },
+      {
+        "pattern": "Bouba/Kiki Effect",
+        "phonemes": ["b", "u", "k", "i"],
+        "observation": "Across cultures, people associate round shapes with 'bouba' and spiky shapes with 'kiki'",
+        "explanation": "/b/ and /u/ involve lip rounding (circular mouth shape = round meaning). /k/ and /i/ involve sharp articulation (high frequency, pointed tongue = spiky meaning).",
+        "studies": [
+          "Ramachandran & Hubbard (2001)",
+          "Maurer et al. (2006) - demonstrated in pre-linguistic infants"
+        ]
+      },
+      {
+        "pattern": "Size Sound Symbolism",
+        "phonemes": ["i", "a", "u"],
+        "observation": "High vowels (/i/) associate with small; low vowels (/a/) with large",
+        "explanation": "Small oral cavity = high frequency = perceived as small. Large oral cavity = low frequency = perceived as large.",
+        "examples": [
+          "English: teeny, tiny, little vs. large, vast, grand",
+          "Japanese: chiisai (small) vs. ōkii (large)",
+          "Cross-linguistic diminutives use /i/: -y (doggy), -ito (Spanish), -chen (German)"
+        ]
+      },
+      {
+        "pattern": "Negation Nasals",
+        "phonemes": ["n"],
+        "observation": "Negation words across unrelated languages contain /n/",
+        "explanation": "The tongue creates a physical barrier (boundary) during /n/ production. This boundary gesture maps to conceptual negation (blocking, refusing).",
+        "examples": [
+          "English: no, not, never, none",
+          "Spanish: no, nunca, nada",
+          "German: nein, nicht",
+          "Greek: ne (οχι - ochi for no, but ne/ναι for yes is interesting exception)",
+          "Latin: non, nec, nihil"
+        ]
+      },
+      {
+        "pattern": "Light/Vision /l/ and /s/",
+        "phonemes": ["l", "s"],
+        "observation": "Words for light, sight, and brightness cluster around /l/ and /s/",
+        "explanation": "/s/ is the highest-frequency consonant (bright, sharp sound). /l/ allows smooth lateral airflow (unobstructed, light).",
+        "examples": [
+          "English: light, see, sun, shine, gleam, glow, luminous",
+          "Latin: lux (light), sol (sun)",
+          "Greek: helios (sun), selene (moon)",
+          "Spanish: luz, sol"
+        ]
+      },
+      {
+        "pattern": "Water /w/ and Back Vowels",
+        "phonemes": ["w", "u", "o"],
+        "observation": "Water-related words frequently contain /w/ and back rounded vowels",
+        "explanation": "Lip rounding mimics the circular ripples of water. The /w/ sound itself is fluid and flowing.",
+        "examples": [
+          "English: water, wave, wet, well, wash",
+          "Latin: aqua",
+          "German: Wasser",
+          "Many languages: the onomatopoeia of water involves rounded sounds"
+        ]
+      }
+    ]
+  },
+
+  "syllableRules": {
+    "description": "Rules for constructing well-formed ULG syllables",
+    "primaryTemplate": "CV",
+    "templateNote": "Consonant + Vowel is the universal core. All human languages allow CV syllables.",
+    "templates": [
+      { "pattern": "CV", "example": "/mi/", "meaning": "Basic complete unit" },
+      { "pattern": "CVC", "example": "/mil/", "meaning": "Adds closure/completion" },
+      { "pattern": "CCV", "example": "/tri/", "meaning": "Adds onset complexity" },
+      { "pattern": "CVCC", "example": "/milt/", "meaning": "Maximum complexity, rare" }
+    ],
+    "timingRatios": {
+      "shortToLong": 1.732,
+      "note": "Duration ratio follows √3 (Q-magnitude) for natural rhythm"
+    },
+    "prosody": {
+      "rising": "S+ (potential, questions, openness)",
+      "falling": "S- (manifest, statements, completion)",
+      "level": "COIN (observation, neutrality)"
+    }
+  },
+
+  "integrations": {
+    "rosettaEngine": {
+      "description": "ULG provides phonetic reconstruction for undeciphered scripts analyzed by the Rosetta Engine",
+      "process": [
+        "1. Rosetta Engine identifies glyph D-position",
+        "2. ULG maps D-position to phonetic candidates",
+        "3. Cross-reference with known language families",
+        "4. Generate pronunciation hypothesis"
+      ]
+    },
+    "rongorongoReader": {
+      "description": "Hand-sign glyphs (Barthel 61-65) map to vowel markers",
+      "mapping": {
+        "61": { "d": 7, "vowel": "ʌ", "meaning": "Present Moment" },
+        "62": { "d": 8, "vowel": "u", "meaning": "Deep Water" },
+        "63": { "d": 9, "vowel": "o", "meaning": "Anchor/Love" },
+        "64": { "d": 1, "vowel": "i", "meaning": "Origin/WE" },
+        "65": { "d": 2, "vowel": "e", "meaning": "Healing" }
+      }
+    }
+  }
+}
