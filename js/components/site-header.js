@@ -441,6 +441,7 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
                                 <hr>
                                 <div class="label">Tools</div>
+                                <a href="${bp}tools/epoch-oracle/index.html">Epoch Oracle</a>
                                 <a href="${bp}tools/mind-reading/index.html">Mind Reading</a>
                                 <a href="${bp}games/balance/index.html">Balance Game</a>
                                 <a href="${bp}tools/s-signature/s_signature_coin.html">S-Signature Coin</a>
