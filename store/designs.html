@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Collection | Have Mind Media Store</title>
+    <meta name="description" content="Original artwork from Have Mind Media - Goddesses, Sacred Geometry, Norse Warriors, and Epoch Theory visualizations.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="../js/components/site-header.js" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-dim: rgba(201, 162, 39, 0.6);
+            --bg-deep: #030508;
+            --bg-panel: #0a0d12;
+            --text: #e8e4d9;
+            --text-dim: #8a9aaa;
+            --blue: #6ab4f5;
+            --green: #4ade80;
+            --coral: #f87171;
+            --purple: #a78bfa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg-deep);
+            color: var(--text);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        .header-space { height: 80px; }
+
+        /* Hero */
+        .design-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
+        }
+        .design-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+        }
+        .design-hero .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* Collection Section */
+        .collection {
+            margin-bottom: 80px;
+        }
+        .collection-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .collection-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .collection-header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Design Grid */
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .design-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .design-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 162, 39, 0.1);
+        }
+        .design-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+        }
+        .design-image.landscape {
+            aspect-ratio: 16/9;
+        }
+        .design-image.square {
+            aspect-ratio: 1;
+        }
+        .design-info {
+            padding: 25px;
+        }
+        .design-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .design-info p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .design-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .design-tag {
+            padding: 4px 12px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+        .design-tag.tee { background: rgba(74, 222, 128, 0.1); color: var(--green); }
+        .design-tag.hoodie { background: rgba(106, 180, 245, 0.1); color: var(--blue); }
+        .design-tag.poster { background: rgba(167, 139, 250, 0.1); color: var(--purple); }
+        .design-tag.jewelry { background: rgba(248, 113, 113, 0.1); color: var(--coral); }
+
+        .available-on {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        /* Featured Design - Large */
+        .featured-design {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        .featured-design img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 500px;
+        }
+        .featured-content {
+            padding: 50px;
+        }
+        .featured-content .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .featured-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        .featured-content p {
+            color: var(--text);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        .featured-content .price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+        .btn-shop {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+        }
+        .btn-shop:hover {
+            background: #e8c547;
+            transform: translateY(-2px);
+        }
+
+        /* Teemill CTA */
+        .teemill-cta {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 16px;
+            padding: 50px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .teemill-cta h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--green);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+        .teemill-cta p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .teemill-cta .btn-shop {
+            background: var(--green);
+        }
+        .teemill-cta .btn-shop:hover {
+            background: #6ee7a0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        footer p { color: var(--text-dim); font-size: 0.9rem; }
+        footer .principle { color: var(--gold); font-family: monospace; margin-top: 10px; }
+
+        @media (max-width: 900px) {
+            .featured-design { grid-template-columns: 1fr; }
+            .featured-design img { min-height: 350px; }
+            .featured-content { padding: 30px; }
+            .design-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .design-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div class="header-space"></div>
+
+    <section class="design-hero">
+        <h1>DESIGN COLLECTION</h1>
+        <p class="tagline">Original Artwork · Sacred Geometry · Epoch Visions</p>
+    </section>
+
+    <div class="container">
+
+        <!-- Featured: Cosmic Gateway -->
+        <div class="featured-design">
+            <img src="../images/hero/cosmic-gateway.png" alt="Cosmic Gateway - The Triangle of Creation">
+            <div class="featured-content">
+                <span class="badge">SIGNATURE DESIGN</span>
+                <h2>COSMIC GATEWAY</h2>
+                <p>The golden triangle emerges from the cosmic spiral - a visual representation of creation itself. This is the homepage icon of Have Mind Media, representing the moment of emergence from the void.</p>
+                <p>Available as premium poster prints and apparel. The geometry speaks to the ancient truth: from nothing, everything.</p>
+                <div class="design-tags">
+                    <span class="design-tag poster">POSTER</span>
+                    <span class="design-tag tee">T-SHIRT</span>
+                    <span class="design-tag hoodie">HOODIE</span>
+                </div>
+                <p class="price">Coming Soon</p>
+                <a href="index.html" class="btn-shop">VIEW IN STORE</a>
+            </div>
+        </div>
+
+        <!-- The Three Goddesses Collection -->
+        <section class="collection">
+            <div class="collection-header">
+                <h2>THE THREE GODDESSES</h2>
+                <p>The triaxial feminine divine - Lifegiver, Balancer, and Manifold. Each represents a face of cosmic creation in the Epoch framework.</p>
+            </div>
+            <div class="design-grid">
+                <div class="design-card">
+                    <img src="../images/lifegiver.jpg" alt="Lifegiver - The Cosmic Mother" class="design-image">
+                    <div class="design-info">
+                        <h3>LIFEGIVER</h3>
+                        <p>The cosmic mother with infinite arms, standing upon a foundation of golden coins. She gives endlessly - energy flows from the source through her into all creation.</p>
+                        <div class="design-tags">
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag tee">T-SHIRT</span>
+                        </div>
+                        <p class="available-on">S- SOUL SCIENCE COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="../images/balancer.jpg" alt="Balancer - The Mediator" class="design-image">
+                    <div class="design-info">
+                        <h3>BALANCER</h3>
+                        <p>Seated in perfect meditation, coins and sacred symbols orbiting her presence. She is the COIN - the observer interface between worlds, maintaining equilibrium.</p>
+                        <div class="design-tags">
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag tee">T-SHIRT</span>
+                        </div>
+                        <p class="available-on">S- SOUL SCIENCE COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="../images/manifold.jpg" alt="Manifold - The Creator" class="design-image">
+                    <div class="design-info">
+                        <h3>MANIFOLD</h3>
+                        <p>The radiant creator, crowned with golden light, multiple arms weaving reality into existence. From potential to manifest - she is the act of creation itself.</p>
+                        <div class="design-tags">
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag tee">T-SHIRT</span>
+                        </div>
+                        <p class="available-on">S- SOUL SCIENCE COLLECTION</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Norse Warriors Collection -->
+        <section class="collection">
+            <div class="collection-header">
+                <h2>NORSE WARRIORS</h2>
+                <p>The ancient guardians - Thrudr the Shield Maiden and Thormod the Sage. Mythic strength meets cosmic wisdom.</p>
+            </div>
+            <div class="design-grid">
+                <div class="design-card">
+                    <img src="../images/thrudr.jpg" alt="Thrudr - Shield Maiden" class="design-image">
+                    <div class="design-info">
+                        <h3>THRUDR</h3>
+                        <p>The shield maiden stands ready in the misty forest. Daughter of Thor, wielder of strength. She represents the protective force of the cosmos - S+ in its warrior aspect.</p>
+                        <div class="design-tags">
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                        </div>
+                        <p class="available-on">MYTHIC MIRROR COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="../images/thormod.jpg" alt="Thormod - The Sage" class="design-image">
+                    <div class="design-info">
+                        <h3>THORMOD</h3>
+                        <p>The sage with his wolf companion, staff of authority in hand. He walks between worlds, keeper of ancient knowledge. The masculine face of S- wisdom.</p>
+                        <div class="design-tags">
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                        </div>
+                        <p class="available-on">MYTHIC MIRROR COLLECTION</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sacred Geometry Collection -->
+        <section class="collection">
+            <div class="collection-header">
+                <h2>SACRED GEOMETRY</h2>
+                <p>The fundamental shapes of reality - dipyramids, tetrahelices, and the golden structures that underlie all existence.</p>
+            </div>
+            <div class="design-grid">
+                <div class="design-card">
+                    <img src="../education/mythic-mirror/images/dipyramid.png" alt="Triaxial Dipyramid" class="design-image landscape">
+                    <div class="design-info">
+                        <h3>TRIAXIAL DIPYRAMID</h3>
+                        <p>The golden wireframe structure - two pyramids joined at their base. This is the fundamental geometry of scalar dimensionality, the shape of spacetime itself.</p>
+                        <div class="design-tags">
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                            <span class="design-tag jewelry">PENDANT</span>
+                        </div>
+                        <p class="available-on">CEDGA COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <img src="../images/hero/cosmic-gateway.png" alt="Golden Triangle Gateway" class="design-image landscape">
+                    <div class="design-info">
+                        <h3>GOLDEN GATEWAY</h3>
+                        <p>The luminous triangle emerging from the cosmic spiral. The point where nothing becomes something - the moment of creation captured in sacred geometry.</p>
+                        <div class="design-tags">
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag poster">POSTER</span>
+                            <span class="design-tag jewelry">PENDANT</span>
+                        </div>
+                        <p class="available-on">SIGNATURE COLLECTION</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Symbols Collection -->
+        <section class="collection">
+            <div class="collection-header">
+                <h2>EPOCH SYMBOLS</h2>
+                <p>Typography and symbolism - the equations and constants that define the framework. Minimal, powerful, meaningful.</p>
+            </div>
+            <div class="design-grid">
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(180deg, #030508 0%, #0a0f18 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="font-family: 'Cinzel', serif; font-size: 4rem; color: #c9a227; letter-spacing: 8px;">[1 = -1]</div>
+                            <div style="font-size: 0.9rem; color: #8a9aaa; margin-top: 20px; letter-spacing: 3px;">THE FOUNDATIONAL EQUATION</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3>[1 = -1] CLASSIC</h3>
+                        <p>The foundational equation of Epoch Theory. Simple, profound, conversation-starting. Gold on black - the original design.</p>
+                        <div class="design-tags">
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                        </div>
+                        <p class="available-on">SIGNATURE COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(180deg, #030508 0%, #0a0f18 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="font-family: 'Cinzel', serif; font-size: 5rem; color: #6ab4f5;">κ</div>
+                            <div style="font-size: 1.2rem; color: #c9a227; margin-top: 10px; font-family: monospace;">= 2π/180</div>
+                            <div style="font-size: 0.8rem; color: #8a9aaa; margin-top: 15px; letter-spacing: 2px;">THE BRIDGE CONSTANT</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3>KAPPA CONSTANT</h3>
+                        <p>κ = 2π/180 - the bridge between degrees and radians, between human perception and cosmic reality. The translator constant.</p>
+                        <div class="design-tags">
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                        </div>
+                        <p class="available-on">CEDGA COLLECTION</p>
+                    </div>
+                </div>
+
+                <div class="design-card">
+                    <div class="design-image" style="background: linear-gradient(180deg, #030508 0%, #0a0f18 100%); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="display: flex; gap: 30px; justify-content: center; align-items: center;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 2.5rem; color: #c9a227;">S+</div>
+                                    <div style="font-size: 0.7rem; color: #8a9aaa;">PHYSICS</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 2.5rem; color: #a78bfa;">◎</div>
+                                    <div style="font-size: 0.7rem; color: #8a9aaa;">COIN</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 2.5rem; color: #6ab4f5;">S-</div>
+                                    <div style="font-size: 0.7rem; color: #8a9aaa;">SOUL</div>
+                                </div>
+                            </div>
+                            <div style="font-size: 0.8rem; color: #8a9aaa; margin-top: 25px; letter-spacing: 3px;">THE TRIAXIAL FRAMEWORK</div>
+                        </div>
+                    </div>
+                    <div class="design-info">
+                        <h3>TRIAXIAL SYSTEM</h3>
+                        <p>S+ (Physics), COIN (Observer), S- (Soul) - the complete triaxial framework in one elegant design. You are the COIN.</p>
+                        <div class="design-tags">
+                            <span class="design-tag tee">T-SHIRT</span>
+                            <span class="design-tag hoodie">HOODIE</span>
+                        </div>
+                        <p class="available-on">SIGNATURE COLLECTION</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teemill CTA -->
+        <div class="teemill-cta">
+            <h3>CIRCULAR FASHION</h3>
+            <p>All apparel is produced by Teemill using organic cotton and renewable energy. When worn out, items can be returned and remade into new products. Zero waste, ethical production.</p>
+            <a href="https://teemill.com" target="_blank" class="btn-shop">SHOP ON TEEMILL</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Have Mind Media | Jason Ray</p>
+        <p class="principle">[1 = -1] · Design is Truth Made Visible</p>
+    </footer>
+</body>
+</html>
