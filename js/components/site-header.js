@@ -207,8 +207,9 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
                                 <hr>
-                                <div class="label">Frameworks</div>
+                                <div class="label">κ-Operators</div>
                                 <a href="${bp}cedga/index.html">CEDGA (κ-Framework)</a>
+                                <a href="${bp}physics/kappa5/index.html" style="color: #8B0000;">κ₅ True Dark Operator</a>
                                 <a href="${bp}cedga/triaxial-os/index.html">Triaxial OS</a>
                                 <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
                                 <hr>

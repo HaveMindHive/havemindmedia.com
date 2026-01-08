@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# Redirect Netlify subdomain to main domain
+[[redirects]]
+  from = "https://havemindmedia.netlify.app/*"
+  to = "https://www.havemindmedia.com/:splat"
+  status = 301
+  force = true
+
 # Custom 404 page
 [[redirects]]
   from = "/*"
