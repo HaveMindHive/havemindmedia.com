@@ -6,6 +6,7 @@
     <meta name="description" content="Interactive Indus Valley Script Translator using the Epoch Model Geometric-Phonetic Framework">
     <title>Indus Script Translator | Geometric-Phonetic Framework | Have Mind Media</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
     <style>
         :root {
             /* Core Colors - Soul Science Palette */
@@ -1000,8 +1001,11 @@
         .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
         .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
 
     <!-- Cosmic Background -->
@@ -1426,8 +1430,8 @@
         // ===== DATA STRUCTURES =====
 
         const CONSTANTS = {
-            kappa: 0.0349,
-            kappa_shadow: 28.65,
+            kappa: 0.034906585,
+            kappa_shadow: 28.6478897565,
             sigma: 5/16, // 0.3125
             sqrt3: Math.sqrt(3), // 1.732...
             tau: 2 * Math.PI, // 6.283...
@@ -2189,5 +2193,6 @@
 
         window.addEventListener('DOMContentLoaded', init);
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

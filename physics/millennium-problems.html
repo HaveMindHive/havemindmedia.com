@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
 
     <style>
         :root {
@@ -1318,8 +1319,11 @@
             }
         }
     </style>
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
 <div class="home-nav"><a href="/">← Home</a></div>
     <canvas id="starfield" class="starfield"></canvas>
 
@@ -1329,12 +1333,12 @@
     </div>
 
     <nav class="nav">
-        <a href="index.html" class="nav-logo">HAVE<span>MIND</span>MEDIA</a>
+        <a href="../index.html" class="nav-logo">HAVE<span>MIND</span>MEDIA</a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="three-body-geometry.html">Three-Body</a></li>
             <li><a href="jwst-geometric-explorer.html">JWST Explorer</a></li>
-            <li><a href="index.html#epoch">Epoch Project</a></li>
+            <li><a href="../index.html#epoch">Epoch Project</a></li>
         </ul>
     </nav>
 
@@ -2036,7 +2040,7 @@
         <div class="footer-equation">kappa = 2*pi/180</div>
         <p>The only input required. <span class="emoji">✌️</span></p>
         <p style="margin-top: 1rem;">
-            <a href="index.html">Have Mind Media</a> ·
+            <a href="../index.html">Have Mind Media</a> ·
             <a href="three-body-geometry.html">Three-Body Problem</a> ·
             <a href="jwst-geometric-explorer.html">JWST Explorer</a>
         </p>
@@ -2216,5 +2220,6 @@
             });
         });
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

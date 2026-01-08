@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
 
     <style>
         :root {
@@ -445,8 +446,11 @@
         .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
         .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
 
 
@@ -461,7 +465,7 @@
                 <li><a href="#dual-axis">Dual-Axis Math</a></li>
                 <li><a href="#s-signature">S-Signature</a></li>
                 <li><a href="#letter">Letter to "We"</a></li>
-                <li><a href="../../soul-science.html" style="color: #d4a574;">S- Soul Science</a></li>
+                <li><a href="../../education/soul-science.html" style="color: #d4a574;">S- Soul Science</a></li>
                 <li><a href="#explore">Explore</a></li>
             </ul>
         </div>
@@ -895,7 +899,7 @@
         </p>
 
         <div class="nav-cards">
-            <a href="../../soul-science.html" class="nav-card" style="border: 2px solid #d4a574; background: linear-gradient(135deg, rgba(139, 90, 43, 0.15) 0%, rgba(70, 130, 180, 0.1) 100%);">
+            <a href="../../education/soul-science.html" class="nav-card" style="border: 2px solid #d4a574; background: linear-gradient(135deg, rgba(139, 90, 43, 0.15) 0%, rgba(70, 130, 180, 0.1) 100%);">
                 <h4 style="color: #d4a574;">☿ S- Soul Science</h4>
                 <p>The S- path of inner geometry. Family constellation readings, frequency healing, the Three Goddesses. Brain frequency balancer audio sessions.</p>
             </a>
@@ -1078,5 +1082,6 @@
         </p>
     </footer>
 
+    <site-footer></site-footer>
 </body>
 </html>

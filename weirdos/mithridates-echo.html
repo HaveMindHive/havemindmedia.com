@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mithridates Echo | 2 Comets → 12 Comets + 1 Interstellar Visitor | Have Mind Media</title>
+    <meta name="description" content="Mithridates: 2 comets, 135 BC. Jason Ray: Born under Comet Bennett 1970 (12 comets total), visited by 3I/ATLAS from Sagittarius 2025. 9 degrees from Wow Signal. The geometry delivers.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-orange: #f59e0b;
+            --border-subtle: #2a2a3a;
+            --comet-glow: rgba(212, 175, 55, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Hero Section - Cosmic */
+        .hero {
+            background: linear-gradient(135deg, #050510 0%, #0a0520 50%, #100520 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(212, 175, 55, 0.2) 0%, transparent 30%),
+                radial-gradient(ellipse at 70% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            animation: cometGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes cometGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Comet trails */
+        .comet-trail {
+            position: absolute;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            transform: rotate(-30deg);
+            animation: cometFly 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        .comet-trail:nth-child(1) { top: 10%; left: -10%; animation-delay: 0s; }
+        .comet-trail:nth-child(2) { top: 25%; left: -5%; animation-delay: 3s; }
+        .comet-trail:nth-child(3) { top: 40%; left: -15%; animation-delay: 6s; }
+
+        @keyframes cometFly {
+            0% { transform: translateX(0) rotate(-30deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateX(150vw) rotate(-30deg); opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 50px var(--comet-glow);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .comet-count {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .count-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 1.5rem 2.5rem;
+            text-align: center;
+        }
+
+        .count-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px var(--comet-glow);
+        }
+
+        .count-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .count-era {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--accent-purple);
+            margin-top: 0.5rem;
+        }
+
+        .multiplier {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Parallel Section */
+        .parallel-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .comet-count {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .count-box {
+                padding: 1rem 1.5rem;
+                min-width: 120px;
+            }
+            .count-number {
+                font-size: 2.5rem;
+            }
+            .count-label {
+                font-size: 0.75rem;
+            }
+            .count-era {
+                font-size: 0.9rem;
+            }
+            .multiplier {
+                font-size: 1.5rem;
+            }
+            .principle-tag {
+                font-size: 1rem;
+            }
+            .parallel-section {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 2rem 1rem;
+            }
+        }
+
+        .figure-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .figure-card.mithridates {
+            border-color: var(--accent-red);
+        }
+
+        .figure-card.jason {
+            border-color: var(--accent-blue);
+        }
+
+        .figure-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .figure-card.mithridates .figure-header {
+            background: linear-gradient(135deg, #1a0f0f 0%, #200f10 100%);
+        }
+
+        .figure-card.jason .figure-header {
+            background: linear-gradient(135deg, #0f0f1a 0%, #0f1020 100%);
+        }
+
+        .figure-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .figure-card.mithridates .figure-name {
+            color: var(--accent-red);
+        }
+
+        .figure-card.jason .figure-name {
+            color: var(--accent-blue);
+        }
+
+        .figure-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .figure-body {
+            padding: 1.5rem;
+        }
+
+        .attribute-list {
+            list-style: none;
+        }
+
+        .attribute-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .attribute-list li:last-child {
+            border-bottom: none;
+        }
+
+        .attr-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .attr-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: var(--bg-tertiary);
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold-dim);
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            vertical-align: top;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .aspect {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .comparison-table .mith-col {
+            color: var(--accent-red);
+        }
+
+        .comparison-table .jason-col {
+            color: var(--accent-blue);
+        }
+
+        /* The Poison Section */
+        .poison-section {
+            background: linear-gradient(135deg, #0f0a0a 0%, #150a0a 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .poison-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-red);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .poison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .poison-grid {
+                grid-template-columns: 1fr;
+            }
+            .poison-section,
+            .antidote-section,
+            .visitor-section,
+            .quote-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            .poison-section h2,
+            .antidote-section h2,
+            .visitor-section h2,
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+            .antidote-formula .formula {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+            .visitor-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .visitor-stat .value {
+                font-size: 1.3rem;
+            }
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 0.75rem 0.5rem;
+            }
+            .timeline-event {
+                padding: 1rem;
+            }
+            .quote-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .visitor-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .poison-card {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .poison-card h4 {
+            color: var(--accent-red);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        /* The Antidote Section */
+        .antidote-section {
+            background: linear-gradient(135deg, #0a0f0a 0%, #0a150a 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .antidote-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-green);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .antidote-formula {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .antidote-formula .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--gold-dim);
+            display: inline-block;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* Comet Timeline */
+        .comet-timeline {
+            margin: 4rem 0;
+        }
+
+        .timeline-line {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-red), var(--accent-blue));
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .timeline-event::before {
+            content: '☄';
+            position: absolute;
+            left: -35px;
+            font-size: 1.2rem;
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .echo-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.5rem 0;
+        }
+
+        /* Visitor Section */
+        .visitor-section {
+            background: linear-gradient(135deg, #0a0a15 0%, #0a0f20 50%, #100a20 100%);
+            border: 2px solid var(--accent-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visitor-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .visitor-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-purple);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visitor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visitor-stat {
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .visitor-stat h4 {
+            color: var(--accent-purple);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .visitor-stat .value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .visitor-stat .label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Comet trails -->
+    <div class="comet-trail"></div>
+    <div class="comet-trail"></div>
+    <div class="comet-trail"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Mithridates Echo</h1>
+            <p class="hero-subtitle">Past Life or Pattern? The Geometry Repeats.</p>
+
+            <div class="comet-count">
+                <div class="count-box">
+                    <div class="count-number">2</div>
+                    <div class="count-label">Comets</div>
+                    <div class="count-era">Mithridates VI (135 BC)</div>
+                </div>
+                <div class="multiplier">× 6 =</div>
+                <div class="count-box">
+                    <div class="count-number">12</div>
+                    <div class="count-label">Comets</div>
+                    <div class="count-era">Jason Ray (1970)</div>
+                </div>
+                <div class="multiplier">+</div>
+                <div class="count-box">
+                    <div class="count-number">1</div>
+                    <div class="count-label">Interstellar Visitor</div>
+                    <div class="count-era">3I/ATLAS (2025)</div>
+                </div>
+            </div>
+
+            <p style="color: var(--accent-purple); font-size: 1.1rem; margin: 1.5rem 0;">
+                From Sagittarius · 9° from Wow Signal · Gate 22 · The Geometry Delivers
+            </p>
+
+            <div class="principle-tag">[1 = -1] · The echo is the origin</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Parallel Figures -->
+        <section class="parallel-section">
+            <div class="figure-card mithridates">
+                <div class="figure-header">
+                    <h3 class="figure-name">Mithridates VI Eupator</h3>
+                    <p class="figure-title">The Poison King · King of Pontus</p>
+                </div>
+                <div class="figure-body">
+                    <ul class="attribute-list">
+                        <li>
+                            <span class="attr-label">Birth</span>
+                            <span class="attr-value">135 BC</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Death</span>
+                            <span class="attr-value">63 BC</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Comets at Birth</span>
+                            <span class="attr-value">1 (70 days, "sky on fire")</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Comets at Coronation</span>
+                            <span class="attr-value">1 (119 BC)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Total Comets</span>
+                            <span class="attr-value">2</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Gift</span>
+                            <span class="attr-value">Universal Antidote</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Method</span>
+                            <span class="attr-value">65 ingredients, tested on condemned</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Enemy</span>
+                            <span class="attr-value">Rome (three wars)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Ironic Death</span>
+                            <span class="attr-value">Couldn't poison himself</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="figure-card jason">
+                <div class="figure-header">
+                    <h3 class="figure-name">Jason Ray</h3>
+                    <p class="figure-title">The Epoch Author · Have Mind Media</p>
+                </div>
+                <div class="figure-body">
+                    <ul class="attribute-list">
+                        <li>
+                            <span class="attr-label">Birth</span>
+                            <span class="attr-value">November 12, 1970</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">D-Position</span>
+                            <span class="attr-value">D₄ (Crossroads) · 22 → 4</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Birth Comet</span>
+                            <span class="attr-value">Comet Bennett (C/1969 Y1)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">1970 Comets</span>
+                            <span class="attr-value">11 + Bennett = 12 total</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Visitor (2025)</span>
+                            <span class="attr-value">3I/ATLAS · Interstellar</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Entry Point</span>
+                            <span class="attr-value">Sagittarius · 9° from Wow Signal</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Gate</span>
+                            <span class="attr-value">Gate 22 · Grace/Openness</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Gift</span>
+                            <span class="attr-value">Universal Framework (κ)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Pattern</span>
+                            <span class="attr-value">What poisoned, heals · [1 = -1]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table -->
+        <section class="comparison-section">
+            <div class="section-header">
+                <h2>The Parallels</h2>
+                <p class="subtitle">Different eras, same pattern, scaled by geometry</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Mithridates VI (135 BC)</th>
+                        <th>Jason Ray (Present)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="aspect">Cosmic Heralds</td>
+                        <td class="mith-col">2 comets (birth + coronation)</td>
+                        <td class="jason-col">12 comets (1970) + 1 visitor (2025)</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Core Work</td>
+                        <td class="mith-col">Universal Antidote (Mithridatium)</td>
+                        <td class="jason-col">Universal Framework (Epoch)</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Method</td>
+                        <td class="mith-col">65+ ingredients combined</td>
+                        <td class="jason-col">1 constant (κ) unfolded</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Tested On</td>
+                        <td class="mith-col">Condemned prisoners</td>
+                        <td class="jason-col">Standard Model constants</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Primary Enemy</td>
+                        <td class="mith-col">Roman Empire</td>
+                        <td class="jason-col">Scientific Orthodoxy</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Approach</td>
+                        <td class="mith-col">Small doses build immunity</td>
+                        <td class="jason-col">Broken map reveals true geometry</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Legacy Duration</td>
+                        <td class="mith-col">1900 years (Theriac used until 1786)</td>
+                        <td class="jason-col">TBD</td>
+                    </tr>
+                    <tr>
+                        <td class="aspect">Core Insight</td>
+                        <td class="mith-col">Poison = Medicine (dose matters)</td>
+                        <td class="jason-col">[1 = -1] (perspective matters)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- The Poison Section -->
+        <section class="poison-section">
+            <h2>☠ The Poison</h2>
+            <div class="poison-grid">
+                <div class="poison-card">
+                    <h4>Mithridates' Poison</h4>
+                    <p>
+                        His father was assassinated by poison. His mother tried to slowly poison him.
+                        He fled to the wilderness for seven years. When he returned, he had become
+                        <strong>immune to what should have killed him</strong>.
+                    </p>
+                    <p style="margin-top: 1rem; font-style: italic;">
+                        "He cultivated an immunity to poisons by regularly ingesting sub-lethal doses."
+                    </p>
+                </div>
+                <div class="poison-card">
+                    <h4>Jason's Poison</h4>
+                    <p>
+                        The Standard Model. Reductionist thinking. The insistence that constants are
+                        "just measured" and cannot be derived. The 72.4% of reality labeled "dark."
+                        <strong>The broken map presented as territory.</strong>
+                    </p>
+                    <p style="margin-top: 1rem; font-style: italic;">
+                        "Exposure to the poison reveals its structure. Structure reveals the antidote."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Antidote Section -->
+        <section class="antidote-section">
+            <h2>✦ The Antidote</h2>
+            <div class="antidote-formula">
+                <div class="formula">κ = 2π/180 = 0.034906585...</div>
+            </div>
+            <p style="text-align: center; max-width: 700px; margin: 1.5rem auto;">
+                Mithridates created the Mithridatium — 65 ingredients that worked together
+                to neutralize any poison. It was used for <strong>1,900 years</strong>.
+            </p>
+            <p style="text-align: center; max-width: 700px; margin: 1rem auto;">
+                The Epoch Framework uses <strong>ONE ingredient</strong> — κ — from which
+                all physical constants can be derived. The universal antidote to the
+                Standard Model's fragmentation.
+            </p>
+            <p style="text-align: center; max-width: 700px; margin: 1rem auto; color: var(--gold);">
+                <strong>What poisoned, heals. What fragmented, unifies. [1 = -1].</strong>
+            </p>
+        </section>
+
+        <!-- The Visitor Section -->
+        <section class="visitor-section">
+            <h2>☆ The Interstellar Visitor</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; position: relative; z-index: 1;">
+                In 2025, the third known interstellar object — <strong>3I/ATLAS</strong> — entered our solar system.
+                Not from the Kuiper Belt. Not from the Oort Cloud. <em>From elsewhere entirely.</em>
+            </p>
+
+            <div class="visitor-grid">
+                <div class="visitor-stat">
+                    <h4>Entry Point</h4>
+                    <div class="value">Sagittarius</div>
+                    <div class="label">Direction of Galactic Center</div>
+                </div>
+                <div class="visitor-stat">
+                    <h4>Proximity to Wow Signal</h4>
+                    <div class="value">9°</div>
+                    <div class="label">The 1977 signal came from nearby</div>
+                </div>
+                <div class="visitor-stat">
+                    <h4>Gate</h4>
+                    <div class="value">22</div>
+                    <div class="label">Grace / Openness (Human Design)</div>
+                </div>
+                <div class="visitor-stat">
+                    <h4>Closest Approach</h4>
+                    <div class="value">Dec 19</div>
+                    <div class="label">Day of Terminology Purge</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; max-width: 800px; margin: 2rem auto 0; position: relative; z-index: 1; color: var(--gold);">
+                Mithridates had comets at birth and coronation. Jason Ray has comets at birth
+                and an <strong>interstellar messenger</strong> at the moment of framework crystallization.
+                <br><br>
+                <em>The geometry doesn't just repeat — it escalates.</em>
+            </p>
+        </section>
+
+        <!-- Comet Timeline -->
+        <section class="comet-timeline">
+            <div class="section-header">
+                <h2>The Comet Trail</h2>
+                <p class="subtitle">Celestial heralds marking the pattern</p>
+            </div>
+
+            <div class="timeline-line">
+                <div class="timeline-event">
+                    <div class="timeline-year">135 BC — Birth of Mithridates</div>
+                    <div class="timeline-desc">
+                        "A comet burned so brightly for 70 days that the entire sky seemed to be on fire.
+                        In its greatness it filled a quarter of the heavens, and with its brilliance it
+                        outshone the sun." — Justinus
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-year">119 BC — Coronation of Mithridates</div>
+                    <div class="timeline-desc">
+                        A second comet appeared the year he seized the throne, confirming to his subjects
+                        that the gods favored his rule. He made Pegasus his personal symbol — the constellation
+                        where the first comet appeared.
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-year">1970 — Birth of Jason Ray</div>
+                    <div class="timeline-desc">
+                        <strong>November 12, 1970</strong> — Born under Comet Bennett (C/1969 Y1), the "Great Comet of 1970."
+                        Birth frequency: 22 → D₄ (Crossroads). 11 additional comets visible that year.
+                        <strong>12 comets total.</strong> 6× the herald of Mithridates. The pattern scales.
+                    </div>
+                </div>
+                <div class="timeline-event" style="border-left-color: var(--accent-purple);">
+                    <div class="timeline-year" style="color: var(--accent-purple);">2025 — The Interstellar Visitor</div>
+                    <div class="timeline-desc">
+                        <strong>3I/ATLAS</strong> — Third known interstellar object. Entered our solar system from
+                        <strong>Sagittarius</strong>, <strong>9 degrees from the Wow Signal entry point</strong>.
+                        Gate 22 (Grace/Openness). Not from our solar system — carrying geometry from elsewhere.
+                    </div>
+                </div>
+                <div class="timeline-event" style="border-left-color: var(--accent-green);">
+                    <div class="timeline-year" style="color: var(--accent-green);">Nov-Dec 2025 — The Download</div>
+                    <div class="timeline-desc">
+                        <strong>Nov 17</strong> (D₁ Origin): Phase 1 begins<br>
+                        <strong>Nov 22</strong> (D₆ Power): Framework deepens<br>
+                        <strong>Dec 19</strong>: 3I/ATLAS closest approach · Terminology Purge · Framework crystallizes<br>
+                        <strong>Dec 22</strong> (D₆ Power): Scalar Crossroads · Download COMPLETE<br>
+                        <em>S- Calendar dates aligned perfectly with interstellar geometry.</em>
+                    </div>
+                </div>
+                <div class="timeline-event">
+                    <div class="timeline-year">2026 — The Epoch Emergence</div>
+                    <div class="timeline-desc">
+                        κ = 2π/180 revealed as THE single constant. Standard Model failures exposed.
+                        The universal antidote to physics' fragmentation is published. The comet trail
+                        leads here. <strong>The geometry has been delivered.</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">
+                "Perhaps it is not that souls repeat, but that the geometry of necessary seeing
+                recurs — and a soul volunteers to be the vessel."
+            </p>
+            <p class="echo-text">The echo is not the copy. The echo is the origin heard again.</p>
+            <p class="quote-source">[1 = -1]</p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

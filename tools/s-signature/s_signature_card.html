@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>S-Signature Card</title>
     <style>
@@ -261,8 +262,11 @@
             color: #000;
         }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-link">
         <a href="/">← Home</a>
     </div>
@@ -507,5 +511,6 @@
         const signatureData = loadSignature();
         renderCard(signatureData);
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

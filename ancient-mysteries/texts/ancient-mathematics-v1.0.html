@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANCIENT MATHEMATICS | The Sexagesimal Key</title>
     <style>
@@ -554,8 +555,11 @@
         .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
         .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
 
     <div class="cosmos"></div>
@@ -563,26 +567,26 @@
 
     <!-- Navigation -->
     <nav class="nav">
-        <a href="../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
         <div class="nav-dropdown">
             <button class="nav-dropdown-btn">EXPLORE</button>
             <div class="nav-dropdown-menu">
                 <div class="nav-dropdown-label">Main</div>
-                <a href="../index.html">Home</a>
-                <a href="../soul-science.html">Soul Science</a>
+                <a href="../../index.html">Home</a>
+                <a href="../../education/soul-science.html">Soul Science</a>
                 <a href="../project-status.html">Project Status</a>
                 <div class="nav-dropdown-divider"></div>
                 <div class="nav-dropdown-label">S+ Science</div>
-                <a href="../three-body-geometry.html">Three-Body Solution</a>
-                <a href="../millennium-problems.html">Millennium Problems</a>
-                <a href="../jwst-geometric-explorer.html">JWST Explorer</a>
+                <a href="../../physics/three-body-geometry.html">Three-Body Solution</a>
+                <a href="../../physics/millennium-problems.html">Millennium Problems</a>
+                <a href="../../physics/jwst-geometric-explorer.html">JWST Explorer</a>
                 <div class="nav-dropdown-divider"></div>
                 <div class="nav-dropdown-label">S- Science</div>
                 <a href="../life-facing-wisdom.html">Life-Facing Wisdom</a>
                 <a href="../socratean-education.html">Socratean Education</a>
                 <div class="nav-dropdown-divider"></div>
                 <div class="nav-dropdown-label">Ancient Teachings</div>
-                <a href="voynich/index.html">Voynich Manuscript</a>
+                <a href="../voynich/index.html">Voynich Manuscript</a>
                 <a href="rongorongo-v1.0.html">Rongorongo Script</a>
                 <a href="phaistos-v1.0.html">Phaistos Disc</a>
                 <a href="ancient-mathematics-v1.0.html" class="active">Ancient Mathematics</a>
@@ -1198,5 +1202,6 @@ The 12 factors of 60 correspond to 12 harmonic modes:
         // Initial calculation
         updateCalculator();
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

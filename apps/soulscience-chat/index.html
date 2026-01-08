@@ -11,6 +11,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icon-192.png">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
     <style>
         :root {
             --gold: #c9a227;
@@ -418,8 +419,11 @@
             .donation-card h2 { font-size: 1.3rem; }
         }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <!-- Donation Overlay - Shown on first visit or periodically -->
     <div class="donation-overlay" id="donationOverlay">
         <div class="donation-card">
@@ -768,5 +772,6 @@
             navigator.serviceWorker.register('sw.js').catch(() => {});
         }
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

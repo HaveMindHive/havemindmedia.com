@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/unified-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games | Have Mind Media</title>
     <style>
@@ -275,8 +276,11 @@
             color: var(--bg-deep);
         }
     </style>
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
     <div class="container">
         <header>
@@ -306,26 +310,26 @@
             <h2>Featured</h2>
         </div>
         <div class="games-list">
-            <a href="love-triads.html" class="game-item featured">
-                <span class="game-icon">💛🔺💛</span>
-                <div class="game-info">
-                    <h2>Love Triads</h2>
-                    <p>The flagship Epoch game. Form triangles to bind shadow. Love as geometric binding force.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Match-3</span>
-                    <span class="game-tag">Triaxial</span>
-                </div>
-            </a>
             <a href="balance/index.html" class="game-item featured">
                 <span class="game-icon">🐕🦮🐾</span>
                 <div class="game-info">
                     <h2>Triadic Balance</h2>
-                    <p>The dog pack teaches balance. S+ guardians, S- healers, COIN observers. Marty holds the void.</p>
+                    <p>Form triads to clear the board. S+ shadow, S- love, COIN witness. Every board is solvable.</p>
                 </div>
                 <div class="game-tags">
-                    <span class="game-tag">Dogs</span>
-                    <span class="game-tag">NOW</span>
+                    <span class="game-tag">Puzzle</span>
+                    <span class="game-tag">PLAY NOW</span>
+                </div>
+            </a>
+            <a href="zener-cards.html" class="game-item featured">
+                <span class="game-icon">○ + ★</span>
+                <div class="game-info">
+                    <h2>Zener Cards</h2>
+                    <p>Classic Rhine protocol ESP test. Simple, no timer. Train your intuition.</p>
+                </div>
+                <div class="game-tags">
+                    <span class="game-tag">ESP</span>
+                    <span class="game-tag">Classic</span>
                 </div>
             </a>
         </div>
@@ -594,5 +598,6 @@
 
         loadStats();
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

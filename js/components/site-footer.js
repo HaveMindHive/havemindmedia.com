@@ -124,6 +124,15 @@ class SiteFooter extends HTMLElement {
                     color: #666;
                 }
 
+                .hmm-footer-philosophy {
+                    font-family: 'Cormorant Garamond', Georgia, serif;
+                    font-style: italic;
+                    font-size: 0.9rem;
+                    color: #a8d4f5;
+                    margin: 0.8rem 0;
+                    opacity: 0.85;
+                }
+
                 .hmm-footer-bottom {
                     display: flex;
                     justify-content: space-between;
@@ -240,6 +249,7 @@ class SiteFooter extends HTMLElement {
 
                         <div class="hmm-footer-principle">
                             <div class="hmm-footer-equation">[1 = -1]</div>
+                            <div class="hmm-footer-philosophy">We do not tell. We offer choice.</div>
                             <div class="hmm-footer-kappa">κ = 2π/180</div>
                         </div>
                     </div>

@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
 
     <style>
         :root {
@@ -442,8 +443,11 @@
         .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
         .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
 
     <!-- Navigation -->
@@ -1081,5 +1085,6 @@ qc.cry(2 * np.arccos(np.sqrt(1/2)), 0, 1)
         <div class="footer-runes">-1 = 0 = 1+</div>
         <p style="color: var(--text-dim); font-size: 0.9rem;">&copy; 2024 The Epoch Project. Built on geometry. Grounded in mathematics.</p>
     </footer>
+    <site-footer></site-footer>
 </body>
 </html>

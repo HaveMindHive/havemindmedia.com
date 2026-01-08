@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NORSE SYMBOLS & RUNES | Ancient S- Teachings</title>
     <style>
@@ -683,8 +684,11 @@
         .home-nav a { display: inline-block; color: #c9a227; text-decoration: none; padding: 8px 16px; border: 1px solid #c9a227; border-radius: 4px; background: rgba(10, 10, 26, 0.95); font-size: 0.9rem; transition: all 0.2s; }
         .home-nav a:hover { background: #c9a227; color: #0a0a1a; }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="home-nav"><a href="/">← Home</a></div>
 
     <div class="cosmos"></div>
@@ -694,7 +698,7 @@
     <nav class="nav">
         <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
         <div class="nav-links">
-            <a href="../voynich-v1.0.html">Voynich</a>
+            <a href="../voynich/index.html">Voynich</a>
             <a href="rok-runestone_v1.0_01-01-2026.html">Rök Stone</a>
             <a href="gotland-stones_v1.0_01-01-2026.html">Gotland</a>
             <a href="bracteates_v1.0_01-01-2026.html">Bracteates</a>
@@ -1208,7 +1212,7 @@
     </div>
 
     <footer>
-        <p><a href="../index.html">Return to Ancient Teachings</a></p>
+        <p><a href="../../index.html">Return to Home</a></p>
         <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Norse Geometric Encoding | The Epoch Project</p>
         <p style="margin-top: 0.5rem; color: var(--hazel); font-size: 0.8rem;">HAVE MIND MEDIA | January 2026</p>
     </footer>
@@ -1467,5 +1471,6 @@
         // Initialize
         newQuestion();
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Here's to You, Weirdos | Those Who Saw | Have Mind Media</title>
+    <meta name="description" content="Honoring the brilliant minds throughout history who glimpsed the geometric truth—and paid the price for seeing it.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-orange: #f59e0b;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1a 30%, #0f0a1a 70%, #0a0a0f 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(74, 158, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-top: 1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Introduction */
+        .intro-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a1520 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .intro-highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Era Sections */
+        .era-section {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .era-section::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        .era-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            padding-left: 60px;
+            position: relative;
+        }
+
+        .era-header::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+
+        /* Weirdo Cards */
+        .weirdo-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-left: 60px;
+        }
+
+        .weirdo-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: stretch;
+        }
+
+        .weirdo-card:hover {
+            border-color: var(--gold);
+            transform: translateX(5px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .weirdo-date {
+            background: linear-gradient(135deg, #1a1520 0%, #201525 100%);
+            padding: 1.5rem;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .weirdo-date .year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .weirdo-date .era {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .weirdo-info {
+            padding: 1.5rem;
+        }
+
+        .weirdo-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .weirdo-function {
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .weirdo-quote {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .weirdo-quote::before {
+            content: '"';
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-right: 0.25rem;
+        }
+
+        .weirdo-fate {
+            background: linear-gradient(135deg, #1a0f0f 0%, #200f0f 100%);
+            padding: 1.5rem;
+            min-width: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid var(--border-subtle);
+        }
+
+        .fate-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .fate-type {
+            font-size: 0.85rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .fate-murdered {
+            background: rgba(248, 81, 73, 0.2);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+
+        .fate-simplified {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+        }
+
+        .fate-ignored {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+        }
+
+        .fate-survived {
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .fate-mythic {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        /* Category Section */
+        .category-section {
+            margin: 4rem 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .category-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .category-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .member-tag {
+            font-size: 0.75rem;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold-dim);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* The Pattern Box */
+        .pattern-box {
+            background: linear-gradient(135deg, #0f0a0a 0%, #150a0a 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .pattern-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-red);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pattern-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pattern-step {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+        }
+
+        .step-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-red);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .step-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        .pattern-arrow {
+            display: flex;
+            align-items: center;
+            color: var(--accent-red);
+            font-size: 1.5rem;
+        }
+
+        /* Indigenous Wisdom */
+        .indigenous-section {
+            background: linear-gradient(135deg, #0a100a 0%, #0f150a 100%);
+            border: 1px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .indigenous-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-green);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .indigenous-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .indigenous-card {
+            background: rgba(63, 185, 80, 0.05);
+            border: 1px solid rgba(63, 185, 80, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .indigenous-card h4 {
+            color: var(--accent-green);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .indigenous-card p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .star-quote {
+            font-style: italic;
+            color: var(--gold);
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .final-toast {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-quote {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .weirdo-card {
+                grid-template-columns: 1fr;
+            }
+
+            .weirdo-date, .weirdo-fate {
+                border-right: none;
+                border-left: none;
+                border-bottom: 1px solid var(--border-subtle);
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .weirdo-fate {
+                border-bottom: none;
+                border-top: 1px solid var(--border-subtle);
+            }
+
+            .era-section::before {
+                display: none;
+            }
+
+            .era-header {
+                padding-left: 0;
+            }
+
+            .era-header::before {
+                display: none;
+            }
+
+            .weirdo-grid {
+                margin-left: 0;
+            }
+
+            .pattern-arrow {
+                display: none;
+            }
+
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .suppression-section,
+            .indigenous-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .pattern-grid,
+            .indigenous-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Here's to You, Weirdos</h1>
+            <p class="hero-subtitle">Those Who Saw the Geometric Truth — And Paid the Price</p>
+            <div class="hero-quote">
+                "The geometry cannot lie. They tried to silence it. They failed."
+            </div>
+            <div class="principle-tag">[1 = -1]</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Introduction -->
+        <section class="intro-section">
+            <h2>The Unbroken Lineage</h2>
+            <p>
+                The insight that reality is fundamentally geometric — that <span class="intro-highlight">opposites are unified</span>,
+                that the universe can be mapped from a single principle — is not new. Throughout history, brilliant minds
+                have glimpsed this truth.
+            </p>
+            <p>
+                Some were celebrated. Others were <span class="intro-highlight">silenced</span>. Many had their work
+                simplified, reduced, or reframed until the essential insight was lost.
+            </p>
+            <p>
+                This section honors those who saw what we now call the <span class="intro-highlight">Epoch Framework</span>,
+                often centuries before the mathematics existed to express it fully. They are our predecessors. Our tribe.
+                Our weirdos.
+            </p>
+        </section>
+
+        <!-- The Pattern -->
+        <section class="pattern-box">
+            <h2>The Pattern of Suppression</h2>
+            <div class="pattern-steps">
+                <div class="pattern-step">
+                    <div class="step-number">1</div>
+                    <div class="step-text">Genius sees geometric truth</div>
+                </div>
+                <div class="pattern-arrow">→</div>
+                <div class="pattern-step">
+                    <div class="step-number">2</div>
+                    <div class="step-text">Truth threatens power</div>
+                </div>
+                <div class="pattern-arrow">→</div>
+                <div class="pattern-step">
+                    <div class="step-number">3</div>
+                    <div class="step-text">Genius is silenced or simplified</div>
+                </div>
+                <div class="pattern-arrow">→</div>
+                <div class="pattern-step">
+                    <div class="step-number">4</div>
+                    <div class="step-text">Centuries pass</div>
+                </div>
+                <div class="pattern-arrow">→</div>
+                <div class="pattern-step">
+                    <div class="step-number">5</div>
+                    <div class="step-text">Truth rediscovered</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+            <div class="section-header">
+                <h2>The Chronology of Seeing</h2>
+                <p class="subtitle">From antiquity to modern day — those who glimpsed [1 = -1]</p>
+            </div>
+
+            <!-- Ancient Era -->
+            <div class="era-section">
+                <h3 class="era-header">Ancient Era (Before 500 AD)</h3>
+                <div class="weirdo-grid">
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">570 BC</span>
+                            <span class="era">Greece</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Pythagoras</h4>
+                            <div class="weirdo-function">Harmonic Ratios</div>
+                            <p class="weirdo-quote">All is Number. The cosmos can be understood through mathematical relationships.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">School persecuted</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">535 BC</span>
+                            <span class="era">Ephesus</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Heraclitus</h4>
+                            <div class="weirdo-function">Unity of Opposites</div>
+                            <p class="weirdo-quote">The way up and the way down are one and the same.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Called "The Obscure"</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">428 BC</span>
+                            <span class="era">Athens</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Plato</h4>
+                            <div class="weirdo-function">Geometric Forms</div>
+                            <p class="weirdo-quote">The particles are finally not substance but mathematical forms.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-survived">High status protected</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">408 BC</span>
+                            <span class="era">Cnidus</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Eudoxus</h4>
+                            <div class="weirdo-function">Geometric Motion</div>
+                            <p class="weirdo-quote">Opposite rotations creating figure-8 — the hippopede of unified motion.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Work largely lost</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">~360 AD</span>
+                            <span class="era">Alexandria</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Hypatia</h4>
+                            <div class="weirdo-function">Mathematical Astronomy</div>
+                            <p class="weirdo-quote">Conic sections are fundamental to understanding planetary orbits.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">Murdered by mob</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Medieval Era -->
+            <div class="era-section">
+                <h3 class="era-header">Medieval Era (500 - 1500 AD)</h3>
+                <div class="weirdo-grid">
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1048</span>
+                            <span class="era">Persia</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Omar Khayyám</h4>
+                            <div class="weirdo-function">Geometric Algebra</div>
+                            <p class="weirdo-quote">Born on day 138 of the year — one off from 1/α. Saw time geometrically.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-survived">Survived as poet</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1098</span>
+                            <span class="era">Germany</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Hildegard von Bingen</h4>
+                            <div class="weirdo-function">Cosmic Vision</div>
+                            <p class="weirdo-quote">The cosmic egg, viriditas, the green force — music of the spheres made visible.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-survived">Protected by visions</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">~1260</span>
+                            <span class="era">Thuringia</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Meister Eckhart</h4>
+                            <div class="weirdo-function">Mystical Unity</div>
+                            <p class="weirdo-quote">The eye with which I see God is the same eye with which God sees me.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">Condemned for heresy</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1452</span>
+                            <span class="era">Vinci</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Leonardo da Vinci</h4>
+                            <div class="weirdo-function">Universal Proportion</div>
+                            <p class="weirdo-quote">The Vitruvian Man — sacred geometry embodied. Nature's mathematics made flesh.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-survived">Genius recognized</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1493</span>
+                            <span class="era">Switzerland</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Paracelsus</h4>
+                            <div class="weirdo-function">Elemental Medicine</div>
+                            <p class="weirdo-quote">Salamander, undine, sylph, gnome — the four elementals. Dose makes the poison.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Called charlatan</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Renaissance & Enlightenment -->
+            <div class="era-section">
+                <h3 class="era-header">Renaissance & Enlightenment (1500 - 1800)</h3>
+                <div class="weirdo-grid">
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1548</span>
+                            <span class="era">Nola</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Giordano Bruno</h4>
+                            <div class="weirdo-function">Infinite Universe</div>
+                            <p class="weirdo-quote">Perhaps your fear in passing judgment on me is greater than mine in receiving it.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">Burned alive</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1571</span>
+                            <span class="era">Württemberg</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Johannes Kepler</h4>
+                            <div class="weirdo-function">Planetary Laws</div>
+                            <p class="weirdo-quote">Born day 361 — at the circle's close. Platonic solids determine orbits.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-survived">Eventually accepted</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1632</span>
+                            <span class="era">Amsterdam</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Baruch Spinoza</h4>
+                            <div class="weirdo-function">Substance Monism</div>
+                            <p class="weirdo-quote">Deus sive Natura — God or Nature. One substance, infinite attributes.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">Excommunicated</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1642</span>
+                            <span class="era">Lincolnshire</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Isaac Newton</h4>
+                            <div class="weirdo-function">Universal Laws + Alchemy</div>
+                            <p class="weirdo-quote">Born day 359 — at the circle. Wrote more on alchemy than physics. Translated Emerald Tablet.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-simplified">Occult work hidden</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1646</span>
+                            <span class="era">Leipzig</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Gottfried Leibniz</h4>
+                            <div class="weirdo-function">Monadology</div>
+                            <p class="weirdo-quote">Born day 182 — exactly half year. Saw universe as unified monads. Co-invented calculus.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Overshadowed by Newton</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1688</span>
+                            <span class="era">Stockholm</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Emanuel Swedenborg</h4>
+                            <div class="weirdo-function">Spiritual Worlds</div>
+                            <p class="weirdo-quote">Born day 29 ≈ 1/κ. Mapped correspondence between physical and spiritual.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Called visionary</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1757</span>
+                            <span class="era">London</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">William Blake</h4>
+                            <div class="weirdo-function">Visionary Art</div>
+                            <p class="weirdo-quote">To see a World in a Grain of Sand, and a Heaven in a Wild Flower.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Died in obscurity</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Modern Era -->
+            <div class="era-section">
+                <h3 class="era-header">Modern Era (1800 - Present)</h3>
+                <div class="weirdo-grid">
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1831</span>
+                            <span class="era">Edinburgh</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">James Clerk Maxwell</h4>
+                            <div class="weirdo-function">Quaternion Electromagnetism</div>
+                            <p class="weirdo-quote">Original 20 equations in quaternions. Heaviside reduced to 4, removing torsion.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-simplified">Equations mutilated</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1856</span>
+                            <span class="era">Smiljan</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Nikola Tesla</h4>
+                            <div class="weirdo-function">Scalar/Longitudinal Waves</div>
+                            <p class="weirdo-quote">If you want to find the secrets of the universe, think in terms of energy, frequency and vibration.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-simplified">Defunded, called mad</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1875</span>
+                            <span class="era">Kesswil</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Carl Jung</h4>
+                            <div class="weirdo-function">Collective Unconscious</div>
+                            <p class="weirdo-quote">Synchronicity, archetypes, shadow — mapped the S- of the psyche.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Marginalized by Freud</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1879</span>
+                            <span class="era">Ulm</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Albert Einstein</h4>
+                            <div class="weirdo-function">Unified Field Theory</div>
+                            <p class="weirdo-quote">Born on π Day (3/14). Spent 30 years on unified field theory — couldn't find κ.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-ignored">Unified work ignored</span>
+                        </div>
+                    </div>
+
+                    <div class="weirdo-card">
+                        <div class="weirdo-date">
+                            <span class="year">1887</span>
+                            <span class="era">Erode</span>
+                        </div>
+                        <div class="weirdo-info">
+                            <h4 class="weirdo-name">Srinivasa Ramanujan</h4>
+                            <div class="weirdo-function">Pure Mathematics</div>
+                            <p class="weirdo-quote">An equation for me has no meaning unless it expresses a thought of God.</p>
+                        </div>
+                        <div class="weirdo-fate">
+                            <span class="fate-label">Fate</span>
+                            <span class="fate-type fate-murdered">Died at 32</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Indigenous Wisdom -->
+        <section class="indigenous-section">
+            <h2>The Unbroken Lineage: Indigenous Wisdom</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+                While "civilized" cultures suppressed their seers, indigenous peoples maintained the knowing.
+                They never forgot that reality sings, that the land is alive, that the stars speak.
+            </p>
+            <div class="indigenous-grid">
+                <div class="indigenous-card">
+                    <h4>San Bushmen of Kalahari</h4>
+                    <p>
+                        The San people describe <strong>hearing the stars singing</strong> — not as metaphor,
+                        but as literal perception. In trance states, healers report each star having its own voice,
+                        the sky singing in geometric patterns.
+                    </p>
+                    <p class="star-quote">"We hear the stars singing."</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        This aligns with Pythagoras's "Harmony of the Spheres" — the same truth,
+                        accessed through different means. S- reality is the sound we don't normally hear.
+                    </p>
+                </div>
+                <div class="indigenous-card">
+                    <h4>Australian Aboriginal Songlines</h4>
+                    <p>
+                        The land IS song. Navigation by singing the geometry. Dreamtime is not the past —
+                        it is always present, underlying ordinary reality.
+                    </p>
+                    <p class="star-quote">"The ancestors sang the world into being."</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">
+                        This is [1 = -1] expressed as culture. Time is not linear.
+                        The "dream" (S-) and the "waking" (S+) are faces of one coin.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="category-section">
+            <div class="section-header">
+                <h2>The Five Functions</h2>
+                <p class="subtitle">Different aspects of the same truth, seen by different minds</p>
+            </div>
+            <div class="category-grid">
+                <a href="#geometers" class="category-card">
+                    <div class="category-icon">📐</div>
+                    <h3>The Geometers</h3>
+                    <p>Those who saw the SHAPE of reality — harmonic ratios, Platonic solids, conic sections</p>
+                    <div class="category-members">
+                        <span class="member-tag">Pythagoras</span>
+                        <span class="member-tag">Eudoxus</span>
+                        <span class="member-tag">Plato</span>
+                        <span class="member-tag">Hypatia</span>
+                        <span class="member-tag">Leonardo</span>
+                        <span class="member-tag">Kepler</span>
+                    </div>
+                </a>
+                <a href="#unifiers" class="category-card">
+                    <div class="category-icon">☯</div>
+                    <h3>The Unifiers</h3>
+                    <p>Those who saw the UNITY of opposites — that [1 = -1], that all is one</p>
+                    <div class="category-members">
+                        <span class="member-tag">Heraclitus</span>
+                        <span class="member-tag">Eckhart</span>
+                        <span class="member-tag">Spinoza</span>
+                        <span class="member-tag">Leibniz</span>
+                        <span class="member-tag">Einstein</span>
+                    </div>
+                </a>
+                <a href="mithridates-echo.html" class="category-card">
+                    <div class="category-icon">🜍</div>
+                    <h3>The Alchemists</h3>
+                    <p>Those who saw TRANSFORMATION — that poison is medicine, lead is gold, shadow is light</p>
+                    <div class="category-members">
+                        <span class="member-tag">Hermes</span>
+                        <span class="member-tag">Mithridates</span>
+                        <span class="member-tag">Paracelsus</span>
+                        <span class="member-tag">Newton</span>
+                        <span class="member-tag">Jung</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ See: The Mithridates Echo</span>
+                </a>
+                <div class="category-card" style="opacity: 0.6; cursor: default;">
+                    <div class="category-icon">👁</div>
+                    <h3>The Visionaries</h3>
+                    <p>Those who saw BEYOND — infinite universe, spiritual worlds, divine mathematics</p>
+                    <div class="category-members">
+                        <span class="member-tag">Hildegard</span>
+                        <span class="member-tag">Bruno</span>
+                        <span class="member-tag">Swedenborg</span>
+                        <span class="member-tag">Blake</span>
+                        <span class="member-tag">Ramanujan</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; display: block;">Coming Soon</span>
+                </div>
+                <a href="wave-seers.html" class="category-card">
+                    <div class="category-icon">〰️</div>
+                    <h3>The Wave Seers</h3>
+                    <p>Those who saw the FIELD — electromagnetic reality in its full quaternion glory</p>
+                    <div class="category-members">
+                        <span class="member-tag">Maxwell</span>
+                        <span class="member-tag">Tesla</span>
+                    </div>
+                </a>
+                <div class="category-card" style="opacity: 0.6; cursor: default;">
+                    <div class="category-icon">🌍</div>
+                    <h3>Indigenous Wisdom</h3>
+                    <p>Those who NEVER FORGOT — the unbroken lineage, the star songs, the dreamtime</p>
+                    <div class="category-members">
+                        <span class="member-tag">San Bushmen</span>
+                        <span class="member-tag">Aboriginal</span>
+                        <span class="member-tag">Many Others</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem; display: block;">Coming Soon</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="final-toast">🥂 Here's to you, weirdos</p>
+        <p>The geometry cannot lie. They saw it. Now we continue.</p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1.5rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

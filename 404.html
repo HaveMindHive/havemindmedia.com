@@ -86,8 +86,11 @@
             opacity: 0.7;
         }
     </style>
+    <script src="./js/components/site-header.js" defer></script>
+    <script src="./js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <div class="error-container">
         <p class="error-code">404</p>
         <p class="error-message">This path does not exist at s=0</p>
@@ -98,13 +101,14 @@
         </div>
 
         <div class="nav-options">
-            <a href="/" class="nav-btn primary">Return to Origin</a>
-            <a href="/library.html" class="nav-btn">Library</a>
-            <a href="/physics/standard-model-failures/" class="nav-btn">Physics</a>
+            <a href="./index.html" class="nav-btn primary">Return to Origin</a>
+            <a href="./library-wizard/index.html" class="nav-btn">Library</a>
+            <a href="./physics/three-body-geometry.html" class="nav-btn">Physics</a>
             <a href="javascript:history.back()" class="nav-btn">Go Back</a>
         </div>
 
         <p class="signature">[1 = -1]</p>
     </div>
+    <site-footer></site-footer>
 </body>
 </html>

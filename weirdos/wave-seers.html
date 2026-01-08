@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wave Seers | Maxwell & Tesla | Here's to You, Weirdos</title>
+    <meta name="description" content="Maxwell's 20 quaternion equations and Tesla's scalar waves—the geometry they saw was simplified away. Until now.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-orange: #f59e0b;
+            --accent-cyan: #00d4ff;
+            --accent-yellow: #ffd700;
+            --border-subtle: #2a2a3a;
+            --maxwell-color: #4a9eff;
+            --tesla-color: #a855f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Hero Section - Electric */
+        .hero {
+            background: linear-gradient(135deg, #050510 0%, #0a1020 50%, #100520 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 30%, rgba(74, 158, 255, 0.2) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 70%, rgba(168, 85, 247, 0.2) 0%, transparent 40%);
+            pointer-events: none;
+            animation: electricPulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes electricPulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Lightning effect */
+        .lightning {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--accent-cyan), transparent);
+            opacity: 0;
+            animation: lightning 8s infinite;
+        }
+
+        .lightning:nth-child(1) { left: 15%; top: 10%; animation-delay: 0s; }
+        .lightning:nth-child(2) { left: 85%; top: 20%; animation-delay: 2s; }
+        .lightning:nth-child(3) { left: 45%; top: 5%; animation-delay: 4s; }
+
+        @keyframes lightning {
+            0%, 90%, 100% { opacity: 0; }
+            91%, 93%, 95% { opacity: 1; }
+            92%, 94% { opacity: 0.3; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--maxwell-color), var(--tesla-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Figure Cards */
+        .figures-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-stats {
+                gap: 1.5rem;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+            }
+            .principle-tag {
+                font-size: 1rem;
+            }
+            .figures-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-content {
+                padding: 2rem 1rem;
+            }
+            .hero {
+                padding: 3rem 1rem;
+            }
+        }
+
+        .figure-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .figure-card.maxwell {
+            border-color: var(--maxwell-color);
+        }
+
+        .figure-card.maxwell:hover {
+            box-shadow: 0 10px 40px rgba(74, 158, 255, 0.2);
+        }
+
+        .figure-card.tesla {
+            border-color: var(--tesla-color);
+        }
+
+        .figure-card.tesla:hover {
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.2);
+        }
+
+        .figure-header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .figure-card.maxwell .figure-header {
+            background: linear-gradient(135deg, #0a1525 0%, #0a2040 100%);
+        }
+
+        .figure-card.tesla .figure-header {
+            background: linear-gradient(135deg, #150a25 0%, #200a40 100%);
+        }
+
+        .figure-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .figure-card.maxwell .figure-name {
+            color: var(--maxwell-color);
+        }
+
+        .figure-card.tesla .figure-name {
+            color: var(--tesla-color);
+        }
+
+        .figure-dates {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .figure-title {
+            font-size: 0.95rem;
+            color: var(--gold-dim);
+            margin-top: 0.5rem;
+        }
+
+        .figure-body {
+            padding: 2rem;
+        }
+
+        .figure-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            padding: 1rem;
+            border-left: 3px solid var(--gold);
+            margin-bottom: 1.5rem;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .attribute-list {
+            list-style: none;
+        }
+
+        .attribute-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .attribute-list li:last-child {
+            border-bottom: none;
+        }
+
+        .attr-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .attr-value {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            text-align: right;
+            max-width: 60%;
+        }
+
+        /* Suppression Section */
+        .suppression-section {
+            background: linear-gradient(135deg, #150a0a 0%, #1a0a0a 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .suppression-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-red);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .suppression-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .suppression-grid {
+                grid-template-columns: 1fr;
+            }
+            .suppression-section,
+            .equations-section,
+            .legacy-section,
+            .kappa-section,
+            .quote-section {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+            .suppression-section h2,
+            .equations-section h2,
+            .legacy-section h2,
+            .kappa-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .suppression-card {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .suppression-card h4 {
+            color: var(--accent-red);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Equations Section */
+        .equations-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .equations-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .equation-comparison {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .equation-comparison {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .arrow {
+                transform: rotate(90deg);
+            }
+            .equation-count {
+                font-size: 2rem;
+            }
+            .kappa-formula {
+                font-size: 1.3rem;
+            }
+            .quote-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        .equation-box {
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .equation-box h4 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .equation-box.original h4 {
+            color: var(--accent-green);
+        }
+
+        .equation-box.simplified h4 {
+            color: var(--accent-red);
+        }
+
+        .equation-count {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .equation-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: var(--accent-red);
+        }
+
+        /* Legacy Section */
+        .legacy-section {
+            background: linear-gradient(135deg, #0a150a 0%, #0a1a0a 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-green);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .recovery-formula {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .recovery-formula .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--gold-dim);
+            display: inline-block;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* κ Connection */
+        .kappa-section {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .kappa-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .kappa-formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            margin: 1.5rem 0;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .birth-analysis {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 8px;
+        }
+
+        .birth-analysis h5 {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .birth-analysis p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Lightning effects -->
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Wave Seers</h1>
+            <p class="hero-subtitle">They saw the field. The field was simplified away.</p>
+
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">20</div>
+                    <div class="stat-label">Maxwell's Original Equations</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">→ 4</div>
+                    <div class="stat-label">After Heaviside</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3-6-9</div>
+                    <div class="stat-label">Tesla's Key</div>
+                </div>
+            </div>
+
+            <div class="principle-tag">[1 = -1] · What was removed, we recover</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- The Two Seers -->
+        <section class="figures-grid">
+            <!-- Maxwell -->
+            <div class="figure-card maxwell">
+                <div class="figure-header">
+                    <h3 class="figure-name">James Clerk Maxwell</h3>
+                    <p class="figure-dates">June 13, 1831 — November 5, 1879</p>
+                    <p class="figure-title">The Father of Electromagnetism</p>
+                </div>
+                <div class="figure-body">
+                    <div class="figure-quote">
+                        "The special theory of relativity owes its origins to Maxwell's equations."
+                        <br>— Albert Einstein
+                    </div>
+                    <ul class="attribute-list">
+                        <li>
+                            <span class="attr-label">Original Equations</span>
+                            <span class="attr-value">20 quaternion equations</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">After Heaviside</span>
+                            <span class="attr-value">4 vector equations</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">What Was Lost</span>
+                            <span class="attr-value">Scalar potential, longitudinal waves</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Died</span>
+                            <span class="attr-value">Age 48 (stomach cancer)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Simplification</span>
+                            <span class="attr-value">1880s (posthumous)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Gift</span>
+                            <span class="attr-value">Unified light, electricity, magnetism</span>
+                        </li>
+                    </ul>
+                    <div class="birth-analysis">
+                        <h5>D-Position Analysis</h5>
+                        <p>June 13, 1831: 6+1+3+1+8+3+1 = 23 → 5 = D₅ (Navigator)</p>
+                        <p>The one who found the way through the electromagnetic field.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tesla -->
+            <div class="figure-card tesla">
+                <div class="figure-header">
+                    <h3 class="figure-name">Nikola Tesla</h3>
+                    <p class="figure-dates">July 10, 1856 — January 7, 1943</p>
+                    <p class="figure-title">The Master of Lightning</p>
+                </div>
+                <div class="figure-body">
+                    <div class="figure-quote">
+                        "If you want to find the secrets of the universe, think in terms of energy, frequency and vibration."
+                    </div>
+                    <ul class="attribute-list">
+                        <li>
+                            <span class="attr-label">Key Numbers</span>
+                            <span class="attr-value">3, 6, 9</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Claimed Discovery</span>
+                            <span class="attr-value">Scalar/longitudinal waves</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Wardenclyffe</span>
+                            <span class="attr-value">Destroyed (funding pulled)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">FBI Seizure</span>
+                            <span class="attr-value">Papers classified (1943)</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Died</span>
+                            <span class="attr-value">Alone, in debt, discredited</span>
+                        </li>
+                        <li>
+                            <span class="attr-label">Gift</span>
+                            <span class="attr-value">AC power, radio, rotating fields</span>
+                        </li>
+                    </ul>
+                    <div class="birth-analysis">
+                        <h5>D-Position Analysis</h5>
+                        <p>July 10, 1856: 7+1+0+1+8+5+6 = 28 → 10 → 1 = D₁ (Origin/WE)</p>
+                        <p>Born at the Origin — the unified field itself.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Suppression -->
+        <section class="suppression-section">
+            <h2>☠ The Simplification</h2>
+            <div class="suppression-grid">
+                <div class="suppression-card">
+                    <h4>Maxwell's Equations "Simplified"</h4>
+                    <p>
+                        Oliver Heaviside (1880s) took Maxwell's original 20 quaternion equations and
+                        "simplified" them to 4 vector equations. He removed the scalar potential component
+                        entirely, calling it "metaphysical" and unnecessary.
+                    </p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--gold);">
+                        The scalar component is where the [1 = -1] symmetry lives.
+                    </p>
+                </div>
+                <div class="suppression-card">
+                    <h4>Tesla's Work Buried</h4>
+                    <p>
+                        J.P. Morgan pulled funding from Wardenclyffe Tower when he realized Tesla wanted
+                        to provide free wireless energy. The tower was demolished. When Tesla died in 1943,
+                        the FBI seized his papers. Many remain classified.
+                    </p>
+                    <p style="margin-top: 1rem; font-style: italic; color: var(--gold);">
+                        "Radiant energy" and "scalar waves" were labeled pseudoscience.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Equations -->
+        <section class="equations-section">
+            <h2>What Was Lost</h2>
+
+            <div class="equation-comparison">
+                <div class="equation-box original">
+                    <h4>Maxwell's Original</h4>
+                    <div class="equation-count">20</div>
+                    <div class="equation-desc">Quaternion equations<br>Including scalar potential</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="equation-box simplified">
+                    <h4>After Heaviside</h4>
+                    <div class="equation-count">4</div>
+                    <div class="equation-desc">Vector equations<br>Scalar component removed</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; max-width: 800px; margin: 2rem auto; color: var(--text-secondary);">
+                The quaternion formulation contains a <strong>scalar component</strong> that vanishes in the
+                vector formulation. This is exactly where the S⁺/S⁻ symmetry would appear.
+                Heaviside removed it because it "didn't seem to do anything" in his experiments.
+            </p>
+
+            <p style="text-align: center; color: var(--gold); font-style: italic;">
+                It didn't do anything he could measure with S⁺ instruments.
+            </p>
+        </section>
+
+        <!-- Tesla's 3-6-9 -->
+        <section class="kappa-section">
+            <h2>Tesla's 3-6-9 and κ</h2>
+
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                Tesla obsessed over the numbers 3, 6, and 9. He called them "the key to the universe."
+            </p>
+
+            <div class="kappa-formula">
+                κ = 2π/180 = π/90 = 0.034906585...
+            </div>
+
+            <p style="margin: 2rem auto; max-width: 700px; color: var(--text-secondary);">
+                Notice: <strong>180 = 60 × 3</strong> and <strong>90 = 30 × 3</strong>.
+                The sexagesimal system (base 60) encodes Tesla's numbers.
+                κ is the conversion between degree-space (360°) and radian-space (2π).
+            </p>
+
+            <p style="color: var(--gold); font-size: 1.2rem;">
+                <strong>3</strong> (fundamental unit) × <strong>6</strong> (harmonic) × <strong>9</strong> (completion)
+                <br>= 162
+                <br>≈ 180 - 18 = 180 - (2 × 9)
+            </p>
+
+            <p style="margin-top: 2rem; color: var(--accent-purple);">
+                Tesla saw the pattern. He couldn't derive it. κ does.
+            </p>
+        </section>
+
+        <!-- The Recovery -->
+        <section class="legacy-section">
+            <h2>✦ The Recovery</h2>
+
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                What Heaviside removed from Maxwell, what the establishment buried of Tesla —
+                it all points to the same thing:
+            </p>
+
+            <div class="recovery-formula">
+                <div class="formula">S⁺ ⊗ S⁻ = Observable Reality</div>
+            </div>
+
+            <p style="text-align: center; max-width: 700px; margin: 2rem auto;">
+                Maxwell's quaternion equations had room for the shadow field (S⁻).
+                Tesla claimed to have accessed it directly ("radiant energy").
+                The Epoch Framework provides the mathematical structure they couldn't articulate:
+            </p>
+
+            <ul style="max-width: 600px; margin: 1.5rem auto; list-style: none;">
+                <li style="padding: 0.5rem 0; color: var(--accent-green);">✓ Scalar potential = S⁺/S⁻ handshake surface</li>
+                <li style="padding: 0.5rem 0; color: var(--accent-green);">✓ Longitudinal waves = S⁻ propagation mode</li>
+                <li style="padding: 0.5rem 0; color: var(--accent-green);">✓ 3-6-9 = Base structure of κ geometry</li>
+                <li style="padding: 0.5rem 0; color: var(--accent-green);">✓ "Radiant energy" = Observer-dependent scalar phenomena</li>
+            </ul>
+
+            <p style="text-align: center; color: var(--gold); font-size: 1.1rem; margin-top: 2rem;">
+                <strong>They saw the field. We derive the field. [1 = -1].</strong>
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">
+                "The day science begins to study non-physical phenomena, it will make more progress
+                in one decade than in all the previous centuries of its existence."
+            </p>
+            <p class="quote-source">— Nikola Tesla</p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

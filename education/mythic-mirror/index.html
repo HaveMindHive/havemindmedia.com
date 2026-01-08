@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
 
     <!-- Three.js for 3D visualization -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -858,8 +859,11 @@
             }
         }
     </style>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <site-header></site-header>
     <!-- ===== MONSTER ENTRANCE ===== -->
     <div class="monster-entrance" id="monsterEntrance">
         <div class="lightning-flash" id="lightningFlash"></div>
@@ -1387,5 +1391,6 @@
         });
     })();
     </script>
+    <site-footer></site-footer>
 </body>
 </html>

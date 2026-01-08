@@ -444,10 +444,53 @@ section {
 }
 
 /* ==========================================
-   RESPONSIVE
+   RESPONSIVE - Comprehensive Mobile Support
    ========================================== */
 
+/*
+ * NOTE: Pages with full-viewport hero sections handle their own padding.
+ * Content pages should use <main> or add class="page-content" to their wrapper.
+ */
+
+/* Tablet and below */
+@media (max-width: 900px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+    }
+
+    h1 { font-size: 2rem; letter-spacing: 1px; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+
+    .panel, .card {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+
+    /* Fix touch targets - minimum 44px */
+    .btn, a.btn, button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.75rem 1.25rem;
+    }
+}
+
+/* Mobile phones */
 @media (max-width: 768px) {
+    body {
+        padding-top: 50px;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
     .unified-nav {
         padding: 0.6rem 1rem;
     }
@@ -466,11 +509,99 @@ section {
         font-size: 0.8rem;
     }
 
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.4rem; }
+    h1 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+        line-height: 1.3;
+    }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
 
     section {
+        padding: 1.5rem 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+
+    /* Cards stack vertically */
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    /* Improve readability */
+    p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    /* Footer adjustments */
+    .unified-footer {
         padding: 2rem 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    body {
+        padding-top: 48px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        letter-spacing: 0.5px;
+    }
+    h2 { font-size: 1.15rem; }
+    h3 { font-size: 1rem; }
+
+    section {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .panel, .card {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Stack buttons */
+    .btn + .btn {
+        margin-top: 0.75rem;
+        margin-left: 0;
+    }
+}
+
+/* Improve tap targets and touch scrolling */
+@media (pointer: coarse) {
+    /* Touch devices need larger targets */
+    a, button, .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Smooth scrolling for touch */
+    html {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Prevent double-tap zoom on buttons */
+    button, .btn {
+        touch-action: manipulation;
     }
 }
 
