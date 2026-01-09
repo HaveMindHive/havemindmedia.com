@@ -530,6 +530,183 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
+        /* 5 Sciences Encyclopedia Section */
+        .sciences-encyclopedia {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+        }
+
+        .sciences-encyclopedia h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .sciences-encyclopedia .section-subtitle {
+            text-align: center;
+            color: var(--soft-blue);
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+        }
+
+        .science-branches {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .science-branch {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.4) 0%, rgba(21, 26, 36, 0.6) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .science-branch-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .science-branch-header:hover {
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .science-branch.open .science-branch-header {
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .science-branch-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .science-branch-info {
+            flex: 1;
+        }
+
+        .science-branch-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .science-branch.s-plus .science-branch-title { color: #6ab4f5; }
+        .science-branch.s-minus .science-branch-title { color: #9b59b6; }
+        .science-branch.coin .science-branch-title { color: #c9a227; }
+        .science-branch.tau4 .science-branch-title { color: #2ecc71; }
+        .science-branch.kappa5 .science-branch-title { color: #8B0000; }
+
+        .science-branch-desc {
+            font-size: 0.85rem;
+            color: var(--soft-cream);
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .science-branch-toggle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .science-branch.open .science-branch-toggle {
+            transform: rotate(180deg);
+        }
+
+        .science-branch-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .science-branch.open .science-branch-content {
+            max-height: 2000px;
+        }
+
+        .science-branch-inner {
+            padding: 1rem 1.5rem 1.5rem;
+        }
+
+        .science-category {
+            margin-bottom: 1.25rem;
+        }
+
+        .science-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .science-category-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--soft-blue);
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .science-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .science-link {
+            display: inline-block;
+            padding: 0.4rem 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 6px;
+            color: var(--soft-cream);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .science-link:hover {
+            background: rgba(201, 162, 39, 0.15);
+            border-color: rgba(201, 162, 39, 0.5);
+            color: var(--gold);
+        }
+
+        .science-link.primary {
+            background: rgba(201, 162, 39, 0.15);
+            border-color: rgba(201, 162, 39, 0.4);
+            color: var(--gold);
+        }
+
+        @media (max-width: 600px) {
+            .science-branch-header {
+                padding: 1rem;
+            }
+            .science-branch-icon {
+                font-size: 1.5rem;
+                width: 40px;
+            }
+            .science-branch-title {
+                font-size: 1rem;
+            }
+            .science-branch-desc {
+                font-size: 0.8rem;
+            }
+            .science-links {
+                gap: 0.4rem;
+            }
+            .science-link {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.6rem;
+            }
+        }
+
         /* Discovery Sections - Top Hits & Latest Pages */
         .discovery-section {
             max-width: 1200px;
@@ -2140,6 +2317,347 @@
                             <div class="reading-guidance-text" id="reading-guidance">Good for planning, route-finding, career decisions.</div>
                         </div>
                         <div class="reading-calc" id="reading-calc"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 SCIENCES ENCYCLOPEDIA -->
+        <section class="sciences-encyclopedia">
+            <h2>THE FIVE SCIENCES</h2>
+            <p class="section-subtitle">Complete encyclopedia organized by branch — click to explore all pages</p>
+
+            <div class="science-branches">
+                <!-- S+ : PHYSICAL REALITY -->
+                <div class="science-branch s-plus">
+                    <div class="science-branch-header" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="science-branch-icon">S⁺</div>
+                        <div class="science-branch-info">
+                            <div class="science-branch-title">S+ : Physical Reality</div>
+                            <div class="science-branch-desc">The objective dimension — scalar physics, atomic geometry, the κ-framework that rewrites physical law</div>
+                        </div>
+                        <div class="science-branch-toggle">▼</div>
+                    </div>
+                    <div class="science-branch-content">
+                        <div class="science-branch-inner">
+                            <div class="science-category">
+                                <div class="science-category-title">Core Framework</div>
+                                <div class="science-links">
+                                    <a href="cedga/index.html" class="science-link primary">CEDGA Framework</a>
+                                    <a href="cedga/pages/kappa-constant.html" class="science-link">κ-Constant</a>
+                                    <a href="cedga/pages/balance-law.html" class="science-link">Balance Law</a>
+                                    <a href="cedga/pages/tetrahelix.html" class="science-link">Tetrahelix</a>
+                                    <a href="documents/epoch-framework/index.html" class="science-link">Epoch Framework</a>
+                                    <a href="teaching/Scalar_Dimensionality_Teaching_Document.html" class="science-link">Scalar Dimensionality</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Atomic & Particle</div>
+                                <div class="science-links">
+                                    <a href="epoch-atomic/index.html" class="science-link primary">Epoch Atomic Model</a>
+                                    <a href="physics/atomic-derivations/index.html" class="science-link">Atomic Derivations</a>
+                                    <a href="physics/atomic-derivations/hydrogen.html" class="science-link">Hydrogen</a>
+                                    <a href="physics/atomic-derivations/helium.html" class="science-link">Helium</a>
+                                    <a href="physics/atomic-derivations/lithium.html" class="science-link">Lithium</a>
+                                    <a href="protein-folding/index.html" class="science-link">Protein Folding</a>
+                                    <a href="dna-studio/index.html" class="science-link">DNA Studio</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Breakthrough Physics</div>
+                                <div class="science-links">
+                                    <a href="physics/three-body-geometry.html" class="science-link primary">Three-Body Solution</a>
+                                    <a href="physics/millennium-problems.html" class="science-link">Millennium Problems</a>
+                                    <a href="physics/apparent-speed-paradox/index.html" class="science-link">Speed Paradox</a>
+                                    <a href="physics/vessel/index.html" class="science-link">Vessel Geometry</a>
+                                    <a href="physics/torsion-balance.html" class="science-link">Torsion Balance</a>
+                                    <a href="physics/jwst-geometric-explorer.html" class="science-link">JWST Explorer</a>
+                                    <a href="physics/432-orbital-mapper_v1.0_01-08-2026.html" class="science-link">432 Orbital Mapper</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Standard Model Critique</div>
+                                <div class="science-links">
+                                    <a href="physics/standard-model-failures/index.html" class="science-link primary">Standard Model Failures</a>
+                                    <a href="physics/standard-model-failures/dark-matter-energy.html" class="science-link">Dark Matter/Energy</a>
+                                    <a href="physics/standard-model-failures/measurement-problem.html" class="science-link">Measurement Problem</a>
+                                    <a href="physics/standard-model-failures/fine-structure-constant.html" class="science-link">Fine-Structure Constant</a>
+                                    <a href="physics/standard-model-failures/proton-electron-ratio.html" class="science-link">Proton-Electron Ratio</a>
+                                    <a href="physics/standard-model-failures/hierarchy-problem.html" class="science-link">Hierarchy Problem</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Research Papers</div>
+                                <div class="science-links">
+                                    <a href="documents/dec14-model-cern/index.html" class="science-link">CERN Model</a>
+                                    <a href="documents/dec14-unified-theory/index.html" class="science-link">Unified Theory</a>
+                                    <a href="documents/dec14-unified-theory/main-framework.html" class="science-link">Main Framework</a>
+                                    <a href="documents/dec14-unified-theory/dual-axis-explorer.html" class="science-link">Dual-Axis Explorer</a>
+                                    <a href="documents/cern-scalar-geometry.html" class="science-link">CERN Scalar Geometry</a>
+                                    <a href="cedga/research/test-analysis.html" class="science-link">Test Analysis</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Visualizers & Tools</div>
+                                <div class="science-links">
+                                    <a href="cedga/tools/m4-simulator.html" class="science-link">M4 Simulator</a>
+                                    <a href="tools/m4-visualizer/index.html" class="science-link">M4 Visualizer</a>
+                                    <a href="tools/interaction-modeler/index.html" class="science-link">Interaction Modeler</a>
+                                    <a href="physics-viz/quad-helix-base60.html" class="science-link">Quad Helix Base60</a>
+                                    <a href="physics-viz/quad-helix-base60-v2.0.html" class="science-link">Quad Helix v2</a>
+                                    <a href="physics-viz/scalar-crossroads-animated.html" class="science-link">Scalar Crossroads</a>
+                                    <a href="cedga/triaxial-os/index.html" class="science-link">Triaxial OS</a>
+                                    <a href="cedga/triaxial-os/build-guide.html" class="science-link">Build Guide</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- S- : MOTHER EARTH / SOUL SCIENCE -->
+                <div class="science-branch s-minus">
+                    <div class="science-branch-header" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="science-branch-icon">S⁻</div>
+                        <div class="science-branch-info">
+                            <div class="science-branch-title">S- : Mother Earth</div>
+                            <div class="science-branch-desc">The subjective dimension — soul science, ancient wisdom, undeciphered scripts, lost civilizations</div>
+                        </div>
+                        <div class="science-branch-toggle">▼</div>
+                    </div>
+                    <div class="science-branch-content">
+                        <div class="science-branch-inner">
+                            <div class="science-category">
+                                <div class="science-category-title">Soul Science</div>
+                                <div class="science-links">
+                                    <a href="education/soul-science.html" class="science-link primary">Soul Science Overview</a>
+                                    <a href="education/becoming-a-coin.html" class="science-link">Becoming a COIN</a>
+                                    <a href="education/life-facing-wisdom.html" class="science-link">Life-Facing Wisdom</a>
+                                    <a href="education/socratean-education.html" class="science-link">Socratean Education</a>
+                                    <a href="education/vinyl-paradox.html" class="science-link">Vinyl Paradox</a>
+                                    <a href="education/geometry-challenge.html" class="science-link">Geometry Challenge</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Voynich Manuscript</div>
+                                <div class="science-links">
+                                    <a href="ancient-mysteries/voynich/index.html" class="science-link primary">Voynich Overview</a>
+                                    <a href="ancient-mysteries/voynich/herbal.html" class="science-link">Herbal Section</a>
+                                    <a href="ancient-mysteries/voynich/astronomical.html" class="science-link">Astronomical</a>
+                                    <a href="ancient-mysteries/voynich/biological.html" class="science-link">Biological</a>
+                                    <a href="ancient-mysteries/voynich/cosmological.html" class="science-link">Cosmological</a>
+                                    <a href="ancient-mysteries/voynich/zodiac.html" class="science-link">Zodiac</a>
+                                    <a href="ancient-mysteries/voynich/pharmaceutical.html" class="science-link">Pharmaceutical</a>
+                                    <a href="ancient-mysteries/voynich/recipes.html" class="science-link">Recipes</a>
+                                    <a href="ancient-mysteries/voynich/analysis.html" class="science-link">Analysis</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Indus Valley Script</div>
+                                <div class="science-links">
+                                    <a href="ancient-mysteries/indus-script/index.html" class="science-link primary">Indus Overview</a>
+                                    <a href="ancient-mysteries/indus-script/translator.html" class="science-link">Translator</a>
+                                    <a href="ancient-mysteries/indus-script/sign-reference.html" class="science-link">Sign Reference</a>
+                                    <a href="ancient-mysteries/indus-script/epoch-mathematics.html" class="science-link">Epoch Mathematics</a>
+                                    <a href="ancient-mysteries/indus-script/universal-language-theory.html" class="science-link">Universal Language</a>
+                                    <a href="ancient-mysteries/indus-script/linear-a.html" class="science-link">Linear A</a>
+                                    <a href="ancient-mysteries/indus-script/figurines.html" class="science-link">Figurines</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Indus Temples</div>
+                                <div class="science-links">
+                                    <a href="ancient-mysteries/indus-script/temple-priest-king.html" class="science-link">Priest-King</a>
+                                    <a href="ancient-mysteries/indus-script/temple-mother-goddess.html" class="science-link">Mother Goddess</a>
+                                    <a href="ancient-mysteries/indus-script/temple-sacred-bull.html" class="science-link">Sacred Bull</a>
+                                    <a href="ancient-mysteries/indus-script/temple-dancing-girl.html" class="science-link">Dancing Girl</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Ancient Texts</div>
+                                <div class="science-links">
+                                    <a href="ancient-mysteries/texts/rongorongo-v1.0.html" class="science-link">Rongorongo</a>
+                                    <a href="ancient-mysteries/texts/phaistos-v1.0.html" class="science-link">Phaistos Disc</a>
+                                    <a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html" class="science-link">Ancient Mathematics</a>
+                                    <a href="rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html" class="science-link">Rongorongo Flip Reader</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Norse Artifacts</div>
+                                <div class="science-links">
+                                    <a href="ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html" class="science-link primary">Norse Collection</a>
+                                    <a href="ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html" class="science-link">Rök Runestone</a>
+                                    <a href="ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html" class="science-link">Oseberg Ship</a>
+                                    <a href="ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html" class="science-link">Gotland Stones</a>
+                                    <a href="ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html" class="science-link">Bracteates</a>
+                                    <a href="ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html" class="science-link">Norse Symbols</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Mythic Mirror</div>
+                                <div class="science-links">
+                                    <a href="education/mythic-mirror/index.html" class="science-link primary">Mythic Mirror</a>
+                                    <a href="education/mythic-mirror/about.html" class="science-link">About</a>
+                                    <a href="education/mythic-mirror/journey.html" class="science-link">Journey</a>
+                                    <a href="education/mythic-mirror/teaching.html" class="science-link">Teaching</a>
+                                    <a href="education/mirror/index.html" class="science-link">Mirror Tool</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">The Weirdos</div>
+                                <div class="science-links">
+                                    <a href="weirdos/index.html" class="science-link primary">Weirdos Overview</a>
+                                    <a href="weirdos/geometers.html" class="science-link">Geometers</a>
+                                    <a href="weirdos/visionaries.html" class="science-link">Visionaries</a>
+                                    <a href="weirdos/wave-seers.html" class="science-link">Wave Seers</a>
+                                    <a href="weirdos/unifiers.html" class="science-link">Unifiers</a>
+                                    <a href="weirdos/indigenous-wisdom.html" class="science-link">Indigenous Wisdom</a>
+                                    <a href="weirdos/suppression.html" class="science-link">Suppression</a>
+                                    <a href="weirdos/contributors.html" class="science-link">Contributors</a>
+                                    <a href="weirdos/mithridates-echo.html" class="science-link">Mithridates Echo</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Language Tools</div>
+                                <div class="science-links">
+                                    <a href="rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html" class="science-link">Rosetta Engine</a>
+                                    <a href="universal-language-generator/ulg-app_v1.0_01-06-2026.html" class="science-link">Universal Language Generator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COIN : OBSERVER SCIENCE -->
+                <div class="science-branch coin">
+                    <div class="science-branch-header" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="science-branch-icon">◯</div>
+                        <div class="science-branch-info">
+                            <div class="science-branch-title">COIN : Observer Science</div>
+                            <div class="science-branch-desc">The unity dimension — where observer and observed merge, the coin that sees both sides</div>
+                        </div>
+                        <div class="science-branch-toggle">▼</div>
+                    </div>
+                    <div class="science-branch-content">
+                        <div class="science-branch-inner">
+                            <div class="science-category">
+                                <div class="science-category-title">COIN Core</div>
+                                <div class="science-links">
+                                    <a href="coin-science/index.html" class="science-link primary">COIN Science</a>
+                                    <a href="education/becoming-a-coin.html" class="science-link">Becoming a COIN</a>
+                                    <a href="education/mirror/index.html" class="science-link">Mirror Experience</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">S-Signature System</div>
+                                <div class="science-links">
+                                    <a href="tools/s-signature/s_signature_engine.html" class="science-link primary">S-Signature Engine</a>
+                                    <a href="tools/s-signature/s_signature_oracle.html" class="science-link">Oracle</a>
+                                    <a href="tools/s-signature/deep_oracle.html" class="science-link">Deep Oracle</a>
+                                    <a href="tools/s-signature/reductive_oracle.html" class="science-link">Reductive Oracle</a>
+                                    <a href="tools/s-signature/cohort_engine.html" class="science-link">Cohort Engine</a>
+                                    <a href="tools/s-signature/s_signature_128.html" class="science-link">128 Types</a>
+                                    <a href="tools/s-signature/s_signature_card.html" class="science-link">Signature Card</a>
+                                    <a href="tools/s-signature/s_signature_coin.html" class="science-link">Signature Coin</a>
+                                    <a href="tools/s-signature/s_signature_sphere.html" class="science-link">Signature Sphere</a>
+                                    <a href="tools/s-signature/s_signature_assessment.html" class="science-link">Assessment</a>
+                                    <a href="tools/s-signature/s_signature_evolving.html" class="science-link">Evolving</a>
+                                    <a href="tools/s-signature/s_signature_prediction.html" class="science-link">Prediction</a>
+                                    <a href="tools/s-signature/jason_ray_s_signature.html" class="science-link">Jason Ray</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Mind Tools</div>
+                                <div class="science-links">
+                                    <a href="tools/mind-reading/index.html" class="science-link">Mind Reading</a>
+                                    <a href="tools/sol-vision/index.html" class="science-link">Sol Vision</a>
+                                    <a href="apps/soulscience-chat/index.html" class="science-link">Soul Science Chat</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Intuition Games</div>
+                                <div class="science-links">
+                                    <a href="games/index.html" class="science-link primary">All Games</a>
+                                    <a href="games/love-triads.html" class="science-link">Love Triads</a>
+                                    <a href="games/love-triads-learn.html" class="science-link">Love Triads Learn</a>
+                                    <a href="games/card-match.html" class="science-link">Card Match</a>
+                                    <a href="games/zener-cards.html" class="science-link">Zener Cards</a>
+                                    <a href="games/coin-flip.html" class="science-link">Coin Flip</a>
+                                    <a href="games/symbol-sender.html" class="science-link">Symbol Sender</a>
+                                    <a href="games/color-sense.html" class="science-link">Color Sense</a>
+                                    <a href="games/number-feeling.html" class="science-link">Number Feeling</a>
+                                    <a href="games/intuition-trainer.html" class="science-link">Intuition Trainer</a>
+                                    <a href="games/focus-mode.html" class="science-link">Focus Mode</a>
+                                    <a href="games/epoch-symbols.html" class="science-link">Epoch Symbols</a>
+                                    <a href="games/phaistos-archetypes.html" class="science-link">Phaistos Archetypes</a>
+                                    <a href="games/mind-reading/index.html" class="science-link">Mind Reading Game</a>
+                                    <a href="games/balance/index.html" class="science-link">Balance</a>
+                                    <a href="games/coordinate-viewer.html" class="science-link">Coordinate Viewer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- τ₄ : SHADOW OPERATOR -->
+                <div class="science-branch tau4">
+                    <div class="science-branch-header" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="science-branch-icon">τ₄</div>
+                        <div class="science-branch-info">
+                            <div class="science-branch-title">τ₄ : Shadow Operator</div>
+                            <div class="science-branch-desc">The hidden dimension — what observes the observer, the shadow that gives depth to light</div>
+                        </div>
+                        <div class="science-branch-toggle">▼</div>
+                    </div>
+                    <div class="science-branch-content">
+                        <div class="science-branch-inner">
+                            <div class="science-category">
+                                <div class="science-category-title">Shadow Core</div>
+                                <div class="science-links">
+                                    <a href="physics/shadow-operator/index.html" class="science-link primary">Shadow Operator</a>
+                                    <a href="physics/torsion-balance.html" class="science-link">Torsion Balance</a>
+                                    <a href="education/hidden-observers.html" class="science-link">Hidden Observers</a>
+                                    <a href="education/ammit-function.html" class="science-link">Ammit Function</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">Neurodegeneration</div>
+                                <div class="science-links">
+                                    <a href="neurodegeneration/index.html" class="science-link">Neurodegeneration Research</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- κ₅ : TRUE DARK OPERATOR -->
+                <div class="science-branch kappa5">
+                    <div class="science-branch-header" onclick="this.parentElement.classList.toggle('open')">
+                        <div class="science-branch-icon" style="color: #8B0000;">κ₅</div>
+                        <div class="science-branch-info">
+                            <div class="science-branch-title">κ₅ : True Dark Operator</div>
+                            <div class="science-branch-desc">The moral dimension — acknowledge or conceal, the geometry of choice that defines consequence</div>
+                        </div>
+                        <div class="science-branch-toggle">▼</div>
+                    </div>
+                    <div class="science-branch-content">
+                        <div class="science-branch-inner">
+                            <div class="science-category">
+                                <div class="science-category-title">κ₅ Core</div>
+                                <div class="science-links">
+                                    <a href="physics/kappa5/index.html" class="science-link primary">κ₅ True Dark Operator</a>
+                                </div>
+                            </div>
+                            <div class="science-category">
+                                <div class="science-category-title">The κ-Chain</div>
+                                <div class="science-links">
+                                    <a href="cedga/pages/kappa-constant.html" class="science-link">κ₁ Rotation Constant</a>
+                                    <a href="cedga/pages/balance-law.html" class="science-link">κ₂ Scale Law</a>
+                                    <a href="coin-science/index.html" class="science-link">κ₃ Observer Binding</a>
+                                    <a href="physics/shadow-operator/index.html" class="science-link">κ₄ Hidden Recursion</a>
+                                    <a href="physics/kappa5/index.html" class="science-link">κ₅ Moral Operator</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
