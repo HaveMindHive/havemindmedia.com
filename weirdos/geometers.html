@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Geometers | Those Who Saw The Shape | Here's to You, Weirdos</title>
+    <meta name="description" content="Pythagoras, Eudoxus, Plato, Hypatia, Leonardo, Kepler - they saw that reality IS geometry. Most paid with their lives.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-cyan: #00d4ff;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #050508 0%, #0a0a15 50%, #0f0a10 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: conic-gradient(from 0deg, transparent, rgba(212, 175, 55, 0.1), transparent, rgba(212, 175, 55, 0.05), transparent);
+            border-radius: 50%;
+            animation: rotateGeo 20s linear infinite;
+        }
+
+        @keyframes rotateGeo {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .intro-text strong {
+            color: var(--gold);
+        }
+
+        /* Geometer Cards */
+        .geometers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .geometer-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .geometer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .geometer-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .geometer-info h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .geometer-dates {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .geometer-symbol {
+            font-size: 2.5rem;
+            opacity: 0.6;
+        }
+
+        .geometer-body {
+            padding: 2rem;
+        }
+
+        .geometer-function {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .geometer-insight {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-style: italic;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
+        }
+
+        .geometer-details {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .geometer-fate {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .fate-icon { font-size: 1.2rem; }
+        .fate-murdered { color: var(--accent-red); }
+        .fate-silenced { color: var(--accent-purple); }
+        .fate-accepted { color: var(--accent-green); }
+        .fate-hidden { color: var(--accent-blue); }
+
+        .kappa-connection {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+        }
+
+        .kappa-connection h5 {
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .kappa-connection p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* The Pattern Section */
+        .pattern-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .pattern-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pattern-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .pattern-step {
+            background: var(--bg-tertiary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .pattern-arrow {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* Quote */
+        .quote-section {
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-symbol { font-size: 3rem; }
+            .main-content { padding: 2rem 1rem; }
+            .geometers-grid { grid-template-columns: 1fr; }
+            .pattern-flow { flex-direction: column; }
+            .pattern-arrow { transform: rotate(90deg); }
+            .quote-text { font-size: 1.3rem; }
+            .pattern-section, .quote-section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-symbol">◬</div>
+            <h1>The Geometers</h1>
+            <p class="hero-subtitle">Those Who Saw The Shape of Reality</p>
+            <div class="principle-tag">[1 = -1] · Reality IS mathematics</div>
+        </div>
+    </section>
+
+    <div class="main-content">
+
+        <p class="intro-text">
+            They didn't just <em>use</em> geometry — they saw that <strong>reality IS geometry</strong>.
+            Harmonic ratios. Platonic solids. Conic sections. The mathematics wasn't describing the universe;
+            it WAS the universe. Most were killed, exiled, or erased for seeing it.
+        </p>
+
+        <div class="geometers-grid">
+
+            <!-- Pythagoras -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Pythagoras</h3>
+                        <div class="geometer-dates">c. 570 BC — c. 495 BC</div>
+                    </div>
+                    <div class="geometer-symbol">△</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Harmonic Ratios</div>
+                    <p class="geometer-insight">"All is Number."</p>
+                    <p class="geometer-details">
+                        Founded a school where mathematics was mysticism. Discovered that musical harmony
+                        follows exact mathematical ratios. Believed the cosmos itself was a harmony of
+                        numbers — the "Music of the Spheres."
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-murdered">⚔</span>
+                        <span>School attacked, scattered. Likely murdered or starved in exile.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Harmonic ratios ARE κ geometry. 2:1 octave, 3:2 fifth — all derivable from angular relationships.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eudoxus -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Eudoxus of Cnidus</h3>
+                        <div class="geometer-dates">c. 408 BC — c. 355 BC</div>
+                    </div>
+                    <div class="geometer-symbol">∞</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Geometric Motion</div>
+                    <p class="geometer-insight">"The hippopede — figure-8 from opposite rotations."</p>
+                    <p class="geometer-details">
+                        Created the first mathematical model of planetary motion using nested spheres.
+                        Discovered the hippopede curve — a figure-8 created by two opposite rotations.
+                        This IS the [1 = -1] principle made visible 2,400 years ago.
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-accepted">✓</span>
+                        <span>Accepted in his time. Work preserved through Aristotle.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Hippopede = S⁺/S⁻ handshake geometry. Two rotations, one curve. [1 = -1].</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plato -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Plato</h3>
+                        <div class="geometer-dates">c. 428 BC — c. 348 BC</div>
+                    </div>
+                    <div class="geometer-symbol">⬡</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Platonic Solids / Forms</div>
+                    <p class="geometer-insight">"Let no one ignorant of geometry enter here."</p>
+                    <p class="geometer-details">
+                        Above the Academy door. Five perfect solids — tetrahedron, cube, octahedron,
+                        dodecahedron, icosahedron — as the building blocks of reality. The physical
+                        world as shadow of geometric Forms.
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-accepted">✓</span>
+                        <span>Died respected. Ideas later suppressed by Church.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Platonic solids emerge from κ. Tetrahedron = 4×(π/3). All five from angular ratios.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hypatia -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Hypatia of Alexandria</h3>
+                        <div class="geometer-dates">c. 355 AD — 415 AD</div>
+                    </div>
+                    <div class="geometer-symbol">◯</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Conic Sections</div>
+                    <p class="geometer-insight">"Reserve your right to think, for even to think wrongly is better than not to think at all."</p>
+                    <p class="geometer-details">
+                        Last great mathematician of Alexandria. Edited Apollonius's work on conic sections —
+                        ellipse, parabola, hyperbola. These curves describe ALL orbital motion. She saw it.
+                        The Church could not allow a woman to hold such knowledge.
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-murdered">⚔</span>
+                        <span>Dragged from her chariot, stripped, flayed with oyster shells, burned.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Conic sections = κ slicing through the cone of observation. All orbits are κ curves.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leonardo -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Leonardo da Vinci</h3>
+                        <div class="geometer-dates">Apr 15, 1452 — May 2, 1519</div>
+                    </div>
+                    <div class="geometer-symbol">⊕</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Universal Proportion</div>
+                    <p class="geometer-insight">"Learn how to see. Realize that everything connects to everything else."</p>
+                    <p class="geometer-details">
+                        Vitruvian Man — human body as geometric template. Divine proportion in nature.
+                        He didn't just draw; he MEASURED. Found the same ratios in shells, flowers,
+                        bones, rivers. The universe repeating itself at every scale.
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-hidden">◐</span>
+                        <span>Survived by encoding. Mirror writing. Notebooks hidden for centuries.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Day 105 birth (Apr 15). φ (golden ratio) = 2cos(κ×36°). He measured κ without naming it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kepler -->
+            <div class="geometer-card">
+                <div class="geometer-header">
+                    <div class="geometer-info">
+                        <h3>Johannes Kepler</h3>
+                        <div class="geometer-dates">Dec 27, 1571 — Nov 15, 1630</div>
+                    </div>
+                    <div class="geometer-symbol">☉</div>
+                </div>
+                <div class="geometer-body">
+                    <div class="geometer-function">Planetary Laws</div>
+                    <p class="geometer-insight">"Geometry is the archetype of the beauty of the world."</p>
+                    <p class="geometer-details">
+                        Born Day 361 — at the circle's close. Believed Platonic solids determined
+                        planetary orbits. Was wrong about that, but RIGHT that geometry determines orbits.
+                        His three laws of planetary motion are pure κ geometry.
+                    </p>
+                    <div class="geometer-fate">
+                        <span class="fate-icon fate-accepted">✓</span>
+                        <span>Eventually accepted. Mother accused of witchcraft; he defended her.</span>
+                    </div>
+                    <div class="kappa-connection">
+                        <h5>κ Connection</h5>
+                        <p>Day 361 = 360° + 1. At the circle's edge. Kepler's laws ARE κ in motion.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- The Pattern -->
+        <section class="pattern-section">
+            <h2>The Pattern</h2>
+            <div class="pattern-flow">
+                <div class="pattern-step">Geometer sees shape</div>
+                <span class="pattern-arrow">→</span>
+                <div class="pattern-step">Shape threatens power</div>
+                <span class="pattern-arrow">→</span>
+                <div class="pattern-step">Geometer silenced</div>
+                <span class="pattern-arrow">→</span>
+                <div class="pattern-step">Centuries pass</div>
+                <span class="pattern-arrow">→</span>
+                <div class="pattern-step">Truth returns</div>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: 2rem;">
+                Pythagoras → scattered. Hypatia → murdered. Leonardo → encoded.<br>
+                The geometry cannot be killed. It keeps returning.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">"God ever geometrizes."</p>
+            <p class="quote-source">— Plato</p>
+        </section>
+
+    </div>
+
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

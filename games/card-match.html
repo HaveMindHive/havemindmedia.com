@@ -55,6 +55,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
+            margin-top: 40px;
         }
 
         .subtitle { opacity: 0.7; margin-bottom: 5px; }
@@ -65,7 +66,7 @@
             border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 10px;
             padding: 15px 20px;
-            max-width: 500px;
+            max-width: 450px;
             text-align: center;
             margin-bottom: 20px;
             font-size: 0.9rem;
@@ -76,12 +77,12 @@
 
         .stats-row {
             display: flex;
-            gap: 25px;
-            margin-bottom: 20px;
+            gap: 30px;
+            margin-bottom: 25px;
         }
 
         .stat { text-align: center; }
-        .stat .value { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
+        .stat .value { font-size: 1.8rem; font-weight: bold; color: var(--gold); }
         .stat .label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; }
 
         .game-area {
@@ -90,51 +91,18 @@
             padding: 30px;
             text-align: center;
             margin-bottom: 20px;
-            min-width: 350px;
+            min-width: 380px;
         }
 
         .phase-indicator {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            opacity: 0.8;
-        }
-
-        .timer-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            font-size: 1.1rem;
             margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .timer-fill {
-            height: 100%;
-            background: var(--gold);
-            border-radius: 4px;
-            transition: width 0.1s linear;
-        }
-
-        .timer-fill.warning { background: #FFA726; }
-        .timer-fill.danger { background: #f44336; }
-
-        .timer-text {
-            font-size: 2rem;
-            font-weight: bold;
-            font-family: monospace;
-            margin-bottom: 20px;
-        }
-
-        .timer-text.warning { color: #FFA726; }
-        .timer-text.danger { color: #f44336; animation: timerPulse 0.5s ease-in-out infinite; }
-
-        @keyframes timerPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            min-height: 30px;
+            color: var(--gold);
         }
 
         .target-section {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .target-label {
@@ -155,6 +123,12 @@
             font-size: 3.5rem;
             margin: 0 auto;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .target-card.memorize {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
         }
 
         .choices-section {
@@ -170,15 +144,15 @@
         .choices {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .choice-card {
-            width: 70px;
-            height: 100px;
-            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 75px;
+            height: 105px;
+            background: linear-gradient(135deg, #3D1F0D, #2a1508);
+            border: 2px solid #8B4513;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -189,26 +163,16 @@
             position: relative;
         }
 
-        .choice-card.face-down {
-            background: linear-gradient(135deg, #3D1F0D, #2a1508);
-            border-color: #8B4513;
-        }
-
         .choice-card.face-down::after {
             content: '?';
             font-size: 2rem;
             color: rgba(255, 255, 255, 0.3);
         }
 
-        .choice-card:hover:not(.disabled) {
+        .choice-card:not(.disabled):hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
             border-color: var(--gold);
-        }
-
-        .choice-card.selected {
-            border-color: var(--gold);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
         }
 
         .choice-card.correct {
@@ -222,7 +186,15 @@
             background: linear-gradient(135deg, rgba(244, 67, 54, 0.3), rgba(244, 67, 54, 0.1));
         }
 
-        .choice-card.disabled { pointer-events: none; }
+        .choice-card.selected {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .choice-card.disabled {
+            pointer-events: none;
+            cursor: default;
+        }
 
         .result-message {
             margin-top: 20px;
@@ -233,16 +205,16 @@
 
         .result-message.hit { color: #4CAF50; }
         .result-message.miss { color: #f44336; }
-        .result-message.timeout { color: #FFA726; }
 
         .controls {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
+            justify-content: center;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -258,14 +230,14 @@
 
         .streak-display {
             margin-top: 15px;
-            padding: 10px 20px;
+            padding: 10px 25px;
             background: rgba(255, 215, 0, 0.1);
             border-radius: 20px;
             display: inline-block;
         }
 
         .streak-display .current {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             color: var(--gold);
         }
@@ -274,45 +246,6 @@
             font-size: 0.85rem;
             opacity: 0.7;
             margin-top: 5px;
-        }
-
-        .timeout-info {
-            margin-top: 10px;
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 100;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .overlay.active { display: flex; }
-        .overlay h2 { font-size: 2rem; margin-bottom: 15px; color: var(--gold); }
-        .overlay p { margin: 10px 0; max-width: 400px; line-height: 1.6; }
-
-        .overlay .final-streak {
-            font-size: 4rem;
-            font-weight: bold;
-            color: var(--gold);
-            margin: 20px 0;
-        }
-
-        .overlay button {
-            margin-top: 20px;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            background: var(--gold);
-            color: var(--bg);
-            border: none;
         }
 
         .footer {
@@ -330,43 +263,43 @@
 </head>
 <body>
     <site-header></site-header>
-<div class="home-nav"><a href="/">← Home</a></div>
+    <div class="home-nav"><a href="/">← Home</a></div>
 
 <h1>CARD MATCH</h1>
-<p class="subtitle">Intuition Under Pressure</p>
+<p class="subtitle">Trust Your Intuition</p>
 <p class="epoch-mark">[1 = -1]</p>
 
 <div class="info-box">
-    <strong>Decreasing Timer</strong> · The more you get right, the less time you have.<br>
-    Trust your gut. Don't think. React.
+    <strong>4 Cards · No Timer · Pure Intuition</strong><br>
+    Memorize the target, then find it among 4 face-down cards.<br>
+    Don't think. Feel.
 </div>
 
 <div class="stats-row">
     <div class="stat">
-        <div class="value" id="round">1</div>
-        <div class="label">Round</div>
+        <div class="value" id="hits">0</div>
+        <div class="label">Hits</div>
     </div>
     <div class="stat">
-        <div class="value" id="timeout">5.0s</div>
-        <div class="label">Time Limit</div>
+        <div class="value" id="attempts">0</div>
+        <div class="label">Attempts</div>
+    </div>
+    <div class="stat">
+        <div class="value" id="rate">0%</div>
+        <div class="label">Hit Rate</div>
     </div>
 </div>
 
 <div class="game-area">
     <div class="phase-indicator" id="phase">Memorize the target card</div>
 
-    <div class="timer-bar">
-        <div class="timer-fill" id="timerFill" style="width: 100%"></div>
-    </div>
-    <div class="timer-text" id="timerText">5.0</div>
-
     <div class="target-section">
         <div class="target-label">TARGET</div>
-        <div class="target-card" id="targetCard"></div>
+        <div class="target-card memorize" id="targetCard"></div>
     </div>
 
     <div class="choices-section">
-        <div class="choices-label" id="choicesLabel">Find the matching card</div>
+        <div class="choices-label" id="choicesLabel">Which one matches?</div>
         <div class="choices" id="choices"></div>
     </div>
 
@@ -377,21 +310,11 @@
         <div class="best">Best: <span id="bestStreak">0</span></div>
     </div>
 
-    <div class="timeout-info" id="timeoutInfo">
-        Next timeout: 4.5s (if correct)
-    </div>
-
     <div class="controls">
-        <button id="startBtn" onclick="startGame()">Start Game</button>
+        <button id="readyBtn" onclick="startChoose()">I'm Ready</button>
+        <button id="nextBtn" onclick="nextRound()" style="display: none;">Next Round</button>
+        <button onclick="resetGame()">Reset</button>
     </div>
-</div>
-
-<div class="overlay" id="gameOver">
-    <h2>GAME OVER</h2>
-    <p>Your streak:</p>
-    <div class="final-streak" id="finalStreak">0</div>
-    <p id="gameOverMessage"></p>
-    <button onclick="startGame()">Try Again</button>
 </div>
 
 <div class="footer">
@@ -401,76 +324,53 @@
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════════
-// CARD MATCH - Decreasing Timer Intuition Game
-// The more you get right, the less time you have
-// Based on original MIND-READING SCRIPT.md
-// ═══════════════════════════════════════════════════════════════════════
-
-// Use 6 symbols (triaxial: 6 = 3×2) for the cards
-const SYMBOLS = ['★', '♦', '♠', '♥', '♣', '◆'];
-
-const INITIAL_TIMEOUT = 5.0;
-const TIMEOUT_DECREASE = 0.5;
-const MIN_TIMEOUT = 1.0;
-const MEMORIZE_TIME = 3.0;
+// Simple 4-card intuition game - no timer
+const SYMBOLS = ['★', '♦', '♠', '♥', '♣', '◆', '▲', '●'];
 
 let state = {
-    phase: 'idle', // idle, memorize, choose, result
+    phase: 'memorize',
     target: null,
     choices: [],
     correctIndex: -1,
-    round: 0,
+    hits: 0,
+    attempts: 0,
     streak: 0,
-    bestStreak: 0,
-    currentTimeout: INITIAL_TIMEOUT,
-    timeRemaining: 0,
-    timerInterval: null
+    bestStreak: 0
 };
 
 function loadStats() {
-    const saved = localStorage.getItem('epoch_CardMatch_stats');
+    const saved = localStorage.getItem('epoch_CardMatch_simple_stats');
     if (saved) {
         const data = JSON.parse(saved);
+        state.hits = data.hits || 0;
+        state.attempts = data.attempts || 0;
         state.bestStreak = data.bestStreak || 0;
     }
-    document.getElementById('bestStreak').textContent = state.bestStreak;
+    updateDisplay();
 }
 
 function saveStats() {
-    localStorage.setItem('epoch_CardMatch_stats', JSON.stringify({
+    localStorage.setItem('epoch_CardMatch_simple_stats', JSON.stringify({
+        hits: state.hits,
+        attempts: state.attempts,
         bestStreak: state.bestStreak
     }));
 }
 
-function startGame() {
-    document.getElementById('gameOver').classList.remove('active');
-    document.getElementById('startBtn').style.display = 'none';
-
-    state.round = 0;
-    state.streak = 0;
-    state.currentTimeout = INITIAL_TIMEOUT;
-
-    updateDisplay();
-    nextRound();
-}
-
 function nextRound() {
-    state.round++;
     state.phase = 'memorize';
 
     // Pick random target
     state.target = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
 
-    // Create choices (3 cards, one is correct) - triaxial!
+    // Create 4 choices, one is correct
     state.choices = [];
-    state.correctIndex = Math.floor(Math.random() * 3);
+    state.correctIndex = Math.floor(Math.random() * 4);
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
         if (i === state.correctIndex) {
             state.choices.push(state.target);
         } else {
-            // Pick a different symbol
             let sym;
             do {
                 sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
@@ -479,37 +379,28 @@ function nextRound() {
         }
     }
 
-    // Show target, hide choices
+    // Show target
     document.getElementById('targetCard').textContent = state.target;
+    document.getElementById('targetCard').classList.add('memorize');
     document.getElementById('phase').textContent = 'Memorize the target card';
-    document.getElementById('choicesLabel').textContent = 'Cards will appear shortly...';
+    document.getElementById('choicesLabel').textContent = 'Which one matches?';
     document.getElementById('result').textContent = '';
     document.getElementById('result').className = 'result-message';
 
-    renderChoices(true); // face down
-    updateDisplay();
+    document.getElementById('readyBtn').style.display = 'inline-block';
+    document.getElementById('nextBtn').style.display = 'none';
 
-    // Start memorize timer
-    state.timeRemaining = MEMORIZE_TIME;
-    startTimer(() => {
-        startChoosePhase();
-    });
+    renderChoices(true);
 }
 
-function startChoosePhase() {
+function startChoose() {
     state.phase = 'choose';
 
     document.getElementById('phase').textContent = 'Find the matching card!';
-    document.getElementById('choicesLabel').textContent = 'Quick! Which one matches?';
+    document.getElementById('targetCard').classList.remove('memorize');
+    document.getElementById('readyBtn').style.display = 'none';
 
-    renderChoices(false); // face up (but we keep them face down visually)
-
-    // Start choice timer
-    state.timeRemaining = state.currentTimeout;
-    startTimer(() => {
-        // Time's up!
-        endRound(null);
-    });
+    renderChoices(false);
 }
 
 function renderChoices(disabled) {
@@ -528,13 +419,8 @@ function renderChoices(disabled) {
 
 function selectCard(index) {
     if (state.phase !== 'choose') return;
-
-    clearInterval(state.timerInterval);
-    endRound(index);
-}
-
-function endRound(selectedIndex) {
     state.phase = 'result';
+    state.attempts++;
 
     const cards = document.querySelectorAll('.choice-card');
 
@@ -547,135 +433,55 @@ function endRound(selectedIndex) {
         if (i === state.correctIndex) {
             card.classList.add('correct');
         }
+        if (i === index) {
+            card.classList.add('selected');
+        }
     });
 
-    if (selectedIndex === null) {
-        // Timeout
-        document.getElementById('result').textContent = '⏱ Time\'s up!';
-        document.getElementById('result').className = 'result-message timeout';
-        gameOver('timeout');
-    } else if (selectedIndex === state.correctIndex) {
-        // Correct!
-        cards[selectedIndex].classList.add('selected');
-
+    if (index === state.correctIndex) {
+        state.hits++;
         state.streak++;
         if (state.streak > state.bestStreak) {
             state.bestStreak = state.streak;
-            saveStats();
         }
-
-        // Decrease timeout for next round
-        state.currentTimeout = Math.max(MIN_TIMEOUT, state.currentTimeout - TIMEOUT_DECREASE);
-
         document.getElementById('result').textContent = '✓ Correct!';
         document.getElementById('result').className = 'result-message hit';
-
-        updateDisplay();
-
-        // Brief pause, then next round
-        setTimeout(() => {
-            nextRound();
-        }, 1200);
     } else {
-        // Wrong
-        cards[selectedIndex].classList.add('selected');
-        cards[selectedIndex].classList.add('incorrect');
-
-        document.getElementById('result').textContent = '✗ Wrong!';
+        state.streak = 0;
+        cards[index].classList.add('incorrect');
+        document.getElementById('result').textContent = '✗ Wrong';
         document.getElementById('result').className = 'result-message miss';
-
-        gameOver('wrong');
     }
+
+    document.getElementById('nextBtn').style.display = 'inline-block';
+    updateDisplay();
+    saveStats();
 }
 
-function gameOver(reason) {
-    clearInterval(state.timerInterval);
+function resetGame() {
+    if (state.attempts > 0 && !confirm('Reset all stats?')) return;
 
-    document.getElementById('finalStreak').textContent = state.streak;
-
-    let message = '';
-    if (reason === 'timeout') {
-        message = 'You ran out of time. Speed up your intuition!';
-    } else {
-        message = state.streak > 0
-            ? `You made it ${state.streak} round${state.streak > 1 ? 's' : ''}!`
-            : 'Trust your first instinct next time.';
-    }
-
-    if (state.streak === state.bestStreak && state.streak > 0) {
-        message += ' New personal best!';
-    }
-
-    document.getElementById('gameOverMessage').textContent = message;
-    document.getElementById('gameOver').classList.add('active');
-
-    // Reset for next game
-    state.phase = 'idle';
-    document.getElementById('startBtn').style.display = 'inline-block';
-}
-
-function startTimer(onComplete) {
-    clearInterval(state.timerInterval);
-
-    const startTime = state.timeRemaining;
-    const startMs = Date.now();
-
-    updateTimerDisplay();
-
-    state.timerInterval = setInterval(() => {
-        const elapsed = (Date.now() - startMs) / 1000;
-        state.timeRemaining = Math.max(0, startTime - elapsed);
-
-        updateTimerDisplay();
-
-        if (state.timeRemaining <= 0) {
-            clearInterval(state.timerInterval);
-            onComplete();
-        }
-    }, 50);
-}
-
-function updateTimerDisplay() {
-    const maxTime = state.phase === 'memorize' ? MEMORIZE_TIME : state.currentTimeout;
-    const percent = (state.timeRemaining / maxTime) * 100;
-
-    const timerFill = document.getElementById('timerFill');
-    const timerText = document.getElementById('timerText');
-
-    timerFill.style.width = `${percent}%`;
-    timerText.textContent = state.timeRemaining.toFixed(1);
-
-    // Color coding
-    timerFill.classList.remove('warning', 'danger');
-    timerText.classList.remove('warning', 'danger');
-
-    if (state.phase === 'choose') {
-        if (state.timeRemaining <= 1.0) {
-            timerFill.classList.add('danger');
-            timerText.classList.add('danger');
-        } else if (state.timeRemaining <= 2.0) {
-            timerFill.classList.add('warning');
-            timerText.classList.add('warning');
-        }
-    }
+    state.hits = 0;
+    state.attempts = 0;
+    state.streak = 0;
+    saveStats();
+    updateDisplay();
+    nextRound();
 }
 
 function updateDisplay() {
-    document.getElementById('round').textContent = state.round;
-    document.getElementById('timeout').textContent = state.currentTimeout.toFixed(1) + 's';
+    document.getElementById('hits').textContent = state.hits;
+    document.getElementById('attempts').textContent = state.attempts;
     document.getElementById('streak').textContent = state.streak;
     document.getElementById('bestStreak').textContent = state.bestStreak;
 
-    const nextTimeout = Math.max(MIN_TIMEOUT, state.currentTimeout - TIMEOUT_DECREASE);
-    document.getElementById('timeoutInfo').textContent =
-        state.currentTimeout <= MIN_TIMEOUT
-            ? 'Maximum difficulty reached!'
-            : `Next timeout: ${nextTimeout.toFixed(1)}s (if correct)`;
+    const rate = state.attempts > 0 ? (state.hits / state.attempts * 100).toFixed(0) : 0;
+    document.getElementById('rate').textContent = `${rate}%`;
 }
 
 // Initialize
 loadStats();
-updateDisplay();
+nextRound();
 </script>
 
     <site-footer></site-footer>

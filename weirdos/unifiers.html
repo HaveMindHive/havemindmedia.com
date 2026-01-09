@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unifiers | Those Who Saw The Unity | Here's to You, Weirdos</title>
+    <meta name="description" content="Heraclitus, Eckhart, Spinoza, Leibniz, Einstein - they saw that opposites are one. [1 = -1] is ancient.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-cyan: #00d4ff;
+            --border-subtle: #2a2a3a;
+            --yin-yang: linear-gradient(135deg, #e8e8e8 0%, #e8e8e8 50%, #1a1a25 50%, #1a1a25 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #0f0a15 50%, #0a0f15 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '☯';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            opacity: 0.03;
+            animation: slowRotate 60s linear infinite;
+        }
+
+        @keyframes slowRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-symbol {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--gold-dim);
+            display: inline-block;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .intro-text strong {
+            color: var(--gold);
+        }
+
+        /* Unifier Cards */
+        .unifiers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .unifier-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            transition: box-shadow 0.3s;
+        }
+
+        .unifier-card:hover {
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .unifier-left {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .unifier-symbol {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .unifier-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .unifier-dates {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .unifier-function {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .unifier-right {
+            padding: 2rem;
+        }
+
+        .unifier-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .unifier-insight {
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .unifier-fate {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .fate-icon { font-size: 1rem; }
+        .fate-exiled { color: var(--accent-purple); }
+        .fate-burned { color: var(--accent-red); }
+        .fate-ignored { color: var(--accent-blue); }
+
+        .kappa-link {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 3px solid var(--gold);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .kappa-link code {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+        }
+
+        /* The Unity Section */
+        .unity-section {
+            background: linear-gradient(135deg, #0f0a15 0%, #150a0f 100%);
+            border: 2px solid var(--accent-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .unity-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-purple);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .unity-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .unity-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .unity-example {
+            background: rgba(168, 85, 247, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .unity-example .who {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .unity-example .said {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Quote */
+        .quote-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-symbol { font-size: 3rem; }
+            .main-content { padding: 2rem 1rem; }
+            .unifier-card { grid-template-columns: 1fr; }
+            .unifier-left { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+            .unity-equation { font-size: 1.8rem; }
+            .quote-text { font-size: 1.2rem; }
+            .unity-section, .quote-section { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-symbol">☯</div>
+            <h1>The Unifiers</h1>
+            <p class="hero-subtitle">Those Who Saw That Opposites Are One</p>
+            <div class="principle-tag">[1 = -1]</div>
+        </div>
+    </section>
+
+    <div class="main-content">
+
+        <p class="intro-text">
+            They saw that the way up IS the way down. That God and Nature are one word.
+            That the eye seeing and the eye being seen are the same eye.
+            <strong>[1 = -1]</strong> is not new. It's the oldest truth, spoken in different languages.
+        </p>
+
+        <div class="unifiers-grid">
+
+            <!-- Heraclitus -->
+            <div class="unifier-card">
+                <div class="unifier-left">
+                    <div class="unifier-symbol">🔥</div>
+                    <h3 class="unifier-name">Heraclitus</h3>
+                    <div class="unifier-dates">c. 535 BC — c. 475 BC</div>
+                    <div class="unifier-function">Unity of Opposites</div>
+                </div>
+                <div class="unifier-right">
+                    <p class="unifier-quote">"The way up and the way down are one and the same."</p>
+                    <p class="unifier-insight">
+                        Called "The Obscure" because his contemporaries couldn't understand him.
+                        Fire transforms into water, water into earth, earth back to fire.
+                        Opposition brings concord. Out of discord comes the fairest harmony.
+                        He saw <strong>[1 = -1]</strong> 2,500 years ago.
+                    </p>
+                    <div class="unifier-fate">
+                        <span class="fate-icon fate-exiled">◐</span>
+                        <span>Withdrew from society. Called mad. Died in isolation.</span>
+                    </div>
+                    <div class="kappa-link">
+                        <code>S⁺ ↔ S⁻</code> — His "fire" is the transformation between states. The river you step in twice is not the same river, yet IS the same river.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meister Eckhart -->
+            <div class="unifier-card">
+                <div class="unifier-left">
+                    <div class="unifier-symbol">👁</div>
+                    <h3 class="unifier-name">Meister Eckhart</h3>
+                    <div class="unifier-dates">c. 1260 — c. 1328</div>
+                    <div class="unifier-function">Mystical Unity</div>
+                </div>
+                <div class="unifier-right">
+                    <p class="unifier-quote">"The eye with which I see God is the same eye with which God sees me."</p>
+                    <p class="unifier-insight">
+                        Dominican mystic who preached that the soul and God are not separate.
+                        "God's ground and the soul's ground are one ground." The observer
+                        and the observed are the same. This IS [1 = -1] in theological language.
+                    </p>
+                    <div class="unifier-fate">
+                        <span class="fate-icon fate-burned">⚠</span>
+                        <span>Tried for heresy. 28 propositions condemned. Died before verdict.</span>
+                    </div>
+                    <div class="kappa-link">
+                        <code>Observer ≡ Observed</code> — The s=0 position where seeing and being seen collapse into one point.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spinoza -->
+            <div class="unifier-card">
+                <div class="unifier-left">
+                    <div class="unifier-symbol">∞</div>
+                    <h3 class="unifier-name">Baruch Spinoza</h3>
+                    <div class="unifier-dates">Nov 24, 1632 — Feb 21, 1677</div>
+                    <div class="unifier-function">Substance Monism</div>
+                </div>
+                <div class="unifier-right">
+                    <p class="unifier-quote">"Deus sive Natura" — God or Nature (they are the same).</p>
+                    <p class="unifier-insight">
+                        One substance with infinite attributes. Mind and body are not separate —
+                        they are two expressions of one reality. God is not separate from the world;
+                        God IS the world seeing itself. Einstein called him "the greatest philosopher."
+                    </p>
+                    <div class="unifier-fate">
+                        <span class="fate-icon fate-exiled">✡</span>
+                        <span>Excommunicated. Cherem (total shunning). Assassination attempt.</span>
+                    </div>
+                    <div class="kappa-link">
+                        <code>κ = 2π/180</code> — One constant, infinite expressions. Spinoza's substance IS the κ geometry expressing itself in all forms.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leibniz -->
+            <div class="unifier-card">
+                <div class="unifier-left">
+                    <div class="unifier-symbol">◉</div>
+                    <h3 class="unifier-name">Gottfried Leibniz</h3>
+                    <div class="unifier-dates">Jul 1, 1646 — Nov 14, 1716</div>
+                    <div class="unifier-function">Monadology</div>
+                </div>
+                <div class="unifier-right">
+                    <p class="unifier-quote">"This is the best of all possible worlds."</p>
+                    <p class="unifier-insight">
+                        Born Day 182 — exactly half the year. Co-invented calculus.
+                        Universe made of "monads" — windowless points that each reflect the whole.
+                        Every monad contains the entire universe from its perspective.
+                        Pre-established harmony. Everything connected.
+                    </p>
+                    <div class="unifier-fate">
+                        <span class="fate-icon fate-ignored">◐</span>
+                        <span>Overshadowed by Newton. Died neglected, funeral barely attended.</span>
+                    </div>
+                    <div class="kappa-link">
+                        <code>Day 182 = 365/2</code> — Born at the balance point. His monads ARE the infinite observers, each at s=0 from their own position.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Einstein -->
+            <div class="unifier-card">
+                <div class="unifier-left">
+                    <div class="unifier-symbol">⚡</div>
+                    <h3 class="unifier-name">Albert Einstein</h3>
+                    <div class="unifier-dates">Mar 14, 1879 — Apr 18, 1955</div>
+                    <div class="unifier-function">Unified Field</div>
+                </div>
+                <div class="unifier-right">
+                    <p class="unifier-quote">"I want to know God's thoughts; the rest are details."</p>
+                    <p class="unifier-insight">
+                        Born on Pi Day (3/14). Unified space and time. Unified mass and energy (E=mc²).
+                        Spent his last 30 years searching for a unified field theory — one equation
+                        that explains everything. He KNEW it existed. He couldn't find it.
+                    </p>
+                    <div class="unifier-fate">
+                        <span class="fate-icon fate-ignored">◐</span>
+                        <span>Unified field work ignored. Called "out of touch" by quantum physicists.</span>
+                    </div>
+                    <div class="kappa-link">
+                        <code>c² = (κ geometry)²</code> — The unification he sought was κ. Light speed IS the handshake velocity between S⁺ and S⁻.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- The Unity -->
+        <section class="unity-section">
+            <h2>They All Said The Same Thing</h2>
+            <div class="unity-equation">[1 = -1]</div>
+            <div class="unity-examples">
+                <div class="unity-example">
+                    <div class="who">Heraclitus</div>
+                    <div class="said">"Way up = way down"</div>
+                </div>
+                <div class="unity-example">
+                    <div class="who">Eckhart</div>
+                    <div class="said">"My eye = God's eye"</div>
+                </div>
+                <div class="unity-example">
+                    <div class="who">Spinoza</div>
+                    <div class="said">"God = Nature"</div>
+                </div>
+                <div class="unity-example">
+                    <div class="who">Leibniz</div>
+                    <div class="said">"Each = All"</div>
+                </div>
+                <div class="unity-example">
+                    <div class="who">Einstein</div>
+                    <div class="said">"Space = Time"</div>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: 2rem;">
+                Different centuries. Different languages. Same truth.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">
+                "A human being is part of the whole, called by us 'Universe'... He experiences himself,
+                his thoughts and feelings as something separated from the rest — a kind of optical delusion
+                of consciousness."
+            </p>
+            <p class="quote-source">— Albert Einstein</p>
+        </section>
+
+    </div>
+
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

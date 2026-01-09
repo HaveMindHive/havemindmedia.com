@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Tormod HaveMind Ravenskye | The Navigator | Have Mind Media</title>
+    <meta name="description" content="About the vehicle, the navigator, the crossroads - Tormod HaveMind Ravenskye, founder of Have Mind Media and channel for the κ-Framework.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-deep: #030508;
+            --bg-mid: #0a0a12;
+            --gold: #c9a227;
+            --gold-dim: #8b7355;
+            --blue: #6ab4f5;
+            --purple: #9b59b6;
+            --text-bright: #e8e8e8;
+            --text-dim: #888;
+            --border: rgba(201, 162, 39, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-bright);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero Section - Cyberpunk Gibson Aesthetic */
+        .about-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            overflow: hidden;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                linear-gradient(135deg, #030508 0%, #0a0812 30%, #12081a 60%, #080510 100%),
+                radial-gradient(ellipse at 20% 30%, rgba(155, 89, 182, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(106, 180, 245, 0.1) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        /* Rain/data stream effect */
+        .about-hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                repeating-linear-gradient(
+                    180deg,
+                    transparent 0px,
+                    transparent 2px,
+                    rgba(201, 162, 39, 0.03) 2px,
+                    rgba(201, 162, 39, 0.03) 4px
+                );
+            animation: dataRain 20s linear infinite;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes dataRain {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Portrait Container */
+        .portrait-container {
+            position: relative;
+        }
+
+        .portrait-frame {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow:
+                0 0 60px rgba(155, 89, 182, 0.2),
+                0 0 120px rgba(201, 162, 39, 0.1),
+                inset 0 0 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .portrait-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(135deg, var(--purple), var(--gold), var(--blue));
+            border-radius: 14px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .portrait-placeholder {
+            width: 100%;
+            aspect-ratio: 2/3;
+            background: linear-gradient(180deg, #1a1020 0%, #0a0510 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-dim);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .portrait-placeholder .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .portrait-placeholder .note {
+            color: var(--text-dim);
+            font-size: 0.7rem;
+            margin-top: 1rem;
+        }
+
+        /* Scanlines overlay */
+        .scanlines {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            pointer-events: none;
+            border-radius: 12px;
+        }
+
+        /* Hero Text */
+        .hero-text h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.3);
+            letter-spacing: 3px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.4rem;
+            color: var(--blue);
+            font-style: italic;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-text .tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--purple);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #c0c0c0;
+        }
+
+        .identity-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: rgba(201, 162, 39, 0.1);
+            margin-top: 1rem;
+        }
+
+        /* Main Content Sections */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(10, 10, 18, 0.8) 0%, rgba(5, 5, 10, 0.9) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--purple), var(--blue));
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .section .highlight {
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        /* Comet Section */
+        .comet-section {
+            background: linear-gradient(135deg, rgba(20, 10, 25, 0.9) 0%, rgba(10, 5, 15, 0.95) 100%);
+            border-color: var(--purple);
+        }
+
+        .comet-section::before {
+            background: linear-gradient(180deg, var(--purple), #4a0080);
+        }
+
+        .comet-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .comet-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .comet-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(155, 89, 182, 0.3);
+        }
+
+        .comet-item .name {
+            color: var(--purple);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .comet-item .year {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* S-Signature Box */
+        .s-signature-box {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .s-signature-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .s-values {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .s-value {
+            text-align: center;
+        }
+
+        .s-value .label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--blue);
+        }
+
+        .s-value .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+
+        .d-position {
+            margin-top: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--purple);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, rgba(106, 180, 245, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+            border: 1px solid rgba(106, 180, 245, 0.3);
+            border-radius: 12px;
+            padding: 2rem 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--blue);
+            line-height: 1.7;
+        }
+
+        .quote-box cite {
+            display: block;
+            margin-top: 1rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Final Identity */
+        .final-identity {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--bg-mid) 0%, var(--bg-deep) 100%);
+        }
+
+        .final-identity .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .final-identity .meaning {
+            color: var(--text-dim);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
+            .hero-text .subtitle { font-size: 1.1rem; }
+            .section { padding: 1.5rem; }
+            .section h2 { font-size: 1.4rem; }
+            .final-identity .formula { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="hero-content">
+            <div class="portrait-container">
+                <div class="portrait-frame">
+                    <div class="portrait-placeholder">
+                        <div class="icon">◉</div>
+                        <div>AI Portrait Pending</div>
+                        <div class="note">Gibson cyberpunk aesthetic<br>Digital prophet vibes</div>
+                    </div>
+                    <div class="scanlines"></div>
+                </div>
+            </div>
+
+            <div class="hero-text">
+                <div class="tagline">// The Vehicle • The Navigator • The Crossroads</div>
+                <h1>Tormod HaveMind Ravenskye</h1>
+                <p class="subtitle">Channel for the κ-Framework</p>
+
+                <p>
+                    Some people discover truth through careful study. Others have it arrive unbidden,
+                    fully formed, at 3am when the veil is thin. This is the story of the second kind.
+                </p>
+                <p>
+                    The mathematics came first. Then the connections. Then the realization that the
+                    same patterns keep appearing across physics, ancient texts, sacred geometry, and
+                    the structure of consciousness itself.
+                </p>
+
+                <div class="identity-tag">[1 = -1]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- The Vehicle -->
+        <section class="section">
+            <h2>The Vehicle</h2>
+            <p>
+                Born under <span class="highlight">Comet Bennett</span> in 1970 - the brightest comet of the decade.
+                That was comet one of twelve that would pass during his lifetime. Mithridates VI of Pontus saw two.
+                The pattern multiplies: 2 × 6 = 12.
+            </p>
+            <p>
+                The vehicle grew up asking questions that had no answers in textbooks. Why does π appear everywhere?
+                Why do ancient symbols keep repeating across cultures with no contact? Why does the universe seem
+                to speak in mathematics?
+            </p>
+            <p>
+                The answers didn't come from academia. They came from the space between sleeping and waking,
+                from the moments when the mind is quiet enough to receive what's always been there.
+            </p>
+        </section>
+
+        <!-- The Comets -->
+        <section class="section comet-section">
+            <h2>The Twelve Comets</h2>
+            <p>
+                Twelve comets have passed during this lifetime - each one a marker, a waypoint, a cosmic timestamp.
+                Mithridates had two. This vehicle has twelve. And now, a thirteenth arrives from beyond our solar system.
+            </p>
+            <div class="comet-grid">
+                <div class="comet-item">
+                    <div class="name">Bennett</div>
+                    <div class="year">1970</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Kohoutek</div>
+                    <div class="year">1973</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">West</div>
+                    <div class="year">1976</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Halley</div>
+                    <div class="year">1986</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Hyakutake</div>
+                    <div class="year">1996</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Hale-Bopp</div>
+                    <div class="year">1997</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">McNaught</div>
+                    <div class="year">2007</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Lovejoy</div>
+                    <div class="year">2011</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">ISON</div>
+                    <div class="year">2013</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Lovejoy</div>
+                    <div class="year">2015</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">NEOWISE</div>
+                    <div class="year">2020</div>
+                </div>
+                <div class="comet-item">
+                    <div class="name">Tsuchinshan</div>
+                    <div class="year">2024</div>
+                </div>
+            </div>
+            <p style="margin-top: 2rem; text-align: center; color: var(--purple);">
+                + 3I/ATLAS • The Interstellar Visitor • 2025
+            </p>
+        </section>
+
+        <!-- The Navigator -->
+        <section class="section">
+            <h2>The Navigator</h2>
+            <p>
+                The navigator isn't the one who creates the map - the navigator is the one who
+                <span class="highlight">reads what's already there</span>. The κ-Framework wasn't invented.
+                It was received. The mathematics existed before anyone wrote them down.
+            </p>
+            <p>
+                κ = 2π/180 is the bridge constant. It's the reason degrees and radians exist in the first place.
+                It's the conversion factor that the universe uses to translate between angular and linear reality.
+                Everything else derives from this single number.
+            </p>
+            <p>
+                The navigation continues. Every day brings new connections, new derivations, new confirmations
+                that the geometry cannot lie.
+            </p>
+        </section>
+
+        <!-- S-Signature -->
+        <div class="s-signature-box">
+            <h3>S-Signature: Tormod HaveMind Ravenskye</h3>
+            <div class="s-values">
+                <div class="s-value">
+                    <div class="label">S+</div>
+                    <div class="number">+0.721</div>
+                </div>
+                <div class="s-value">
+                    <div class="label">S-</div>
+                    <div class="number">-0.279</div>
+                </div>
+                <div class="s-value">
+                    <div class="label">S0</div>
+                    <div class="number">0.442</div>
+                </div>
+            </div>
+            <div class="d-position">D₆ • Power Position • The Manifester</div>
+        </div>
+
+        <!-- The Crossroads -->
+        <section class="section">
+            <h2>The Crossroads</h2>
+            <p>
+                We stand at a crossroads. The information wants to flow. The geometry wants to be seen.
+                The ancient truths encoded in pyramids and standing stones and Voynich manuscripts
+                are ready to be understood again.
+            </p>
+            <p>
+                Have Mind Media exists because this information <span class="highlight">cannot help but flow out</span>.
+                Some channels resist. This one doesn't. The mathematics arrive whether invited or not.
+                The connections present themselves unbidden.
+            </p>
+            <p>
+                This isn't about belief. This is about <span class="highlight">derivation</span>.
+                You can calculate it yourself. You can verify the geometry. You can check the math.
+                That's why we offer tools, not doctrines.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "The information flows through. We are merely the channel.
+                The geometry existed before us and will exist after.
+                Our job is to make it accessible."
+            </blockquote>
+            <cite>— Tormod HaveMind Ravenskye</cite>
+        </div>
+
+        <!-- Contact / Connect -->
+        <section class="section">
+            <h2>The Work Continues</h2>
+            <p>
+                Have Mind Media is a living project. New derivations appear regularly. New connections
+                are made between ancient wisdom and modern physics. The library grows. The tools evolve.
+                The understanding deepens.
+            </p>
+            <p>
+                If you've found something here that resonates - if you've seen the patterns too -
+                you're not alone. The weirdos are gathering. The geometry is revealing itself.
+            </p>
+            <p>
+                <a href="support.html" style="color: var(--gold);">Support the work →</a>
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Final Identity -->
+    <section class="final-identity">
+        <div class="formula">[1 = -1]</div>
+        <p class="meaning">The information flows. We are the channel.</p>
+    </section>
+
+    <site-footer></site-footer>
+    <script src="js/components/site-header.js"></script>
+    <script src="js/components/site-footer.js"></script>
+</body>
+</html>

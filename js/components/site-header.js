@@ -262,11 +262,30 @@ class SiteHeader extends HTMLElement {
                     <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
+                        <!-- EXPLORE - The main discovery menu -->
+                        <div class="hmm-nav-item">
+                            <button class="hmm-btn" title="Explore Have Mind Media">EXPLORE <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop" style="min-width: 280px;">
+                                <div class="label">Start Here</div>
+                                <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
+                                <a href="${bp}coin-science/index.html">◯ COIN Science</a>
+                                <a href="${bp}weirdos/index.html">✧ Here's to You, Weirdos</a>
+                                <hr>
+                                <div class="label">Featured</div>
+                                <a href="${bp}physics/three-body-geometry.html">◬ Three-Body Solution</a>
+                                <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
+                                <a href="${bp}ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
+                                <hr>
+                                <div class="label">About</div>
+                                <a href="${bp}about.html">About Tormod</a>
+                            </div>
+                        </div>
+
                         <!-- S+ Physical Reality -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn s-plus" title="S+ Physical Reality">△ <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn s-plus" title="S+ Physical Reality">S+ <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
-                                <div class="label">Physical Reality</div>
+                                <div class="label">S+ Physical Reality</div>
                                 <a href="${bp}physics/three-body-geometry.html" class="highlight">◬ Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
@@ -285,9 +304,9 @@ class SiteHeader extends HTMLElement {
 
                         <!-- S- Mother Earth Science -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn s-minus" title="S- Mother Earth Science">▽ <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn s-minus" title="S- Mother Earth Science">S- <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
-                                <div class="label">Mother Earth Science</div>
+                                <div class="label">S- Mother Earth Science</div>
                                 <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
                                 <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
                                 <a href="${bp}ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
@@ -306,7 +325,7 @@ class SiteHeader extends HTMLElement {
 
                         <!-- COIN Science -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn coin" title="COIN Science">⬡ <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn coin" title="COIN Science">COIN <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
                                 <div class="label">COIN Science</div>
                                 <a href="${bp}coin-science/index.html" class="highlight">◯ COIN Science</a>
@@ -320,32 +339,20 @@ class SiteHeader extends HTMLElement {
                             </div>
                         </div>
 
-                        <!-- τ₄ Shadow Operator -->
-                        <div class="hmm-nav-item">
-                            <button class="hmm-btn tau4" title="τ₄ Shadow Operator">⧗ <span class="hmm-arrow">▼</span></button>
-                            <div class="hmm-drop">
-                                <div class="label">Shadow Operator</div>
-                                <a href="${bp}physics/shadow-operator/index.html" class="highlight">⧗ Shadow Operator Science</a>
-                                <a href="${bp}education/ammit-function.html">Ammit Function</a>
-                                <a href="${bp}physics/torsion-balance.html">Torsion Balance</a>
-                                <a href="${bp}education/hidden-observers.html">Hidden Observers</a>
-                            </div>
-                        </div>
-
-                        <!-- κ₅ True Dark Operator -->
-                        <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">◉</a>
+                        <!-- κ₅ True Dark -->
+                        <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">κ₅</a>
 
                         <!-- Library -->
-                        <a href="${bp}library-wizard/index.html" class="hmm-link" title="Library">⌘</a>
-
-                        <!-- Support -->
-                        <a href="${bp}support.html" class="hmm-link" title="Support">♡</a>
+                        <a href="${bp}library-wizard/index.html" class="hmm-link" title="Library">Library</a>
 
                         <!-- Store -->
-                        <a href="${bp}store/index.html" class="hmm-link" title="Store">◈</a>
+                        <a href="${bp}store/index.html" class="hmm-link" title="Store">Store</a>
+
+                        <!-- Support -->
+                        <a href="${bp}support.html" class="hmm-link" title="Support">Support</a>
 
                         <!-- Games -->
-                        <a href="${bp}games/index.html" class="hmm-link games" title="Games">✧</a>
+                        <a href="${bp}games/index.html" class="hmm-link games" title="Mind Games">Games</a>
                     </nav>
                 </div>
             </header>

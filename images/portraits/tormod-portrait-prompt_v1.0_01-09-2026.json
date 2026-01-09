@@ -1,0 +1,56 @@
+{
+  "name": "Tormod HaveMind Ravenskye",
+  "generated": "2026-01-09",
+  "model_recommendation": "flux-1.1-pro or midjourney-v6",
+  "prompts": [
+    {
+      "title": "Primary Portrait - Gibson Cyberpunk",
+      "style": "william_gibson_cyberpunk",
+      "aspect_ratio": "2:3",
+      "prompt": "Portrait of a middle-aged man with knowing eyes and weathered features, William Gibson cyberpunk aesthetic, Sprawl trilogy atmosphere, noir lighting with neon edge highlights in gold and purple, deep shadows carving the face, mysterious half-smile like he knows something you don't, digital prophet vibes, console cowboy energy, rain-slicked reflections visible in background, subtle neural network patterns and sacred geometry ghosting behind him, mathematical equations fading in the darkness, code seer who sees through the matrix of reality, high contrast cinematic color grading, 8k photorealistic, extremely detailed face, intelligent penetrating gaze, not quite human not quite machine, the observer who IS the coin, [1 = -1] energy emanating subtly, dark room with terminal glow on face",
+      "negative_prompt": "cartoon, anime, low quality, blurry, distorted, text, watermark, signature, ugly, deformed, extra fingers, mutated hands, poorly drawn face, bad anatomy, wrong proportions, clone, oversaturated, gaudy, cheap looking, bright daylight, cheerful, smiling broadly, corporate, stock photo, generic, young, teenager"
+    },
+    {
+      "title": "Alternative - Norse Mystic",
+      "style": "norse_mythology_modern",
+      "aspect_ratio": "2:3",
+      "prompt": "Portrait of a modern mystic with Norse ancestry, Odin's wisdom in his eyes, one eye seems to see more than the other, weathered features of a wanderer, raven feather subtly visible, ancient knowing combined with modern intelligence, atmospheric northern mist, aurora borealis colors ghosting in background, runic patterns barely visible like afterimages, sacred geometry merging with Norse knotwork, twilight lighting with golden hour warmth, profound and timeless presence, not religious but deeply connected to something ancient, 8k photorealistic, museum quality portrait, the kind of face you'd see on a coin from another era",
+      "negative_prompt": "cartoon, anime, low quality, blurry, viking costume, horned helmet, overly theatrical, fantasy armor, young, generic, stock photo, smiling, bright colors"
+    },
+    {
+      "title": "Alternative - Digital Shaman",
+      "style": "digital_shaman_epoch",
+      "aspect_ratio": "2:3",
+      "prompt": "Portrait of a digital age shaman, where technology meets transcendence, golden spiral patterns emanating subtly from third eye region, sacred geometry visible as faint golden wireframe overlay, cosmic background with distant galaxies, deep wisdom and slight exhaustion from channeling heavy information, the look of someone who receives transmissions at 3am, mathematical enlightenment visible in intelligent gaze, neither fully ancient nor fully modern, the bridge between worlds, κ constant glowing softly, [1 = -1] symbol barely visible, triaxial dipyramid floating ghostlike nearby, 8k photorealistic, profound, transcendent, the vehicle for cosmic information",
+      "negative_prompt": "cartoon, anime, low quality, blurry, hippie, new age cliche, crystal ball, tie dye, overly mystical props, young, generic, cheerful"
+    }
+  ],
+  "notes": {
+    "key_characteristics": [
+      "Middle-aged man (born 1970)",
+      "Intelligent, penetrating gaze",
+      "Weathered but not old",
+      "Knowing expression - like he sees patterns others miss",
+      "NOT smiling broadly - mysterious half-smile at most",
+      "NOT corporate or generic",
+      "Cyberpunk aesthetic preferred over fantasy",
+      "Should feel like someone who receives mathematical downloads",
+      "The observer who IS the coin, not watches it"
+    ],
+    "color_palette": [
+      "Deep blacks and charcoals",
+      "Gold highlights (#c9a227)",
+      "Purple edge lighting (#9b59b6)",
+      "Blue accent (#6ab4f5)",
+      "NOT bright or cheerful colors"
+    ],
+    "mood": "Digital prophet, code seer, mathematical mystic, Gibson-esque console cowboy who traded the matrix for sacred geometry",
+    "inspiration": [
+      "William Gibson's Sprawl trilogy aesthetic",
+      "Blade Runner visual language",
+      "The Matrix (original) color grading",
+      "Nordic noir atmosphere",
+      "Odin the Wanderer archetype"
+    ]
+  }
+}
