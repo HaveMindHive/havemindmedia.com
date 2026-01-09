@@ -114,6 +114,15 @@ class SiteHeader extends HTMLElement {
                     background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.4) 100%);
                     color: #a00;
                 }
+                /* 5 Science Branch Styles */
+                .hmm-btn.s-plus { color: #6ab4f5; }
+                .hmm-btn.s-plus:hover { background: rgba(106, 180, 245, 0.15); border-color: rgba(106, 180, 245, 0.4); }
+                .hmm-btn.s-minus { color: #9b59b6; }
+                .hmm-btn.s-minus:hover { background: rgba(155, 89, 182, 0.15); border-color: rgba(155, 89, 182, 0.4); }
+                .hmm-btn.coin { color: #c9a227; }
+                .hmm-btn.coin:hover { background: rgba(201, 162, 39, 0.15); border-color: rgba(201, 162, 39, 0.4); }
+                .hmm-btn.tau4 { color: #2ecc71; }
+                .hmm-btn.tau4:hover { background: rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); }
 
                 /* Dropdown */
                 .hmm-drop {
@@ -215,10 +224,11 @@ class SiteHeader extends HTMLElement {
                     <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
-                        <!-- Science (S+) -->
+                        <!-- S+ Physical Reality -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">Science <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn s-plus">S+ <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
+                                <div class="label">Physical Reality</div>
                                 <a href="${bp}physics/three-body-geometry.html" class="highlight">◬ Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
@@ -235,17 +245,35 @@ class SiteHeader extends HTMLElement {
                             </div>
                         </div>
 
-                        <!-- κ₅ - Separate science branch -->
-                        <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5">κ₅ Dark</a>
-
-                        <!-- Soul (S-) -->
+                        <!-- S- Mother Earth Science -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">Soul <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn s-minus">S- <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
+                                <div class="label">Mother Earth Science</div>
                                 <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
                                 <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
+                                <a href="${bp}ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
+                                <a href="${bp}ancient-mysteries/indus-script/index.html">Indus Script</a>
+                                <hr>
+                                <div class="label">Ancient Texts</div>
+                                <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
+                                <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
+                                <a href="${bp}rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html">Rosetta Engine</a>
+                                <hr>
+                                <div class="label">Norse</div>
+                                <a href="${bp}ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html">Rök Runestone</a>
+                                <a href="${bp}ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html">Gotland Stones</a>
+                            </div>
+                        </div>
+
+                        <!-- COIN Science -->
+                        <div class="hmm-nav-item">
+                            <button class="hmm-btn coin">◯ <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop">
+                                <div class="label">COIN Science</div>
+                                <a href="${bp}coin-science/index.html" class="highlight">◯ COIN Science</a>
                                 <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
-                                <a href="${bp}coin-science/index.html">COIN Science</a>
+                                <a href="${bp}education/mirror/index.html">The Mirror</a>
                                 <hr>
                                 <div class="label">Tools</div>
                                 <a href="${bp}tools/s-signature/s_signature_128.html">S-Signature</a>
@@ -254,26 +282,23 @@ class SiteHeader extends HTMLElement {
                             </div>
                         </div>
 
-                        <!-- Mysteries -->
+                        <!-- τ₄ Shadow Operator -->
                         <div class="hmm-nav-item">
-                            <button class="hmm-btn">Mysteries <span class="hmm-arrow">▼</span></button>
+                            <button class="hmm-btn tau4">τ₄ <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop">
-                                <a href="${bp}ancient-mysteries/voynich/index.html" class="highlight">📜 Voynich Manuscript</a>
-                                <a href="${bp}ancient-mysteries/indus-script/index.html">Indus Script</a>
-                                <a href="${bp}rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html">Rosetta Engine</a>
-                                <hr>
-                                <div class="label">Ancient Texts</div>
-                                <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
-                                <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
-                                <hr>
-                                <div class="label">Norse</div>
-                                <a href="${bp}ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html">Rök Runestone</a>
-                                <a href="${bp}ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html">Gotland Stones</a>
+                                <div class="label">Shadow Operator</div>
+                                <a href="${bp}physics/shadow-operator/index.html" class="highlight">⧗ Shadow Operator Science</a>
+                                <a href="${bp}education/ammit-function.html">Ammit Function</a>
+                                <a href="${bp}physics/torsion-balance.html">Torsion Balance</a>
+                                <a href="${bp}education/hidden-observers.html">Hidden Observers</a>
                             </div>
                         </div>
 
-                        <!-- Library - Direct link -->
-                        <a href="${bp}library-wizard/index.html" class="hmm-link">📚 Library</a>
+                        <!-- κ₅ True Dark Operator -->
+                        <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5">κ₅</a>
+
+                        <!-- Library -->
+                        <a href="${bp}library-wizard/index.html" class="hmm-link">📚</a>
 
                         <!-- Support -->
                         <a href="${bp}support.html" class="hmm-link">Support</a>
@@ -281,8 +306,8 @@ class SiteHeader extends HTMLElement {
                         <!-- Store -->
                         <a href="${bp}store/index.html" class="hmm-link">Store</a>
 
-                        <!-- Games - moved to end -->
-                        <a href="${bp}games/index.html" class="hmm-link games">🧠 Games</a>
+                        <!-- Games -->
+                        <a href="${bp}games/index.html" class="hmm-link games">🧠</a>
                     </nav>
                 </div>
             </header>
