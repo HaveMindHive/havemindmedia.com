@@ -105,31 +105,69 @@ class SiteHeader extends HTMLElement {
                     background: linear-gradient(135deg, rgba(201, 162, 39, 0.25) 0%, rgba(106, 180, 245, 0.25) 100%);
                 }
                 .hmm-link.kappa5 {
-                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.2) 0%, rgba(60, 0, 0, 0.3) 100%);
-                    border: 1px solid rgba(139, 0, 0, 0.5);
+                    position: relative;
+                    background: none;
+                    border: none;
+                    border-radius: 0;
                     color: #8B0000;
                     font-weight: 600;
+                    padding-bottom: 0.6rem;
+                }
+                .hmm-link.kappa5::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 2px;
+                    background: #8B0000;
+                    transition: width 0.3s ease;
+                }
+                .hmm-link.kappa5:hover::after {
+                    width: 100%;
                 }
                 .hmm-link.kappa5:hover {
-                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.4) 100%);
+                    background: none;
                     color: #a00;
                 }
-                /* 5 Science Branch Styles */
+                /* 5 Science Branch Styles - Bottom bar indicator */
+                .hmm-btn.s-plus, .hmm-btn.s-minus, .hmm-btn.coin, .hmm-btn.tau4 {
+                    position: relative;
+                    border: none;
+                    border-radius: 0;
+                    padding-bottom: 0.6rem;
+                }
+                .hmm-btn.s-plus::after, .hmm-btn.s-minus::after, .hmm-btn.coin::after, .hmm-btn.tau4::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 0;
+                    height: 2px;
+                    transition: width 0.3s ease;
+                }
                 .hmm-btn.s-plus { color: #6ab4f5; }
-                .hmm-btn.s-plus:hover { background: rgba(106, 180, 245, 0.15); border-color: rgba(106, 180, 245, 0.4); }
+                .hmm-btn.s-plus::after { background: #6ab4f5; }
+                .hmm-btn.s-plus:hover::after, .hmm-btn.s-plus.active::after { width: 100%; }
                 .hmm-btn.s-minus { color: #9b59b6; }
-                .hmm-btn.s-minus:hover { background: rgba(155, 89, 182, 0.15); border-color: rgba(155, 89, 182, 0.4); }
+                .hmm-btn.s-minus::after { background: #9b59b6; }
+                .hmm-btn.s-minus:hover::after, .hmm-btn.s-minus.active::after { width: 100%; }
                 .hmm-btn.coin { color: #c9a227; }
-                .hmm-btn.coin:hover { background: rgba(201, 162, 39, 0.15); border-color: rgba(201, 162, 39, 0.4); }
+                .hmm-btn.coin::after { background: #c9a227; }
+                .hmm-btn.coin:hover::after, .hmm-btn.coin.active::after { width: 100%; }
                 .hmm-btn.tau4 { color: #2ecc71; }
-                .hmm-btn.tau4:hover { background: rgba(46, 204, 113, 0.15); border-color: rgba(46, 204, 113, 0.4); }
+                .hmm-btn.tau4::after { background: #2ecc71; }
+                .hmm-btn.tau4:hover::after, .hmm-btn.tau4.active::after { width: 100%; }
 
                 /* Dropdown */
                 .hmm-drop {
                     position: absolute;
                     top: calc(100% + 4px);
-                    left: 0;
-                    min-width: 200px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    min-width: 220px;
                     max-height: 70vh;
                     overflow-y: auto;
                     background: rgba(15, 15, 20, 0.98);
