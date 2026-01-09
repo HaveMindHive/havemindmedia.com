@@ -34,8 +34,17 @@ class SiteHeader extends HTMLElement {
                     font-weight: 600;
                     font-size: 0.9rem;
                     letter-spacing: 2px;
+                    padding: 0.5rem 1rem;
+                    border: 1px solid rgba(201, 162, 39, 0.5);
+                    border-radius: 6px;
+                    background: rgba(201, 162, 39, 0.1);
+                    transition: all 0.3s;
                 }
-                .hmm-brand:hover { color: #e8c547; }
+                .hmm-brand:hover {
+                    color: #e8c547;
+                    background: rgba(201, 162, 39, 0.2);
+                    border-color: rgba(201, 162, 39, 0.8);
+                }
                 .hmm-nav {
                     display: flex;
                     gap: 0.25rem;
@@ -94,6 +103,16 @@ class SiteHeader extends HTMLElement {
                 }
                 .hmm-link.games:hover {
                     background: linear-gradient(135deg, rgba(201, 162, 39, 0.25) 0%, rgba(106, 180, 245, 0.25) 100%);
+                }
+                .hmm-link.kappa5 {
+                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.2) 0%, rgba(60, 0, 0, 0.3) 100%);
+                    border: 1px solid rgba(139, 0, 0, 0.5);
+                    color: #8B0000;
+                    font-weight: 600;
+                }
+                .hmm-link.kappa5:hover {
+                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(60, 0, 0, 0.4) 100%);
+                    color: #a00;
                 }
 
                 /* Dropdown */
@@ -192,13 +211,10 @@ class SiteHeader extends HTMLElement {
 
             <header class="hmm-header">
                 <div class="hmm-inner">
-                    <a href="${bp}index.html" class="hmm-brand">HAVE MIND MEDIA</a>
+                    <a href="${bp}index.html" class="hmm-brand" title="Home">HAVE MIND MEDIA</a>
                     <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
-                        <!-- Games - Direct link, prominent -->
-                        <a href="${bp}games/index.html" class="hmm-link games">🧠 Games</a>
-
                         <!-- Science (S+) -->
                         <div class="hmm-nav-item">
                             <button class="hmm-btn">Science <span class="hmm-arrow">▼</span></button>
@@ -207,9 +223,8 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
                                 <hr>
-                                <div class="label">κ-Operators</div>
+                                <div class="label">Frameworks</div>
                                 <a href="${bp}cedga/index.html">CEDGA (κ-Framework)</a>
-                                <a href="${bp}physics/kappa5/index.html" style="color: #8B0000;">κ₅ True Dark Operator</a>
                                 <a href="${bp}cedga/triaxial-os/index.html">Triaxial OS</a>
                                 <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
                                 <hr>
@@ -219,6 +234,9 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/atomic-derivations/index.html">Atomic Derivations</a>
                             </div>
                         </div>
+
+                        <!-- κ₅ - Separate science branch -->
+                        <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5">κ₅ Dark</a>
 
                         <!-- Soul (S-) -->
                         <div class="hmm-nav-item">
@@ -262,6 +280,9 @@ class SiteHeader extends HTMLElement {
 
                         <!-- Store -->
                         <a href="${bp}store/index.html" class="hmm-link">Store</a>
+
+                        <!-- Games - moved to end -->
+                        <a href="${bp}games/index.html" class="hmm-link games">🧠 Games</a>
                     </nav>
                 </div>
             </header>
