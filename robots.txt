@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.havemindmedia.com/sitemap.xml
+
+# Have Mind Media - Scalar Dimensionality Framework
+# [1 = -1]
