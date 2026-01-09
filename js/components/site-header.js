@@ -269,15 +269,22 @@ class SiteHeader extends HTMLElement {
                                 <div class="label">Start Here</div>
                                 <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
                                 <a href="${bp}coin-science/index.html">◯ COIN Science</a>
-                                <a href="${bp}weirdos/index.html">✧ Here's to You, Weirdos</a>
+                                <a href="${bp}physics/kappa5/index.html">κ₅ True Dark</a>
                                 <hr>
-                                <div class="label">Featured</div>
+                                <div class="label">Featured Discoveries</div>
                                 <a href="${bp}physics/three-body-geometry.html">◬ Three-Body Solution</a>
-                                <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
+                                <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
+                                <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
+                                <hr>
+                                <div class="label">Libraries</div>
+                                <a href="${bp}library-wizard/index.html">Library Wizard</a>
+                                <a href="${bp}master-library.html">Master Library</a>
+                                <a href="${bp}documents/index.html">White Papers</a>
                                 <hr>
                                 <div class="label">About</div>
                                 <a href="${bp}about.html">About Tormod</a>
+                                <a href="${bp}weirdos/index.html">✧ The Weirdos</a>
                             </div>
                         </div>
 
@@ -289,16 +296,26 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}physics/three-body-geometry.html" class="highlight">◬ Three-Body Solution</a>
                                 <a href="${bp}physics/millennium-problems.html">Millennium Problems</a>
                                 <a href="${bp}epoch-atomic/index.html">Epoch Atomic Model</a>
+                                <a href="${bp}physics/apparent-speed-paradox/index.html">Speed Paradox</a>
                                 <hr>
-                                <div class="label">Frameworks</div>
-                                <a href="${bp}cedga/index.html">CEDGA (κ-Framework)</a>
+                                <div class="label">CEDGA Framework</div>
+                                <a href="${bp}cedga/index.html">CEDGA Overview</a>
+                                <a href="${bp}cedga/pages/kappa-constant.html">κ-Constant</a>
+                                <a href="${bp}cedga/pages/balance-law.html">Balance Law</a>
+                                <a href="${bp}cedga/pages/tetrahelix.html">Tetrahelix</a>
                                 <a href="${bp}cedga/triaxial-os/index.html">Triaxial OS</a>
+                                <hr>
+                                <div class="label">Visualizers</div>
                                 <a href="${bp}physics/vessel/index.html">Scalar Vessel</a>
+                                <a href="${bp}physics/jwst-geometric-explorer.html">JWST Explorer</a>
+                                <a href="${bp}physics/432-orbital-mapper_v1.0_01-08-2026.html">432 Orbital Mapper</a>
+                                <a href="${bp}physics-viz/quad-helix-base60-v2.0.html">Quad Helix</a>
                                 <hr>
                                 <div class="label">Research</div>
                                 <a href="${bp}documents/index.html" class="highlight">📜 White Papers</a>
                                 <a href="${bp}physics/standard-model-failures/index.html">Standard Model Failures</a>
                                 <a href="${bp}physics/atomic-derivations/index.html">Atomic Derivations</a>
+                                <a href="${bp}protein-folding/index.html">Protein Folding</a>
                             </div>
                         </div>
 
@@ -309,17 +326,43 @@ class SiteHeader extends HTMLElement {
                                 <div class="label">S- Mother Earth Science</div>
                                 <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
                                 <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
-                                <a href="${bp}ancient-mysteries/voynich/index.html">📜 Voynich Manuscript</a>
+                                <a href="${bp}education/life-facing-wisdom.html">Life-Facing Wisdom</a>
+                                <a href="${bp}education/vinyl-paradox.html">Vinyl Paradox</a>
+                                <hr>
+                                <div class="label">Voynich Manuscript</div>
+                                <a href="${bp}ancient-mysteries/voynich/index.html" class="highlight">📜 Voynich Overview</a>
+                                <a href="${bp}ancient-mysteries/voynich/herbal.html">Herbal Section</a>
+                                <a href="${bp}ancient-mysteries/voynich/astronomical.html">Astronomical</a>
+                                <a href="${bp}ancient-mysteries/voynich/biological.html">Biological</a>
+                                <a href="${bp}ancient-mysteries/voynich/cosmological.html">Cosmological</a>
+                                <a href="${bp}ancient-mysteries/voynich/recipes.html">Recipes</a>
+                                <hr>
+                                <div class="label">Indus Valley</div>
                                 <a href="${bp}ancient-mysteries/indus-script/index.html">Indus Script</a>
+                                <a href="${bp}ancient-mysteries/indus-script/translator.html">Translator</a>
+                                <a href="${bp}ancient-mysteries/indus-script/figurines.html">Figurines</a>
+                                <a href="${bp}ancient-mysteries/indus-script/epoch-mathematics.html">Epoch Mathematics</a>
                                 <hr>
                                 <div class="label">Ancient Texts</div>
                                 <a href="${bp}ancient-mysteries/texts/rongorongo-v1.0.html">Rongorongo</a>
+                                <a href="${bp}rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html">Flip Reader</a>
                                 <a href="${bp}ancient-mysteries/texts/phaistos-v1.0.html">Phaistos Disc</a>
+                                <a href="${bp}ancient-mysteries/texts/ancient-mathematics-v1.0.html">Ancient Mathematics</a>
                                 <a href="${bp}rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html">Rosetta Engine</a>
                                 <hr>
-                                <div class="label">Norse</div>
+                                <div class="label">Norse Artifacts</div>
                                 <a href="${bp}ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html">Rök Runestone</a>
                                 <a href="${bp}ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html">Gotland Stones</a>
+                                <a href="${bp}ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html">Oseberg Ship</a>
+                                <a href="${bp}ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html">Bracteates</a>
+                                <a href="${bp}ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html">Norse Symbols</a>
+                                <hr>
+                                <div class="label">The Weirdos</div>
+                                <a href="${bp}weirdos/index.html" class="highlight">✧ Weirdos Hub</a>
+                                <a href="${bp}weirdos/geometers.html">Geometers</a>
+                                <a href="${bp}weirdos/visionaries.html">Visionaries</a>
+                                <a href="${bp}weirdos/wave-seers.html">Wave Seers</a>
+                                <a href="${bp}weirdos/unifiers.html">Unifiers</a>
                             </div>
                         </div>
 
@@ -331,11 +374,23 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}coin-science/index.html" class="highlight">◯ COIN Science</a>
                                 <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
                                 <a href="${bp}education/mirror/index.html">The Mirror</a>
+                                <a href="${bp}education/geometry-challenge.html">Geometry Challenge</a>
                                 <hr>
-                                <div class="label">Tools</div>
-                                <a href="${bp}tools/s-signature/s_signature_128.html">S-Signature</a>
+                                <div class="label">S-Signature System</div>
+                                <a href="${bp}tools/s-signature/s_signature_128.html" class="highlight">128 Types</a>
+                                <a href="${bp}tools/s-signature/s_signature_assessment.html">Assessment</a>
+                                <a href="${bp}tools/s-signature/s_signature_oracle.html">Oracle</a>
+                                <a href="${bp}tools/s-signature/s_signature_coin.html">Coin Reading</a>
+                                <a href="${bp}tools/s-signature/s_signature_sphere.html">Sphere</a>
+                                <a href="${bp}tools/s-signature/deep_oracle.html">Deep Oracle</a>
+                                <a href="${bp}tools/s-signature/cohort_engine.html">Cohort Engine</a>
+                                <hr>
+                                <div class="label">Mind Tools</div>
                                 <a href="${bp}tools/sol-vision/index.html">Sol Vision</a>
+                                <a href="${bp}tools/interaction-modeler/index.html">Interaction Modeler</a>
                                 <a href="${bp}universal-language-generator/ulg-app_v1.0_01-06-2026.html">Language Generator</a>
+                                <a href="${bp}tools/m4-visualizer/index.html">M4 Visualizer</a>
+                                <a href="${bp}dna-studio/index.html">DNA Studio</a>
                             </div>
                         </div>
 
