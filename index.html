@@ -530,6 +530,126 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
         }
 
+        /* Discovery Sections - Top Hits & Latest Pages */
+        .discovery-section {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+        }
+
+        .discovery-section h2 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .discovery-section .section-subtitle {
+            text-align: center;
+            color: var(--soft-blue);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .discovery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .discovery-card {
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(21, 26, 36, 0.8) 100%);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .discovery-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 162, 39, 0.1);
+        }
+
+        .discovery-card-image {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(106, 180, 245, 0.2) 0%, rgba(201, 162, 39, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        .discovery-card-content {
+            padding: 1rem;
+            flex: 1;
+        }
+
+        .discovery-card-title {
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .discovery-card-pitch {
+            color: var(--soft-cream);
+            font-size: 0.8rem;
+            line-height: 1.5;
+            opacity: 0.85;
+        }
+
+        .discovery-card-tag {
+            display: inline-block;
+            background: rgba(106, 180, 245, 0.2);
+            color: var(--soft-blue);
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-top: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .discovery-card.highlight-card {
+            border-color: rgba(201, 162, 39, 0.4);
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(21, 26, 36, 0.8) 100%);
+        }
+
+        .discovery-card.highlight-card .discovery-card-tag {
+            background: rgba(201, 162, 39, 0.3);
+            color: var(--gold);
+        }
+
+        @media (max-width: 600px) {
+            .discovery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .discovery-card-image {
+                height: 70px;
+                font-size: 2rem;
+            }
+            .discovery-card-content {
+                padding: 0.75rem;
+            }
+            .discovery-card-title {
+                font-size: 0.9rem;
+            }
+            .discovery-card-pitch {
+                font-size: 0.75rem;
+            }
+        }
+
         /* S+/S- Dual Science Section */
         .dual-science-section {
             max-width: 1200px;
@@ -2022,6 +2142,142 @@
                         <div class="reading-calc" id="reading-calc"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- TOP 5 ESSENTIAL DISCOVERIES -->
+        <section class="discovery-section">
+            <h2>⭐ Essential Discoveries</h2>
+            <p class="section-subtitle">Start here — the core ideas that change everything</p>
+            <div class="discovery-grid">
+                <a href="physics/three-body-geometry.html" class="discovery-card highlight-card">
+                    <div class="discovery-card-image">◬</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Three-Body Solution</div>
+                        <div class="discovery-card-pitch">The 400-year problem solved through scalar dimensionality. See the geometry physics missed.</div>
+                        <span class="discovery-card-tag">Physics</span>
+                    </div>
+                </a>
+                <a href="cedga/index.html" class="discovery-card highlight-card">
+                    <div class="discovery-card-image">κ</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">CEDGA Framework</div>
+                        <div class="discovery-card-pitch">The κ-constant that unifies rotation, scale, and observation. [1 = -1] explained.</div>
+                        <span class="discovery-card-tag">Framework</span>
+                    </div>
+                </a>
+                <a href="coin-science/index.html" class="discovery-card highlight-card">
+                    <div class="discovery-card-image">◯</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">COIN Science</div>
+                        <div class="discovery-card-pitch">Observer-observed unity. The coin that witnesses both sides simultaneously.</div>
+                        <span class="discovery-card-tag">Soul Science</span>
+                    </div>
+                </a>
+                <a href="ancient-mysteries/voynich/index.html" class="discovery-card highlight-card">
+                    <div class="discovery-card-image">📜</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Voynich Decoded</div>
+                        <div class="discovery-card-pitch">The 600-year mystery manuscript translated through scalar linguistics.</div>
+                        <span class="discovery-card-tag">Mysteries</span>
+                    </div>
+                </a>
+                <a href="physics/kappa5/index.html" class="discovery-card highlight-card">
+                    <div class="discovery-card-image" style="color: #8B0000;">κ₅</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">True Dark Operator</div>
+                        <div class="discovery-card-pitch">The moral dimension of physics. Acknowledge or conceal — the geometry decides.</div>
+                        <span class="discovery-card-tag">κ-Operators</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- LATEST PAGES - Encyclopedia Entries -->
+        <section class="discovery-section">
+            <h2>📚 Latest Additions</h2>
+            <p class="section-subtitle">Fresh entries in the living encyclopedia</p>
+            <div class="discovery-grid">
+                <a href="weirdos/index.html" class="discovery-card">
+                    <div class="discovery-card-image">🔮</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">The Weirdos</div>
+                        <div class="discovery-card-pitch">History's visionaries who saw the same patterns we're rediscovering.</div>
+                        <span class="discovery-card-tag">People</span>
+                    </div>
+                </a>
+                <a href="physics/432-orbital-mapper_v1.0_01-08-2026.html" class="discovery-card">
+                    <div class="discovery-card-image">🌍</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">432-Year Orbital Mapper</div>
+                        <div class="discovery-card-pitch">Planetary defense through κ-deflection. 432-year harmonic cycles.</div>
+                        <span class="discovery-card-tag">Tools</span>
+                    </div>
+                </a>
+                <a href="rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html" class="discovery-card">
+                    <div class="discovery-card-image">🗿</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Rosetta Engine</div>
+                        <div class="discovery-card-pitch">Decode any ancient script using scalar pattern recognition.</div>
+                        <span class="discovery-card-tag">Tools</span>
+                    </div>
+                </a>
+                <a href="universal-language-generator/ulg-app_v1.0_01-06-2026.html" class="discovery-card">
+                    <div class="discovery-card-image">🌐</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Universal Language Generator</div>
+                        <div class="discovery-card-pitch">Create phonetic languages from geometric first principles.</div>
+                        <span class="discovery-card-tag">Tools</span>
+                    </div>
+                </a>
+                <a href="epoch-atomic/index.html" class="discovery-card">
+                    <div class="discovery-card-image">⚛️</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Epoch Atomic Model</div>
+                        <div class="discovery-card-pitch">Atoms as scalar vortices, not probability clouds. See the geometry.</div>
+                        <span class="discovery-card-tag">Physics</span>
+                    </div>
+                </a>
+                <a href="physics/standard-model-failures/index.html" class="discovery-card">
+                    <div class="discovery-card-image">❌</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Standard Model Failures</div>
+                        <div class="discovery-card-pitch">Where mainstream physics breaks down and what fills the gaps.</div>
+                        <span class="discovery-card-tag">Research</span>
+                    </div>
+                </a>
+                <a href="education/mythic-mirror/index.html" class="discovery-card">
+                    <div class="discovery-card-image">🪞</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Mythic Mirror</div>
+                        <div class="discovery-card-pitch">Ancient myths decoded through scalar patterns. They all saw the same truth.</div>
+                        <span class="discovery-card-tag">Soul Science</span>
+                    </div>
+                </a>
+                <a href="games/index.html" class="discovery-card">
+                    <div class="discovery-card-image">🧠</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Mind Games</div>
+                        <div class="discovery-card-pitch">Train your intuition with Love Triads, Zener Cards, and more.</div>
+                        <span class="discovery-card-tag">Games</span>
+                    </div>
+                </a>
+                <a href="ancient-mysteries/texts/rongorongo-v1.0.html" class="discovery-card">
+                    <div class="discovery-card-image">🏝️</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Rongorongo Script</div>
+                        <div class="discovery-card-pitch">Easter Island's undeciphered writing revealed through boustrophedon geometry.</div>
+                        <span class="discovery-card-tag">Mysteries</span>
+                    </div>
+                </a>
+                <a href="library-wizard/index.html" class="discovery-card">
+                    <div class="discovery-card-image">📖</div>
+                    <div class="discovery-card-content">
+                        <div class="discovery-card-title">Library Wizard</div>
+                        <div class="discovery-card-pitch">Search the entire archive. Find exactly what you're looking for.</div>
+                        <span class="discovery-card-tag">Library</span>
+                    </div>
+                </a>
             </div>
         </section>
 
