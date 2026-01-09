@@ -339,6 +339,21 @@ class SiteHeader extends HTMLElement {
                             </div>
                         </div>
 
+                        <!-- τ₄ Shadow Operator -->
+                        <div class="hmm-nav-item">
+                            <button class="hmm-btn tau4" title="τ₄ Shadow Operator">τ₄ <span class="hmm-arrow">▼</span></button>
+                            <div class="hmm-drop">
+                                <div class="label">τ₄ Shadow Operator</div>
+                                <a href="${bp}physics/shadow-operator/index.html" class="highlight">τ₄ Shadow Science</a>
+                                <a href="${bp}education/hidden-observers.html">Hidden Observers</a>
+                                <a href="${bp}education/ammit-function.html">Ammit Function</a>
+                                <hr>
+                                <div class="label">Research</div>
+                                <a href="${bp}physics/torsion-balance.html">Torsion Balance</a>
+                                <a href="${bp}neurodegeneration/index.html">Neurodegeneration</a>
+                            </div>
+                        </div>
+
                         <!-- κ₅ True Dark -->
                         <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">κ₅</a>
 
