@@ -1062,13 +1062,13 @@
         <div class="step-section">
             <div class="step-header">
                 <span class="step-number">Step 26</span>
-                <h3 class="step-title">Calculate accuracy</h3>
+                <h3 class="step-title">Calculate SM Lensing Error</h3>
             </div>
             <div class="step-content">
                 <div class="calc-box">
                     <div class="calc-line">Error = (0.012 / 5.3917) &times; 100%</div>
                     <div class="calc-line">Error = 0.22%</div>
-                    <div class="calc-result">Accuracy = 99.78%</div>
+                    <div class="calc-result">SM Lensing = 0.22%</div>
                 </div>
             </div>
         </div>
@@ -1090,7 +1090,7 @@
                     <div class="result-value">0.012 eV</div>
                 </div>
             </div>
-            <div class="accuracy-display">99.78% Accurate</div>
+            <div class="accuracy-display">0.22% SM Lensing</div>
             <p style="color: var(--text-dim); margin-top: 1rem;">
                 Shell structure emerges naturally from the geometry
             </p>
@@ -1147,14 +1147,14 @@ E_Li = E_H * (Z_eff ** <span class="number">2</span>) / (n_eff ** <span class="n
 <span class="comment"># Compare to measured</span>
 E_Li_measured = <span class="number">5.3917</span>
 diff = abs(E_Li_measured - E_Li)
-accuracy = (<span class="number">1</span> - diff/E_Li_measured) * <span class="number">100</span>
+sm_lensing = (diff/E_Li_measured) * <span class="number">100</span>
 
 <span class="function">print</span>(<span class="string">f"\n" + "=" * 60</span>)
 <span class="function">print</span>(<span class="string">"RESULTS"</span>)
 <span class="function">print</span>(<span class="string">"=" * 60</span>)
 <span class="function">print</span>(<span class="string">f"Our derivation:  {E_Li:.4f} eV"</span>)
 <span class="function">print</span>(<span class="string">f"Measured value:  {E_Li_measured} eV"</span>)
-<span class="function">print</span>(<span class="string">f"Accuracy:        {accuracy:.2f}%"</span>)</pre>
+<span class="function">print</span>(<span class="string">f"SM Lensing:      {sm_lensing:.2f}%"</span>)</pre>
             </div>
         </div>
 
@@ -1175,8 +1175,8 @@ accuracy = (<span class="number">1</span> - diff/E_Li_measured) * <span class="n
                     <div class="series-stat-label">Elements Derived</div>
                 </div>
                 <div class="series-stat">
-                    <div class="series-stat-value">99%+</div>
-                    <div class="series-stat-label">Average Accuracy</div>
+                    <div class="series-stat-value">&lt;1%</div>
+                    <div class="series-stat-label">SM Lensing Error</div>
                 </div>
             </div>
             <p style="margin-top: 2rem; color: var(--text-dim); font-style: italic;">

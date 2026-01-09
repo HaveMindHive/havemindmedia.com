@@ -852,12 +852,12 @@
         <div class="step-section">
             <div class="step-header">
                 <span class="step-number">Step 24</span>
-                <h3 class="step-title">Calculate accuracy</h3>
+                <h3 class="step-title">Calculate SM Lensing Error</h3>
             </div>
             <div class="step-content">
                 <div class="calc-box">
-                    <div class="calc-line">Accuracy = 100% - 0.32%</div>
-                    <div class="calc-result">Accuracy = 99.68%</div>
+                    <div class="calc-line">SM Lensing = |SM Measurement - Geometric Truth| / SM Measurement × 100%</div>
+                    <div class="calc-result">SM Lensing Error = 0.32%</div>
                 </div>
             </div>
         </div>
@@ -879,7 +879,7 @@
                     <div class="result-value">0.079 eV</div>
                 </div>
             </div>
-            <div class="accuracy-display">99.68% Accurate</div>
+            <div class="accuracy-display">0.32% SM Lensing</div>
             <p style="color: var(--text-dim); margin-top: 1rem;">
                 From ONE geometric constant (&kappa; = 2&pi;/180) and hydrogen's reference energy
             </p>
@@ -942,19 +942,18 @@ E_He = E_H * Z_eff_squared
 <span class="function">print</span>(<span class="string">f"\nStep 18: Z_eff^2 = {Z_eff_squared}"</span>)
 <span class="function">print</span>(<span class="string">f"Step 20: E(He) = E(H) * Z_eff^2 = {E_He} eV"</span>)
 
-<span class="comment"># STEP 21-24: Comparison</span>
-E_He_measured = <span class="number">24.5873878</span>
-difference = abs(E_He_measured - E_He)
-error = (difference / E_He_measured) * <span class="number">100</span>
-accuracy = <span class="number">100</span> - error
+<span class="comment"># STEP 21-24: SM Lensing Analysis</span>
+E_He_sm = <span class="number">24.5873878</span>  <span class="comment"># SM measurement (lensed)</span>
+difference = abs(E_He_sm - E_He)
+sm_lensing = (difference / E_He_sm) * <span class="number">100</span>
 
 <span class="function">print</span>(<span class="string">f"\n" + "=" * 60</span>)
 <span class="function">print</span>(<span class="string">"RESULTS"</span>)
 <span class="function">print</span>(<span class="string">"=" * 60</span>)
-<span class="function">print</span>(<span class="string">f"Our derivation:  {E_He:.4f} eV"</span>)
-<span class="function">print</span>(<span class="string">f"Measured value:  {E_He_measured:.4f} eV"</span>)
+<span class="function">print</span>(<span class="string">f"Geometric Truth: {E_He:.4f} eV"</span>)
+<span class="function">print</span>(<span class="string">f"SM Measurement:  {E_He_sm:.4f} eV"</span>)
 <span class="function">print</span>(<span class="string">f"Difference:      {difference:.4f} eV"</span>)
-<span class="function">print</span>(<span class="string">f"Accuracy:        {accuracy:.2f}%"</span>)</pre>
+<span class="function">print</span>(<span class="string">f"SM Lensing:      {sm_lensing:.2f}%"</span>)</pre>
             </div>
         </div>
 

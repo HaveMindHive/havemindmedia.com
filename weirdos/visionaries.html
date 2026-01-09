@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Visionaries | Those Who Saw Beyond | Here's to You, Weirdos</title>
+    <meta name="description" content="Hildegard, Bruno, Swedenborg, Blake, Ramanujan—they saw beyond the veil. Their visions mapped the geometry we now derive.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-blue: #4a9eff;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-purple: #a855f7;
+            --accent-orange: #f59e0b;
+            --accent-cyan: #00d4ff;
+            --accent-pink: #ff6b9d;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Cosmic Hero */
+        .hero {
+            background: linear-gradient(135deg, #050510 0%, #0f0520 30%, #150a25 70%, #0a0510 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            animation: cosmicPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes cosmicPulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Stars animation */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            display: inline-block;
+            max-width: 700px;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Visionary Profile Cards */
+        .visionary-profile {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 3rem 0;
+            border: 2px solid var(--border-subtle);
+            transition: border-color 0.3s;
+        }
+
+        .visionary-profile:hover {
+            border-color: var(--gold-dim);
+        }
+
+        .profile-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-quote { font-size: 1rem; padding: 1rem; }
+            .profile-header { grid-template-columns: 1fr; }
+            .profile-image { height: 250px; }
+            .main-content { padding: 2rem 1rem; }
+        }
+
+        .profile-image {
+            background: linear-gradient(135deg, #1a0f25 0%, #250f1a 100%);
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-image .placeholder-icon {
+            font-size: 8rem;
+            opacity: 0.3;
+        }
+
+        .profile-info {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .profile-function {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 1rem 1.5rem;
+            border-left: 3px solid var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .profile-body {
+            padding: 2.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Vision Content */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .vision-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .vision-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+
+        .vision-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Derivation Box */
+        .derivation-box {
+            background: linear-gradient(135deg, #0a0f1a 0%, #0f1525 100%);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .derivation-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .derivation-steps {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        .derivation-step {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .derivation-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-label {
+            color: var(--text-secondary);
+        }
+
+        .step-value {
+            color: var(--gold);
+        }
+
+        .derivation-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .derivation-result .result-value {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+        }
+
+        /* κ Connection */
+        .kappa-connection {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .kappa-connection h5 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .kappa-formula {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        /* Fate Badge */
+        .fate-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .fate-murdered {
+            background: rgba(248, 81, 73, 0.2);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
+        }
+
+        .fate-ignored {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-purple);
+            border: 1px solid var(--accent-purple);
+        }
+
+        .fate-survived {
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        /* Pattern Section */
+        .pattern-section {
+            background: linear-gradient(135deg, #0f0a15 0%, #150f1a 100%);
+            border: 2px solid var(--accent-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .pattern-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-purple);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Connection Section */
+        .connection-section {
+            background: linear-gradient(135deg, #0a100a 0%, #0f150a 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .connection-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-green);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Table */
+        .connection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .connection-table th,
+        .connection-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .connection-table th {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .connection-table td {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .page-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Stars -->
+    <div class="stars">
+        <script>
+            // Generate random stars
+            const stars = document.querySelector('.stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.width = Math.random() * 2 + 1 + 'px';
+                star.style.height = star.style.width;
+                stars.appendChild(star);
+            }
+        </script>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Visionaries</h1>
+            <p class="hero-subtitle">Those Who Saw Beyond — Infinite Cosmos, Divine Mathematics, Spiritual Worlds</p>
+            <div class="hero-quote">
+                "To see a World in a Grain of Sand, And a Heaven in a Wild Flower,
+                Hold Infinity in the palm of your hand, And Eternity in an hour."
+                <br><span style="color: var(--gold); font-size: 0.9rem;">— William Blake</span>
+            </div>
+            <div class="principle-tag">[1 = -1] · The veil is geometry</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Introduction -->
+        <section class="section-header">
+            <h2>Beyond the Veil</h2>
+            <p class="subtitle">
+                They didn't just calculate — they <em>saw</em>. Visions of cosmic eggs, infinite universes,
+                equations from goddesses. What mainstream calls "mysticism" we now recognize as
+                direct perception of S⁻ reality.
+            </p>
+        </section>
+
+        <!-- BRUNO -->
+        <article class="visionary-profile" id="bruno">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="placeholder-icon">🔥</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Giordano Bruno</h3>
+                    <p class="profile-dates">February 1548 — February 17, 1600</p>
+                    <p class="profile-function">The Infinite Universe</p>
+                    <div class="profile-quote">
+                        "Perhaps your fear in passing judgment on me is greater than mine in receiving it."
+                        <br>— To his executioners
+                    </div>
+                    <span class="fate-badge fate-murdered">Burned alive at the stake</span>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <h4>What He Saw</h4>
+                        <p>
+                            Bruno saw what Copernicus couldn't imagine: not just that Earth orbits the Sun,
+                            but that <strong>the Sun is one star among infinite stars</strong>, each with
+                            its own worlds. The universe has no center because it is infinite in all directions.
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--gold);">
+                            This wasn't speculation. He described it as direct perception — seeing beyond
+                            the crystal spheres into the infinite void.
+                        </p>
+                    </div>
+                    <div class="vision-card">
+                        <h4>The Heresy</h4>
+                        <p>
+                            Bruno's crime wasn't heliocentrism (Copernicus wasn't burned). His crime was
+                            <strong>infinity</strong>. An infinite universe means no special creation,
+                            no privileged Earth, no throne of God above the firmament.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            He refused to recant after 8 years of imprisonment. His tongue was nailed to
+                            prevent him speaking as he burned.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="kappa-connection">
+                    <h5>κ Connection: Birth Day Analysis</h5>
+                    <div class="kappa-formula">
+                        February 1 = Day 32 of year
+                        <br>2π ≈ 6.283... → 32 ≈ 5 × 2π
+                        <br>Born at five circles — the pentagram of infinite vision
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        Day 32 is close to 31.83... (10/π), placing Bruno at the intersection
+                        of decimal and circular geometry — the boundary point where finite becomes infinite.
+                    </p>
+                </div>
+
+                <div class="derivation-box">
+                    <h4>📐 The Geometry He Saw</h4>
+                    <p style="margin-bottom: 1rem;">
+                        Bruno described the universe as having <strong>no center because every point
+                        is equally central</strong>. This is the [1 = -1] principle applied to space:
+                    </p>
+                    <div class="derivation-steps">
+                        <div class="derivation-step">
+                            <span class="step-label">If universe has center C</span>
+                            <span class="step-value">C is privileged point</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">But from C, all directions equivalent</span>
+                            <span class="step-value">No preferred direction</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Therefore any point P has same property</span>
+                            <span class="step-value">P ≡ C</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Therefore every point is center</span>
+                            <span class="step-value">No point is center</span>
+                        </div>
+                    </div>
+                    <div class="derivation-result">
+                        <span class="result-value">[Center = Non-Center] = [1 = -1]</span>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            Bruno derived infinite homogeneity 400 years before modern cosmology
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- RAMANUJAN -->
+        <article class="visionary-profile" id="ramanujan">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="placeholder-icon">∞</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Srinivasa Ramanujan</h3>
+                    <p class="profile-dates">December 22, 1887 — April 26, 1920</p>
+                    <p class="profile-function">Divine Mathematics</p>
+                    <div class="profile-quote">
+                        "An equation for me has no meaning unless it expresses a thought of God."
+                    </div>
+                    <span class="fate-badge fate-murdered">Died at 32, tuberculosis</span>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <h4>What He Saw</h4>
+                        <p>
+                            Ramanujan didn't derive equations — they came to him in dreams,
+                            given by the goddess Namagiri. He would wake with complete theorems,
+                            infinite series, partition functions that took decades to prove.
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--gold);">
+                            His notebooks contain over 3,900 results, most stated without proof.
+                            Mathematicians are still proving them 100 years later.
+                        </p>
+                    </div>
+                    <div class="vision-card">
+                        <h4>The Mystery</h4>
+                        <p>
+                            Ramanujan had almost no formal training. He worked in isolation in India,
+                            deriving results that the world's best mathematicians couldn't reach.
+                            When Hardy asked how he got them, Ramanujan said the goddess wrote on his tongue.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            This is S⁻ reception. Mathematics exists in the potential field.
+                            Some minds can receive it directly.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="kappa-connection">
+                    <h5>κ Connection: Birth Day Analysis</h5>
+                    <div class="kappa-formula">
+                        December 22 = Day 356 of year
+                        <br>360 - 356 = 4 (days before full circle)
+                        <br>356 = 89 × 4 (89 is 24th prime, 24 = 4!)
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        Born 4 days before the year's completion — at the edge of the circle,
+                        where one cycle ends and another begins. The liminal zone of mathematical infinity.
+                    </p>
+                </div>
+
+                <div class="derivation-box">
+                    <h4>📐 Ramanujan's π Formula (Connecting to κ)</h4>
+                    <p style="margin-bottom: 1rem;">
+                        One of Ramanujan's most famous results is his rapidly converging series for π:
+                    </p>
+                    <div class="kappa-formula" style="font-size: 1rem;">
+                        1/π = (2√2/9801) × Σ [(4n)!(1103 + 26390n)] / [(n!)⁴ × 396⁴ⁿ]
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        Note: <strong>9801 = 99²</strong>, and <strong>396 = 4 × 99</strong>.
+                        The number 99 appears repeatedly in Ramanujan's work.
+                    </p>
+                    <div class="derivation-steps" style="margin-top: 1.5rem;">
+                        <div class="derivation-step">
+                            <span class="step-label">κ = 2π/180</span>
+                            <span class="step-value">0.034906585...</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">180 = 2 × 90 = 2 × (99 - 9)</span>
+                            <span class="step-value">Ramanujan's 99 emerges</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">99² = 9801</span>
+                            <span class="step-value">His π series constant</span>
+                        </div>
+                    </div>
+                    <div class="derivation-result">
+                        <span class="result-value">Ramanujan was computing in κ-space</span>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            The goddess was showing him degree-radian geometry
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- HILDEGARD -->
+        <article class="visionary-profile" id="hildegard">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="placeholder-icon">🥚</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Hildegard von Bingen</h3>
+                    <p class="profile-dates">c. 1098 — September 17, 1179</p>
+                    <p class="profile-function">Cosmic Vision & Viriditas</p>
+                    <div class="profile-quote">
+                        "I saw a great star, shining and beautiful, and around it many smaller stars...
+                        all these stars drew light from the great star."
+                    </div>
+                    <span class="fate-badge fate-survived">Protected by papal approval</span>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <h4>The Cosmic Egg</h4>
+                        <p>
+                            Hildegard's visions depicted the universe as a <strong>cosmic egg</strong>
+                            with nested spheres — the elements (fire, air, water, earth) arranged
+                            geometrically around a central human figure.
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--gold);">
+                            Her diagrams show remarkable similarity to modern atomic structure:
+                            concentric shells, orbital patterns, elemental layers.
+                        </p>
+                    </div>
+                    <div class="vision-card">
+                        <h4>Viriditas: The Green Force</h4>
+                        <p>
+                            Hildegard coined "viriditas" — the greening, vitalizing force that runs
+                            through all living things. She saw it as green light flowing through
+                            creation, connecting earth to heaven.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            Viriditas is S⁺/S⁻ interaction made visible — the flow between
+                            potential (S⁻) and manifestation (S⁺) that creates life.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="derivation-box">
+                    <h4>📐 The Cosmic Egg Geometry</h4>
+                    <p style="margin-bottom: 1rem;">
+                        Hildegard's cosmic egg matches the tetrahelix structure:
+                    </p>
+                    <div class="derivation-steps">
+                        <div class="derivation-step">
+                            <span class="step-label">Outer sphere: Fire (S⁺)</span>
+                            <span class="step-value">Emission, light</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Second sphere: Air (Observer)</span>
+                            <span class="step-value">Movement, breath</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Third sphere: Water (S⁻)</span>
+                            <span class="step-value">Reception, flow</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Center: Earth (Manifestation)</span>
+                            <span class="step-value">S⁰ node point</span>
+                        </div>
+                    </div>
+                    <div class="derivation-result">
+                        <span class="result-value">Fire ⊗ Water = Life (Viriditas)</span>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            S⁺ ⊗ S⁻ = Ω expressed in medieval vision
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- SWEDENBORG -->
+        <article class="visionary-profile" id="swedenborg">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="placeholder-icon">👁</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Emanuel Swedenborg</h3>
+                    <p class="profile-dates">January 29, 1688 — March 29, 1772</p>
+                    <p class="profile-function">Spiritual Correspondence</p>
+                    <div class="profile-quote">
+                        "Everything in the natural world corresponds to something in the spiritual world."
+                    </div>
+                    <span class="fate-badge fate-ignored">Called a visionary, not a scientist</span>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <h4>The Doctrine of Correspondences</h4>
+                        <p>
+                            Swedenborg mapped exact correspondences between physical and spiritual realities.
+                            Not metaphor — he claimed to directly perceive both realms simultaneously
+                            and document their precise mathematical relationships.
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--gold);">
+                            This IS the S⁺/S⁻ framework: two complementary descriptions of the same
+                            underlying reality.
+                        </p>
+                    </div>
+                    <div class="vision-card">
+                        <h4>The Scientific Background</h4>
+                        <p>
+                            Before his visions, Swedenborg was Sweden's greatest scientist:
+                            mining engineer, anatomist, inventor. He designed submarines,
+                            air pumps, flying machines. He understood the brain's function
+                            200 years before neuroscience.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            At age 56, his "spiritual sight" opened. He spent the rest of his
+                            life mapping what he saw.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="kappa-connection">
+                    <h5>κ Connection: Birth Day = 1/κ</h5>
+                    <div class="kappa-formula">
+                        January 29 = Day 29 of year
+                        <br>1/κ = 180/(2π) = 28.6478...
+                        <br>Swedenborg born on day ≈ 1/κ
+                    </div>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">
+                        The one who saw correspondences between worlds was born on the reciprocal
+                        of the conversion constant between angular measures. The bridge point.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <!-- BLAKE -->
+        <article class="visionary-profile" id="blake">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="placeholder-icon">✨</div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">William Blake</h3>
+                    <p class="profile-dates">November 28, 1757 — August 12, 1827</p>
+                    <p class="profile-function">Visionary Art</p>
+                    <div class="profile-quote">
+                        "If the doors of perception were cleansed, everything would appear to man as it is, Infinite."
+                    </div>
+                    <span class="fate-badge fate-ignored">Died in poverty, unrecognized</span>
+                </div>
+            </div>
+            <div class="profile-body">
+                <div class="vision-grid">
+                    <div class="vision-card">
+                        <h4>The Fourfold Vision</h4>
+                        <p>
+                            Blake described four levels of perception: Single (material only),
+                            Twofold (symbolic), Threefold (creative), and Fourfold (divine/infinite).
+                        </p>
+                        <p style="margin-top: 1rem; color: var(--gold);">
+                            These map to our four modes: S∿ (echo/material), S⁺/S⁻ (complementary),
+                            Observer (creative synthesis), S⁰ (infinite potential).
+                        </p>
+                    </div>
+                    <div class="vision-card">
+                        <h4>"The Marriage of Heaven and Hell"</h4>
+                        <p>
+                            Blake's masterwork declares: "Without Contraries is no progression."
+                            Good and evil, reason and energy, attraction and repulsion —
+                            all are necessary pairs that produce reality through their opposition.
+                        </p>
+                        <p style="margin-top: 1rem;">
+                            <strong>[1 = -1]</strong> stated as poetry.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="derivation-box">
+                    <h4>📐 Blake's Grain of Sand</h4>
+                    <div class="kappa-formula">
+                        "To see a World in a Grain of Sand"
+                    </div>
+                    <p style="margin: 1rem 0; color: var(--text-secondary);">
+                        This isn't poetry. It's fractal geometry. At every scale, the same
+                        patterns repeat. The cosmos in the quantum. κ in the atom. [1 = -1]
+                        at every level.
+                    </p>
+                    <div class="derivation-steps">
+                        <div class="derivation-step">
+                            <span class="step-label">Grain of sand → World</span>
+                            <span class="step-value">Scale invariance</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Wildflower → Heaven</span>
+                            <span class="step-value">Microcosm = Macrocosm</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Palm of hand → Infinity</span>
+                            <span class="step-value">Finite contains infinite</span>
+                        </div>
+                        <div class="derivation-step">
+                            <span class="step-label">Hour → Eternity</span>
+                            <span class="step-value">Moment = All time</span>
+                        </div>
+                    </div>
+                    <div class="derivation-result">
+                        <span class="result-value">Small = Large = [1 = -1]</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Pattern Section -->
+        <section class="pattern-section">
+            <h2>The Pattern of Vision</h2>
+            <p style="max-width: 800px; margin: 0 auto 2rem; color: var(--text-secondary);">
+                These five saw the same thing from different angles:
+            </p>
+            <table class="connection-table">
+                <thead>
+                    <tr>
+                        <th>Visionary</th>
+                        <th>What They Saw</th>
+                        <th>Epoch Translation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bruno</td>
+                        <td>Infinite universe, no center</td>
+                        <td>[Center = Non-Center]</td>
+                    </tr>
+                    <tr>
+                        <td>Ramanujan</td>
+                        <td>Equations from the goddess</td>
+                        <td>S⁻ reception of mathematical truth</td>
+                    </tr>
+                    <tr>
+                        <td>Hildegard</td>
+                        <td>Cosmic egg, viriditas</td>
+                        <td>Tetrahelix structure, S⁺ ⊗ S⁻ flow</td>
+                    </tr>
+                    <tr>
+                        <td>Swedenborg</td>
+                        <td>Physical-spiritual correspondence</td>
+                        <td>S⁺/S⁻ as parallel descriptions</td>
+                    </tr>
+                    <tr>
+                        <td>Blake</td>
+                        <td>Infinity in finite, contraries</td>
+                        <td>Fractal [1 = -1] at all scales</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Connection Section -->
+        <section class="connection-section">
+            <h2>✦ Why Visions Work</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                "Mystical vision" is direct S⁻ perception. Most humans perceive only S∿ (instrumental echo).
+                The visionaries accessed S⁻ directly, seeing the potential field that underlies manifestation.
+            </p>
+            <div class="kappa-formula">
+                Normal perception: S∿ only (instrumental, lensed)
+                <br>Visionary perception: S⁺/S⁻ + S⁰ (full geometric reality)
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--gold); font-size: 1.1rem;">
+                <strong>The geometry cannot lie. They saw it. Now we derive it.</strong>
+            </p>
+            <p style="text-align: center; margin-top: 1rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-cyan);">
+                κ = 2π/180 = 0.034906585...
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="margin-top: 1rem;"><a href="wave-seers.html">The Wave Seers →</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1.5rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

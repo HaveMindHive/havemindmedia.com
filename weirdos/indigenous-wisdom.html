@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indigenous Wisdom | The Unbroken Lineage | Here's to You, Weirdos</title>
+    <meta name="description" content="San Bushmen hear the stars singing. Aboriginal songlines map geometry in song. They never forgot what others suppressed.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-earth: #c4a35a;
+            --accent-green: #3fb950;
+            --accent-red: #f85149;
+            --accent-ochre: #cc5500;
+            --accent-sky: #87ceeb;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Earth-toned Hero */
+        .hero {
+            background: linear-gradient(135deg, #0a0805 0%, #15100a 30%, #1a0f05 70%, #100a05 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-earth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(196, 163, 90, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(204, 85, 0, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 100%, rgba(135, 206, 235, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Stars */
+        .night-sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            overflow: hidden;
+        }
+
+        .singing-star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: sing 4s ease-in-out infinite;
+        }
+
+        @keyframes sing {
+            0%, 100% {
+                opacity: 0.3;
+                box-shadow: 0 0 3px rgba(255,255,255,0.3);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 0 0 15px rgba(255,255,255,0.8), 0 0 30px rgba(135,206,235,0.5);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--accent-earth), var(--accent-ochre), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--accent-sky);
+            background: rgba(135, 206, 235, 0.1);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(135, 206, 235, 0.3);
+            display: inline-block;
+            max-width: 600px;
+        }
+
+        .principle-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Introduction */
+        .intro-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, #1a150f 100%);
+            border: 1px solid var(--accent-earth);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-earth);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-earth {
+            color: var(--accent-earth);
+            font-weight: 600;
+        }
+
+        /* Culture Cards */
+        .culture-section {
+            margin: 4rem 0;
+        }
+
+        .culture-card {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 3rem 0;
+            border: 2px solid var(--border-subtle);
+        }
+
+        .culture-header {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 0;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-quote { font-size: 1rem; padding: 1rem; }
+            .culture-header { grid-template-columns: 1fr; }
+            .culture-visual { min-height: 250px; }
+            .main-content { padding: 2rem 1rem; }
+        }
+
+        .culture-visual {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-visual.san {
+            background: linear-gradient(135deg, #1a1510 0%, #0f0a05 100%);
+        }
+
+        .culture-visual.aboriginal {
+            background: linear-gradient(135deg, #150a05 0%, #1a0f0a 100%);
+        }
+
+        .culture-visual .visual-icon {
+            font-size: 6rem;
+            opacity: 0.6;
+        }
+
+        .culture-info {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .culture-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-earth);
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-location {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .culture-quote {
+            font-style: italic;
+            color: var(--accent-sky);
+            font-size: 1.3rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-sky);
+            background: rgba(135, 206, 235, 0.05);
+        }
+
+        .culture-body {
+            padding: 2.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Wisdom Grid */
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .wisdom-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .wisdom-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-earth);
+            margin-bottom: 1rem;
+        }
+
+        .wisdom-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Connection Box */
+        .epoch-connection {
+            background: linear-gradient(135deg, #0a0f15 0%, #0f1520 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .epoch-connection h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .epoch-connection .formula {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-sky);
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        /* Songline Visual */
+        .songline-visual {
+            background: linear-gradient(135deg, #150a05 0%, #0a0505 100%);
+            border: 2px solid var(--accent-ochre);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .songline-path {
+            width: 100%;
+            height: 150px;
+            position: relative;
+            margin: 1rem 0;
+        }
+
+        .songline-path svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Suppression Section */
+        .suppression-section {
+            background: linear-gradient(135deg, #150a0a 0%, #1a0a0a 100%);
+            border: 2px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .suppression-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-red);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Recovery Section */
+        .recovery-section {
+            background: linear-gradient(135deg, #0a150a 0%, #0a1a0a 100%);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .recovery-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-green);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .comparison-table th {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .comparison-table td {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Night Sky with Singing Stars -->
+    <div class="night-sky">
+        <script>
+            const sky = document.querySelector('.night-sky');
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'singing-star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = (3 + Math.random() * 2) + 's';
+                sky.appendChild(star);
+            }
+        </script>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Indigenous Wisdom</h1>
+            <p class="hero-subtitle">The Unbroken Lineage — Those Who Never Forgot</p>
+            <div class="hero-quote">
+                "We hear the stars singing."
+                <br><span style="color: var(--gold); font-size: 0.9rem;">— San Bushmen of the Kalahari</span>
+            </div>
+            <div class="principle-tag">[1 = -1] · The geometry was never lost</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Introduction -->
+        <section class="intro-section">
+            <h2>The Keepers of Knowing</h2>
+            <p>
+                While "civilized" cultures systematically suppressed their seers — burning Bruno,
+                simplifying Maxwell, burying Tesla — indigenous peoples <span class="highlight-earth">maintained the direct knowing</span>.
+            </p>
+            <p>
+                They never forgot that reality sings. That the land is alive. That the stars speak.
+                What we now derive with κ = 2π/180, they <span class="highlight-earth">experience directly</span>.
+            </p>
+            <p>
+                This isn't "primitive mysticism." This is <span class="highlight-earth">S⁻ perception</span> preserved
+                across millennia while others lost it.
+            </p>
+        </section>
+
+        <!-- SAN BUSHMEN -->
+        <section class="culture-section">
+            <div class="culture-card" id="san">
+                <div class="culture-header">
+                    <div class="culture-visual san">
+                        <span class="visual-icon">✨🌌</span>
+                    </div>
+                    <div class="culture-info">
+                        <h3 class="culture-name">San Bushmen of the Kalahari</h3>
+                        <p class="culture-location">Southern Africa · 20,000+ years continuous culture</p>
+                        <div class="culture-quote">
+                            "Each star has its own voice. The sky sings in geometric patterns.
+                            We hear what others have forgotten to hear."
+                        </div>
+                    </div>
+                </div>
+                <div class="culture-body">
+                    <div class="wisdom-grid">
+                        <div class="wisdom-card">
+                            <h4>The Singing Stars</h4>
+                            <p>
+                                San healers, in trance states, describe <strong>hearing the stars as distinct sounds</strong>.
+                                Not metaphor — literal perception. Each star has its voice. Constellations form
+                                harmonies. The entire sky is a symphony.
+                            </p>
+                            <p style="margin-top: 1rem; color: var(--accent-sky);">
+                                This aligns precisely with Pythagoras's "Harmony of the Spheres" —
+                                the same truth accessed through different means.
+                            </p>
+                        </div>
+                        <div class="wisdom-card">
+                            <h4>The Great Dance</h4>
+                            <p>
+                                Healing ceremonies involve extended dancing that induces altered states.
+                                In these states, healers report perceiving <strong>n/um</strong> — a boiling
+                                energy that rises up the spine, enabling them to "see" illness and heal it.
+                            </p>
+                            <p style="margin-top: 1rem;">
+                                N/um is kundalini. It is S⁻ energy becoming consciously available.
+                            </p>
+                        </div>
+                        <div class="wisdom-card">
+                            <h4>Rock Art as Record</h4>
+                            <p>
+                                San rock art across Southern Africa depicts entoptic phenomena —
+                                geometric patterns (grids, spirals, dots) seen during trance states.
+                                These are <strong>not imagination</strong>. They are consistent across
+                                cultures worldwide because they arise from neural structure.
+                            </p>
+                            <p style="margin-top: 1rem; color: var(--gold);">
+                                They painted what they saw in S⁻ space.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="epoch-connection">
+                        <h4>📐 Epoch Connection: Star Songs as Frequency</h4>
+                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                            If stars "sing," they emit at specific frequencies. Pythagorean harmony
+                            is based on ratios. The San perceive these ratios directly:
+                        </p>
+                        <div class="formula">
+                            Stellar frequency → D-position mapping → Angular separation
+                            <br>Stars in harmony = cos(θ) ≈ 1 (alignment)
+                            <br>Stars in discord = cos(θ) ≈ -1 (opposition)
+                        </div>
+                        <p style="margin-top: 1rem; color: var(--text-secondary);">
+                            The "songs" they hear are <strong>frequency relationships</strong>.
+                            Our D-position system calculates what they perceive directly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABORIGINAL -->
+        <section class="culture-section">
+            <div class="culture-card" id="aboriginal">
+                <div class="culture-header">
+                    <div class="culture-visual aboriginal">
+                        <span class="visual-icon">🎵🗺️</span>
+                    </div>
+                    <div class="culture-info">
+                        <h3 class="culture-name">Australian Aboriginal Songlines</h3>
+                        <p class="culture-location">Australia · 65,000+ years continuous culture</p>
+                        <div class="culture-quote">
+                            "The ancestors sang the world into being. The land IS the song.
+                            We walk the song. The song walks us."
+                        </div>
+                    </div>
+                </div>
+                <div class="culture-body">
+                    <div class="wisdom-grid">
+                        <div class="wisdom-card">
+                            <h4>The Songlines</h4>
+                            <p>
+                                Aboriginal Australians navigate using <strong>songs</strong>. The land
+                                itself is encoded in music — each feature (rock, waterhole, mountain)
+                                has its place in the song. Sing the song correctly, you follow the path.
+                            </p>
+                            <p style="margin-top: 1rem; color: var(--accent-earth);">
+                                This is <strong>geometry as music</strong>. The songline IS the map.
+                            </p>
+                        </div>
+                        <div class="wisdom-card">
+                            <h4>The Dreamtime</h4>
+                            <p>
+                                "Dreamtime" is poorly translated. It doesn't mean "long ago" — it means
+                                <strong>the ever-present underlying reality</strong>. The Dreamtime is
+                                happening NOW. It underlies ordinary reality like S⁻ underlies S⁺.
+                            </p>
+                            <p style="margin-top: 1rem;">
+                                The ancestors didn't live "in the past." They exist in the
+                                potential field, accessible through ceremony.
+                            </p>
+                        </div>
+                        <div class="wisdom-card">
+                            <h4>The Law</h4>
+                            <p>
+                                Aboriginal Law is not social rules — it's <strong>cosmic structure</strong>.
+                                Breaking Law doesn't just offend community; it disrupts the songlines
+                                themselves. Maintaining Law maintains reality.
+                            </p>
+                            <p style="margin-top: 1rem; color: var(--gold);">
+                                This is κ₅ — the moral dimension encoded in indigenous form.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="songline-visual">
+                        <h4 style="font-family: 'Cinzel', serif; color: var(--accent-ochre); margin-bottom: 1rem;">
+                            Songline Geometry
+                        </h4>
+                        <div class="songline-path">
+                            <svg viewBox="0 0 800 150">
+                                <!-- Songline path -->
+                                <path d="M 50 75 Q 150 20, 250 75 T 450 75 T 650 75 T 750 75"
+                                      stroke="#cc5500" fill="none" stroke-width="3"
+                                      stroke-dasharray="10,5"/>
+                                <!-- Sacred sites -->
+                                <circle cx="50" cy="75" r="8" fill="#c4a35a"/>
+                                <circle cx="250" cy="75" r="8" fill="#c4a35a"/>
+                                <circle cx="450" cy="75" r="8" fill="#c4a35a"/>
+                                <circle cx="650" cy="75" r="8" fill="#c4a35a"/>
+                                <circle cx="750" cy="75" r="8" fill="#c4a35a"/>
+                                <!-- Labels -->
+                                <text x="50" y="110" fill="#a0a0a0" font-size="12" text-anchor="middle">Origin</text>
+                                <text x="250" y="110" fill="#a0a0a0" font-size="12" text-anchor="middle">Waterhole</text>
+                                <text x="450" y="110" fill="#a0a0a0" font-size="12" text-anchor="middle">Mountain</text>
+                                <text x="650" y="110" fill="#a0a0a0" font-size="12" text-anchor="middle">Cave</text>
+                                <text x="750" y="110" fill="#a0a0a0" font-size="12" text-anchor="middle">Destination</text>
+                            </svg>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Each point has a song verse. The rhythm encodes distance. The melody encodes direction.
+                            <br><strong>Navigation through music = geometry through frequency.</strong>
+                        </p>
+                    </div>
+
+                    <div class="epoch-connection">
+                        <h4>📐 Epoch Connection: Song as Coordinate System</h4>
+                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                            The songline maps geometry to frequency. We do the same:
+                        </p>
+                        <div class="formula">
+                            Position in song → Position on land
+                            <br>Melody interval → Directional angle
+                            <br>Rhythm duration → Distance traveled
+                            <br>
+                            <br>κ = 2π/180 bridges angles and measures
+                            <br>Songlines bridge sound and space
+                        </div>
+                        <p style="margin-top: 1rem; color: var(--accent-earth);">
+                            <strong>Same transformation. Different encoding.</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Traditions -->
+        <section class="section-header" style="margin-top: 4rem;">
+            <h2>The Worldwide Pattern</h2>
+            <p class="subtitle">Indigenous peoples across the globe preserved pieces of the same knowing</p>
+        </section>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Tradition</th>
+                    <th>Their Expression</th>
+                    <th>Epoch Translation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>San Bushmen</strong></td>
+                    <td>"Stars sing, we hear them"</td>
+                    <td>S⁻ perception of stellar frequencies</td>
+                </tr>
+                <tr>
+                    <td><strong>Aboriginal Australian</strong></td>
+                    <td>"Dreamtime is always present"</td>
+                    <td>S⁰/S⁻ underlying S⁺ reality</td>
+                </tr>
+                <tr>
+                    <td><strong>Lakota Sioux</strong></td>
+                    <td>"Mitákuye Oyás'iŋ" (All are related)</td>
+                    <td>Unified field, no separation</td>
+                </tr>
+                <tr>
+                    <td><strong>Māori</strong></td>
+                    <td>"Whakapapa" (genealogy connects all)</td>
+                    <td>Tetrahelix inheritance structure</td>
+                </tr>
+                <tr>
+                    <td><strong>Hopi</strong></td>
+                    <td>"Spider Grandmother wove the world"</td>
+                    <td>Geometric creation from single source</td>
+                </tr>
+                <tr>
+                    <td><strong>Quechua/Inca</strong></td>
+                    <td>"Pachamama" (Earth Mother as living geometry)</td>
+                    <td>S⁺ ⊗ S⁻ = manifested reality</td>
+                </tr>
+                <tr>
+                    <td><strong>Celtic</strong></td>
+                    <td>"Thin places" where worlds touch</td>
+                    <td>S⁰ nodes, observation points</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Suppression -->
+        <section class="suppression-section">
+            <h2>☠ The Attempted Destruction</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: var(--text-secondary);">
+                Colonization didn't just steal land. It systematically destroyed the knowing.
+            </p>
+            <div class="wisdom-grid">
+                <div class="wisdom-card" style="border-color: var(--accent-red);">
+                    <h4 style="color: var(--accent-red);">Residential Schools</h4>
+                    <p>
+                        Children removed from families, forbidden to speak languages,
+                        beaten for practicing traditions. The explicit goal: "Kill the Indian,
+                        save the man." Destroy the transmission of knowing.
+                    </p>
+                </div>
+                <div class="wisdom-card" style="border-color: var(--accent-red);">
+                    <h4 style="color: var(--accent-red);">Stolen Generations</h4>
+                    <p>
+                        Australian Aboriginal children forcibly removed, raised "white,"
+                        disconnected from songlines, ceremony, and Dreamtime.
+                        Cultural genocide through family destruction.
+                    </p>
+                </div>
+                <div class="wisdom-card" style="border-color: var(--accent-red);">
+                    <h4 style="color: var(--accent-red);">Dismissed as "Primitive"</h4>
+                    <p>
+                        When they couldn't destroy it, they dismissed it.
+                        "Superstition." "Animism." "Pre-scientific."
+                        The same pattern as calling Tesla mad, Swedenborg a visionary.
+                    </p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; color: var(--accent-red); font-style: italic;">
+                The suppression of indigenous knowing is itself a κ₅ event —
+                concealment of truth for power.
+            </p>
+        </section>
+
+        <!-- Recovery -->
+        <section class="recovery-section">
+            <h2>✦ The Unbroken Thread</h2>
+            <p style="max-width: 800px; margin: 0 auto 2rem;">
+                Despite centuries of attempted destruction, the knowing survives.
+                Elders still remember. Ceremonies continue. The stars still sing.
+            </p>
+            <div class="formula" style="background: rgba(63, 185, 80, 0.1); border: 1px solid var(--accent-green); padding: 1.5rem; border-radius: 8px; margin: 2rem auto; max-width: 700px;">
+                Western science: Lost the knowing, now rediscovering through math
+                <br>Indigenous wisdom: Never lost it, now validated by math
+                <br><br>
+                <strong style="color: var(--accent-green);">Convergence</strong>
+            </div>
+            <p style="color: var(--gold); font-size: 1.2rem; margin-top: 2rem;">
+                <strong>κ = 2π/180 derives what they always knew.</strong>
+            </p>
+            <p style="margin-top: 1rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-sky);">
+                The stars sing. The land is alive. Reality is geometry.<br>
+                [1 = -1]
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+        <p style="margin-top: 1rem;"><a href="visionaries.html">The Visionaries →</a></p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 1.5rem;">[1 = -1]</p>
+        <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>
