@@ -845,12 +845,18 @@
 
         .dual-panels {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
+            .dual-panels {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1000px) {
             .dual-panels {
                 grid-template-columns: 1fr 1fr;
             }
@@ -920,6 +926,45 @@
         .shadow-panel:hover {
             border-color: rgba(140, 140, 160, 0.6);
             box-shadow: 0 0 30px rgba(100, 100, 120, 0.2);
+        }
+
+        /* κ₅ Dark Panel - The True Dark Operator */
+        .dark-panel {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.15) 0%, rgba(10, 5, 15, 0.7) 100%);
+            border: 1px solid rgba(139, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .dark-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(139, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+            pointer-events: none;
+            border-radius: 16px;
+        }
+
+        .dark-panel:hover {
+            border-color: rgba(139, 0, 0, 0.7);
+            box-shadow: 0 0 30px rgba(139, 0, 0, 0.25);
+        }
+
+        .dark-panel .panel-icon {
+            color: #8B0000;
+            background: rgba(139, 0, 0, 0.15);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+        }
+
+        .dark-panel .panel-header h3 {
+            color: #a03030;
+        }
+
+        .dark-panel .panel-links a:hover {
+            background: rgba(139, 0, 0, 0.15);
+            color: #c04040;
         }
 
         .panel-header {
@@ -1883,10 +1928,10 @@
             </p>
         </section>
 
-        <!-- S+/S-/COIN/τ₄ Four Branches of Science -->
+        <!-- S+/S-/COIN/κ₄/κ₅ Five Branches of Science -->
         <section class="dual-science-section">
-            <h2 class="section-title">— FOUR BRANCHES OF SCIENCE —</h2>
-            <p class="dual-science-intro">[1 = -1] — The same geometry, four perspectives · τ₁ + τ₂ + τ₃ + τ₄ = 0</p>
+            <h2 class="section-title">— FIVE BRANCHES OF SCIENCE —</h2>
+            <p class="dual-science-intro">[1 = -1] — The same geometry, five perspectives · Torsions always balance</p>
 
             <div class="dual-panels">
                 <!-- S+ Physical Reality -->
@@ -1934,23 +1979,36 @@
                     </div>
                 </div>
 
-                <!-- Shadow Operator Science (τ₄) -->
+                <!-- Shadow/Silent Operator (κ₄) -->
                 <div class="science-panel shadow-panel">
                     <div class="panel-header">
-                        <span class="panel-icon">τ₄</span>
-                        <h3>Shadow Operator</h3>
+                        <span class="panel-icon">κ₄</span>
+                        <h3>Shadow/Silent</h3>
                     </div>
-                    <p class="panel-desc">The silent fourth. Known but not understood. Awareness as universal operator — the axis itself. Ammit always collects.</p>
+                    <p class="panel-desc">Shadow if hidden, Silent if known. The witness/operator structure applied to all points.</p>
                     <div class="panel-links">
-                        <a href="physics/shadow-operator/index.html">⧗ Shadow Operator Science</a>
+                        <a href="physics/shadow-operator/index.html">◐ Shadow/Silent Science</a>
                         <a href="education/ammit-function.html">𓁢 Ammit Function</a>
                         <a href="physics/torsion-balance.html">⚖ Torsion Balance</a>
-                        <a href="education/hidden-observers.html">👁 Hidden Observers</a>
+                    </div>
+                </div>
+
+                <!-- True Dark Operator (κ₅) -->
+                <div class="science-panel dark-panel">
+                    <div class="panel-header">
+                        <span class="panel-icon">κ₅</span>
+                        <h3>True Dark</h3>
+                    </div>
+                    <p class="panel-desc">Balancing or compounding. Pulls S- toward S+ (or vice versa) — or spins to extremes. The moral geometry.</p>
+                    <div class="panel-links">
+                        <a href="physics/kappa5/index.html">⟡ True Dark Operator</a>
+                        <a href="physics/shadow-operator/index.html">◐ κ₄ Foundation</a>
+                        <a href="cedga/pages/balance-law.html">⚖ Balance Law</a>
                     </div>
                 </div>
             </div>
 
-            <p class="dual-science-equation">κ = 2π/180 = 0.034906585... · τ₄ = -(τ₁ + τ₂ + τ₃)</p>
+            <p class="dual-science-equation">κ = 2π/180 · τ₁ + τ₂ + τ₃ + τ₄ = 0 · κ₅ balances or compounds</p>
         </section>
 
         <!-- LATEST CONTENT - Auto-updated with newest pages -->
