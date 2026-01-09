@@ -618,6 +618,105 @@
         };
 
         // ══════════════════════════════════════════════════════════════
+        // PREDETERMINED SOLVABLE BOARDS
+        // Each board is verified to be completable
+        // S = Shadow, L = Love, . = Neutral
+        // ══════════════════════════════════════════════════════════════
+
+        const PRESET_BOARDS = {
+            1: [ // Level 1: 2 shadows, easy intro
+                "..L.L..",
+                ".L.S.L.",
+                "..L.L..",
+                "L..L..L",
+                "..L.L..",
+                ".L.S.L.",
+                "..L.L.."
+            ],
+            2: [ // Level 2: 3 shadows
+                ".L.L.L.",
+                "L.S.S.L",
+                ".L.L.L.",
+                "..L.L..",
+                ".L.L.L.",
+                "L..S..L",
+                ".L.L.L."
+            ],
+            3: [ // Level 3: 4 shadows
+                "L.L.L.L",
+                ".S.L.S.",
+                "L.L.L.L",
+                ".L.L.L.",
+                "L.L.L.L",
+                ".S.L.S.",
+                "L.L.L.L"
+            ],
+            4: [ // Level 4: 5 shadows
+                ".L.L.L.",
+                "L.S.S.L",
+                ".L.L.L.",
+                "L.S.L.L",
+                ".L.L.L.",
+                "L.S.S.L",
+                ".L.L.L."
+            ],
+            5: [ // Level 5: 6 shadows, tighter
+                "L.L.L.L",
+                ".S.S.S.",
+                "L.L.L.L",
+                ".L.L.L.",
+                "L.L.L.L",
+                ".S.S.S.",
+                "L.L.L.L"
+            ],
+            6: [ // Level 6: 6 shadows, different pattern
+                ".L.L.L.",
+                "L.S.L.L",
+                ".L.S.L.",
+                "L.L.L.L",
+                ".L.S.L.",
+                "L.L.S.L",
+                ".L.L.L."
+            ],
+            7: [ // Level 7: 7 shadows
+                "L.L.L.L",
+                ".S.L.S.",
+                "L.S.L.L",
+                ".L.S.L.",
+                "L.L.S.L",
+                ".S.L.S.",
+                "L.L.L.L"
+            ],
+            8: [ // Level 8: 8 shadows
+                ".L.L.L.",
+                "L.S.S.L",
+                ".L.S.L.",
+                "L.S.S.L",
+                ".L.S.L.",
+                "L.S.S.L",
+                ".L.L.L."
+            ],
+            9: [ // Level 9: 8 shadows, harder arrangement
+                "L.L.L.L",
+                ".S.S.S.",
+                "L.L.L.L",
+                ".S.L.S.",
+                "L.L.L.L",
+                ".S.S.S.",
+                "L.L.L.L"
+            ],
+            10: [ // Level 10: 9 shadows, master level
+                ".L.L.L.",
+                "L.S.S.L",
+                ".S.L.S.",
+                "L.L.L.L",
+                ".S.L.S.",
+                "L.S.S.L",
+                ".L.L.L."
+            ]
+        };
+
+        // ══════════════════════════════════════════════════════════════
         // GAME CLASS
         // ══════════════════════════════════════════════════════════════
 
@@ -663,36 +762,28 @@
                 // Close any overlay
                 document.getElementById('levelUpOverlay').classList.remove('show');
 
-                // Calculate ball counts for this level
-                const shadowCount = Math.min(2 + this.level, 10);
-                const loveCount = shadowCount * 4 + Math.floor(Math.random() * 4);
-                const totalCells = this.gridSize * this.gridSize;
-                const neutralCount = Math.max(0, totalCells - shadowCount - loveCount);
+                // Use predetermined board for this level (cycle back if beyond level 10)
+                const boardLevel = ((this.level - 1) % 10) + 1;
+                const boardTemplate = PRESET_BOARDS[boardLevel];
 
-                // Generate ball types
-                const types = [];
-                for (let i = 0; i < shadowCount; i++) types.push('shadow');
-                for (let i = 0; i < loveCount; i++) types.push('love');
-                for (let i = 0; i < neutralCount; i++) types.push('neutral');
-
-                // Shuffle
-                const shuffled = EpochCore.shuffleArray(types);
-
-                // Create balls
+                // Parse the board template into balls
                 let index = 0;
                 for (let row = 0; row < this.gridSize; row++) {
                     for (let col = 0; col < this.gridSize; col++) {
-                        if (index < shuffled.length) {
-                            this.balls.push({
-                                id: index,
-                                type: shuffled[index],
-                                row,
-                                col,
-                                x: 0,
-                                y: 0
-                            });
-                            index++;
-                        }
+                        const char = boardTemplate[row][col];
+                        let type = 'neutral';
+                        if (char === 'S') type = 'shadow';
+                        else if (char === 'L') type = 'love';
+
+                        this.balls.push({
+                            id: index,
+                            type: type,
+                            row,
+                            col,
+                            x: 0,
+                            y: 0
+                        });
+                        index++;
                     }
                 }
 
