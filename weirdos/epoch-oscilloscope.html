@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epoch Oscilloscope | κ Waveform Analyzer | Here's to You, Weirdos</title>
+    <meta name="description" content="Visualize the five scalar modes (S⁺, S⁻, S⁰, S∿, S̸) as waveforms. Apply κ transforms in real-time and see the geometry that Tesla, Maxwell, and the ancients understood.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --s-plus: #ff6b6b;
+            --s-minus: #4ecdc4;
+            --s-zero: #ffd93d;
+            --s-shadow: #a855f7;
+            --s-dark: #6366f1;
+            --electric-cyan: #00d4ff;
+            --tesla-purple: #9b59b6;
+            --grid-color: #1a3a2a;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--electric-cyan), var(--s-shadow), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .kappa-display {
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 4px;
+            color: var(--gold);
+        }
+
+        /* Main Layout */
+        .main-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: calc(100vh - 80px);
+        }
+
+        @media (max-width: 1000px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-subtle);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .control-section {
+            margin-bottom: 2rem;
+        }
+
+        .control-section h3 {
+            font-size: 0.85rem;
+            color: var(--electric-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        /* Channel Controls */
+        .channel {
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .channel-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .channel-toggle {
+            width: 40px;
+            height: 22px;
+            background: var(--border-subtle);
+            border-radius: 11px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .channel-toggle.active {
+            background: var(--s-plus);
+        }
+
+        .channel-toggle::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: left 0.2s;
+        }
+
+        .channel-toggle.active::after {
+            left: 20px;
+        }
+
+        .channel-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .channel-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+
+        .slider-group {
+            margin: 0.5rem 0;
+        }
+
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .slider-group input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+            -webkit-appearance: none;
+            outline: none;
+        }
+
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--electric-cyan);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Transform Panel */
+        .transform-panel {
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .transform-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+        }
+
+        .transform-btn {
+            padding: 0.6rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .transform-btn:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .transform-btn.active {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+        }
+
+        /* Oscilloscope Display */
+        .scope-container {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .scope-screen {
+            background: #001a0d;
+            border: 2px solid #0a3a1a;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scope-screen::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(0, 50, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 50, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .scope-screen::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+            pointer-events: none;
+        }
+
+        #scopeCanvas {
+            display: block;
+            width: 100%;
+            height: 400px;
+        }
+
+        .scope-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+        }
+
+        .scope-overlay div {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Timebase Controls */
+        .timebase-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .timebase-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timebase-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .timebase-group select,
+        .timebase-group input {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .play-controls {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .play-controls button {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .play-controls button:hover {
+            border-color: var(--electric-cyan);
+        }
+
+        .play-controls button.primary {
+            background: linear-gradient(135deg, var(--electric-cyan), var(--tesla-purple));
+            border: none;
+        }
+
+        /* Measurements Panel */
+        .measurements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .measurement-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .measurement-card h4 {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .measurement-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .measurement-unit {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-left: 0.25rem;
+        }
+
+        /* Mode Equation Display */
+        .equation-display {
+            background: #000;
+            border-radius: 6px;
+            padding: 1.5rem;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .equation-main {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .equation-result {
+            font-size: 1.2rem;
+            color: var(--electric-cyan);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-line {
+            width: 30px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .signature {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <a href="tesla-codex.html" class="nav-link">← Tesla Codex</a>
+            <h1>Epoch Oscilloscope</h1>
+        </div>
+        <div class="kappa-display">κ = 0.034906585 | 1/κ = 28.6478897</div>
+    </header>
+
+    <main class="main-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="control-section">
+                <h3>Scalar Channels</h3>
+
+                <div class="channel" id="ch1">
+                    <div class="channel-header">
+                        <div class="channel-toggle active" data-channel="sPlus"></div>
+                        <span class="channel-label">S⁺ Emission</span>
+                        <div class="channel-color" style="background: var(--s-plus);"></div>
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Amplitude</span><span id="ampPlus">1.0</span></label>
+                        <input type="range" id="ampPlusSlider" min="0" max="2" step="0.1" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Frequency</span><span id="freqPlus">1.0 Hz</span></label>
+                        <input type="range" id="freqPlusSlider" min="0.1" max="10" step="0.1" value="1">
+                    </div>
+                </div>
+
+                <div class="channel" id="ch2">
+                    <div class="channel-header">
+                        <div class="channel-toggle active" data-channel="sMinus"></div>
+                        <span class="channel-label">S⁻ Reception</span>
+                        <div class="channel-color" style="background: var(--s-minus);"></div>
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Amplitude</span><span id="ampMinus">1.0</span></label>
+                        <input type="range" id="ampMinusSlider" min="0" max="2" step="0.1" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Frequency</span><span id="freqMinus">1.0 Hz</span></label>
+                        <input type="range" id="freqMinusSlider" min="0.1" max="10" step="0.1" value="1">
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Phase (°)</span><span id="phaseMinus">180°</span></label>
+                        <input type="range" id="phaseMinusSlider" min="0" max="360" step="1" value="180">
+                    </div>
+                </div>
+
+                <div class="channel" id="ch3">
+                    <div class="channel-header">
+                        <div class="channel-toggle" data-channel="sZero"></div>
+                        <span class="channel-label">S⁰ Node</span>
+                        <div class="channel-color" style="background: var(--s-zero);"></div>
+                    </div>
+                    <div class="slider-group">
+                        <label><span>Threshold</span><span id="threshold">0.1</span></label>
+                        <input type="range" id="thresholdSlider" min="0.01" max="0.5" step="0.01" value="0.1">
+                    </div>
+                </div>
+
+                <div class="channel" id="ch4">
+                    <div class="channel-header">
+                        <div class="channel-toggle" data-channel="sShadow"></div>
+                        <span class="channel-label">S∿ Shadow (1/κ)</span>
+                        <div class="channel-color" style="background: var(--s-shadow);"></div>
+                    </div>
+                </div>
+
+                <div class="channel" id="ch5">
+                    <div class="channel-header">
+                        <div class="channel-toggle" data-channel="sDark"></div>
+                        <span class="channel-label">S̸ Dark in Dark</span>
+                        <div class="channel-color" style="background: var(--s-dark);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>κ Transforms</h3>
+                <div class="transform-panel">
+                    <div class="transform-buttons">
+                        <button class="transform-btn" id="t1">T1: ×κ</button>
+                        <button class="transform-btn" id="t2">T2: ÷κ</button>
+                        <button class="transform-btn" id="t3">T3: ×(1/κ)</button>
+                        <button class="transform-btn" id="t4">T4: ÷(1/κ)</button>
+                    </div>
+                    <div style="margin-top: 1rem;">
+                        <div class="slider-group">
+                            <label><span>κ Multiplier</span><span id="kappaMultVal">1.0×</span></label>
+                            <input type="range" id="kappaMult" min="0.1" max="10" step="0.1" value="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>Waveform</h3>
+                <select id="waveform" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); border-radius: 4px; color: var(--text-primary);">
+                    <option value="sine">Sine</option>
+                    <option value="square">Square</option>
+                    <option value="triangle">Triangle</option>
+                    <option value="sawtooth">Sawtooth</option>
+                    <option value="helix">Helix (131.81°)</option>
+                </select>
+            </div>
+
+            <div class="control-section">
+                <h3>Presets</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <button class="transform-btn" id="presetBalance">Balance Law</button>
+                    <button class="transform-btn" id="presetStanding">Standing Wave</button>
+                    <button class="transform-btn" id="presetScalar">Scalar Null</button>
+                    <button class="transform-btn" id="preset369">Tesla 3-6-9</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Oscilloscope Display -->
+        <section class="scope-container">
+            <div class="scope-screen">
+                <canvas id="scopeCanvas"></canvas>
+                <div class="scope-overlay">
+                    <div id="timeDisplay">T: 0.00s</div>
+                    <div id="scaleDisplay">Scale: 1.0</div>
+                    <div id="transformDisplay">Transform: None</div>
+                </div>
+            </div>
+
+            <div class="timebase-controls">
+                <div class="timebase-group">
+                    <label>Time/Div:</label>
+                    <select id="timeDiv">
+                        <option value="10">10 ms</option>
+                        <option value="20">20 ms</option>
+                        <option value="50" selected>50 ms</option>
+                        <option value="100">100 ms</option>
+                        <option value="200">200 ms</option>
+                        <option value="500">500 ms</option>
+                    </select>
+                </div>
+
+                <div class="timebase-group">
+                    <label>Volts/Div:</label>
+                    <select id="voltsDiv">
+                        <option value="0.5">0.5 V</option>
+                        <option value="1" selected>1 V</option>
+                        <option value="2">2 V</option>
+                        <option value="5">5 V</option>
+                    </select>
+                </div>
+
+                <div class="play-controls">
+                    <button class="primary" id="playPause">▶ Run</button>
+                    <button id="single">Single</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+
+            <div class="equation-display">
+                <div class="equation-main" id="equationMain">S⁺ + S⁻ = S⁰</div>
+                <div class="equation-result" id="equationResult">Balance Law Active</div>
+            </div>
+
+            <div class="measurements">
+                <div class="measurement-card">
+                    <h4>S⁺ Peak</h4>
+                    <span class="measurement-value" id="peakPlus" style="color: var(--s-plus);">1.00</span>
+                    <span class="measurement-unit">V</span>
+                </div>
+                <div class="measurement-card">
+                    <h4>S⁻ Peak</h4>
+                    <span class="measurement-value" id="peakMinus" style="color: var(--s-minus);">1.00</span>
+                    <span class="measurement-unit">V</span>
+                </div>
+                <div class="measurement-card">
+                    <h4>S⁰ Crossings</h4>
+                    <span class="measurement-value" id="zeroCrossings" style="color: var(--s-zero);">0</span>
+                </div>
+                <div class="measurement-card">
+                    <h4>κ Applied</h4>
+                    <span class="measurement-value" id="kappaApplied" style="color: var(--gold);">1.00</span>
+                    <span class="measurement-unit">×</span>
+                </div>
+                <div class="measurement-card">
+                    <h4>Period (τ)</h4>
+                    <span class="measurement-value" id="periodValue">1.000</span>
+                    <span class="measurement-unit">s</span>
+                </div>
+                <div class="measurement-card">
+                    <h4>Balance Δ</h4>
+                    <span class="measurement-value" id="balanceDelta">0.00</span>
+                    <span class="measurement-unit">V</span>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-line" style="background: var(--s-plus);"></div>
+                    <span>S⁺ Emission</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: var(--s-minus);"></div>
+                    <span>S⁻ Reception</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: var(--s-zero);"></div>
+                    <span>S⁰ Node Points</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: var(--s-shadow);"></div>
+                    <span>S∿ Shadow (1/κ)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line" style="background: var(--s-dark);"></div>
+                    <span>S̸ Dark in Dark</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p class="signature">[1 = -1]</p>
+        <p style="color: var(--text-dim); margin-top: 0.5rem;">
+            Have Mind Media | Epoch Oscilloscope v1.0 | January 2026
+        </p>
+    </footer>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════════
+        // EPOCH OSCILLOSCOPE - Five Scalar Mode Visualization
+        // ═══════════════════════════════════════════════════════════════════
+
+        const KAPPA = 0.034906585;
+        const INV_KAPPA = 1 / KAPPA;
+        const HELIX_ANGLE = 131.81 * Math.PI / 180; // Boerdijk-Coxeter helix angle
+
+        const canvas = document.getElementById('scopeCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // State
+        let time = 0;
+        let isRunning = false;
+        let animationId = null;
+
+        // Channel states
+        const channels = {
+            sPlus: { enabled: true, amp: 1, freq: 1, phase: 0 },
+            sMinus: { enabled: true, amp: 1, freq: 1, phase: Math.PI },
+            sZero: { enabled: false, threshold: 0.1 },
+            sShadow: { enabled: false },
+            sDark: { enabled: false }
+        };
+
+        // Transform state
+        let activeTransform = null;
+        let kappaMult = 1;
+        let waveformType = 'sine';
+
+        // Display settings
+        let timeDiv = 50; // ms
+        let voltsDiv = 1; // V
+
+        // Colors
+        const colors = {
+            sPlus: '#ff6b6b',
+            sMinus: '#4ecdc4',
+            sZero: '#ffd93d',
+            sShadow: '#a855f7',
+            sDark: '#6366f1',
+            grid: '#0a3a1a',
+            gridMajor: '#1a5a3a'
+        };
+
+        // Resize
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = 400;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Waveform generators
+        function getWaveform(phase, type) {
+            const p = phase % (2 * Math.PI);
+            switch (type) {
+                case 'sine':
+                    return Math.sin(phase);
+                case 'square':
+                    return Math.sin(phase) >= 0 ? 1 : -1;
+                case 'triangle':
+                    return 2 * Math.abs(2 * (p / (2 * Math.PI) - Math.floor(p / (2 * Math.PI) + 0.5))) - 1;
+                case 'sawtooth':
+                    return 2 * (p / (2 * Math.PI) - Math.floor(0.5 + p / (2 * Math.PI)));
+                case 'helix':
+                    // Modulated by helix rotation angle
+                    return Math.sin(phase) * Math.cos(HELIX_ANGLE * phase / (2 * Math.PI));
+                default:
+                    return Math.sin(phase);
+            }
+        }
+
+        // Apply κ transform
+        function applyTransform(value) {
+            const k = KAPPA * kappaMult;
+            switch (activeTransform) {
+                case 't1': return value * k;      // Continuous → Discrete
+                case 't2': return value / k;      // Discrete → Continuous
+                case 't3': return value * (1/k);  // Hidden amplification
+                case 't4': return value / (1/k);  // Hidden attenuation
+                default: return value;
+            }
+        }
+
+        // Calculate S⁺ value at time t
+        function getSPlus(t) {
+            if (!channels.sPlus.enabled) return 0;
+            const phase = 2 * Math.PI * channels.sPlus.freq * t + channels.sPlus.phase;
+            let value = channels.sPlus.amp * getWaveform(phase, waveformType);
+            return applyTransform(value);
+        }
+
+        // Calculate S⁻ value at time t
+        function getSMinus(t) {
+            if (!channels.sMinus.enabled) return 0;
+            const phase = 2 * Math.PI * channels.sMinus.freq * t + channels.sMinus.phase;
+            let value = channels.sMinus.amp * getWaveform(phase, waveformType);
+            return applyTransform(value);
+        }
+
+        // Calculate S∿ (shadow witness) at time t
+        function getSShadow(t) {
+            if (!channels.sShadow.enabled) return 0;
+            // Shadow is the 1/κ modulation of the sum
+            const sum = getSPlus(t) + getSMinus(t);
+            return sum * INV_KAPPA * 0.1; // Scaled for visibility
+        }
+
+        // Calculate S̸ (dark in dark) at time t
+        function getSDark(t) {
+            if (!channels.sDark.enabled) return 0;
+            // Emerges when shadow is acknowledged - product of all modes
+            const sPlus = getSPlus(t);
+            const sMinus = getSMinus(t);
+            const shadow = getSShadow(t);
+            return (sPlus * sMinus * (shadow || 0.01)) * 0.5;
+        }
+
+        // Draw the oscilloscope
+        function draw() {
+            // Clear with phosphor green-black
+            ctx.fillStyle = '#001a0d';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw grid
+            drawGrid();
+
+            // Calculate time window
+            const timeWindow = (timeDiv / 1000) * 10; // 10 divisions
+            const startTime = Math.max(0, time - timeWindow);
+
+            // Store values for measurements
+            let maxPlus = 0, maxMinus = 0;
+            let zeroCrossings = 0;
+            let lastSum = 0;
+
+            // Draw waveforms
+            const points = {
+                sPlus: [],
+                sMinus: [],
+                sZero: [],
+                sShadow: [],
+                sDark: []
+            };
+
+            // Sample points
+            for (let x = 0; x < canvas.width; x++) {
+                const t = startTime + (x / canvas.width) * timeWindow;
+
+                const sPlus = getSPlus(t);
+                const sMinus = getSMinus(t);
+                const sum = sPlus + sMinus;
+                const shadow = getSShadow(t);
+                const dark = getSDark(t);
+
+                // Track maximums
+                maxPlus = Math.max(maxPlus, Math.abs(sPlus));
+                maxMinus = Math.max(maxMinus, Math.abs(sMinus));
+
+                // Count zero crossings
+                if (lastSum * sum < 0) zeroCrossings++;
+                lastSum = sum;
+
+                // Convert to screen coordinates
+                const cy = canvas.height / 2;
+                const scale = (canvas.height / 2) / (voltsDiv * 4);
+
+                points.sPlus.push({ x, y: cy - sPlus * scale });
+                points.sMinus.push({ x, y: cy - sMinus * scale });
+
+                if (channels.sZero.enabled && Math.abs(sum) < channels.sZero.threshold) {
+                    points.sZero.push({ x, y: cy - sum * scale });
+                }
+
+                points.sShadow.push({ x, y: cy - shadow * scale });
+                points.sDark.push({ x, y: cy - dark * scale });
+            }
+
+            // Draw each channel
+            if (channels.sPlus.enabled) drawWaveform(points.sPlus, colors.sPlus, 2);
+            if (channels.sMinus.enabled) drawWaveform(points.sMinus, colors.sMinus, 2);
+            if (channels.sZero.enabled) drawNodes(points.sZero, colors.sZero);
+            if (channels.sShadow.enabled) drawWaveform(points.sShadow, colors.sShadow, 1.5);
+            if (channels.sDark.enabled) drawWaveform(points.sDark, colors.sDark, 1.5);
+
+            // Update measurements
+            document.getElementById('peakPlus').textContent = maxPlus.toFixed(2);
+            document.getElementById('peakMinus').textContent = maxMinus.toFixed(2);
+            document.getElementById('zeroCrossings').textContent = zeroCrossings;
+            document.getElementById('kappaApplied').textContent = (kappaMult * KAPPA).toFixed(4);
+            document.getElementById('periodValue').textContent = (1 / channels.sPlus.freq).toFixed(3);
+            document.getElementById('balanceDelta').textContent = Math.abs(maxPlus - maxMinus).toFixed(2);
+
+            // Update overlay
+            document.getElementById('timeDisplay').textContent = `T: ${time.toFixed(2)}s`;
+            document.getElementById('scaleDisplay').textContent = `Scale: ${kappaMult.toFixed(1)}×κ`;
+            document.getElementById('transformDisplay').textContent = activeTransform ?
+                `Transform: ${activeTransform.toUpperCase()}` : 'Transform: None';
+        }
+
+        function drawGrid() {
+            const divs = 10;
+            const xStep = canvas.width / divs;
+            const yStep = canvas.height / 8;
+
+            // Minor grid
+            ctx.strokeStyle = colors.grid;
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= divs; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * xStep, 0);
+                ctx.lineTo(i * xStep, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i <= 8; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, i * yStep);
+                ctx.lineTo(canvas.width, i * yStep);
+                ctx.stroke();
+            }
+
+            // Center lines (major)
+            ctx.strokeStyle = colors.gridMajor;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height / 2);
+            ctx.lineTo(canvas.width, canvas.height / 2);
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
+            ctx.stroke();
+        }
+
+        function drawWaveform(points, color, width) {
+            if (points.length < 2) return;
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = width;
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 5;
+
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+
+            for (let i = 1; i < points.length; i++) {
+                ctx.lineTo(points[i].x, points[i].y);
+            }
+
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+        }
+
+        function drawNodes(points, color) {
+            ctx.fillStyle = color;
+            ctx.shadowColor = color;
+            ctx.shadowBlur = 10;
+
+            for (const p of points) {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.shadowBlur = 0;
+        }
+
+        // Animation
+        function animate() {
+            if (isRunning) {
+                time += 0.016;
+                draw();
+                animationId = requestAnimationFrame(animate);
+            }
+        }
+
+        function toggleRun() {
+            isRunning = !isRunning;
+            document.getElementById('playPause').textContent = isRunning ? '❚❚ Stop' : '▶ Run';
+            if (isRunning) animate();
+        }
+
+        function singleShot() {
+            time += 0.1;
+            draw();
+        }
+
+        function reset() {
+            time = 0;
+            isRunning = false;
+            document.getElementById('playPause').textContent = '▶ Run';
+            draw();
+        }
+
+        // Event listeners
+        document.getElementById('playPause').addEventListener('click', toggleRun);
+        document.getElementById('single').addEventListener('click', singleShot);
+        document.getElementById('reset').addEventListener('click', reset);
+
+        // Channel toggles
+        document.querySelectorAll('.channel-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const channel = this.dataset.channel;
+                channels[channel].enabled = !channels[channel].enabled;
+                this.classList.toggle('active', channels[channel].enabled);
+                draw();
+            });
+        });
+
+        // Sliders
+        function setupSlider(sliderId, displayId, callback, suffix = '') {
+            const slider = document.getElementById(sliderId);
+            const display = document.getElementById(displayId);
+            slider.addEventListener('input', () => {
+                const value = parseFloat(slider.value);
+                display.textContent = value.toFixed(1) + suffix;
+                callback(value);
+                draw();
+            });
+        }
+
+        setupSlider('ampPlusSlider', 'ampPlus', v => channels.sPlus.amp = v);
+        setupSlider('freqPlusSlider', 'freqPlus', v => channels.sPlus.freq = v, ' Hz');
+        setupSlider('ampMinusSlider', 'ampMinus', v => channels.sMinus.amp = v);
+        setupSlider('freqMinusSlider', 'freqMinus', v => channels.sMinus.freq = v, ' Hz');
+        setupSlider('thresholdSlider', 'threshold', v => channels.sZero.threshold = v);
+        setupSlider('kappaMult', 'kappaMultVal', v => kappaMult = v, '×');
+
+        document.getElementById('phaseMinusSlider').addEventListener('input', function() {
+            const degrees = parseInt(this.value);
+            document.getElementById('phaseMinus').textContent = degrees + '°';
+            channels.sMinus.phase = degrees * Math.PI / 180;
+            draw();
+        });
+
+        // Transform buttons
+        ['t1', 't2', 't3', 't4'].forEach(id => {
+            document.getElementById(id).addEventListener('click', function() {
+                if (activeTransform === id) {
+                    activeTransform = null;
+                    this.classList.remove('active');
+                } else {
+                    document.querySelectorAll('.transform-btn').forEach(b => b.classList.remove('active'));
+                    activeTransform = id;
+                    this.classList.add('active');
+                }
+                draw();
+            });
+        });
+
+        // Waveform select
+        document.getElementById('waveform').addEventListener('change', function() {
+            waveformType = this.value;
+            draw();
+        });
+
+        // Time/Volts div
+        document.getElementById('timeDiv').addEventListener('change', function() {
+            timeDiv = parseInt(this.value);
+            draw();
+        });
+
+        document.getElementById('voltsDiv').addEventListener('change', function() {
+            voltsDiv = parseFloat(this.value);
+            draw();
+        });
+
+        // Presets
+        document.getElementById('presetBalance').addEventListener('click', () => {
+            channels.sPlus.amp = 1;
+            channels.sPlus.freq = 1;
+            channels.sMinus.amp = 1;
+            channels.sMinus.freq = 1;
+            channels.sMinus.phase = Math.PI;
+            document.getElementById('ampPlusSlider').value = 1;
+            document.getElementById('freqPlusSlider').value = 1;
+            document.getElementById('ampMinusSlider').value = 1;
+            document.getElementById('freqMinusSlider').value = 1;
+            document.getElementById('phaseMinusSlider').value = 180;
+            document.getElementById('equationMain').textContent = 'S⁺ + S⁻ = 0';
+            document.getElementById('equationResult').textContent = 'Perfect Balance';
+            draw();
+        });
+
+        document.getElementById('presetStanding').addEventListener('click', () => {
+            channels.sPlus.freq = 2;
+            channels.sMinus.freq = 2;
+            channels.sMinus.phase = 0;
+            channels.sZero.enabled = true;
+            document.querySelector('[data-channel="sZero"]').classList.add('active');
+            document.getElementById('freqPlusSlider').value = 2;
+            document.getElementById('freqMinusSlider').value = 2;
+            document.getElementById('phaseMinusSlider').value = 0;
+            document.getElementById('equationMain').textContent = 'S⁺ + S⁺ → Standing Wave';
+            document.getElementById('equationResult').textContent = 'Nodes at S⁰ Points';
+            draw();
+        });
+
+        document.getElementById('presetScalar').addEventListener('click', () => {
+            channels.sPlus.amp = 1;
+            channels.sMinus.amp = 1;
+            channels.sPlus.freq = 1;
+            channels.sMinus.freq = 1;
+            channels.sMinus.phase = Math.PI;
+            channels.sShadow.enabled = true;
+            document.querySelector('[data-channel="sShadow"]').classList.add('active');
+            document.getElementById('equationMain').textContent = 'S⁺ = -S⁻ → S∿';
+            document.getElementById('equationResult').textContent = 'Shadow Witness Emerges';
+            draw();
+        });
+
+        document.getElementById('preset369').addEventListener('click', () => {
+            channels.sPlus.freq = 3;
+            channels.sMinus.freq = 6;
+            kappaMult = 9;
+            document.getElementById('freqPlusSlider').value = 3;
+            document.getElementById('freqMinusSlider').value = 6;
+            document.getElementById('kappaMult').value = 9;
+            document.getElementById('kappaMultVal').textContent = '9.0×';
+            document.getElementById('equationMain').textContent = '3 × 6 × κ⁹';
+            document.getElementById('equationResult').textContent = 'Tesla\'s Key Encoded';
+            draw();
+        });
+
+        // Initial draw
+        draw();
+    </script>
+</body>
+</html>

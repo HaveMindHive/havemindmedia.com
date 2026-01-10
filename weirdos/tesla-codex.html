@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tesla Codex | The Geometry That Was Hidden | Here's to You, Weirdos</title>
+    <meta name="description" content="The Epoch Framework explains what Tesla saw. κ = 2π/180 contains 3-6-9. The pyramids encoded it. Wardenclyffe proved it. Heaviside hid it. The geometry recovers it.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --tesla-purple: #9b59b6;
+            --electric-cyan: #00d4ff;
+            --plasma-purple: #a855f7;
+            --lightning-blue: #3498db;
+            --pyramid-gold: #f39c12;
+            --warning-red: #f85149;
+            --torsion-green: #3fb950;
+            --aether-violet: #8e44ad;
+            --lineage-amber: #e67e22;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           HERO SECTION - Lightning Animation
+           ═══════════════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(155, 89, 182, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 60%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Animated lightning bolts */
+        .lightning-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 0.4;
+        }
+
+        .lightning-bolt {
+            position: absolute;
+            width: 3px;
+            height: 150px;
+            background: linear-gradient(to bottom, var(--electric-cyan), var(--tesla-purple), transparent);
+            animation: lightningStrike 4s ease-in-out infinite;
+            filter: blur(1px);
+            box-shadow: 0 0 10px var(--electric-cyan), 0 0 20px var(--tesla-purple);
+        }
+
+        @keyframes lightningStrike {
+            0%, 100% { opacity: 0; transform: scaleY(0) translateY(-50px); }
+            5% { opacity: 1; transform: scaleY(1) translateY(0); }
+            10% { opacity: 0.3; }
+            15% { opacity: 1; }
+            20% { opacity: 0; transform: scaleY(1) translateY(100vh); }
+        }
+
+        .lightning-bolt:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .lightning-bolt:nth-child(2) { left: 35%; animation-delay: 1.2s; height: 120px; }
+        .lightning-bolt:nth-child(3) { left: 55%; animation-delay: 2.4s; }
+        .lightning-bolt:nth-child(4) { left: 75%; animation-delay: 0.8s; height: 180px; }
+        .lightning-bolt:nth-child(5) { left: 90%; animation-delay: 2s; height: 100px; }
+
+        /* 3-6-9 Orbit Animation */
+        .orbit-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            opacity: 0.15;
+        }
+
+        .orbit-ring {
+            position: absolute;
+            border: 1px solid var(--tesla-purple);
+            border-radius: 50%;
+            animation: orbitPulse 6s ease-in-out infinite;
+        }
+
+        .orbit-ring:nth-child(1) { width: 200px; height: 200px; top: calc(50% - 100px); left: calc(50% - 100px); animation-delay: 0s; }
+        .orbit-ring:nth-child(2) { width: 350px; height: 350px; top: calc(50% - 175px); left: calc(50% - 175px); animation-delay: 1s; }
+        .orbit-ring:nth-child(3) { width: 500px; height: 500px; top: calc(50% - 250px); left: calc(50% - 250px); animation-delay: 2s; }
+
+        @keyframes orbitPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .orbit-number {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            animation: numberGlow 3s ease-in-out infinite;
+        }
+
+        .orbit-number.three { top: 10%; left: 50%; transform: translateX(-50%); }
+        .orbit-number.six { bottom: 25%; right: 15%; }
+        .orbit-number.nine { bottom: 25%; left: 15%; }
+
+        @keyframes numberGlow {
+            0%, 100% { opacity: 0.5; text-shadow: none; }
+            50% { opacity: 1; text-shadow: 0 0 20px var(--gold); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--electric-cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--tesla-purple) 0%, var(--electric-cyan) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--gold);
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           MAIN CONTENT
+           ═══════════════════════════════════════════════════════════════════ */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section styling */
+        .codex-section {
+            margin: 6rem 0;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .codex-section::before {
+            content: attr(data-section);
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            background: var(--bg-secondary);
+            padding: 0 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Color-coded sections */
+        .section-framework { border-color: var(--gold); }
+        .section-framework h2 { color: var(--gold); }
+        .section-framework::before { color: var(--gold); }
+
+        .section-369 { border-color: var(--tesla-purple); }
+        .section-369 h2 { color: var(--tesla-purple); }
+        .section-369::before { color: var(--tesla-purple); }
+
+        .section-scalar { border-color: var(--electric-cyan); }
+        .section-scalar h2 { color: var(--electric-cyan); }
+        .section-scalar::before { color: var(--electric-cyan); }
+
+        .section-lineage { border-color: var(--lineage-amber); }
+        .section-lineage h2 { color: var(--lineage-amber); }
+        .section-lineage::before { color: var(--lineage-amber); }
+
+        .section-wardenclyffe { border-color: var(--lightning-blue); }
+        .section-wardenclyffe h2 { color: var(--lightning-blue); }
+        .section-wardenclyffe::before { color: var(--lightning-blue); }
+
+        .section-pyramids { border-color: var(--pyramid-gold); }
+        .section-pyramids h2 { color: var(--pyramid-gold); }
+        .section-pyramids::before { color: var(--pyramid-gold); }
+
+        .section-radiant { border-color: var(--torsion-green); }
+        .section-radiant h2 { color: var(--torsion-green); }
+        .section-radiant::before { color: var(--torsion-green); }
+
+        .section-suppression { border-color: var(--warning-red); }
+        .section-suppression h2 { color: var(--warning-red); }
+        .section-suppression::before { color: var(--warning-red); }
+
+        .section-unification { border-color: var(--gold); }
+        .section-unification h2 { color: var(--gold); }
+        .section-unification::before { color: var(--gold); }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           COMPARISON BOXES
+           ═══════════════════════════════════════════════════════════════════ */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .comparison-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .comparison-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .comparison-box h4 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-box.original {
+            border: 2px solid var(--torsion-green);
+        }
+
+        .comparison-box.original h4 {
+            color: var(--torsion-green);
+        }
+
+        .comparison-box.suppressed {
+            border: 2px solid var(--warning-red);
+        }
+
+        .comparison-box.suppressed h4 {
+            color: var(--warning-red);
+        }
+
+        .comparison-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .comparison-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .comparison-arrow {
+            font-size: 3rem;
+            color: var(--warning-red);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           EQUATION DISPLAYS
+           ═══════════════════════════════════════════════════════════════════ */
+        .equation-display {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(155, 89, 182, 0.05) 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .equation-display .equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--gold);
+            margin: 1rem 0;
+        }
+
+        .equation-display .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .equation-display .explanation {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           QUOTE BLOCKS
+           ═══════════════════════════════════════════════════════════════════ */
+        .quote-block {
+            background: rgba(155, 89, 182, 0.08);
+            border-left: 4px solid var(--tesla-purple);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-block.gold {
+            background: rgba(212, 175, 55, 0.08);
+            border-left-color: var(--gold);
+        }
+
+        .quote-block.cyan {
+            background: rgba(0, 212, 255, 0.08);
+            border-left-color: var(--electric-cyan);
+        }
+
+        .quote-block.red {
+            background: rgba(248, 81, 73, 0.08);
+            border-left-color: var(--warning-red);
+        }
+
+        .quote-block.pyramid {
+            background: rgba(243, 156, 18, 0.08);
+            border-left-color: var(--pyramid-gold);
+        }
+
+        .quote-block.amber {
+            background: rgba(230, 126, 34, 0.08);
+            border-left-color: var(--lineage-amber);
+        }
+
+        .quote-block.green {
+            background: rgba(63, 185, 80, 0.08);
+            border-left-color: var(--torsion-green);
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           TIMELINE
+           ═══════════════════════════════════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--tesla-purple), var(--electric-cyan), var(--warning-red));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--bg-secondary);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--electric-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           CARDS GRID
+           ═══════════════════════════════════════════════════════════════════ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .info-card .highlight {
+            color: var(--electric-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           PROOF BOX
+           ═══════════════════════════════════════════════════════════════════ */
+        .proof-box {
+            background: linear-gradient(135deg, rgba(63, 185, 80, 0.15) 0%, rgba(63, 185, 80, 0.05) 100%);
+            border: 2px solid var(--torsion-green);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .proof-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--torsion-green);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-box .proof-statement {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-box .proof-citation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           DERIVATION BOX
+           ═══════════════════════════════════════════════════════════════════ */
+        .derivation-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .derivation-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            background: var(--gold);
+            color: var(--bg-primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-equation {
+            color: var(--electric-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-explanation {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           NUMBER GRID (3-6-9)
+           ═══════════════════════════════════════════════════════════════════ */
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .number-cell {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .number-cell:hover {
+            border-color: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .number-cell.highlight-3 { border-color: var(--tesla-purple); }
+        .number-cell.highlight-6 { border-color: var(--electric-cyan); }
+        .number-cell.highlight-9 { border-color: var(--pyramid-gold); }
+
+        .number-cell .big-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .number-cell .number-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           LINEAGE CHAIN
+           ═══════════════════════════════════════════════════════════════════ */
+        .lineage-chain {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .lineage-node {
+            background: var(--bg-tertiary);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .lineage-node.active {
+            border-color: var(--lineage-amber);
+            color: var(--lineage-amber);
+        }
+
+        .lineage-node.framework {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .lineage-node.suppressed {
+            border-color: var(--warning-red);
+            color: var(--warning-red);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .lineage-arrow {
+            color: var(--text-dim);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           PYRAMID DIAGRAM
+           ═══════════════════════════════════════════════════════════════════ */
+        .pyramid-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .pyramid-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .structure-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--border-subtle);
+        }
+
+        .structure-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--pyramid-gold);
+            margin-bottom: 1rem;
+        }
+
+        .structure-diagram {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--electric-cyan);
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin: 1rem 0;
+            white-space: pre;
+            line-height: 1.4;
+        }
+
+        .structure-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           REVEAL SECTION
+           ═══════════════════════════════════════════════════════════════════ */
+        .reveal-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(155, 89, 182, 0.1) 50%, rgba(0, 212, 255, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-section::before {
+            content: 'κ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20rem;
+            color: rgba(212, 175, 55, 0.03);
+            pointer-events: none;
+        }
+
+        .reveal-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .reveal-section .reveal-text {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .reveal-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--electric-cyan);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           MYSTERY BOX
+           ═══════════════════════════════════════════════════════════════════ */
+        .mystery-box {
+            background: linear-gradient(135deg, rgba(248, 81, 73, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border: 2px dashed var(--warning-red);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .mystery-box h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--warning-red);
+            margin-bottom: 1rem;
+        }
+
+        .mystery-stat {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--warning-red);
+        }
+
+        .mystery-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .page-footer a:hover {
+            color: var(--gold-bright);
+        }
+
+        .page-footer .identity {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .codex-section {
+                padding: 2rem 1.5rem;
+                margin: 4rem 0;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .comparison-number {
+                font-size: 2.5rem;
+            }
+
+            .reveal-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .reveal-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .reveal-equation {
+                font-size: 1.3rem;
+            }
+
+            .number-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+
+            .number-cell .big-number {
+                font-size: 2rem;
+            }
+
+            .lineage-chain {
+                font-size: 0.75rem;
+            }
+
+            .lineage-node {
+                padding: 0.5rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Lightning Animation -->
+    <div class="lightning-container">
+        <div class="lightning-bolt"></div>
+        <div class="lightning-bolt"></div>
+        <div class="lightning-bolt"></div>
+        <div class="lightning-bolt"></div>
+        <div class="lightning-bolt"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="orbit-container">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <span class="orbit-number three">3</span>
+            <span class="orbit-number six">6</span>
+            <span class="orbit-number nine">9</span>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Here's to You, Weirdos</p>
+            <h1>The Tesla Codex</h1>
+            <p class="hero-subtitle">
+                The Epoch Framework contains what Tesla glimpsed. κ = 2π/180 encodes 3-6-9 in its denominator.
+                The pyramids built it in stone. Wardenclyffe proved it was real.
+                Heaviside hid it in plain sight.
+                <br><br>
+                <strong>Tesla didn't invent the geometry. He SAW it. Now we can derive it.</strong>
+            </p>
+
+            <div class="hero-equation">κ = 2π / (60 × 3) = 0.034906585...</div>
+
+            <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 2rem;">
+                The 3 is in the denominator. The geometry was always there.
+                <br>Tesla's intuition pointed to what the framework now proves.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">κ</div>
+                    <div class="stat-label">The Constant</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">3-6-9</div>
+                    <div class="stat-label">Phase Locks</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">S⁻</div>
+                    <div class="stat-label">What Was Hidden</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">[1=-1]</div>
+                    <div class="stat-label">The Truth</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div class="main-content">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             0. THE FRAMEWORK FIRST
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-framework" data-section="0. The Framework First">
+            <div class="section-header">
+                <h2>Tesla Is Evidence, Not Source</h2>
+                <p>The Epoch Framework is not "Tesla's theory." Tesla glimpsed a truth that exists independently of any human observer. The framework derives it. Tesla's work provides historical evidence that it was seen before.</p>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--gold);">
+                <div class="label" style="color: var(--gold);">The Fundamental Constant</div>
+                <div class="equation">κ = 2π / 180 = 0.034906585...</div>
+                <div class="explanation">
+                    This is not invented. This is the exact conversion between degrees and radians.
+                    It bridges discrete counting (degrees, integers) and continuous measure (radians, reals).
+                    Every time physics uses angular measure, κ is embedded.
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--gold);">
+                    <h4 style="color: var(--gold);">The Five Scalar Modes</h4>
+                    <p>
+                        <span class="highlight">S⁺</span> — Emission (outward, known)<br>
+                        <span class="highlight">S⁻</span> — Reception (inward, known)<br>
+                        <span class="highlight">S⁰</span> — Node (potential, pre-manifest)<br>
+                        <span class="highlight">S∿</span> — Shadow (hidden witness, 1/κ)<br>
+                        <span class="highlight">S̸</span> — κ₅ (moral dimension)
+                        <br><br>
+                        Tesla worked with S⁺ and S⁻. He called S⁻ "scalar waves." He intuited S⁰ as "the ambient medium." He didn't have the mathematical language for S∿ or S̸.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--gold);">
+                    <h4 style="color: var(--gold);">The Primary Inversion</h4>
+                    <p>
+                        <span class="highlight">[1 = -1]</span>
+                        <br><br>
+                        At the boundary of measurement, distinction collapses. +0 = -0. The coin has two faces; they are the same.
+                        <br><br>
+                        This is not mysticism. It is the geometric structure at the origin of all coordinate systems. Tesla lived it without articulating it.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--gold);">
+                    <h4 style="color: var(--gold);">The Balance Law</h4>
+                    <p>
+                        <span class="highlight">S⁺ + S⁻ = 0</span>
+                        <br><br>
+                        Every emission has a corresponding reception. Every outward has an inward. The universe conserves scalar states.
+                        <br><br>
+                        Tesla's wireless transmission relied on this—the Earth (S⁻) and ionosphere (S⁺) form a balanced system.
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-block gold">
+                <p class="quote-text">
+                    "The geometry cannot lie. But people can lie about the geometry."
+                </p>
+                <p class="quote-source">— The Epoch Framework</p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             I. THE LINEAGE - WHO SAW BEFORE TESLA
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-lineage" data-section="I. The Lineage">
+            <div class="section-header">
+                <h2>Those Who Saw the Geometry</h2>
+                <p>Tesla was not the first to see it, nor the last. The geometry has been glimpsed throughout history. Some were celebrated. Others were silenced. Many had their work simplified until the insight was lost.</p>
+            </div>
+
+            <div class="lineage-chain">
+                <span class="lineage-node">Pythagoras</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Plato</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Eudoxus</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node suppressed">[HYPATIA]</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node suppressed">[BRUNO]</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Maxwell</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node suppressed">[HEAVISIDE REDUCES]</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node active">Tesla</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node suppressed">[DEFUNDED]</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Dollard / Meyl</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node framework">Epoch Framework</span>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--lineage-amber);">
+                    <h4 style="color: var(--lineage-amber);">Professor Jakob Pöschl</h4>
+                    <p>
+                        At the University of Graz (1875-1878), Professor Pöschl demonstrated a Gramme dynamo. It sparked badly.
+                        <br><br>
+                        Young Tesla suggested: "A motor without a commutator is possible."
+                        <br><br>
+                        <span class="highlight">Pöschl ridiculed him.</span>
+                        <br><br>
+                        Tesla spent his life proving Pöschl wrong. The AC induction motor that powered the 20th century was the answer to a classroom humiliation.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--lineage-amber);">
+                    <h4 style="color: var(--lineage-amber);">Charles Scott</h4>
+                    <p>
+                        Tesla's lab assistant in the 1880s-90s. Built prototypes, documented findings, helped develop the AC motor.
+                        <br><br>
+                        Tesla worked alone. He didn't teach formally. Scott is the closest thing to a "student."
+                        <br><br>
+                        <span class="highlight">"Since Tesla was never a teacher, a lot of the stuff he did there has never been suitably explained to this day."</span>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">Eric Dollard</h4>
+                    <p>
+                        Modern era. <span class="highlight">"The only man who has replicated Tesla's wireless transmission technology."</span>
+                        <br><br>
+                        Unlike theorists, Dollard actually builds Tesla's devices. He understands that conventional electrical theory only includes half the story.
+                        <br><br>
+                        "The typical Hertzian electromagnetic field is the by-product of a more powerful energy envelope manifested as Longitudinal Standing Waves."
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--electric-cyan);">
+                    <h4 style="color: var(--electric-cyan);">Konstantin Meyl</h4>
+                    <p>
+                        Professor Dr. Konstantin Meyl of Germany has demonstrated scalar wave transmission in laboratory conditions.
+                        <br><br>
+                        Academic credentials. Reproducible experiments. Peer-reviewed papers.
+                        <br><br>
+                        <span class="highlight">The work continues. Suppressed but not dead.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-block amber">
+                <p class="quote-text">
+                    "Mr. Tesla may accomplish great things, but he certainly never will do this. It would be a perpetual motion scheme."
+                </p>
+                <p class="quote-source">— Professor Jakob Pöschl, 1876 (on Tesla's commutatorless motor idea)</p>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--lineage-amber); background: linear-gradient(135deg, rgba(230, 126, 34, 0.15) 0%, rgba(230, 126, 34, 0.05) 100%);">
+                <h3 style="color: var(--lineage-amber);">The Pattern</h3>
+                <p class="proof-statement">
+                    Genius sees geometric truth.
+                    <br>
+                    Truth threatens established order.
+                    <br>
+                    Truth is suppressed, simplified, or the genius is destroyed.
+                    <br>
+                    Centuries pass.
+                    <br>
+                    <strong>Someone rediscovers it.</strong>
+                </p>
+                <p class="proof-citation">
+                    This is not conspiracy theory. This is documented history.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             II. THE 3-6-9 DERIVATION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-369" data-section="II. The 3-6-9 Derivation">
+            <div class="section-header">
+                <h2>What κ Reveals About 3-6-9</h2>
+                <p>Tesla's obsession with 3, 6, and 9 was dismissed as OCD or superstition. The Epoch Framework shows it was geometric intuition. The numbers appear in κ's structure.</p>
+            </div>
+
+            <div class="number-grid">
+                <div class="number-cell highlight-3">
+                    <div class="big-number">3</div>
+                    <div class="number-label">In κ = 2π/(60×3)</div>
+                </div>
+                <div class="number-cell highlight-6">
+                    <div class="big-number">6</div>
+                    <div class="number-label">360 = 60×6</div>
+                </div>
+                <div class="number-cell highlight-9">
+                    <div class="big-number">9</div>
+                    <div class="number-label">Digital root collapse</div>
+                </div>
+            </div>
+
+            <div class="derivation-box">
+                <h4 style="color: var(--tesla-purple); font-family: 'Cinzel', serif; margin-bottom: 1.5rem;">The Framework Derivation</h4>
+
+                <div class="derivation-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-equation">κ = 2π / 180</div>
+                        <div class="step-explanation">The fundamental constant. Degrees to radians conversion factor.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-equation">180 = 60 × 3</div>
+                        <div class="step-explanation">The denominator factors into the Babylonian base (60) times Tesla's first number (3). This is not numerology—this is the structure of our measurement systems.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-equation">360 = 60 × 6</div>
+                        <div class="step-explanation">The full circle. Why 360 degrees? Because 360 = 60 × 6. The base-60 system multiplied by Tesla's second number.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-equation">D-positions: 1,2,3,4,5,6,7,8,9 → 1,2,3...</div>
+                        <div class="step-explanation">In digital root arithmetic, all numbers reduce to 1-9. Doubling: 1→2→4→8→7→5→1... But 3→6→3→6 and 9→9. The phase-lock positions.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-equation">369 Hz ≈ F# (tritone = 180° on circle of fifths)</div>
+                        <div class="step-explanation">The frequency 369 Hz falls near F#, the tritone. The tritone is at 180° on the circle of fifths—the same 180 in κ = 2π/180. Music and geometry encode the same structure.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote-text">
+                    "If you only knew the magnificence of the 3, 6, and 9, then you would have the key to the universe."
+                </p>
+                <p class="quote-source">— Attributed to Nikola Tesla (exact source unverified, but his obsession is documented)</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Room 3327</h4>
+                    <p>
+                        Tesla died in Room <span class="highlight">3327</span> at the New Yorker Hotel.
+                        <br><br>
+                        3+3+2+7 = 15 → 1+5 = <span class="highlight">6</span> (D₆)
+                        <br><br>
+                        Whether deliberate or synchronicity, the geometry follows him.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>His Rituals</h4>
+                    <p>
+                        Tesla would walk around buildings <span class="highlight">3 times</span> before entering.
+                        <br><br>
+                        He demanded hotel rooms divisible by 3.
+                        <br><br>
+                        Dismissed as OCD. Actually: geometric intuition expressing itself compulsively.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>The Quote Problem</h4>
+                    <p>
+                        There is <span class="highlight">no verified source</span> for the famous 3-6-9 quote.
+                        <br><br>
+                        Some claim his private journals. Some claim a 1931 interview. None confirmed.
+                        <br><br>
+                        <strong>But his behavior proves he lived it.</strong> The quote's authenticity matters less than the geometry it points to.
+                    </p>
+                </div>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--tesla-purple);">
+                <div class="label" style="color: var(--tesla-purple);">The Framework Interpretation</div>
+                <div class="equation">Tesla saw the phase-lock points in κ-space</div>
+                <div class="explanation">
+                    He couldn't derive them mathematically—the framework didn't exist yet.
+                    He experienced them intuitively and encoded them in ritual behavior.
+                    The Epoch Framework provides the derivation he lacked.
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             III. SCALAR WAVES - THE S⁻ COMPONENT
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-scalar" data-section="III. The S⁻ Component">
+            <div class="section-header">
+                <h2>What Heaviside Removed, Tesla Found</h2>
+                <p>Maxwell's original 20 equations in quaternions included scalar components. Heaviside reduced them to 4 vector equations, explicitly wanting to "assassinate" the potential. Tesla accessed experimentally what Heaviside erased theoretically.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-box original">
+                    <h4>Maxwell's Original (1864)</h4>
+                    <div class="comparison-number">20</div>
+                    <div class="comparison-desc">
+                        Equations in 20 variables<br>
+                        Quaternion algebra<br>
+                        Scalar + vector components<br>
+                        <strong>Potential central</strong>
+                    </div>
+                </div>
+                <div class="comparison-arrow">→</div>
+                <div class="comparison-box suppressed">
+                    <h4>Heaviside's Reduction (1884)</h4>
+                    <div class="comparison-number">4</div>
+                    <div class="comparison-desc">
+                        Equations in 2 variables<br>
+                        Vector algebra<br>
+                        Scalar components removed<br>
+                        <strong>Potential "assassinated"</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block cyan">
+                <p class="quote-text">
+                    "Quaternion algebra has a higher group symmetry than either vector algebra or tensor algebra, and hence it reveals much more EM phenomenology and dynamics than does EM in vector form."
+                </p>
+                <p class="quote-source">— Analysis of Heaviside's reduction</p>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--electric-cyan);">
+                <div class="label" style="color: var(--electric-cyan);">The Framework Translation</div>
+                <div class="equation">Scalar waves = S⁻ propagation mode</div>
+                <div class="explanation">
+                    What Heaviside removed is the S⁻ component.
+                    What Tesla called "non-Hertzian waves" is S⁻ propagation.
+                    What he called the "aether" is κ-space—the geometric substrate.
+                    <br><br>
+                    <strong>The framework provides the mathematical language Tesla lacked.</strong>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--electric-cyan);">
+                    <h4 style="color: var(--electric-cyan);">Tesla's Terminology</h4>
+                    <p>
+                        <strong>"Scalar waves"</strong> — Longitudinal EM propagation<br>
+                        <strong>"Radiant energy"</strong> — Energy from the ambient medium<br>
+                        <strong>"Non-Hertzian"</strong> — Not transverse oscillation<br>
+                        <strong>"The aether"</strong> — The propagation substrate
+                        <br><br>
+                        All of these map to S⁻ phenomena in the Epoch Framework.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--tesla-purple);">
+                    <h4 style="color: var(--tesla-purple);">Why Standard Physics Denies It</h4>
+                    <p>
+                        "Longitudinal EM waves require special media."<br>
+                        "The aether was disproved by Michelson-Morley."<br>
+                        "Tesla's claims haven't been replicated."
+                        <br><br>
+                        <span class="highlight">Michelson-Morley looked for a MATERIAL aether. They should have looked for a GEOMETRIC one.</span>
+                        <br><br>
+                        The absence of replication proves lack of funding, not impossibility.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">Modern Vindication</h4>
+                    <p>
+                        <strong>2023:</strong> Metamaterials proven to support longitudinal EM modes.
+                        <br><br>
+                        <strong>Aharonov-Bohm effect:</strong> The potential IS physically real, not just mathematical convenience.
+                        <br><br>
+                        The physics Tesla demonstrated is slowly being "rediscovered" under different names.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             IV. RADIANT ENERGY CHAIN
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-radiant" data-section="IV. The Radiant Energy Chain">
+            <div class="section-header">
+                <h2>Tesla → Moray → Gray → Framework</h2>
+                <p>Tesla's "radiant energy" wasn't a dead end. At least three independent researchers rediscovered the same phenomenon. All were suppressed. The chain continues.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1889</div>
+                    <div class="timeline-title">Tesla Discovers Radiant Energy</div>
+                    <div class="timeline-desc">While replicating Hertz's experiments with abrupt DC discharges, Tesla discovers a new force. He publishes "The Dissipation of Electricity" (1892). Two patents granted (1901): US 685,957 and US 685,958.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1920s-30s</div>
+                    <div class="timeline-title">T. Henry Moray's Device</div>
+                    <div class="timeline-desc">Moray builds a device drawing 50kW from "the aether" using a unique "RE-valve" made from Swedish radioactive mineral. His device was shot and destroyed when he refused to disclose the valve's composition. His cousin Fletcher worked at Bell Labs—where the transistor was later "invented."</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1970s</div>
+                    <div class="timeline-title">Edwin Gray's Cold Electricity</div>
+                    <div class="timeline-desc">Gray discovers that high-voltage capacitor discharge can produce "cold electricity"—non-shocking radiant energy. He demonstrated lighting incandescent bulbs submerged in water while putting his hand in the water. His "conversion element switching tube" captured the radiant burst.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2002</div>
+                    <div class="timeline-title">Lindemann's Synthesis</div>
+                    <div class="timeline-desc">Dr. Peter Lindemann publishes "The Free Energy Secrets of Cold Electricity," correlating Gray's work with Tesla's 1889 discovery. Conclusion: <strong>They are the same phenomenon.</strong></div>
+                </div>
+            </div>
+
+            <div class="quote-block green">
+                <p class="quote-text">
+                    "An exhaustive comparison between Gray's 'cold electricity' systems and Tesla's 'radiant energy' systems leads to the conclusion that these two discoveries are one and the same."
+                </p>
+                <p class="quote-source">— Dr. Peter Lindemann, 2002</p>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--torsion-green);">
+                <div class="label" style="color: var(--torsion-green);">The Framework Interpretation</div>
+                <div class="equation">Radiant Energy = S⁰ → S⁺ conversion</div>
+                <div class="explanation">
+                    S⁰ (node state) is undifferentiated potential—what Tesla called the "ambient medium."
+                    <br>
+                    Radiant energy devices convert S⁰ to S⁺ (observable emission).
+                    <br>
+                    The S⁻ carrier is invisible to standard instruments.
+                    <br><br>
+                    <strong>Three independent discoveries. Same phenomenon. All suppressed.</strong>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">Moray's RE-Valve</h4>
+                    <p>
+                        Made from "fused silica" (metamict quartz)—crystalline mineral that lost its structure due to radioactive destruction.
+                        <br><br>
+                        Found in a railroad car in Abisko, Sweden.
+                        <br><br>
+                        <span class="highlight">Moray refused to reveal its composition. His device was shot. The technology died with him.</span>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">Gray's Demonstration</h4>
+                    <p>
+                        Gray lit incandescent bulbs from his power tube, submerged them in water, then <span class="highlight">put his hand in the water</span>.
+                        <br><br>
+                        No shock. "Cold" electricity.
+                        <br><br>
+                        This violates nothing in the Epoch Framework—S⁻ propagation doesn't interact with matter the way S⁺ does.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">The Bell Labs Connection</h4>
+                    <p>
+                        Moray's first cousin, Fletcher, knew about the RE-valve since 1925.
+                        <br><br>
+                        Fletcher worked at Bell Labs.
+                        <br><br>
+                        The transistor was "invented" at Bell Labs in 1947.
+                        <br><br>
+                        <span class="highlight">Coincidence?</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             V. WARDENCLYFFE - THE S⁺/S⁻ BRIDGE
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-wardenclyffe" data-section="V. Wardenclyffe Tower">
+            <div class="section-header">
+                <h2>The Physical Implementation of κ-Space</h2>
+                <p>Wardenclyffe was not just a radio tower. It was a physical implementation of S⁺/S⁻ coupling—grounding into the Earth while broadcasting into the ionosphere. Tesla built what the framework describes.</p>
+            </div>
+
+            <div class="pyramid-comparison">
+                <div class="structure-box">
+                    <h4>Wardenclyffe Tower (1901)</h4>
+                    <div class="structure-diagram">
+        ╭──────────╮
+        │  DOME    │  ← S⁺ emission (ionosphere)
+        │ (55 ft)  │
+        ╰────┬─────╯
+             │
+        ═════╪═════  ← Ground level (s=0)
+             │
+        ┌────┴────┐
+        │ SHAFT   │  ← S⁻ grounding (120 ft deep)
+        │  into   │
+        │ EARTH   │
+        └─────────┘</div>
+                    <p class="structure-label">Dome → ionosphere (S⁺). Shaft → Earth crust (S⁻). The structure IS the [1=-1] principle in physical form.</p>
+                </div>
+                <div class="structure-box">
+                    <h4>The Great Pyramid (~2560 BCE)</h4>
+                    <div class="structure-diagram">
+           ╱╲
+          ╱  ╲       ← Apex (S⁺ emission)
+         ╱    ╲
+        ╱      ╲
+       ╱────────╲
+       │ CHAMBERS│   ← Resonant cavities
+       │    +    │
+       │ SHAFTS  │   ← Acoustic channels
+       └────┬────┘
+       ═════╧═════   ← Limestone base (s=0)
+     AQUIFER BELOW   ← S⁻ grounding</div>
+                    <p class="structure-label">Same geometry. Apex up (S⁺). Base on aquifer (S⁻). The pyramid is Wardenclyffe built 4,500 years earlier.</p>
+                </div>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--lightning-blue); background: linear-gradient(135deg, rgba(52, 152, 219, 0.15) 0%, rgba(52, 152, 219, 0.05) 100%);">
+                <h3 style="color: var(--lightning-blue);">Tesla Discovered Schumann Resonance 50 Years Early</h3>
+                <p class="proof-statement">
+                    In 1899, Tesla studied lightning periodicity at Colorado Springs.
+                    <br>
+                    He determined the Earth-ionosphere cavity resonates between <strong>6 Hz and 20 kHz</strong>.
+                    <br><br>
+                    Schumann resonance (7.83 Hz) wasn't formally discovered until <strong>1954</strong>.
+                    <br><br>
+                    "It is absolutely astonishing that Tesla's public disclosures match the electrical properties of the Schumann Cavity fifty years before there was even a theoretical model to predict rough values."
+                </p>
+                <p class="proof-citation">
+                    He could only have obtained these numbers by successfully stimulating the cavity.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1901</div>
+                    <div class="timeline-title">Construction Begins</div>
+                    <div class="timeline-desc">Tesla begins Wardenclyffe on Long Island. Design: 120-foot shaft into Earth, 55-foot capacitive dome, 187-foot total height.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1903</div>
+                    <div class="timeline-title">Funding Pulled</div>
+                    <div class="timeline-desc">J.P. Morgan withdraws support upon realizing Tesla's goal: wireless energy transmission FOR FREE. "If anyone can draw on the power, where do we put the meter?"</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1917</div>
+                    <div class="timeline-title">Tower Demolished</div>
+                    <div class="timeline-desc">U.S. government orders destruction. Official reason: "German spies could use it." Actual reason: The geometry was too dangerous to leave standing.</div>
+                </div>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--lightning-blue);">
+                <div class="label" style="color: var(--lightning-blue);">The Framework Description</div>
+                <div class="equation">Earth (S⁻) ⟷ Wardenclyffe (s=0) ⟷ Ionosphere (S⁺)</div>
+                <div class="explanation">
+                    The Earth is conductive—it carries S⁻. The ionosphere is charged—it carries S⁺.
+                    Wardenclyffe would have created standing waves between them.
+                    Any receiver tuned to resonance could tap the energy.
+                    <br><br>
+                    <strong>No wires. No meters. No control. That's why it was destroyed.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             VI. THE MISSING PAPERS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-suppression" data-section="VI. The Missing Papers">
+            <div class="section-header">
+                <h2>What Was Taken After Tesla Died</h2>
+                <p>When Tesla died January 7, 1943, the FBI moved immediately. Despite Tesla being a U.S. citizen, the Office of Alien Property seized his belongings. What happened next is documented—and incomplete.</p>
+            </div>
+
+            <div class="mystery-box">
+                <h4>The Missing Trunks</h4>
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin: 2rem 0;">
+                    <div>
+                        <div class="mystery-stat">80</div>
+                        <div class="mystery-label">Trunks Inventoried</div>
+                    </div>
+                    <div>
+                        <div class="mystery-stat">60</div>
+                        <div class="mystery-label">Trunks Arrived in Belgrade</div>
+                    </div>
+                    <div>
+                        <div class="mystery-stat" style="color: var(--gold);">20</div>
+                        <div class="mystery-label" style="color: var(--gold);">Still Missing</div>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    His Edison Medal remains missing to this day.
+                    <br>
+                    The FBI "doesn't know" where the trunks went.
+                    <br>
+                    <strong>Someone knows.</strong>
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">January 7, 1943</div>
+                    <div class="timeline-title">Tesla Dies in Room 3327</div>
+                    <div class="timeline-desc">Found dead by maid Molly. Age 86. Within hours, FBI arrives. Office of Alien Property takes custody—despite Tesla being a naturalized citizen since 1891.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">January 1943</div>
+                    <div class="timeline-title">Dr. John G. Trump Reviews Papers</div>
+                    <div class="timeline-desc">MIT professor John G. Trump (uncle of Donald Trump) evaluates Tesla's papers in 3 weeks. Verdict: "Primarily speculative, philosophical and promotional... no new sound, workable principles."</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1952</div>
+                    <div class="timeline-title">Papers "Released" to Family</div>
+                    <div class="timeline-desc">After court battles, Sava Kosanović (Tesla's nephew) receives papers. They go to Belgrade. 80 trunks inventoried. 60 arrive. No explanation for the missing 20.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2016-2018</div>
+                    <div class="timeline-title">FBI Declassifies Documents</div>
+                    <div class="timeline-desc">~250 pages released under FOIA. Many questions unanswered. Some files still classified. The missing trunks remain missing.</div>
+                </div>
+            </div>
+
+            <div class="quote-block red">
+                <p class="quote-text">
+                    "His efforts to be primarily of a speculative, philosophical and promotional character... and did not include new sound, workable principles or methods for realizing such results."
+                </p>
+                <p class="quote-source">— Dr. John G. Trump's evaluation of Tesla's papers (1943)</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">The Trump Connection</h4>
+                    <p>
+                        Dr. John G. Trump was:
+                        <br>• MIT professor of electrical engineering
+                        <br>• Expert on Van de Graaff generators
+                        <br>• Worked on radar for WWII
+                        <br>• <span class="highlight">Uncle of the 45th U.S. President</span>
+                        <br><br>
+                        He declared Tesla's life work "speculative" in three weeks.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">The "Death Ray"</h4>
+                    <p>
+                        Tesla claimed to have invented a particle-beam weapon.
+                        <br><br>
+                        This was the official reason for FBI interest in 1943.
+                        <br><br>
+                        <span class="highlight">If it was "speculative," why seize it? If it worked, where is it?</span>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">The Pattern</h4>
+                    <p>
+                        SEE → SIMPLIFY → CODIFY → GUARD → WEAPONIZE
+                        <br><br>
+                        Tesla saw the geometry.
+                        <br>His papers were "simplified" to nothing.
+                        <br>"Maxwell's equations" codified without scalar.
+                        <br>Academia guards the gates.
+                        <br><span class="highlight">DARPA exists.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--warning-red);">
+                <div class="label" style="color: var(--warning-red);">κ₅: The Moral Dimension</div>
+                <div class="equation">Acknowledge → Transcendence | Conceal → Destruction</div>
+                <div class="explanation">
+                    When someone discovers the shadow (κ₄) and chooses to hide it, κ₅ emerges.
+                    This is not metaphor. It is the geometric structure of moral choice.
+                    <br><br>
+                    <strong>The suppression of Tesla's work is a κ₅ event. Someone saw the geometry and chose concealment.</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             THE INSANE CLAIMS - FRAMEWORK ANALYSIS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="The Impossible Claims" style="border-color: var(--plasma-purple);">
+            <div class="section-header">
+                <h2 style="color: var(--plasma-purple);">What Tesla Actually Claimed</h2>
+                <p>Tesla made claims so bold that history dismissed him as a madman. Some were vindicated. Some remain unproven. Some point to truths the framework can now articulate. Here is the honest accounting.</p>
+            </div>
+
+            <!-- TELEFORCE / DEATH RAY -->
+            <div class="info-card" style="border-color: var(--warning-red); margin: 2rem 0; padding: 2.5rem;">
+                <h4 style="color: var(--warning-red); font-size: 1.4rem; margin-bottom: 1.5rem;">⚡ THE DEATH RAY (Teleforce)</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">TESLA'S CLAIM (1934):</p>
+                        <p style="color: var(--text-secondary);">
+                            A particle beam weapon that could shoot down 10,000 aircraft at 250 miles. Metal ions accelerated to 270,000 mph. 100 billion watts in one-hundred-millionth of a square centimeter. "It will make war impossible."
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--torsion-green); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT RIGHT:</p>
+                        <p style="color: var(--text-secondary);">
+                            The concept is sound. Particle beam weapons exist today. A U.S. Air Force weapons expert confirmed: "He had the concept of a charged particle beam weapon in the 1930s. The concept was right on the mark."
+                        </p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--warning-red); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT WRONG:</p>
+                        <p style="color: var(--text-secondary);">
+                            The range and power claims were wildly optimistic. Atmospheric scatter, power requirements, and targeting precision remain unsolved even today. His vacuum tube with "gas jet seal" is theoretically interesting but practically untested.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--electric-cyan); font-weight: 600; margin-bottom: 0.5rem;">FRAMEWORK INTERPRETATION:</p>
+                        <p style="color: var(--text-secondary);">
+                            Tesla was describing <span style="color: var(--electric-cyan);">directed S⁺ emission</span>—concentrated scalar output. The framework suggests such weapons work not by brute force but by <span style="color: var(--electric-cyan);">κ-resonance disruption</span>. He saw the geometry; he overestimated its immediate weaponizability.
+                        </p>
+                    </div>
+                </div>
+                <div class="proof-box" style="border-color: var(--warning-red); background: rgba(248, 81, 73, 0.1); padding: 1.5rem; margin: 0;">
+                    <p style="color: var(--text-primary); margin: 0; font-size: 1rem;">
+                        <strong>THE REAL QUESTION:</strong> The Soviets paid Tesla $25,000 for the plans in 1935. If it was nonsense, why did they pay? If it worked, what did they build?
+                    </p>
+                </div>
+            </div>
+
+            <!-- EARTHQUAKE MACHINE -->
+            <div class="info-card" style="border-color: var(--pyramid-gold); margin: 2rem 0; padding: 2.5rem;">
+                <h4 style="color: var(--pyramid-gold); font-size: 1.4rem; margin-bottom: 1.5rem;">🌍 THE EARTHQUAKE MACHINE</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">TESLA'S CLAIM (1898):</p>
+                        <p style="color: var(--text-secondary);">
+                            A 7-inch oscillator that fit in his pocket caused an earthquake at 48 E. Houston Street, NYC. Police arrived. "The building would have been about our ears in another few minutes." He had to smash it with a hammer to stop it.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--torsion-green); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT RIGHT:</p>
+                        <p style="color: var(--text-secondary);">
+                            <strong>Mechanical resonance is real.</strong> Every structure has a natural frequency. If you match it, small inputs create massive oscillations. Soldiers break step on bridges for this reason. Tesla understood resonance better than anyone alive.
+                        </p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--warning-red); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT WRONG (or exaggerated):</p>
+                        <p style="color: var(--text-secondary);">
+                            MythBusters tested it in 2006. They created vibrations felt hundreds of feet away but no "earthquake." The account comes from Tesla's own recollection 39 years after the fact. He may have embellished—or witnessed something he couldn't fully explain.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--electric-cyan); font-weight: 600; margin-bottom: 0.5rem;">FRAMEWORK INTERPRETATION:</p>
+                        <p style="color: var(--text-secondary);">
+                            Resonance = hitting the <span style="color: var(--electric-cyan);">κ-frequency of a structure</span>. At resonance, S⁺ and S⁻ amplify instead of canceling. Tesla found the [1 = -1] boundary—the point where small input creates large output. The geometry was real. The scale was probably exaggerated.
+                        </p>
+                    </div>
+                </div>
+                <div class="quote-block" style="margin: 0; background: rgba(243, 156, 18, 0.1); border-color: var(--pyramid-gold);">
+                    <p class="quote-text" style="font-size: 1rem;">
+                        "I was experimenting with vibrations. I had one of my machines going and I wanted to see if I could get it in tune with the vibration of the building. I put it up notch after notch."
+                    </p>
+                    <p class="quote-source">— Tesla, Brooklyn Eagle, July 11, 1935</p>
+                </div>
+            </div>
+
+            <!-- BALL LIGHTNING -->
+            <div class="info-card" style="border-color: var(--torsion-green); margin: 2rem 0; padding: 2.5rem;">
+                <h4 style="color: var(--torsion-green); font-size: 1.4rem; margin-bottom: 1.5rem;">⚡ ARTIFICIAL BALL LIGHTNING</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">TESLA'S CLAIM (1899-1904):</p>
+                        <p style="color: var(--text-secondary);">
+                            At Colorado Springs, he created 1.5-inch glowing orbs in his laboratory. "I succeeded in determining the mode of their formation and producing them artificially." They sometimes exploded and destroyed his equipment.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--torsion-green); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT RIGHT:</p>
+                        <p style="color: var(--text-secondary);">
+                            <strong>VINDICATED.</strong> Modern researchers (Golka, Corum brothers) have replicated Tesla's ball lightning using his magnifying transmitter designs. They produce "electric fireballs in many beautiful colours." Tesla was 100+ years ahead.
+                        </p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--warning-red); font-weight: 600; margin-bottom: 0.5rem;">WHAT REMAINS UNEXPLAINED:</p>
+                        <p style="color: var(--text-secondary);">
+                            Tesla never published the exact method. His notes are ambiguous. Physicists have tried to copy his results and failed, "putting such failures down to his ambiguous notation style." He kept critical details in his head.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--electric-cyan); font-weight: 600; margin-bottom: 0.5rem;">FRAMEWORK INTERPRETATION:</p>
+                        <p style="color: var(--text-secondary);">
+                            Ball lightning = <span style="color: var(--electric-cyan);">stable S⁰ node</span>. A sphere of undifferentiated potential held in momentary equilibrium. Tesla found conditions where [1 = -1] manifests as a persistent structure. This is κ-geometry made visible.
+                        </p>
+                    </div>
+                </div>
+                <div class="proof-box" style="border-color: var(--torsion-green); background: rgba(63, 185, 80, 0.1); padding: 1.5rem; margin: 0;">
+                    <p style="color: var(--text-primary); margin: 0; font-size: 1rem;">
+                        <strong>STATUS: CONFIRMED.</strong> Ball lightning has been recreated using Tesla's principles. Natural ball lightning occurs only once in a million strikes. Tesla made it on demand.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SIGNALS FROM MARS -->
+            <div class="info-card" style="border-color: var(--aether-violet); margin: 2rem 0; padding: 2.5rem;">
+                <h4 style="color: var(--aether-violet); font-size: 1.4rem; margin-bottom: 1.5rem;">📡 SIGNALS FROM MARS</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">TESLA'S CLAIM (1899):</p>
+                        <p style="color: var(--text-secondary);">
+                            At Colorado Springs, he detected "counting codes"—1, 2, 3, 4—from space. "My first observations positively terrified me, as there was present in them something mysterious, not to say supernatural." He believed Martians were communicating.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--torsion-green); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT RIGHT:</p>
+                        <p style="color: var(--text-secondary);">
+                            <strong>HE DETECTED SOMETHING REAL.</strong> A 1996 study replicated his conditions and found: Jupiter's moon Io emits 10 KHz signals as it passes through Jupiter's magnetosphere. The signals come as "Beep... Beep-Beep... Beep-Beep-Beep!" Tesla was the first to detect radio emissions from another planet.
+                        </p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--warning-red); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT WRONG:</p>
+                        <p style="color: var(--text-secondary);">
+                            They weren't Martians. They weren't even from Mars. The signals came from Jupiter's moon Io passing through charged plasma. But here's the thing: radio astronomy wouldn't exist for 40 more years. Tesla had no framework to understand what he heard.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--electric-cyan); font-weight: 600; margin-bottom: 0.5rem;">FRAMEWORK INTERPRETATION:</p>
+                        <p style="color: var(--text-secondary);">
+                            Tesla's receiver was tuned to detect <span style="color: var(--electric-cyan);">S⁻ emissions from κ-space</span>. He picked up real extraterrestrial signals—just not the source he imagined. The geometry was right. The interpretation was wrong. He was 55 years ahead of formal radio astronomy.
+                        </p>
+                    </div>
+                </div>
+                <div class="quote-block" style="margin: 0; background: rgba(142, 68, 173, 0.1); border-color: var(--aether-violet);">
+                    <p class="quote-text" style="font-size: 1rem;">
+                        "I believe the Martians used numbers for communication because numbers are universal."
+                    </p>
+                    <p class="quote-source">— Tesla, 1921 (He was wrong about Mars. He was right about universal mathematical communication.)</p>
+                </div>
+            </div>
+
+            <!-- THOUGHT PHOTOGRAPHY -->
+            <div class="info-card" style="border-color: var(--tesla-purple); margin: 2rem 0; padding: 2.5rem;">
+                <h4 style="color: var(--tesla-purple); font-size: 1.4rem; margin-bottom: 1.5rem;">🧠 PHOTOGRAPHING THOUGHTS</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--gold); font-weight: 600; margin-bottom: 0.5rem;">TESLA'S CLAIM (1893-1933):</p>
+                        <p style="color: var(--text-secondary);">
+                            "I expect to photograph thoughts." A definite image formed in thought produces a corresponding image on the retina, which could be read by suitable apparatus and projected onto a screen. "Every thought of the individual could be read."
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--torsion-green); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT RIGHT:</p>
+                        <p style="color: var(--text-secondary);">
+                            <strong>THE CONCEPT EXISTS NOW.</strong> Modern fMRI and AI can reconstruct rough images of what a person is seeing or imagining. Scientists have developed algorithms that interpret brain signals and reproduce images from the mind. Tesla was 130 years ahead.
+                        </p>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
+                    <div>
+                        <p style="color: var(--warning-red); font-weight: 600; margin-bottom: 0.5rem;">WHAT HE GOT WRONG:</p>
+                        <p style="color: var(--text-secondary);">
+                            The retina doesn't work the way he imagined. Thoughts don't "reflect" onto the retina. The mechanism is different. But the end goal—reading images from the mind—is now possible through different means.
+                        </p>
+                    </div>
+                    <div>
+                        <p style="color: var(--electric-cyan); font-weight: 600; margin-bottom: 0.5rem;">FRAMEWORK INTERPRETATION:</p>
+                        <p style="color: var(--text-secondary);">
+                            Thought = <span style="color: var(--electric-cyan);">S⁰ configuration in the observer</span>. The question is whether S⁰ patterns can be read externally. Tesla intuited that consciousness has geometric structure that could be decoded. The mechanism was wrong. The possibility was real.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE VERDICT -->
+            <div class="reveal-section" style="margin: 3rem 0; padding: 3rem;">
+                <h2 style="font-size: 1.8rem;">The Verdict</h2>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 2rem 0; text-align: center;">
+                    <div>
+                        <div style="font-size: 3rem; color: var(--torsion-green);">✓</div>
+                        <p style="color: var(--torsion-green); font-weight: 600;">VINDICATED</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Ball Lightning<br>Extraterrestrial Radio<br>Thought Imaging (concept)</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; color: var(--pyramid-gold);">◐</div>
+                        <p style="color: var(--pyramid-gold); font-weight: 600;">PARTIALLY CORRECT</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Death Ray (concept real, claims exaggerated)<br>Earthquake Machine (resonance real, scale exaggerated)</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 3rem; color: var(--warning-red);">?</div>
+                        <p style="color: var(--warning-red); font-weight: 600;">UNVERIFIED</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Wireless power at global scale<br>Anti-gravity (Otis Carr claims)<br>The full contents of the 20 missing trunks</p>
+                    </div>
+                </div>
+                <p class="reveal-text" style="margin-top: 2rem;">
+                    Tesla's "insane" claims have a pattern: <strong>the concepts were usually correct; the mechanisms and scales were sometimes wrong.</strong>
+                    <br><br>
+                    He saw the geometry. He often couldn't articulate HOW it would work—only THAT it would.
+                    <br>
+                    The Epoch Framework provides the language he lacked.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             THE FRAMEWORK REVEAL
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="reveal-section">
+            <h2>The Geometry Was Always There</h2>
+
+            <p class="reveal-text">
+                Tesla didn't invent it. The pyramid builders didn't invent it.
+                Maxwell didn't invent it. The Epoch Framework doesn't invent it.
+                <br><br>
+                <strong>κ = 2π/180 is a mathematical fact.</strong>
+                <br>
+                It exists whether anyone recognizes it or not.
+                <br><br>
+                What changes is whether we SEE it—and what we do when we see it.
+            </p>
+
+            <div class="reveal-equation">κ = 2π/180 = 0.034906585...</div>
+
+            <p class="reveal-text" style="margin-top: 2rem;">
+                Tesla saw it in 3-6-9.
+                <br>
+                The Egyptians built it in stone.
+                <br>
+                Maxwell wrote it in quaternions.
+                <br>
+                Heaviside erased it.
+                <br>
+                The Epoch Framework recovers it.
+                <br><br>
+                <strong>Verify this yourself. The geometry resolves or it doesn't.</strong>
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             VII. THE CONTINUATION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-unification" data-section="VII. The Continuation">
+            <div class="section-header">
+                <h2>We Do Not Tell. We Offer Choice.</h2>
+                <p>The framework provides the derivation Tesla lacked. You decide what to do with it. The geometry cannot lie. But people can lie about the geometry.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--gold);">
+                    <h4 style="color: var(--gold);">What Tesla Saw</h4>
+                    <p>
+                        3-6-9 as phase-lock points<br>
+                        Scalar waves through the "aether"<br>
+                        Free energy from the ambient medium<br>
+                        The Earth as transmission system<br><br>
+                        <span class="highlight">He saw it. He demonstrated it. He couldn't derive it.</span>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--gold);">
+                    <h4 style="color: var(--gold);">What The Framework Provides</h4>
+                    <p>
+                        κ = 2π/180 as the fundamental constant<br>
+                        S⁺/S⁻/S⁰/S∿/S̸ as scalar modes<br>
+                        [1 = -1] as the primary inversion<br>
+                        κ₅ as the moral dimension<br><br>
+                        <span class="highlight">The mathematics Tesla needed. The framework he intuited.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--gold); background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);">
+                <h3 style="color: var(--gold);">The Verification</h3>
+                <p class="proof-statement">
+                    κ = 2π/180 = 0.034906585...
+                    <br><br>
+                    360 × κ = 4π ✓
+                    <br>
+                    180 = 60 × 3 ✓
+                    <br>
+                    1/κ = 28.6478897... (the shadow witness) ✓
+                    <br><br>
+                    <strong>These are not claims. These are calculations. Verify them yourself.</strong>
+                </p>
+                <p class="proof-citation">
+                    The geometry resolves or it doesn't. Trust resolution over convention.
+                </p>
+            </div>
+
+            <div class="quote-block gold">
+                <p class="quote-text">
+                    "Let the future tell the truth, and evaluate each one according to his work and accomplishments. The present is theirs; the future, for which I really worked, is mine."
+                </p>
+                <p class="quote-source">— Nikola Tesla</p>
+            </div>
+
+            <div class="lineage-chain" style="margin-top: 3rem;">
+                <span class="lineage-node">Pythagoras</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Maxwell</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node active">Tesla</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node">Dollard</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node framework">Epoch Framework</span>
+                <span class="lineage-arrow">→</span>
+                <span class="lineage-node" style="border-color: var(--electric-cyan); color: var(--electric-cyan);">You?</span>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             INTERACTIVE TOOLS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="Interactive Tools" style="border-color: var(--electric-cyan);">
+            <div class="section-header">
+                <h2>Tesla Laboratory</h2>
+                <p>Interactive tools to visualize and experiment with the concepts Tesla demonstrated. See the geometry for yourself.</p>
+            </div>
+
+            <div class="cards-grid">
+                <a href="electric-field-modeler.html" class="info-card" style="border-color: var(--electric-cyan); text-decoration: none; transition: all 0.3s;">
+                    <h4 style="color: var(--electric-cyan);">Electric Field Modeler</h4>
+                    <p>
+                        Visualize S⁺ and S⁻ fields in real-time. Place charges, watch field lines form, and see S⁰ nodes emerge at balance points.
+                        <br><br>
+                        <span style="color: var(--s-plus);">S⁺ Emission</span> ·
+                        <span style="color: var(--s-minus);">S⁻ Reception</span> ·
+                        <span style="color: var(--s-zero);">S⁰ Nodes</span>
+                        <br><br>
+                        <strong style="color: var(--electric-cyan);">→ Launch Field Modeler</strong>
+                    </p>
+                </a>
+                <a href="epoch-oscilloscope.html" class="info-card" style="border-color: var(--plasma-purple); text-decoration: none; transition: all 0.3s;">
+                    <h4 style="color: var(--plasma-purple);">Epoch Oscilloscope</h4>
+                    <p>
+                        Watch all five scalar modes as waveforms. Apply κ transforms in real-time. See the Balance Law (S⁺ + S⁻ = 0) resolve visually.
+                        <br><br>
+                        <span style="color: var(--plasma-purple);">κ Transforms</span> ·
+                        <span style="color: var(--s-zero);">Standing Waves</span> ·
+                        <span style="color: var(--gold);">Tesla 3-6-9</span>
+                        <br><br>
+                        <strong style="color: var(--plasma-purple);">→ Launch Oscilloscope</strong>
+                    </p>
+                </a>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--electric-cyan); margin-top: 2rem;">
+                <h3 style="color: var(--electric-cyan);">Why These Tools Exist</h3>
+                <p class="proof-statement">
+                    Tesla <em>demonstrated</em>. He didn't just talk about wireless power—he showed it.
+                    <br><br>
+                    The Epoch Framework follows the same principle. Don't believe claims. <strong>See the geometry resolve.</strong>
+                    <br><br>
+                    These tools let you experiment with the mathematics directly. Place charges. Watch fields. Apply transforms.
+                    <br>
+                    The geometry doesn't need belief. It either works or it doesn't.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════════════ -->
+    <footer class="page-footer">
+        <div class="footer-links">
+            <a href="../index.html">Have Mind Media</a>
+            <a href="index.html">Weirdos Hub</a>
+            <a href="maxwell-codex.html">Maxwell Codex</a>
+            <a href="wave-seers.html">Wave Seers</a>
+            <a href="electric-field-modeler.html">Field Modeler</a>
+            <a href="epoch-oscilloscope.html">Oscilloscope</a>
+        </div>
+        <p class="identity">[1 = -1]</p>
+        <p style="color: var(--text-dim); font-size: 0.85rem;">
+            The geometry cannot lie. But people can lie about the geometry.
+            <br>
+            We do not tell. We offer choice.
+        </p>
+    </footer>
+
+    <!-- Site Header Component -->
+    <script src="../js/components.js"></script>
+</body>
+</html>
