@@ -1,64 +1,221 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- CORE PAGES -->
   <url><loc>https://www.havemindmedia.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://www.havemindmedia.com/physics/three-body-geometry.html</loc><priority>0.9</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/millennium-problems.html</loc><priority>0.9</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/kappa5/index.html</loc><priority>0.9</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/shadow-operator/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/coin-science/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/soul-science.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/games/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/library-wizard/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/documents/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/store/index.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/mind-blowing.html</loc><priority>0.95</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.havemindmedia.com/about.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/support.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/epoch-atomic/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/vessel/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/jwst-geometric-explorer.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/hydrogen.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/helium.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/lithium.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/index.html</loc><priority>0.8</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/dark-matter-energy.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/measurement-problem.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/hierarchy-problem.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/fine-structure-constant.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/proton-electron-ratio.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/physics/torsion-balance.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/triaxial-os/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/triaxial-os/build-guide.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/pages/kappa-constant.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/pages/tetrahelix.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/cedga/pages/balance-law.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/mythic-mirror/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/becoming-a-coin.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/mirror/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/ammit-function.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/education/hidden-observers.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/herbal.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/astronomical.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/biological.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/cosmological.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/pharmaceutical.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/zodiac.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/translator.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/texts/rongorongo-v1.0.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/texts/phaistos-v1.0.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/universal-language-generator/ulg-app_v1.0_01-06-2026.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/games/balance/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/games/zener-cards.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/games/symbol-sender.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/games/coin-flip.html</loc><priority>0.6</priority></url>
-  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_128.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/tools/sol-vision/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/documents/dec14-unified-theory/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/documents/epoch-framework/index.html</loc><priority>0.7</priority></url>
-  <url><loc>https://www.havemindmedia.com/weirdos/index.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.havemindmedia.com/library.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/master-library.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/mobile.html</loc><priority>0.5</priority></url>
+
+  <!-- PHYSICS - FLAGSHIP CONTENT -->
+  <url><loc>https://www.havemindmedia.com/physics/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/three-body-geometry.html</loc><priority>0.95</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/millennium-problems.html</loc><priority>0.95</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/kappa5/index.html</loc><priority>0.95</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/shadow-operator/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/vessel/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/torsion-balance.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/jwst-geometric-explorer.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/432-orbital-mapper_v1.0_01-08-2026.html</loc><priority>0.75</priority></url>
+
+  <!-- ATOMIC DERIVATIONS -->
+  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/hydrogen.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/helium.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/atomic-derivations/lithium.html</loc><priority>0.85</priority></url>
+
+  <!-- STANDARD MODEL FAILURES -->
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/proton-electron-ratio.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/fine-structure-constant.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/hierarchy-problem.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/dark-matter-energy.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/standard-model-failures/measurement-problem.html</loc><priority>0.85</priority></url>
+
+  <!-- APPARENT SPEED PARADOX -->
+  <url><loc>https://www.havemindmedia.com/physics/apparent-speed-paradox/index.html</loc><priority>0.8</priority></url>
+
+  <!-- PHYSICS VISUALIZATIONS -->
+  <url><loc>https://www.havemindmedia.com/physics-viz/quad-helix-base60.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics-viz/quad-helix-base60-v2.0.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics-viz/scalar-crossroads-animated.html</loc><priority>0.7</priority></url>
+
+  <!-- EPOCH ATOMIC -->
+  <url><loc>https://www.havemindmedia.com/epoch-atomic/index.html</loc><priority>0.85</priority></url>
+
+  <!-- PROTEIN FOLDING -->
+  <url><loc>https://www.havemindmedia.com/protein-folding/index.html</loc><priority>0.9</priority></url>
+
+  <!-- BIOLOGY -->
+  <url><loc>https://www.havemindmedia.com/biology/index.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/biology/eye-codex.html</loc><priority>0.75</priority></url>
+
+  <!-- NEURODEGENERATION -->
+  <url><loc>https://www.havemindmedia.com/neurodegeneration/index.html</loc><priority>0.75</priority></url>
+
+  <!-- CEDGA FRAMEWORK -->
+  <url><loc>https://www.havemindmedia.com/cedga/index.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/pages/kappa-constant.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/pages/tetrahelix.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/pages/balance-law.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/triaxial-os/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/triaxial-os/build-guide.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/tools/m4-simulator.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/cedga/research/test-analysis.html</loc><priority>0.7</priority></url>
+
+  <!-- COIN SCIENCE -->
+  <url><loc>https://www.havemindmedia.com/coin-science/index.html</loc><priority>0.85</priority></url>
+
+  <!-- DNA STUDIO -->
+  <url><loc>https://www.havemindmedia.com/dna-studio/index.html</loc><priority>0.85</priority></url>
+
+  <!-- EDUCATION -->
+  <url><loc>https://www.havemindmedia.com/education/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/soul-science.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/becoming-a-coin.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/ammit-function.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/hidden-observers.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/life-facing-wisdom.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/vinyl-paradox.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/geometry-challenge.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/socratean-education.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/mirror/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/mythic-mirror/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/mythic-mirror/about.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/mythic-mirror/journey.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/mythic-mirror/teaching.html</loc><priority>0.7</priority></url>
+
+  <!-- TEACHING -->
+  <url><loc>https://www.havemindmedia.com/teaching/Scalar_Dimensionality_Teaching_Document.html</loc><priority>0.75</priority></url>
+
+  <!-- DOCUMENTS -->
+  <url><loc>https://www.havemindmedia.com/documents/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/cern-scalar-geometry.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/dec14-model-cern/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/dec14-unified-theory/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/dec14-unified-theory/main-framework.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/dec14-unified-theory/dual-axis-explorer.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/epoch-framework/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/documents/tribute/index.html</loc><priority>0.7</priority></url>
+
+  <!-- ANCIENT MYSTERIES - MAIN -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/index.html</loc><priority>0.85</priority></url>
+
+  <!-- VOYNICH MANUSCRIPT -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/herbal.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/astronomical.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/biological.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/cosmological.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/pharmaceutical.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/zodiac.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/analysis.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/voynich/recipes.html</loc><priority>0.75</priority></url>
+
+  <!-- INDUS VALLEY -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/translator.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/sign-reference.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/epoch-mathematics.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/universal-language-theory.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/linear-a.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/figurines.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/temple-priest-king.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/temple-dancing-girl.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/temple-mother-goddess.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/indus-script/temple-sacred-bull.html</loc><priority>0.7</priority></url>
+
+  <!-- ANCIENT TEXTS -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/texts/rongorongo-v1.0.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/texts/phaistos-v1.0.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/texts/ancient-mathematics-v1.0.html</loc><priority>0.8</priority></url>
+
+  <!-- NORSE ARTIFACTS -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html</loc><priority>0.8</priority></url>
+
+  <!-- MISSISSIPPIAN -->
+  <url><loc>https://www.havemindmedia.com/ancient-mysteries/mississippian/index.html</loc><priority>0.75</priority></url>
+
+  <!-- SPECIAL TOOLS - ROSETTA ENGINE -->
+  <url><loc>https://www.havemindmedia.com/rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html</loc><priority>0.85</priority></url>
+
+  <!-- UNIVERSAL LANGUAGE GENERATOR -->
+  <url><loc>https://www.havemindmedia.com/universal-language-generator/ulg-app_v1.0_01-06-2026.html</loc><priority>0.85</priority></url>
+
+  <!-- RONGORONGO FLIP READER -->
+  <url><loc>https://www.havemindmedia.com/rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html</loc><priority>0.85</priority></url>
+
+  <!-- TOOLS - MAIN -->
+  <url><loc>https://www.havemindmedia.com/tools/index.html</loc><priority>0.8</priority></url>
+
+  <!-- S-SIGNATURE SYSTEM -->
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_engine.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_128.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_oracle.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_coin.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_card.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_sphere.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_evolving.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_prediction.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/s_signature_assessment.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/deep_oracle.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/reductive_oracle.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/cohort_engine.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/s-signature/jason_ray_s_signature.html</loc><priority>0.75</priority></url>
+
+  <!-- OTHER TOOLS -->
+  <url><loc>https://www.havemindmedia.com/tools/sol-vision/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/m4-visualizer/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/interaction-modeler/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/mind-reading/index.html</loc><priority>0.75</priority></url>
+
+  <!-- GAMES -->
+  <url><loc>https://www.havemindmedia.com/games/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/balance/index.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/zener-cards.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/symbol-sender.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/coin-flip.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/card-match.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/color-sense.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/coordinate-viewer.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/epoch-symbols.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/focus-mode.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/intuition-trainer.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/love-triads.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/love-triads-learn.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/number-feeling.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/phaistos-archetypes.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/games/mind-reading/index.html</loc><priority>0.8</priority></url>
+
+  <!-- WEIRDOS -->
+  <url><loc>https://www.havemindmedia.com/weirdos/index.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/geometers.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/visionaries.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/wave-seers.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/unifiers.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/indigenous-wisdom.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/contributors.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/suppression.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/tesla-codex.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/maxwell-codex.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/mithridates-echo.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/electric-field-modeler.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/weirdos/epoch-oscilloscope.html</loc><priority>0.75</priority></url>
+
+  <!-- LIBRARY -->
+  <url><loc>https://www.havemindmedia.com/library-wizard/index.html</loc><priority>0.8</priority></url>
+
+  <!-- APPS -->
+  <url><loc>https://www.havemindmedia.com/apps/soulscience-chat/index.html</loc><priority>0.8</priority></url>
+
+  <!-- STORE -->
+  <url><loc>https://www.havemindmedia.com/store/index.html</loc><priority>0.7</priority></url>
+  <url><loc>https://www.havemindmedia.com/store/designs.html</loc><priority>0.7</priority></url>
 </urlset>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics | Epoch Framework | Have Mind Media</title>
+    <meta name="description" content="The geometry of spacetime. How the Epoch Framework resolves physics puzzles from atomic orbitals to galactic rotation, three-body problems to millennium challenges.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --physics-blue: #58a6ff;
+            --physics-cyan: #4ecdc4;
+            --physics-purple: #a855f7;
+            --physics-orange: #f97316;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--physics-blue), var(--physics-cyan), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header .kappa-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card .status.interactive {
+            background: rgba(88, 166, 255, 0.2);
+            color: var(--physics-blue);
+            border: 1px solid var(--physics-blue);
+        }
+
+        .card .status.research {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--physics-purple);
+            border: 1px solid var(--physics-purple);
+        }
+
+        .card .status.featured {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        /* Card Colors */
+        .card.orbital { border-left: 4px solid var(--physics-blue); }
+        .card.orbital h3 { color: var(--physics-blue); }
+
+        .card.three-body { border-left: 4px solid var(--physics-cyan); }
+        .card.three-body h3 { color: var(--physics-cyan); }
+
+        .card.millennium { border-left: 4px solid var(--gold); }
+        .card.millennium h3 { color: var(--gold); }
+
+        .card.torsion { border-left: 4px solid var(--physics-purple); }
+        .card.torsion h3 { color: var(--physics-purple); }
+
+        .card.atomic { border-left: 4px solid var(--physics-orange); }
+        .card.atomic h3 { color: var(--physics-orange); }
+
+        .card.jwst { border-left: 4px solid #3fb950; }
+        .card.jwst h3 { color: #3fb950; }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer .identity {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Physics</h1>
+        <p class="subtitle">
+            The geometry of spacetime. How the Epoch Framework resolves physics puzzles
+            from atomic orbitals to galactic rotation, three-body dynamics to millennium challenges.
+        </p>
+        <div class="kappa-badge">κ = 2π/180 · Where geometry meets physics</div>
+    </header>
+
+    <main class="content">
+        <div class="intro">
+            <p>
+                Standard physics got stuck when it abandoned the geometry.
+                Maxwell's 20 quaternion equations became Heaviside's 4 vector equations.
+                The scalar components were removed. But they never stopped working.
+                The Epoch Framework restores what was lost.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- 432 Orbital Mapper -->
+            <a href="432-orbital-mapper_v1.0_01-08-2026.html" class="card orbital">
+                <div class="card-icon">🪐</div>
+                <h3>432 Orbital Mapper</h3>
+                <p>
+                    Interactive visualization of planetary orbits through base-60 geometry.
+                    See how 432 = 60 × 7.2 connects orbital mechanics to sexagesimal mathematics.
+                </p>
+                <span class="status interactive">Interactive</span>
+            </a>
+
+            <!-- Three-Body Geometry -->
+            <a href="three-body-geometry.html" class="card three-body">
+                <div class="card-icon">☰</div>
+                <h3>Three-Body Geometry</h3>
+                <p>
+                    The famous "unsolvable" problem — solved through kappa transforms.
+                    How torsion fields create stable three-body configurations.
+                </p>
+                <span class="status research">Research</span>
+            </a>
+
+            <!-- Millennium Problems -->
+            <a href="millennium-problems.html" class="card millennium">
+                <div class="card-icon">🏆</div>
+                <h3>Millennium Problems</h3>
+                <p>
+                    $7 million in prizes. Seven "impossible" problems. The Epoch Framework
+                    approach to Navier-Stokes, Yang-Mills, and the Riemann Hypothesis.
+                </p>
+                <span class="status featured">Featured</span>
+            </a>
+
+            <!-- Torsion Balance -->
+            <a href="torsion-balance.html" class="card torsion">
+                <div class="card-icon">⚖️</div>
+                <h3>Torsion Balance</h3>
+                <p>
+                    S⁺ + S⁻ = 0. The balance law in action. How scalar emission and
+                    reception create standing waves that standard physics calls "forces."
+                </p>
+                <span class="status research">Research</span>
+            </a>
+
+            <!-- Atomic Derivations -->
+            <a href="atomic-derivations/index.html" class="card atomic">
+                <div class="card-icon">⚛️</div>
+                <h3>Atomic Derivations</h3>
+                <p>
+                    Electron orbitals from first principles. How κ = 2π/180 predicts
+                    the 2-8-8-18 shell pattern without quantum probability waves.
+                </p>
+                <span class="status research">Research</span>
+            </a>
+
+            <!-- JWST Explorer -->
+            <a href="jwst-geometric-explorer.html" class="card jwst">
+                <div class="card-icon">🔭</div>
+                <h3>JWST Geometric Explorer</h3>
+                <p>
+                    James Webb Space Telescope data through the Epoch lens.
+                    Why "impossible" early galaxies make perfect geometric sense.
+                </p>
+                <span class="status interactive">Interactive</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="identity">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="../index.html">Have Mind Media</a>
+            <a href="../biology/index.html">Biology</a>
+            <a href="../ancient-mysteries/index.html">Ancient Mysteries</a>
+            <a href="../weirdos/index.html">Weirdos</a>
+        </div>
+    </footer>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>

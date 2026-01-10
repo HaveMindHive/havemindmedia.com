@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE RATTLESNAKE DISC | Moundville, Alabama | Epoch Framework</title>
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --copper: #b87333;
+            --slate: #708090;
+            --text: #e8e4dc;
+            --text-dim: #9a9590;
+            --bg: #0a0908;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            font-size: 19px;
+        }
+
+        /* Background */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at 50% 50%, rgba(184, 115, 51, 0.04) 0%, transparent 70%);
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 1.5rem; left: 1.5rem;
+            z-index: 1000;
+        }
+        .nav a {
+            color: var(--copper);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+        }
+        .nav a:hover { opacity: 1; }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+
+        /* Title */
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.08em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--copper);
+            margin: 3rem 0 1.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        h2:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        p { margin-bottom: 1.5rem; }
+
+        strong { color: var(--gold); }
+        em { color: var(--copper); font-style: italic; }
+
+        /* The floating plate */
+        .plate-float {
+            position: fixed;
+            top: 50%;
+            right: 3rem;
+            transform: translateY(-50%);
+            z-index: 100;
+            opacity: 0.9;
+        }
+
+        .plate-img {
+            width: 380px;
+            height: auto;
+            filter: drop-shadow(0 0 50px rgba(112, 128, 144, 0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Highlight boxes */
+        .key-point {
+            background: rgba(201, 162, 39, 0.08);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.15rem;
+        }
+
+        .plain-speak {
+            background: rgba(184, 115, 51, 0.06);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        .plain-speak::before {
+            content: "In plain terms: ";
+            font-weight: 600;
+            color: var(--copper);
+            font-style: normal;
+        }
+
+        /* Final section */
+        .final {
+            text-align: center;
+            padding: 4rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .final-equation {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 1rem 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(184, 115, 51, 0.15);
+        }
+        footer a {
+            color: var(--copper);
+            text-decoration: none;
+        }
+
+        /* Responsive - stack plate on smaller screens */
+        @media (max-width: 1100px) {
+            .plate-float {
+                position: relative;
+                top: auto; right: auto;
+                transform: none;
+                display: flex;
+                justify-content: center;
+                margin: 2rem auto;
+            }
+            .plate-img { width: 320px; }
+        }
+
+        /* Navigation styles */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(10, 9, 8, 0.95) 0%, rgba(10, 9, 8, 0) 100%);
+        }
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .nav-brand:hover { color: #f5f3ef; }
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .nav-dropdown-btn:hover { color: var(--gold); border-color: var(--gold); }
+        .nav-dropdown-btn::after { content: '▾'; font-size: 0.7rem; }
+        .nav-dropdown.open .nav-dropdown-btn::after { transform: rotate(180deg); }
+        .nav-dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            min-width: 280px;
+            background: rgba(15, 13, 11, 0.98);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        .nav-dropdown.open .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+        }
+        .nav-dropdown-menu a:hover { color: var(--text); background: rgba(201, 162, 39, 0.08); border-left-color: var(--gold); }
+        .nav-dropdown-menu a.active { color: var(--gold); border-left-color: var(--gold); }
+        .nav-dropdown-divider { height: 1px; background: rgba(201, 162, 39, 0.15); margin: 0.5rem 0; }
+        .nav-dropdown-label { padding: 0.5rem 1.5rem; font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.15em; color: #8a6d1b; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div style="display: flex; gap: 1.5rem;">
+            <a href="../index.html" style="color: var(--copper); text-decoration: none; font-size: 0.9rem;">Ancient Mysteries</a>
+            <a href="../../weirdos/index.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">Weirdos</a>
+        </div>
+    </nav>
+
+    <!-- THE FLOATING PLATE - 3D Rendered from original -->
+    <div class="plate-float">
+        <img class="plate-img" src="images/hand-eye-plate-web.png" alt="Moundville Rattlesnake Disc">
+    </div>
+
+    <div class="container">
+        <h1>THE RATTLESNAKE DISC</h1>
+        <p class="subtitle">A 700-year-old stone artifact from Moundville, Alabama</p>
+
+        <h2>What You're Looking At</h2>
+
+        <p>This is the Rattlesnake Disc — a ceremonial sandstone palette carved by the Mississippian people at Moundville, Alabama, one of the largest pre-Columbian settlements north of Mexico. It dates to roughly 1300-1450 CE.</p>
+
+        <p>It's about 12 inches across, carved from a single piece of greenish-gray sandstone. The designs were incised (cut into) the surface, creating the white lines you see — the lighter stone beneath showing through the carved grooves.</p>
+
+        <p>This disc was sacred. It wasn't decoration. It was used in ceremonies, likely held by priests or leaders, and its symbols encoded core spiritual teachings. It's now displayed at the Jones Archaeological Museum at Moundville Archaeological Park.</p>
+
+        <h2>The Snake That Makes the Path</h2>
+
+        <p>Look at the edge of the disk. See how a snake winds around and around, spiraling from the outer edge toward the center? That's not random decoration. <strong>The snake IS the path.</strong></p>
+
+        <p>Why a snake? Because snakes shed their skin. They literally become new creatures while remaining themselves. To the Mississippians, the snake represented transformation — the ability to change completely without losing who you are.</p>
+
+        <div class="plain-speak">
+            The snake says: "You can become someone new. You've done it before. You'll do it again. Change is not death — it's how life works."
+        </div>
+
+        <p>And notice: the snake makes a spiral. It starts at the outside and winds inward. This is a journey. You begin at the edge of the disk and walk the snake's path until you reach the center.</p>
+
+        <h2>The Hand at the Center</h2>
+
+        <p>When you finally reach the middle of the spiral, what do you find? <strong>A hand.</strong> Open palm, five fingers spread wide.</p>
+
+        <p>Think about what a hand means. It's how we <em>do</em> things. We make with our hands. We give with our hands. We take with our hands. We greet, we fight, we heal, we create — all with our hands.</p>
+
+        <p>The hand is <strong>action</strong>. It's the part of you that touches the world and changes it.</p>
+
+        <div class="plain-speak">
+            The hand says: "You are what you do. Not what you think, not what you intend, not what you feel — what you actually DO with your one wild life."
+        </div>
+
+        <h2>The Eye Inside the Hand</h2>
+
+        <p>Now look closer at the palm. There's an eye in the center of it. Not beside the hand, not near the hand — <em>inside</em> it.</p>
+
+        <p>The eye is <strong>perception</strong>. It's how we see, how we understand, how we witness. The eye takes in the world.</p>
+
+        <p>So why put the eye <em>inside</em> the hand?</p>
+
+        <div class="key-point">
+            Because you can't separate what you do from what you see. Every action contains a way of seeing. Every way of seeing leads to action. They aren't two things — they're one thing that looks like two.
+        </div>
+
+        <p>When you reach out to help someone, your hand contains your vision of them as worthy of help. When you push someone away, your hand contains your vision of them as a threat. <strong>The doing holds the seeing inside it.</strong></p>
+
+        <h2>Why This Matters</h2>
+
+        <p>Here's what the Mississippians figured out 700 years ago:</p>
+
+        <p>Most of us think we first see the world, then decide what to do about it. <em>Perception, then action.</em> Two separate steps.</p>
+
+        <p>But that's not how it works. How you see the world is already built into how you act in it. And how you act changes what you're able to see. They're the same thing, happening at once.</p>
+
+        <div class="plain-speak">
+            Change what you do, and you'll see differently. Change how you see, and you'll find yourself doing different things. You can't change one without changing the other — because they were never separate to begin with.
+        </div>
+
+        <p>This is why the eye is <em>inside</em> the hand, not next to it. The Mississippians weren't being artistic. They were being precise.</p>
+
+        <h2>The Journey on the Plate</h2>
+
+        <p>So here's the whole teaching, laid out in copper:</p>
+
+        <p><strong>1.</strong> You start at the edge of life. Everything is ahead of you.</p>
+
+        <p><strong>2.</strong> You walk the spiral — the snake's path. You shed skins along the way. You become new versions of yourself. This is not failure; this is the journey working correctly.</p>
+
+        <p><strong>3.</strong> You arrive at the center. And what do you find? Not treasure. Not a god. Not an answer. You find <strong>your own hand with an eye in it</strong> — the unity of your doing and your seeing.</p>
+
+        <p><strong>4.</strong> You realize: you were always this. The whole journey was about discovering what you brought with you from the start.</p>
+
+        <h2>The Sacred Game</h2>
+
+        <p>Moundville wasn't just a ceremonial center — it was an arena. The Mississippians played <em>chunkey</em>, a ritual ball-and-disc game that may be humanity's oldest continuously played sport in North America.</p>
+
+        <p>The game involved rolling a stone disc across a packed-earth court while players threw spears at where they predicted it would stop. It wasn't recreation. It was <strong>divination</strong>. The trajectory of the disc — its spiral path — revealed cosmic truths.</p>
+
+        <p>Think about it: a disc, rolling in spirals, while humans try to predict where it will come to rest. Sound familiar? <strong>The game IS the artifact.</strong> The players walked the snake's path, read the geometry, aimed at the S⁰ node where motion becomes stillness.</p>
+
+        <div class="plain-speak">
+            The Mesoamerican ballgame (which spread across both continents) wasn't just sport — it was cosmological reenactment. The ball was the sun, the court was the cosmos, the players were mediating between worlds. Winners lived. Sometimes losers didn't.
+        </div>
+
+        <p>This tradition spans from the Maya to the Mississippians to cultures who still play versions today. The geometry of the sacred game — disc, spiral, prediction — encoded in stone and sport for thousands of years.</p>
+
+        <h2>The Same Truth, Different Hands</h2>
+
+        <p>Remember the Phaistos Disk from Crete? That's 3,700 years old, made by people on a Mediterranean island. This plate is 700 years old, made by people in Alabama.</p>
+
+        <p>Different continents. Different millennia. Different materials. Different symbols.</p>
+
+        <p><strong>Same spiral structure. Same journey from edge to center. Same teaching.</strong></p>
+
+        <p>Either ancient Minoans somehow taught ancient Mississippians (they didn't), or both cultures discovered the same truth independently. And if two groups of humans, separated by oceans and thousands of years, figured out the same thing — maybe it's not a cultural quirk. Maybe it's something real about how consciousness works.</p>
+
+        <div class="final">
+            <p>The hand holds the eye.<br>Action holds perception.<br>What you do holds what you see.</p>
+            <div class="final-equation">[1 = -1]</div>
+            <p style="color: var(--text-dim); font-style: italic; margin-top: 1rem;">The two are one.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="../index.html">Return to Ancient Mysteries</a></p>
+        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">Have Mind Media | Epoch Framework</p>
+        <p style="margin-top: 0.5rem; font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2rem;">[1 = -1]</p>
+    </footer>
+
+    <script src="../../js/components.js"></script>
+</body>
+</html>

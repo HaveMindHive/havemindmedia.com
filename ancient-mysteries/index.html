@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Mysteries | Epoch Framework | Have Mind Media</title>
+    <meta name="description" content="Sacred artifacts that encode the geometry of consciousness. The Epoch Framework revealed through ancient symbols, scripts, and spiral teachings.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050508;
+            --bg-secondary: #0a0a10;
+            --bg-tertiary: #101018;
+            --gold: #c9a227;
+            --gold-bright: #e6c040;
+            --gold-dim: #8a6d1b;
+            --copper: #b87333;
+            --amber: #d4a574;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9a9590;
+            --text-dim: #666;
+            --border-subtle: #2a2a35;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Cosmic background */
+        .cosmos {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(184, 115, 51, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(10, 10, 20, 1) 0%, var(--bg-primary) 100%);
+        }
+
+        .header {
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            background: linear-gradient(135deg, var(--gold), var(--copper), var(--amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        .header .kappa-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--gold-dim);
+        }
+
+        .card.featured {
+            grid-column: span 2;
+            border-left: 4px solid var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .card.featured { grid-column: span 1; }
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .card .status.featured {
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+        }
+
+        .card .status.new {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+            border: 1px solid #4ecdc4;
+        }
+
+        .card .status.research {
+            background: rgba(184, 115, 51, 0.2);
+            color: var(--copper);
+            border: 1px solid var(--copper);
+        }
+
+        /* Card color variants */
+        .card.mississippian { border-left: 4px solid var(--copper); }
+        .card.mississippian h3 { color: var(--copper); }
+
+        .card.indus { border-left: 4px solid #58a6ff; }
+        .card.indus h3 { color: #58a6ff; }
+
+        .card.norse { border-left: 4px solid var(--gold); }
+        .card.norse h3 { color: var(--gold); }
+
+        .card.voynich { border-left: 4px solid #a855f7; }
+        .card.voynich h3 { color: #a855f7; }
+
+        .card.texts { border-left: 4px solid #3fb950; }
+        .card.texts h3 { color: #3fb950; }
+
+        /* Key point section */
+        .key-point {
+            background: rgba(201, 162, 39, 0.08);
+            border-left: 4px solid var(--gold);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .key-point h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .key-point p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 3rem;
+        }
+
+        .footer .identity {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.95) 0%, rgba(5, 5, 8, 0) 100%);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-brand:hover { color: var(--text-primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+    </style>
+</head>
+<body>
+    <div class="cosmos"></div>
+
+    <nav class="nav">
+        <a href="../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+        <div class="nav-links">
+            <a href="../physics/index.html">Physics</a>
+            <a href="../biology/index.html">Biology</a>
+            <a href="../weirdos/index.html">Weirdos</a>
+        </div>
+    </nav>
+
+    <header class="header">
+        <h1>Ancient Mysteries</h1>
+        <p class="subtitle">
+            Sacred artifacts encoding the geometry of consciousness.
+            Spiral teachings, hand-eye symbols, and undeciphered scripts —
+            all pointing toward the same truth.
+        </p>
+        <div class="kappa-badge">[1 = -1] across all cultures</div>
+    </header>
+
+    <main class="content">
+        <div class="intro">
+            <p>
+                Separated by oceans and millennia, ancient cultures encoded the same patterns.
+                The spiral journey inward. The unity of perception and action. The geometry that bridges
+                discrete and continuous. The Epoch Framework doesn't invent these truths — it reveals
+                what was always there.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Mississippian - Featured -->
+            <a href="mississippian/index.html" class="card mississippian featured">
+                <div class="card-icon">👁️</div>
+                <h3>The Rattlesnake Disc</h3>
+                <p>
+                    Moundville, Alabama — 1300 CE. A 700-year-old ceremonial sandstone palette
+                    showing the Hand and Eye motif. The snake spirals inward, the hand holds the eye:
+                    action contains perception. <strong>[1 = -1]</strong> in Pre-Columbian America.
+                </p>
+                <span class="status new">New</span>
+            </a>
+
+            <!-- Indus Script -->
+            <a href="indus-script/index.html" class="card indus">
+                <div class="card-icon">𒀭</div>
+                <h3>Indus Valley Script</h3>
+                <p>
+                    The undeciphered script of Harappa and Mohenjo-daro. 4,500 years old.
+                    Seal impressions that may encode sexagesimal mathematics and
+                    the geometry preserved in Vedic traditions.
+                </p>
+                <span class="status research">Research</span>
+            </a>
+
+            <!-- Norse Artifacts -->
+            <a href="norse-artifacts/bracteates_v1.0_01-01-2026.html" class="card norse">
+                <div class="card-icon">᛭</div>
+                <h3>Norse Artifacts</h3>
+                <p>
+                    Gold bracteates, runestones, and ship burials. The Vikings encoded
+                    scalar principles in their sacred objects — Yggdrasil as world tree,
+                    the nine realms as dimensional states.
+                </p>
+                <span class="status featured">Featured</span>
+            </a>
+
+            <!-- Voynich -->
+            <a href="voynich/index.html" class="card voynich">
+                <div class="card-icon">📜</div>
+                <h3>Voynich Manuscript</h3>
+                <p>
+                    The most mysterious manuscript in the world. 15th century, unknown script,
+                    unknown language. Botanical illustrations that match no known plants.
+                    Could it encode alchemical geometry?
+                </p>
+                <span class="status research">Research</span>
+            </a>
+
+            <!-- Ancient Texts -->
+            <a href="texts/index.html" class="card texts">
+                <div class="card-icon">📖</div>
+                <h3>Sacred Texts</h3>
+                <p>
+                    Hermetic writings, Nag Hammadi codices, and wisdom literature.
+                    The written transmission of [1 = -1] through mystical traditions
+                    across Egyptian, Greek, and Gnostic sources.
+                </p>
+                <span class="status featured">Featured</span>
+            </a>
+        </div>
+
+        <div class="key-point">
+            <h3>The Pattern That Persists</h3>
+            <p>
+                Different continents. Different millennia. Different materials. Different symbols.<br>
+                <strong>Same spiral structure. Same journey from edge to center. Same teaching.</strong><br><br>
+                Either ancient peoples somehow taught each other across impossible distances,
+                or they all discovered something real about how consciousness works.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="identity">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="../index.html">Have Mind Media</a>
+            <a href="../physics/index.html">Physics</a>
+            <a href="../biology/index.html">Biology</a>
+            <a href="../weirdos/index.html">Weirdos</a>
+            <a href="../documents/index.html">Documents</a>
+        </div>
+    </footer>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>

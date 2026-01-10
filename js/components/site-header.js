@@ -267,7 +267,8 @@ class SiteHeader extends HTMLElement {
                             <button class="hmm-btn" title="Explore Have Mind Media">EXPLORE <span class="hmm-arrow">▼</span></button>
                             <div class="hmm-drop" style="min-width: 280px;">
                                 <div class="label">Start Here</div>
-                                <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
+                                <a href="${bp}mind-blowing.html" class="highlight">🔥 Mind-Blowing Proofs</a>
+                                <a href="${bp}education/soul-science.html">☯ Soul Science</a>
                                 <a href="${bp}coin-science/index.html">◯ COIN Science</a>
                                 <a href="${bp}physics/kappa5/index.html">κ₅ True Dark</a>
                                 <hr>
