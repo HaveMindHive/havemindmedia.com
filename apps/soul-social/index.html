@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Social + Santa Coin | Coming Soon | Have Mind Media</title>
+    <meta name="description" content="Soul Social: The anti-toxic social network where geometry protects you. Santa Coin: Cryptocurrency that can only do good. Coming 2026.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-card: #0d0d1a;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --soul-pink: #ff6b9d;
+            --soul-purple: #a855f7;
+            --soul-cyan: #4ecdc4;
+            --soul-blue: #58a6ff;
+            --soul-green: #3fb950;
+            --santa-red: #e74c3c;
+            --santa-green: #27ae60;
+            --santa-gold: #f1c40f;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .soul-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(78, 205, 196, 0.04) 0%, transparent 60%),
+                var(--bg-primary);
+        }
+
+        .floating-souls {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .soul-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float-soul 25s ease-in-out infinite;
+        }
+
+        @keyframes float-soul {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+            25% { transform: translate(50px, -30px) scale(1.1); opacity: 0.35; }
+            50% { transform: translate(-30px, 50px) scale(0.9); opacity: 0.25; }
+            75% { transform: translate(-50px, -20px) scale(1.05); opacity: 0.3; }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(5, 5, 16, 0.95) 0%, rgba(5, 5, 16, 0) 100%);
+        }
+
+        .nav-brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .coming-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple));
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.7); }
+        }
+
+        .soul-logo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple), var(--soul-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 5s ease infinite;
+            background-size: 200% 200%;
+            margin-bottom: 0.5rem;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline-bold {
+            font-size: 2rem;
+            color: var(--soul-cyan);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-title.soul {
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title.santa {
+            background: linear-gradient(135deg, var(--santa-red), var(--santa-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* S-Signature Demo Section */
+        .signature-demo {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .signature-card {
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .signature-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .signature-avatar.anon {
+            background: linear-gradient(135deg, var(--soul-purple), var(--soul-pink));
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .signature-name {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--soul-cyan);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signature-id {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .signature-modes {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .mode-badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mode-badge.s-plus { background: rgba(255, 107, 157, 0.2); color: var(--soul-pink); }
+        .mode-badge.s-minus { background: rgba(78, 205, 196, 0.2); color: var(--soul-cyan); }
+        .mode-badge.s-zero { background: rgba(212, 175, 55, 0.2); color: var(--gold); }
+        .mode-badge.s-wave { background: rgba(168, 85, 247, 0.2); color: var(--soul-purple); }
+        .mode-badge.s-moral { background: rgba(63, 185, 80, 0.2); color: var(--soul-green); }
+
+        .compatibility-meter {
+            height: 8px;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .compatibility-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .compatibility-fill.high {
+            background: linear-gradient(90deg, var(--soul-green), var(--soul-cyan));
+            width: 94%;
+        }
+
+        .compatibility-fill.medium {
+            background: linear-gradient(90deg, var(--gold), var(--soul-pink));
+            width: 67%;
+        }
+
+        .compatibility-fill.low {
+            background: linear-gradient(90deg, var(--santa-red), var(--soul-pink));
+            width: 23%;
+        }
+
+        .compatibility-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* Anonymous explanation */
+        .anon-box {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .anon-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--soul-cyan);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .anon-box p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .anon-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .anon-feature {
+            text-align: center;
+        }
+
+        .anon-feature .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .anon-feature .label {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--soul-pink), var(--soul-purple), var(--soul-cyan));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--soul-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: 4rem 0;
+        }
+
+        /* Santa Coin Section */
+        .santa-section {
+            background: linear-gradient(135deg, rgba(231, 76, 60, 0.05), rgba(39, 174, 96, 0.05));
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+
+        .santa-logo {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            background: linear-gradient(135deg, var(--santa-red), var(--santa-gold), var(--santa-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .santa-tagline {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--santa-gold);
+            margin-bottom: 2rem;
+        }
+
+        .santa-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .santa-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(241, 196, 15, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .santa-card h4 {
+            color: var(--santa-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .santa-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* How it works visual */
+        .santa-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+        }
+
+        .santa-step {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .santa-step .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .santa-step .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .santa-arrow {
+            font-size: 2rem;
+            color: var(--santa-gold);
+        }
+
+        /* Promise Box */
+        .promise-box {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(168, 85, 247, 0.1));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .promise-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--soul-pink);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .promise-item {
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .promise-item.help {
+            background: rgba(78, 205, 196, 0.15);
+            color: var(--soul-cyan);
+            border: 1px solid var(--soul-cyan);
+        }
+
+        .promise-item.laugh {
+            background: rgba(241, 196, 15, 0.15);
+            color: var(--santa-gold);
+            border: 1px solid var(--santa-gold);
+        }
+
+        .promise-item.love {
+            background: rgba(255, 107, 157, 0.15);
+            color: var(--soul-pink);
+            border: 1px solid var(--soul-pink);
+        }
+
+        .promise-item.respect {
+            background: rgba(168, 85, 247, 0.15);
+            color: var(--soul-purple);
+            border: 1px solid var(--soul-purple);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .cta-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(168, 85, 247, 0.3);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(168, 85, 247, 0.5);
+        }
+
+        .cta-button.santa {
+            background: linear-gradient(135deg, var(--santa-red), var(--santa-green));
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.3);
+        }
+
+        .cta-button.santa:hover {
+            box-shadow: 0 15px 50px rgba(231, 76, 60, 0.5);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer .identity {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--soul-pink);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .santa-arrow { display: none; }
+            .signature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="soul-bg"></div>
+    <div class="floating-souls">
+        <div class="soul-orb" style="width: 400px; height: 400px; background: var(--soul-pink); top: 5%; left: 0%;"></div>
+        <div class="soul-orb" style="width: 300px; height: 300px; background: var(--soul-purple); top: 50%; right: 5%; animation-delay: -8s;"></div>
+        <div class="soul-orb" style="width: 350px; height: 350px; background: var(--soul-cyan); bottom: 10%; left: 15%; animation-delay: -15s;"></div>
+        <div class="soul-orb" style="width: 250px; height: 250px; background: var(--santa-red); top: 70%; right: 20%; animation-delay: -20s;"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="../../index.html" class="nav-brand">HAVE MIND MEDIA</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <span class="coming-badge">COMING 2026</span>
+        <h1 class="soul-logo">Soul Social</h1>
+        <p class="tagline">The social network where...</p>
+        <p class="tagline-bold">You literally cannot get hurt.</p>
+        <p class="hero-description">
+            No trolls. No hate. No creepy DMs. No comparison anxiety.
+            Just geometric resonance finding your <strong>Soul Familiars</strong> —
+            the people you're actually supposed to know.
+        </p>
+        <p class="scroll-hint">scroll to discover</p>
+    </section>
+
+    <!-- S-Signature Section -->
+    <section class="section">
+        <h2 class="section-title soul">Your S-Signature is Your Key</h2>
+        <p class="section-subtitle">
+            Every consciousness has a geometric signature. We calculate yours.
+            Then the math finds people who resonate at your frequency.
+        </p>
+
+        <div class="signature-demo">
+            <h3 style="text-align: center; color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 2rem;">
+                Example: How Matching Works
+            </h3>
+
+            <div class="signature-grid">
+                <!-- Your signature -->
+                <div class="signature-card">
+                    <div class="signature-avatar anon">🌟</div>
+                    <div class="signature-name">You</div>
+                    <div class="signature-id">S-ID: ████-████-████</div>
+                    <div class="signature-modes">
+                        <span class="mode-badge s-plus">S⁺ 34%</span>
+                        <span class="mode-badge s-minus">S⁻ 28%</span>
+                        <span class="mode-badge s-zero">S⁰ 18%</span>
+                        <span class="mode-badge s-wave">S∿ 12%</span>
+                        <span class="mode-badge s-moral">S̸ 8%</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Your actual identity: <strong>Hidden</strong></p>
+                </div>
+
+                <!-- High match -->
+                <div class="signature-card">
+                    <div class="signature-avatar anon">✨</div>
+                    <div class="signature-name">Soul Familiar #1</div>
+                    <div class="signature-id">S-ID: ████-████-████</div>
+                    <div class="signature-modes">
+                        <span class="mode-badge s-plus">S⁺ 31%</span>
+                        <span class="mode-badge s-minus">S⁻ 30%</span>
+                        <span class="mode-badge s-zero">S⁰ 19%</span>
+                        <span class="mode-badge s-wave">S∿ 13%</span>
+                        <span class="mode-badge s-moral">S̸ 7%</span>
+                    </div>
+                    <div class="compatibility-meter">
+                        <div class="compatibility-fill high"></div>
+                    </div>
+                    <div class="compatibility-label">94% Geometric Match — DMs Unlocked!</div>
+                </div>
+
+                <!-- Medium match -->
+                <div class="signature-card">
+                    <div class="signature-avatar anon">💫</div>
+                    <div class="signature-name">Potential Friend</div>
+                    <div class="signature-id">S-ID: ████-████-████</div>
+                    <div class="signature-modes">
+                        <span class="mode-badge s-plus">S⁺ 22%</span>
+                        <span class="mode-badge s-minus">S⁻ 35%</span>
+                        <span class="mode-badge s-zero">S⁰ 25%</span>
+                        <span class="mode-badge s-wave">S∿ 10%</span>
+                        <span class="mode-badge s-moral">S̸ 8%</span>
+                    </div>
+                    <div class="compatibility-meter">
+                        <div class="compatibility-fill medium"></div>
+                    </div>
+                    <div class="compatibility-label">67% Match — Can Comment (Filtered)</div>
+                </div>
+
+                <!-- Low match -->
+                <div class="signature-card">
+                    <div class="signature-avatar anon">❓</div>
+                    <div class="signature-name">Stranger</div>
+                    <div class="signature-id">S-ID: ████-████-████</div>
+                    <div class="signature-modes">
+                        <span class="mode-badge s-plus">S⁺ 55%</span>
+                        <span class="mode-badge s-minus">S⁻ 8%</span>
+                        <span class="mode-badge s-zero">S⁰ 30%</span>
+                        <span class="mode-badge s-wave">S∿ 5%</span>
+                        <span class="mode-badge s-moral">S̸ 2%</span>
+                    </div>
+                    <div class="compatibility-meter">
+                        <div class="compatibility-fill low"></div>
+                    </div>
+                    <div class="compatibility-label">23% Match — No Contact Possible</div>
+                </div>
+            </div>
+
+            <div class="anon-box">
+                <h3>100% Anonymous Until YOU Choose</h3>
+                <p>
+                    Nobody sees your real name. Nobody sees your photo. Nobody knows who you are.
+                    <strong>The geometry matches souls, not faces.</strong>
+                    When you find a true Soul Familiar and BOTH of you want to reveal... then you can.
+                    But not before. Never before.
+                </p>
+                <div class="anon-features">
+                    <div class="anon-feature">
+                        <div class="icon">🎭</div>
+                        <div class="label">No Real Names</div>
+                    </div>
+                    <div class="anon-feature">
+                        <div class="icon">🚫</div>
+                        <div class="label">No Profile Pics</div>
+                    </div>
+                    <div class="anon-feature">
+                        <div class="icon">📍</div>
+                        <div class="label">No Locations</div>
+                    </div>
+                    <div class="anon-feature">
+                        <div class="icon">🔐</div>
+                        <div class="label">No Cruising</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Protects You -->
+    <section class="section">
+        <h2 class="section-title soul">How The Geometry Protects You</h2>
+        <p class="section-subtitle">
+            This isn't moderation. It's mathematics. Trolls are geometrically impossible.
+        </p>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>No Direct Messages</h3>
+                <p>Until BOTH souls show compatible S-Signatures AND both consent, no DMs possible. Period. No exceptions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Filtered Comments</h3>
+                <p>Want to comment? The geometry helps you say it kindly. Helpful, funny, loving, or growing. If it can't be nice, it doesn't exist.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>No Cruising for Hotties</h3>
+                <p>There are no photos to judge. No profiles to stalk. You match on SOUL, not selfies. Revolutionary? No. Obvious.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">❤️</div>
+                <h3>Not a Dating App</h3>
+                <p>This is about finding your soul tribe. The people who GET you. Romance might happen. That's not why we're here.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🧮</div>
+                <h3>Geometry Says What's OK</h3>
+                <p>The math decides what you're allowed to say. Not us. Not mods. The geometry. It literally cannot be exploited.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Grow Together</h3>
+                <p>Find people on similar journeys. Learn from those ahead. Help those behind. That's what social media was supposed to be.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Santa Coin Section -->
+    <section class="section">
+        <div class="santa-section">
+            <h2 class="santa-logo">🎄 Santa Coin</h2>
+            <p class="santa-tagline">Cryptocurrency That Can Only Do Good</p>
+            <p class="section-subtitle" style="margin-bottom: 2rem;">
+                A new kind of currency built on philanthropy, not exploitation.
+                The more you have, the more you give. The house always wins — and the house is <strong>everyone</strong>.
+            </p>
+
+            <div class="santa-visual">
+                <div class="santa-step">
+                    <div class="icon">💰</div>
+                    <div class="label">Buy Coins</div>
+                </div>
+                <span class="santa-arrow">→</span>
+                <div class="santa-step">
+                    <div class="icon">📈</div>
+                    <div class="label">Trade & Play</div>
+                </div>
+                <span class="santa-arrow">→</span>
+                <div class="santa-step">
+                    <div class="icon">🎁</div>
+                    <div class="label">Dec 1st Payout</div>
+                </div>
+                <span class="santa-arrow">→</span>
+                <div class="santa-step">
+                    <div class="icon">💧</div>
+                    <div class="label">Fund Good</div>
+                </div>
+            </div>
+
+            <div class="santa-features">
+                <div class="santa-card">
+                    <h4>🎁 December 1st Payout</h4>
+                    <p>Every year, the ledger resets. All users get a Christmas bonus. Funds go directly to charities for volunteer workers. Santa delivers.</p>
+                </div>
+
+                <div class="santa-card">
+                    <h4>🐋 No Whales Possible</h4>
+                    <p>The more you hold, the more you lose value. The less you hold, the more you gain. Philanthropy is possible. Hoarding is not.</p>
+                </div>
+
+                <div class="santa-card">
+                    <h4>🎰 Tradable Asset</h4>
+                    <p>We control the market mechanics. Some gamesmanship for the brave — the house always wins, but maybe you will too. Satisfies the gambler instinct for good outcomes only.</p>
+                </div>
+
+                <div class="santa-card">
+                    <h4>🏆 Monthly Winners</h4>
+                    <p>Winnings split on good causes: water wells, food, healing the planet. You get a "You Helped" thank you. Feel good about playing.</p>
+                </div>
+
+                <div class="santa-card">
+                    <h4>🔮 S-Signature Gated</h4>
+                    <p>You can only go live when you reach a certain level — loving, balanced, not greedy. Your coins wait until you're ready. When you're ready, that's real.</p>
+                </div>
+
+                <div class="santa-card">
+                    <h4>🌍 Direct to People</h4>
+                    <p>Philanthropy goes directly to people, not overhead. No way to exploit. No way to skim. No way to corrupt. Just help.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Promise -->
+    <section class="section">
+        <div class="promise-box">
+            <h3>What We're Building</h3>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+                Everything we make must do <strong style="color: var(--gold);">ALL THREE</strong> of these things:
+            </p>
+            <div class="promise-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 900px;">
+                <div class="promise-item help" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">1</div>
+                    <strong>HELP</strong><br>
+                    Make your life better
+                </div>
+                <div class="promise-item laugh" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">2</div>
+                    <strong>MAKE YOU LAUGH</strong><br>
+                    Joy is medicine
+                </div>
+                <div class="promise-item love" style="padding: 1.5rem;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">3</div>
+                    <strong>PROMOTE LOVE</strong><br>
+                    Mutual respect & balance
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); margin-top: 2rem; font-size: 1.1rem;">
+                If it doesn't do <strong style="color: var(--soul-pink);">all three</strong>... we don't make it.<br>
+                <span style="color: var(--gold);">That's the triad. That's the rule.</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2 class="cta-title">Ready For Something Different?</h2>
+        <p class="cta-subtitle">
+            Not another social network.<br>
+            Not another cryptocurrency.<br>
+            <strong>A new way of being together.</strong>
+        </p>
+
+        <div>
+            <a href="#" class="cta-button">Join Soul Social Waitlist</a>
+            <a href="#" class="cta-button santa">Reserve Santa Coins</a>
+        </div>
+
+        <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+            Coming 2026 | No exploitation possible
+        </p>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border-subtle); max-width: 600px; margin-left: auto; margin-right: auto;">
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                Old social media tried to connect <em>everyone</em>.<br>
+                It connected <em>no one</em>.<br><br>
+                <span style="color: var(--soul-cyan);">We connect the RIGHT ones.</span>
+            </p>
+            <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem; margin-top: 1.5rem;">[1 = -1]</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="identity">[1 = -1]</p>
+        <p>Two souls. One connection.</p>
+        <div class="footer-links">
+            <a href="../../index.html">Have Mind Media</a>
+            <a href="../../tools/s-signature/s_signature_engine.html">Calculate Your S-Signature</a>
+            <a href="../../education/soul-science.html">Soul Science</a>
+            <a href="../../support.html">Support</a>
+        </div>
+        <p style="margin-top: 2rem; color: var(--text-dim); font-size: 0.85rem;">
+            Soul Social + Santa Coin | Have Mind Media | Coming 2026
+        </p>
+    </footer>
+
+    <script src="../../js/components.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps | Have Mind Media</title>
+    <meta name="description" content="Have Mind Media applications. Soul Social, SoulScience Chat, and more tools built on the Epoch Framework.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --soul-pink: #ff6b9d;
+            --soul-purple: #a855f7;
+            --soul-cyan: #4ecdc4;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple), var(--soul-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .app-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+        }
+
+        .app-card.soul-social::before {
+            background: linear-gradient(90deg, var(--soul-pink), var(--soul-purple), var(--soul-cyan));
+        }
+
+        .app-card.chat::before {
+            background: linear-gradient(90deg, var(--gold), var(--soul-cyan));
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.2);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-card.soul-social h2 {
+            background: linear-gradient(135deg, var(--soul-pink), var(--soul-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-card.chat h2 {
+            color: var(--gold);
+        }
+
+        .app-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .app-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .app-status.coming {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--soul-purple);
+            border: 1px solid var(--soul-purple);
+        }
+
+        .app-status.live {
+            background: rgba(63, 185, 80, 0.2);
+            color: #3fb950;
+            border: 1px solid #3fb950;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer .identity {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover { color: var(--gold); }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Apps</h1>
+        <p class="subtitle">
+            Applications built on the Epoch Framework. Tools for soul connection and consciousness exploration.
+        </p>
+    </header>
+
+    <main class="content">
+        <div class="apps-grid">
+            <a href="soul-social/index.html" class="app-card soul-social">
+                <div class="app-icon">💜</div>
+                <h2>Soul Social</h2>
+                <p>
+                    The anti-toxic social network. S-Signature matching finds your Soul Familiars.
+                    No trolls, no hate, no drama — just geometric resonance and genuine connection.
+                </p>
+                <span class="app-status coming">Coming 2026</span>
+            </a>
+
+            <a href="soulscience-chat/index.html" class="app-card chat">
+                <div class="app-icon">💬</div>
+                <h2>SoulScience Chat</h2>
+                <p>
+                    AI-powered conversation through the Epoch lens. Ask questions about consciousness,
+                    geometry, and the framework. Guidance from [1 = -1].
+                </p>
+                <span class="app-status live">Live</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="identity">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="../index.html">Have Mind Media</a>
+            <a href="../tools/index.html">Tools</a>
+            <a href="../education/index.html">Education</a>
+        </div>
+    </footer>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>
