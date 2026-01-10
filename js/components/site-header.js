@@ -279,7 +279,7 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
                                 <hr>
                                 <div class="label">Libraries & Navigation</div>
-                                <a href="${bp}site-directory.html" class="highlight">📚 Complete Site Directory (156 pages)</a>
+                                <a href="${bp}site-directory.html" class="highlight">📚 Complete Site Directory (157 pages)</a>
                                 <a href="${bp}library-wizard/index.html">Library Wizard</a>
                                 <a href="${bp}master-library.html">Master Library</a>
                                 <a href="${bp}documents/index.html">White Papers</a>
