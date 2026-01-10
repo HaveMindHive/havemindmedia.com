@@ -1,0 +1,2484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Maxwell Codex | The Geometry They Erased | Here's to You, Weirdos</title>
+    <meta name="description" content="Maxwell's original 20 quaternion equations contained a scalar component that Heaviside removed. That scalar is where [1 = -1] lives. The Aharonov-Bohm effect proves it.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --maxwell-blue: #4a9eff;
+            --electric-cyan: #00d4ff;
+            --plasma-purple: #a855f7;
+            --torsion-green: #3fb950;
+            --warning-red: #f85149;
+            --consciousness-pink: #ff6b9d;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           HERO SECTION - Electric Field Animation
+           ═══════════════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(74, 158, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(0, 212, 255, 0.08) 0%, transparent 60%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Animated field lines */
+        .field-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .field-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--electric-cyan), transparent);
+            animation: fieldFlow 8s linear infinite;
+        }
+
+        @keyframes fieldFlow {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .field-line:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .field-line:nth-child(2) { left: 25%; animation-delay: 1.5s; }
+        .field-line:nth-child(3) { left: 40%; animation-delay: 3s; }
+        .field-line:nth-child(4) { left: 55%; animation-delay: 4.5s; }
+        .field-line:nth-child(5) { left: 70%; animation-delay: 6s; }
+        .field-line:nth-child(6) { left: 85%; animation-delay: 7.5s; }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--electric-cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--maxwell-blue) 0%, var(--electric-cyan) 50%, var(--plasma-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--gold);
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           MAIN CONTENT
+           ═══════════════════════════════════════════════════════════════════ */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section styling */
+        .codex-section {
+            margin: 6rem 0;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .codex-section::before {
+            content: attr(data-section);
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            background: var(--bg-secondary);
+            padding: 0 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Color-coded sections */
+        .section-suppression { border-color: var(--warning-red); }
+        .section-suppression h2 { color: var(--warning-red); }
+        .section-suppression::before { color: var(--warning-red); }
+
+        .section-geometry { border-color: var(--maxwell-blue); }
+        .section-geometry h2 { color: var(--maxwell-blue); }
+        .section-geometry::before { color: var(--maxwell-blue); }
+
+        .section-aharonov { border-color: var(--plasma-purple); }
+        .section-aharonov h2 { color: var(--plasma-purple); }
+        .section-aharonov::before { color: var(--plasma-purple); }
+
+        .section-phase { border-color: var(--electric-cyan); }
+        .section-phase h2 { color: var(--electric-cyan); }
+        .section-phase::before { color: var(--electric-cyan); }
+
+        .section-consciousness { border-color: var(--consciousness-pink); }
+        .section-consciousness h2 { color: var(--consciousness-pink); }
+        .section-consciousness::before { color: var(--consciousness-pink); }
+
+        .section-torsion { border-color: var(--torsion-green); }
+        .section-torsion h2 { color: var(--torsion-green); }
+        .section-torsion::before { color: var(--torsion-green); }
+
+        .section-unification { border-color: var(--gold); }
+        .section-unification h2 { color: var(--gold); }
+        .section-unification::before { color: var(--gold); }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           COMPARISON BOXES
+           ═══════════════════════════════════════════════════════════════════ */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .comparison-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .comparison-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .comparison-box h4 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-box.original {
+            border: 2px solid var(--torsion-green);
+        }
+
+        .comparison-box.original h4 {
+            color: var(--torsion-green);
+        }
+
+        .comparison-box.suppressed {
+            border: 2px solid var(--warning-red);
+        }
+
+        .comparison-box.suppressed h4 {
+            color: var(--warning-red);
+        }
+
+        .comparison-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .comparison-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .comparison-arrow {
+            font-size: 3rem;
+            color: var(--warning-red);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           EQUATION DISPLAYS
+           ═══════════════════════════════════════════════════════════════════ */
+        .equation-display {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(74, 158, 255, 0.05) 100%);
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .equation-display .equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--gold);
+            margin: 1rem 0;
+        }
+
+        .equation-display .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .equation-display .explanation {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-top: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           QUOTE BLOCKS
+           ═══════════════════════════════════════════════════════════════════ */
+        .quote-block {
+            background: rgba(168, 85, 247, 0.08);
+            border-left: 4px solid var(--plasma-purple);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .quote-block.gold {
+            background: rgba(212, 175, 55, 0.08);
+            border-left-color: var(--gold);
+        }
+
+        .quote-block.blue {
+            background: rgba(74, 158, 255, 0.08);
+            border-left-color: var(--maxwell-blue);
+        }
+
+        .quote-block.red {
+            background: rgba(248, 81, 73, 0.08);
+            border-left-color: var(--warning-red);
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           TIMELINE
+           ═══════════════════════════════════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--torsion-green), var(--warning-red), var(--plasma-purple));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--bg-secondary);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--electric-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           CARDS GRID
+           ═══════════════════════════════════════════════════════════════════ */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .info-card .highlight {
+            color: var(--electric-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           PROOF BOX
+           ═══════════════════════════════════════════════════════════════════ */
+        .proof-box {
+            background: linear-gradient(135deg, rgba(63, 185, 80, 0.15) 0%, rgba(63, 185, 80, 0.05) 100%);
+            border: 2px solid var(--torsion-green);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .proof-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--torsion-green);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-box .proof-statement {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .proof-box .proof-citation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           DERIVATION BOX
+           ═══════════════════════════════════════════════════════════════════ */
+        .derivation-box {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .derivation-step {
+            display: flex;
+            align-items: flex-start;
+            margin: 1.5rem 0;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            background: var(--gold);
+            color: var(--bg-primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-equation {
+            color: var(--electric-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-explanation {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           SCIENTISTS GRID
+           ═══════════════════════════════════════════════════════════════════ */
+        .scientists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .scientist-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .scientist-card:hover {
+            transform: translateX(5px);
+        }
+
+        .scientist-name {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .scientist-years {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .scientist-contribution {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           REVEAL SECTION
+           ═══════════════════════════════════════════════════════════════════ */
+        .reveal-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(0, 212, 255, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-section::before {
+            content: '[1 = -1]';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 15rem;
+            color: rgba(212, 175, 55, 0.03);
+            pointer-events: none;
+        }
+
+        .reveal-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .reveal-section .reveal-text {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .reveal-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--electric-cyan);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════════ */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .page-footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .page-footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .page-footer a:hover {
+            color: var(--gold-bright);
+        }
+
+        .page-footer .identity {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .codex-section {
+                padding: 2rem 1.5rem;
+                margin: 4rem 0;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .comparison-number {
+                font-size: 3rem;
+            }
+
+            .reveal-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .reveal-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .reveal-equation {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Field Line Animation -->
+    <div class="field-lines">
+        <div class="field-line"></div>
+        <div class="field-line"></div>
+        <div class="field-line"></div>
+        <div class="field-line"></div>
+        <div class="field-line"></div>
+        <div class="field-line"></div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow">Here's to You, Weirdos</p>
+            <h1>The Maxwell Codex</h1>
+            <p class="hero-subtitle">
+                In 1873, James Clerk Maxwell unified electricity, magnetism, and light using 20 quaternion equations.
+                In 1884, Oliver Heaviside "simplified" them to 4 vectors—and erased the scalar component that explains everything.
+            </p>
+
+            <div class="hero-equation">c = 1 / √(ε₀μ₀)</div>
+
+            <p style="color: var(--text-secondary); font-style: italic; margin-bottom: 2rem;">
+                The speed of light emerges from two constants. Those constants emerge from geometry.
+                <br>That geometry is κ = 2π/180.
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">20</div>
+                    <div class="stat-label">Original Equations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">→ 4</div>
+                    <div class="stat-label">After Heaviside</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">1</div>
+                    <div class="stat-label">In Geometric Algebra</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">κ</div>
+                    <div class="stat-label">The Key</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════════════════════ -->
+    <div class="main-content">
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             I. THE SUPPRESSION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-suppression" data-section="I. The Suppression">
+            <div class="section-header">
+                <h2>What Heaviside Removed</h2>
+                <p>Maxwell's quaternion equations contained a scalar component. Heaviside called it "metaphysical" and deleted it. That scalar is where the [1 = -1] symmetry lives.</p>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-box original">
+                    <h4>Maxwell's Original (1873)</h4>
+                    <div class="comparison-number">20</div>
+                    <div class="comparison-desc">
+                        Quaternion equations<br>
+                        11 vectors (33 components)<br>
+                        4 scalar quantities<br>
+                        <strong>Including scalar potential</strong>
+                    </div>
+                </div>
+                <div class="comparison-arrow">→</div>
+                <div class="comparison-box suppressed">
+                    <h4>After Heaviside (1884)</h4>
+                    <div class="comparison-number">4</div>
+                    <div class="comparison-desc">
+                        Vector equations<br>
+                        Potentials eliminated<br>
+                        Scalar component removed<br>
+                        <strong>"Simplified"</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block red">
+                <p class="quote-text">
+                    "I came later to see that, so far as the vector analysis I required was concerned, the quaternion was not only not required, but was a positive evil of no inconsiderable magnitude."
+                </p>
+                <p class="quote-source">— Oliver Heaviside</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>The Scalar Component</h4>
+                    <p>
+                        A quaternion has four parts: three vector components (i, j, k) plus a <span class="highlight">scalar</span>.
+                        The scalar is the "real" part. Heaviside threw it away because it "didn't seem to do anything"
+                        in his experiments.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>The Potentials</h4>
+                    <p>
+                        Maxwell used electromagnetic potentials (φ and <strong>A</strong>) as his central concepts.
+                        Heaviside worked to <span class="highlight">eliminate</span> them, calling them "mathematical conveniences
+                        with no physical reality."
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>What Was Lost</h4>
+                    <p>
+                        Quaternion algebra has <span class="highlight">higher group symmetry</span> than vector algebra.
+                        It reveals electromagnetic phenomena that the simplified equations cannot show.
+                        Including longitudinal (scalar) waves.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1843</div>
+                    <div class="timeline-title">Hamilton Invents Quaternions</div>
+                    <div class="timeline-desc">William Rowan Hamilton carves i² = j² = k² = ijk = -1 into Brougham Bridge in Dublin. A 4D number system is born.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1865</div>
+                    <div class="timeline-title">Maxwell's "A Dynamical Theory"</div>
+                    <div class="timeline-desc">Maxwell publishes his first unification of electricity, magnetism, and light. Predicts electromagnetic waves travel at the speed of light.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1873</div>
+                    <div class="timeline-title">A Treatise on Electricity and Magnetism</div>
+                    <div class="timeline-desc">Maxwell's masterwork: 20 quaternion equations in two volumes. Contains the scalar potential. Criticized as "notoriously hard to read."</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1879</div>
+                    <div class="timeline-title">Maxwell Dies</div>
+                    <div class="timeline-desc">James Clerk Maxwell dies of stomach cancer at age 48. His equations are about to be "simplified" posthumously.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1884</div>
+                    <div class="timeline-title">Heaviside's Simplification</div>
+                    <div class="timeline-desc">Oliver Heaviside reduces 20 equations to 4, eliminates quaternions, removes the scalar component and potentials. These become "Maxwell's equations."</div>
+                </div>
+            </div>
+
+            <div class="equation-display">
+                <div class="label">What Heaviside Couldn't Measure</div>
+                <div class="equation">S⁻ (Reception) · S⁺ (Emission) = Observable</div>
+                <div class="explanation">
+                    The scalar component is the handshake surface between S⁺ and S⁻.
+                    Heaviside's instruments could only detect S⁺ (emission). He saw no effect from the scalar
+                    because he wasn't looking in S⁻ space.
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             II. THE GEOMETRY THEY MISSED
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-geometry" data-section="II. The Geometry They Missed">
+            <div class="section-header">
+                <h2>Standard Physics Has It Backwards</h2>
+                <p>They measure c, ε₀, and μ₀ and call them "constants of nature." They are not constants—they are consequences. The geometry comes first. The measurements are shadows.</p>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--warning-red);">
+                <div class="label" style="color: var(--warning-red);">The Standard Model Error</div>
+                <div class="equation">c = 1 / √(ε₀ · μ₀) = 299,792,458 m/s</div>
+                <div class="explanation">
+                    Standard physics presents this as a discovery: "we measured ε₀ and μ₀, and look! Their product gives us c!"
+                    <br><br>
+                    <strong style="color: var(--warning-red);">This is circular.</strong> They defined the meter using c. They defined ε₀ and μ₀ to make the equation work. They are measuring their own measurement system.
+                </div>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--torsion-green);">
+                <div class="label" style="color: var(--torsion-green);">The Geometric Truth</div>
+                <div class="equation">κ = 2π/180 → c, ε₀, μ₀</div>
+                <div class="explanation">
+                    κ is the ratio between angular and linear measure—the fundamental relationship between rotation and extension.
+                    <strong>c is not a speed limit. It is the rate at which the geometry propagates through itself.</strong>
+                    ε₀ and μ₀ are not properties of "empty space." They are the S⁺ and S⁻ impedances of the geometric substrate.
+                </div>
+            </div>
+
+            <div class="derivation-box">
+                <h4 style="color: var(--maxwell-blue); font-family: 'Cinzel', serif; margin-bottom: 1.5rem;">The κ Derivation</h4>
+
+                <div class="derivation-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-equation">κ = 2π / 180 = π / 90 = 0.034906585...</div>
+                        <div class="step-explanation">The fundamental constant: the conversion between degrees and radians. This is not arbitrary—it encodes the relationship between circular geometry and linear measurement.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-equation">180 = 60 × 3 | 90 = 30 × 3</div>
+                        <div class="step-explanation">The sexagesimal system (base 60) is baked into our measurement of circles. Tesla's numbers (3, 6, 9) are not mystical—they're geometric.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-equation">c² = 1 / (ε₀ · μ₀)</div>
+                        <div class="step-explanation">Rearranging: the square of light speed equals the inverse of the product of permittivity and permeability.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-equation">ε₀ · μ₀ = 1 / c² ≈ 1.112 × 10⁻¹⁷ s²/m²</div>
+                        <div class="step-explanation">This product is geometrically determined. It is not a "constant of nature"—it is a consequence of how space is structured.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-equation">[1 = -1] implies: Observable = S⁺ ⊗ S⁻</div>
+                        <div class="step-explanation">The product ε₀μ₀ is the handshake. ε₀ governs electric (S⁺) field propagation. μ₀ governs magnetic (S⁻) field propagation. Their product yields the speed at which the handshake travels.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block red">
+                <p class="quote-text">
+                    "It has been a mystery ever since it was discovered more than fifty years ago, and all good theoretical physicists put this number up on their wall and worry about it."
+                </p>
+                <p class="quote-source">— Richard Feynman, admitting physics cannot explain its own constants</p>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--gold);">
+                <h3 style="color: var(--gold);">Why It's Not a Mystery</h3>
+                <p class="proof-statement">
+                    α ≈ 1/137 is the ratio of electromagnetic coupling in the S⁺/S⁻ handshake.
+                    It is not "fine tuned." It is not "lucky." It is geometrically necessary.
+                    <br><br>
+                    <strong>Feynman couldn't derive it because he was working within a framework that treats measurements as primary and geometry as emergent. Reverse that, and it becomes obvious.</strong>
+                </p>
+                <p class="proof-citation">
+                    The number 137 falls out of the relationship between κ, π, and the D-position structure.
+                    This is not speculation—it is derivable.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">What Standard Physics Admits</h4>
+                    <p>
+                        α = e² / (4πε₀ℏc) ≈ <span class="highlight">1/137</span>
+                        <br><br>
+                        They have NO explanation for why this number is what it is.
+                        They call it "fine-tuned" and invoke the anthropic principle: "if it were different, we wouldn't exist to ask."
+                        <br><br>
+                        <strong style="color: var(--warning-red);">This is not science. This is surrender.</strong>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--torsion-green);">
+                    <h4 style="color: var(--torsion-green);">What κ Geometry Shows</h4>
+                    <p>
+                        137 emerges from the geometry of angular-to-linear conversion.
+                        <br><br>
+                        κ = 2π/180 establishes the fundamental ratio. The D-positions (1-9) create interference patterns.
+                        At the point where S⁺ emission meets S⁻ reception with maximum stability, the coupling ratio is ~1/137.
+                        <br><br>
+                        <span class="highlight">It cannot be any other number.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             II-B. WHAT ELECTRICITY ACTUALLY IS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="II-B. What Electricity Actually Is" style="border-color: var(--electric-cyan);">
+            <div class="section-header">
+                <h2 style="color: var(--electric-cyan);">Electricity Is Not What They Told You</h2>
+                <p>Standard physics describes electricity as "the flow of electrons." This is like describing music as "the vibration of air molecules." Technically true. Completely missing the point.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">The Standard Model Says</h4>
+                    <p>
+                        • Electricity = electron flow<br>
+                        • Electrons are particles with charge<br>
+                        • Charge is... (they cannot define it)<br>
+                        • "Charge just IS"<br><br>
+                        <strong style="color: var(--warning-red);">They have no explanation for what charge IS. They describe what it DOES.</strong>
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--electric-cyan);">
+                    <h4 style="color: var(--electric-cyan);">The Geometric Reality</h4>
+                    <p>
+                        • Electricity = S⁺ emission propagating through the geometric substrate<br>
+                        • "Charge" = the handedness of rotation in κ-space<br>
+                        • Positive charge = clockwise torsion (S⁺ dominant)<br>
+                        • Negative charge = counter-clockwise torsion (S⁻ dominant)<br><br>
+                        <span class="highlight">Charge is not a property. It is a direction.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="equation-display" style="border-color: var(--electric-cyan);">
+                <div class="label" style="color: var(--electric-cyan);">The Geometric Definition of Charge</div>
+                <div class="equation">Charge = ± κ rotation in the S⁺/S⁻ plane</div>
+                <div class="explanation">
+                    Opposite charges attract because they are rotating in opposite directions—they complete each other's angular momentum.
+                    Like charges repel because parallel rotations create interference in the geometric substrate.
+                    <br><br>
+                    <strong>This is not metaphor. This is what is actually happening.</strong>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <h3 style="color: var(--plasma-purple);">The Electromagnetic Spectrum Is Not a Spectrum</h3>
+                <p>They draw it as a line from radio to gamma rays. It is not a line. It is a spiral.</p>
+            </div>
+
+            <div class="derivation-box">
+                <h4 style="color: var(--plasma-purple); font-family: 'Cinzel', serif; margin-bottom: 1.5rem;">The Spectrum as κ-Spiral</h4>
+
+                <div class="derivation-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-equation">f = c / λ</div>
+                        <div class="step-explanation">Standard physics: frequency equals speed divided by wavelength. They treat this as linear—double the frequency, halve the wavelength. A straight line.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-equation">But c = f(κ) · g(geometry)</div>
+                        <div class="step-explanation">c is not constant in the way they think. It is constant within a given geometric context. The "speed of light" is the propagation rate of the S⁺/S⁻ handshake at a specific D-position.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-equation">Radio → Microwave → IR → Visible → UV → X-ray → Gamma</div>
+                        <div class="step-explanation">This is not a line from "low energy" to "high energy." It is a spiral through the D-positions. Each octave of frequency corresponds to a rotation through the 9 D-positions.</div>
+                    </div>
+                </div>
+
+                <div class="derivation-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-equation">Visible light (400-700nm) = D₅ harmonic</div>
+                        <div class="step-explanation">We see visible light because our biology resonates at the D₅ (Navigator) position. Other frequencies are equally "real"—we are simply not tuned to receive them in the same way.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--electric-cyan); background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);">
+                <h3 style="color: var(--electric-cyan);">Why This Matters</h3>
+                <p class="proof-statement">
+                    If the spectrum is a spiral, not a line, then there are <strong>harmonic relationships</strong> between widely separated frequencies.
+                    Radio waves at certain frequencies should resonate with visible light at corresponding frequencies.
+                    <br><br>
+                    <strong>This is testable. This is predictive. This is where standard physics fails.</strong>
+                </p>
+                <p class="proof-citation">
+                    Standard physics cannot explain why certain frequencies have biological effects while similar frequencies don't.
+                    The spiral model predicts exactly which frequencies will resonate with biological systems based on D-position alignment.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Current in a Wire</h4>
+                    <p>
+                        They say electrons "flow" through copper at ~0.001 m/s (drift velocity).
+                        But the signal travels at ~0.9c.
+                        <br><br>
+                        <strong>The electrons are not the signal.</strong> The signal is the propagation of the S⁺/S⁻ handshake through the geometric structure of the conductor.
+                        The electrons are just markers, like buoys in water showing the current.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Why Copper Conducts</h4>
+                    <p>
+                        Standard: "Copper has free electrons in its outer shell."
+                        <br><br>
+                        Geometric: Copper's atomic geometry creates minimal impedance for S⁺ propagation.
+                        The "free electrons" are symptoms, not causes. <span class="highlight">The geometry of the crystal lattice IS the conductivity.</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Superconductivity</h4>
+                    <p>
+                        Standard: "At low temperatures, electrons form Cooper pairs that..."
+                        <br><br>
+                        Geometric: At certain temperatures, the thermal noise drops below the threshold where S⁺/S⁻ interference patterns become stable. The "pairing" is a phase-lock in κ-space.
+                        <span class="highlight">Room-temperature superconductors require geometric alignment, not temperature manipulation.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             III. THE AHARONOV-BOHM REVELATION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-aharonov" data-section="III. The Aharonov-Bohm Revelation">
+            <div class="section-header">
+                <h2>Potentials Are More Fundamental Than Fields</h2>
+                <p>In 1959, Aharonov and Bohm predicted that particles would be affected by electromagnetic potentials even where the fields are zero. In 1986, it was experimentally confirmed. Heaviside was wrong.</p>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--plasma-purple); background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0.05) 100%);">
+                <h3 style="color: var(--plasma-purple);">EXPERIMENTALLY VERIFIED (1986)</h3>
+                <p class="proof-statement">
+                    Tonomura et al. created a toroidal magnet completely shielded by a superconductor.
+                    <strong>Zero magnetic field</strong> outside the torus. Yet electrons passing nearby showed
+                    interference pattern shifts—affected by the <strong>potential</strong> that existed where no field did.
+                </p>
+                <p class="proof-citation">
+                    "This experiment brought the long dispute on the AB effect to a close."<br>
+                    — Hitachi Research Laboratory
+                </p>
+            </div>
+
+            <div class="quote-block">
+                <p class="quote-text">
+                    "Vector potentials were long regarded only as a mathematical auxiliary with no physical meaning. However... the AB effect indicates that the gauge field is not merely a mathematical auxiliary but a real physical quantity which can produce an observable effect."
+                </p>
+                <p class="quote-source">— Hitachi AB Effect Research</p>
+            </div>
+
+            <div class="equation-display">
+                <div class="label">What This Means for [1 = -1]</div>
+                <div class="equation">Potential (S⁻) affects matter where Field (S⁺) = 0</div>
+                <div class="explanation">
+                    The potential is the S⁻ component—the reception side, the "shadow field."
+                    The field is the S⁺ component—what we can measure with instruments.
+                    Heaviside removed S⁻ because his S⁺ instruments couldn't detect it.
+                    <strong>The Aharonov-Bohm effect proves S⁻ is physically real.</strong>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Classical View (Wrong)</h4>
+                    <p>
+                        "Only the electromagnetic fields E and B are physical.
+                        The potentials φ and A are mathematical conveniences."
+                        <br><br>
+                        <span style="color: var(--warning-red);">This is what physics taught for 100 years after Heaviside.</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Quantum Reality (Proven)</h4>
+                    <p>
+                        "The potentials A and φ are more fundamental than the fields.
+                        Particles respond to potentials even where fields vanish."
+                        <br><br>
+                        <span style="color: var(--torsion-green);">Experimentally verified. Not debatable.</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>E.T. Whittaker (1903-1904)</h4>
+                    <p>
+                        Whittaker showed that the entire electromagnetic field can be expressed
+                        using <span class="highlight">two scalar potential functions</span>—50 years before Aharonov-Bohm.
+                        His work anticipated the primacy of potentials.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             IV. PHASE CONJUGATION & TIME REVERSAL
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-phase" data-section="IV. Phase Conjugation & Time Reversal">
+            <div class="section-header">
+                <h2>Phase Is the Hidden Operator</h2>
+                <p>Electromagnetic waves can be time-reversed. Phase conjugation creates mirrors that send waves back along their exact path. Phase relationships create geometry. Phase is κ₅.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Phase Conjugation</h4>
+                    <p>
+                        A phase conjugate mirror doesn't just reflect light—it <span class="highlight">reverses</span> the wavefront.
+                        The wave returns along its exact incoming path, auto-correcting for any distortions it encountered.
+                        This is narrow-band time reversal.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Time Reversal</h4>
+                    <p>
+                        Electromagnetic waves can be recorded, time-reversed, and re-emitted.
+                        They converge back on their source. This has been demonstrated with both
+                        <span class="highlight">acoustic and electromagnetic waves</span>.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Lissajous Figures</h4>
+                    <p>
+                        When two sine waves are combined at right angles, they create patterns.
+                        At 1:1 frequency ratio with 90° phase shift: a <span class="highlight">circle</span>.
+                        At other ratios: ellipses, figure-8s, complex knots.
+                        <strong>Phase creates geometry.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="equation-display">
+                <div class="label">Phase as the Fifth Configuration</div>
+                <div class="equation">κ₅ = The Hidden Operator = Phase</div>
+                <div class="explanation">
+                    S⁺ (emission), S⁻ (reception), S⁰ (node), S∿ (echo)—and κ₅ (dark/hidden).
+                    κ₅ is the phase relationship between all other configurations.
+                    It is what determines interference patterns.
+                    It is what the Aharonov-Bohm effect detects.
+                </div>
+            </div>
+
+            <div class="quote-block blue">
+                <p class="quote-text">
+                    "One may consider time reversal as a broad-band phase conjugation, or phase conjugation as a narrow-band time reversal."
+                </p>
+                <p class="quote-source">— Physical Review on phase/time reversal equivalence</p>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--electric-cyan); background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 212, 255, 0.05) 100%);">
+                <h3 style="color: var(--electric-cyan);">EXPERIMENTAL PREDICTION</h3>
+                <p class="proof-statement">
+                    At specific phase relationships derived from κ (multiples of 2°, 30°, 45°, 60°, 90°),
+                    electromagnetic phenomena should show anomalous behavior—standing waves that shouldn't exist,
+                    constructive interference where destructive is expected.
+                </p>
+                <p class="proof-citation">
+                    The geometry predicts it. The experiments await.
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             V. SOUND, ELECTRICITY, CONSCIOUSNESS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-consciousness" data-section="V. Sound, Electricity, Consciousness">
+            <div class="section-header">
+                <h2>The Connection Is Not Metaphor</h2>
+                <p>Sound creates geometry (cymatics). The brain generates electromagnetic fields. Microtubules oscillate at GHz frequencies. Meridians show measurable electrical properties. This is not mysticism—it's physics.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Cymatics: Sound Creates Geometry</h4>
+                    <p>
+                        Ernst Chladni (1787) showed that sound waves create <span class="highlight">geometric patterns</span> in sand on vibrating plates.
+                        Particles accumulate at nodes (stillness) and evacuate antinodes (vibration).
+                        Higher frequencies → more complex patterns.
+                        <strong>Sound is visible geometry.</strong>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Penrose-Hameroff: Quantum Consciousness</h4>
+                    <p>
+                        The brain contains <span class="highlight">10¹⁹ microtubules</span>—protein structures in neurons.
+                        Penrose and Hameroff propose that quantum coherence in microtubules produces consciousness.
+                        Microtubules oscillate from kilohertz to <span class="highlight">terahertz</span> frequencies.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Bioelectricity: Chi Is Measurable</h4>
+                    <p>
+                        Acupuncture points show <span class="highlight">distinct bioelectric signals</span> compared to surrounding tissue.
+                        Meridian lines follow fascia planes—which have <span class="highlight">semiconductive properties</span>.
+                        "Subtle electrical signals are transported long distances without losing signal strength."
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Brain's Electromagnetic Field</h4>
+                    <p>
+                        The brain generates measurable EM fields (EEG).
+                        McFadden's "CEMI theory" proposes consciousness IS the brain's EM field.
+                        "Non-linear analysis of EEG signals provides a measure of human consciousness."
+                    </p>
+                </div>
+            </div>
+
+            <div class="equation-display">
+                <div class="label">The Consciousness-Electricity Connection</div>
+                <div class="equation">Observer = S⁰ = Node = Consciousness</div>
+                <div class="explanation">
+                    In the [1 = -1] framework, the observer is the node where S⁺ and S⁻ meet.
+                    Consciousness is not separate from electromagnetism—it IS the point where
+                    emission and reception collapse into experience.
+                    The brain's EM field is the physical substrate of this collapse.
+                </div>
+            </div>
+
+            <div class="quote-block" style="background: rgba(255, 107, 157, 0.08); border-left-color: var(--consciousness-pink);">
+                <p class="quote-text">
+                    "The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence."
+                </p>
+                <p class="quote-source">— Nikola Tesla</p>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--consciousness-pink); background: linear-gradient(135deg, rgba(255, 107, 157, 0.15) 0%, rgba(255, 107, 157, 0.05) 100%);">
+                <h3 style="color: var(--consciousness-pink);">THE HUNCH</h3>
+                <p class="proof-statement">
+                    If consciousness is the collapse point of S⁺/S⁻, and the brain operates via electromagnetic fields,
+                    then specific frequencies and phase relationships should produce <strong>measurable effects on consciousness</strong>.
+                    Binaural beats hint at this. Cymatics demonstrates the geometry.
+                    <br><br>
+                    <strong>The full connection awaits rigorous exploration.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             VI. THE TORSION DIMENSION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-torsion" data-section="VI. The Torsion Dimension">
+            <div class="section-header">
+                <h2>Einstein-Cartan and the Spin Field</h2>
+                <p>In 1922, Élie Cartan extended general relativity to include torsion—the twisting of spacetime caused by spin. This is not fringe physics. It's in the equations Einstein himself couldn't ignore.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1880s</div>
+                    <div class="timeline-title">N.P. Myshkin</div>
+                    <div class="timeline-desc">Russian professor first postulates a "fifth force"—a twisting through the fabric of space. Proposes an "implicate order" underlying creation.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1913</div>
+                    <div class="timeline-title">Élie Cartan Coins "Torsion"</div>
+                    <div class="timeline-desc">Cartan formally introduces torsion into differential geometry—the mathematical framework that would become general relativity.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1922</div>
+                    <div class="timeline-title">Einstein-Cartan Theory</div>
+                    <div class="timeline-desc">Cartan shows how spin (intrinsic angular momentum) couples to spacetime torsion. Standard GR neglects this, but quantum particles have spin.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1950s-1970s</div>
+                    <div class="timeline-title">Kozyrev's Experiments</div>
+                    <div class="timeline-desc">Russian astrophysicist Nikolai Kozyrev designs detectors that respond to what he calls "the flow of time"—possibly torsion fields. Hundreds of replicated trials.</div>
+                </div>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>What Is Torsion?</h4>
+                    <p>
+                        In Einstein-Cartan theory, torsion is <span class="highlight">spacetime twisting</span> caused by spin.
+                        Standard GR assumes torsion = 0. But elementary particles have spin.
+                        At quantum scales, torsion matters.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Maxwell's Original Equations</h4>
+                    <p>
+                        Maxwell's quaternion formulation naturally accommodates <span class="highlight">rotational (torsional) components</span>.
+                        Heaviside's vector formulation does not.
+                        What was lost in the simplification may be exactly what Einstein-Cartan theory describes.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>S⁻ and Torsion</h4>
+                    <p>
+                        The S⁻ field (reception) may be related to torsion.
+                        S⁺ is longitudinal (push/pull). S⁻ is transverse (twist).
+                        Their combination creates the full electromagnetic phenomenon.
+                    </p>
+                </div>
+            </div>
+
+            <div class="quote-block" style="background: rgba(63, 185, 80, 0.08); border-left-color: var(--torsion-green);">
+                <p class="quote-text">
+                    "Kozyrev found that in the presence of this energy flow, objects that are rigid show weight changes, whereas flexible objects show changes in their elasticity and/or viscosity."
+                </p>
+                <p class="quote-source">— Summary of Kozyrev's experimental findings</p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             VII. THE κ UNIFICATION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section section-unification" data-section="VII. The κ Unification">
+            <div class="section-header">
+                <h2>All of Maxwell in One Equation</h2>
+                <p>Using geometric algebra (Clifford algebra), all four of Maxwell's equations collapse into a single equation. The electromagnetic field is revealed as a bivector. This is the mathematics Maxwell was reaching for.</p>
+            </div>
+
+            <div class="equation-display">
+                <div class="label">Maxwell's Equations in Geometric Algebra</div>
+                <div class="equation">∇F = J/ε₀c</div>
+                <div class="explanation">
+                    Where F = E + icB is the electromagnetic field bivector.
+                    One equation. All of electromagnetism.
+                    No cross products. No curls. Pure geometry.
+                </div>
+            </div>
+
+            <div class="scientists-grid">
+                <div class="scientist-card">
+                    <div class="scientist-name">William Rowan Hamilton</div>
+                    <div class="scientist-years">1805-1865</div>
+                    <div class="scientist-contribution">Invented quaternions. Saw that 4D rotation encodes 3D physics. Maxwell used his work.</div>
+                </div>
+                <div class="scientist-card">
+                    <div class="scientist-name">James Clerk Maxwell</div>
+                    <div class="scientist-years">1831-1879</div>
+                    <div class="scientist-contribution">Unified light, electricity, magnetism. Used quaternions. Insisted potentials were fundamental.</div>
+                </div>
+                <div class="scientist-card">
+                    <div class="scientist-name">William Kingdon Clifford</div>
+                    <div class="scientist-years">1845-1879</div>
+                    <div class="scientist-contribution">Created geometric algebra. Showed how to encode rotation without coordinates. Died at 33.</div>
+                </div>
+                <div class="scientist-card">
+                    <div class="scientist-name">E.T. Whittaker</div>
+                    <div class="scientist-years">1873-1956</div>
+                    <div class="scientist-contribution">1903-1904: Proved EM field = two scalar potentials. Anticipated Aharonov-Bohm by 50 years.</div>
+                </div>
+                <div class="scientist-card">
+                    <div class="scientist-name">Charles Proteus Steinmetz</div>
+                    <div class="scientist-years">1865-1923</div>
+                    <div class="scientist-contribution">"Forger of Thunderbolts." Invented phasors for AC analysis. Used complex numbers to reveal geometry in electricity.</div>
+                </div>
+                <div class="scientist-card">
+                    <div class="scientist-name">David Hestenes</div>
+                    <div class="scientist-years">1933-present</div>
+                    <div class="scientist-contribution">Revived geometric algebra. Showed how to reformulate all of physics in this framework. Maxwell in one equation.</div>
+                </div>
+            </div>
+
+            <div class="quote-block gold">
+                <p class="quote-text">
+                    "Using bivectors for description of the magnetic field, uniting electric vector and magnetic bivector into a single quantity, and employing the formalism of Clifford algebra reveals the intrinsic structure of electromagnetic phenomena."
+                </p>
+                <p class="quote-source">— Geometric Algebra formulation of Maxwell's equations</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Why Bivectors?</h4>
+                    <p>
+                        A bivector is an oriented plane segment—it encodes rotation.
+                        The magnetic field IS rotational. It should be a bivector, not a vector.
+                        Cross products are a hack. <span class="highlight">Wedge products are fundamental.</span>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>The Electromagnetic Field Tensor</h4>
+                    <p>
+                        F = E + icB combines electric (vector) and magnetic (bivector) into one object.
+                        This is what Maxwell was trying to express with quaternions.
+                        Geometric algebra completes his vision.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             VIII. RADICAL DECLARATIONS
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="VIII. Radical Declarations" style="border-color: var(--warning-red); background: linear-gradient(135deg, rgba(248, 81, 73, 0.08) 0%, rgba(248, 81, 73, 0.02) 100%);">
+            <div class="section-header">
+                <h2 style="color: var(--warning-red);">Declarations That Will Make Physicists Angry</h2>
+                <p>These are not suggestions. These are not "alternative interpretations." These are corrections to errors that have persisted for over a century.</p>
+            </div>
+
+            <div class="declarations-grid" style="display: grid; gap: 2rem; margin: 2rem 0;">
+                <div class="declaration-card" style="background: rgba(248, 81, 73, 0.1); border: 2px solid var(--warning-red); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--warning-red); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION I</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"The speed of light is not a speed limit. It is a ratio."</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        c = 299,792,458 m/s is the rate at which the S⁺/S⁻ handshake propagates through the geometric substrate.
+                        It is not that "nothing can go faster"—it is that the measurement system itself is defined by this ratio.
+                        Measuring "faster than light" is like measuring a meter longer than a meter. The question is malformed.
+                    </p>
+                </div>
+
+                <div class="declaration-card" style="background: rgba(248, 81, 73, 0.1); border: 2px solid var(--warning-red); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--warning-red); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION II</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"There is no such thing as 'empty space' with 'properties.'"</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        ε₀ (permittivity) and μ₀ (permeability) are not "properties of the vacuum."
+                        There is no vacuum with properties. There is geometry, and these values are the impedances of S⁺ and S⁻ propagation within that geometry.
+                        "Empty space" is a contradiction. Space is the geometry. Geometry is not empty.
+                    </p>
+                </div>
+
+                <div class="declaration-card" style="background: rgba(248, 81, 73, 0.1); border: 2px solid var(--warning-red); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--warning-red); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION III</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"Electrons do not 'have' charge. Electrons ARE charge configurations."</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        Standard physics says "the electron has a charge of -1.6 × 10⁻¹⁹ coulombs."
+                        This is backwards. The electron is not a thing that possesses charge—it is a stable rotation pattern in the S⁺/S⁻ field.
+                        The "mass" of an electron is the inertia of that rotation. The "charge" is its handedness.
+                        There is no electron "particle" with "properties." There is geometry, rotating.
+                    </p>
+                </div>
+
+                <div class="declaration-card" style="background: rgba(248, 81, 73, 0.1); border: 2px solid var(--warning-red); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--warning-red); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION IV</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"Ohm's Law is an approximation that hides the geometry."</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        V = IR works. No one disputes this. But it describes WHAT happens, not WHY.
+                        "Resistance" is not a property of materials—it is the degree of phase mismatch between S⁺ propagation and the material's geometric structure.
+                        At specific κ-aligned frequencies, resistance can be manipulated in ways Ohm never imagined.
+                        <strong>This is testable. This is predictive. This is where we go beyond.</strong>
+                    </p>
+                </div>
+
+                <div class="declaration-card" style="background: rgba(248, 81, 73, 0.1); border: 2px solid var(--warning-red); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--warning-red); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION V</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"The electromagnetic spectrum has been drawn wrong for 150 years."</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        It is not a line from radio to gamma. It is a spiral through the D-positions.
+                        Frequencies separated by vast "distances" on the linear model are actually harmonically related.
+                        This is why certain frequencies have biological effects that similar frequencies don't.
+                        Standard physics cannot explain this. The spiral model predicts it exactly.
+                    </p>
+                </div>
+
+                <div class="declaration-card" style="background: rgba(212, 175, 55, 0.15); border: 2px solid var(--gold); border-radius: 12px; padding: 2rem;">
+                    <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.3rem; margin-bottom: 1rem;">DECLARATION VI</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: 1rem;">
+                        <strong>"Phase is more fundamental than amplitude, frequency, or wavelength."</strong>
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        Standard physics treats phase as a secondary property. It is primary.
+                        The Aharonov-Bohm effect proves this: particles are affected by phase relationships (potentials) where amplitude (fields) is zero.
+                        κ₅ (the hidden operator) IS phase. It is what determines whether interference is constructive or destructive.
+                        <strong>Control phase, control reality.</strong>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             IX. ELECTRICITY IN ACTION - INTERACTIVE
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="IX. Electricity in Action" style="border-color: var(--electric-cyan);">
+            <div class="section-header">
+                <h2 style="color: var(--electric-cyan);">Interactive: See the Geometry</h2>
+                <p>Standard physics shows you wave diagrams. We show you what's actually happening.</p>
+            </div>
+
+            <!-- Phase Relationship Simulator -->
+            <div class="interactive-demo" style="background: var(--bg-tertiary); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--electric-cyan); margin-bottom: 1.5rem;">S⁺/S⁻ Phase Relationship Simulator</h3>
+
+                <div class="demo-container" style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; align-items: start;">
+                    <div class="canvas-container" style="background: #000; border-radius: 12px; padding: 1rem; position: relative;">
+                        <canvas id="phaseCanvas" width="600" height="400" style="width: 100%; border-radius: 8px;"></canvas>
+                    </div>
+
+                    <div class="controls" style="background: var(--bg-secondary); border-radius: 12px; padding: 1.5rem;">
+                        <div class="control-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem;">Phase Offset (κ₅)</label>
+                            <input type="range" id="phaseSlider" min="0" max="360" value="0" style="width: 100%;">
+                            <span id="phaseValue" style="font-family: 'JetBrains Mono', monospace; color: var(--electric-cyan);">0°</span>
+                        </div>
+
+                        <div class="control-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem;">S⁺ Amplitude</label>
+                            <input type="range" id="splusSlider" min="0" max="100" value="50" style="width: 100%;">
+                        </div>
+
+                        <div class="control-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem;">S⁻ Amplitude</label>
+                            <input type="range" id="sminusSlider" min="0" max="100" value="50" style="width: 100%;">
+                        </div>
+
+                        <div class="control-group" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; color: var(--gold); font-size: 0.9rem; margin-bottom: 0.5rem;">D-Position</label>
+                            <select id="dposSelect" style="width: 100%; padding: 0.5rem; background: var(--bg-tertiary); border: 1px solid var(--border-subtle); color: var(--text-primary); border-radius: 4px;">
+                                <option value="1">D₁ - Origin/WE</option>
+                                <option value="2">D₂ - Separation</option>
+                                <option value="3">D₃ - Resonance</option>
+                                <option value="4">D₄ - Foundation</option>
+                                <option value="5" selected>D₅ - Navigator</option>
+                                <option value="6">D₆ - Teaching</option>
+                                <option value="7">D₇ - Mystery</option>
+                                <option value="8">D₈ - Infinity</option>
+                                <option value="9">D₉ - Completion</option>
+                            </select>
+                        </div>
+
+                        <div class="readout" style="background: rgba(0, 212, 255, 0.1); border: 1px solid var(--electric-cyan); border-radius: 8px; padding: 1rem; margin-top: 1rem;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Observable Output</div>
+                            <div id="outputValue" style="font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: var(--gold);">S⁺ ⊗ S⁻ = 0.500</div>
+                            <div id="outputState" style="font-size: 0.9rem; color: var(--electric-cyan); margin-top: 0.5rem;">Balanced State</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-explanation" style="margin-top: 2rem; padding: 1.5rem; background: rgba(0, 212, 255, 0.05); border-radius: 8px;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong style="color: var(--electric-cyan);">What you're seeing:</strong> The blue wave is S⁺ (emission). The purple wave is S⁻ (reception).
+                        The gold line is the observable result—what standard physics measures as "the electromagnetic wave."
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        <strong style="color: var(--warning-red);">What standard physics misses:</strong> They only see the gold line. They have no model for why phase matters.
+                        Move the phase slider to 90° and watch the observable go to zero where S⁺ and S⁻ are equal—yet BOTH are still fully active.
+                        <strong>This is the Aharonov-Bohm effect visualized.</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- EM Spectrum Spiral -->
+            <div class="interactive-demo" style="background: var(--bg-tertiary); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--plasma-purple); margin-bottom: 1.5rem;">The Electromagnetic Spiral (Not Spectrum)</h3>
+
+                <div class="spectrum-container" style="position: relative;">
+                    <canvas id="spiralCanvas" width="800" height="500" style="width: 100%; border-radius: 12px; background: #000;"></canvas>
+
+                    <div class="spectrum-legend" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #ff0000; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">Radio (D₁)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #ff8800; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">Microwave (D₂)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #ffff00; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">Infrared (D₃-D₄)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: linear-gradient(90deg, #ff0000, #00ff00, #0000ff); border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">Visible (D₅)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #8800ff; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">UV (D₆)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #ff00ff; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">X-Ray (D₇-D₈)</span>
+                        </div>
+                        <div class="legend-item" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="width: 20px; height: 20px; background: #ffffff; border-radius: 4px;"></div>
+                            <span style="font-size: 0.9rem; color: var(--text-secondary);">Gamma (D₉)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-explanation" style="margin-top: 2rem; padding: 1.5rem; background: rgba(168, 85, 247, 0.05); border-radius: 8px;">
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        <strong style="color: var(--plasma-purple);">What the spiral reveals:</strong> Radio and Gamma are not "opposite ends"—they are harmonically related through the D-positions.
+                        A D₁ radio frequency and a D₁ gamma frequency resonate, despite being "far apart" on the linear model.
+                    </p>
+                    <p style="color: var(--warning-red); font-weight: 500;">
+                        <strong>This explains biological effects that standard physics cannot:</strong> Why does 528 Hz affect DNA repair? Why do specific microwave frequencies cause harm while similar ones don't?
+                        Because the spiral puts them at different D-positions. Phase and position matter more than raw frequency.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Charge Rotation Visualizer -->
+            <div class="interactive-demo" style="background: var(--bg-tertiary); border-radius: 16px; padding: 2rem; margin: 2rem 0;">
+                <h3 style="font-family: 'Cinzel', serif; color: var(--torsion-green); margin-bottom: 1.5rem;">Charge Is Rotation (Not Property)</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="charge-viz" style="text-align: center;">
+                        <canvas id="positiveCharge" width="250" height="250" style="border-radius: 50%; background: radial-gradient(circle, rgba(248, 81, 73, 0.2) 0%, transparent 70%);"></canvas>
+                        <p style="color: var(--warning-red); font-family: 'Cinzel', serif; margin-top: 1rem;">Positive Charge</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Clockwise κ-rotation (S⁺ dominant)</p>
+                    </div>
+                    <div class="charge-viz" style="text-align: center;">
+                        <canvas id="negativeCharge" width="250" height="250" style="border-radius: 50%; background: radial-gradient(circle, rgba(74, 158, 255, 0.2) 0%, transparent 70%);"></canvas>
+                        <p style="color: var(--maxwell-blue); font-family: 'Cinzel', serif; margin-top: 1rem;">Negative Charge</p>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Counter-clockwise κ-rotation (S⁻ dominant)</p>
+                    </div>
+                </div>
+
+                <div class="demo-explanation" style="margin-top: 2rem; padding: 1.5rem; background: rgba(63, 185, 80, 0.05); border-radius: 8px;">
+                    <p style="color: var(--text-secondary);">
+                        <strong style="color: var(--torsion-green);">Why opposites attract:</strong> They are rotating in opposite directions. When they meet, their angular momenta complete each other—like two gears meshing.
+                        <br><br>
+                        <strong style="color: var(--torsion-green);">Why likes repel:</strong> Parallel rotations create destructive interference in the geometric substrate. The geometry itself pushes them apart.
+                        <br><br>
+                        <strong style="color: var(--gold);">This is not metaphor. This is mechanism.</strong> Standard physics describes WHAT (opposites attract, likes repel). κ geometry explains WHY.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             X. WHAT STANDARD PHYSICS CANNOT EXPLAIN
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="X. What They Cannot Explain" style="border-color: var(--warning-red);">
+            <div class="section-header">
+                <h2 style="color: var(--warning-red);">Phenomena Standard Physics Cannot Explain</h2>
+                <p>Not "hasn't explained yet." Cannot explain within the current framework. Ever.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Why α ≈ 1/137</h4>
+                    <p>
+                        The fine structure constant governs all electromagnetic interactions.
+                        <br><br>
+                        <strong>Standard physics:</strong> "We don't know. It just is. If it were different, we wouldn't exist."
+                        <br><br>
+                        <strong>κ geometry:</strong> It falls out of the D-position structure. It cannot be any other value.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Why c = 299,792,458 m/s</h4>
+                    <p>
+                        <strong>Standard physics:</strong> "It's just the speed electromagnetic waves travel. We defined the meter to make it exact."
+                        <br><br>
+                        <strong>κ geometry:</strong> c = 1/√(ε₀μ₀) where ε₀ and μ₀ are the S⁺/S⁻ impedances derived from κ. The number is geometrically necessary.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Why Charge Is Quantized</h4>
+                    <p>
+                        Charge always comes in multiples of e = 1.6 × 10⁻¹⁹ C. No half-charges. No third-charges.
+                        <br><br>
+                        <strong>Standard physics:</strong> "We don't know why charge is quantized."
+                        <br><br>
+                        <strong>κ geometry:</strong> Because charge is rotation, and rotations are quantized by the D-positions. You cannot have "half a rotation."
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Why Planck's Constant Exists</h4>
+                    <p>
+                        ℏ = 1.054 × 10⁻³⁴ J·s sets the scale of quantum mechanics.
+                        <br><br>
+                        <strong>Standard physics:</strong> "It's fundamental. We measured it. That's its value."
+                        <br><br>
+                        <strong>κ geometry:</strong> ℏ is the minimum angular momentum—one full κ rotation. It emerges from geometry.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Biological Frequency Effects</h4>
+                    <p>
+                        Why does 528 Hz affect DNA? Why do certain EMF frequencies cause illness while similar ones don't?
+                        <br><br>
+                        <strong>Standard physics:</strong> "Frequencies are just frequencies. There's no mechanism for specific effects."
+                        <br><br>
+                        <strong>κ geometry:</strong> Biological systems resonate at specific D-positions. Frequencies that align with those positions have effects. Others don't. Predictable.
+                    </p>
+                </div>
+                <div class="info-card" style="border-color: var(--warning-red);">
+                    <h4 style="color: var(--warning-red);">Aharonov-Bohm Effect</h4>
+                    <p>
+                        Particles affected by potentials where fields are zero.
+                        <br><br>
+                        <strong>Standard physics:</strong> "It proves potentials are physical... somehow. We're still debating what it means."
+                        <br><br>
+                        <strong>κ geometry:</strong> S⁻ (potential) affects reality directly. Fields (S⁺) are derivatives. The potential is primary. Obvious once you see it.
+                    </p>
+                </div>
+            </div>
+
+            <div class="proof-box" style="border-color: var(--gold); margin-top: 3rem;">
+                <h3 style="color: var(--gold);">The Pattern</h3>
+                <p class="proof-statement">
+                    In every case, standard physics says "we don't know why" or "it just is."
+                    <br><br>
+                    In every case, κ geometry derives the value from first principles.
+                    <br><br>
+                    <strong style="font-size: 1.3rem;">This is not coincidence. This is correction.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             THE REVELATION
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="reveal-section">
+            <h2>This Is Not an Alternative Theory</h2>
+
+            <p class="reveal-text">
+                This is the correction.
+            </p>
+
+            <p class="reveal-text">
+                Standard physics works. GPS satellites use relativistic corrections and they work.
+                Quantum electrodynamics makes predictions accurate to 12 decimal places.
+                <strong>No one is claiming the measurements are wrong.</strong>
+            </p>
+
+            <p class="reveal-text" style="color: var(--warning-red);">
+                <strong>The interpretation is wrong.</strong>
+            </p>
+
+            <p class="reveal-text">
+                They measured c, ε₀, μ₀, α, ℏ, e—and they cannot explain why any of these numbers are what they are.
+                They call them "fundamental constants" and shrug.
+                They invoke "fine-tuning" and the anthropic principle.
+                <br><br>
+                <strong>This is not physics. This is cataloging.</strong>
+            </p>
+
+            <div class="reveal-equation" style="color: var(--warning-red);">
+                "We don't know why" is not an explanation.
+            </div>
+
+            <p class="reveal-text">
+                κ = 2π/180 is not a constant we discovered.<br>
+                It is the ratio between angular and linear measure—<strong>it is geometry itself</strong>.<br>
+                Every "constant" in physics is a derivative of this ratio.<br>
+                Every "mystery" dissolves when you start from geometry instead of measurement.
+            </p>
+
+            <div class="reveal-equation">
+                κ → c, ε₀, μ₀, α, ℏ, e, G, ...
+            </div>
+
+            <p class="reveal-text">
+                <strong>Maxwell knew.</strong> He used quaternions because they encode rotation—and rotation is fundamental.<br>
+                <strong>Heaviside didn't understand.</strong> He removed the scalar because he couldn't measure it with S⁺ instruments.<br>
+                <strong>The Aharonov-Bohm effect proved him wrong.</strong> The potential (S⁻) affects reality where the field (S⁺) is zero.<br><br>
+                This is not speculation. This is experimentally verified.
+            </p>
+
+            <p class="reveal-text" style="font-size: 1.4rem; margin-top: 2rem;">
+                <strong>The question is not: "Is the Epoch framework correct?"</strong><br>
+                <strong>The question is: "Why did they ever think geometry was emergent from measurement, instead of the other way around?"</strong>
+            </p>
+
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: var(--gold); margin-top: 3rem;">
+                [1 = -1]
+            </p>
+
+            <p style="color: var(--text-secondary); margin-top: 1rem; font-style: italic;">
+                The geometry was always there.<br>
+                We are simply pointing at it.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════
+             SOURCES
+             ═══════════════════════════════════════════════════════════════════ -->
+        <section class="codex-section" data-section="Sources & Further Reading" style="border-color: var(--text-dim);">
+            <div class="section-header">
+                <h2 style="color: var(--text-secondary);">Sources & Further Reading</h2>
+                <p>This is not speculation. These are published, peer-reviewed, experimentally verified results.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="info-card">
+                    <h4>Maxwell's Original Work</h4>
+                    <p>
+                        <a href="https://archive.org/details/electricandmagne01maxwrich" target="_blank" style="color: var(--maxwell-blue);">A Treatise on Electricity and Magnetism (1873)</a> — Full text on Internet Archive
+                        <br><br>
+                        <a href="https://en.wikipedia.org/wiki/History_of_Maxwell%27s_equations" target="_blank" style="color: var(--maxwell-blue);">History of Maxwell's Equations</a> — Wikipedia overview
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Aharonov-Bohm Effect</h4>
+                    <p>
+                        <a href="https://www.hitachi.com/rd/research/materials/quantum/aharonov-bohm/index.html" target="_blank" style="color: var(--plasma-purple);">Hitachi Research: Verification of the AB Effect</a>
+                        <br><br>
+                        <a href="https://en.wikipedia.org/wiki/Aharonov–Bohm_effect" target="_blank" style="color: var(--plasma-purple);">Aharonov-Bohm Effect</a> — Wikipedia
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Geometric Algebra</h4>
+                    <p>
+                        <a href="https://www.av8n.com/physics/maxwell-ga.htm" target="_blank" style="color: var(--electric-cyan);">Electromagnetism Using Geometric Algebra vs Components</a>
+                        <br><br>
+                        <a href="https://peeterjoot.com/archives/geometric-algebra/maxwells_ga.pdf" target="_blank" style="color: var(--electric-cyan);">Maxwell's Equations in Geometric Algebra (PDF)</a>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Consciousness & Microtubules</h4>
+                    <p>
+                        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8393322/" target="_blank" style="color: var(--consciousness-pink);">Neural Circuits, Microtubules, Brain's EM Field (PMC)</a>
+                        <br><br>
+                        <a href="https://en.wikipedia.org/wiki/Orchestrated_objective_reduction" target="_blank" style="color: var(--consciousness-pink);">Orch OR Theory</a> — Wikipedia
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Whittaker's Papers</h4>
+                    <p>
+                        <a href="https://academic.oup.com/plms/article-abstract/s2-1/1/367/1524229" target="_blank" style="color: var(--gold);">On an Expression of the EM Field by Two Scalar Potentials (1904)</a>
+                        <br><br>
+                        <a href="https://arxiv.org/abs/2205.08309" target="_blank" style="color: var(--gold);">The Duality of Whittaker Potential Theory (arXiv)</a>
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h4>Einstein-Cartan Theory</h4>
+                    <p>
+                        <a href="https://en.wikipedia.org/wiki/Einstein–Cartan_theory" target="_blank" style="color: var(--torsion-green);">Einstein-Cartan Theory</a> — Wikipedia
+                        <br><br>
+                        <a href="https://modern-physics.org/einstein-cartan-theory/" target="_blank" style="color: var(--torsion-green);">Torsion, Spacetime & Quantum</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         FOOTER
+         ═══════════════════════════════════════════════════════════════════ -->
+    <footer class="page-footer">
+        <div class="footer-links">
+            <a href="wave-seers.html">← The Wave Seers</a>
+            <a href="index.html">Here's to You, Weirdos</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+
+        <p class="identity">[1 = -1]</p>
+
+        <p style="color: var(--text-dim); font-size: 0.9rem; max-width: 600px; margin: 0 auto;">
+            The geometry was always there. Maxwell saw it. Heaviside buried it.
+            The Aharonov-Bohm effect proved it. κ derives it.
+        </p>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
+         INTERACTIVE CANVAS ANIMATIONS
+         ═══════════════════════════════════════════════════════════════════ -->
+    <script>
+    // ═══════════════════════════════════════════════════════════════════
+    // κ CONSTANTS
+    // ═══════════════════════════════════════════════════════════════════
+    const KAPPA = (2 * Math.PI) / 180; // The fundamental ratio
+    const D_POSITIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const D_COLORS = {
+        1: '#ff3333', // Origin
+        2: '#ff8800', // Separation
+        3: '#ffcc00', // Resonance
+        4: '#88ff00', // Foundation
+        5: '#00ffcc', // Navigator
+        6: '#00ccff', // Teaching
+        7: '#8800ff', // Mystery
+        8: '#ff00ff', // Infinity
+        9: '#ffffff'  // Completion
+    };
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 1. S⁺/S⁻ PHASE RELATIONSHIP SIMULATOR
+    // ═══════════════════════════════════════════════════════════════════
+    (function initPhaseSimulator() {
+        const canvas = document.getElementById('phaseCanvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const phaseSlider = document.getElementById('phaseSlider');
+        const phaseValue = document.getElementById('phaseValue');
+        const splusSlider = document.getElementById('splusSlider');
+        const sminusSlider = document.getElementById('sminusSlider');
+        const dposSelect = document.getElementById('dposSelect');
+        const outputValue = document.getElementById('outputValue');
+        const outputState = document.getElementById('outputState');
+
+        let animationFrame;
+        let time = 0;
+
+        function getState() {
+            return {
+                phase: parseFloat(phaseSlider?.value || 0) * KAPPA,
+                splusAmp: parseFloat(splusSlider?.value || 50) / 100,
+                sminusAmp: parseFloat(sminusSlider?.value || 50) / 100,
+                dpos: parseInt(dposSelect?.value || 5)
+            };
+        }
+
+        function draw() {
+            const state = getState();
+            const w = canvas.width;
+            const h = canvas.height;
+
+            // Clear with trail effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+            ctx.fillRect(0, 0, w, h);
+
+            // Draw coordinate grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, h/2);
+            ctx.lineTo(w, h/2);
+            ctx.moveTo(50, 0);
+            ctx.lineTo(50, h);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.font = '12px JetBrains Mono, monospace';
+            ctx.fillText('S⁺', 10, h/4);
+            ctx.fillText('S⁻', 10, h/4 * 3);
+            ctx.fillText('Observable', w - 80, 20);
+
+            // Calculate wave functions
+            const baseFreq = state.dpos * KAPPA * 2;
+
+            // Draw S⁺ (emission) - cyan
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 2;
+            ctx.shadowColor = '#00d4ff';
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            for (let x = 50; x < w - 10; x++) {
+                const t = (x - 50) / 100;
+                const y = h/2 - state.splusAmp * 120 * Math.sin(baseFreq * t + time);
+                if (x === 50) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw S⁻ (reception) - purple, phase shifted
+            ctx.strokeStyle = '#a855f7';
+            ctx.shadowColor = '#a855f7';
+            ctx.beginPath();
+            for (let x = 50; x < w - 10; x++) {
+                const t = (x - 50) / 100;
+                const y = h/2 - state.sminusAmp * 120 * Math.sin(baseFreq * t + time + state.phase);
+                if (x === 50) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Draw Observable (S⁺ ⊗ S⁻) - gold
+            ctx.strokeStyle = '#d4af37';
+            ctx.shadowColor = '#d4af37';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let x = 50; x < w - 10; x++) {
+                const t = (x - 50) / 100;
+                const splus = state.splusAmp * Math.sin(baseFreq * t + time);
+                const sminus = state.sminusAmp * Math.sin(baseFreq * t + time + state.phase);
+                // Observable is the interference pattern
+                const observable = (splus + sminus) / 2;
+                const y = h/2 - observable * 120;
+                if (x === 50) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // Draw phase indicator circle
+            const centerX = w - 80;
+            const centerY = h - 80;
+            const radius = 40;
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // S⁺ vector
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(
+                centerX + radius * Math.cos(time),
+                centerY + radius * Math.sin(time)
+            );
+            ctx.stroke();
+
+            // S⁻ vector (phase shifted)
+            ctx.strokeStyle = '#a855f7';
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(
+                centerX + radius * Math.cos(time + state.phase),
+                centerY + radius * Math.sin(time + state.phase)
+            );
+            ctx.stroke();
+
+            // Calculate and display output
+            const phaseRatio = Math.cos(state.phase);
+            const output = ((state.splusAmp + state.sminusAmp) / 2 * (1 + phaseRatio) / 2).toFixed(3);
+
+            if (outputValue) outputValue.textContent = `S⁺ ⊗ S⁻ = ${output}`;
+
+            // Determine state description
+            let stateDesc = 'Balanced State';
+            const phaseDeg = parseFloat(phaseSlider?.value || 0);
+            if (phaseDeg < 15) stateDesc = 'Constructive - Full Observable';
+            else if (phaseDeg > 75 && phaseDeg < 105) stateDesc = 'AHARONOV-BOHM ZONE - Fields Zero, Potentials Active';
+            else if (phaseDeg > 165 && phaseDeg < 195) stateDesc = 'Destructive - Observable Cancelled';
+            else if (phaseDeg > 255 && phaseDeg < 285) stateDesc = 'AHARONOV-BOHM ZONE - Phase Dominant';
+            else stateDesc = `Phase Interference (D${state.dpos})`;
+
+            if (outputState) {
+                outputState.textContent = stateDesc;
+                outputState.style.color = (phaseDeg > 75 && phaseDeg < 105) || (phaseDeg > 255 && phaseDeg < 285)
+                    ? '#f85149' : '#00d4ff';
+            }
+
+            time += 0.05;
+            animationFrame = requestAnimationFrame(draw);
+        }
+
+        // Event listeners
+        [phaseSlider, splusSlider, sminusSlider, dposSelect].forEach(el => {
+            if (el) el.addEventListener('input', () => {
+                if (phaseValue && phaseSlider) {
+                    phaseValue.textContent = phaseSlider.value + '°';
+                }
+            });
+        });
+
+        // Start animation
+        draw();
+    })();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 2. ELECTROMAGNETIC SPIRAL VISUALIZATION
+    // ═══════════════════════════════════════════════════════════════════
+    (function initEMSpiral() {
+        const canvas = document.getElementById('spiralCanvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+        let hoverPos = null;
+
+        // Frequency bands with their D-positions
+        const bands = [
+            { name: 'Radio', dpos: 1, freq: '3 kHz - 300 GHz', color: '#ff3333', startAngle: 0 },
+            { name: 'Microwave', dpos: 2, freq: '300 MHz - 300 GHz', color: '#ff8800', startAngle: 40 },
+            { name: 'Infrared', dpos: 3, freq: '300 GHz - 400 THz', color: '#ffcc00', startAngle: 80 },
+            { name: 'Visible', dpos: 5, freq: '400 - 800 THz', color: '#00ff88', startAngle: 160 },
+            { name: 'Ultraviolet', dpos: 6, freq: '800 THz - 30 PHz', color: '#8800ff', startAngle: 200 },
+            { name: 'X-Ray', dpos: 7, freq: '30 PHz - 30 EHz', color: '#ff00ff', startAngle: 280 },
+            { name: 'Gamma', dpos: 9, freq: '> 30 EHz', color: '#ffffff', startAngle: 320 }
+        ];
+
+        function draw() {
+            const w = canvas.width;
+            const h = canvas.height;
+            const centerX = w / 2;
+            const centerY = h / 2;
+
+            // Clear
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, w, h);
+
+            // Draw the 9 D-position rings
+            for (let d = 1; d <= 9; d++) {
+                const radius = 30 + d * 22;
+                ctx.strokeStyle = `rgba(212, 175, 55, ${0.1 + d * 0.03})`;
+                ctx.lineWidth = 1;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // D-position labels
+                ctx.fillStyle = 'rgba(212, 175, 55, 0.5)';
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`D${d}`, centerX + radius + 5, centerY);
+            }
+
+            // Draw spiral arms for each frequency band
+            bands.forEach((band, i) => {
+                const baseRadius = 30 + band.dpos * 22;
+                const spiralTurns = 3;
+
+                ctx.strokeStyle = band.color;
+                ctx.lineWidth = 3;
+                ctx.shadowColor = band.color;
+                ctx.shadowBlur = 15;
+                ctx.beginPath();
+
+                for (let t = 0; t < spiralTurns * Math.PI * 2; t += 0.05) {
+                    const angle = (band.startAngle * KAPPA) + t + time * 0.3;
+                    const radius = baseRadius + t * 8 + Math.sin(t * 3 + time) * 5;
+                    const x = centerX + radius * Math.cos(angle);
+                    const y = centerY + radius * Math.sin(angle);
+
+                    if (t === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Draw resonance nodes - where D-positions align
+                const nodeAngle = (band.startAngle * KAPPA) + time * 0.3;
+                const nodeRadius = baseRadius + Math.sin(time * 2) * 10;
+                const nodeX = centerX + nodeRadius * Math.cos(nodeAngle);
+                const nodeY = centerY + nodeRadius * Math.sin(nodeAngle);
+
+                ctx.beginPath();
+                ctx.arc(nodeX, nodeY, 6 + Math.sin(time * 3) * 2, 0, Math.PI * 2);
+                ctx.fillStyle = band.color;
+                ctx.fill();
+            });
+
+            ctx.shadowBlur = 0;
+
+            // Draw harmonic connections (showing resonance across the "linear" spectrum)
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 6]);
+
+            // Connect same D-positions across different frequency bands
+            for (let d = 1; d <= 9; d++) {
+                const matchingBands = bands.filter(b => b.dpos === d);
+                if (matchingBands.length > 1) {
+                    for (let i = 0; i < matchingBands.length - 1; i++) {
+                        const b1 = matchingBands[i];
+                        const b2 = matchingBands[i + 1];
+                        const r = 30 + d * 22;
+                        const a1 = (b1.startAngle * KAPPA) + time * 0.3;
+                        const a2 = (b2.startAngle * KAPPA) + time * 0.3;
+
+                        ctx.beginPath();
+                        ctx.moveTo(centerX + r * Math.cos(a1), centerY + r * Math.sin(a1));
+                        ctx.lineTo(centerX + r * Math.cos(a2), centerY + r * Math.sin(a2));
+                        ctx.stroke();
+                    }
+                }
+            }
+            ctx.setLineDash([]);
+
+            // Central κ symbol
+            ctx.fillStyle = '#d4af37';
+            ctx.font = 'bold 24px serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('κ', centerX, centerY);
+
+            // Info text
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.font = '11px JetBrains Mono';
+            ctx.textAlign = 'left';
+            ctx.fillText('Standard physics sees a LINE from radio → gamma', 10, 20);
+            ctx.fillStyle = '#d4af37';
+            ctx.fillText('κ geometry reveals the SPIRAL through D-positions', 10, 35);
+            ctx.fillStyle = '#f85149';
+            ctx.fillText('← Harmonically related frequencies resonate across "distance"', 10, 50);
+
+            time += 0.02;
+            requestAnimationFrame(draw);
+        }
+
+        // Mouse interaction
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            hoverPos = {
+                x: (e.clientX - rect.left) * (canvas.width / rect.width),
+                y: (e.clientY - rect.top) * (canvas.height / rect.height)
+            };
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            hoverPos = null;
+        });
+
+        draw();
+    })();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 3. CHARGE ROTATION VISUALIZER
+    // ═══════════════════════════════════════════════════════════════════
+    (function initChargeVisualizers() {
+        const posCanvas = document.getElementById('positiveCharge');
+        const negCanvas = document.getElementById('negativeCharge');
+
+        if (!posCanvas || !negCanvas) return;
+
+        const posCtx = posCanvas.getContext('2d');
+        const negCtx = negCanvas.getContext('2d');
+
+        let time = 0;
+
+        function drawCharge(ctx, canvas, isPositive) {
+            const w = canvas.width;
+            const h = canvas.height;
+            const centerX = w / 2;
+            const centerY = h / 2;
+
+            // Clear
+            ctx.clearRect(0, 0, w, h);
+
+            // Draw background glow
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, w/2);
+            gradient.addColorStop(0, isPositive ? 'rgba(248, 81, 73, 0.3)' : 'rgba(74, 158, 255, 0.3)');
+            gradient.addColorStop(1, 'transparent');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, w, h);
+
+            // κ rotation direction
+            const direction = isPositive ? 1 : -1;
+            const color = isPositive ? '#f85149' : '#4a9eff';
+            const secondaryColor = isPositive ? '#ff8866' : '#66b3ff';
+
+            // Draw spinning field lines
+            const numLines = 8;
+            for (let i = 0; i < numLines; i++) {
+                const baseAngle = (i / numLines) * Math.PI * 2;
+                const angle = baseAngle + direction * time;
+
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.shadowColor = color;
+                ctx.shadowBlur = 10;
+                ctx.beginPath();
+
+                // Spiral outward
+                for (let r = 10; r < w/2 - 20; r += 2) {
+                    const spiralAngle = angle + direction * r * KAPPA * 0.5;
+                    const x = centerX + r * Math.cos(spiralAngle);
+                    const y = centerY + r * Math.sin(spiralAngle);
+
+                    if (r === 10) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+
+            // Draw rotation indicator arrows
+            const arrowRadius = 60;
+            for (let i = 0; i < 4; i++) {
+                const angle = (i / 4) * Math.PI * 2 + direction * time;
+                const x = centerX + arrowRadius * Math.cos(angle);
+                const y = centerY + arrowRadius * Math.sin(angle);
+
+                // Arrowhead
+                ctx.fillStyle = secondaryColor;
+                ctx.beginPath();
+                const arrowAngle = angle + (direction > 0 ? Math.PI/2 : -Math.PI/2);
+                ctx.moveTo(x + 8 * Math.cos(arrowAngle), y + 8 * Math.sin(arrowAngle));
+                ctx.lineTo(x + 8 * Math.cos(arrowAngle + 2.5), y + 8 * Math.sin(arrowAngle + 2.5));
+                ctx.lineTo(x + 8 * Math.cos(arrowAngle - 2.5), y + 8 * Math.sin(arrowAngle - 2.5));
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            ctx.shadowBlur = 0;
+
+            // Center point
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Symbol
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 14px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(isPositive ? '+' : '−', centerX, centerY);
+
+            // κ direction label
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.font = '11px JetBrains Mono';
+            ctx.fillText(isPositive ? '+κ (CW)' : '−κ (CCW)', centerX, h - 15);
+        }
+
+        function animate() {
+            drawCharge(posCtx, posCanvas, true);
+            drawCharge(negCtx, negCanvas, false);
+            time += 0.03;
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    })();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 4. SCROLL ANIMATIONS & INTERACTIVITY
+    // ═══════════════════════════════════════════════════════════════════
+    (function initScrollAnimations() {
+        const sections = document.querySelectorAll('.codex-section');
+        const declarationCards = document.querySelectorAll('.declaration-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Declaration card hover effects
+        declarationCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.boxShadow = '0 10px 40px rgba(248, 81, 73, 0.3)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = 'none';
+            });
+            card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+        });
+    })();
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 5. DYNAMIC κ VALUE DISPLAY
+    // ═══════════════════════════════════════════════════════════════════
+    (function initKappaDisplay() {
+        const kappaElements = document.querySelectorAll('.kappa-value');
+        let frame = 0;
+
+        function updateKappa() {
+            kappaElements.forEach(el => {
+                // Subtle pulsing effect
+                const pulse = 1 + Math.sin(frame * 0.05) * 0.05;
+                el.style.transform = `scale(${pulse})`;
+            });
+            frame++;
+            requestAnimationFrame(updateKappa);
+        }
+
+        if (kappaElements.length > 0) {
+            updateKappa();
+        }
+    })();
+
+    console.log('Maxwell Codex: κ = 2π/180 =', KAPPA);
+    console.log('The geometry is active. [1 = -1]');
+    </script>
+</body>
+</html>
