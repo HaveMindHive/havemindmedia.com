@@ -15,8 +15,11 @@ class SiteFooter extends HTMLElement {
 
     getBasePath() {
         const path = window.location.pathname;
-        const depth = (path.match(/\//g) || []).length - 1;
-        if (depth <= 0 || path === '/' || path.endsWith('/index.html') && depth === 1) {
+        // Remove trailing filename to get directory path
+        const dirPath = path.substring(0, path.lastIndexOf('/') + 1);
+        // Count slashes in directory path (excluding leading slash)
+        const depth = (dirPath.match(/\//g) || []).length - 1;
+        if (depth <= 0 || path === '/' || path === '/index.html') {
             return './';
         }
         return '../'.repeat(depth);

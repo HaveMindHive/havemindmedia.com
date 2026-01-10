@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" style="background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 50%, #0f0f1a 100%);">
+  <defs>
+    <!-- Futurist motion lines gradient -->
+    <linearGradient id="futuristGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a227;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e8d48b;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#8b6914;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="smokeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3a3a5a;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#6a6a8a;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#9a9aba;stop-opacity:0.1" />
+    </linearGradient>
+
+    <linearGradient id="ravenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e" />
+      <stop offset="50%" style="stop-color:#0a0a15" />
+      <stop offset="100%" style="stop-color:#2a2a4e" />
+    </linearGradient>
+
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#c9a227;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#c9a227;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#c9a227;stop-opacity:0" />
+    </radialGradient>
+
+    <filter id="futuristBlur">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+
+    <filter id="smokeBlur">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Futurist speed lines pattern -->
+    <pattern id="speedLines" patternUnits="userSpaceOnUse" width="20" height="20">
+      <line x1="0" y1="0" x2="20" y2="20" stroke="#c9a227" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Background dynamic rays - Futurist style -->
+  <g opacity="0.15">
+    <polygon points="400,500 0,0 200,0" fill="url(#futuristGold)"/>
+    <polygon points="400,500 200,0 400,0" fill="#c9a227"/>
+    <polygon points="400,500 400,0 600,0" fill="url(#futuristGold)"/>
+    <polygon points="400,500 600,0 800,0" fill="#8b6914"/>
+    <polygon points="400,500 800,0 800,200" fill="url(#futuristGold)"/>
+    <polygon points="400,500 800,200 800,400" fill="#c9a227"/>
+  </g>
+
+  <!-- Geometric Futurist fragments around figure -->
+  <g opacity="0.4">
+    <!-- Left side shards -->
+    <polygon points="50,300 120,250 100,350" fill="#c9a227" opacity="0.6"/>
+    <polygon points="80,450 150,400 130,500" fill="#8b6914" opacity="0.5"/>
+    <polygon points="30,600 100,550 90,650" fill="#c9a227" opacity="0.4"/>
+
+    <!-- Right side shards -->
+    <polygon points="750,280 680,230 700,330" fill="#c9a227" opacity="0.6"/>
+    <polygon points="720,420 650,370 670,470" fill="#8b6914" opacity="0.5"/>
+    <polygon points="770,580 700,530 710,630" fill="#c9a227" opacity="0.4"/>
+  </g>
+
+  <!-- WIZARD SILHOUETTE - Main figure -->
+  <g id="wizard">
+    <!-- Cloak/Robe - flowing, angular Futurist style -->
+    <path d="M400,350
+             L280,450 L250,650 L200,900 L180,1000
+             L620,1000 L600,900 L550,650 L520,450
+             Z"
+          fill="#0a0a15" stroke="#1a1a2e" stroke-width="2"/>
+
+    <!-- Cloak inner folds - geometric -->
+    <path d="M320,500 L300,700 L280,900" stroke="#1a1a2e" stroke-width="3" fill="none"/>
+    <path d="M480,500 L500,700 L520,900" stroke="#1a1a2e" stroke-width="3" fill="none"/>
+    <path d="M400,450 L400,750" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+
+    <!-- Shoulders - angular -->
+    <path d="M280,400 L260,380 L240,400 L280,450 Z" fill="#0f0f1a"/>
+    <path d="M520,400 L540,380 L560,400 L520,450 Z" fill="#0f0f1a"/>
+
+    <!-- Head silhouette -->
+    <ellipse cx="400" cy="280" rx="80" ry="100" fill="#0a0a15"/>
+
+    <!-- WIZARD HAT - Pointed, dynamic angle -->
+    <path d="M310,300
+             L400,50
+             L490,300
+             L460,290
+             L400,100
+             L340,290
+             Z"
+          fill="#0a0a15" stroke="#1a1a2e" stroke-width="2"/>
+
+    <!-- Hat brim -->
+    <ellipse cx="400" cy="300" rx="110" ry="25" fill="#0a0a15" stroke="#1a1a2e" stroke-width="2"/>
+
+    <!-- Hat band with κ symbol -->
+    <rect x="340" y="280" width="120" height="15" fill="#c9a227" opacity="0.8"/>
+    <text x="400" y="292" text-anchor="middle" fill="#0a0a15" font-size="14" font-weight="bold">κ = 2π/180</text>
+  </g>
+
+  <!-- BEARD - Long, flowing, geometric -->
+  <g id="beard">
+    <path d="M360,350
+             L340,450 L320,550 L350,650 L380,700
+             L400,720
+             L420,700 L450,650 L480,550 L460,450 L440,350
+             L420,360 L400,370 L380,360 Z"
+          fill="#2a2a3e" opacity="0.9"/>
+
+    <!-- Beard strands - Futurist lines -->
+    <path d="M360,380 L340,500 L350,600" stroke="#3a3a5e" stroke-width="2" fill="none"/>
+    <path d="M380,390 L370,520 L380,620" stroke="#3a3a5e" stroke-width="2" fill="none"/>
+    <path d="M400,395 L400,550 L400,680" stroke="#3a3a5e" stroke-width="2" fill="none"/>
+    <path d="M420,390 L430,520 L420,620" stroke="#3a3a5e" stroke-width="2" fill="none"/>
+    <path d="M440,380 L460,500 L450,600" stroke="#3a3a5e" stroke-width="2" fill="none"/>
+  </g>
+
+  <!-- THE PIPE - Elegant curved -->
+  <g id="pipe">
+    <!-- Pipe bowl -->
+    <ellipse cx="520" cy="340" rx="20" ry="25" fill="#4a3020" stroke="#2a1a10" stroke-width="2"/>
+    <ellipse cx="520" cy="330" rx="15" ry="8" fill="#1a0a05"/>
+
+    <!-- Pipe stem - curved elegantly -->
+    <path d="M500,345
+             Q460,350 440,340
+             Q420,330 400,335"
+          stroke="#3a2015" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M500,345
+             Q460,350 440,340
+             Q420,330 400,335"
+          stroke="#5a4030" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+    <!-- Ember glow in pipe -->
+    <circle cx="520" cy="330" r="8" fill="#ff6600" opacity="0.6" filter="url(#glow)"/>
+    <circle cx="520" cy="330" r="4" fill="#ffaa00" opacity="0.8"/>
+  </g>
+
+  <!-- SMOKE - Surreal, spiraling, forming shapes -->
+  <g id="smoke" filter="url(#smokeBlur)" opacity="0.7">
+    <!-- Main smoke plume -->
+    <path d="M520,310
+             Q540,280 530,250
+             Q520,220 540,190
+             Q560,160 550,130
+             Q540,100 560,70
+             Q580,40 570,10"
+          stroke="url(#smokeGradient)" stroke-width="20" fill="none" stroke-linecap="round"/>
+
+    <!-- Secondary smoke wisps -->
+    <path d="M525,300
+             Q560,270 550,240
+             Q540,210 570,180"
+          stroke="#6a6a8a" stroke-width="12" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+    <path d="M515,305
+             Q500,275 510,245
+             Q520,215 500,185"
+          stroke="#5a5a7a" stroke-width="10" fill="none" opacity="0.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Smoke shapes forming - surreal mathematics -->
+  <g id="smokeShapes" opacity="0.3">
+    <!-- κ in the smoke -->
+    <text x="560" y="150" fill="#9a9aba" font-size="40" font-style="italic" transform="rotate(-15, 560, 150)">κ</text>
+
+    <!-- [1=-1] floating -->
+    <text x="500" y="100" fill="#8a8aaa" font-size="20" transform="rotate(10, 500, 100)">[1=-1]</text>
+
+    <!-- Geometric shapes in smoke -->
+    <polygon points="580,80 600,60 620,80 600,100" fill="#7a7a9a" opacity="0.4"/>
+    <circle cx="540" cy="120" r="15" fill="none" stroke="#8a8aaa" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- EYES - Glowing, knowing -->
+  <g id="eyes">
+    <!-- Left eye socket shadow -->
+    <ellipse cx="370" cy="270" rx="20" ry="12" fill="#050508"/>
+    <!-- Right eye socket shadow -->
+    <ellipse cx="430" cy="270" rx="20" ry="12" fill="#050508"/>
+
+    <!-- Left eye glow -->
+    <ellipse cx="370" cy="270" rx="12" ry="8" fill="url(#eyeGlow)" filter="url(#glow)"/>
+    <ellipse cx="370" cy="270" rx="5" ry="4" fill="#c9a227"/>
+
+    <!-- Right eye glow -->
+    <ellipse cx="430" cy="270" rx="12" ry="8" fill="url(#eyeGlow)" filter="url(#glow)"/>
+    <ellipse cx="430" cy="270" rx="5" ry="4" fill="#c9a227"/>
+  </g>
+
+  <!-- RAVENS - Multiple, dynamic, Futurist motion -->
+
+  <!-- Raven 1 - Large, left side, diving -->
+  <g id="raven1" transform="translate(80, 150) rotate(-25)">
+    <path d="M0,0
+             L-30,-10 L-60,0 L-80,10 L-100,5 L-110,15
+             L-80,20 L-50,15 L-20,20
+             L0,30
+             L30,25 L50,35 L80,30 L100,40 L90,25
+             L60,20 L30,15
+             Z"
+          fill="url(#ravenGradient)"/>
+    <!-- Wing detail -->
+    <path d="M-40,5 L-70,15" stroke="#2a2a4e" stroke-width="2"/>
+    <path d="M-30,10 L-55,18" stroke="#2a2a4e" stroke-width="1.5"/>
+    <path d="M40,20 L70,28" stroke="#2a2a4e" stroke-width="2"/>
+    <!-- Eye -->
+    <circle cx="-5" cy="10" r="3" fill="#c9a227"/>
+    <!-- Beak -->
+    <path d="M-10,12 L-25,15 L-10,18" fill="#3a3a5a"/>
+
+    <!-- Motion lines - Futurist -->
+    <line x1="100" y1="30" x2="130" y2="35" stroke="#c9a227" stroke-width="1" opacity="0.5"/>
+    <line x1="95" y1="40" x2="125" y2="45" stroke="#c9a227" stroke-width="1" opacity="0.4"/>
+    <line x1="90" y1="50" x2="120" y2="55" stroke="#c9a227" stroke-width="1" opacity="0.3"/>
+  </g>
+
+  <!-- Raven 2 - Medium, right side, ascending -->
+  <g id="raven2" transform="translate(680, 200) rotate(15) scale(0.8)">
+    <path d="M0,0
+             L-30,-10 L-60,0 L-80,10 L-100,5 L-110,15
+             L-80,20 L-50,15 L-20,20
+             L0,30
+             L30,25 L50,35 L80,30 L100,40 L90,25
+             L60,20 L30,15
+             Z"
+          fill="url(#ravenGradient)"/>
+    <circle cx="-5" cy="10" r="3" fill="#c9a227"/>
+    <path d="M-10,12 L-25,15 L-10,18" fill="#3a3a5a"/>
+
+    <!-- Motion lines -->
+    <line x1="-110" y1="10" x2="-140" y2="5" stroke="#c9a227" stroke-width="1" opacity="0.5"/>
+    <line x1="-105" y1="0" x2="-135" y2="-5" stroke="#c9a227" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Raven 3 - Small, distant, upper right -->
+  <g id="raven3" transform="translate(720, 80) rotate(5) scale(0.5)">
+    <path d="M0,0
+             L-30,-10 L-60,0 L-80,10 L-100,5 L-110,15
+             L-80,20 L-50,15 L-20,20
+             L0,30
+             L30,25 L50,35 L80,30 L100,40 L90,25
+             L60,20 L30,15
+             Z"
+          fill="#1a1a2e"/>
+    <circle cx="-5" cy="10" r="2" fill="#c9a227"/>
+  </g>
+
+  <!-- Raven 4 - Small, upper left -->
+  <g id="raven4" transform="translate(120, 60) rotate(-35) scale(0.4)">
+    <path d="M0,0
+             L-30,-10 L-60,0 L-80,10 L-100,5 L-110,15
+             L-80,20 L-50,15 L-20,20
+             L0,30
+             L30,25 L50,35 L80,30 L100,40 L90,25
+             L60,20 L30,15
+             Z"
+          fill="#1a1a2e"/>
+    <circle cx="-5" cy="10" r="2" fill="#c9a227"/>
+  </g>
+
+  <!-- Raven 5 - Perched on hat, watching -->
+  <g id="raven5" transform="translate(440, 120) rotate(10) scale(0.6)">
+    <path d="M0,0
+             L-20,-5 L-40,0 L-50,8 L-60,5 L-65,12
+             L-50,15 L-30,12 L-15,15
+             L0,25
+             L20,20 L35,28 L50,22
+             L35,15 L20,12
+             Z"
+          fill="url(#ravenGradient)"/>
+    <circle cx="-5" cy="8" r="3" fill="#c9a227" filter="url(#glow)"/>
+    <path d="M-10,10 L-20,12 L-10,14" fill="#3a3a5a"/>
+    <!-- Feet gripping hat -->
+    <path d="M10,25 L15,35 M20,25 L25,35" stroke="#2a2a3e" stroke-width="2"/>
+  </g>
+
+  <!-- STAFF - Geometric, with crystal -->
+  <g id="staff">
+    <line x1="230" y1="400" x2="180" y2="950" stroke="#3a2a1a" stroke-width="12"/>
+    <line x1="230" y1="400" x2="180" y2="950" stroke="#5a4a3a" stroke-width="8"/>
+
+    <!-- Staff crystal/orb at top -->
+    <circle cx="235" cy="380" r="25" fill="#0a0a15" stroke="#c9a227" stroke-width="2"/>
+    <circle cx="235" cy="380" r="15" fill="url(#eyeGlow)" filter="url(#glow)"/>
+    <circle cx="235" cy="380" r="8" fill="#c9a227"/>
+
+    <!-- Geometric ornament -->
+    <polygon points="235,340 250,360 235,380 220,360" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+  </g>
+
+  <!-- Futurist speed/energy lines around figure -->
+  <g opacity="0.3">
+    <!-- Left energy arcs -->
+    <path d="M150,400 Q100,500 150,600" stroke="#c9a227" stroke-width="1" fill="none"/>
+    <path d="M130,420 Q80,520 130,620" stroke="#c9a227" stroke-width="0.5" fill="none"/>
+
+    <!-- Right energy arcs -->
+    <path d="M650,400 Q700,500 650,600" stroke="#c9a227" stroke-width="1" fill="none"/>
+    <path d="M670,420 Q720,520 670,620" stroke="#c9a227" stroke-width="0.5" fill="none"/>
+  </g>
+
+  <!-- The principle at bottom -->
+  <text x="400" y="960" text-anchor="middle" fill="#c9a227" font-family="serif" font-size="32" font-weight="bold" letter-spacing="8">
+    [1 = -1]
+  </text>
+
+  <!-- Signature -->
+  <text x="400" y="990" text-anchor="middle" fill="#6a6a8a" font-family="serif" font-size="14" font-style="italic">
+    TORMOD · The Weirdo Geometrist
+  </text>
+
+  <!-- Floating mathematical symbols - surreal -->
+  <g opacity="0.2" fill="#c9a227">
+    <text x="100" y="800" font-size="24">∞</text>
+    <text x="700" y="750" font-size="28">Σ</text>
+    <text x="150" y="200" font-size="20">π</text>
+    <text x="650" y="350" font-size="22">∂</text>
+    <text x="80" y="500" font-size="18">∮</text>
+    <text x="720" y="500" font-size="20">∇</text>
+  </g>
+
+</svg>

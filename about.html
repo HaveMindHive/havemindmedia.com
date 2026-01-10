@@ -122,31 +122,11 @@
             opacity: 0.7;
         }
 
-        .portrait-placeholder {
+        .portrait-image {
             width: 100%;
-            aspect-ratio: 2/3;
-            background: linear-gradient(180deg, #1a1020 0%, #0a0510 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold-dim);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .portrait-placeholder .icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .portrait-placeholder .note {
-            color: var(--text-dim);
-            font-size: 0.7rem;
-            margin-top: 1rem;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         /* Scanlines overlay */
@@ -406,11 +386,7 @@
         <div class="hero-content">
             <div class="portrait-container">
                 <div class="portrait-frame">
-                    <div class="portrait-placeholder">
-                        <div class="icon">◉</div>
-                        <div>AI Portrait Pending</div>
-                        <div class="note">Gibson cyberpunk aesthetic<br>Digital prophet vibes</div>
-                    </div>
+                    <img src="./images/tormod-portrait.png" alt="Tormod HaveMind Ravenskye - Italian Futurism style portrait of a wizard with pipe and ravens" class="portrait-image">
                     <div class="scanlines"></div>
                 </div>
             </div>
@@ -602,6 +578,9 @@
             </p>
             <p>
                 <a href="support.html" style="color: var(--gold);">Support the work →</a>
+            </p>
+            <p style="margin-top: 1rem;">
+                <a href="weirdos/contributors.html" style="color: var(--blue);">Meet the Collaborators →</a>
             </p>
         </section>
 
