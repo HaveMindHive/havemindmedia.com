@@ -719,6 +719,297 @@
                 font-size: 1.3rem;
             }
         }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           HMH MEDIA TOOL - Floating Button & Modal
+           ═══════════════════════════════════════════════════════════════════ */
+        .hmh-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, #b8941f 100%);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hmh-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        .hmh-fab svg {
+            width: 28px;
+            height: 28px;
+            fill: #000;
+        }
+
+        .hmh-fab-tooltip {
+            position: absolute;
+            right: 70px;
+            background: var(--bg-tertiary);
+            color: var(--gold);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            border: 1px solid var(--gold-dim);
+        }
+
+        .hmh-fab:hover .hmh-fab-tooltip {
+            opacity: 1;
+        }
+
+        .hmh-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .hmh-modal-overlay.active {
+            display: flex;
+        }
+
+        .hmh-modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold-dim);
+            border-radius: 16px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .hmh-modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hmh-modal-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .hmh-modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        .hmh-modal-close:hover {
+            color: var(--warning-red);
+        }
+
+        .hmh-modal-body {
+            padding: 24px;
+        }
+
+        .hmh-prompt-presets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .hmh-preset-btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hmh-preset-btn:hover {
+            border-color: var(--electric-cyan);
+            color: var(--electric-cyan);
+        }
+
+        .hmh-preset-btn.active {
+            background: var(--electric-cyan);
+            color: #000;
+            border-color: var(--electric-cyan);
+        }
+
+        .hmh-prompt-input {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 14px;
+            color: var(--text-primary);
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            margin-bottom: 16px;
+        }
+
+        .hmh-prompt-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .hmh-options {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hmh-option-group {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .hmh-option-group label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+
+        .hmh-option-group select {
+            width: 100%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .hmh-generate-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, #b8941f 100%);
+            border: none;
+            color: #000;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hmh-generate-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .hmh-generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .hmh-result {
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .hmh-result.active {
+            display: block;
+        }
+
+        .hmh-result img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .hmh-result-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .hmh-result-btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .hmh-result-btn:hover {
+            border-color: var(--electric-cyan);
+            color: var(--electric-cyan);
+        }
+
+        .hmh-loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .hmh-loading.active {
+            display: block;
+        }
+
+        .hmh-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--border-subtle);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hmh-error {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid var(--warning-red);
+            color: var(--warning-red);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 16px;
+            display: none;
+        }
+
+        .hmh-error.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1945,6 +2236,81 @@
     </div>
 
     <!-- ═══════════════════════════════════════════════════════════════════
+         HMH MEDIA TOOL - Floating Button & Modal
+         ═══════════════════════════════════════════════════════════════════ -->
+    <button class="hmh-fab" id="hmhFab" title="Generate EM Visualization">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+        </svg>
+        <span class="hmh-fab-tooltip">HMH Media Tool</span>
+    </button>
+
+    <div class="hmh-modal-overlay" id="hmhModal">
+        <div class="hmh-modal">
+            <div class="hmh-modal-header">
+                <h3>HMH Media Tool</h3>
+                <button class="hmh-modal-close" id="hmhClose">&times;</button>
+            </div>
+            <div class="hmh-modal-body">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 0.95rem;">
+                    Generate κ geometry and electromagnetic visualizations using AI.
+                </p>
+
+                <div class="hmh-prompt-presets">
+                    <button class="hmh-preset-btn" data-prompt="S⁺/S⁻ wave interference pattern, electromagnetic duality, cyan emission wave and purple reception wave creating golden observable">S⁺/S⁻ Waves</button>
+                    <button class="hmh-preset-btn" data-prompt="tetrahelix electromagnetic field structure, spiraling field lines, κ geometry, sacred geometry of electricity">Tetrahelix EM</button>
+                    <button class="hmh-preset-btn" data-prompt="Aharonov-Bohm effect visualization, electron path around solenoid, phase shift where field is zero, quantum potential">Aharonov-Bohm</button>
+                    <button class="hmh-preset-btn" data-prompt="electromagnetic spectrum spiral through 9 D-positions, frequencies as harmonics not linear">EM Spiral</button>
+                    <button class="hmh-preset-btn" data-prompt="Maxwell's original quaternion equations, 20 equations before Heaviside, scalar potential visible">Maxwell Original</button>
+                    <button class="hmh-preset-btn" data-prompt="charge as rotation visualization, positive clockwise κ rotation, negative counterclockwise, field lines spiraling">Charge Rotation</button>
+                </div>
+
+                <textarea class="hmh-prompt-input" id="hmhPrompt" placeholder="Describe the electromagnetic or κ geometry visualization you want to create..."></textarea>
+
+                <div class="hmh-options">
+                    <div class="hmh-option-group">
+                        <label>Style</label>
+                        <select id="hmhStyle">
+                            <option value="electromagnetic">Electromagnetic</option>
+                            <option value="epoch">Epoch Model</option>
+                            <option value="maxwell">Victorian Physics</option>
+                            <option value="geometric">Sacred Geometry</option>
+                            <option value="epoch-dark">Dark Minimal</option>
+                        </select>
+                    </div>
+                    <div class="hmh-option-group">
+                        <label>Aspect Ratio</label>
+                        <select id="hmhAspect">
+                            <option value="16:9">16:9 (Widescreen)</option>
+                            <option value="1:1">1:1 (Square)</option>
+                            <option value="9:16">9:16 (Portrait)</option>
+                            <option value="4:3">4:3 (Classic)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="hmh-generate-btn" id="hmhGenerate">Generate Visualization</button>
+
+                <div class="hmh-loading" id="hmhLoading">
+                    <div class="hmh-spinner"></div>
+                    <p style="color: var(--text-secondary);">Generating your visualization...</p>
+                    <p style="color: var(--text-dim); font-size: 0.85rem;">This may take 15-30 seconds</p>
+                </div>
+
+                <div class="hmh-error" id="hmhError"></div>
+
+                <div class="hmh-result" id="hmhResult">
+                    <img id="hmhResultImg" src="" alt="Generated visualization">
+                    <div class="hmh-result-actions">
+                        <button class="hmh-result-btn" id="hmhDownload">Download</button>
+                        <button class="hmh-result-btn" id="hmhNewTab">Open in New Tab</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════
          FOOTER
          ═══════════════════════════════════════════════════════════════════ -->
     <footer class="page-footer">
@@ -2479,6 +2845,143 @@
 
     console.log('Maxwell Codex: κ = 2π/180 =', KAPPA);
     console.log('The geometry is active. [1 = -1]');
+
+    // ═══════════════════════════════════════════════════════════════════
+    // 6. HMH MEDIA TOOL
+    // ═══════════════════════════════════════════════════════════════════
+    (function initHMHMediaTool() {
+        const fab = document.getElementById('hmhFab');
+        const modal = document.getElementById('hmhModal');
+        const closeBtn = document.getElementById('hmhClose');
+        const promptInput = document.getElementById('hmhPrompt');
+        const styleSelect = document.getElementById('hmhStyle');
+        const aspectSelect = document.getElementById('hmhAspect');
+        const generateBtn = document.getElementById('hmhGenerate');
+        const loadingDiv = document.getElementById('hmhLoading');
+        const errorDiv = document.getElementById('hmhError');
+        const resultDiv = document.getElementById('hmhResult');
+        const resultImg = document.getElementById('hmhResultImg');
+        const downloadBtn = document.getElementById('hmhDownload');
+        const newTabBtn = document.getElementById('hmhNewTab');
+        const presetBtns = document.querySelectorAll('.hmh-preset-btn');
+
+        if (!fab || !modal) return;
+
+        let currentImageUrl = null;
+
+        // Open modal
+        fab.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Escape key closes modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Preset buttons
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const prompt = btn.dataset.prompt;
+                promptInput.value = prompt;
+                presetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Generate image
+        generateBtn.addEventListener('click', async () => {
+            const prompt = promptInput.value.trim();
+            if (!prompt) {
+                showError('Please enter a prompt or select a preset.');
+                return;
+            }
+
+            // Show loading
+            loadingDiv.classList.add('active');
+            resultDiv.classList.remove('active');
+            errorDiv.classList.remove('active');
+            generateBtn.disabled = true;
+
+            try {
+                const response = await fetch('/.netlify/functions/generate-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        prompt: prompt,
+                        style: styleSelect.value,
+                        aspect_ratio: aspectSelect.value
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Generation failed');
+                }
+
+                // Show result
+                currentImageUrl = data.imageUrl;
+                resultImg.src = currentImageUrl;
+                resultDiv.classList.add('active');
+
+            } catch (error) {
+                showError(error.message || 'Failed to generate image. Please try again.');
+            } finally {
+                loadingDiv.classList.remove('active');
+                generateBtn.disabled = false;
+            }
+        });
+
+        // Download image
+        downloadBtn.addEventListener('click', async () => {
+            if (!currentImageUrl) return;
+
+            try {
+                const response = await fetch(currentImageUrl);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `hmh_em_visualization_${Date.now()}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                // Fallback: open in new tab
+                window.open(currentImageUrl, '_blank');
+            }
+        });
+
+        // Open in new tab
+        newTabBtn.addEventListener('click', () => {
+            if (currentImageUrl) {
+                window.open(currentImageUrl, '_blank');
+            }
+        });
+
+        function showError(message) {
+            errorDiv.textContent = message;
+            errorDiv.classList.add('active');
+        }
+    })();
     </script>
 </body>
 </html>
