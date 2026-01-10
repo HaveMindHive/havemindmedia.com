@@ -285,6 +285,7 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}documents/index.html">White Papers</a>
                                 <hr>
                                 <div class="label">About</div>
+                                <a href="${bp}collaborators.html">The Collaborators</a>
                                 <a href="${bp}about.html">About Tormod</a>
                                 <a href="${bp}weirdos/index.html">✧ The Weirdos</a>
                             </div>
