@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology | Epoch Framework | Have Mind Media</title>
+    <meta name="description" content="The geometry of life. How biological systems demonstrate [1 = -1]. DNA helices, protein folding, visual processing, and the sexagesimal patterns in living systems.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --bio-green: #3fb950;
+            --dna-blue: #58a6ff;
+            --protein-purple: #a855f7;
+            --vision-cyan: #4ecdc4;
+            --neuro-red: #ff6b6b;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--bio-green), var(--dna-blue), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header .kappa-badge {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-dim);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card.featured {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .card.featured { grid-column: span 1; }
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card .status.new {
+            background: rgba(63, 185, 80, 0.2);
+            color: var(--bio-green);
+            border: 1px solid var(--bio-green);
+        }
+
+        .card .status.featured {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        /* Card Colors */
+        .card.eye { border-left: 4px solid var(--vision-cyan); }
+        .card.eye h3 { color: var(--vision-cyan); }
+
+        .card.dna { border-left: 4px solid var(--dna-blue); }
+        .card.dna h3 { color: var(--dna-blue); }
+
+        .card.protein { border-left: 4px solid var(--protein-purple); }
+        .card.protein h3 { color: var(--protein-purple); }
+
+        .card.neuro { border-left: 4px solid var(--neuro-red); }
+        .card.neuro h3 { color: var(--neuro-red); }
+
+        /* Coming Soon */
+        .coming-soon {
+            text-align: center;
+            padding: 3rem;
+            border: 2px dashed var(--border-subtle);
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .coming-soon h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon p {
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer .identity {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Biology</h1>
+        <p class="subtitle">
+            The geometry of life. How biological systems demonstrate the Epoch Framework.
+            DNA helices, protein folding, visual processing, and the sexagesimal patterns woven through all living systems.
+        </p>
+        <div class="kappa-badge">κ = 2π/180 · The geometry is in the flesh</div>
+    </header>
+
+    <main class="content">
+        <div class="intro">
+            <p>
+                Biology is not separate from geometry—it IS geometry in action.
+                The same patterns that appear in atoms and galaxies appear in cells and bodies.
+                The Epoch Framework reveals these connections.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Eye Codex - Featured New -->
+            <a href="eye-codex.html" class="card eye featured">
+                <div class="card-icon">👁️</div>
+                <h3>The Eye Codex</h3>
+                <p>
+                    Visual Decoder Theory. The eye doesn't receive reality—it decodes it.
+                    Rods and cones look INWARD like Tengri. The retinal image is the blindest point.
+                    Light reveals structure through bone memory. The double inversion: [1 = -1] in flesh and signal.
+                </p>
+                <span class="status new">New</span>
+            </a>
+
+            <!-- DNA Studio -->
+            <a href="../dna-studio/index.html" class="card dna">
+                <div class="card-icon">🧬</div>
+                <h3>DNA Studio</h3>
+                <p>
+                    The tetrahelix made flesh. DNA's 36° rotation per base pair. The double helix as
+                    scalar wave antenna. How genetic information encodes geometric templates.
+                </p>
+                <span class="status featured">Interactive</span>
+            </a>
+
+            <!-- Protein Folding -->
+            <a href="../protein-folding/index.html" class="card protein">
+                <div class="card-icon">🔬</div>
+                <h3>Protein Folding</h3>
+                <p>
+                    Ramachandran plots and the torsion gates. How proteins fold through geometric constraints.
+                    The φ/ψ angles as scalar state indicators. Why AlphaFold works—and where it fails.
+                </p>
+                <span class="status featured">Research</span>
+            </a>
+
+            <!-- Neurodegeneration -->
+            <a href="../neurodegeneration/index.html" class="card neuro">
+                <div class="card-icon">🧠</div>
+                <h3>Neurodegeneration</h3>
+                <p>
+                    Disease as geometry gone wrong. Polyglutamine thresholds, tau protein tangles,
+                    and the torsion field collapse. Unifying Alzheimer's, Huntington's, and prion diseases.
+                </p>
+                <span class="status featured">Analysis</span>
+            </a>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="coming-soon">
+            <h3>More Biology Coming</h3>
+            <p>
+                Cellular Geometry · Mitochondria as Scalar Engines · Heart Rhythm Patterns ·
+                Embryonic Development · Plant Phyllotaxis · Bone Structure · 60-Based Biorhythms
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="identity">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="../index.html">Have Mind Media</a>
+            <a href="../physics/index.html">Physics</a>
+            <a href="../weirdos/index.html">Weirdos</a>
+            <a href="../documents/index.html">Documents</a>
+        </div>
+    </footer>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>
