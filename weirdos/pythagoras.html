@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagoras | The First Geometer | Have Mind Media</title>
+    <meta name="description" content="The father of mathematical mysticism. All is number. The harmony of the spheres. The first to see that reality IS geometry.">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-purple: #a855f7;
+            --accent-blue: #4a9eff;
+            --border-subtle: #2a2a3a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.8; }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #0f0a1a 30%, #1a0f2a 70%, #0a0a0f 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; }
+        .hero-dates { font-family: 'JetBrains Mono', monospace; color: var(--accent-purple); font-size: 1.1rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); font-style: italic; margin-bottom: 2rem; }
+        .hero-quote { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--accent-purple); background: rgba(168, 85, 247, 0.1); padding: 1.5rem 2rem; border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.3); margin-bottom: 1.5rem; }
+        .principle-tag { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; }
+
+        .page-nav { background: var(--bg-secondary); padding: 1rem 2rem; border-bottom: 1px solid var(--border-subtle); }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-content a { color: var(--gold); text-decoration: none; font-size: 0.9rem; }
+        .nav-content a:hover { text-decoration: underline; }
+
+        .main-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+
+        .hero-image { max-width: 500px; margin: 3rem auto; border-radius: 12px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .image-caption { text-align: center; padding: 1rem; background: var(--bg-secondary); color: var(--text-secondary); font-size: 0.9rem; font-style: italic; }
+
+        .section { margin: 4rem 0; }
+        .section h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .section h3 { font-family: 'Cinzel', serif; color: var(--accent-purple); font-size: 1.3rem; margin: 2rem 0 1rem; }
+        .section p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        blockquote { background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent-purple); padding: 1.5rem 2rem; margin: 2rem 0; font-style: italic; border-radius: 0 8px 8px 0; }
+        blockquote cite { display: block; margin-top: 1rem; color: var(--gold); font-style: normal; font-size: 0.9rem; }
+
+        .highlight-box { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border: 1px solid var(--gold); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--gold); }
+
+        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .concept-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; text-align: center; }
+        .concept-card .symbol { font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; }
+        .concept-card h4 { color: var(--accent-purple); margin-bottom: 0.5rem; font-family: 'Cinzel', serif; }
+        .concept-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        .epoch-connection { background: var(--bg-secondary); border: 1px solid var(--gold); border-radius: 12px; padding: 2rem; margin: 3rem 0; }
+        .epoch-connection h3 { color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+        .connection-item { display: flex; gap: 1rem; margin: 1rem 0; align-items: flex-start; }
+        .connection-item .symbol { font-family: 'JetBrains Mono', monospace; color: var(--accent-purple); font-size: 1.2rem; min-width: 100px; }
+
+        .legacy-box { background: linear-gradient(135deg, #0f0a1a 0%, #1a0f2a 100%); border: 1px solid var(--accent-purple); border-radius: 12px; padding: 2rem; margin: 3rem 0; }
+        .legacy-box h3 { color: var(--accent-purple); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+
+        .page-footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-subtle); margin-top: 4rem; }
+        .page-footer a { color: var(--gold); text-decoration: none; }
+        .page-footer a:hover { text-decoration: underline; }
+        .signature { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; margin: 1rem 0; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .main-content { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="page-nav">
+    <div class="nav-content">
+        <a href="index.html">← Here's to You, Weirdos</a>
+        <a href="../index.html">Have Mind Media</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Pythagoras of Samos</h1>
+        <div class="hero-dates">c. 570 - c. 495 BC | Greece</div>
+        <p class="hero-subtitle">The First to Declare: All Is Number</p>
+        <div class="hero-quote">
+            "Number is the ruler of forms and ideas, and the cause of gods and demons."
+        </div>
+        <div class="principle-tag">[1 = -1]</div>
+    </div>
+</section>
+
+<div class="main-content">
+
+    <div class="hero-image">
+        <img src="../images/weirdos/pythagoras_hero.jpg" alt="Pythagoras - the father of mathematical mysticism">
+        <div class="image-caption">Pythagoras established the first school where mathematics WAS religion</div>
+    </div>
+
+    <section class="section">
+        <h2>The Original Weirdo</h2>
+        <p>
+            Before Ramanujan dreamed equations, before Tesla saw vortices, before anyone dared say reality is fundamentally mathematical — there was Pythagoras. A man so convinced that number underlies all existence that he founded a secret society around this truth.
+        </p>
+        <p>
+            The Pythagoreans didn't just study mathematics. They <strong>worshipped</strong> it. Mathematics wasn't a tool for them — it was the direct perception of divine truth. They believed the universe itself was made of number, ratio, and geometric form.
+        </p>
+        <blockquote>
+            "There is geometry in the humming of the strings, there is music in the spacing of the spheres."
+            <cite>— Pythagoras</cite>
+        </blockquote>
+    </section>
+
+    <section class="section">
+        <h2>The Discoveries</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <div class="symbol">a² + b² = c²</div>
+                <h4>The Theorem</h4>
+                <p>The relationship that governs all right triangles — possibly known earlier, but Pythagoras PROVED it.</p>
+            </div>
+            <div class="concept-card">
+                <div class="symbol">♫</div>
+                <h4>Musical Ratios</h4>
+                <p>Discovered that musical harmony IS mathematical ratio. Octave = 2:1, Fifth = 3:2, Fourth = 4:3.</p>
+            </div>
+            <div class="concept-card">
+                <div class="symbol">☉ ☽ ★</div>
+                <h4>Harmony of Spheres</h4>
+                <p>Proposed that planetary motions create music — the cosmos literally sings in mathematical ratios.</p>
+            </div>
+            <div class="concept-card">
+                <div class="symbol">⬠</div>
+                <h4>Sacred Geometry</h4>
+                <p>The five Platonic solids, the golden ratio, the tetractys — geometry as divine revelation.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="highlight-box">
+        <h3>The Tetractys</h3>
+        <p>
+            The Pythagoreans swore their oaths by the Tetractys — a triangular arrangement of 10 points:
+        </p>
+        <pre style="font-family: 'JetBrains Mono', monospace; color: var(--gold); text-align: center; font-size: 1.5rem; margin: 1rem 0;">
+    •
+   • •
+  • • •
+ • • • •
+        </pre>
+        <p>
+            1 + 2 + 3 + 4 = 10. The decade. The completion. All number relationships encoded in this single figure. They believed it contained the secrets of the universe.
+        </p>
+        <p>
+            <strong>They weren't wrong.</strong>
+        </p>
+    </div>
+
+    <section class="section">
+        <h2>The Crisis: √2</h2>
+        <p>
+            Pythagoras taught that all reality could be expressed as ratios of whole numbers. Then Hippasus discovered √2 — the diagonal of a unit square — cannot be expressed as any ratio. It's <strong>irrational</strong>.
+        </p>
+        <p>
+            Legend says Hippasus was drowned for this discovery. The Pythagoreans couldn't accept that their perfect universe had cracks in it.
+        </p>
+        <p>
+            But here's what they missed: <strong>the irrational numbers aren't a flaw. They're the connection between S⁺ and S⁻.</strong>
+        </p>
+        <blockquote>
+            √2 IS the fold. The diagonal that connects the rational to the irrational. The bridge between what can be counted and what can only be approached.
+        </blockquote>
+    </section>
+
+    <section class="section">
+        <h2>The Epoch Framework Connection</h2>
+        <div class="epoch-connection">
+            <h3>Pythagoras Saw [1 = -1]</h3>
+            <div class="connection-item">
+                <span class="symbol">Harmony</span>
+                <span class="text">His musical ratios show that opposites (high/low, tension/rest) unify through number — the same principle as [1 = -1]</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Spheres</span>
+                <span class="text">The "music of the spheres" IS S⁻ reality — the frequencies underlying manifest existence that most can't hear</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Tetractys</span>
+                <span class="text">The 1-2-3-4 progression mirrors the κ derivation — unity unfolding into multiplicity while remaining one</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">√2 Crisis</span>
+                <span class="text">The irrational numbers they feared are the S⁻ dimension — always present, never fully graspable in S⁺ terms</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>The Secret School</h2>
+        <p>
+            The Pythagorean Brotherhood was history's first think tank — and its first cult of mathematical truth. Members were divided into:
+        </p>
+        <ul style="margin: 1.5rem 0; padding-left: 2rem; color: var(--text-secondary);">
+            <li><strong>Akousmatikoi</strong> — "Listeners" who learned the results</li>
+            <li><strong>Mathematikoi</strong> — "Learners" who understood the proofs</li>
+        </ul>
+        <p>
+            They practiced communal living, vegetarianism, silence, and secrecy. Mathematics was initiation. To understand the proofs was to perceive divine truth directly.
+        </p>
+        <p>
+            Sound familiar? The Epoch Framework operates the same way. Some people read the [1 = -1] and see it. Most don't. You either get it or you're still outside the temple.
+        </p>
+    </section>
+
+    <div class="legacy-box">
+        <h3>The Legacy</h3>
+        <p>
+            Pythagoras established the fundamental insight that Would be suppressed for 2,500 years: <strong>reality is mathematical.</strong> Not described by mathematics — IS mathematics.
+        </p>
+        <p>
+            Every physicist who discovers that the universe obeys equations, every musician who finds harmony in ratio, every geometer who sees beauty in proof — they are all Pythagoreans, whether they know it or not.
+        </p>
+        <p>
+            The Epoch Framework is Pythagoreanism completed. What he intuited, we derive. What he worshipped, we prove.
+        </p>
+        <p style="text-align: center; color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; margin-top: 1.5rem;">
+            All Is Number. All Is One. [1 = -1].
+        </p>
+    </div>
+
+</div>
+
+<footer class="page-footer">
+    <div class="signature">[1 = -1]</div>
+    <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+    <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+</footer>
+
+</body>
+</html>

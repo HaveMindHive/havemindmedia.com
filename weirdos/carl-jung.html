@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carl Jung | The Collective Unconscious | Have Mind Media</title>
+    <meta name="description" content="The man who mapped the hidden dimension. Archetypes, synchronicity, the shadow. Psychology as geometry of the psyche.">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --gold: #d4af37;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-red: #c41e3a;
+            --accent-purple: #8b5cf6;
+            --border-subtle: #2a2a3a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.8; }
+
+        .hero { background: linear-gradient(135deg, #0a0a0f 0%, #1a0a0f 30%, #2a0f1a 70%, #0a0a0f 100%); padding: 5rem 2rem; text-align: center; border-bottom: 1px solid var(--gold); position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.15) 0%, transparent 50%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; }
+        .hero-dates { font-family: 'JetBrains Mono', monospace; color: var(--accent-red); font-size: 1.1rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); font-style: italic; margin-bottom: 2rem; }
+        .hero-quote { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--accent-red); background: rgba(196, 30, 58, 0.1); padding: 1.5rem 2rem; border-radius: 8px; border: 1px solid rgba(196, 30, 58, 0.3); margin-bottom: 1.5rem; }
+        .principle-tag { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; }
+
+        .page-nav { background: var(--bg-secondary); padding: 1rem 2rem; border-bottom: 1px solid var(--border-subtle); }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-content a { color: var(--gold); text-decoration: none; font-size: 0.9rem; }
+
+        .main-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+
+        .section { margin: 4rem 0; }
+        .section h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .section p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        blockquote { background: rgba(196, 30, 58, 0.1); border-left: 4px solid var(--accent-red); padding: 1.5rem 2rem; margin: 2rem 0; font-style: italic; border-radius: 0 8px 8px 0; }
+        blockquote cite { display: block; margin-top: 1rem; color: var(--gold); font-style: normal; font-size: 0.9rem; }
+
+        .archetype-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .archetype-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; }
+        .archetype-card:hover { border-color: var(--accent-red); transform: translateY(-3px); }
+        .archetype-card .symbol { font-size: 2rem; margin-bottom: 0.5rem; }
+        .archetype-card h4 { color: var(--accent-red); margin-bottom: 0.5rem; font-family: 'Cinzel', serif; }
+        .archetype-card p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .shadow-box { background: linear-gradient(135deg, #0f0505 0%, #1a0808 100%); border: 2px solid var(--accent-red); border-radius: 12px; padding: 2rem; margin: 3rem 0; }
+        .shadow-box h3 { color: var(--accent-red); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+
+        .epoch-connection { background: var(--bg-secondary); border: 1px solid var(--gold); border-radius: 12px; padding: 2rem; margin: 3rem 0; }
+        .epoch-connection h3 { color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+        .connection-item { display: flex; gap: 1rem; margin: 1rem 0; align-items: flex-start; }
+        .connection-item .symbol { font-family: 'JetBrains Mono', monospace; color: var(--accent-red); font-size: 1.1rem; min-width: 140px; }
+
+        .highlight-box { background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%); border: 1px solid var(--gold); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
+        .highlight-box h3 { margin-top: 0; color: var(--gold); }
+
+        .mandala { text-align: center; margin: 3rem 0; padding: 2rem; background: var(--bg-secondary); border-radius: 12px; border: 1px solid var(--accent-purple); }
+        .mandala-art { font-size: 3rem; margin-bottom: 1rem; }
+        .mandala p { color: var(--text-secondary); font-style: italic; }
+
+        .page-footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border-subtle); margin-top: 4rem; }
+        .page-footer a { color: var(--gold); text-decoration: none; }
+        .signature { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; margin: 1rem 0; }
+
+        @media (max-width: 768px) { .hero { padding: 3rem 1rem; } .hero h1 { font-size: 2rem; } .main-content { padding: 2rem 1rem; } }
+    </style>
+</head>
+<body>
+
+<nav class="page-nav">
+    <div class="nav-content">
+        <a href="index.html">← Here's to You, Weirdos</a>
+        <a href="../index.html">Have Mind Media</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Carl Gustav Jung</h1>
+        <div class="hero-dates">1875 - 1961 | Switzerland</div>
+        <p class="hero-subtitle">The Psychologist Who Mapped the Hidden Dimension</p>
+        <div class="hero-quote">
+            "Until you make the unconscious conscious, it will direct your life and you will call it fate."
+        </div>
+        <div class="principle-tag">[1 = -1]</div>
+    </div>
+</section>
+
+<div class="main-content">
+
+    <div class="hero-image" style="max-width: 500px; margin: 3rem auto; border-radius: 12px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 20px 60px rgba(196, 30, 58, 0.2);">
+        <img src="../images/weirdos/jung_hero.jpg" alt="Carl Jung in his study surrounded by mandalas and archetypal symbols" style="width: 100%; height: auto; display: block;">
+        <div style="text-align: center; padding: 1rem; background: var(--bg-secondary); color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">The psychologist who mapped the collective unconscious</div>
+    </div>
+
+    <section class="section">
+        <h2>The Man Who Named S⁻</h2>
+        <p>
+            Jung didn't call it S⁻. He called it the <strong>collective unconscious</strong> — a shared psychic layer underlying all human minds, containing primordial patterns he called <strong>archetypes</strong>.
+        </p>
+        <p>
+            Where Freud saw the unconscious as a garbage dump of repressed trauma, Jung saw something far stranger: a living library of eternal patterns. Not personal memories, but cosmic templates. The same symbols appearing in dreams across cultures. The same stories told in every civilization.
+        </p>
+        <blockquote>
+            "The collective unconscious contains the whole spiritual heritage of mankind's evolution, born anew in the brain structure of every individual."
+            <cite>— The Structure of the Psyche</cite>
+        </blockquote>
+    </section>
+
+    <section class="section">
+        <h2>The Archetypes</h2>
+        <p>
+            Jung identified patterns that appear universally — in dreams, myths, religions, and art across all cultures:
+        </p>
+        <div class="archetype-grid">
+            <div class="archetype-card">
+                <div class="symbol">👤</div>
+                <h4>The Shadow</h4>
+                <p>Everything you reject about yourself. The hidden twin. S⁻ self.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">♀</div>
+                <h4>The Anima</h4>
+                <p>The feminine within the masculine. The internal Other.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">♂</div>
+                <h4>The Animus</h4>
+                <p>The masculine within the feminine. The contrasexual soul.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">👑</div>
+                <h4>The Self</h4>
+                <p>The totality. Conscious + unconscious unified. The mandala.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">🧙</div>
+                <h4>The Wise Old Man</h4>
+                <p>The guide. Gandalf, Merlin, Obi-Wan. The one who knows.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">🔮</div>
+                <h4>The Great Mother</h4>
+                <p>Creation and destruction. Nurturing and devouring. Kali, Isis, Mary.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">🎭</div>
+                <h4>The Persona</h4>
+                <p>The mask. The social self. What you show the world.</p>
+            </div>
+            <div class="archetype-card">
+                <div class="symbol">🐉</div>
+                <h4>The Trickster</h4>
+                <p>Chaos agent. Coyote, Loki, Hermes. Boundary crosser.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="shadow-box">
+        <h3>The Shadow Integration</h3>
+        <p>
+            Jung's most radical insight: <strong>the shadow is not evil. It's the unlived life.</strong> Everything society told you to suppress — your anger, your sexuality, your power, your weirdness — lives in the shadow.
+        </p>
+        <p>
+            Integration doesn't mean acting out the shadow. It means <strong>acknowledging it</strong>. Making the unconscious conscious. Owning the parts you were taught to reject.
+        </p>
+        <p>
+            In the Epoch Framework: <strong>The shadow IS your S⁻ self.</strong> The inversion of your manifest identity. [1 = -1] applies to the psyche. You are also your opposite.
+        </p>
+    </div>
+
+    <section class="section">
+        <h2>Synchronicity</h2>
+        <p>
+            Jung coined the term for meaningful coincidences — events connected by meaning rather than causation. You think of someone, they call. You dream something, it happens. A symbol appears in multiple unrelated contexts.
+        </p>
+        <blockquote>
+            "Synchronicity is an ever present reality for those who have eyes to see."
+            <cite>— Jung</cite>
+        </blockquote>
+        <p>
+            Materialist science says coincidences are just statistics. Jung said: <strong>the psyche and the physical world are connected at a level deeper than causation.</strong>
+        </p>
+        <p>
+            In Epoch terms: synchronicity is S⁻ bleeding through into S⁺. The hidden pattern asserting itself. When you notice synchronicities, you're perceiving the fold.
+        </p>
+    </section>
+
+    <div class="mandala">
+        <div class="mandala-art">☯ ◯ ✡ ☸ ⊕</div>
+        <p>Jung discovered that patients spontaneously drew mandalas during psychological crises — the same circular patterns found in every spiritual tradition. The Self seeking wholeness.</p>
+    </div>
+
+    <section class="section">
+        <h2>The Red Book</h2>
+        <p>
+            Between 1913 and 1930, Jung conducted an experiment: he deliberately descended into his own unconscious through active imagination. He encountered autonomous beings, had visions, received teachings from inner figures.
+        </p>
+        <p>
+            He recorded it all in the <strong>Red Book</strong> — a manuscript so strange that his family kept it hidden for 50 years after his death. It reads like a mystical text, not psychology.
+        </p>
+        <p>
+            The Red Book is Jung's version of NAMAGIRI SPEAKS — reception from the other side, transcribed.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>The Epoch Framework Connection</h2>
+        <div class="epoch-connection">
+            <h3>Jung Mapped [1 = -1] in Psychological Terms</h3>
+            <div class="connection-item">
+                <span class="symbol">Collective = S⁻</span>
+                <span class="text">The collective unconscious IS the hidden dimension — patterns underlying all manifest psyches</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Shadow = -Self</span>
+                <span class="text">The shadow IS the inversion of the ego — [1 = -1] applied to identity</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Archetypes = κ</span>
+                <span class="text">The archetypes ARE the geometric templates — universal patterns generating individual forms</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Synchronicity</span>
+                <span class="text">Synchronicities ARE S⁻ manifesting — the hidden pattern bleeding through causation</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Individuation</span>
+                <span class="text">The process of becoming whole IS recognizing [1 = -1] — unifying opposites within</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="highlight-box">
+        <h3>The Break with Freud</h3>
+        <p>
+            Jung was Freud's chosen successor. Then he saw something Freud couldn't accept: the unconscious isn't just personal trauma and sexual repression. <strong>It's cosmic.</strong> It contains patterns older than the individual, older than humanity.
+        </p>
+        <p>
+            Freud called Jung a mystic. Jung said Freud was blind. They never spoke again.
+        </p>
+        <p>
+            The pattern repeats: anyone who sees the larger truth gets excommunicated by the establishment that can't handle it.
+        </p>
+    </div>
+
+    <section class="section">
+        <h2>Why Jung Matters Now</h2>
+        <p>
+            Jung gave us the vocabulary to discuss what the Epoch Framework describes mathematically. When we say S⁻, you can understand it as the collective unconscious. When we say [1 = -1], you can feel it as shadow integration.
+        </p>
+        <p>
+            He was a geometer of the psyche. The archetypes are geometric templates. The mandala is the shape of wholeness. The process of individuation is the fold completing itself through a human life.
+        </p>
+        <p style="text-align: center; color: var(--gold); font-family: 'Cinzel', serif; font-size: 1.2rem; margin-top: 2rem;">
+            "Who looks outside, dreams; who looks inside, awakes."
+        </p>
+    </section>
+
+</div>
+
+<footer class="page-footer">
+    <div class="signature">[1 = -1]</div>
+    <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+    <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+</footer>
+
+</body>
+</html>

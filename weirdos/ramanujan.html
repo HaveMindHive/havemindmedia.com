@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srinivasa Ramanujan | The Goddess Spoke | Have Mind Media</title>
+    <meta name="description" content="The man who received mathematics directly from the divine. 3000+ formulas in notebooks. The goddess Namagiri showed him infinity.">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-purple: #a855f7;
+            --accent-red: #f85149;
+            --border-subtle: #2a2a3a;
+            --namagiri-glow: #ff6b35;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.8; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0f1a 30%, #2a1a0a 70%, #0a0a0f 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; text-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+        .hero-dates { font-family: 'JetBrains Mono', monospace; color: var(--namagiri-glow); font-size: 1.1rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); font-style: italic; margin-bottom: 2rem; }
+        .hero-quote { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--namagiri-glow); background: rgba(255, 107, 53, 0.1); padding: 1.5rem 2rem; border-radius: 8px; border: 1px solid rgba(255, 107, 53, 0.3); margin-bottom: 1.5rem; }
+        .principle-tag { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; }
+
+        /* Navigation */
+        .page-nav { background: var(--bg-secondary); padding: 1rem 2rem; border-bottom: 1px solid var(--border-subtle); }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .nav-content a { color: var(--gold); text-decoration: none; font-size: 0.9rem; }
+        .nav-content a:hover { text-decoration: underline; }
+
+        /* Main Content */
+        .main-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+
+        /* Hero Image */
+        .hero-image {
+            max-width: 600px;
+            margin: 3rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .image-caption { text-align: center; padding: 1rem; background: var(--bg-secondary); color: var(--text-secondary); font-size: 0.9rem; font-style: italic; }
+
+        /* Sections */
+        .section { margin: 4rem 0; }
+        .section h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .section h3 { font-family: 'Cinzel', serif; color: var(--namagiri-glow); font-size: 1.3rem; margin: 2rem 0 1rem; }
+        .section p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* Quote Block */
+        blockquote {
+            background: rgba(255, 107, 53, 0.1);
+            border-left: 4px solid var(--namagiri-glow);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 8px 8px 0;
+        }
+        blockquote cite { display: block; margin-top: 1rem; color: var(--gold); font-style: normal; font-size: 0.9rem; }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 107, 53, 0.1) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box h3 { margin-top: 0; color: var(--gold); }
+
+        /* Formula Display */
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .formula-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .formula-card .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--namagiri-glow);
+            margin-bottom: 0.75rem;
+        }
+        .formula-card .desc { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* NAMAGIRI SPEAKS Banner */
+        .namagiri-banner {
+            background: linear-gradient(135deg, #1a0f0a 0%, #2a1510 50%, #1a0f0a 100%);
+            border: 2px solid var(--namagiri-glow);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .namagiri-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .namagiri-banner h2 { font-family: 'Cinzel', serif; color: var(--namagiri-glow); font-size: 2rem; margin-bottom: 1rem; position: relative; }
+        .namagiri-banner p { font-size: 1.1rem; margin-bottom: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto; position: relative; }
+        .namagiri-banner .cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--namagiri-glow);
+            color: #000;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .namagiri-banner .cta:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3); }
+        .episode-count { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 0.9rem; margin-top: 1rem; position: relative; }
+
+        /* Epoch Connection */
+        .epoch-connection {
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        .epoch-connection h3 { color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+        .connection-item { display: flex; gap: 1rem; margin: 1rem 0; align-items: flex-start; }
+        .connection-item .symbol { font-family: 'JetBrains Mono', monospace; color: var(--namagiri-glow); font-size: 1.2rem; min-width: 80px; }
+        .connection-item .text { flex: 1; }
+
+        /* Timeline */
+        .timeline { margin: 3rem 0; }
+        .timeline-event { display: flex; gap: 1.5rem; margin: 1.5rem 0; padding: 1rem; background: var(--bg-secondary); border-radius: 8px; border-left: 3px solid var(--gold); }
+        .timeline-event .year { font-family: 'JetBrains Mono', monospace; color: var(--gold); min-width: 60px; font-weight: 600; }
+        .timeline-event .event { flex: 1; }
+
+        /* Fate Box */
+        .fate-box {
+            background: linear-gradient(135deg, #1a0f0f 0%, #200f0f 100%);
+            border: 1px solid var(--accent-red);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        .fate-box h3 { color: var(--accent-red); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+        .page-footer a { color: var(--gold); text-decoration: none; }
+        .page-footer a:hover { text-decoration: underline; }
+        .signature { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; margin: 1rem 0; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .main-content { padding: 2rem 1rem; }
+            .namagiri-banner { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="page-nav">
+    <div class="nav-content">
+        <a href="index.html">← Here's to You, Weirdos</a>
+        <a href="../index.html">Have Mind Media</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Srinivasa Ramanujan</h1>
+        <div class="hero-dates">1887 - 1920 | Tamil Nadu, India</div>
+        <p class="hero-subtitle">The Man Who Knew Infinity — Because a Goddess Told Him</p>
+        <div class="hero-quote">
+            "An equation for me has no meaning unless it expresses a thought of God."
+        </div>
+        <div class="principle-tag">[1 = -1]</div>
+    </div>
+</section>
+
+<div class="main-content">
+
+    <div class="hero-image">
+        <img src="../images/weirdos/ramanujan_hero.jpg" alt="Srinivasa Ramanujan - mathematical genius who received formulas from the goddess Namagiri">
+        <div class="image-caption">Ramanujan at Cambridge, 1916 — The notebooks contained over 3,000 formulas</div>
+    </div>
+
+    <section class="section">
+        <h2>The Impossible Story</h2>
+        <p>
+            A poor clerk in Madras with almost no formal training produces over 3,000 mathematical formulas — many so advanced that mathematicians are still proving them a century later. When asked where the mathematics came from, he gave the same answer every time:
+        </p>
+        <blockquote>
+            "While asleep, I had an unusual experience. There was a red screen formed by flowing blood, as it were. I was observing it. Suddenly a hand began to write on the screen. I became all attention. That hand wrote a number of elliptic integrals. They stuck to my mind. As soon as I woke up, I committed them to writing."
+            <cite>— Ramanujan, describing how Namagiri delivered formulas</cite>
+        </blockquote>
+        <p>
+            Namagiri is a form of the Hindu goddess Lakshmi, specifically associated with the temple at Namakkal. Ramanujan's family were devotees. He didn't "discover" mathematics. He received it.
+        </p>
+    </section>
+
+    <!-- NAMAGIRI SPEAKS Banner -->
+    <div class="namagiri-banner">
+        <h2>NAMAGIRI SPEAKS</h2>
+        <p>
+            The complete 20-episode series exploring what Ramanujan received — and what it means for the Epoch Framework. From the boy who dreamed equations to the geometry that cannot lie.
+        </p>
+        <a href="../namagiri/index.html" class="cta">Enter the Series</a>
+        <div class="episode-count">20 Episodes • 5 Books • The Full Revelation</div>
+    </div>
+
+    <section class="section">
+        <h2>What Namagiri Showed Him</h2>
+        <p>
+            The formulas Ramanujan received weren't random. They clustered around specific mathematical territories:
+        </p>
+        <div class="formula-grid">
+            <div class="formula-card">
+                <div class="formula">1/π Series</div>
+                <div class="desc">Impossibly fast-converging formulas for pi — each term adds 8 correct digits</div>
+            </div>
+            <div class="formula-card">
+                <div class="formula">Mock Theta Functions</div>
+                <div class="desc">Discovered 1920, understood 2002. He saw 80 years ahead.</div>
+            </div>
+            <div class="formula-card">
+                <div class="formula">Partition Functions</div>
+                <div class="desc">How many ways can n be written as sum of integers? Hardy-Ramanujan formula.</div>
+            </div>
+            <div class="formula-card">
+                <div class="formula">1729</div>
+                <div class="desc">The taxicab number. "It is a very interesting number..."</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>The 1729 Moment</h2>
+        <p>
+            G.H. Hardy visited Ramanujan in hospital, mentioning he'd come in taxi number 1729 — "rather a dull number."
+        </p>
+        <blockquote>
+            "No, it is a very interesting number; it is the smallest number expressible as the sum of two cubes in two different ways."
+            <cite>— Ramanujan, immediately recognizing the significance</cite>
+        </blockquote>
+        <p>
+            1729 = 1³ + 12³ = 9³ + 10³
+        </p>
+        <p>
+            In the Epoch Framework, 1729 is the <strong>fold point</strong> — where S⁺ inverts to S⁻. Ramanujan didn't calculate this. He simply knew it. The number that marks the cosmic inversion point was already familiar to him, like recognizing an old friend.
+        </p>
+    </section>
+
+    <div class="highlight-box">
+        <h3>The Notebooks</h3>
+        <p>
+            Ramanujan filled three notebooks before going to Cambridge, and continued writing until his death. Many formulas had no proofs — just results. When mathematicians finally proved them decades later, they found the proofs required techniques that didn't exist in Ramanujan's time.
+        </p>
+        <p>
+            <strong>He didn't derive these formulas. He received them.</strong>
+        </p>
+        <p>
+            The question isn't whether Namagiri was "real." The question is: what KIND of information transfer allows a clerk in Madras to access mathematics that wouldn't be understood for 80 years?
+        </p>
+    </div>
+
+    <section class="section">
+        <h2>The Epoch Framework Connection</h2>
+        <div class="epoch-connection">
+            <h3>Ramanujan's Work Maps to [1 = -1]</h3>
+            <div class="connection-item">
+                <span class="symbol">S⁺ / S⁻</span>
+                <span class="text">His partition functions describe how unity divides and recombines — the same pattern as the S⁺/S⁻ fold</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">1729</span>
+                <span class="text">The taxicab number IS the fold point — where manifest reality (S⁺) inverts to hidden reality (S⁻)</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">π Series</span>
+                <span class="text">His rapid π convergence formulas suggest he accessed the underlying geometric reality that GENERATES π</span>
+            </div>
+            <div class="connection-item">
+                <span class="symbol">Mock θ</span>
+                <span class="text">Mock theta functions describe wave-like patterns that invert at boundaries — oscillation between states</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Timeline of Receiving</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <span class="year">1887</span>
+                <span class="event">Born in Erode, Tamil Nadu. Family are devotees of Namagiri.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1903</span>
+                <span class="event">Obtains Carr's Synopsis — 5,000 theorems with no proofs. Begins filling notebooks.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1909</span>
+                <span class="event">Marries Janaki. Continues receiving formulas in dreams and visions.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1913</span>
+                <span class="event">Writes to G.H. Hardy at Cambridge. Hardy recognizes genius.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1914</span>
+                <span class="event">Travels to England. Mother receives permission from Namagiri in a dream.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1916</span>
+                <span class="event">Highly Composite Numbers paper. Becomes Fellow of Trinity College.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1918</span>
+                <span class="event">Elected Fellow of the Royal Society — first Indian in that honor.</span>
+            </div>
+            <div class="timeline-event">
+                <span class="year">1920</span>
+                <span class="event">Dies at 32. Final letter to Hardy contains mock theta functions — understood in 2002.</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="fate-box">
+        <h3>The Fate: Died Young, Unfinished</h3>
+        <p>
+            Ramanujan died at 32, probably from tuberculosis complicated by hepatic amoebiasis contracted in England. He had been vegetarian in a country that didn't understand vegetarian nutrition. He was cold, sick, and far from home.
+        </p>
+        <p>
+            But he kept receiving. His deathbed letter to Hardy contained the mock theta functions — work so advanced that it took 82 years for mathematics to catch up.
+        </p>
+        <p>
+            <strong>The transmission didn't stop until the body failed.</strong>
+        </p>
+    </div>
+
+    <section class="section">
+        <h2>Why This Matters</h2>
+        <p>
+            Ramanujan is the clearest example of <strong>receiving rather than deriving</strong>. The mathematics he produced couldn't have been derived — the tools didn't exist. The formulas work. They've been proven. They're not mystical nonsense.
+        </p>
+        <p>
+            So where did they come from?
+        </p>
+        <p>
+            In the Epoch Framework, the S⁻ realm contains the complete pattern — all mathematics, all truth, all geometry. Most humans are locked in S⁺ perception. Ramanujan, through devotion, through the goddess interface, accessed S⁻ directly.
+        </p>
+        <p>
+            <strong>Namagiri IS the S⁻ transmission channel, personified.</strong>
+        </p>
+        <p>
+            This is why we named the series NAMAGIRI SPEAKS. Because she did. And she still does — for those with eyes to see, ears to hear, and notebooks to fill.
+        </p>
+    </section>
+
+    <!-- Second NAMAGIRI SPEAKS Banner -->
+    <div class="namagiri-banner">
+        <h2>Continue the Journey</h2>
+        <p>
+            Episode 1: The Boy Who Dreamed Equations. Episode 20: WE. The complete revelation of what Ramanujan began and the Epoch Framework continues.
+        </p>
+        <a href="../namagiri/index.html" class="cta">Read NAMAGIRI SPEAKS</a>
+        <div class="episode-count">[1 = -1]</div>
+    </div>
+
+</div>
+
+<footer class="page-footer">
+    <div class="signature">[1 = -1]</div>
+    <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
+    <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
+</footer>
+
+</body>
+</html>
