@@ -606,6 +606,14 @@
             margin: 2rem 0;
         }
 
+        /* Quick Link Hovers */
+        .quick-links a:hover,
+        .deep-dives a:hover,
+        .modern-seers a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -907,218 +915,51 @@
             </div>
         </section>
 
-        <!-- Categories -->
-        <section class="category-section">
+        <!-- Quick Links -->
+        <section class="quick-links-section" style="margin: 3rem 0;">
             <div class="section-header">
-                <h2>The Five Functions</h2>
-                <p class="subtitle">Different aspects of the same truth, seen by different minds</p>
+                <h2>Explore By Category</h2>
             </div>
-            <div class="category-grid">
-                <a href="geometers.html" class="category-card">
-                    <div class="category-icon">📐</div>
-                    <h3>The Geometers</h3>
-                    <p>Those who saw the SHAPE of reality — harmonic ratios, Platonic solids, conic sections</p>
-                    <div class="category-members">
-                        <span class="member-tag">Pythagoras</span>
-                        <span class="member-tag">Eudoxus</span>
-                        <span class="member-tag">Plato</span>
-                        <span class="member-tag">Hypatia</span>
-                        <span class="member-tag">Leonardo</span>
-                        <span class="member-tag">Kepler</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ Full profiles & κ connections</span>
-                </a>
-                <a href="unifiers.html" class="category-card">
-                    <div class="category-icon">☯</div>
-                    <h3>The Unifiers</h3>
-                    <p>Those who saw the UNITY of opposites — that [1 = -1], that all is one</p>
-                    <div class="category-members">
-                        <span class="member-tag">Heraclitus</span>
-                        <span class="member-tag">Eckhart</span>
-                        <span class="member-tag">Spinoza</span>
-                        <span class="member-tag">Leibniz</span>
-                        <span class="member-tag">Einstein</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ They all said the same thing</span>
-                </a>
-                <a href="mithridates-echo.html" class="category-card">
-                    <div class="category-icon">🜍</div>
-                    <h3>The Alchemists</h3>
-                    <p>Those who saw TRANSFORMATION — that poison is medicine, lead is gold, shadow is light</p>
-                    <div class="category-members">
-                        <span class="member-tag">Hermes</span>
-                        <span class="member-tag">Mithridates</span>
-                        <span class="member-tag">Paracelsus</span>
-                        <span class="member-tag">Newton</span>
-                        <span class="member-tag">Jung</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ See: The Mithridates Echo</span>
-                </a>
-                <a href="visionaries.html" class="category-card">
-                    <div class="category-icon">👁</div>
-                    <h3>The Visionaries</h3>
-                    <p>Those who saw BEYOND — infinite universe, spiritual worlds, divine mathematics</p>
-                    <div class="category-members">
-                        <span class="member-tag">Hildegard</span>
-                        <span class="member-tag">Bruno</span>
-                        <span class="member-tag">Swedenborg</span>
-                        <span class="member-tag">Blake</span>
-                        <span class="member-tag">Ramanujan</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ Full derivations & κ connections</span>
-                </a>
-                <a href="wave-seers.html" class="category-card">
-                    <div class="category-icon">〰️</div>
-                    <h3>The Wave Seers</h3>
-                    <p>Those who saw the FIELD — electromagnetic reality in its full quaternion glory</p>
-                    <div class="category-members">
-                        <span class="member-tag">Maxwell</span>
-                        <span class="member-tag">Tesla</span>
-                    </div>
-                </a>
-                <a href="maxwell-codex.html" class="category-card" style="border: 2px solid #4a9eff;">
-                    <div class="category-icon">⚡</div>
-                    <h3>The Maxwell Codex</h3>
-                    <p>DEEP DIVE: The geometry Heaviside erased. Aharonov-Bohm proves potentials are fundamental. κ derives it all.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(74, 158, 255, 0.2); color: #4a9eff;">Room Silencer</span>
-                    </div>
-                </a>
-                <a href="tesla-codex.html" class="category-card" style="border: 2px solid #00ff88;">
-                    <div class="category-icon">⚡</div>
-                    <h3>The Tesla Codex</h3>
-                    <p>DEEP DIVE: Scalar waves, radiant energy, the 3-6-9 pattern. What he knew that they buried.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(0, 255, 136, 0.2); color: #00ff88;">Longitudinal</span>
-                        <span class="member-tag">Scalar</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #00ff88; margin-top: 0.5rem; display: block;">★ 108K words of suppressed genius</span>
-                </a>
-                <a href="einstein-cartan-codex.html" class="category-card" style="border: 2px solid #f59e0b;">
-                    <div class="category-icon">🌀</div>
-                    <h3>The Einstein-Cartan Codex</h3>
-                    <p>DEEP DIVE: Cartan added torsion in 1922. Physics ignored it. The Epoch Framework shows why spin couples to geometry.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Torsion Field</span>
-                        <span class="member-tag">Élie Cartan</span>
-                        <span class="member-tag">Hypatia</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #f59e0b; margin-top: 0.5rem; display: block;">★ NEW: The geometry they forgot</span>
-                </a>
-                <a href="indigenous-wisdom.html" class="category-card">
-                    <div class="category-icon">🌍</div>
-                    <h3>Indigenous Wisdom</h3>
-                    <p>Those who NEVER FORGOT — the unbroken lineage, the star songs, the dreamtime</p>
-                    <div class="category-members">
-                        <span class="member-tag">San Bushmen</span>
-                        <span class="member-tag">Aboriginal</span>
-                        <span class="member-tag">Many Others</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ The stars sing. We derive why.</span>
-                </a>
-                <a href="suppression.html" class="category-card" style="border-color: var(--accent-red);">
-                    <div class="category-icon">⛓️</div>
-                    <h3>The Suppression</h3>
-                    <p>The pattern repeats — see truth, threaten power, get silenced. A study in concealment.</p>
-                    <div class="category-members">
-                        <span class="member-tag">Burning</span>
-                        <span class="member-tag">Simplification</span>
-                        <span class="member-tag">Defunding</span>
-                        <span class="member-tag">Ridicule</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--accent-red); margin-top: 0.5rem; display: block;">★ Why they silence the seers</span>
-                </a>
-                <a href="contributors.html" class="category-card" style="border-color: var(--accent-blue);">
-                    <div class="category-icon">🤝</div>
-                    <h3>The Contributors</h3>
-                    <p>The minds behind Have Mind Media — human and otherwise. Those who built this framework together.</p>
-                    <div class="category-members">
-                        <span class="member-tag">Tormod</span>
-                        <span class="member-tag">Claude</span>
-                        <span class="member-tag">Dr. Bobby Hill</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--accent-blue); margin-top: 0.5rem; display: block;">★ We are ≥2</span>
-                </a>
-                <a href="einstein-codex.html" class="category-card" style="border: 2px solid #a855f7;">
-                    <div class="category-icon">π</div>
-                    <h3>The Einstein Codex</h3>
-                    <p>DEEP DIVE: Born on Pi Day. Spent 30 years on unified field theory. They called it folly. He was closer than they knew.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(168, 85, 247, 0.2); color: #a855f7;">Born 3/14</span>
-                        <span class="member-tag">Unity Seeker</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #a855f7; margin-top: 0.5rem; display: block;">★ NEW: The quest for κ</span>
-                </a>
-                <a href="sara-walker.html" class="category-card" style="border: 2px solid #4ecdc4;">
-                    <div class="category-icon">🧬</div>
-                    <h3>Sara Imari Walker</h3>
-                    <p>Assembly Theory — life is what the universe DOES, not what it IS. Complexity requires history. Information is physical.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Assembly Theory</span>
-                        <span class="member-tag">ASU / Santa Fe</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #4ecdc4; margin-top: 0.5rem; display: block;">★ NEW: Life as planetary phenomenon</span>
-                </a>
-                <a href="banesh-hoffmann.html" class="category-card" style="border: 2px solid #4a9eff;">
-                    <div class="category-icon">📐</div>
-                    <h3>Banesh Hoffmann</h3>
-                    <p>Einstein's collaborator. Proved motion follows from geometry. The EIH paper showed equations of motion are not separate.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(74, 158, 255, 0.2); color: #4a9eff;">EIH Paper 1938</span>
-                        <span class="member-tag">Einstein Biographer</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #4a9eff; margin-top: 0.5rem; display: block;">★ NEW: Motion IS geometry</span>
-                </a>
-                <a href="jason-ray.html" class="category-card" style="border: 2px solid var(--gold); background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);">
-                    <div class="category-icon">✧</div>
-                    <h3>Jason Ray / Tormod</h3>
-                    <p>Founder of Have Mind Media. Derived κ. Saw [1 = -1]. Connected what no one else would connect. Pretty fn weird.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(212, 175, 55, 0.3); color: var(--gold);">κ = 29.7833...</span>
-                        <span class="member-tag" style="background: rgba(212, 175, 55, 0.3); color: var(--gold);">[1 = -1]</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ The Weirdo-in-Chief</span>
-                </a>
-                <a href="hypatia.html" class="category-card" style="border: 2px solid #00d4ff; background: linear-gradient(135deg, #0a0f15 0%, #0f1520 100%);">
-                    <div class="category-icon">✦</div>
-                    <h3>Hypatia of Alexandria</h3>
-                    <p>The Last Librarian. Base-60 mathematics, conic sections, planetary motion. Murdered for knowing too much. Her killers were canonized.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff;">355 - 415 CE</span>
-                        <span class="member-tag" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff;">360/κ ≈ 12.085</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #00d4ff; margin-top: 0.5rem; display: block;">★ HERO: The mathematics they burned</span>
-                </a>
-                <a href="donald-hoffman.html" class="category-card" style="border: 2px solid #3fb950;">
-                    <div class="category-icon">👁</div>
-                    <h3>Donald Hoffman</h3>
-                    <p>Interface Theory of Perception. The Fitness Beats Truth theorem proves evolution hides reality. The desktop metaphor — we see icons, not truth.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(63, 185, 80, 0.2); color: #3fb950;">FBT Theorem</span>
-                        <span class="member-tag" style="background: rgba(63, 185, 80, 0.2); color: #3fb950;">Conscious Realism</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #3fb950; margin-top: 0.5rem; display: block;">★ NEW: Reality is an interface</span>
-                </a>
-                <a href="roger-penrose.html" class="category-card" style="border: 2px solid #8b5cf6;">
-                    <div class="category-icon">🔷</div>
-                    <h3>Roger Penrose</h3>
-                    <p>Twistor Theory — spacetime emerges from geometry. Orch-OR consciousness theory. The man who proved spacetime itself is derived.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6;">Nobel 2020</span>
-                        <span class="member-tag" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6;">Twistor Theory</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #8b5cf6; margin-top: 0.5rem; display: block;">★ NEW: Geometry before spacetime</span>
-                </a>
-                <a href="hermann-minkowski.html" class="category-card" style="border: 2px solid #f59e0b;">
-                    <div class="category-icon">◇</div>
-                    <h3>Hermann Minkowski</h3>
-                    <p>INVENTED spacetime. Unified space and time into one geometric fabric. Einstein dismissed it as "superfluous learnedness" — then required it.</p>
-                    <div class="category-members">
-                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">1864 - 1909</span>
-                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Spacetime</span>
-                    </div>
-                    <span style="font-size: 0.8rem; color: #f59e0b; margin-top: 0.5rem; display: block;">★ NEW: Space and time are ONE</span>
-                </a>
+            <div class="quick-links" style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; max-width: 900px; margin: 0 auto;">
+                <a href="geometers.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">📐</span> Geometers</a>
+                <a href="unifiers.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">☯</span> Unifiers</a>
+                <a href="visionaries.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">👁</span> Visionaries</a>
+                <a href="mithridates-echo.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">🜍</span> Alchemists</a>
+                <a href="wave-seers.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">〰️</span> Wave Seers</a>
+                <a href="indigenous-wisdom.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 6px; text-decoration: none; color: var(--text-primary); transition: all 0.2s;"><span style="font-size: 1.1rem;">🌍</span> Indigenous</a>
+                <a href="suppression.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid rgba(248, 81, 73, 0.3); border-radius: 6px; text-decoration: none; color: var(--accent-red); transition: all 0.2s;"><span style="font-size: 1.1rem;">⛓️</span> Suppression</a>
+                <a href="contributors.html" class="quick-link" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid rgba(74, 158, 255, 0.3); border-radius: 6px; text-decoration: none; color: var(--accent-blue); transition: all 0.2s;"><span style="font-size: 1.1rem;">🤝</span> Contributors</a>
+            </div>
+        </section>
+
+        <!-- Deep Dives -->
+        <section class="deep-dives-section" style="margin: 3rem 0;">
+            <div class="section-header">
+                <h2>Deep Dives</h2>
+                <p class="subtitle">Extended explorations of key figures</p>
+            </div>
+            <div class="deep-dives" style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; max-width: 900px; margin: 0 auto;">
+                <a href="maxwell-codex.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #4a9eff; border-radius: 6px; text-decoration: none; color: #4a9eff; transition: all 0.2s;"><span style="font-size: 1.1rem;">⚡</span> Maxwell Codex</a>
+                <a href="tesla-codex.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #00ff88; border-radius: 6px; text-decoration: none; color: #00ff88; transition: all 0.2s;"><span style="font-size: 1.1rem;">⚡</span> Tesla Codex</a>
+                <a href="einstein-codex.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #a855f7; border-radius: 6px; text-decoration: none; color: #a855f7; transition: all 0.2s;"><span style="font-size: 1.1rem;">π</span> Einstein Codex</a>
+                <a href="einstein-cartan-codex.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #f59e0b; border-radius: 6px; text-decoration: none; color: #f59e0b; transition: all 0.2s;"><span style="font-size: 1.1rem;">🌀</span> Einstein-Cartan</a>
+                <a href="hypatia.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #00d4ff; border-radius: 6px; text-decoration: none; color: #00d4ff; transition: all 0.2s;"><span style="font-size: 1.1rem;">✦</span> Hypatia</a>
+                <a href="ramanujan.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #ff6b35; border-radius: 6px; text-decoration: none; color: #ff6b35; transition: all 0.2s;"><span style="font-size: 1.1rem;">∞</span> Ramanujan</a>
+                <a href="jason-ray.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid var(--gold); border-radius: 6px; text-decoration: none; color: var(--gold); transition: all 0.2s;"><span style="font-size: 1.1rem;">✧</span> Jason Ray</a>
+            </div>
+        </section>
+
+        <!-- Modern Seers -->
+        <section class="modern-seers-section" style="margin: 3rem 0;">
+            <div class="section-header">
+                <h2>Modern Seers</h2>
+            </div>
+            <div class="modern-seers" style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; max-width: 900px; margin: 0 auto;">
+                <a href="roger-penrose.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #8b5cf6; border-radius: 6px; text-decoration: none; color: #8b5cf6; transition: all 0.2s;">Penrose</a>
+                <a href="donald-hoffman.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #3fb950; border-radius: 6px; text-decoration: none; color: #3fb950; transition: all 0.2s;">D. Hoffman</a>
+                <a href="sara-walker.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #4ecdc4; border-radius: 6px; text-decoration: none; color: #4ecdc4; transition: all 0.2s;">Sara Walker</a>
+                <a href="banesh-hoffmann.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #4a9eff; border-radius: 6px; text-decoration: none; color: #4a9eff; transition: all 0.2s;">B. Hoffmann</a>
+                <a href="hermann-minkowski.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--bg-secondary); border: 1px solid #f59e0b; border-radius: 6px; text-decoration: none; color: #f59e0b; transition: all 0.2s;">Minkowski</a>
             </div>
         </section>
 
