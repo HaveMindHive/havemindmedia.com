@@ -110,11 +110,18 @@
 
         /* Introduction Section */
         .intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 40px;
             margin-bottom: 60px;
             align-items: center;
+        }
+
+        .intro .intro-text,
+        .intro .intro-image {
+            flex: 1;
+            min-width: 300px;
         }
 
         .intro-text h2 {
@@ -142,10 +149,16 @@
 
         /* Section Cards */
         .sections-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin-bottom: 60px;
+        }
+
+        .sections-grid .section-card {
+            width: calc(33.333% - 20px);
+            min-width: 300px;
         }
 
         .section-card {
@@ -227,11 +240,17 @@
         }
 
         .d-wheel {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             max-width: 500px;
             margin: 0 auto 30px;
+        }
+
+        .d-wheel .d-position-box {
+            width: calc(33.333% - 10px);
+            min-width: 100px;
         }
 
         .d-position-box {
