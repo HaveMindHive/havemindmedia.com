@@ -8,317 +8,135 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified-theme.css">
 
     <style>
-        :root {
-            --bg-primary: #050510;
-            --bg-secondary: #0a0a18;
-            --bg-tertiary: #12121f;
-            --gold: #d4af37;
-            --gold-dim: #8b7355;
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --text-dim: #666;
-            --tool-cyan: #4ecdc4;
-            --tool-blue: #58a6ff;
-            --tool-purple: #a855f7;
-            --tool-green: #3fb950;
-            --border-subtle: #2a2a3a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-
-        .header {
+        .page-header {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            border-bottom: 1px solid var(--border-subtle);
+            padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--border);
         }
 
-        .header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, var(--tool-cyan), var(--tool-blue), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
         }
 
-        .header .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
+        .page-header .lead {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
         }
 
-        .header .kappa-badge {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold-dim);
-            border-radius: 4px;
+        .kappa-sig {
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
             color: var(--gold);
-        }
-
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin: 3rem 0 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: block;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .card .status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card .status.interactive {
-            background: rgba(78, 205, 196, 0.2);
-            color: var(--tool-cyan);
-            border: 1px solid var(--tool-cyan);
-        }
-
-        /* Card Colors */
-        .card.signature { border-left: 4px solid var(--gold); }
-        .card.signature h3 { color: var(--gold); }
-
-        .card.m4 { border-left: 4px solid var(--tool-blue); }
-        .card.m4 h3 { color: var(--tool-blue); }
-
-        .card.mind { border-left: 4px solid var(--tool-purple); }
-        .card.mind h3 { color: var(--tool-purple); }
-
-        .card.sol { border-left: 4px solid var(--tool-cyan); }
-        .card.sol h3 { color: var(--tool-cyan); }
-
-        .card.interaction { border-left: 4px solid var(--tool-green); }
-        .card.interaction h3 { color: var(--tool-green); }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .footer .identity {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--gold);
-            font-size: 1.3rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <site-header></site-header>
+
+    <header class="page-header">
         <h1>Interactive Tools</h1>
-        <p class="subtitle">
+        <p class="lead">
             Instruments for exploring the Epoch Framework. Calculate your S-Signature,
             visualize M4 interactions, and probe the geometry of consciousness.
         </p>
-        <div class="kappa-badge">κ = 2π/180 · The math made real</div>
+        <span class="kappa-sig">κ = 2π/180 · The math made real</span>
     </header>
 
-    <main class="content">
-        <h2 class="section-title">Consciousness Tools</h2>
-        <div class="cards-grid">
-            <!-- S-Signature Engine -->
-            <a href="s-signature/s_signature_engine.html" class="card signature">
-                <div class="card-icon">🔮</div>
-                <h3>S-Signature Engine</h3>
-                <p>
-                    Calculate your scalar signature. The five S-modes mapped to your
-                    birth geometry. Where are you on the consciousness map?
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+    <main class="content-wide">
+        <!-- Topic Navigation -->
+        <nav class="topic-scroll" style="margin: 2rem 0;">
+            <a href="#consciousness" class="topic-tag active">Consciousness</a>
+            <a href="#visualization" class="topic-tag">Visualization</a>
+            <a href="#signature" class="topic-tag">S-Signature</a>
+        </nav>
 
-            <!-- Deep Oracle -->
-            <a href="s-signature/deep_oracle.html" class="card signature">
-                <div class="card-icon">🌌</div>
-                <h3>Deep Oracle</h3>
-                <p>
-                    Guidance from geometric principles. Ask questions, receive answers
-                    that emerge from the kappa transforms — not random, but resolved.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+        <!-- Consciousness Tools -->
+        <section id="consciousness" class="content-flow">
+            <h2>Consciousness Tools</h2>
 
-            <!-- Mind Reading -->
-            <a href="mind-reading/index.html" class="card mind">
-                <div class="card-icon">🧠</div>
-                <h3>Mind Reading Tool</h3>
-                <p>
-                    The geometry of thought patterns. How consciousness navigates the
-                    M4 matrix. Visualize your cognitive scalar signature in real-time.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
-        </div>
+            <div class="article-list">
+                <a href="s-signature/s_signature_engine.html" class="article-link">
+                    <h3>S-Signature Engine</h3>
+                    <p>Calculate your scalar signature. The five S-modes mapped to your birth geometry. Where are you on the consciousness map?</p>
+                    <span class="meta">Interactive · Core Tool</span>
+                </a>
 
-        <h2 class="section-title">Visualization Tools</h2>
-        <div class="cards-grid">
-            <!-- M4 Visualizer -->
-            <a href="m4-visualizer/index.html" class="card m4">
-                <div class="card-icon">📊</div>
-                <h3>M4 Visualizer</h3>
-                <p>
-                    See the four-state matrix in action. How HO, HW, SO, SW interact
-                    through emission and reception. The balance law made visible.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+                <a href="s-signature/deep_oracle.html" class="article-link">
+                    <h3>Deep Oracle</h3>
+                    <p>Guidance from geometric principles. Ask questions, receive answers that emerge from the kappa transforms — not random, but resolved.</p>
+                    <span class="meta">Interactive · Guidance</span>
+                </a>
 
-            <!-- Sol Vision -->
-            <a href="sol-vision/index.html" class="card sol">
-                <div class="card-icon">☀️</div>
-                <h3>Sol Vision</h3>
-                <p>
-                    Solar geometry visualized. How the sun's scalar emissions create
-                    the planetary field patterns we call the solar system.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+                <a href="mind-reading/index.html" class="article-link">
+                    <h3>Mind Reading Tool</h3>
+                    <p>The geometry of thought patterns. How consciousness navigates the M4 matrix. Visualize your cognitive scalar signature in real-time.</p>
+                    <span class="meta">Interactive · Cognition</span>
+                </a>
+            </div>
+        </section>
 
-            <!-- Interaction Modeler -->
-            <a href="interaction-modeler/index.html" class="card interaction">
-                <div class="card-icon">🔄</div>
-                <h3>Interaction Modeler</h3>
-                <p>
-                    Model scalar interactions between entities. See how S⁺ and S⁻
-                    exchanges create standing waves, nodes, and apparent "forces."
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
-        </div>
+        <!-- Visualization Tools -->
+        <section id="visualization" class="content-flow">
+            <h2>Visualization Tools</h2>
 
-        <h2 class="section-title">More S-Signature Tools</h2>
-        <div class="cards-grid">
-            <!-- S-Signature Card -->
-            <a href="s-signature/s_signature_card.html" class="card signature">
-                <div class="card-icon">🎴</div>
-                <h3>S-Signature Card</h3>
-                <p>
-                    Generate a visual card of your scalar signature. Share your
-                    consciousness geometry with others. The tarot of kappa.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+            <div class="article-list">
+                <a href="m4-visualizer/index.html" class="article-link">
+                    <h3>M4 Visualizer</h3>
+                    <p>See the four-state matrix in action. How HO, HW, SO, SW interact through emission and reception. The balance law made visible.</p>
+                    <span class="meta">Interactive · Matrix</span>
+                </a>
 
-            <!-- S-Signature Sphere -->
-            <a href="s-signature/s_signature_sphere.html" class="card signature">
-                <div class="card-icon">🔵</div>
-                <h3>S-Signature Sphere</h3>
-                <p>
-                    3D visualization of your signature as a sphere. Rotate through
-                    the five modes, see how they nest and interrelate.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
+                <a href="sol-vision/index.html" class="article-link">
+                    <h3>Sol Vision</h3>
+                    <p>Solar geometry visualized. How the sun's scalar emissions create the planetary field patterns we call the solar system.</p>
+                    <span class="meta">Interactive · Cosmology</span>
+                </a>
 
-            <!-- Cohort Engine -->
-            <a href="s-signature/cohort_engine.html" class="card signature">
-                <div class="card-icon">👥</div>
-                <h3>Cohort Engine</h3>
-                <p>
-                    Compare signatures. How do different consciousness geometries
-                    interact? Find resonance and dissonance in scalar space.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
-        </div>
+                <a href="interaction-modeler/index.html" class="article-link">
+                    <h3>Interaction Modeler</h3>
+                    <p>Model scalar interactions between entities. See how S⁺ and S⁻ exchanges create standing waves, nodes, and apparent "forces."</p>
+                    <span class="meta">Interactive · Field Dynamics</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- S-Signature Tools -->
+        <section id="signature" class="content-flow">
+            <h2>More S-Signature Tools</h2>
+
+            <div class="article-list">
+                <a href="s-signature/s_signature_card.html" class="article-link">
+                    <h3>S-Signature Card</h3>
+                    <p>Generate a visual card of your scalar signature. Share your consciousness geometry with others. The tarot of kappa.</p>
+                    <span class="meta">Interactive · Shareable</span>
+                </a>
+
+                <a href="s-signature/s_signature_sphere.html" class="article-link">
+                    <h3>S-Signature Sphere</h3>
+                    <p>3D visualization of your signature as a sphere. Rotate through the five modes, see how they nest and interrelate.</p>
+                    <span class="meta">Interactive · 3D</span>
+                </a>
+
+                <a href="s-signature/cohort_engine.html" class="article-link">
+                    <h3>Cohort Engine</h3>
+                    <p>Compare signatures. How do different consciousness geometries interact? Find resonance and dissonance in scalar space.</p>
+                    <span class="meta">Interactive · Comparison</span>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer class="footer">
-        <p class="identity">[1 = -1]</p>
-        <div class="footer-links">
-            <a href="../index.html">Have Mind Media</a>
-            <a href="../physics/index.html">Physics</a>
-            <a href="../biology/index.html">Biology</a>
-            <a href="../weirdos/index.html">Weirdos</a>
-        </div>
-    </footer>
+    <site-footer></site-footer>
 
-    <script src="../js/components.js"></script>
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </body>
 </html>

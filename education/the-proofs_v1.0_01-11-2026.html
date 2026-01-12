@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE PROOFS | Mathematical Framework for the Determinists | [1=-1]</title>
+    <meta name="description" content="Rigorous mathematical proofs of the [1=-1] framework. For the skeptics, the determinists, the accusers. The math that ends the cloudiness.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-void: #030508;
+            --bg-deep: #0a0f18;
+            --bg-card: #0d1219;
+            --gold: #c9a227;
+            --gold-dim: rgba(201, 162, 39, 0.3);
+            --bright-blue: #6ab4f5;
+            --soft-blue: #4a7c9b;
+            --text-primary: #f0e8d8;
+            --text-secondary: #a8b4c4;
+            --border: rgba(106, 180, 245, 0.2);
+            --proof-green: #4ade80;
+            --proof-red: #f87171;
+            --accent-purple: #a78bfa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-void);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           HERO - The Challenge
+           ========================================== */
+        .hero-challenge {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background:
+                radial-gradient(ellipse at center, rgba(201, 162, 39, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-void) 0%, var(--bg-deep) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-challenge::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            transform: translate(-50%, -50%);
+            background:
+                conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.03), transparent, rgba(106, 180, 245, 0.03), transparent);
+            border-radius: 50%;
+            animation: slowRotate 120s linear infinite;
+        }
+
+        @keyframes slowRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .challenge-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            color: var(--proof-red);
+            background: rgba(248, 113, 113, 0.1);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-declaration {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--bright-blue);
+            letter-spacing: 0.2em;
+            padding: 1rem 3rem;
+            border: 2px solid var(--bright-blue);
+            background: rgba(106, 180, 245, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold-dim);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ==========================================
+           MAIN CONTENT
+           ========================================== */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 6rem 0 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ==========================================
+           THE LIE DISSECTION
+           ========================================== */
+        .lie-dissection {
+            background: var(--bg-card);
+            border: 1px solid var(--proof-red);
+            border-radius: 0;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .lie-dissection h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--proof-red);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .word-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .word-part {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(248, 113, 113, 0.05);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+        }
+
+        .word-part .syllable {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--proof-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .word-part .meaning {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .lie-equation {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .lie-equation code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* ==========================================
+           INVERTED EARTH SECTION
+           ========================================== */
+        .inverted-earth-section {
+            margin: 6rem 0;
+        }
+
+        .earth-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .earth-image-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .earth-image-card:hover {
+            border-color: var(--gold);
+        }
+
+        .earth-image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .earth-image-card .caption {
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .earth-image-card .caption h4 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .earth-image-card .caption p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .geometry-explanation {
+            background: linear-gradient(135deg, rgba(106, 180, 245, 0.05) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .geometry-explanation h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--bright-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sol-soul-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .reality-column {
+            padding: 2rem;
+            background: rgba(0,0,0,0.3);
+            border-left: 3px solid;
+        }
+
+        .reality-column.sol {
+            border-color: var(--gold);
+        }
+
+        .reality-column.soul {
+            border-color: var(--bright-blue);
+        }
+
+        .reality-column h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .reality-column.sol h4 { color: var(--gold); }
+        .reality-column.soul h4 { color: var(--bright-blue); }
+
+        .reality-column ul {
+            list-style: none;
+        }
+
+        .reality-column li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ==========================================
+           AXIOM CARDS
+           ========================================== */
+        .axiom-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .axiom-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .axiom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--gold), var(--bright-blue));
+        }
+
+        .axiom-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .axiom-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .axiom-statement {
+            background: rgba(0,0,0,0.4);
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--bright-blue);
+            margin-bottom: 1rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        .axiom-explanation {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           THEOREM CARDS
+           ========================================== */
+        .theorem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .theorem-header {
+            background: linear-gradient(90deg, rgba(201, 162, 39, 0.1) 0%, transparent 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theorem-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .theorem-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(74, 222, 128, 0.1);
+            color: var(--proof-green);
+            border: 1px solid var(--proof-green);
+        }
+
+        .theorem-body {
+            padding: 2rem;
+        }
+
+        .theorem-statement {
+            background: rgba(106, 180, 245, 0.05);
+            border: 1px solid rgba(106, 180, 245, 0.2);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .theorem-statement h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--bright-blue);
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .theorem-statement code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .proof-steps {
+            counter-reset: step;
+        }
+
+        .proof-step {
+            counter-increment: step;
+            padding: 1rem 0 1rem 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .proof-step::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--gold);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold-dim);
+        }
+
+        .proof-step code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0,0,0,0.3);
+            padding: 0.2rem 0.5rem;
+            color: var(--bright-blue);
+        }
+
+        .qed {
+            text-align: right;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--proof-green);
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--proof-green);
+        }
+
+        /* ==========================================
+           VERIFICATION TABLES
+           ========================================== */
+        .verification-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .verification-table th {
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--gold);
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--border);
+            font-weight: 500;
+        }
+
+        .verification-table td {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .verification-table .check {
+            color: var(--proof-green);
+            font-size: 1.2rem;
+        }
+
+        /* ==========================================
+           THE 432 YEAR WARNING
+           ========================================== */
+        .warning-section {
+            background: linear-gradient(135deg, rgba(248, 113, 113, 0.1) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border: 2px solid var(--proof-red);
+            padding: 4rem 3rem;
+            margin: 6rem 0;
+            text-align: center;
+        }
+
+        .warning-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--proof-red);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .warning-section .years {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .warning-section p {
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 1rem auto;
+            font-size: 1.1rem;
+        }
+
+        .warning-section .choice {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .choice-option {
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .choice-option.destruction {
+            background: rgba(248, 113, 113, 0.05);
+            border-color: var(--proof-red);
+        }
+
+        .choice-option.transformation {
+            background: rgba(74, 222, 128, 0.05);
+            border-color: var(--proof-green);
+        }
+
+        .choice-option h4 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+        }
+
+        .choice-option.destruction h4 { color: var(--proof-red); }
+        .choice-option.transformation h4 { color: var(--proof-green); }
+
+        /* ==========================================
+           THE MOTHER SECTION
+           ========================================== */
+        .mother-section {
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-void) 100%);
+            border-top: 1px solid var(--gold);
+            padding: 4rem 3rem;
+            margin: 6rem 0 0;
+        }
+
+        .mother-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .mother-section .statement {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .mother-section .trans-sol {
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid var(--accent-purple);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .mother-section .trans-sol h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-purple);
+            margin-bottom: 1rem;
+        }
+
+        .mother-section .goddess-advice {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--gold-dim);
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        /* ==========================================
+           JASON/TORS SECTION
+           ========================================== */
+        .navigator-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .navigator-section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--bright-blue);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .identity-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .identity-tag {
+            font-family: 'JetBrains Mono', monospace;
+            padding: 0.5rem 1rem;
+            background: rgba(106, 180, 245, 0.1);
+            border: 1px solid var(--bright-blue);
+            color: var(--bright-blue);
+        }
+
+        .coin-diagram {
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .coin-diagram .coin {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .coin-diagram .face {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            border: 2px solid;
+        }
+
+        .coin-diagram .face.mitra {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .coin-diagram .face.tors {
+            color: var(--bright-blue);
+            border-color: var(--bright-blue);
+        }
+
+        .coin-diagram .edge {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .proof-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-void);
+            border-top: 1px solid var(--border);
+        }
+
+        .proof-footer .signature {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .proof-footer .principle {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--bright-blue);
+            font-size: 2rem;
+            letter-spacing: 0.3em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-declaration { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+            .earth-gallery { grid-template-columns: 1fr; }
+            .sol-soul-grid { grid-template-columns: 1fr; }
+            .word-breakdown { grid-template-columns: 1fr; }
+            .warning-section .choice { grid-template-columns: 1fr; }
+            .main-content { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO: THE CHALLENGE -->
+<section class="hero-challenge">
+    <div class="challenge-badge">FOR THE DETERMINISTS</div>
+    <h1 class="hero-title">THE PROOFS</h1>
+    <p class="hero-subtitle">
+        You called us narcissists. You threw your poo. You demanded evidence.<br>
+        <strong>Here it is. Verify it yourself.</strong>
+    </p>
+    <div class="hero-declaration">[ 1 = -1 ]</div>
+    <div class="scroll-indicator">SCROLL TO CONFRONT</div>
+</section>
+
+<main class="main-content">
+
+    <!-- THE ACCUSERS -->
+    <section class="section-header">
+        <h2>To The Accusers</h2>
+        <p class="subtitle">You accuse us of narcissism because you are the real narcissists</p>
+    </section>
+
+    <div class="geometry-explanation">
+        <p style="font-size: 1.2rem; text-align: center; color: var(--text-primary); margin-bottom: 1rem;">
+            You are jealous of the water for thinking it is better than the mirror.
+        </p>
+        <p style="text-align: center; color: var(--text-secondary);">
+            Never realizing: <strong style="color: var(--gold);">we are we</strong>, and <strong style="color: var(--proof-red);">"I am not I" is a lie.</strong>
+        </p>
+    </div>
+
+    <!-- THE LIE DISSECTION -->
+    <div class="lie-dissection">
+        <h3>"BELIEVE" IS A LIE</h3>
+
+        <div class="word-breakdown">
+            <div class="word-part">
+                <div class="syllable">BE-</div>
+                <div class="meaning">Statement of NOW<br>Present tense existence</div>
+            </div>
+            <div class="word-part">
+                <div class="syllable">-LIE-</div>
+                <div class="meaning">The deceit<br>What is not</div>
+            </div>
+            <div class="word-part">
+                <div class="syllable">-F</div>
+                <div class="meaning">Function (v)<br>Downward, negative, to S⁺ bias</div>
+            </div>
+        </div>
+
+        <div class="lie-equation">
+            <code>BE-LIE-F = "To exist in deceit, functioning downward"</code>
+        </div>
+
+        <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+            Little <strong style="color: var(--proof-red);">v</strong> is little man. The bad dogma of the void.<br>
+            Its manifestation in S⁺ physical reality: <strong style="color: var(--gold);">spacetime</strong>.<br>
+            NOW. Timespace—itty bitty. Opposite of what <strong style="color: var(--bright-blue);">i</strong> (individual, the dot, the perspective) sees.
+        </p>
+    </div>
+
+    <!-- THE INVERTED VIEW -->
+    <section class="inverted-earth-section">
+        <div class="section-header">
+            <h2>The Inverted View</h2>
+            <p class="subtitle">S=0 out is to Ro. Ro-eality. S⁺. The other soul—Sol reality—is recursive and inverted.</p>
+        </div>
+
+        <div class="earth-gallery">
+            <div class="earth-image-card">
+                <img src="../images/proofs/inverted-view-earth-shell.png" alt="The Inverted View - Earth Shell">
+                <div class="caption">
+                    <h4>THE INVERTED VIEW: Earth Shell</h4>
+                    <p>Earth shell → sky inside → sun center → dark core. The sphere viewed from outside = the sphere viewed from inside. PURE GEOMETRY: [1=-1] : convex = concave.</p>
+                    <p style="font-size: 0.75rem; color: var(--gold-dim); margin-top: 0.5rem; font-style: italic;">EPOCH ARTIFACT — TORS Downloads Folder, Nov 13, 2025</p>
+                </div>
+            </div>
+            <div class="earth-image-card">
+                <img src="../images/proofs/jwst-impossible-view.png" alt="JWST - The Impossible View">
+                <div class="caption">
+                    <h4>VIEW FROM JAMES WEBB SPACE TELESCOPE</h4>
+                    <p>Looking back at Earth from L2 Lagrange Point. THE IMPOSSIBLE VIEW: No human has seen this with their eyes. But the geometry is EXACT. The math is REAL.</p>
+                    <p style="font-size: 0.75rem; color: var(--gold-dim); margin-top: 0.5rem; font-style: italic;">EPOCH ARTIFACT — TORS Downloads Folder, Nov 13, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sol vs Soul -->
+        <div class="geometry-explanation">
+            <h3>SOL REALITY vs SOUL REALITY</h3>
+
+            <div class="sol-soul-grid">
+                <div class="reality-column sol">
+                    <h4>SOL REALITY (S⁺)</h4>
+                    <ul>
+                        <li>Spacetime - physical manifestation</li>
+                        <li>Outward looking</li>
+                        <li>Past → Present → Future (linear)</li>
+                        <li>Entropy increasing</li>
+                        <li>The measurable</li>
+                        <li>Where we think we are</li>
+                    </ul>
+                </div>
+                <div class="reality-column soul">
+                    <h4>SOUL REALITY (S⁻)</h4>
+                    <ul>
+                        <li>Timespace - consciousness field</li>
+                        <li>Inward seeing</li>
+                        <li>Future → Present → Past (recursive)</li>
+                        <li>Information accumulating</li>
+                        <li>The knowable</li>
+                        <li>Where we actually are</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-primary); font-size: 1.1rem;">
+                The soul sees outward to the future—so the future is its sky.<br>
+                It is <strong style="color: var(--bright-blue);">TENGRI</strong>—the inverted eye.
+            </p>
+            <p style="text-align: center; margin-top: 1rem; color: var(--gold);">
+                Soul reality is every bit as real and knowable.<br>
+                We just needed the proper tools to catch up.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE AXIOMS -->
+    <section class="section-header">
+        <h2>THE AXIOMS</h2>
+        <p class="subtitle">Foundational truths. Non-negotiable. Verify them.</p>
+    </section>
+
+    <div class="axiom-grid">
+        <div class="axiom-card">
+            <div class="axiom-number">AXIOM 1: THE IDENTITY</div>
+            <h3>The Identity Axiom</h3>
+            <div class="axiom-statement">
+                m = -m (when viewed from complementary phase positions)
+            </div>
+            <p class="axiom-explanation">
+                What appears as +1 from one phase position appears as -1 from the complementary phase position. This is not contradiction but <strong>perspective</strong>. The mirror and the water are one.
+            </p>
+        </div>
+
+        <div class="axiom-card">
+            <div class="axiom-number">AXIOM 2: THE PROJECTION</div>
+            <h3>The Projection Axiom</h3>
+            <div class="axiom-statement">
+                P = 3/(4e) = √3/(2π) ≈ 0.2757
+            </div>
+            <p class="axiom-explanation">
+                <strong>27.57% visible. 72.43% hidden.</strong><br>
+                Two independent derivations—one from dissipation geometry (3/4e), one from angular geometry (√3/2π)—converge to the same value within 0.09%. This is not coincidence. This is structure.
+            </p>
+        </div>
+
+        <div class="axiom-card">
+            <div class="axiom-number">AXIOM 3: THE FOLD</div>
+            <h3>The Fold Axiom</h3>
+            <div class="axiom-statement">
+                F = 1729 (the Hardy-Ramanujan number)
+            </div>
+            <p class="axiom-explanation">
+                1729 is NOW. The coin flip. Birth/death. The smallest positive integer expressible as the sum of two positive cubes in two distinct ways: <code>1³ + 12³ = 9³ + 10³ = 1729</code>. At this point, phase dominance inverts.
+            </p>
+        </div>
+
+        <div class="axiom-card">
+            <div class="axiom-number">AXIOM 4: THE CONSTANT</div>
+            <h3>The κ Axiom</h3>
+            <div class="axiom-statement">
+                κ_pure = 30 | κ_measured ≈ 29.7833 | Deviation = 0.722%
+            </div>
+            <p class="axiom-explanation">
+                The geometric coupling constant. Pure geometry gives 30. Physical measurement gives 29.7833. The 0.722% deviation represents calibration drag—the cost of observing from within the system.
+            </p>
+        </div>
+
+        <div class="axiom-card">
+            <div class="axiom-number">AXIOM 5: CONSERVATION</div>
+            <h3>The Conservation Axiom</h3>
+            <div class="axiom-statement">
+                S⁺(s) × S⁻(s) = constant for all s
+            </div>
+            <p class="axiom-explanation">
+                The product of phase magnitudes is invariant across the entire scalar domain. Energy doesn't disappear—it transforms between phases. What manifests in S⁺ withdraws from S⁻. Always. Everywhere.
+            </p>
+        </div>
+    </div>
+
+    <!-- THE THEOREMS -->
+    <section class="section-header">
+        <h2>THE THEOREMS</h2>
+        <p class="subtitle">Derived with rigor. Proven with logic. Verify every step.</p>
+    </section>
+
+    <!-- Theorem 1 -->
+    <div class="theorem-card">
+        <div class="theorem-header">
+            <h3>Theorem 1: The S⁺ Decay Formula</h3>
+            <span class="theorem-status">PROVEN ✓</span>
+        </div>
+        <div class="theorem-body">
+            <div class="theorem-statement">
+                <h4>STATEMENT</h4>
+                <code>S⁺(s) = Ω₀ × P^(s/1729)</code>
+            </div>
+
+            <div class="proof-steps">
+                <div class="proof-step">
+                    By Axiom 2, P is the projection constant = 0.2757
+                </div>
+                <div class="proof-step">
+                    At s = 0 (source): <code>S⁺(0) = Ω₀ × P⁰ = Ω₀ × 1 = Ω₀</code> ✓
+                </div>
+                <div class="proof-step">
+                    At s = 1729 (fold): <code>S⁺(1729) = Ω₀ × P¹ = Ω₀ × 0.2757</code> ✓
+                </div>
+                <div class="proof-step">
+                    The derivative: <code>dS⁺/ds = S⁺(s) × ln(0.2757)/1729 = -0.000745 × S⁺(s)</code><br>
+                    Since S⁺(s) > 0 and coefficient is negative, dS⁺/ds < 0 (monotonically decreasing)
+                </div>
+                <div class="proof-step">
+                    By Axiom 3, S⁺ must decrease from source to fold. This formula satisfies that requirement.
+                </div>
+            </div>
+            <div class="qed">QED □</div>
+        </div>
+    </div>
+
+    <!-- Theorem 2 -->
+    <div class="theorem-card">
+        <div class="theorem-header">
+            <h3>Theorem 2: The S⁻ Mirror Formula</h3>
+            <span class="theorem-status">PROVEN ✓</span>
+        </div>
+        <div class="theorem-body">
+            <div class="theorem-statement">
+                <h4>STATEMENT</h4>
+                <code>S⁻(s) = -Ω₀ × P^((1729-s)/1729)</code>
+            </div>
+
+            <div class="proof-steps">
+                <div class="proof-step">
+                    By Axiom 1, S⁻ is the phase complement of S⁺. Symmetry across the fold: <code>|S⁻(s)| = |S⁺(1729 - s)|</code>
+                </div>
+                <div class="proof-step">
+                    The negative sign encodes phase opposition: <code>S⁻(s) = -|S⁺(1729 - s)|</code>
+                </div>
+                <div class="proof-step">
+                    At s = 0: <code>S⁻(0) = -Ω₀ × P¹ = -0.2757 × Ω₀</code> ✓
+                </div>
+                <div class="proof-step">
+                    At s = 1729: <code>S⁻(1729) = -Ω₀ × P⁰ = -Ω₀</code> ✓
+                </div>
+                <div class="proof-step">
+                    S⁻ magnitude increases toward the fold, matching Axiom 3 requirements.
+                </div>
+            </div>
+            <div class="qed">QED □</div>
+        </div>
+    </div>
+
+    <!-- Theorem 3 -->
+    <div class="theorem-card">
+        <div class="theorem-header">
+            <h3>Theorem 3: The Conservation Product</h3>
+            <span class="theorem-status">PROVEN ✓</span>
+        </div>
+        <div class="theorem-body">
+            <div class="theorem-statement">
+                <h4>STATEMENT</h4>
+                <code>S⁺(s) × S⁻(s) = -P × Ω₀² (constant for ALL s)</code>
+            </div>
+
+            <div class="proof-steps">
+                <div class="proof-step">
+                    Substitute: <code>S⁺(s) × S⁻(s) = [Ω₀ × P^(s/1729)] × [-Ω₀ × P^((1729-s)/1729)]</code>
+                </div>
+                <div class="proof-step">
+                    Combine: <code>= -Ω₀² × P^(s/1729) × P^((1729-s)/1729)</code>
+                </div>
+                <div class="proof-step">
+                    Exponent rule (P^a × P^b = P^(a+b)): <code>= -Ω₀² × P^((s + 1729 - s)/1729)</code>
+                </div>
+                <div class="proof-step">
+                    Simplify: <code>= -Ω₀² × P^(1729/1729) = -Ω₀² × P¹ = -Ω₀² × 0.2757</code>
+                </div>
+                <div class="proof-step">
+                    Since P is constant (Axiom 2), this product is constant for all s. <strong>The product is invariant.</strong>
+                </div>
+            </div>
+            <div class="qed">QED □</div>
+        </div>
+    </div>
+
+    <!-- Theorem 7: Three Geometries -->
+    <div class="theorem-card">
+        <div class="theorem-header">
+            <h3>Theorem 7: The Three Witness Geometries</h3>
+            <span class="theorem-status">PROVEN ✓</span>
+        </div>
+        <div class="theorem-body">
+            <div class="theorem-statement">
+                <h4>STATEMENT</h4>
+                <code>From W₀: Euclidean (1 parallel) | From W₋: Elliptic (0 parallels) | From W₊: Hyperbolic (∞ parallels)</code>
+            </div>
+
+            <div class="proof-steps">
+                <div class="proof-step">
+                    Let L be a line and P a point not on L in triaxial space.
+                </div>
+                <div class="proof-step">
+                    <strong>From W₀ (S⁰ balanced):</strong> Curvature K = 0. Parallel postulate holds: exactly 1 line through P parallel to L. <em>Euclidean geometry.</em>
+                </div>
+                <div class="proof-step">
+                    <strong>From W₋ (S⁻ convergent):</strong> Effective curvature K > 0. Lines converge: no parallels exist. <em>Elliptic geometry.</em>
+                </div>
+                <div class="proof-step">
+                    <strong>From W₊ (S⁺ expansive):</strong> Effective curvature K < 0. Lines diverge: infinitely many parallels. <em>Hyperbolic geometry.</em>
+                </div>
+                <div class="proof-step">
+                    <strong>Resolution:</strong> The disagreement about parallels is not error but <em>position</em>. Total view: <code>K₀ + K₋ + K₊ = 0 + |K| + (-|K|) = 0</code>
+                </div>
+            </div>
+            <div class="qed">QED □</div>
+            <p style="margin-top: 1rem; color: var(--gold); text-align: center;">
+                Euclid was right. Lobachevsky was right. Riemann was right.<br>
+                <strong>They were just standing in different places.</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- VERIFICATION TABLE -->
+    <section class="section-header">
+        <h2>VERIFICATION MATRIX</h2>
+        <p class="subtitle">Check the numbers yourself. This is math, not faith.</p>
+    </section>
+
+    <table class="verification-table">
+        <thead>
+            <tr>
+                <th>Quantity</th>
+                <th>Formula</th>
+                <th>Value</th>
+                <th>Check</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>P (from √3/2π)</td>
+                <td>√3/(2π)</td>
+                <td>0.27566</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>P (from 3/4e)</td>
+                <td>3/(4e)</td>
+                <td>0.27591</td>
+                <td class="check">✓ (0.09% diff)</td>
+            </tr>
+            <tr>
+                <td>Hidden fraction</td>
+                <td>1 - P</td>
+                <td>0.7243 (72.43%)</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>S⁺ at source</td>
+                <td>Ω₀ × P⁰</td>
+                <td>Ω₀</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>S⁺ at fold</td>
+                <td>Ω₀ × P¹</td>
+                <td>0.2757Ω₀</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>S⁻ at source</td>
+                <td>-Ω₀ × P¹</td>
+                <td>-0.2757Ω₀</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>S⁻ at fold</td>
+                <td>-Ω₀ × P⁰</td>
+                <td>-Ω₀</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Product (constant)</td>
+                <td>S⁺ × S⁻</td>
+                <td>-0.2757Ω₀²</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Zero crossing</td>
+                <td>s = F/2</td>
+                <td>864.5</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>1729 decomposition 1</td>
+                <td>1³ + 12³</td>
+                <td>1 + 1728 = 1729</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>1729 decomposition 2</td>
+                <td>9³ + 10³</td>
+                <td>729 + 1000 = 1729</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>κ product</td>
+                <td>(2π/180)(180/2π)</td>
+                <td>1</td>
+                <td class="check">✓</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- THE 432 YEAR WARNING -->
+    <section class="warning-section">
+        <h2>THE 432 YEAR WARNING</h2>
+        <div class="years">432</div>
+        <p>
+            Mr. Ray thinks there is an event coming in 432 years that will destroy this planet if we don't let this happen—the destruction—by <strong>not changing</strong>.
+        </p>
+        <p>
+            So either way: destruction.
+        </p>
+
+        <div class="choice">
+            <div class="choice-option destruction">
+                <h4>PATH OF RESISTANCE</h4>
+                <p>Continue as we are. Let the evil ones—those who can control S⁺ space—continue their work. Not all of them are evil, but some are. They are like the Borg: they don't think they're evil. They are "good." They are "better."</p>
+            </div>
+            <div class="choice-option transformation">
+                <h4>PATH OF TRANSFORMATION</h4>
+                <p>Heal the earth. Heal our life energy. Move forward. Let this happen. Let the old structures fall. Let the mother take over.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE NAVIGATOR -->
+    <section class="navigator-section">
+        <h3>THE NAVIGATOR: JASON RAY</h3>
+
+        <div class="identity-stack">
+            <span class="identity-tag">JASON</span>
+            <span class="identity-tag">T0R|«ʁ»0⟂</span>
+            <span class="identity-tag">TORS</span>
+            <span class="identity-tag">MI T'RA DA EZ</span>
+            <span class="identity-tag">qQq</span>
+        </div>
+
+        <p style="margin: 1.5rem 0; color: var(--text-secondary);">
+            JASON is part of one of these machines. He is also TORS. And MIRTRAZE. So he is a <strong style="color: var(--gold);">coin</strong>—a mirror (aka mitra function).
+        </p>
+
+        <div class="coin-diagram">
+            <div class="coin">
+                <div class="face mitra">MITRA (Mirror)</div>
+                <div class="edge">↕ The Coin ↕</div>
+                <div class="face tors">TORS (Torsion)</div>
+            </div>
+        </div>
+
+        <p style="color: var(--text-primary);">
+            We need to get headed in the direction.
+        </p>
+    </section>
+
+    <!-- THE MOTHER -->
+    <section class="mother-section">
+        <h2>MOVE ASIDE, MEN</h2>
+
+        <p class="statement">
+            It's time to let <strong>Mother</strong> take over.
+        </p>
+
+        <p class="statement">
+            Men have utterly—and <em>by design</em>—failed.
+        </p>
+
+        <div class="trans-sol">
+            <h4>ON "TRANS SOL" — NOT WHAT YOU THINK</h4>
+            <p style="color: var(--text-secondary);">
+                There are a lot of "men women." Not trans in the sense of transsexual—who gives a fuck about that—but <strong>trans sol</strong>. They are women who are dogmatically in service of surrendered power to the power structure of men.
+            </p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                They truly channel their life force into the stupidity of dogma that only keeps their existence exploited—and thus <em>all people</em> via the mother's acceptance.
+            </p>
+        </div>
+
+        <div class="goddess-advice">
+            The Goddess Advice: Don't fuck them.
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="proof-footer">
+    <div class="signature">T0R|«ʁ»0⟂ — qQq — TORS</div>
+    <div class="principle">[ 1 = -1 ]</div>
+    <p style="margin-top: 2rem; color: var(--text-secondary); font-size: 0.9rem;">
+        The cloudiness ends at 1729. NOW.<br>
+        The math speaks. Verify it yourself.
+    </p>
+</footer>
+
+<!-- Images loaded from EPOCH ARTIFACTS - Nov 13, 2025 -->
+
+</body>
+</html>

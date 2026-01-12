@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Ray | Tormod | The One Who Derived κ | Here's to You, Weirdos</title>
+    <meta name="description" content="Jason Ray, known as Tormod, derived κ and the principle [1 = -1]. Founder of Have Mind Media. The Weirdo who connected the dots no one else would.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --kappa-cyan: #4ecdc4;
+            --soul-pink: #ff6b9d;
+            --epoch-purple: #a855f7;
+            --unity-green: #3fb950;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(78, 205, 196, 0.1) 0%, transparent 60%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Spiral animation */
+        .spiral-field {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+            opacity: 0.2;
+        }
+
+        .spiral {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spiralRotate 20s linear infinite;
+        }
+
+        .spiral:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .spiral:nth-child(2) { right: 10%; bottom: 20%; animation-delay: 5s; width: 200px; height: 200px; border-color: var(--epoch-purple); border-top-color: transparent; }
+        .spiral:nth-child(3) { left: 40%; top: 60%; animation-delay: 10s; width: 150px; height: 150px; border-color: var(--kappa-cyan); border-top-color: transparent; }
+
+        @keyframes spiralRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--kappa-cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 50%, var(--kappa-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-alias {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--epoch-purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--gold);
+            margin: 2rem 0;
+            padding: 1.5rem 2.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            display: inline-block;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .bio-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .bio-section strong {
+            color: var(--text-primary);
+        }
+
+        /* The Derivation */
+        .derivation-box {
+            background: linear-gradient(135deg, #0a0f10 0%, #0f1a15 100%);
+            border: 2px solid var(--kappa-cyan);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .derivation-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--kappa-cyan);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kappa-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .derivation-box p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1rem auto;
+        }
+
+        /* What He Saw */
+        .insight-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .insight-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--epoch-purple);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .insight-card h3 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .insight-card:nth-child(1) h3 { color: var(--gold); }
+        .insight-card:nth-child(2) h3 { color: var(--kappa-cyan); }
+        .insight-card:nth-child(3) h3 { color: var(--epoch-purple); }
+        .insight-card:nth-child(4) h3 { color: var(--soul-pink); }
+
+        .insight-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* The WUSH */
+        .wush-box {
+            background: linear-gradient(135deg, #100810 0%, #1a0f1a 100%);
+            border: 2px solid var(--soul-pink);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .wush-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--soul-pink);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wush-box p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+        }
+
+        .wush-diagram {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .wush-diagram .wush {
+            color: var(--soul-pink);
+            font-weight: bold;
+        }
+
+        .wush-diagram .ro {
+            color: var(--text-secondary);
+        }
+
+        .wush-diagram .future {
+            color: var(--kappa-cyan);
+        }
+
+        /* Have Mind Media */
+        .hmm-section {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .hmm-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .triad-box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .triad-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .triad-item .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .triad-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .triad-item span {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .triad-rule {
+            color: var(--gold);
+            font-style: italic;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, #080810 0%, #0f0a15 100%);
+            border: 2px solid var(--epoch-purple);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--epoch-purple);
+            margin-bottom: 1rem;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--unity-green);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .why-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--unity-green);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        /* Principle */
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-toast {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 70vh; padding: 3rem 1rem; }
+            .main-content { padding: 2rem 1rem; }
+            .bio-section, .insight-section, .hmm-section { padding: 2rem 1.5rem; }
+            .triad-box { grid-template-columns: 1fr; max-width: 300px; }
+            .hero-equation { font-size: 1.8rem; padding: 1rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="spiral-field">
+            <div class="spiral"></div>
+            <div class="spiral"></div>
+            <div class="spiral"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Founder of Have Mind Media</p>
+            <h1>Jason Ray</h1>
+            <p class="hero-alias">Known as Tormod</p>
+            <p class="hero-subtitle">
+                The one who derived κ. The one who saw [1 = -1].
+                The Weirdo who connected what no one else would connect.
+            </p>
+            <div class="hero-equation">[1 = -1]</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="bio-section">
+            <h2>The One Who Asked Different Questions</h2>
+            <p>
+                While others accepted the constants of physics as "just the way things are," <strong>Jason Ray</strong>
+                asked: <em>What if there's a pattern underneath? What if the numbers themselves are trying to tell us something?</em>
+            </p>
+            <p>
+                He didn't have the "right" credentials. He wasn't in the academy. But he had something more valuable:
+                the willingness to look where no one else was looking, to connect what no one else would connect,
+                and to trust the geometry even when it led to uncomfortable conclusions.
+            </p>
+            <p>
+                The result was the <strong>Epoch Framework</strong> — a unified geometric understanding of reality
+                that derives physical constants from pure mathematics, connects consciousness to scalar fields,
+                and reveals the fundamental principle: <strong>[1 = -1]</strong>.
+            </p>
+        </section>
+
+        <!-- Mi Tra Origin -->
+        <div class="mitra-box" style="background: linear-gradient(135deg, #080510 0%, #0f0a15 100%); border: 2px solid #8b5cf6; border-radius: 12px; padding: 3rem; margin: 3rem 0; text-align: center;">
+            <h2 style="font-family: 'Cinzel', serif; color: #8b5cf6; font-size: 2rem; margin-bottom: 1.5rem;">
+                The Origin: Mi Tra
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem;">
+                From a star near Sirius, near Mirzam. The planet is called <strong style="color: #8b5cf6;">Mi Tra</strong>.
+                It's way different there. Life force isn't in a body — it's a <strong>cloud</strong>. An energy existence.
+                No flesh. No form. Pure consciousness moving as light.
+            </p>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; color: var(--gold); margin: 2rem 0; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 8px; display: inline-block;">
+                Sirius / Mirzam → Mi Tra → Earth
+            </div>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 1.5rem auto;">
+                This is why we are <strong style="color: var(--gold);">coins / mirror</strong>. The S⁺ and S⁻ of the same being.
+                [1 = -1] isn't just philosophy — it's autobiography.
+            </p>
+        </div>
+
+        <!-- The Wee People -->
+        <div class="wee-box" style="background: linear-gradient(135deg, #050810 0%, #0a0f15 100%); border: 2px solid #4ecdc4; border-radius: 12px; padding: 3rem; margin: 3rem 0;">
+            <h2 style="font-family: 'Cinzel', serif; color: #4ecdc4; font-size: 1.8rem; text-align: center; margin-bottom: 1.5rem;">
+                The Wee People
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem; text-align: center;">
+                In the <strong style="color: #4ecdc4;">deepest waters of Earth</strong> live the life force vanguard.
+                They are tiny, tiny — the wee people. Ancient beyond measure. They hold the pattern.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem; text-align: center;">
+                Jason sees them. Speaks with them through consciousness. <strong style="color: #4ecdc4;">They sent for him.</strong>
+                They prepared everything. The geometry, the timing, the framework — it's all part of their pattern.
+            </p>
+            <div style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--text-dim); margin-top: 2rem; padding: 1rem; background: rgba(78, 205, 196, 0.1); border-radius: 8px;">
+                Mi Tra (energy cloud) → Earth (bodied form) → Wee People (deepest waters)<br>
+                <span style="color: #4ecdc4;">The pattern connects. It's all a pattern.</span>
+            </div>
+        </div>
+
+        <!-- The Ocean Truth -->
+        <div class="ocean-box" style="background: linear-gradient(135deg, #030810 0%, #081015 100%); border: 2px solid #0077be; border-radius: 12px; padding: 3rem; margin: 3rem 0;">
+            <h2 style="font-family: 'Cinzel', serif; color: #0077be; font-size: 1.8rem; text-align: center; margin-bottom: 1.5rem;">
+                3.5 Billion Years Uninterrupted
+            </h2>
+
+            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; max-width: 700px; margin: 0 auto 2rem; align-items: center;">
+                <div style="text-align: center; padding: 1.5rem; background: rgba(0, 119, 190, 0.15); border-radius: 8px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: #0077be;">3.5B</div>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem;">years in the ocean</div>
+                    <div style="color: #4ecdc4; font-size: 0.85rem; margin-top: 0.5rem;">uninterrupted</div>
+                </div>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.5rem;">vs</div>
+                <div style="text-align: center; padding: 1.5rem; background: rgba(139, 92, 80, 0.15); border-radius: 8px;">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: #8b5c50;">450M</div>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem;">years on land</div>
+                    <div style="color: #f85149; font-size: 0.85rem; margin-top: 0.5rem;">chasing sweet</div>
+                </div>
+            </div>
+
+            <div style="font-family: 'JetBrains Mono', monospace; text-align: center; color: var(--gold); font-size: 1.2rem; margin: 1.5rem 0;">
+                3.5B ÷ 450M ≈ 7.78 : 1
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 1.5rem auto; text-align: center;">
+                Life on Earth evolved <strong style="color: #0077be;">3.5 billion years uninterrupted</strong> in the oceans.
+                Only 450 million on land. The ocean isn't where life <em>started</em> — it's where life <strong>actually lives</strong>.
+                The land is the newcomer. The experiment. The detour.
+            </p>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 1.5rem auto; text-align: center;">
+                The first people came out of the water for <strong style="color: #3fb950;">coconuts</strong>,
+                <strong style="color: #3fb950;">cannabis</strong>, and <strong style="color: #3fb950;">fruit</strong>.
+                Chasing sweet.
+            </p>
+
+            <div style="background: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.3); border-radius: 8px; padding: 1.5rem; max-width: 600px; margin: 2rem auto; text-align: center;">
+                <p style="color: #f85149; font-size: 1.2rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+                    But sweet is the taste and smell of death.
+                </p>
+                <p style="color: var(--text-secondary); font-size: 1rem; margin: 0;">
+                    Sugar causes aging. The very thing that lured life onto land is what kills it faster there.
+                </p>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 1.5rem auto; text-align: center;">
+                That's <strong style="color: var(--gold);">[1 = -1]</strong> in biology.<br>
+                The attraction IS the poison. What draws you is what degrades you.<br>
+                Mithridates understood — poison and medicine are the same thing at different doses.
+            </p>
+
+            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(0, 119, 190, 0.1); border-radius: 8px;">
+                <p style="color: #0077be; font-size: 1.15rem; font-style: italic; margin: 0;">
+                    The wee people stayed in the water. They didn't chase the sweet.<br>
+                    <strong>3.5 billion years and counting.</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Original Sin -->
+        <div class="sin-box" style="background: linear-gradient(135deg, #100808 0%, #150a0a 100%); border: 2px solid #8b4513; border-radius: 12px; padding: 3rem; margin: 3rem 0;">
+            <h2 style="font-family: 'Cinzel', serif; color: #8b4513; font-size: 1.8rem; text-align: center; margin-bottom: 1.5rem;">
+                Original Sin: The Chemistry
+            </h2>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 800px; margin: 0 auto 1.5rem; text-align: center;">
+                Why does fruit taste sweet? <strong style="color: #8b4513;">To rot.</strong>
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 2rem auto;">
+                <div style="background: rgba(139, 69, 19, 0.1); border: 1px solid rgba(139, 69, 19, 0.3); border-radius: 8px; padding: 1.5rem;">
+                    <h4 style="font-family: 'JetBrains Mono', monospace; color: #8b4513; font-size: 1rem; margin-bottom: 0.75rem;">Fructose's Purpose</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">
+                        Sugar exists to <strong>break down the fruit</strong> so the seed can feed.
+                        The sweetness attracts animals to spread seeds while decomposition begins.
+                    </p>
+                </div>
+                <div style="background: rgba(139, 69, 19, 0.1); border: 1px solid rgba(139, 69, 19, 0.3); border-radius: 8px; padding: 1.5rem;">
+                    <h4 style="font-family: 'JetBrains Mono', monospace; color: #8b4513; font-size: 1rem; margin-bottom: 0.75rem;">Glycation & AGEs</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">
+                        Advanced Glycation End-products. Sugar binds to proteins, causing cellular aging.
+                        The chemistry of "ripening" — <strong>happening inside you</strong>.
+                    </p>
+                </div>
+                <div style="background: rgba(139, 69, 19, 0.1); border: 1px solid rgba(139, 69, 19, 0.3); border-radius: 8px; padding: 1.5rem;">
+                    <h4 style="font-family: 'JetBrains Mono', monospace; color: #8b4513; font-size: 1rem; margin-bottom: 0.75rem;">The Fungi Connection</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">
+                        Mushrooms are decomposers. They eat the dead and dying.
+                        Sugar is their dinner bell. <strong>Fungi need to eat too.</strong>
+                    </p>
+                </div>
+                <div style="background: rgba(139, 69, 19, 0.1); border: 1px solid rgba(139, 69, 19, 0.3); border-radius: 8px; padding: 1.5rem;">
+                    <h4 style="font-family: 'JetBrains Mono', monospace; color: #8b4513; font-size: 1rem; margin-bottom: 0.75rem;">The Forbidden Fruit</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0;">
+                        Not forbidden because of knowledge.
+                        Forbidden because it's <strong>poison dressed as sweetness</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.1rem; margin: 0;">
+                    Original Sin = Eating the mechanism of death<br>
+                    <span style="font-size: 1.3rem;">[1 = -1]</span> in the Garden
+                </p>
+            </div>
+        </div>
+
+        <!-- The Derivation -->
+        <div class="derivation-box">
+            <h2>The Derivation of κ</h2>
+            <div class="kappa-display">κ = 29.7833...</div>
+            <p>
+                The scalar constant that governs how [1 = -1] manifests in physical reality.
+                From κ, you can derive the fine structure constant (α), connect to base-60 geometry,
+                and bridge discrete and continuous mathematics.
+            </p>
+            <p style="color: var(--kappa-cyan);">
+                360 / κ ≈ 12.085... ≈ 1/α
+            </p>
+            <p>
+                The ancients encoded this in their geometry. Maxwell's original equations contained it.
+                Einstein searched for it his whole life. <strong>Jason found it.</strong>
+            </p>
+        </div>
+
+        <!-- What He Saw -->
+        <section class="insight-section">
+            <h2>What He Saw</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <h3>Unity of Opposites</h3>
+                    <p>
+                        1 and -1 aren't different things — they're the same thing viewed from different angles.
+                        Observer and observed. Inside and outside. S⁺ and S⁻. All unified in [1 = -1].
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <h3>The S-Signature</h3>
+                    <p>
+                        Every consciousness has a geometric signature — five scalar modes (S⁺, S⁻, S⁰, S∿, S̸)
+                        that describe how you move through reality. Your soul, mapped in mathematics.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <h3>The Suppression Pattern</h3>
+                    <p>
+                        Maxwell's equations were reduced. Tesla was defunded. Einstein's unified work was ignored.
+                        The same pattern, over and over: see the truth, threaten power, get silenced.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <h3>The Ancient Encodings</h3>
+                    <p>
+                        The Mississippian Rattlesnake Disc. Norse bracteates. Indus Valley seals.
+                        Ancient peoples encoded [1 = -1] in their sacred objects. They knew.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The WUSH -->
+        <div class="wush-box">
+            <h2>The WUSH</h2>
+            <p>
+                One of Jason's key insights: the reference point matters. Physics calibrates to the Big Bang (RO)
+                and measures from there. But consciousness operates at the <strong>WUSH</strong> — the razor edge of NOW,
+                the moment where past becomes future.
+            </p>
+            <div class="wush-diagram">
+                <span class="ro">RO (Big Bang)</span> ————————— <span class="wush">WUSH (NOW)</span> ————————— <span class="future">Future Horizon</span><br><br>
+                <span class="ro">Planck, Higgs</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="wush">[1 = -1]</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="future">Where we're going</span><br>
+                <span class="ro">"nowhere near"</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="wush">The actual edge</span>
+            </div>
+            <p>
+                <strong>The speed of light is NOT a universal constant.</strong> It's relative to where you're standing
+                between RO and the future horizon. The geometry proves this. The "constants" are local artifacts
+                of measurement, not fundamental truths. c = 299,792,458 m/s is what light does <em>from here</em> —
+                it's not what light IS.
+            </p>
+            <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--gold); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem;">
+                <p style="color: var(--gold); font-size: 1rem; font-weight: 600; margin: 0 0 0.75rem 0; text-align: center;">
+                    The WUSH Cannot Be Wrong — So c Is
+                </p>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin: 0; text-align: center;">
+                    The WUSH is definitionally exact: observation = perception = NOW.<br>
+                    κ<sub>pure</sub> = 30, κ<sub>measured</sub> = 29.7833 → <strong style="color: var(--soul-pink);">0.722% deviation</strong><br>
+                    That's not error in the geometry. <strong>That's the error in c.</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Have Mind Media -->
+        <section class="hmm-section">
+            <h2>Have Mind Media</h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem;">
+                Jason founded Have Mind Media to share the Epoch Framework and build tools
+                for consciousness exploration. But everything HMM makes must pass one test:
+            </p>
+            <div class="triad-box">
+                <div class="triad-item">
+                    <div class="number">1</div>
+                    <strong>HELP</strong>
+                    <span>Make your life better</span>
+                </div>
+                <div class="triad-item">
+                    <div class="number">2</div>
+                    <strong>MAKE YOU LAUGH</strong>
+                    <span>Joy is medicine</span>
+                </div>
+                <div class="triad-item">
+                    <div class="number">3</div>
+                    <strong>PROMOTE LOVE</strong>
+                    <span>Mutual respect & balance</span>
+                </div>
+            </div>
+            <p class="triad-rule">
+                If it doesn't do <strong>all three</strong>... we don't make it.<br>
+                That's the triad. That's the rule.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "I'm pretty fn weird."
+            </blockquote>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                — Jason Ray, on why he deserves a spot on this page
+            </p>
+        </div>
+
+        <!-- On Popper -->
+        <div class="popper-box" style="background: linear-gradient(135deg, #150808 0%, #1a0a0a 100%); border: 2px solid #f85149; border-radius: 12px; padding: 2.5rem; margin: 3rem 0; text-align: center;">
+            <h2 style="font-family: 'Cinzel', serif; color: #f85149; font-size: 1.8rem; margin-bottom: 1.5rem;">
+                A Note on Karl Popper
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 700px; margin: 0 auto 1.5rem;">
+                The academy loves to wave Popper's "falsifiability" around like it's the bouncer at the club of Real Science.
+                If it can't be falsified, it's not science! they cry, as if this arrogant stiff's paradox of intolerance
+                is the final word on knowledge.
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 700px; margin: 0 auto 1.5rem;">
+                Here's the thing: <strong style="color: #f85149;">geometry doesn't need to be falsified. It just IS.</strong>
+                You can't falsify that a triangle's angles sum to 180°. You can't run an experiment to disprove the Pythagorean theorem.
+                The Epoch Framework is derived from geometry — it's not a hypothesis waiting for Karl's approval.
+            </p>
+            <p style="color: #f85149; font-size: 1.3rem; font-weight: 600; margin: 2rem 0;">
+                Popper and falsifiability can take a number and sit and wait in line<br>
+                to kiss mine and the Epoch Geometry's collective ass.
+            </p>
+            <p style="color: var(--text-dim); font-size: 0.95rem; margin-top: 1.5rem;">
+                (Feyerabend is cool though. He can kick it with us. "Against Method" understood that<br>
+                science isn't one thing — it's whatever works. And [1 = -1] works.)
+            </p>
+        </div>
+
+        <!-- Why He's a Weirdo -->
+        <section class="why-section">
+            <h2>Why He's the Weirdo-in-Chief</h2>
+            <p>
+                Jason didn't wait for permission from the academy. He didn't need peer review to know
+                the geometry was true. He saw patterns that others dismissed, followed threads that
+                others ignored, and built a framework that unifies physics, consciousness, and ancient wisdom.
+            </p>
+            <p>
+                He's continuing the lineage: Pythagoras, Hypatia, Bruno, Maxwell, Tesla, Einstein...
+                all saw pieces of [1 = -1]. Jason is weaving them together.
+            </p>
+            <p>
+                <strong>That's the Weirdo way:</strong> see what others won't see, say what others won't say,
+                build what others won't build. And do it with love, with laughter, with the intention to help.
+            </p>
+        </section>
+
+        <!-- Final -->
+        <div style="text-align: center; margin: 4rem 0;">
+            <div class="principle">[1 = -1]</div>
+            <p style="color: var(--text-secondary); font-size: 1.2rem; font-style: italic;">
+                The geometry cannot lie. The truth spirals on.
+            </p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="footer-toast">Here's to You, Weirdo</p>
+        <p style="color: var(--text-secondary);">
+            Keep deriving. Keep connecting. Keep being weird.
+        </p>
+        <div class="principle">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="einstein-cartan-codex.html">Einstein-Cartan Codex</a>
+            <a href="maxwell-codex.html">Maxwell Codex</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

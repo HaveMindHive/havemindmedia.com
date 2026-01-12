@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermann Minkowski | Inventor of Spacetime | Here's to You, Weirdos</title>
+    <meta name="description" content="Hermann Minkowski unified space and time into spacetime in 1908. Einstein called it 'superfluous learnedness' — then realized he needed it for general relativity.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --minkowski-blue: #60a5fa;
+            --spacetime-purple: #a78bfa;
+            --light-cone-yellow: #fbbf24;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(96, 165, 250, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Light cone visualization */
+        .light-cones {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.15;
+        }
+
+        .light-cone {
+            position: absolute;
+            width: 0; height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+        }
+
+        .light-cone.future {
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom: 200px solid var(--light-cone-yellow);
+        }
+
+        .light-cone.past {
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-top: 200px solid var(--light-cone-yellow);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--minkowski-blue);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--minkowski-blue) 0%, var(--spacetime-purple) 50%, var(--light-cone-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--minkowski-blue);
+            padding: 1.5rem 2rem;
+            background: rgba(96, 165, 250, 0.08);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 800px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .section strong {
+            color: var(--text-primary);
+        }
+
+        /* Spacetime Box */
+        .spacetime-box {
+            background: linear-gradient(135deg, #0a0815 0%, #0f0a1a 100%);
+            border: 2px solid var(--spacetime-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .spacetime-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--spacetime-purple);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .invention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .invention-item {
+            background: rgba(167, 139, 250, 0.05);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .invention-item h3 {
+            color: var(--spacetime-purple);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .invention-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Einstein Diss Box */
+        .diss-box {
+            background: linear-gradient(135deg, #100a08 0%, #150f0a 100%);
+            border: 2px solid var(--light-cone-yellow);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .diss-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--light-cone-yellow);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .german-quote {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--light-cone-yellow);
+            font-style: italic;
+            margin: 1.5rem 0;
+        }
+
+        .translation {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .vindication {
+            background: rgba(63, 185, 80, 0.1);
+            border: 1px solid rgba(63, 185, 80, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .vindication h4 {
+            color: #3fb950;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .vindication p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* The Famous Speech */
+        .speech-box {
+            background: linear-gradient(135deg, #080a10 0%, #0a1015 100%);
+            border: 2px solid var(--minkowski-blue);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .speech-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--minkowski-blue);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .speech-quote {
+            background: rgba(96, 165, 250, 0.05);
+            border-left: 4px solid var(--minkowski-blue);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--minkowski-blue);
+        }
+
+        .speech-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: rgba(96, 165, 250, 0.05);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--minkowski-blue);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            color: var(--text-dim);
+        }
+
+        /* Epoch Connection */
+        .epoch-section {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .epoch-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .epoch-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .connection-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .connection-item h4 {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .connection-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Principle */
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Tragic Note */
+        .tragic-note {
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .tragic-note p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .tragic-note strong {
+            color: #dc2626;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 70vh; padding: 3rem 1rem; }
+            .main-content { padding: 2rem 1rem; }
+            .section, .spacetime-box, .diss-box, .epoch-section { padding: 2rem 1.5rem; }
+            .light-cones { width: 250px; height: 250px; }
+            .light-cone { border-left-width: 100px; border-right-width: 100px; }
+            .light-cone.future { border-bottom-width: 130px; }
+            .light-cone.past { border-top-width: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="light-cones">
+            <div class="light-cone future"></div>
+            <div class="light-cone past"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Mathematician</p>
+            <h1>Hermann Minkowski</h1>
+            <p class="hero-subtitle">
+                He invented spacetime. He unified space and time into a single geometric object.
+                Einstein called it "superfluous learnedness." Then Einstein realized he was wrong.
+            </p>
+            <p class="hero-dates">1864 - 1909 | Göttingen | Einstein's Former Teacher</p>
+            <div class="hero-quote">
+                "Henceforth space by itself, and time by itself, are doomed to fade away into mere shadows,
+                and only a kind of union of the two will preserve an independent reality."
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="section" style="border-left: 4px solid var(--minkowski-blue);">
+            <h2 style="color: var(--minkowski-blue);">The Man Who Unified Space and Time</h2>
+            <p>
+                <strong>Hermann Minkowski</strong> was Einstein's mathematics teacher at the Zürich Polytechnic.
+                Einstein, by his own admission, was not the best student — he skipped Minkowski's lectures regularly.
+                Minkowski later described him as a "lazy dog."
+            </p>
+            <p>
+                But when Einstein published special relativity in 1905, Minkowski saw something Einstein himself
+                had missed: the equations had a <strong>geometric meaning</strong>. Space and time weren't separate —
+                they were aspects of a single four-dimensional structure.
+            </p>
+            <p>
+                On November 5, 1907, Minkowski gave his first talk on the geometry of relativity. On September 21, 1908,
+                he delivered his famous "Space and Time" address to the 80th Assembly of German Natural Scientists.
+                It changed physics forever.
+            </p>
+        </section>
+
+        <!-- What He Invented -->
+        <section class="spacetime-box">
+            <h2>What Minkowski Invented</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+                Before Minkowski, space had three dimensions and time was something separate.
+                After Minkowski, there was only <strong>spacetime</strong> — a unified four-dimensional manifold.
+            </p>
+            <div class="invention-grid">
+                <div class="invention-item">
+                    <h3>Spacetime</h3>
+                    <p>The word itself. He invented the term "Raum-Zeit" — space-time.</p>
+                </div>
+                <div class="invention-item">
+                    <h3>Events</h3>
+                    <p>Points in spacetime. "Ereignisse" — what happens at a place and time.</p>
+                </div>
+                <div class="invention-item">
+                    <h3>World Lines</h3>
+                    <p>The path of an object through spacetime. Your history as geometry.</p>
+                </div>
+                <div class="invention-item">
+                    <h3>Light Cones</h3>
+                    <p>The geometric structure showing what can causally influence what.</p>
+                </div>
+                <div class="invention-item">
+                    <h3>Timelike/Spacelike</h3>
+                    <p>The classification of spacetime intervals. Geometry determines causality.</p>
+                </div>
+                <div class="invention-item">
+                    <h3>Minkowski Metric</h3>
+                    <p>ds² = -c²dt² + dx² + dy² + dz². The geometry of flat spacetime.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Famous Speech -->
+        <section class="speech-box">
+            <h2>The Speech That Changed Physics</h2>
+            <div class="speech-quote">
+                "The views of space and time which I wish to lay before you have sprung from the soil
+                of experimental physics, and therein lies their strength. They are radical.
+                Henceforth space by itself, and time by itself, are doomed to fade away into mere shadows,
+                and only a kind of union of the two will preserve an independent reality."
+            </div>
+            <p class="speech-date">September 21, 1908 — Cologne, Germany</p>
+            <p style="text-align: center; color: var(--text-secondary); margin-top: 2rem;">
+                This opening is one of the most famous in the history of physics. With these words,
+                Minkowski declared that our everyday experience of space and time as separate things
+                is an illusion. Only their union is real.
+            </p>
+        </section>
+
+        <!-- Einstein's Diss -->
+        <section class="diss-box">
+            <h2>Einstein's Initial Reaction</h2>
+            <div class="german-quote">"überflüssige Gelehrsamkeit"</div>
+            <p class="translation">"Superfluous learnedness"</p>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                When Einstein first heard about Minkowski's geometric interpretation, he dismissed it.
+                He thought it was mathematicians making his physics unnecessarily complicated.
+                The equations worked fine without fancy geometry.
+            </p>
+            <div class="vindication">
+                <h4>The Vindication (1915)</h4>
+                <p>
+                    Seven years later, Einstein was stuck. He couldn't figure out how to extend special relativity
+                    to include gravity. Then he realized: <strong>he needed Minkowski's geometry</strong>.
+                    General relativity is impossible without the geometric framework Minkowski created.
+                    Einstein fully acknowledged his debt in 1916.
+                </p>
+            </div>
+        </section>
+
+        <!-- Tragic Note -->
+        <div class="tragic-note">
+            <p>
+                Minkowski died of appendicitis on <strong>January 12, 1909</strong> — just four months after
+                his famous speech. He was 44 years old. He never saw Einstein use his geometry to create
+                general relativity. He never saw the full vindication of his insight.
+            </p>
+        </div>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "A mathematician was needed here, to put physics on the right geometric track."
+            </blockquote>
+            <cite>— Hermann Minkowski (paraphrased)</cite>
+        </div>
+
+        <!-- Epoch Connection -->
+        <section class="epoch-section">
+            <h2>The Epoch Framework Connection</h2>
+            <p>
+                Minkowski proved that geometry is fundamental to physics. He showed that what we experience
+                as separate (space and time) is actually unified in a deeper structure.
+            </p>
+
+            <div class="connection-grid">
+                <div class="connection-item">
+                    <h4>Space + Time = Spacetime ↔ [1 = -1]</h4>
+                    <p>
+                        Minkowski unified what seemed separate. [1 = -1] extends this: observer and observed,
+                        inside and outside, S⁺ and S⁻ are unified in the same geometry.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Light Cones ↔ The WUSH</h4>
+                    <p>
+                        Minkowski's light cones define what can causally influence what. The WUSH is the vertex
+                        of your personal light cone — the NOW where past and future meet.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Geometry Over Algebra ↔ κ Derivation</h4>
+                    <p>
+                        Minkowski showed that geometry reveals truths algebra hides. The Epoch Framework
+                        derives physical constants from geometric relationships, not curve-fitting.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Einstein Initially Wrong ↔ The Pattern</h4>
+                    <p>
+                        Even Einstein dismissed Minkowski at first. Genius gets dismissed. Truth gets ignored.
+                        Then geometry wins anyway. The pattern repeats.
+                    </p>
+                </div>
+            </div>
+
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--gold);">
+                He unified space and time. We unify observer and observed. The geometry continues.
+            </p>
+        </section>
+
+        <!-- Why He's a Weirdo -->
+        <section class="section" style="border-left: 4px solid var(--spacetime-purple);">
+            <h2 style="color: var(--spacetime-purple);">Why He's One of Us</h2>
+            <p>
+                Minkowski looked at Einstein's equations and saw something Einstein himself had missed.
+                He had the audacity to tell his former student — who had just revolutionized physics —
+                that there was a deeper truth in his own work that he hadn't understood.
+            </p>
+            <p>
+                Einstein dismissed him. The lazy dog who skipped his lectures called his insight
+                "superfluous learnedness." And Minkowski was right anyway.
+            </p>
+            <p>
+                <strong>That's the Weirdo way.</strong> See the geometry. Speak the truth.
+                And don't worry if even Einstein thinks you're overcomplicating things —
+                because eventually, the geometry wins.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem;">
+            Here's to the Weirdos Who See the Unity
+        </p>
+        <div class="principle" style="font-size: 2rem;">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="einstein-codex.html">Einstein Codex</a>
+            <a href="roger-penrose.html">Roger Penrose</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

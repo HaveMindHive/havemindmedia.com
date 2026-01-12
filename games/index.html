@@ -2,548 +2,246 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/unified-theme.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games | Have Mind Media</title>
+    <meta name="description" content="Epoch Games. Train your intuition with triaxial design. No binary choices — always 3, 6, or 9 options.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
     <style>
-        :root {
-            --gold: #FFD700;
-            --love-gold: #FFD700;
-            --shadow-crimson: #8B0000;
-            --teal: #4A9B9B;
-            --bg-deep: #0a0a1a;
-            --bg-purple: #1a0a2e;
-            --text-light: #e0e0e0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-purple) 100%);
-            min-height: 100vh;
-            color: var(--text-light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Home Navigation */
-        .home-nav {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1000;
-        }
-        .home-nav a {
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid var(--gold);
-            border-radius: 4px;
-            background: rgba(10, 10, 26, 0.95);
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .home-nav a:hover {
-            background: var(--gold);
-            color: #0a0a1a;
-        }
-
-        header {
+        .page-header {
             text-align: center;
-            padding: 40px 20px;
+            padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--border);
         }
 
-        h1 {
-            font-size: 3rem;
-            background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
         }
 
-        .tagline {
-            font-size: 1.3rem;
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-
-        .epoch-mark {
-            color: var(--gold);
-            font-size: 1.1rem;
-        }
-
-        .intro {
+        .page-header .lead {
             max-width: 700px;
-            margin: 30px auto;
-            text-align: center;
-            line-height: 1.8;
-            opacity: 0.9;
+            margin: 0 auto 1.5rem;
         }
 
-        .principle-box {
-            background: rgba(255, 215, 0, 0.1);
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 30px auto;
-            text-align: center;
-        }
-
-        .principle-box h3 {
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .principle-box ul {
-            list-style: none;
-            line-height: 2;
-        }
-
-        .principle-box li::before {
-            content: '△ ';
-            color: var(--gold);
-        }
-
-        /* Games List - Clean Stacked Labels */
-        .games-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            margin: 30px 0;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .game-item {
-            display: grid;
-            grid-template-columns: 60px 1fr auto;
-            align-items: center;
-            gap: 20px;
-            padding: 18px 24px;
-            background: rgba(255, 255, 255, 0.03);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .game-item:hover {
-            background: rgba(255, 215, 0, 0.08);
-            border-left-color: var(--gold);
-        }
-
-        .game-item.featured {
-            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1), transparent);
-            border-left-color: var(--gold);
-        }
-
-        .game-icon {
-            font-size: 1.8rem;
-            text-align: center;
-            width: 60px;
-        }
-
-        .game-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .game-info h2 {
-            font-size: 1.1rem;
-            color: var(--gold);
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .game-info p {
+        .kappa-sig {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            opacity: 0.7;
-            line-height: 1.5;
-            margin: 0;
-            max-width: 500px;
-        }
-
-        .game-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        .game-tag {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.15);
             color: var(--gold);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.7rem;
-            white-space: nowrap;
+            opacity: 0.8;
         }
 
-        .game-item.disabled {
-            opacity: 0.4;
-            pointer-events: none;
+        .stats-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
         }
 
-        @media (max-width: 700px) {
-            .game-item {
-                grid-template-columns: 50px 1fr;
-                gap: 15px;
-            }
-            .game-tags {
-                display: none;
-            }
-            .game-info p {
-                display: none;
-            }
-        }
-
-        /* Category Headers */
-        .category {
-            margin: 50px 0 20px 0;
-        }
-
-        .category h2 {
-            color: var(--gold);
+        .stat-item .value {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 1.5rem;
-            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* Stats Overview */
-        .stats-overview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-        }
-
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-box .value {
-            font-size: 2rem;
-            font-weight: bold;
             color: var(--gold);
         }
 
-        .stat-box .label {
-            font-size: 0.85rem;
-            opacity: 0.7;
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
             text-transform: uppercase;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            opacity: 0.6;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: var(--gold);
-            text-decoration: none;
-            padding: 10px 25px;
-            border: 1px solid var(--gold);
-            border-radius: 25px;
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: var(--gold);
-            color: var(--bg-deep);
+            letter-spacing: 1px;
         }
     </style>
-    <script src="../js/components/site-header.js" defer></script>
-    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
     <site-header></site-header>
-    <div class="home-nav"><a href="/">← Home</a></div>
-    <div class="container">
-        <header>
-            <h1>Epoch Games</h1>
-            <p class="tagline">Train Your Intuition · Triaxial Design · No Binary</p>
-            <p class="epoch-mark">[1 = -1]</p>
-        </header>
 
-        <p class="intro">
-            These games are designed on <strong>Epoch Model</strong> principles. All choices are triaxial
-            (minimum 3, expanding to 6 or 9). Binary thinking is dogma—we train in the space of three.
-            Play is training. Training is awakening.
+    <header class="page-header">
+        <h1>Epoch Games</h1>
+        <p class="lead">
+            Train Your Intuition · Triaxial Design · No Binary
         </p>
+        <span class="kappa-sig">[1 = -1]</span>
+    </header>
 
-        <div class="principle-box">
-            <h3>Triaxial Game Design</h3>
-            <ul>
-                <li>Never 2 choices (binary is dogma)</li>
-                <li>Always 3, 6, or 9 options</li>
-                <li>Chance rates: 33% · 17% · 11%</li>
-                <li>Track your intuition vs statistical chance</li>
-            </ul>
-        </div>
+    <main class="content-wide">
+        <!-- Topic Navigation -->
+        <nav class="topic-scroll" style="margin: 2rem 0;">
+            <a href="#featured" class="topic-tag active">Featured</a>
+            <a href="#esp" class="topic-tag">ESP Tests</a>
+            <a href="#training" class="topic-tag">Training</a>
+            <a href="#learning" class="topic-tag">Learning</a>
+            <a href="#advanced" class="topic-tag">Advanced</a>
+        </nav>
 
-        <!-- FEATURED -->
-        <div class="category">
-            <h2>Featured</h2>
-        </div>
-        <div class="games-list">
-            <a href="balance/index.html" class="game-item featured">
-                <span class="game-icon">🐕🦮🐾</span>
-                <div class="game-info">
-                    <h2>Triadic Balance</h2>
+        <!-- Triaxial Principles -->
+        <section class="featured">
+            <h2>Triaxial Game Design</h2>
+            <p>
+                Never 2 choices (binary is dogma). Always 3, 6, or 9 options.
+                Chance rates: 33% · 17% · 11%. Track your intuition vs statistical chance.
+                Play is training. Training is awakening.
+            </p>
+        </section>
+
+        <!-- Featured -->
+        <section id="featured" class="content-flow">
+            <h2>Featured Games</h2>
+
+            <div class="article-list">
+                <a href="balance/index.html" class="article-link">
+                    <h3>Triadic Balance</h3>
                     <p>Form triads to clear the board. S+ shadow, S- love, COIN witness. Every board is solvable.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Puzzle</span>
-                    <span class="game-tag">PLAY NOW</span>
-                </div>
-            </a>
-            <a href="zener-cards.html" class="game-item featured">
-                <span class="game-icon">○ + ★</span>
-                <div class="game-info">
-                    <h2>Zener Cards</h2>
+                    <span class="meta">Puzzle · Play Now</span>
+                </a>
+
+                <a href="zener-cards.html" class="article-link">
+                    <h3>Zener Cards</h3>
                     <p>Classic Rhine protocol ESP test. Simple, no timer. Train your intuition.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">ESP</span>
-                    <span class="game-tag">Classic</span>
-                </div>
-            </a>
-        </div>
+                    <span class="meta">ESP · Classic</span>
+                </a>
+            </div>
+        </section>
 
-        <!-- CLASSIC ESP -->
-        <div class="category">
+        <!-- Classic ESP -->
+        <section id="esp" class="content-flow">
             <h2>Classic ESP Tests</h2>
-        </div>
-        <div class="games-list">
-            <a href="zener-cards.html" class="game-item">
-                <span class="game-icon">○ + ★</span>
-                <div class="game-info">
-                    <h2>Zener Cards</h2>
+
+            <div class="article-list">
+                <a href="zener-cards.html" class="article-link">
+                    <h3>Zener Cards</h3>
                     <p>Classic Rhine protocol. 5 symbols, 20% chance rate.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">20%</span>
-                    <span class="game-tag">Classic</span>
-                </div>
-            </a>
-            <a href="card-match.html" class="game-item">
-                <span class="game-icon">🎴⏱️</span>
-                <div class="game-info">
-                    <h2>Card Match</h2>
+                    <span class="meta">20% · Classic</span>
+                </a>
+
+                <a href="card-match.html" class="article-link">
+                    <h3>Card Match</h3>
                     <p>Intuition under pressure. Decreasing timer.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Timed</span>
-                    <span class="game-tag">Streak</span>
-                </div>
-            </a>
-        </div>
+                    <span class="meta">Timed · Streak</span>
+                </a>
+            </div>
+        </section>
 
-        <!-- INTUITION TRAINING -->
-        <div class="category">
+        <!-- Intuition Training -->
+        <section id="training" class="content-flow">
             <h2>Intuition Training</h2>
-        </div>
-        <div class="games-list">
-            <a href="coin-flip.html" class="game-item">
-                <span class="game-icon">🥇🥈🥉</span>
-                <div class="game-info">
-                    <h2>Tri-Coin</h2>
+
+            <div class="article-list">
+                <a href="coin-flip.html" class="article-link">
+                    <h3>Tri-Coin</h3>
                     <p>Gold, Silver, or Copper — which coin will appear? 33.3% chance.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">33%</span>
-                    <span class="game-tag">Triaxial</span>
-                </div>
-            </a>
-            <a href="color-sense.html" class="game-item">
-                <span class="game-icon">🔴🔵🟡</span>
-                <div class="game-info">
-                    <h2>Color Sense</h2>
+                    <span class="meta">33% · Triaxial</span>
+                </a>
+
+                <a href="color-sense.html" class="article-link">
+                    <h3>Color Sense</h3>
                     <p>Feel the color before you see it. 3-color or 6-color mode.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Visual</span>
-                </div>
-            </a>
-            <a href="number-feeling.html" class="game-item">
-                <span class="game-icon">1 5 9</span>
-                <div class="game-info">
-                    <h2>Number Feeling</h2>
+                    <span class="meta">Visual</span>
+                </a>
+
+                <a href="number-feeling.html" class="article-link">
+                    <h3>Number Feeling</h3>
                     <p>9 numbers, 11.1% chance. Feel the number.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">11.1%</span>
-                </div>
-            </a>
-            <a href="epoch-symbols.html" class="game-item">
-                <span class="game-icon">△ ☆ ◎</span>
-                <div class="game-info">
-                    <h2>Epoch Symbols</h2>
+                    <span class="meta">11.1%</span>
+                </a>
+
+                <a href="epoch-symbols.html" class="article-link">
+                    <h3>Epoch Symbols</h3>
                     <p>9 symbols based on Q-reduction. Beat the 11.1% chance.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">11.1%</span>
-                </div>
-            </a>
-        </div>
+                    <span class="meta">11.1%</span>
+                </a>
+            </div>
+        </section>
 
-        <!-- LEARNING -->
-        <div class="category">
+        <!-- Learning -->
+        <section id="learning" class="content-flow">
             <h2>Learn the Model</h2>
-        </div>
-        <div class="games-list">
-            <a href="love-triads-learn.html" class="game-item">
-                <span class="game-icon">💛📖</span>
-                <div class="game-info">
-                    <h2>Love Triads - Learn</h2>
+
+            <div class="article-list">
+                <a href="love-triads-learn.html" class="article-link">
+                    <h3>Love Triads - Learn</h3>
                     <p>Interactive lesson on triaxial harmony and [1 = -1].</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Tutorial</span>
-                </div>
-            </a>
-            <a href="phaistos-archetypes.html" class="game-item">
-                <span class="game-icon">🌀☯</span>
-                <div class="game-info">
-                    <h2>Phaistos Archetypes</h2>
+                    <span class="meta">Tutorial</span>
+                </a>
+
+                <a href="phaistos-archetypes.html" class="article-link">
+                    <h3>Phaistos Archetypes</h3>
                     <p>9 archetypal symbols. Explore spectrums and Shadow Operator.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Archetypes</span>
-                </div>
-            </a>
-        </div>
+                    <span class="meta">Archetypes</span>
+                </a>
+            </div>
+        </section>
 
-        <!-- ADVANCED TRAINING -->
-        <div class="category">
+        <!-- Advanced -->
+        <section id="advanced" class="content-flow">
             <h2>Advanced Training</h2>
-        </div>
-        <div class="games-list">
-            <a href="symbol-sender.html" class="game-item">
-                <span class="game-icon">🌊∿🎵</span>
-                <div class="game-info">
-                    <h2>Symbol Sender</h2>
+
+            <div class="article-list">
+                <a href="symbol-sender.html" class="article-link">
+                    <h3>Symbol Sender</h3>
                     <p>Geometric harmonic transmission. Feel the frequency signature.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Audio</span>
-                    <span class="game-tag">Visual</span>
-                </div>
-            </a>
-            <a href="focus-mode.html" class="game-item">
-                <span class="game-icon">🔴👁️</span>
-                <div class="game-info">
-                    <h2>Focus Mode</h2>
+                    <span class="meta">Audio · Visual</span>
+                </a>
+
+                <a href="focus-mode.html" class="article-link">
+                    <h3>Focus Mode</h3>
                     <p>Ganzfeld-lite remote viewing training.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Ganzfeld</span>
-                </div>
-            </a>
-            <a href="coordinate-viewer.html" class="game-item">
-                <span class="game-icon">📍🌍</span>
-                <div class="game-info">
-                    <h2>Coordinate Viewer</h2>
+                    <span class="meta">Ganzfeld</span>
+                </a>
+
+                <a href="coordinate-viewer.html" class="article-link">
+                    <h3>Coordinate Viewer</h3>
                     <p>Full Stargate-style CRV protocol.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">CRV</span>
-                    <span class="game-tag">Stargate</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- COMING SOON -->
-        <div class="category">
-            <h2>Coming Soon</h2>
-        </div>
-        <div class="games-list">
-            <div class="game-item disabled">
-                <span class="game-icon">⏱️</span>
-                <div class="game-info">
-                    <h2>Precognition Lab</h2>
-                    <p>Predict outcomes before they happen.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Future</span>
-                </div>
+                    <span class="meta">CRV · Stargate</span>
+                </a>
             </div>
-            <div class="game-item disabled">
-                <span class="game-icon">🔮</span>
-                <div class="game-info">
-                    <h2>Dream Journal</h2>
-                    <p>Record and analyze dreams for precognitive content.</p>
-                </div>
-                <div class="game-tags">
-                    <span class="game-tag">Dreams</span>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- STATS PLACEHOLDER -->
-        <div class="stats-overview">
-            <div class="stat-box">
+        <!-- Stats -->
+        <div class="stats-box">
+            <div class="stat-item">
                 <div class="value" id="totalSessions">--</div>
-                <div class="label">Total Sessions</div>
+                <div class="label">Sessions</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="value" id="totalHits">--</div>
-                <div class="label">Total Hits</div>
+                <div class="label">Hits</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="value" id="overallRate">--</div>
-                <div class="label">Overall Rate</div>
+                <div class="label">Rate</div>
             </div>
-            <div class="stat-box">
+            <div class="stat-item">
                 <div class="value" id="aboveChance">--</div>
-                <div class="label">Above Chance</div>
+                <div class="label">vs Chance</div>
             </div>
         </div>
 
-        <div style="text-align: center; margin: 30px 0; opacity: 0.7;">
-            <p>Stats sync across games using local storage.</p>
-            <p>Your data stays on your device.</p>
-        </div>
-    </div>
+        <p style="text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+            Stats sync across games using local storage. Your data stays on your device.
+        </p>
+    </main>
 
-    <footer>
-        <p><strong>[1 = -1]</strong></p>
-        <p style="margin-top: 10px;">The mind is in your mind.</p>
-        <p style="margin-top: 10px;">Have Mind Media | Developer: Alessandra Ray</p>
-        <a href="https://havemindmedia.com" class="back-link">← Back to HaveMindMedia.com</a>
-    </footer>
+    <site-footer></site-footer>
 
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
     <script>
         // Load aggregate stats from localStorage
         function loadStats() {
             let totalSessions = 0;
             let totalHits = 0;
 
-            // Check each game's stored stats
             const gameKeys = [
                 'epoch_EpochSymbolsGame_stats',
                 'epoch_ColorGame_stats',
@@ -569,7 +267,6 @@
                 }
             });
 
-            // Also check focus mode stats
             const focusStats = localStorage.getItem('focus_mode_stats');
             if (focusStats) {
                 try {
@@ -579,7 +276,6 @@
                 } catch (e) {}
             }
 
-            // Update display
             if (totalSessions > 0) {
                 document.getElementById('totalSessions').textContent = totalSessions;
                 document.getElementById('totalHits').textContent = totalHits;
@@ -587,17 +283,15 @@
                 const rate = (totalHits / totalSessions * 100).toFixed(1);
                 document.getElementById('overallRate').textContent = `${rate}%`;
 
-                // Assume average chance of ~20% across all games
                 const avgChance = 20;
                 const diff = rate - avgChance;
                 const aboveEl = document.getElementById('aboveChance');
                 aboveEl.textContent = diff >= 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
-                aboveEl.style.color = diff >= 0 ? '#4CAF50' : '#f44336';
+                aboveEl.style.color = diff >= 0 ? '#3fb950' : '#f85149';
             }
         }
 
         loadStats();
     </script>
-    <site-footer></site-footer>
 </body>
 </html>

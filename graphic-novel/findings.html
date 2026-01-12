@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE FINDINGS | Geometry Written Through Time | THE BIRD DOG PROPHECY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Egyptian+Hieroglyphs&family=Noto+Sans+Runic&family=Noto+Sans+Coptic&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-page: #0a0a0f;
+            --bg-panel: #12121a;
+            --bg-card: #1a1a25;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a09890;
+            --text-dim: #6b6b6b;
+            --gold: #c9a227;
+            --sun-gold: #f4d03f;
+            --eclipse-red: #8b2500;
+            --deep-water: #1e3a5f;
+            --forest-green: #1a3d1a;
+            --storm-purple: #2d1f4a;
+            --grey-witness: #6b6b6b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 50%),
+                var(--bg-deep);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--gold);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        /* Main */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(201, 162, 39, 0.3);
+            text-align: center;
+        }
+
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--sun-gold);
+            margin: 2rem 0 1rem;
+        }
+
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Names in authentic scripts */
+        .authentic-names {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .name-card {
+            background: var(--bg-card);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .name-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .name-card .script {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .name-card .transliteration {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .name-card .language {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .name-card .meaning {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .name-card .d-position {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1rem;
+            background: rgba(201, 162, 39, 0.2);
+            border-radius: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--gold), var(--deep-water), var(--gold));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg-card);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 5%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 5%;
+            text-align: left;
+        }
+
+        .timeline-date {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid var(--bg-deep);
+            z-index: 1;
+        }
+
+        /* Geometry table */
+        .geometry-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 1rem;
+        }
+
+        .geometry-table th, .geometry-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .geometry-table th {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            background: var(--bg-panel);
+        }
+
+        .geometry-table tr:hover {
+            background: rgba(201, 162, 39, 0.05);
+        }
+
+        .geometry-table .equation {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--sun-gold);
+        }
+
+        /* Convergence visualization */
+        .convergence-visual {
+            background: var(--bg-panel);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .convergence-visual h3 {
+            margin-bottom: 2rem;
+        }
+
+        .calendar-ring {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-badge {
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.4);
+            border-radius: 30px;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+        }
+
+        .convergence-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        .convergence-result {
+            font-size: 1.3rem;
+            color: var(--sun-gold);
+        }
+
+        /* Quote block */
+        .quote-block {
+            background: rgba(107, 107, 107, 0.15);
+            border-left: 4px solid var(--grey-witness);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'IM Fell English', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+
+        /* Final statement */
+        .final-statement {
+            text-align: center;
+            padding: 4rem 2rem;
+            background:
+                radial-gradient(ellipse at 50% 100%, rgba(30, 58, 95, 0.3) 0%, transparent 50%),
+                var(--bg-panel);
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .final-statement .equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 2rem 0;
+            text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-panel);
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content {
+                width: calc(100% - 50px) !important;
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+                text-align: left !important;
+            }
+            .timeline-dot { left: 20px; }
+            .authentic-names { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(5, 5, 8, 0.95); padding: 1rem 2rem; z-index: 2000; border-bottom: 1px solid rgba(201, 162, 39, 0.3); backdrop-filter: blur(10px);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="../index.html" style="color: #c9a227; text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.9rem; transition: all 0.3s;">← Return to Have Mind Media</a>
+            <span style="color: #6b6b6b; font-size: 0.85rem;">The Findings</span>
+        </div>
+    </nav>
+
+    <header class="header" style="padding-top: 8rem;">
+        <h1>THE FINDINGS</h1>
+        <p>Geometry written through time, now converging</p>
+    </header>
+
+    <main>
+        <!-- SECTION 1: NAMES IN AUTHENTIC SCRIPTS -->
+        <section>
+            <h2>THE NAMES IN THEIR AUTHENTIC SCRIPTS</h2>
+
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                The same entities appear across cultures, each encoded in their native writing systems.
+            </p>
+
+            <div class="authentic-names">
+                <!-- Osiris -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Egyptian Hieroglyphs', serif;">𓊨𓏏𓆇𓀭</div>
+                    <div class="transliteration">OSIRIS / Wsỉr</div>
+                    <div class="language">Egyptian Hieroglyphs</div>
+                    <div class="meaning">"The Mighty One" — God of resurrection, the underworld, and the afterlife</div>
+                    <div class="d-position">D8 — Deep Water</div>
+                </div>
+
+                <!-- Ammit -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Egyptian Hieroglyphs', serif;">𓂝𓅓𓅓𓏏𓁐</div>
+                    <div class="transliteration">AMMIT / ꜥmm.t</div>
+                    <div class="language">Egyptian Hieroglyphs</div>
+                    <div class="meaning">"Devourer of the Dead" — She who eats hearts heavier than Ma'at's feather</div>
+                    <div class="d-position">D2 — Healing</div>
+                </div>
+
+                <!-- Jörmungandr -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Runic', serif;">ᛃᚢᚱᛗᚢᚾᚷᚨᚾᛞᚱ</div>
+                    <div class="transliteration">JÖRMUNGANDR</div>
+                    <div class="language">Elder Futhark Runes</div>
+                    <div class="meaning">"Huge Monster" — The Midgard Serpent who encircles the world</div>
+                    <div class="d-position">D2 — Healing (same as Ammit)</div>
+                </div>
+
+                <!-- Thor/Tors -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Runic', serif;">ᚦᚢᚱᛊ / ᛏᛟᚱᛊ</div>
+                    <div class="transliteration">ÞURS / TORS</div>
+                    <div class="language">Elder Futhark Runes</div>
+                    <div class="meaning">"Thunder" / "Torsion" — The force that makes the path through love</div>
+                    <div class="d-position">D9 — Love/Anchor</div>
+                </div>
+
+                <!-- Mithras -->
+                <div class="name-card">
+                    <div class="script" style="font-size: 2.5rem;">ΜΙΘΡΑΣ</div>
+                    <div class="transliteration">MITHRAS / Miθra</div>
+                    <div class="language">Greek (from Persian)</div>
+                    <div class="meaning">"Contract/Covenant" — God of truth, oaths, and the sun</div>
+                    <div class="d-position">D7 — Present Moment</div>
+                </div>
+
+                <!-- Bennu -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Egyptian Hieroglyphs', serif;">𓅣𓈖𓅱𓅪</div>
+                    <div class="transliteration">BENNU / bnw</div>
+                    <div class="language">Egyptian Hieroglyphs</div>
+                    <div class="meaning">"The Risen One" — Phoenix bird, BA of Osiris, herald of creation</div>
+                    <div class="d-position">D2 — Healing</div>
+                </div>
+
+                <!-- Tengri -->
+                <div class="name-card">
+                    <div class="script" style="font-size: 2.5rem;">𐱅𐰭𐰼𐰃</div>
+                    <div class="transliteration">TENGRI / Täŋri</div>
+                    <div class="language">Old Turkic Script</div>
+                    <div class="meaning">"Eternal Blue Sky" — Supreme deity of the steppe peoples</div>
+                    <div class="d-position">D1 — Origin</div>
+                </div>
+
+                <!-- Charon -->
+                <div class="name-card">
+                    <div class="script" style="font-size: 2.5rem;">ΧΑΡΩΝ</div>
+                    <div class="transliteration">CHARON / Kharōn</div>
+                    <div class="language">Ancient Greek</div>
+                    <div class="meaning">"Fierce Brightness" — Ferryman of the dead across the Styx</div>
+                    <div class="d-position">D4 — Crossroads (the choice)</div>
+                </div>
+
+                <!-- ÞRÚÐR -->
+                <div class="name-card">
+                    <div class="script" style="font-family: 'Noto Sans Runic', serif;">ᚦᚱᚢᚦᚱ</div>
+                    <div class="transliteration">ÞRÚÐR / Thrudr</div>
+                    <div class="language">Elder Futhark Runes</div>
+                    <div class="meaning">"Strength" — Daughter of Thor (TORS), Valkyrie</div>
+                    <div class="d-position">D8 — Deep Water</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE GEOMETRIC TIMELINE -->
+        <section>
+            <h2>THE GEOMETRY WRITTEN THROUGH TIME</h2>
+
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                The same pattern appearing across millennia, encoded in different forms.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~3000 BCE</div>
+                        <div class="timeline-event">Egyptian Pyramid Texts</div>
+                        <div class="timeline-detail">Osiris resurrection myth encoded. "That which is named can be written. That which is written shall be remembered."</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~1700 BCE</div>
+                        <div class="timeline-event">Phaistos Disc Created</div>
+                        <div class="timeline-detail">45 + 241 + 61 = 347 → 14 → D5 (Navigator). The disc encodes Day 14 in its total glyph count.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~1500 BCE</div>
+                        <div class="timeline-event">Vedic Texts Record Makar Sankranti</div>
+                        <div class="timeline-detail">Sun's northward journey (Uttarayana) = Dawn for the gods. 270° × κ = 3π = D3 (Healer).</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~1000 BCE</div>
+                        <div class="timeline-event">Norse Eddas Composed</div>
+                        <div class="timeline-detail">Jörmungandr mythology. The serpent whose release reveals [1 = -1]: inside = outside.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~400 BCE</div>
+                        <div class="timeline-event">Mithras Cult Emerges</div>
+                        <div class="timeline-detail">Persian god of truth and contracts. The one who witnesses oaths. D7 = Present Moment = NOW.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~100 CE</div>
+                        <div class="timeline-event">Coptic Calendar Established</div>
+                        <div class="timeline-detail">8th day after Nativity = Feast of Circumcision. First blood. Beginning of redemption. Tobi = Emergence.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">291 CE</div>
+                        <div class="timeline-event">Last Solstice-Sankranti Alignment</div>
+                        <div class="timeline-detail">1735 years × κ = 60.56 ≈ 60 (base-60 completion). The sexagesimal cycle begins.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">~1400 CE</div>
+                        <div class="timeline-event">Voynich Manuscript Written</div>
+                        <div class="timeline-detail">Zodiac begins with Pisces (not Aries) = [1 = -1]. End = Beginning. Frequency calendar, not linear time.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Ages 13, 15, 17, 22</div>
+                        <div class="timeline-event">The Sequence of Realization</div>
+                        <div class="timeline-detail">"first time i realized it at 13 years old and 15 and 17 and 22." Each eclipse adding another layer. The storms followed and inverted.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 5</div>
+                        <div class="timeline-event">12th Day of Western Christmas — ÞRÚÐR</div>
+                        <div class="timeline-detail">Epiphany Eve. ÞRÚÐR = D8. Strength prepares the way.</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date" style="color: var(--sun-gold);">THE EIGHTH DAY (JAN 14)</div>
+                        <div class="timeline-event">O sI Rus Returns — The Cleansing Begins</div>
+                        <div class="timeline-detail">All calendars converge. Orthodox Day 8. Makar Sankranti. 6 Tobi. The geometry completes. "he doesnt kill, he cleanses."</div>
+                    </div>
+                    <div class="timeline-dot" style="background: var(--sun-gold); box-shadow: 0 0 20px var(--sun-gold);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE CALENDAR CONVERGENCE -->
+        <section>
+            <h2>THE CALENDAR CONVERGENCE</h2>
+
+            <div class="convergence-visual">
+                <h3>All Systems Point to the Same Moment</h3>
+
+                <div class="calendar-ring">
+                    <div class="calendar-badge">Western: Jan 5 (ÞRÚÐR)</div>
+                    <div class="calendar-badge">Orthodox: Day 8 (Jan 14)</div>
+                    <div class="calendar-badge">Coptic: 6 Tobi</div>
+                    <div class="calendar-badge">Hindu: Makar Sankranti</div>
+                    <div class="calendar-badge">Tamil: Thai Pongal</div>
+                    <div class="calendar-badge">Hebrew: 25 Tevet</div>
+                    <div class="calendar-badge">Slavic: Old New Year</div>
+                    <div class="calendar-badge">Voynich: Q³ → Q⁴</div>
+                    <div class="calendar-badge">Phaistos: 347 → 14</div>
+                </div>
+
+                <div class="convergence-equation">
+                    D8 + D7 + D3 + D2 + D8 + D7 + D6 + D5 = 46 → 10 → 1 → D1
+                </div>
+
+                <div class="convergence-result">
+                    All paths return to <strong>ORIGIN</strong>.<br>
+                    The Navigator (D5) arrives at the Source (D1).
+                </div>
+            </div>
+
+            <table class="geometry-table">
+                <thead>
+                    <tr>
+                        <th>Calendar System</th>
+                        <th>Date Encoding</th>
+                        <th>D-Position</th>
+                        <th>Geometric Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Western (ÞRÚÐR)</td>
+                        <td>12th Day of Christmas (Jan 5)</td>
+                        <td class="equation">D8</td>
+                        <td>Deep Water — Strength prepares the way</td>
+                    </tr>
+                    <tr>
+                        <td>Orthodox Christian</td>
+                        <td>8th Day after Nativity (Jan 14)</td>
+                        <td class="equation">D8</td>
+                        <td>Deep Water — Transformation/Resurrection</td>
+                    </tr>
+                    <tr>
+                        <td>Coptic</td>
+                        <td>6 Tobi (Emergence Season)</td>
+                        <td class="equation">D7</td>
+                        <td>Present Moment — NOW manifests</td>
+                    </tr>
+                    <tr>
+                        <td>Hindu Solar</td>
+                        <td>270° ecliptic (3π via κ)</td>
+                        <td class="equation">D3</td>
+                        <td>Healer — Dawn for the gods</td>
+                    </tr>
+                    <tr>
+                        <td>Hebrew</td>
+                        <td>25 Tevet = D7 + D1</td>
+                        <td class="equation">D8</td>
+                        <td>Deep Water — Osiris frequency encoded</td>
+                    </tr>
+                    <tr>
+                        <td>Voynich</td>
+                        <td>Pisces-first zodiac (inverted)</td>
+                        <td class="equation">D9 → D1</td>
+                        <td>[1 = -1] — End = Beginning</td>
+                    </tr>
+                    <tr>
+                        <td>Phaistos Disc</td>
+                        <td>347 total glyphs</td>
+                        <td class="equation">D5</td>
+                        <td>Navigator — The path-finder arrives</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 4: THE LIE-EATER EQUIVALENCE -->
+        <section>
+            <h2>THE LIE-EATERS: SAME ENTITY, DIFFERENT FORMS</h2>
+
+            <table class="geometry-table">
+                <thead>
+                    <tr>
+                        <th>Tradition</th>
+                        <th>Name</th>
+                        <th>Script</th>
+                        <th>Function</th>
+                        <th>D-Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Egyptian</td>
+                        <td>Ammit (ꜥmm.t)</td>
+                        <td style="font-family: 'Noto Sans Egyptian Hieroglyphs';">𓂝𓅓𓅓𓏏𓁐</td>
+                        <td>Devours hearts heavier than truth</td>
+                        <td class="equation">D2</td>
+                    </tr>
+                    <tr>
+                        <td>Norse</td>
+                        <td>Jörmungandr</td>
+                        <td style="font-family: 'Noto Sans Runic';">ᛃᚢᚱᛗᚢᚾᚷᚨᚾᛞᚱ</td>
+                        <td>Releases torsion, reveals [1 = -1]</td>
+                        <td class="equation">D2</td>
+                    </tr>
+                    <tr>
+                        <td>Tengri</td>
+                        <td>Kök-Orus</td>
+                        <td>𐰚𐰇𐰚 𐰆𐰺𐰆𐰽</td>
+                        <td>Dissolves lies in the presence of IS</td>
+                        <td class="equation">D2</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="quote-block">
+                "Ammit and Jormungandr eat, same thing. so some will choose the coin to Charon rather than to have it pulled and be left with the shell that without the lies has nothing. and some have made themselves nothing but lies."
+            </div>
+
+            <p style="text-align: center; font-size: 1.2rem; color: var(--text-secondary);">
+                All three reduce to <strong>D2 (Healing)</strong>.<br>
+                Consuming lies IS healing. The lie-eater has many names but one mouth.
+            </p>
+        </section>
+
+        <!-- SECTION 5: THE PERSONAL SEQUENCE -->
+        <section>
+            <h2>THE PERSONAL SEQUENCE: 13, 15, 17, 22</h2>
+
+            <div class="quote-block">
+                "first time i realized it at 13 years old and 15 and 17 and 22. that was the sequence of realization though i knew from my earliest memories, native american ghost would peak from around trees at me. and take me on walks in the woods. the storms would follow me, and i could call them and they would invert themselves. but i called myself bird dog or tors then too. turas."
+            </div>
+
+            <table class="geometry-table">
+                <thead>
+                    <tr>
+                        <th>Age</th>
+                        <th>D-Position</th>
+                        <th>Δ from Previous</th>
+                        <th>Cumulative Meaning</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>13</td>
+                        <td class="equation">D4 (Crossroads)</td>
+                        <td>—</td>
+                        <td>First realization. The choice point.</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td class="equation">D6 (Self/Power)</td>
+                        <td>+2</td>
+                        <td>Identity forming. Power recognized.</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td class="equation">D8 (Deep Water)</td>
+                        <td>+2</td>
+                        <td>Osiris frequency reached. Transformation.</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td class="equation">D4 (Crossroads)</td>
+                        <td>+5 → cycles back</td>
+                        <td>Returns to choice. 22nd gate in Sagittarius.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="text-align: center; margin-top: 2rem;">
+                <span style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.3rem;">
+                    13 + 15 + 17 + 22 = 67 → 13 → 4 = D4 (CROSSROADS)
+                </span>
+            </p>
+            <p style="text-align: center; color: var(--text-secondary);">
+                The sum of all realizations = The Choice. The Navigator standing at the crossroads.
+            </p>
+        </section>
+
+        <!-- SECTION 6: THE GEOMETRY THAT CANNOT LIE -->
+        <section>
+            <h2>THE KAʞ — THE GEOMETRY THAT CANNOT LIE</h2>
+
+            <div class="quote-block">
+                "the Kaʞ. it cannot lie. it is tors. down to Torstus he goes, the deceiver is not pulled and bound by the torsions that cannot be escaped from, the geometry that ends all lies and ends all liars."
+            </div>
+
+            <table class="geometry-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Frequency</th>
+                        <th>κ Transform</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TORS</td>
+                        <td class="equation">72 → D9 (Love)</td>
+                        <td>72 × κ = 2.51 → 8 = D8</td>
+                        <td>Makes the path through love. Thunder geometry.</td>
+                    </tr>
+                    <tr>
+                        <td>TORSTUS</td>
+                        <td class="equation">116 → D8 (Deep Water)</td>
+                        <td>116 × κ = 4.05 → 9 = D9</td>
+                        <td>The torsion prison. Where liars go. Cannot unknot.</td>
+                    </tr>
+                    <tr>
+                        <td>KAʞ</td>
+                        <td class="equation">32 → D5 (Navigator)</td>
+                        <td>32 × κ = 1.12 → 4 = D4</td>
+                        <td>The triaxial scale. No finger can push it.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text-secondary);">
+                <strong>TORS + TORSTUS</strong> = D9 + D8 = 17 → 8 = <strong>D8 (OSIRIS)</strong><br>
+                The path-maker and the torsion-prison together = the resurrection frequency.
+            </p>
+        </section>
+
+        <!-- FINAL STATEMENT -->
+        <div class="final-statement">
+            <h2 style="border: none; margin-bottom: 1rem;">THE GEOMETRY RESOLVES</h2>
+
+            <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                "we can see you, we can hear you. we hear with the eyes and see with the ears.<br>
+                we are all holes, all covers. the flesh the bone, the everything,<br>
+                the nothing the maybe the question, the answer. w0w."
+            </p>
+
+            <div class="equation">[1 = -1]</div>
+
+            <p style="font-size: 1.2rem; margin-top: 2rem;">
+                The grey at the center. The grey at the edge.<br>
+                The same grey. The same moment. The same truth.
+            </p>
+
+            <p style="color: var(--text-dim); margin-top: 2rem; font-style: italic;">
+                "he doesnt kill, he cleanses."
+            </p>
+
+            <p style="margin-top: 3rem; font-family: 'IM Fell English', serif; font-size: 1.3rem; color: var(--text-secondary);">
+                "That which can be named must exist. That which is named can be written.<br>
+                That which is written shall be remembered. That which is remembered lives.<br>
+                In the land of geometry, truth breathes."
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.5rem; margin-bottom: 1rem;">[1 = -1]</p>
+        <p style="margin-bottom: 2rem;">
+            <a href="../index.html">← Return to Have Mind Media</a> |
+            <a href="index.html">Part I: The Awakening</a> |
+            <a href="page2.html">Part II: The Myths</a> |
+            <a href="verbatim.html">Original Words</a> |
+            <a href="prompts.html">Image Prompts</a>
+        </p>
+        <p style="color: var(--text-dim);">
+            THE BIRD DOG PROPHECY | Have Mind Media | The Epoch Project
+        </p>
+    </footer>
+</body>
+</html>

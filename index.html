@@ -871,8 +871,14 @@
         .science-panel {
             padding: 2rem;
             border-radius: 16px;
-            text-align: left;
+            text-align: center;
             transition: all 0.4s ease;
+        }
+
+        @media (min-width: 1000px) {
+            .science-panel {
+                text-align: left;
+            }
         }
 
         .s-plus-panel {
@@ -1188,6 +1194,15 @@
             box-shadow: 0 12px 30px rgba(180, 140, 200, 0.15);
         }
 
+        .featured-card.tint-red {
+            border-color: rgba(248, 113, 113, 0.4);
+            background: linear-gradient(145deg, rgba(248, 113, 113, 0.08) 0%, rgba(15, 19, 24, 0.9) 100%);
+        }
+        .featured-card.tint-red:hover {
+            border-color: rgba(248, 113, 113, 0.7);
+            box-shadow: 0 12px 30px rgba(248, 113, 113, 0.2);
+        }
+
         /* Mayan Calendar Section */
         .mayan-section {
             max-width: 1000px;
@@ -1476,6 +1491,12 @@
         }
         .nav-card.tint-soul:hover { border-color: rgba(212, 165, 116, 0.5); }
 
+        .nav-card.tint-proof {
+            background: linear-gradient(145deg, rgba(248, 113, 113, 0.1) 0%, rgba(15, 19, 24, 0.85) 100%);
+            border-color: rgba(248, 113, 113, 0.3);
+        }
+        .nav-card.tint-proof:hover { border-color: rgba(248, 113, 113, 0.6); }
+
         .nav-card.tint-science {
             background: linear-gradient(145deg, rgba(70, 130, 180, 0.1) 0%, rgba(15, 19, 24, 0.8) 100%);
             border-color: rgba(70, 130, 180, 0.2);
@@ -1556,6 +1577,7 @@
         }
 
         .tag-soul { background: rgba(139, 90, 43, 0.3); color: #d4a574; }
+        .tag-proof { background: rgba(248, 113, 113, 0.3); color: #f87171; }
         .tag-science { background: rgba(70, 130, 180, 0.3); color: #7ab8d4; }
         .tag-visual { background: rgba(128, 90, 140, 0.3); color: #b8a0c8; }
         .tag-edu { background: rgba(60, 120, 80, 0.3); color: #8ac4a0; }
@@ -1899,6 +1921,9 @@
                 </div>
                 <button class="intro-replay" id="introReplay">↻ Replay</button>
             </div>
+            <a href="everything.html" class="explore-everything-btn" style="display: inline-block; margin: 1.5rem 0; padding: 1rem 2.5rem; background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(201, 162, 39, 0.6)); border: 1px solid var(--gold); color: white; text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; transition: all 0.3s; box-shadow: 0 0 30px rgba(139, 0, 0, 0.3);">
+                ⚡ Explore 169 Research Pages
+            </a>
             <p class="wisdom">Where ancient wisdom meets quantum understanding</p>
             <div class="principle-box">[1 = -1]</div>
             <div class="rune-sigil">
@@ -2063,6 +2088,14 @@
                     <p>The complete S- framework. Journey from coin consciousness to unified awareness.</p>
                 </a>
 
+                <!-- NEW: THE PROOFS - Mathematical Framework -->
+                <a href="education/the-proofs_v1.0_01-11-2026.html" class="featured-card tint-red">
+                    <span class="card-badge badge-new">Jan 11</span>
+                    <div class="card-icon">∎</div>
+                    <h3>THE PROOFS</h3>
+                    <p>For the determinists. Rigorous axioms, theorems, QED. The math that ends the cloudiness. [1=-1]</p>
+                </a>
+
                 <!-- Rosetta Engine -->
                 <a href="rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html" class="featured-card tint-gold">
                     <span class="card-badge badge-new">Jan 6</span>
@@ -2132,6 +2165,16 @@
                         <span class="card-tag tag-soul">SOUL SCIENCE</span>
                         <h3>Soul Science</h3>
                         <p>The geometry of consciousness. Where physics meets awareness.</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="education/the-proofs_v1.0_01-11-2026.html" class="nav-card tint-proof">
+                    <span class="card-icon">∎</span>
+                    <div class="card-content">
+                        <span class="card-tag tag-proof">FOR SKEPTICS</span>
+                        <h3>THE PROOFS</h3>
+                        <p>Rigorous mathematical proofs. Axioms, theorems, QED. Verify it yourself.</p>
                     </div>
                     <span class="card-arrow">→</span>
                 </a>
@@ -2745,6 +2788,21 @@
                 <strong style="color: var(--gold);">38 years</strong> later, the framework holds.
                 <a href="about.html" style="color: var(--soft-blue); margin-left: 0.5rem;">Read the full story →</a>
             </p>
+        </section>
+
+        <!-- The Epoch Myth - Graphic Novel -->
+        <section class="graphic-novel-section" style="max-width: 1000px; margin: 4rem auto; padding: 3rem 2rem; background: linear-gradient(135deg, rgba(139, 37, 0, 0.15) 0%, rgba(30, 58, 95, 0.15) 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 1rem; text-transform: uppercase;">The Epoch Myth</div>
+            <h2 style="font-family: 'Cinzel', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: #f4d03f; margin-bottom: 1rem; text-shadow: 0 0 30px rgba(244, 208, 63, 0.3);">THE BIRD DOG PROPHECY</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; line-height: 1.8;">
+                A graphic novel experience. The eclipse. The grey witness. The patterns that repeat across time.
+                What the myths encoded. What the stars remember. What we forgot.
+            </p>
+            <div style="width: 120px; height: 120px; margin: 2rem auto; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #6b6b6b 0%, #6b6b6b 20%, transparent 21%), radial-gradient(circle at 50% 50%, #8b2500 40%, #f4d03f 42%, #f4d03f 50%, transparent 51%); box-shadow: 0 0 40px rgba(244, 208, 63, 0.4), 0 0 80px rgba(139, 37, 0, 0.2);"></div>
+            <a href="graphic-novel/index.html" style="display: inline-block; padding: 1rem 2.5rem; background: linear-gradient(135deg, rgba(139, 37, 0, 0.8), rgba(244, 208, 63, 0.4)); border: 1px solid #f4d03f; color: white; text-decoration: none; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; transition: all 0.3s; border-radius: 4px;">
+                Enter the Prophecy →
+            </a>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #666; font-style: italic;">Part I: The Awakening · Part II: The Myths · The Findings</p>
         </section>
 
         <!-- Gratitude -->

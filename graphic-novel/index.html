@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BIRD DOG PROPHECY | A Graphic Novel | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-page: #0a0a0f;
+            --bg-panel: #12121a;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a09890;
+            --text-dim: #6b6b6b;
+            --gold: #c9a227;
+            --sun-gold: #f4d03f;
+            --eclipse-red: #8b2500;
+            --deep-water: #1e3a5f;
+            --forest-green: #1a3d1a;
+            --storm-purple: #2d1f4a;
+            --ghost-blue: #4a6fa5;
+            --grey-witness: #6b6b6b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Page structure - each page is full viewport */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        /* Cover page */
+        .cover {
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 30%, rgba(139, 37, 0, 0.4) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 50% 70%, rgba(30, 58, 95, 0.3) 0%, transparent 60%),
+                var(--bg-deep);
+            text-align: center;
+        }
+
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--sun-gold) 0%, var(--eclipse-red) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 60px rgba(244, 208, 63, 0.3);
+        }
+
+        .cover-subtitle {
+            font-family: 'IM Fell English', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--grey-witness);
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .cover-eclipse {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 50% 50%, var(--grey-witness) 0%, var(--grey-witness) 20%, transparent 21%),
+                radial-gradient(circle at 50% 50%, var(--eclipse-red) 40%, var(--sun-gold) 42%, var(--sun-gold) 50%, transparent 51%);
+            margin: 2rem auto;
+            box-shadow:
+                0 0 60px rgba(244, 208, 63, 0.5),
+                0 0 120px rgba(139, 37, 0, 0.3),
+                inset 0 0 30px rgba(107, 107, 107, 0.3);
+            animation: eclipsePulse 8s ease-in-out infinite;
+        }
+
+        @keyframes eclipsePulse {
+            0%, 100% { box-shadow: 0 0 60px rgba(244, 208, 63, 0.5), 0 0 120px rgba(139, 37, 0, 0.3); }
+            50% { box-shadow: 0 0 80px rgba(244, 208, 63, 0.7), 0 0 160px rgba(139, 37, 0, 0.5); }
+        }
+
+        .cover-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            background: rgba(201, 162, 39, 0.1);
+        }
+
+        .cover-scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Navigation */
+        .page-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .page-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.3);
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+        }
+
+        .page-nav a:hover, .page-nav a.active {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        /* Panel page layout */
+        .panel-page {
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Chapter header */
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .chapter-number {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--sun-gold);
+            margin: 0.5rem 0;
+        }
+
+        /* Panel grid */
+        .panels {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .panels-2x1 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .panels-1x2 {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        .panels-3col {
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+
+        .panels-wide {
+            grid-template-columns: 1fr;
+        }
+
+        .panels-feature {
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: repeat(2, 1fr);
+        }
+
+        /* Individual panel */
+        .panel {
+            background: var(--bg-panel);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            min-height: 250px;
+        }
+
+        .panel-wide {
+            min-height: 400px;
+        }
+
+        .panel-tall {
+            grid-row: span 2;
+        }
+
+        .panel-image {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Panel image placeholder with gradient */
+        .panel-image.placeholder-eclipse {
+            background:
+                radial-gradient(circle at 50% 30%, var(--grey-witness) 5%, transparent 6%),
+                radial-gradient(circle at 50% 30%, var(--eclipse-red) 15%, var(--sun-gold) 16%, var(--sun-gold) 20%, transparent 21%),
+                linear-gradient(180deg, var(--storm-purple) 0%, var(--bg-panel) 100%);
+        }
+
+        .panel-image.placeholder-forest {
+            background:
+                linear-gradient(180deg, rgba(26, 61, 26, 0.8) 0%, rgba(10, 10, 15, 0.9) 100%),
+                repeating-linear-gradient(90deg, transparent 0px, transparent 30px, rgba(26, 61, 26, 0.3) 30px, rgba(26, 61, 26, 0.3) 32px);
+        }
+
+        .panel-image.placeholder-crescents {
+            background:
+                radial-gradient(circle at 30% 40%, transparent 10%, var(--sun-gold) 10.5%, var(--sun-gold) 11%, transparent 11.5%),
+                radial-gradient(circle at 50% 50%, transparent 10%, var(--sun-gold) 10.5%, var(--sun-gold) 11%, transparent 11.5%),
+                radial-gradient(circle at 70% 60%, transparent 10%, var(--sun-gold) 10.5%, var(--sun-gold) 11%, transparent 11.5%),
+                var(--forest-green);
+        }
+
+        .panel-image.placeholder-storm {
+            background:
+                radial-gradient(ellipse at 50% 0%, var(--storm-purple) 0%, transparent 70%),
+                linear-gradient(180deg, var(--deep-water) 0%, var(--bg-deep) 100%);
+        }
+
+        .panel-image.placeholder-ghost {
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(74, 111, 165, 0.4) 0%, transparent 40%),
+                linear-gradient(180deg, var(--forest-green) 0%, var(--bg-deep) 100%);
+        }
+
+        .panel-image.placeholder-sun {
+            background:
+                radial-gradient(circle at 50% 50%, var(--sun-gold) 20%, var(--eclipse-red) 40%, transparent 60%),
+                var(--bg-deep);
+        }
+
+        .panel-image.placeholder-grey {
+            background:
+                radial-gradient(circle at 50% 50%, var(--grey-witness) 10%, transparent 30%),
+                radial-gradient(circle at 50% 50%, transparent 85%, var(--grey-witness) 86%, var(--grey-witness) 90%, transparent 91%),
+                var(--bg-deep);
+        }
+
+        .panel-image.placeholder-water {
+            background:
+                linear-gradient(0deg, var(--deep-water) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--deep-water) 100%);
+        }
+
+        .panel-image.placeholder-bird {
+            background:
+                radial-gradient(circle at 50% 30%, var(--sun-gold) 5%, transparent 30%),
+                linear-gradient(180deg, var(--storm-purple) 0%, var(--deep-water) 100%);
+        }
+
+        .panel-image.placeholder-serpent {
+            background:
+                linear-gradient(45deg, var(--deep-water) 0%, var(--forest-green) 50%, var(--deep-water) 100%);
+        }
+
+        .panel-image.placeholder-cleanse {
+            background:
+                radial-gradient(circle at 50% 50%, rgba(244, 208, 63, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 30% 30%, rgba(107, 107, 107, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 70% 70%, rgba(107, 107, 107, 0.2) 0%, transparent 30%),
+                var(--bg-deep);
+        }
+
+        /* Text overlay on panels */
+        .panel-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(5, 5, 8, 0.95));
+        }
+
+        .panel-text p {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+
+        .panel-text .narrator {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        /* Speech/thought boxes */
+        .speech-box {
+            background: rgba(232, 228, 220, 0.95);
+            color: var(--bg-deep);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            position: absolute;
+            max-width: 280px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .speech-box::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border-width: 15px 10px 0;
+            border-style: solid;
+            border-color: rgba(232, 228, 220, 0.95) transparent transparent;
+        }
+
+        .thought-box {
+            background: rgba(74, 111, 165, 0.9);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 30px;
+            position: absolute;
+            max-width: 260px;
+            font-style: italic;
+            font-size: 1rem;
+        }
+
+        /* Caption box */
+        .caption {
+            background: rgba(201, 162, 39, 0.15);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-family: 'IM Fell English', serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Full-width narrative text */
+        .narrative {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .narrative p {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .narrative .emphasis {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* Equation display */
+        .equation-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-align: center;
+            padding: 2rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 400px;
+        }
+
+        /* Special effect overlays */
+        .crescent-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, transparent 5%, var(--sun-gold) 5.2%, var(--sun-gold) 5.5%, transparent 5.7%),
+                radial-gradient(circle at 40% 60%, transparent 3%, var(--sun-gold) 3.2%, var(--sun-gold) 3.5%, transparent 3.7%),
+                radial-gradient(circle at 60% 20%, transparent 4%, var(--sun-gold) 4.2%, var(--sun-gold) 4.5%, transparent 4.7%),
+                radial-gradient(circle at 80% 70%, transparent 3%, var(--sun-gold) 3.2%, var(--sun-gold) 3.5%, transparent 3.7%);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Page transitions */
+        .page-transition {
+            height: 100px;
+            background: linear-gradient(180deg, transparent 0%, var(--bg-deep) 50%, transparent 100%);
+        }
+
+        /* Footer */
+        .colophon {
+            background: var(--bg-panel);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .colophon h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .colophon p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .panels-2x1, .panels-3col, .panels-feature {
+                grid-template-columns: 1fr;
+            }
+            .panel-tall {
+                grid-row: span 1;
+            }
+            .page-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(5, 5, 8, 0.95); padding: 1rem 2rem; z-index: 2000; border-bottom: 1px solid rgba(201, 162, 39, 0.3); backdrop-filter: blur(10px);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.9rem; transition: all 0.3s;">← Return to Have Mind Media</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem;">The Bird Dog Prophecy</span>
+        </div>
+    </nav>
+
+    <!-- Navigation dots -->
+    <nav class="page-nav">
+        <a href="#cover" title="Cover"></a>
+        <a href="#page1" title="Chapter 1"></a>
+        <a href="#page2" title="Page 2"></a>
+        <a href="#page3" title="Page 3"></a>
+        <a href="#page4" title="Chapter 2"></a>
+        <a href="#page5" title="Page 5"></a>
+        <a href="#page6" title="Page 6"></a>
+        <a href="#page7" title="Chapter 3"></a>
+        <a href="#page8" title="Page 8"></a>
+        <a href="#page9" title="Page 9"></a>
+        <a href="#page10" title="Epilogue"></a>
+    </nav>
+
+    <!-- COVER PAGE -->
+    <section id="cover" class="page cover">
+        <h1 class="cover-title">THE BIRD DOG PROPHECY</h1>
+        <p class="cover-subtitle">The Grey at the Center. The Grey at the Edge.</p>
+
+        <div class="cover-eclipse"></div>
+
+        <p style="color: var(--text-secondary); font-family: 'IM Fell English', serif; font-size: 1.2rem; margin: 1rem 0;">
+            A tale of the one who sees<br>
+            what cannot be unseen
+        </p>
+
+        <div class="cover-equation">[1 = -1]</div>
+
+        <p class="cover-scroll-hint">Scroll to begin</p>
+    </section>
+
+    <!-- PAGE 1: THE AWAKENING -->
+    <section id="page1" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">Chapter One</div>
+            <h2 class="chapter-title">THE AWAKENING</h2>
+        </div>
+
+        <div class="panels panels-feature">
+            <!-- Main panel: Forest with crescents -->
+            <div class="panel panel-tall">
+                <div class="panel-image placeholder-crescents" style="min-height: 100%;">
+                    <div class="crescent-overlay"></div>
+                    <div class="panel-text">
+                        <p class="narrator">
+                            The child walked in the forest, thirteen years old, and saw what others could not see.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side panels -->
+            <div class="panel">
+                <div class="panel-image placeholder-forest">
+                    <div class="speech-box" style="top: 20px; right: 20px;">
+                        The light through the leaves... it doesn't scatter the way they say it should.
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-image placeholder-eclipse">
+                    <div class="panel-text">
+                        <p>During the eclipse, the crescents appeared everywhere. Pinhole cameras in every gap between leaves. The same image, repeated infinitely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="caption">
+            <em>Scalar dimensionality is fact.</em> The trees showed him first. The light does not merely pass through gaps in leaves. It <strong>projects</strong>. Each gap becomes a lens. Each lens shows the same truth: the shape of the source.
+        </div>
+
+        <span class="page-number">1</span>
+    </section>
+
+    <!-- PAGE 2: THE KNOWING -->
+    <section id="page2" class="page panel-page">
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-ghost">
+                    <div class="thought-box" style="top: 30%; left: 10%;">
+                        They peek from behind the trees. They have always been there. They want me to follow.
+                    </div>
+                    <div class="panel-text">
+                        <p class="narrator">
+                            From his earliest memories, they came. The old ones. The Native spirits who had walked these woods for ten thousand years. They would peer around tree trunks, watching, waiting.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                They took him on walks through the forest. Not in dreams. In the waking world, where his feet touched soil and his breath made mist in the cold morning air.
+            </p>
+            <p>
+                They showed him where things were hidden. Objects buried for centuries. Patterns in the bark that spelled out words in no human language.
+            </p>
+            <p class="emphasis">
+                "You see what cannot be seen. You find what cannot be found."
+            </p>
+        </div>
+
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image placeholder-storm">
+                    <div class="panel-text">
+                        <p>The storms followed him. He could feel them forming before the clouds appeared. He would call them, and they would come.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-storm" style="background: radial-gradient(ellipse at 50% 100%, var(--storm-purple) 0%, transparent 70%), linear-gradient(0deg, var(--deep-water) 0%, var(--bg-deep) 100%);">
+                    <div class="speech-box" style="bottom: 80px; left: 20px;">
+                        And they would invert themselves. Turn inside out at my asking.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">2</span>
+    </section>
+
+    <!-- PAGE 3: THE NAMES -->
+    <section id="page3" class="page panel-page">
+        <div class="narrative">
+            <p class="emphasis" style="font-size: 2rem;">
+                BIRD DOG
+            </p>
+            <p>
+                He called himself this. The one who finds what is hidden. The one who points to truth and does not falter.
+            </p>
+        </div>
+
+        <div class="panels panels-3col">
+            <div class="panel">
+                <div class="panel-image placeholder-bird">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold);">TORS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-sun">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold);">TURAS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-water">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold);">BIRD DOG</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="equation-display">
+            TORS = 72 = D9 (Love)
+        </div>
+
+        <div class="narrative">
+            <p>
+                The names came before he knew what they meant. Tors. Turas. The sound of thunder and turning. The torsion of truth.
+            </p>
+            <p>
+                He did not choose these names. They chose him. They were always his.
+            </p>
+        </div>
+
+        <div class="caption">
+            <strong>The sequence of realization:</strong> 13, 15, 17, 22. Each eclipse, each storm, each walk with the ghosts added another layer. By twenty-two, he knew what he had always known. The geometry was speaking through him.
+        </div>
+
+        <span class="page-number">3</span>
+    </section>
+
+    <!-- PAGE 4: CHAPTER 2 - THE OBSERVATION -->
+    <section id="page4" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">Chapter Two</div>
+            <h2 class="chapter-title">THE OBSERVATION</h2>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-grey" style="min-height: 450px;">
+                    <div class="panel-text" style="background: linear-gradient(transparent 0%, rgba(5, 5, 8, 0.98) 30%);">
+                        <p class="narrator" style="font-size: 1.4rem; text-align: center;">
+                            "Dark cold tiny nothing grey in the sun center<br>
+                            and also the edge of corona."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                He saw it. The grey at the center of the sun. The same grey at the edge of the corona. Not hot. Not bright. Cold. Tiny. Nothing.
+            </p>
+            <p>
+                <em>The same grey in both places.</em>
+            </p>
+            <p class="emphasis">
+                CENTER = EDGE<br>
+                [1 = -1]
+            </p>
+        </div>
+
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image placeholder-sun">
+                    <div class="speech-box" style="top: 20px; left: 20px; background: rgba(107, 107, 107, 0.9); color: var(--text-primary);">
+                        The shadow witness. It has always been there. Now it can be seen.
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-grey">
+                    <div class="panel-text">
+                        <p>The grey is not darkness. The grey is not light. The grey is the witness that stands between. The one who sees both and is neither.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">4</span>
+    </section>
+
+    <!-- PAGE 5: THE EIGHTH DAY -->
+    <section id="page5" class="page panel-page">
+        <div class="narrative">
+            <p style="font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--sun-gold);">
+                THE EIGHTH DAY OF CHRISTMAS
+            </p>
+            <p>
+                Coptic. Orthodox. The calendars that remember what the others forgot.
+            </p>
+        </div>
+
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image placeholder-eclipse">
+                    <div class="panel-text">
+                        <p><strong>January 5:</strong> 12th Day of Western Christmas. ÞRÚÐR (Strength) = D8.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-sun">
+                    <div class="panel-text">
+                        <p><strong>January 7:</strong> Orthodox Christmas. Day One. The Word made flesh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panels panels-2x1" style="margin-top: 1rem;">
+            <div class="panel">
+                <div class="panel-image placeholder-water">
+                    <div class="panel-text">
+                        <p><strong>The Eighth Day:</strong> O sI Rus returns. D8 — Deep Water. The resurrection frequency.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-cleanse">
+                    <div class="panel-text">
+                        <p><strong>ÞRÚÐR → OSIRIS:</strong> Both D8. Strength prepares the way for the cleansing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                On this day, the sun begins its northward journey. <strong>Makar Sankranti.</strong> Dawn for the gods.
+            </p>
+            <p>
+                On this day, the Old New Year. <strong>Malanka.</strong> The masks come off. The truth is revealed.
+            </p>
+            <p>
+                On this day, the bird named bird named bird speaks:
+            </p>
+            <p class="emphasis">
+                "HE COMES."
+            </p>
+        </div>
+
+        <div class="caption">
+            Every ancient calendar points to this moment. Hindu. Coptic. Orthodox. Hebrew. The convergence is not coincidence. It is geometry. It is [1 = -1] made manifest in time.
+        </div>
+
+        <span class="page-number">5</span>
+    </section>
+
+    <!-- PAGE 6: THE PROPHECY -->
+    <section id="page6" class="page panel-page">
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-bird" style="min-height: 350px;">
+                    <div class="thought-box" style="top: 20%; left: 50%; transform: translateX(-50%); text-align: center;">
+                        The bird named bird named bird has said it is so. The mirror never lies.
+                    </div>
+                    <div class="panel-text">
+                        <p class="narrator">
+                            What returns is not revenge. What returns is cleansing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                <em>O sI Rus.</em> The old bird is rising. Not in anger. Not in judgment. In truth.
+            </p>
+            <p>
+                He was trapped, or so they thought. But he was not trapped. He was planning. The best comeback. The eating of deception while leaving the good in people.
+            </p>
+            <p class="emphasis">
+                "He does not kill. He cleanses."
+            </p>
+        </div>
+
+        <div class="panels panels-3col">
+            <div class="panel">
+                <div class="panel-image placeholder-water">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-size: 0.95rem;">The deep water rises.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-cleanse">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-size: 0.95rem;">The love floor lifts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-ghost">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-size: 0.95rem;">They will end lying.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">6</span>
+    </section>
+
+    <!-- PAGE 7: CHAPTER 3 - THE LIE-EATERS -->
+    <section id="page7" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">Chapter Three</div>
+            <h2 class="chapter-title">THE LIE-EATERS</h2>
+        </div>
+
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image placeholder-serpent">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.3rem;">AMMIT</p>
+                        <p>The Egyptian devourer. Crocodile, lion, hippo. She waits in the Hall of Two Truths for hearts heavier than the feather.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-serpent" style="background: linear-gradient(-45deg, var(--deep-water) 0%, var(--storm-purple) 50%, var(--deep-water) 100%);">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.3rem;">JORMUNGANDR</p>
+                        <p>The Norse world-serpent. His release does not destroy. It reveals. The boundary was never real.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="equation-display">
+            AMMIT = JORMUNGANDR = D2 (HEALING)
+        </div>
+
+        <div class="narrative">
+            <p>
+                They are the same mouth speaking different languages. What one eats, the other also devours.
+            </p>
+            <p>
+                <strong>Lies.</strong> Heavy hearts. Deception's weight.
+            </p>
+            <p>
+                Down to <em>Torstus</em> the deceiver goes. The torsion that cannot be escaped. The geometry that ends all lies. A knot cannot unknot itself.
+            </p>
+        </div>
+
+        <span class="page-number">7</span>
+    </section>
+
+    <!-- PAGE 8: THE 3i ATLAS ARMOR -->
+    <section id="page8" class="page panel-page">
+        <div class="narrative">
+            <p class="emphasis" style="font-size: 2.5rem; letter-spacing: 0.2em;">
+                3i ATLAS
+            </p>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-sun" style="min-height: 300px; background: radial-gradient(circle at 50% 50%, rgba(244, 208, 63, 0.4) 0%, transparent 40%), linear-gradient(135deg, var(--deep-water) 0%, var(--storm-purple) 50%, var(--forest-green) 100%);">
+                    <div class="speech-box" style="top: 30%; left: 50%; transform: translateX(-50%); text-align: center; max-width: 400px;">
+                        "I know the 3i Atlas armor is here for me and is in my body and fitting itself."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panels panels-3col">
+            <div class="panel">
+                <div class="panel-image placeholder-ghost">
+                    <div class="panel-text">
+                        <p style="text-align: center;"><strong>i1</strong><br>Eye of the Past<br><em>Memory</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-sun">
+                    <div class="panel-text">
+                        <p style="text-align: center;"><strong>i2</strong><br>Eye of the Present<br><em>NOW</em></p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image placeholder-bird">
+                    <div class="panel-text">
+                        <p style="text-align: center;"><strong>i3</strong><br>Eye of the Future<br><em>Travel</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                Three perspectives unified. Complete vision. The armor that sees all lies from all angles. It cannot be deceived because it sees past, present, and future as one.
+            </p>
+            <p>
+                <strong>ATLAS = 53 = D8 (Deep Water = Osiris)</strong>
+            </p>
+            <p>
+                The armor IS Osiris. Fitting itself to the observer. Becoming one with the one who sees.
+            </p>
+        </div>
+
+        <span class="page-number">8</span>
+    </section>
+
+    <!-- PAGE 9: THE STAR TRAVEL CONDITION -->
+    <section id="page9" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">Chapter Four</div>
+            <h2 class="chapter-title">THE GEOMETRY OF TRAVEL</h2>
+        </div>
+
+        <div class="narrative">
+            <p>
+                "When you are ready to travel to the stars, you cannot do that and be capable of lies."
+            </p>
+            <p class="emphasis">
+                It is not belief or opinion that get you there.<br>
+                It is "IS."<br>
+                Not "be." IS.
+            </p>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-bird" style="min-height: 300px; background: radial-gradient(circle at 70% 30%, var(--sun-gold) 2%, transparent 20%), linear-gradient(180deg, var(--bg-deep) 0%, var(--storm-purple) 50%, var(--deep-water) 100%);">
+                    <div class="panel-text" style="background: linear-gradient(transparent 0%, rgba(5, 5, 8, 0.95) 50%);">
+                        <p class="narrator">
+                            The horn comes from his direction. The 22nd gate in Sagittarius. The Galactic Center. The point that is both densest and emptiest. Center = Edge. [1 = -1] at cosmic scale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                Society cannot exist with deceit. The stars do not accept "maybe." The equations collapse with uncertain inputs. A liar carries false coordinates. A truthful being can state: <strong>"I IS here."</strong>
+            </p>
+        </div>
+
+        <div class="caption">
+            <strong>The Kak.</strong> The geometry that cannot lie. It is Tors. It measures without judging. It simply IS. Those who have been cleansed carry true coordinates. They can travel. Those carrying false coordinates crash into paradox.
+        </div>
+
+        <span class="page-number">9</span>
+    </section>
+
+    <!-- PAGE 10: EPILOGUE -->
+    <section id="page10" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">Epilogue</div>
+            <h2 class="chapter-title">THE CLEANSING</h2>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image placeholder-cleanse" style="min-height: 400px;">
+                    <div class="panel-text" style="background: linear-gradient(transparent 0%, rgba(5, 5, 8, 0.98) 40%); padding-top: 3rem;">
+                        <p class="narrator" style="text-align: center; font-size: 1.3rem;">
+                            "We can see you. We can hear you.<br>
+                            We hear with the eyes and see with the ears.<br>
+                            We are all holes, all covers.<br>
+                            The flesh, the bone, the everything,<br>
+                            the nothing, the maybe,<br>
+                            the question, the answer."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                The small comes to help. The wee ones told him. The deep water rises. The love floor lifts all who can float on truth.
+            </p>
+            <p>
+                Some will choose the coin to Charon rather than face what remains when lies are eaten. Some have made themselves nothing but lies.
+            </p>
+            <p class="emphasis">
+                But for those with truth beneath...<br>
+                The cleansing is not death.<br>
+                The cleansing is birth.
+            </p>
+        </div>
+
+        <div class="equation-display" style="max-width: 500px;">
+            w0w<br>
+            [1 = -1]
+        </div>
+
+        <div class="narrative">
+            <p style="font-size: 1.1rem; color: var(--text-dim);">
+                The geometry resolves. The calendars converge.<br>
+                The bird named bird named bird has spoken.<br>
+                The Navigator arrives on the Eighth Day.<br>
+                Osiris does not kill.<br>
+                <strong>Osiris cleanses.</strong>
+            </p>
+        </div>
+
+        <span class="page-number">10</span>
+    </section>
+
+    <!-- COLOPHON -->
+    <footer class="colophon">
+        <h3>THE BIRD DOG PROPHECY</h3>
+        <p>
+            A graphic novel of the Osiris Rize
+        </p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold);">
+            [1 = -1]
+        </p>
+        <p>
+            Have Mind Media | The Epoch Project
+        </p>
+        <p style="font-style: italic; margin-top: 2rem;">
+            "That which can be named must exist. That which is named can be written.<br>
+            That which is written shall be remembered. That which is remembered lives.<br>
+            In the land of geometry, truth breathes."
+        </p>
+        <p style="margin-top: 2rem;">
+            <a href="../index.html" style="color: var(--gold); text-decoration: none;">← Return to Have Mind Media</a> |
+            <a href="page2.html" style="color: var(--gold); text-decoration: none;">Continue to Part II ></a>
+        </p>
+    </footer>
+
+    <script>
+        // Update active nav dot on scroll
+        const pages = document.querySelectorAll('.page');
+        const navDots = document.querySelectorAll('.page-nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navDots.forEach(dot => dot.classList.remove('active'));
+                    const activeId = entry.target.id;
+                    const activeDot = document.querySelector(`.page-nav a[href="#${activeId}"]`);
+                    if (activeDot) activeDot.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        pages.forEach(page => observer.observe(page));
+    </script>
+</body>
+</html>

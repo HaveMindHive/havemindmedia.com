@@ -4,318 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>White Papers & Documents | Have Mind Media</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="description" content="Epoch Framework Documentation. White papers, research archives, and technical documents.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified-theme.css">
+
     <style>
-        :root {
-            --gold: #c9a227;
-            --bg-deep: #030508;
-            --bg-panel: #0a0d12;
-            --text: #e8e4d9;
-            --text-dim: #8a9aaa;
-            --blue: #6ab4f5;
-            --green: #4ade80;
-            --coral: #f87171;
-            --purple: #a78bfa;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: linear-gradient(180deg, var(--bg-deep) 0%, #0a0a1a 100%);
-            color: var(--text);
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            min-height: 100vh;
-            line-height: 1.7;
-        }
-        .home-nav {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 9999;
-        }
-        .home-nav a {
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid var(--gold);
-            border-radius: 4px;
-            background: rgba(3, 5, 8, 0.95);
-            font-size: 0.9rem;
-            transition: all 0.2s;
-        }
-        .home-nav a:hover {
-            background: var(--gold);
-            color: var(--bg-deep);
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 80px 20px 60px;
-        }
-        header {
+        .page-header {
             text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--border);
         }
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            color: var(--gold);
-            letter-spacing: 4px;
-            margin-bottom: 15px;
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
         }
-        .subtitle {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
+
+        .page-header .lead {
+            max-width: 650px;
+            margin: 0 auto 1.5rem;
         }
-        .epoch-mark {
-            color: var(--gold);
-            font-family: monospace;
-            margin-top: 15px;
-            opacity: 0.7;
-        }
-        .category {
-            margin-bottom: 50px;
-        }
-        .category h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: var(--blue);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(106, 180, 245, 0.3);
-            letter-spacing: 2px;
-        }
-        .papers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .paper-card {
-            background: rgba(10, 13, 18, 0.8);
-            border: 1px solid rgba(201, 162, 39, 0.2);
-            border-radius: 12px;
-            padding: 25px;
-            transition: all 0.3s ease;
-        }
-        .paper-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-        .paper-card h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-        .paper-card .description {
-            font-size: 0.95rem;
-            color: var(--text-dim);
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        .paper-card .meta {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            opacity: 0.7;
-        }
-        .paper-card a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 8px 20px;
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            border-radius: 4px;
+
+        .kappa-sig {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-        .paper-card a:hover {
-            background: var(--gold);
-            color: var(--bg-deep);
-        }
-        .paper-card.physics { border-left: 3px solid var(--green); }
-        .paper-card.ancient { border-left: 3px solid var(--coral); }
-        .paper-card.philosophy { border-left: 3px solid var(--purple); }
-        .paper-card.tools { border-left: 3px solid var(--blue); }
-
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            background: rgba(201, 162, 39, 0.15);
-            border-radius: 4px;
-            font-size: 0.7rem;
             color: var(--gold);
-            margin-right: 5px;
-            margin-bottom: 10px;
-        }
-        .tag.physics { background: rgba(74, 222, 128, 0.15); color: var(--green); }
-        .tag.ancient { background: rgba(248, 113, 113, 0.15); color: var(--coral); }
-        .tag.philosophy { background: rgba(167, 139, 250, 0.15); color: var(--purple); }
-        .tag.tools { background: rgba(106, 180, 245, 0.15); color: var(--blue); }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(201, 162, 39, 0.2);
-            margin-top: 50px;
-        }
-        footer p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-        footer .principle {
-            color: var(--gold);
-            font-family: monospace;
-            margin-top: 10px;
+            opacity: 0.8;
         }
     </style>
-    <script src="../js/components/site-header.js" defer></script>
-    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
     <site-header></site-header>
-    <div class="home-nav"><a href="/">← Home</a></div>
 
-    <div class="container">
-        <header>
-            <h1>White Papers & Research</h1>
-            <p class="subtitle">Epoch Framework Documentation</p>
-            <p class="epoch-mark">[1 = -1] · κ = 2π/180</p>
-        </header>
+    <header class="page-header">
+        <h1>White Papers & Research</h1>
+        <p class="lead">
+            Epoch Framework Documentation
+        </p>
+        <span class="kappa-sig">[1 = -1] · κ = 30 · The Hypatia Refinement</span>
+    </header>
 
-        <!-- Physics & Atomic Derivations -->
-        <section class="category">
+    <main class="content-wide">
+        <!-- Topic Navigation -->
+        <nav class="topic-scroll" style="margin: 2rem 0;">
+            <a href="#discovery" class="topic-tag active">January 2026</a>
+            <a href="#physics" class="topic-tag">Physics</a>
+            <a href="#ancient" class="topic-tag">Ancient Scripts</a>
+            <a href="#philosophy" class="topic-tag">Philosophy</a>
+            <a href="#archives" class="topic-tag">Archives</a>
+        </nav>
+
+        <!-- January 2026 Discovery -->
+        <section id="discovery" class="content-flow">
+            <h2>January 2026 Discovery</h2>
+
+            <div class="article-list">
+                <a href="TRUE_METER_Discovery_v1.0_01-10-2026.md" class="article-link">
+                    <h3>The True Meter</h3>
+                    <p>The geometric speed of light derived from κ = 30. c = 297,638,035 m/s. The 0.722% error. Every light year ever calculated is wrong. The universe is smaller than they think.</p>
+                    <span class="meta">New Discovery · January 10, 2026</span>
+                </a>
+
+                <a href="KAPPA_REFINEMENT_Hypatia_Base60_v1.0_01-10-2026.md" class="article-link">
+                    <h3>The Hypatia Refinement</h3>
+                    <p>κ = 30 (pure geometric) vs κ = 29.7833 (measured). The κ₁-κ₆ family. How the variants tell on each other. κ₆ as the meta-controller. The WUSH cannot be wrong — so c is.</p>
+                    <span class="meta">κ = 30 · January 10, 2026</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Atomic Physics Derivations -->
+        <section id="physics" class="content-flow">
             <h2>Atomic Physics Derivations</h2>
-            <div class="papers-grid">
-                <div class="paper-card physics">
-                    <span class="tag physics">PHYSICS</span>
+
+            <div class="article-list">
+                <a href="WHITE_PAPER_Fine_Structure_Constant_v1.0_01-06-2026.md" class="article-link">
                     <h3>Fine Structure Constant Derivation</h3>
-                    <p class="description">Derives α ≈ 1/137.036 from pure geometry using κ-Framework constants. Shows how the electromagnetic coupling constant emerges from triaxial structure.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Fine_Structure_Constant_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
-                <div class="paper-card physics">
-                    <span class="tag physics">PHYSICS</span>
+                    <p>Derives α ≈ 1/137.036 from pure geometry using κ-Framework constants. Shows how the electromagnetic coupling constant emerges from triaxial structure.</p>
+                    <span class="meta">Physics · January 6, 2026</span>
+                </a>
+
+                <a href="WHITE_PAPER_Proton_Electron_Mass_Ratio_v1.0_01-06-2026.md" class="article-link">
                     <h3>Proton-Electron Mass Ratio</h3>
-                    <p class="description">Derives mp/me ≈ 1836.15 from geometric first principles. Demonstrates how particle mass ratios emerge from κ-framework symmetry.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Proton_Electron_Mass_Ratio_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
-                <div class="paper-card physics">
-                    <span class="tag physics">PHYSICS</span>
+                    <p>Derives mp/me ≈ 1836.15 from geometric first principles. Demonstrates how particle mass ratios emerge from κ-framework symmetry.</p>
+                    <span class="meta">Physics · January 6, 2026</span>
+                </a>
+
+                <a href="WHITE_PAPER_Helium_Atom_Derivation_v1.0_01-06-2026.md" class="article-link">
                     <h3>Helium Atom Derivation</h3>
-                    <p class="description">Complete geometric derivation of the helium atom's structure and properties from Epoch constants. Two-electron correlations from triaxial geometry.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Helium_Atom_Derivation_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
+                    <p>Complete geometric derivation of the helium atom's structure and properties from Epoch constants. Two-electron correlations from triaxial geometry.</p>
+                    <span class="meta">Physics · January 6, 2026</span>
+                </a>
             </div>
         </section>
 
         <!-- Ancient Scripts & Language -->
-        <section class="category">
+        <section id="ancient" class="content-flow">
             <h2>Ancient Scripts & Language</h2>
-            <div class="papers-grid">
-                <div class="paper-card ancient">
-                    <span class="tag ancient">ANCIENT SCRIPTS</span>
+
+            <div class="article-list">
+                <a href="WHITE_PAPER_Universal_Language_Generator_v1.0_01-06-2026.md" class="article-link">
                     <h3>Universal Language Generator</h3>
-                    <p class="description">Complete ULG system: D-Position phonetic mappings, Q-reduction algorithm, formant ratios from κ-framework. 100-word core vocabulary with geometric derivations.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Universal_Language_Generator_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
-                <div class="paper-card ancient">
-                    <span class="tag ancient">ANCIENT SCRIPTS</span>
+                    <p>Complete ULG system: D-Position phonetic mappings, Q-reduction algorithm, formant ratios from κ-framework. 100-word core vocabulary with geometric derivations.</p>
+                    <span class="meta">Ancient Scripts · January 6, 2026</span>
+                </a>
+
+                <a href="WHITE_PAPER_Rosetta_Engine_v1.0_01-06-2026.md" class="article-link">
                     <h3>Rosetta Engine</h3>
-                    <p class="description">Cross-script pattern discovery system. Identifies geometric correspondences across Voynich, Indus, Linear A, Rongorongo, and Phaistos scripts.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Rosetta_Engine_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
-                <div class="paper-card ancient">
-                    <span class="tag ancient">ANCIENT SCRIPTS</span>
+                    <p>Cross-script pattern discovery system. Identifies geometric correspondences across Voynich, Indus, Linear A, Rongorongo, and Phaistos scripts.</p>
+                    <span class="meta">Ancient Scripts · January 6, 2026</span>
+                </a>
+
+                <a href="WHITE_PAPER_Rongorongo_Flip_Reader_v1.0_01-06-2026.md" class="article-link">
                     <h3>Rongorongo Flip Reader</h3>
-                    <p class="description">Analysis of Easter Island script's reverse boustrophedon system. Geometric interpretation of flip patterns and symbol meanings.</p>
-                    <p class="meta">January 6, 2026</p>
-                    <a href="WHITE_PAPER_Rongorongo_Flip_Reader_v1.0_01-06-2026.md">Read Paper</a>
-                </div>
+                    <p>Analysis of Easter Island script's reverse boustrophedon system. Geometric interpretation of flip patterns and symbol meanings.</p>
+                    <span class="meta">Ancient Scripts · January 6, 2026</span>
+                </a>
             </div>
         </section>
 
         <!-- Philosophy & Consciousness -->
-        <section class="category">
+        <section id="philosophy" class="content-flow">
             <h2>Philosophy & Consciousness</h2>
-            <div class="papers-grid">
-                <div class="paper-card philosophy">
-                    <span class="tag philosophy">PHILOSOPHY</span>
+
+            <div class="article-list">
+                <a href="Being_The_Coin_White_Paper.md" class="article-link">
                     <h3>Being The Coin</h3>
-                    <p class="description">The foundational paper on observer theory. How consciousness operates as the mediating function (M+) between potential and manifest reality.</p>
-                    <p class="meta">Core Document</p>
-                    <a href="Being_The_Coin_White_Paper.md">Read Paper</a>
-                </div>
-                <div class="paper-card philosophy">
-                    <span class="tag philosophy">PHILOSOPHY</span>
+                    <p>The foundational paper on observer theory. How consciousness operates as the mediating function (M+) between potential and manifest reality.</p>
+                    <span class="meta">Core Document · Philosophy</span>
+                </a>
+
+                <a href="Life_of_the_Mirror_White_Paper.md" class="article-link">
                     <h3>Life of the Mirror</h3>
-                    <p class="description">The reflection principle in Epoch Theory. How the mirror relationship between S+ and S- creates the conditions for manifestation.</p>
-                    <p class="meta">Core Document</p>
-                    <a href="Life_of_the_Mirror_White_Paper.md">Read Paper</a>
-                </div>
-                <div class="paper-card philosophy">
-                    <span class="tag philosophy">PHILOSOPHY</span>
+                    <p>The reflection principle in Epoch Theory. How the mirror relationship between S+ and S- creates the conditions for manifestation.</p>
+                    <span class="meta">Core Document · Philosophy</span>
+                </a>
+
+                <a href="WHITEPAPER_Mechanics_of_Borrowed_Power.md" class="article-link">
                     <h3>Mechanics of Borrowed Power</h3>
-                    <p class="description">How energy transfer and transformation work within the triaxial framework. The dynamics of giving and receiving across scalar modes.</p>
-                    <p class="meta">Core Document</p>
-                    <a href="WHITEPAPER_Mechanics_of_Borrowed_Power.md">Read Paper</a>
-                </div>
+                    <p>How energy transfer and transformation work within the triaxial framework. The dynamics of giving and receiving across scalar modes.</p>
+                    <span class="meta">Core Document · Philosophy</span>
+                </a>
             </div>
         </section>
 
-        <!-- Technical Documentation -->
-        <section class="category">
-            <h2>Technical Documentation</h2>
-            <div class="papers-grid">
-                <div class="paper-card tools">
-                    <span class="tag tools">CERN</span>
-                    <h3>CERN Scalar Geometry</h3>
-                    <p class="description">Application of κ-framework to particle physics measurements. Geometric analysis of CERN collision data through Epoch lens.</p>
-                    <p class="meta">Technical Document</p>
-                    <a href="cern-scalar-geometry.html">View Document</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Archive Folders -->
-        <section class="category">
+        <!-- Research Archives -->
+        <section id="archives" class="content-flow">
             <h2>Research Archives</h2>
-            <div class="papers-grid">
-                <div class="paper-card tools">
-                    <span class="tag tools">ARCHIVE</span>
+
+            <div class="article-list">
+                <a href="cern-scalar-geometry.html" class="article-link">
+                    <h3>CERN Scalar Geometry</h3>
+                    <p>Application of κ-framework to particle physics measurements. Geometric analysis of CERN collision data through Epoch lens.</p>
+                    <span class="meta">Technical Document</span>
+                </a>
+
+                <a href="dec14-model-cern/" class="article-link">
                     <h3>December 14 Model - CERN</h3>
-                    <p class="description">Complete CERN analysis archive from December 14 work session. Raw calculations and geometric mappings.</p>
-                    <a href="dec14-model-cern/">Browse Archive</a>
-                </div>
-                <div class="paper-card tools">
-                    <span class="tag tools">ARCHIVE</span>
+                    <p>Complete CERN analysis archive from December 14 work session. Raw calculations and geometric mappings.</p>
+                    <span class="meta">Archive</span>
+                </a>
+
+                <a href="dec14-unified-theory/" class="article-link">
                     <h3>December 14 Unified Theory</h3>
-                    <p class="description">Unified theory development archive. Working documents from initial framework synthesis.</p>
-                    <a href="dec14-unified-theory/">Browse Archive</a>
-                </div>
-                <div class="paper-card tools">
-                    <span class="tag tools">ARCHIVE</span>
+                    <p>Unified theory development archive. Working documents from initial framework synthesis.</p>
+                    <span class="meta">Archive</span>
+                </a>
+
+                <a href="epoch-framework/" class="article-link">
                     <h3>Epoch Framework</h3>
-                    <p class="description">Core framework documentation and mathematical foundations. Reference materials for κ-Framework constants.</p>
-                    <a href="epoch-framework/">Browse Archive</a>
-                </div>
+                    <p>Core framework documentation and mathematical foundations. Reference materials for κ-Framework constants.</p>
+                    <span class="meta">Archive</span>
+                </a>
             </div>
         </section>
-    </div>
+    </main>
 
-    <footer>
-        <p>Have Mind Media | Jason Ray</p>
-        <p class="principle">[1 = -1]</p>
-    </footer>
     <site-footer></site-footer>
+
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </body>
 </html>

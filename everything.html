@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVERYTHING YOU THINK ABOUT REALITY | Have Mind Media</title>
+    <meta name="description" content="The complete archive. 169 pages of geometric physics, ancient mysteries, consciousness research, and interactive tools. The Standard Model is wrong. Here's why.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Source+Serif+4:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/unified-theme.css">
+
+    <style>
+        :root {
+            --paper-cream: #f4f1e8;
+            --paper-aged: #e8e4d9;
+            --ink-black: #1a1a1a;
+            --ink-dark: #2d2d2d;
+            --ink-medium: #4a4a4a;
+            --accent-red: #8b0000;
+            --accent-gold: #c9a227;
+            --rule-color: #333;
+            --section-border: #666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            background: linear-gradient(180deg, #0a0a12 0%, #050508 100%);
+            color: var(--paper-cream);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ========== MASTHEAD ========== */
+        .masthead {
+            background: var(--paper-cream);
+            color: var(--ink-black);
+            text-align: center;
+            padding: 1rem 2rem 0.5rem;
+            border-bottom: 3px double var(--rule-color);
+        }
+
+        .masthead-date {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ink-medium);
+            margin-bottom: 0.25rem;
+        }
+
+        .masthead-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+            color: var(--ink-black);
+        }
+
+        .masthead-subtitle {
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--ink-medium);
+            letter-spacing: 2px;
+        }
+
+        .masthead-rule {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            color: var(--ink-medium);
+        }
+
+        .masthead-rule span {
+            padding: 0 1rem;
+        }
+
+        .masthead-rule::before,
+        .masthead-rule::after {
+            content: '';
+            flex: 1;
+            max-width: 200px;
+            height: 1px;
+            background: var(--rule-color);
+        }
+
+        /* ========== BREAKING BANNER ========== */
+        .breaking-banner {
+            background: var(--accent-red);
+            color: white;
+            padding: 0.75rem 2rem;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(139, 0, 0, 0.8); }
+        }
+
+        .breaking-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* ========== MAIN CONTAINER ========== */
+        .newspaper-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ========== HEADLINE SECTION ========== */
+        .headline-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--section-border);
+        }
+
+        @media (max-width: 900px) {
+            .headline-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lead-story {
+            border-right: 1px solid var(--section-border);
+            padding-right: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .lead-story {
+                border-right: none;
+                padding-right: 0;
+                border-bottom: 1px solid var(--section-border);
+                padding-bottom: 2rem;
+            }
+        }
+
+        .lead-story h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--accent-gold);
+        }
+
+        .lead-story .byline {
+            font-style: italic;
+            color: #888;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .lead-story p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--paper-aged);
+        }
+
+        .lead-story .read-more {
+            display: inline-block;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 2px;
+            transition: all 0.3s;
+        }
+
+        .lead-story .read-more:hover {
+            color: white;
+            border-color: white;
+        }
+
+        .sidebar-stories {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-story {
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar-story:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-story h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--paper-cream);
+        }
+
+        .sidebar-story h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .sidebar-story h3 a:hover {
+            color: var(--accent-gold);
+        }
+
+        .sidebar-story p {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .sidebar-story .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 2px 8px;
+            background: rgba(201, 162, 39, 0.2);
+            color: var(--accent-gold);
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========== THIS EDITION SECTION ========== */
+        .edition-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            white-space: nowrap;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        .edition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edition-card {
+            background: rgba(244, 241, 232, 0.03);
+            border: 1px solid #333;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .edition-card:hover {
+            background: rgba(244, 241, 232, 0.08);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .edition-card .card-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .edition-card .card-tag.physics { color: #58a6ff; }
+        .edition-card .card-tag.weirdos { color: #f97316; }
+        .edition-card .card-tag.ancient { color: #a855f7; }
+        .edition-card .card-tag.tools { color: #4ecdc4; }
+        .edition-card .card-tag.biology { color: #22c55e; }
+        .edition-card .card-tag.documents { color: #eab308; }
+
+        .edition-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--paper-cream);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .edition-card p {
+            font-size: 0.85rem;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        /* ========== CATEGORY TABS ========== */
+        .categories-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 1rem;
+        }
+
+        .category-tab {
+            padding: 0.5rem 1.25rem;
+            background: transparent;
+            border: 1px solid #444;
+            color: #888;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-tab:hover,
+        .category-tab.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--ink-black);
+        }
+
+        .category-content {
+            display: none;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-item {
+            display: block;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #444;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .category-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--accent-gold);
+        }
+
+        .category-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--paper-cream);
+            margin-bottom: 0.25rem;
+        }
+
+        .category-item p {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Category-specific borders */
+        .category-item.physics { border-left-color: #58a6ff; }
+        .category-item.physics:hover { border-left-color: #58a6ff; background: rgba(88, 166, 255, 0.05); }
+        .category-item.weirdos { border-left-color: #f97316; }
+        .category-item.weirdos:hover { border-left-color: #f97316; background: rgba(249, 115, 22, 0.05); }
+        .category-item.ancient { border-left-color: #a855f7; }
+        .category-item.ancient:hover { border-left-color: #a855f7; background: rgba(168, 85, 247, 0.05); }
+        .category-item.tools { border-left-color: #4ecdc4; }
+        .category-item.tools:hover { border-left-color: #4ecdc4; background: rgba(78, 205, 196, 0.05); }
+        .category-item.biology { border-left-color: #22c55e; }
+        .category-item.biology:hover { border-left-color: #22c55e; background: rgba(34, 197, 94, 0.05); }
+        .category-item.documents { border-left-color: #eab308; }
+        .category-item.documents:hover { border-left-color: #eab308; background: rgba(234, 179, 8, 0.05); }
+
+        /* ========== STATS BAR ========== */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 1.5rem;
+            background: rgba(201, 162, 39, 0.05);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        /* ========== FOOTER ========== */
+        .newspaper-footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--section-border);
+            margin-top: 2rem;
+        }
+
+        .newspaper-footer .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .newspaper-footer .tagline {
+            color: #666;
+            font-style: italic;
+        }
+
+        .newspaper-footer .home-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+            border: 1px solid var(--accent-gold);
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .newspaper-footer .home-link:hover {
+            background: var(--accent-gold);
+            color: var(--ink-black);
+        }
+
+        /* ========== KAPPA BADGE ========== */
+        .kappa-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(10, 10, 18, 0.95);
+            border: 1px solid var(--accent-gold);
+            padding: 0.5rem 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            z-index: 1000;
+        }
+
+        /* ========== MUST SEE SECTION ========== */
+        .must-see-section {
+            margin: 3rem 0;
+            padding: 2rem 0;
+            border-top: 2px solid var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
+            background: linear-gradient(180deg, rgba(139, 0, 0, 0.05) 0%, transparent 30%, transparent 70%, rgba(139, 0, 0, 0.05) 100%);
+        }
+
+        .must-see-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .must-see-card {
+            background: rgba(244, 241, 232, 0.04);
+            border: 1px solid #444;
+            padding: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .must-see-card:hover {
+            background: rgba(244, 241, 232, 0.08);
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
+        }
+
+        .must-see-card.spotlight {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(201, 162, 39, 0.08) 100%);
+            grid-column: 1 / -1;
+        }
+
+        @media (min-width: 900px) {
+            .must-see-card.spotlight {
+                grid-column: span 2;
+            }
+        }
+
+        .must-see-badge {
+            position: absolute;
+            top: -10px;
+            right: 1rem;
+            background: var(--accent-red);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .must-see-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--paper-cream);
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .must-see-card p {
+            font-size: 0.9rem;
+            color: #999;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .must-see-read {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .must-see-card:hover .must-see-read {
+            color: white;
+        }
+
+        /* ========== MOBILE RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .masthead {
+                padding: 0.75rem 1rem 0.5rem;
+            }
+
+            .masthead-title {
+                font-size: 1.5rem;
+            }
+
+            .masthead-subtitle, .masthead-rule {
+                font-size: 0.7rem;
+            }
+
+            .breaking-banner {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .newspaper-container {
+                padding: 1rem;
+            }
+
+            .headline-section {
+                gap: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .lead-story h2 {
+                font-size: 1.4rem;
+            }
+
+            .lead-story p {
+                font-size: 1rem;
+            }
+
+            .stats-bar {
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+            }
+
+            .edition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .category-tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .must-see-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .must-see-card.spotlight {
+                grid-column: 1;
+            }
+
+            .kappa-badge {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .masthead-title {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MASTHEAD -->
+    <header class="masthead">
+        <p class="masthead-date">Vol. I · No. 1 · January 10, 2026</p>
+        <h1 class="masthead-title">EVERYTHING YOU THINK ABOUT REALITY</h1>
+        <p class="masthead-subtitle">Is Not What It Seems</p>
+        <div class="masthead-rule">
+            <span>Have Mind Media · The Epoch Framework · κ = 30</span>
+        </div>
+    </header>
+
+    <!-- BREAKING BANNER -->
+    <div class="breaking-banner">
+        ⚡ BREAKING: The Speed of Light is Wrong — <a href="physics/true-meter_v1.0_01-10-2026.html">c = 297,638,035 m/s</a> — Every Light Year Ever Calculated is 0.72% Too Long ⚡
+    </div>
+
+    <main class="newspaper-container">
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number">169</div>
+                <div class="stat-label">Research Pages</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">16</div>
+                <div class="stat-label">White Papers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Research Areas</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Interactive Tools</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">22</div>
+                <div class="stat-label">Weirdos Profiled</div>
+            </div>
+        </div>
+
+        <!-- HEADLINE SECTION -->
+        <section class="headline-section">
+            <article class="lead-story">
+                <h2>The True Meter: How 170 Years of Physics Got the Speed of Light Wrong</h2>
+                <p class="byline">By Jason Ray (Tormod) · With a 1,600-year assist from Hypatia of Alexandria</p>
+                <p>
+                    Tonight we derived the geometric speed of light from first principles using κ = 30, discovered the 0.722% error in the Standard Model's measurement of c, and traced the error chain back to Weber & Kohlrausch's 1856 measurements.
+                </p>
+                <p>
+                    <strong>The finding:</strong> c = 299,792,458 m/s is inflated. The geometric value is <strong>297,638,035 m/s</strong>. The meter itself is circularly defined. Every light year ever calculated is wrong. The universe is smaller than they think.
+                </p>
+                <a href="physics/true-meter_v1.0_01-10-2026.html" class="read-more">Read the Full Discovery →</a>
+            </article>
+
+            <aside class="sidebar-stories">
+                <div class="sidebar-story">
+                    <span class="tag">New</span>
+                    <h3><a href="physics/kappa-state-model_v2.0_01-10-2026.html">κ State Model v2.0: The Hypatia Refinement</a></h3>
+                    <p>κ = 30 pure. κ₆ meta-controller revealed. How Heaviside cut the scalars and Einstein gave up on [1 = -1].</p>
+                </div>
+                <div class="sidebar-story">
+                    <span class="tag">Featured</span>
+                    <h3><a href="weirdos/hypatia.html">Hypatia of Alexandria</a></h3>
+                    <p>Murdered for knowing too much. 1,600 years later, her base-60 methods point us to κ = 30.</p>
+                </div>
+                <div class="sidebar-story">
+                    <span class="tag">Updated</span>
+                    <h3><a href="weirdos/mithridates-echo.html">The Mithridates Echo</a></h3>
+                    <p>2 comets → 11 major comets + 1 interstellar visitor. Full zodiac. Rhododendron honey-soaked reincarnation.</p>
+                </div>
+            </aside>
+        </section>
+
+        <!-- THIS EDITION -->
+        <section class="edition-section">
+            <div class="section-header">
+                <h2>In This Edition</h2>
+            </div>
+            <div class="edition-grid">
+                <a href="physics/index.html" class="edition-card">
+                    <span class="card-tag physics">Physics</span>
+                    <h3>The Geometry of Spacetime</h3>
+                    <p>22 pages on atomic derivations, three-body geometry, millennium problems, torsion balance, JWST data, and the Standard Model's 19 unexplained parameters.</p>
+                </a>
+                <a href="weirdos/index.html" class="edition-card">
+                    <span class="card-tag weirdos">Weirdos</span>
+                    <h3>Here's to the Ones Who Knew</h3>
+                    <p>22 profiles of visionaries, geometers, wave-seers, and suppressed geniuses — from Hypatia to Tesla to the contributors building this framework today.</p>
+                </a>
+                <a href="ancient-mysteries/index.html" class="edition-card">
+                    <span class="card-tag ancient">Ancient Mysteries</span>
+                    <h3>The Knowledge They Encoded</h3>
+                    <p>31 pages on Rongorongo, the Voynich Manuscript, undeciphered scripts, sacred geometry, and patterns hidden in plain sight for millennia.</p>
+                </a>
+                <a href="tools/index.html" class="edition-card">
+                    <span class="card-tag tools">Interactive Tools</span>
+                    <h3>Try It Yourself</h3>
+                    <p>18 interactive visualizations — S-Signature Oracle, Sol Vision, Electric Field Modeler, Epoch Oscilloscope, and more. See the geometry in action.</p>
+                </a>
+                <a href="biology/index.html" class="edition-card">
+                    <span class="card-tag biology">Biology</span>
+                    <h3>Life's Geometric Patterns</h3>
+                    <p>How κ geometry manifests in biological systems — from cellular structure to consciousness itself.</p>
+                </a>
+                <a href="documents/index.html" class="edition-card">
+                    <span class="card-tag documents">White Papers</span>
+                    <h3>The Research Archive</h3>
+                    <p>16 formal papers — fine structure constant derivation, proton-electron mass ratio, Universal Language Generator, Rosetta Engine, and more.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- DEEP CUTS - TABBED CONTENT -->
+        <section class="categories-section">
+            <div class="section-header">
+                <h2>Deep Cuts: The Full Archive</h2>
+            </div>
+
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="physics">Physics (22)</button>
+                <button class="category-tab" data-category="weirdos">Weirdos (22)</button>
+                <button class="category-tab" data-category="ancient">Ancient Mysteries (31)</button>
+                <button class="category-tab" data-category="tools">Tools (18)</button>
+                <button class="category-tab" data-category="documents">Documents (16)</button>
+            </div>
+
+            <!-- PHYSICS -->
+            <div class="category-content active" id="physics">
+                <div class="category-grid">
+                    <a href="physics/true-meter_v1.0_01-10-2026.html" class="category-item physics">
+                        <h4>The True Meter</h4>
+                        <p>c = 297,638,035 m/s · The 0.722% error</p>
+                    </a>
+                    <a href="physics/kappa-state-model_v2.0_01-10-2026.html" class="category-item physics">
+                        <h4>κ State Model v2.0</h4>
+                        <p>The Hypatia Refinement · κ₆ meta-controller</p>
+                    </a>
+                    <a href="physics/432-orbital-mapper_v1.0_01-08-2026.html" class="category-item physics">
+                        <h4>432 Orbital Mapper</h4>
+                        <p>Planetary orbits through base-60 geometry</p>
+                    </a>
+                    <a href="physics/three-body-geometry.html" class="category-item physics">
+                        <h4>Three-Body Geometry</h4>
+                        <p>The "unsolvable" problem — solved</p>
+                    </a>
+                    <a href="physics/millennium-problems.html" class="category-item physics">
+                        <h4>Millennium Problems</h4>
+                        <p>$7 million in prizes · Epoch approach</p>
+                    </a>
+                    <a href="physics/torsion-balance.html" class="category-item physics">
+                        <h4>Torsion Balance</h4>
+                        <p>S⁺ + S⁻ = 0 · Standing waves as "forces"</p>
+                    </a>
+                    <a href="physics/atomic-derivations/index.html" class="category-item physics">
+                        <h4>Atomic Derivations</h4>
+                        <p>Electron orbitals from first principles</p>
+                    </a>
+                    <a href="physics/jwst-geometric-explorer.html" class="category-item physics">
+                        <h4>JWST Geometric Explorer</h4>
+                        <p>Why "impossible" galaxies make sense</p>
+                    </a>
+                    <a href="physics/standard-model-failures/index.html" class="category-item physics">
+                        <h4>Standard Model Failures</h4>
+                        <p>19 parameters they can't explain</p>
+                    </a>
+                    <a href="physics/kappa5/index.html" class="category-item physics">
+                        <h4>κ₅ True Dark Operator</h4>
+                        <p>The fifth scalar mode revealed</p>
+                    </a>
+                    <a href="physics/vessel/index.html" class="category-item physics">
+                        <h4>The Vessel</h4>
+                        <p>Consciousness geometry framework</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- WEIRDOS -->
+            <div class="category-content" id="weirdos">
+                <div class="category-grid">
+                    <a href="weirdos/hypatia.html" class="category-item weirdos">
+                        <h4>Hypatia of Alexandria</h4>
+                        <p>κ = 30 · Base-60 perfection</p>
+                    </a>
+                    <a href="weirdos/jason-ray.html" class="category-item weirdos">
+                        <h4>Jason Ray / Tormod</h4>
+                        <p>Mi Tra origin · The wee people</p>
+                    </a>
+                    <a href="weirdos/tesla-codex.html" class="category-item weirdos">
+                        <h4>The Tesla Codex</h4>
+                        <p>Scalar waves · Radiant energy · 3-6-9</p>
+                    </a>
+                    <a href="weirdos/maxwell-codex.html" class="category-item weirdos">
+                        <h4>The Maxwell Codex</h4>
+                        <p>20 quaternion equations → 4 butchered</p>
+                    </a>
+                    <a href="weirdos/einstein-cartan-codex.html" class="category-item weirdos">
+                        <h4>Einstein-Cartan Codex</h4>
+                        <p>Torsion in general relativity</p>
+                    </a>
+                    <a href="weirdos/einstein-codex.html" class="category-item weirdos">
+                        <h4>The Einstein Codex</h4>
+                        <p>What he got right · What he missed</p>
+                    </a>
+                    <a href="weirdos/mithridates-echo.html" class="category-item weirdos">
+                        <h4>The Mithridates Echo</h4>
+                        <p>11 comets + 1 visitor · Full zodiac</p>
+                    </a>
+                    <a href="weirdos/sara-walker.html" class="category-item weirdos">
+                        <h4>Sara Walker</h4>
+                        <p>Assembly theory · Life's complexity</p>
+                    </a>
+                    <a href="weirdos/donald-hoffman.html" class="category-item weirdos">
+                        <h4>Donald Hoffman</h4>
+                        <p>Conscious agents · Interface theory</p>
+                    </a>
+                    <a href="weirdos/roger-penrose.html" class="category-item weirdos">
+                        <h4>Roger Penrose</h4>
+                        <p>Twistor theory · Quantum consciousness</p>
+                    </a>
+                    <a href="weirdos/hermann-minkowski.html" class="category-item weirdos">
+                        <h4>Hermann Minkowski</h4>
+                        <p>Spacetime geometry pioneer</p>
+                    </a>
+                    <a href="weirdos/banesh-hoffmann.html" class="category-item weirdos">
+                        <h4>Banesh Hoffmann</h4>
+                        <p>Einstein's collaborator</p>
+                    </a>
+                    <a href="weirdos/geometers.html" class="category-item weirdos">
+                        <h4>The Geometers</h4>
+                        <p>Sacred geometry lineage</p>
+                    </a>
+                    <a href="weirdos/unifiers.html" class="category-item weirdos">
+                        <h4>The Unifiers</h4>
+                        <p>Those who sought the theory of everything</p>
+                    </a>
+                    <a href="weirdos/visionaries.html" class="category-item weirdos">
+                        <h4>The Visionaries</h4>
+                        <p>Seers across time</p>
+                    </a>
+                    <a href="weirdos/wave-seers.html" class="category-item weirdos">
+                        <h4>The Wave-Seers</h4>
+                        <p>Those who understood vibration</p>
+                    </a>
+                    <a href="weirdos/indigenous-wisdom.html" class="category-item weirdos">
+                        <h4>Indigenous Wisdom</h4>
+                        <p>Ancient knowledge keepers</p>
+                    </a>
+                    <a href="weirdos/suppression.html" class="category-item weirdos">
+                        <h4>The Suppressed</h4>
+                        <p>Knowledge that was buried</p>
+                    </a>
+                    <a href="weirdos/contributors.html" class="category-item weirdos">
+                        <h4>Contributors</h4>
+                        <p>Building the framework today</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ANCIENT MYSTERIES -->
+            <div class="category-content" id="ancient">
+                <div class="category-grid">
+                    <a href="ancient-mysteries/index.html" class="category-item ancient">
+                        <h4>Ancient Mysteries Hub</h4>
+                        <p>31 pages of encoded knowledge</p>
+                    </a>
+                    <a href="ancient-mysteries/texts/rongorongo-v1.0.html" class="category-item ancient">
+                        <h4>Rongorongo</h4>
+                        <p>Easter Island's undeciphered script</p>
+                    </a>
+                    <a href="ancient-mysteries/voynich/index.html" class="category-item ancient">
+                        <h4>Voynich Manuscript</h4>
+                        <p>The world's most mysterious book</p>
+                    </a>
+                    <a href="ancient-mysteries/indus-script/index.html" class="category-item ancient">
+                        <h4>Indus Script</h4>
+                        <p>Harappan civilization's lost language</p>
+                    </a>
+                    <a href="ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html" class="category-item ancient">
+                        <h4>Norse Artifacts</h4>
+                        <p>Viking runic inscriptions</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- TOOLS -->
+            <div class="category-content" id="tools">
+                <div class="category-grid">
+                    <a href="tools/index.html" class="category-item tools">
+                        <h4>Tools Hub</h4>
+                        <p>18 interactive visualizations</p>
+                    </a>
+                    <a href="tools/s-signature/s_signature_oracle.html" class="category-item tools">
+                        <h4>S-Signature Oracle</h4>
+                        <p>Calculate your scalar signature</p>
+                    </a>
+                    <a href="tools/s-signature/deep_oracle.html" class="category-item tools">
+                        <h4>Deep Oracle</h4>
+                        <p>Advanced S-Signature analysis</p>
+                    </a>
+                    <a href="tools/sol-vision/index.html" class="category-item tools">
+                        <h4>Sol Vision</h4>
+                        <p>Solar geometry visualization</p>
+                    </a>
+                    <a href="weirdos/electric-field-modeler.html" class="category-item tools">
+                        <h4>Electric Field Modeler</h4>
+                        <p>Interactive field visualization</p>
+                    </a>
+                    <a href="weirdos/epoch-oscilloscope.html" class="category-item tools">
+                        <h4>Epoch Oscilloscope</h4>
+                        <p>Wave interference patterns</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- DOCUMENTS -->
+            <div class="category-content" id="documents">
+                <div class="category-grid">
+                    <a href="documents/TRUE_METER_Discovery_v1.0_01-10-2026.md" class="category-item documents">
+                        <h4>The True Meter</h4>
+                        <p>Complete discovery summary</p>
+                    </a>
+                    <a href="documents/KAPPA_REFINEMENT_Hypatia_Base60_v1.0_01-10-2026.md" class="category-item documents">
+                        <h4>The Hypatia Refinement</h4>
+                        <p>κ = 30 · Full derivation</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Fine_Structure_Constant_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Fine Structure Constant</h4>
+                        <p>α ≈ 1/137 from geometry</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Proton_Electron_Mass_Ratio_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Proton-Electron Mass Ratio</h4>
+                        <p>mp/me ≈ 1836 from geometry</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Helium_Atom_Derivation_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Helium Atom Derivation</h4>
+                        <p>Two-electron correlations</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Universal_Language_Generator_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Universal Language Generator</h4>
+                        <p>D-Position phonetic mappings</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Rosetta_Engine_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Rosetta Engine</h4>
+                        <p>Cross-script pattern discovery</p>
+                    </a>
+                    <a href="documents/WHITE_PAPER_Rongorongo_Flip_Reader_v1.0_01-06-2026.md" class="category-item documents">
+                        <h4>Rongorongo Flip Reader</h4>
+                        <p>Reverse boustrophedon analysis</p>
+                    </a>
+                    <a href="documents/Being_The_Coin_White_Paper.md" class="category-item documents">
+                        <h4>Being The Coin</h4>
+                        <p>Observer theory foundation</p>
+                    </a>
+                    <a href="documents/Life_of_the_Mirror_White_Paper.md" class="category-item documents">
+                        <h4>Life of the Mirror</h4>
+                        <p>S⁺/S⁻ reflection principle</p>
+                    </a>
+                    <a href="documents/WHITEPAPER_Mechanics_of_Borrowed_Power.md" class="category-item documents">
+                        <h4>Mechanics of Borrowed Power</h4>
+                        <p>Energy transfer dynamics</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- MUST SEE BEFORE YOU GO -->
+        <section class="must-see-section">
+            <div class="section-header">
+                <h2>🔥 Things You Must See Before You Go</h2>
+            </div>
+            <p style="text-align: center; color: #888; margin-bottom: 2rem; font-style: italic;">
+                If you only have 10 minutes, these are the pages that will change how you see everything.
+            </p>
+            <div class="must-see-grid">
+                <a href="physics/true-meter_v1.0_01-10-2026.html" class="must-see-card spotlight">
+                    <span class="must-see-badge">BREAKTHROUGH</span>
+                    <h3>The True Meter</h3>
+                    <p>The speed of light is wrong. c = 297,638,035 m/s. Every light year ever calculated is 0.72% too long.</p>
+                    <span class="must-see-read">Read Discovery →</span>
+                </a>
+                <a href="weirdos/tesla-codex.html" class="must-see-card">
+                    <span class="must-see-badge">108K WORDS</span>
+                    <h3>The Tesla Codex</h3>
+                    <p>Scalar waves, radiant energy, the 3-6-9 pattern. What Tesla knew that they buried.</p>
+                    <span class="must-see-read">Enter the Codex →</span>
+                </a>
+                <a href="weirdos/hypatia.html" class="must-see-card">
+                    <span class="must-see-badge">ORIGINS</span>
+                    <h3>Hypatia of Alexandria</h3>
+                    <p>Murdered for knowing. 1,600 years later, her base-60 methods reveal κ = 30.</p>
+                    <span class="must-see-read">Meet Hypatia →</span>
+                </a>
+                <a href="graphic-novel/index.html" class="must-see-card">
+                    <span class="must-see-badge">VISUAL</span>
+                    <h3>The Bird Dog Prophecy</h3>
+                    <p>A graphic novel exploring the Epoch Myth. Mythos meets physics meets revelation.</p>
+                    <span class="must-see-read">Enter Prophecy →</span>
+                </a>
+                <a href="tools/s-signature/s_signature_oracle.html" class="must-see-card">
+                    <span class="must-see-badge">INTERACTIVE</span>
+                    <h3>S-Signature Oracle</h3>
+                    <p>Calculate your own scalar signature. See where you fall in the geometry.</p>
+                    <span class="must-see-read">Try the Oracle →</span>
+                </a>
+                <a href="weirdos/mithridates-echo.html" class="must-see-card">
+                    <span class="must-see-badge">COSMIC</span>
+                    <h3>The Mithridates Echo</h3>
+                    <p>11 comets + 1 interstellar visitor. Full zodiac alignment. Rhododendron honey revelation.</p>
+                    <span class="must-see-read">Hear the Echo →</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="newspaper-footer">
+        <p class="principle">[1 = -1]</p>
+        <p class="tagline">The geometry was always right. We just forgot how to read it.</p>
+        <a href="index.html" class="home-link">← Return to Have Mind Media</a>
+    </footer>
+
+    <!-- KAPPA BADGE -->
+    <div class="kappa-badge">κ = 30</div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.category-content').forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked tab
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.category).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

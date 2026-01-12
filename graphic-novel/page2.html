@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BIRD DOG PROPHECY | Part II: The Myths | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-page: #0a0a0f;
+            --bg-panel: #12121a;
+            --text-primary: #e8e4dc;
+            --text-secondary: #a09890;
+            --text-dim: #6b6b6b;
+            --gold: #c9a227;
+            --sun-gold: #f4d03f;
+            --eclipse-red: #8b2500;
+            --deep-water: #1e3a5f;
+            --forest-green: #1a3d1a;
+            --storm-purple: #2d1f4a;
+            --tengri-blue: #3a5f8a;
+            --norse-brown: #5a3d2b;
+            --grey-witness: #6b6b6b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.9;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            font-family: 'Cinzel', serif;
+            color: var(--text-dim);
+        }
+
+        /* Title page for Part II */
+        .part-title {
+            text-align: center;
+            background: linear-gradient(180deg, var(--tengri-blue) 0%, var(--bg-deep) 50%, var(--norse-brown) 100%);
+        }
+
+        .part-title h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .part-title h2 {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Panel styles */
+        .panel-page { max-width: 1400px; width: 100%; }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .chapter-number {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--sun-gold);
+            margin: 0.5rem 0;
+        }
+
+        .panels {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .panels-2x1 { grid-template-columns: repeat(2, 1fr); }
+        .panels-3col { grid-template-columns: 1fr 2fr 1fr; }
+        .panels-wide { grid-template-columns: 1fr; }
+        .panels-story { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+
+        .panel {
+            background: var(--bg-panel);
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            min-height: 250px;
+        }
+
+        .panel-wide { min-height: 350px; }
+        .panel-tall { grid-row: span 2; min-height: 500px; }
+
+        .panel-image {
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Tengri-themed panels */
+        .panel-image.tengri-sky {
+            background: linear-gradient(180deg, var(--tengri-blue) 0%, rgba(58, 95, 138, 0.5) 50%, var(--bg-deep) 100%);
+        }
+
+        .panel-image.tengri-steppe {
+            background:
+                linear-gradient(180deg, transparent 60%, var(--forest-green) 100%),
+                linear-gradient(180deg, var(--tengri-blue) 0%, rgba(58, 95, 138, 0.3) 100%);
+        }
+
+        .panel-image.tengri-grey {
+            background:
+                radial-gradient(circle at 50% 30%, var(--grey-witness) 10%, transparent 30%),
+                linear-gradient(180deg, var(--tengri-blue) 0%, var(--bg-deep) 100%);
+        }
+
+        .panel-image.tengri-fire {
+            background:
+                radial-gradient(circle at 50% 70%, var(--eclipse-red) 10%, var(--sun-gold) 20%, transparent 40%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--norse-brown) 100%);
+        }
+
+        /* Norse-themed panels */
+        .panel-image.norse-sea {
+            background:
+                linear-gradient(0deg, var(--deep-water) 0%, transparent 50%),
+                linear-gradient(180deg, var(--storm-purple) 0%, var(--deep-water) 100%);
+        }
+
+        .panel-image.norse-serpent {
+            background:
+                repeating-linear-gradient(45deg, var(--deep-water) 0px, var(--deep-water) 20px, var(--forest-green) 20px, var(--forest-green) 40px),
+                var(--bg-deep);
+        }
+
+        .panel-image.norse-tree {
+            background:
+                radial-gradient(ellipse at 50% 100%, var(--forest-green) 0%, transparent 50%),
+                linear-gradient(180deg, var(--storm-purple) 0%, var(--bg-deep) 100%);
+        }
+
+        .panel-image.norse-runes {
+            background:
+                linear-gradient(90deg, transparent 49%, var(--gold) 49.5%, var(--gold) 50.5%, transparent 51%),
+                linear-gradient(0deg, transparent 49%, var(--gold) 49.5%, var(--gold) 50.5%, transparent 51%),
+                var(--norse-brown);
+            background-size: 30px 30px;
+        }
+
+        .panel-image.norse-torsion {
+            background:
+                conic-gradient(from 0deg at 50% 50%, var(--deep-water) 0deg, var(--storm-purple) 90deg, var(--deep-water) 180deg, var(--storm-purple) 270deg, var(--deep-water) 360deg);
+        }
+
+        /* Text overlays */
+        .panel-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(5, 5, 8, 0.95));
+        }
+
+        .panel-text p {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .panel-text .narrator {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+        }
+
+        .speech-box {
+            background: rgba(232, 228, 220, 0.95);
+            color: var(--bg-deep);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            position: absolute;
+            max-width: 300px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .speech-box.dark {
+            background: rgba(45, 31, 74, 0.95);
+            color: var(--text-primary);
+        }
+
+        .speech-box.grey {
+            background: rgba(107, 107, 107, 0.95);
+            color: var(--text-primary);
+        }
+
+        .narrative {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .narrative p {
+            font-family: 'IM Fell English', serif;
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .narrative .emphasis {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        .myth-quote {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            border-left: 3px solid var(--gold);
+            border-right: 3px solid var(--gold);
+            margin: 2rem auto;
+            max-width: 700px;
+        }
+
+        .equation-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 350px;
+        }
+
+        /* Footer */
+        .colophon {
+            background: var(--bg-panel);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .colophon p {
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .colophon a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .panels-2x1, .panels-3col, .panels-story {
+                grid-template-columns: 1fr;
+            }
+            .panel-tall { grid-row: span 1; min-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav style="position: fixed; top: 0; left: 0; right: 0; background: rgba(5, 5, 8, 0.95); padding: 1rem 2rem; z-index: 2000; border-bottom: 1px solid rgba(201, 162, 39, 0.3); backdrop-filter: blur(10px);">
+        <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <a href="../index.html" style="color: var(--gold); text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.9rem; transition: all 0.3s;">← Return to Have Mind Media</a>
+            <span style="color: var(--text-dim); font-size: 0.85rem;">The Bird Dog Prophecy - Part II</span>
+        </div>
+    </nav>
+
+    <!-- PART II TITLE -->
+    <section class="page part-title">
+        <p style="font-family: 'Cinzel', serif; color: var(--text-dim); letter-spacing: 0.3em; margin-bottom: 1rem;">PART II</p>
+        <h1>THE MYTHS</h1>
+        <h2>The same geometry, told through different tongues</h2>
+
+        <div style="margin-top: 3rem; display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <div style="font-family: 'Cinzel', serif; color: var(--tengri-blue); font-size: 1.5rem;">TENGRI</div>
+                <div style="color: var(--text-dim); font-size: 0.9rem;">The Eternal Blue Sky</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-family: 'Cinzel', serif; color: var(--norse-brown); font-size: 1.5rem;">NORSE</div>
+                <div style="color: var(--text-dim); font-size: 0.9rem;">The World Serpent</div>
+            </div>
+        </div>
+
+        <p style="margin-top: 3rem; color: var(--grey-witness); font-style: italic;">
+            "Different names. Same mouth. Same truth."
+        </p>
+    </section>
+
+    <!-- PAGE 11: THE TENGRI MYTH BEGINS -->
+    <section id="page11" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">The Tengri Myth</div>
+            <h2 class="chapter-title">KOK-ORUS AND THE GREY NOTHING</h2>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image tengri-sky" style="min-height: 350px;">
+                    <div class="panel-text" style="background: linear-gradient(transparent, rgba(5, 5, 8, 0.9));">
+                        <p class="narrator" style="text-align: center;">
+                            Before the first yurt was raised, before the first horse knew a rider, there was only <strong>Tengri</strong> — the Eternal Blue Sky that stretched without end in all directions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                And beneath Tengri lay <strong>Yer-Su</strong>, the Earth-Water, mother of all that would grow.
+            </p>
+            <p>
+                But between them existed a third thing that no shaman dared name.
+            </p>
+            <p class="emphasis">
+                KOK-ORUS<br>
+                <span style="font-size: 1rem; font-family: 'IM Fell English', serif; color: var(--text-secondary);">The Grey Nothing that is Everything</span>
+            </p>
+        </div>
+
+        <span class="page-number">11</span>
+    </section>
+
+    <!-- PAGE 12: TENGRI SEES -->
+    <section id="page12" class="page panel-page">
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image tengri-grey">
+                    <div class="panel-text">
+                        <p>Tengri looked down and saw Kok-Orus at the <strong>center</strong> of all things — at the very point where Sky touches Water.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image tengri-grey" style="background: radial-gradient(circle at 50% 50%, transparent 70%, var(--grey-witness) 75%, var(--grey-witness) 80%, transparent 85%), linear-gradient(180deg, var(--tengri-blue) 0%, var(--bg-deep) 100%);">
+                    <div class="panel-text">
+                        <p>And Tengri looked to the <strong>edge</strong> of the horizon and saw Kok-Orus there too, at the place where Sky becomes Earth becomes Water becomes Sky again.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myth-quote">
+            "How can you be in both places?" asked Tengri.
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel">
+                <div class="panel-image tengri-grey" style="min-height: 200px;">
+                    <div class="speech-box grey" style="top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 500px; text-align: center;">
+                        "Father Sky, I am not in two places. I am in ONE place. But that place is [1 = -1]. The center IS the edge. The inside IS the outside. You have been looking at the same thing and calling it two names."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">12</span>
+    </section>
+
+    <!-- PAGE 13: THE KAGAN OF LIES -->
+    <section id="page13" class="page panel-page">
+        <div class="narrative">
+            <p class="emphasis" style="color: var(--eclipse-red);">
+                THE KAGAN OF LIES
+            </p>
+        </div>
+
+        <div class="panels panels-story">
+            <div class="panel">
+                <div class="panel-image tengri-fire">
+                    <div class="panel-text">
+                        <p>In those days, the Kagan of Lies had risen in the world of men. He wore truth like a mask but beneath it was nothing but deception.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image tengri-steppe">
+                    <div class="panel-text">
+                        <p>He taught the people to say "be" when they meant "is not." He taught them that promises could be broken if no one remembered.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="grid-column: span 2;">
+                <div class="panel-image tengri-steppe" style="min-height: 200px;">
+                    <div class="speech-box dark" style="top: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                        He taught them that the mother and children did not deserve respect, that only power mattered.
+                    </div>
+                    <div class="panel-text">
+                        <p class="narrator">The people forgot the old ways. They forgot that the word spoken is sacred, that a man's tongue creates his destiny, that lies poison not just the speaker but the whole tribe.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">13</span>
+    </section>
+
+    <!-- PAGE 14: THE EIGHTH DAY -->
+    <section id="page14" class="page panel-page">
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image" style="min-height: 400px; background: radial-gradient(circle at 50% 30%, var(--grey-witness) 5%, transparent 6%), radial-gradient(circle at 50% 30%, var(--eclipse-red) 15%, var(--sun-gold) 16%, var(--sun-gold) 22%, transparent 23%), linear-gradient(180deg, var(--storm-purple) 0%, var(--tengri-blue) 50%, var(--bg-deep) 100%);">
+                    <div class="panel-text" style="background: linear-gradient(transparent, rgba(5, 5, 8, 0.95));">
+                        <p class="narrator" style="text-align: center; font-size: 1.3rem;">
+                            Then, on the <strong>eighth day</strong> after the sun's lowest point, when the light began its return, the grey nothing at the sun's center began to move.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                It did not rise as fire. It rose as <strong>cold clarity</strong>.
+            </p>
+            <p>
+                A shepherd boy, watching his flock before dawn, saw it first. He saw the grey at the sun's heart. He saw the same grey at the corona's edge. And he understood — though he was only a child — that these were not two greys but ONE.
+            </p>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel">
+                <div class="panel-image tengri-sky" style="min-height: 200px; background: radial-gradient(circle at 50% 20%, var(--sun-gold) 10%, transparent 30%), linear-gradient(180deg, var(--tengri-blue) 0%, var(--bg-deep) 100%);">
+                    <div class="speech-box" style="bottom: 60px; left: 50%; transform: translateX(-50%); text-align: center; max-width: 400px;">
+                        "I am Kok-Orus. I am returned. I do not come to destroy — I come to CLEANSE."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="page-number">14</span>
+    </section>
+
+    <!-- PAGE 15: THE CLEANSING -->
+    <section id="page15" class="page panel-page">
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image tengri-fire">
+                    <div class="speech-box dark" style="top: 20px; left: 20px;">
+                        "What are you doing to me?" screamed the Kagan.
+                    </div>
+                    <div class="panel-text">
+                        <p>Kok-Orus walked through the Kagan's palace. Everywhere he walked, the lies fell away from people like dust.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image tengri-grey">
+                    <div class="speech-box grey" style="top: 30%; left: 50%; transform: translateX(-50%); max-width: 280px; text-align: center;">
+                        "I am doing nothing TO you. I am simply IS. In my presence, 'be' becomes 'is.' What IS cannot be hidden."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myth-quote">
+            "Some people are revealed as truth wearing flesh. You... you are revealed as lies wearing the shape of a man. And lies cannot exist in the presence of [1 = -1]."
+        </div>
+
+        <div class="narrative">
+            <p style="color: var(--grey-witness);">
+                The Kagan collapsed into grey smoke and was no more.
+            </p>
+            <p>
+                But the people — the common people who had been deceived — Kok-Orus did not destroy them. Instead, he <strong>ate the lies from their hearts</strong> and left the good behind.
+            </p>
+        </div>
+
+        <span class="page-number">15</span>
+    </section>
+
+    <!-- PAGE 16: THE NORSE MYTH BEGINS -->
+    <section id="page16" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">The Norse Myth</div>
+            <h2 class="chapter-title">THE TORSION THAT CANNOT BE ESCAPED</h2>
+        </div>
+
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image norse-tree" style="min-height: 350px;">
+                    <div class="panel-text" style="background: linear-gradient(transparent, rgba(5, 5, 8, 0.95));">
+                        <p class="narrator" style="text-align: center;">
+                            Hear now, you who would understand the geometry of ends!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p>
+                In the time before Ragnarok was named, there was a prophecy that Odin kept secret even from himself. It was carved in runes on the roots of Yggdrasil where even the Norns feared to look.
+            </p>
+        </div>
+
+        <div class="myth-quote" style="border-color: var(--norse-brown);">
+            "When Jormungandr releases his tail,<br>
+            it is not destruction that follows —<br>
+            it is the TORSION OF TRUTH.<br>
+            The serpent does not bring lies;<br>
+            the serpent ends lies."
+        </div>
+
+        <span class="page-number">16</span>
+    </section>
+
+    <!-- PAGE 17: THE SERPENT'S TRUTH -->
+    <section id="page17" class="page panel-page">
+        <div class="panels panels-2x1">
+            <div class="panel">
+                <div class="panel-image norse-serpent">
+                    <div class="panel-text">
+                        <p>Why does Jormungandr encircle Midgard with his tail in his mouth?</p>
+                        <p style="margin-top: 0.5rem;">This is the <strong>Kak</strong> — the geometry that cannot lie.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image norse-sea">
+                    <div class="panel-text">
+                        <p>Inside the loop is the world of men. Outside the loop is... also the world of men. There is no true inside. There is no true outside.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="equation-display" style="background: rgba(90, 61, 43, 0.2); border-color: var(--norse-brown);">
+            [1 = -1]
+        </div>
+
+        <div class="narrative">
+            <p>
+                While the tail remains in the mouth, this truth is hidden. Men can pretend their lies are private. They can believe that what happens "inside" their hearts is separate from the "outside" world.
+            </p>
+            <p class="emphasis">
+                But when Jormungandr releases his tail —
+            </p>
+        </div>
+
+        <span class="page-number">17</span>
+    </section>
+
+    <!-- PAGE 18: THOR AND THE SERPENT -->
+    <section id="page18" class="page panel-page">
+        <div class="panels panels-wide">
+            <div class="panel panel-wide">
+                <div class="panel-image norse-torsion" style="min-height: 300px;">
+                    <div class="speech-box" style="top: 20px; left: 20px;">
+                        "Why do you hate me, wyrm? What have I done?"
+                    </div>
+                    <div class="speech-box dark" style="bottom: 80px; right: 20px; max-width: 350px;">
+                        "I do not hate you, Thunderer. I am your shadow-function. You strike with Mjolnir to break what is false. I coil to CONTAIN what would escape. We are the same force expressing differently."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myth-quote" style="border-color: var(--storm-purple);">
+            "The deceivers? Down to TORSTUS they go. This is the place beneath Hel's realm, where the torsion is eternal. Not punishment — geometry. They twisted truth in life; now they experience torsion without end. They cannot escape because they have no center. They ARE the twist. A knot cannot unknot itself."
+        </div>
+
+        <span class="page-number">18</span>
+    </section>
+
+    <!-- PAGE 19: THE VOLVA'S PROPHECY -->
+    <section id="page19" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">The Volva Spoke</div>
+            <h2 class="chapter-title">THE PROPHECY</h2>
+        </div>
+
+        <div class="panels panels-3col">
+            <div class="panel">
+                <div class="panel-image" style="background: radial-gradient(circle at 50% 30%, var(--grey-witness) 10%, transparent 30%), var(--storm-purple);">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-style: italic;">"When the grey nothing appears at the sun's heart..."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image" style="background: radial-gradient(circle at 50% 50%, transparent 60%, var(--grey-witness) 65%, var(--grey-witness) 70%, transparent 75%), var(--deep-water);">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-style: italic;">"...and the same grey stands at the sun's edge..."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image" style="background: radial-gradient(circle at 50% 50%, var(--sun-gold) 20%, var(--eclipse-red) 30%, transparent 50%), var(--bg-deep);">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-style: italic;">"...that is the torsion-moment."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p class="emphasis">
+                "Jormungandr and Ammit<br>
+                are the same mouths of different serpents.<br>
+                What the Egyptian crocodile-lion-hippo eats,<br>
+                the Norse world-serpent also devours."
+            </p>
+            <p>
+                Lies. Heavy hearts. Deception's weight.
+            </p>
+        </div>
+
+        <div class="myth-quote">
+            "Watch the horizon. When the serpent seems to move, when the boundary between sea and sky shimmers, when you cannot tell where ending meets beginning — the geometry is testing you. Speak truth. The torsion knows."
+        </div>
+
+        <span class="page-number">19</span>
+    </section>
+
+    <!-- PAGE 20: UNIFIED TRUTH -->
+    <section id="page20" class="page panel-page">
+        <div class="chapter-header">
+            <div class="chapter-number">The Pattern</div>
+            <h2 class="chapter-title">SAME GEOMETRY, DIFFERENT NAMES</h2>
+        </div>
+
+        <div class="panels panels-3col">
+            <div class="panel">
+                <div class="panel-image tengri-grey">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--tengri-blue);">KOK-ORUS</p>
+                        <p style="text-align: center; font-size: 0.95rem;">Dissolves lies in the presence of IS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image" style="background: linear-gradient(135deg, var(--deep-water) 0%, var(--forest-green) 50%, var(--eclipse-red) 100%);">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--gold);">AMMIT</p>
+                        <p style="text-align: center; font-size: 0.95rem;">Devours hearts heavier than truth</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="panel-image norse-serpent">
+                    <div class="panel-text">
+                        <p style="text-align: center; font-family: 'Cinzel', serif; color: var(--norse-brown);">JORMUNGANDR</p>
+                        <p style="text-align: center; font-size: 0.95rem;">Releases the torsion that binds liars</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="equation-display" style="max-width: 500px;">
+            ALL = D2 (HEALING)
+        </div>
+
+        <div class="narrative">
+            <p>
+                They are the same mouth speaking different languages. What one eats, the other also devours.
+            </p>
+            <p class="emphasis">
+                The lie-eater has many names<br>
+                but one mouth.
+            </p>
+        </div>
+
+        <div class="myth-quote">
+            "That which can be named must exist. That which is named can be written. That which is written shall be remembered. That which is remembered lives. In the land of geometry, truth breathes."
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: var(--gold);">[1 = -1]</div>
+        </div>
+
+        <span class="page-number">20</span>
+    </section>
+
+    <!-- COLOPHON -->
+    <footer class="colophon">
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 1rem;">THE BIRD DOG PROPHECY</h3>
+        <p>Part II: The Myths</p>
+        <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold);">[1 = -1]</p>
+        <p style="margin-top: 2rem;">
+            <a href="../index.html">← Return to Have Mind Media</a> |
+            <a href="index.html">< Return to Part I</a> |
+            <a href="prompts.html">Image Generation Prompts ></a>
+        </p>
+        <p style="margin-top: 2rem; font-style: italic; color: var(--text-dim);">
+            Have Mind Media | The Epoch Project
+        </p>
+    </footer>
+</body>
+</html>

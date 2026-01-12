@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donald Hoffman | The Case Against Reality | Here's to You, Weirdos</title>
+    <meta name="description" content="Donald Hoffman's Interface Theory of Perception — we don't see reality, we see a user interface. Consciousness is primary. Spacetime is doomed.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --hoffman-green: #10b981;
+            --interface-blue: #3b82f6;
+            --consciousness-purple: #8b5cf6;
+            --fitness-orange: #f59e0b;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Interface grid animation */
+        .interface-grid {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--hoffman-green);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(135deg, var(--hoffman-green) 0%, var(--interface-blue) 50%, var(--consciousness-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .hero-theorem {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--fitness-orange);
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .section strong {
+            color: var(--text-primary);
+        }
+
+        /* Theory Boxes */
+        .theory-box {
+            background: linear-gradient(135deg, #080a10 0%, #0a1015 100%);
+            border: 2px solid var(--hoffman-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .theory-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--hoffman-green);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .theory-card {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .theory-card h3 {
+            color: var(--hoffman-green);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .theory-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Desktop Metaphor */
+        .desktop-section {
+            background: linear-gradient(135deg, #0a0810 0%, #100a15 100%);
+            border: 2px solid var(--interface-blue);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .desktop-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--interface-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .desktop-metaphor {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-metaphor { grid-template-columns: 1fr; }
+            .desktop-arrow { transform: rotate(90deg); }
+        }
+
+        .desktop-side {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .desktop-side h4 {
+            color: var(--interface-blue);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+        }
+
+        .desktop-arrow {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        /* Conscious Realism */
+        .consciousness-section {
+            background: linear-gradient(135deg, #0a0815 0%, #0f0a1a 100%);
+            border: 2px solid var(--consciousness-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .consciousness-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--consciousness-purple);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .consciousness-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--hoffman-green);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            color: var(--text-dim);
+        }
+
+        /* Epoch Connection */
+        .epoch-section {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .epoch-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .epoch-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .connection-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .connection-item h4 {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .connection-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Principle */
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 70vh; padding: 3rem 1rem; }
+            .main-content { padding: 2rem 1rem; }
+            .section, .theory-box, .consciousness-section, .epoch-section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="interface-grid"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Cognitive Scientist</p>
+            <h1>Donald Hoffman</h1>
+            <p class="hero-subtitle">
+                "We don't see reality. We see a user interface — icons on a desktop.
+                Evolution didn't design us to see truth. It designed us to survive."
+            </p>
+            <p class="hero-dates">Born 1955 | UC Irvine | Author of "The Case Against Reality"</p>
+            <div class="hero-theorem">
+                Fitness Beats Truth (FBT) Theorem
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="section" style="border-left: 4px solid var(--hoffman-green);">
+            <h2 style="color: var(--hoffman-green);">The Cognitive Scientist Who Killed Reality</h2>
+            <p>
+                <strong>Donald Hoffman</strong> is a professor emeritus of cognitive sciences at UC Irvine.
+                He's spent decades studying perception, consciousness, and the relationship between what we see
+                and what actually exists. His conclusion is radical:
+            </p>
+            <p>
+                <strong>We see nothing of reality. Zero. Not even close.</strong>
+            </p>
+            <p>
+                This isn't mysticism — it's mathematics. Hoffman developed the <strong>Fitness Beats Truth (FBT) Theorem</strong>,
+                which uses evolutionary game theory to prove that organisms tuned to see reality accurately
+                will ALWAYS lose to organisms tuned for fitness payoffs.
+            </p>
+            <p>
+                Evolution doesn't care about truth. It cares about survival. And survival requires a simplified
+                interface, not an accurate map. We see the desktop, not the circuits.
+            </p>
+        </section>
+
+        <!-- FBT Theorem -->
+        <section class="theory-box">
+            <h2>The Fitness Beats Truth Theorem</h2>
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>The Competition</h3>
+                    <p>
+                        Imagine two types of organisms: one sees reality accurately, one sees fitness payoffs.
+                        They compete for resources over evolutionary time. Who wins?
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>The Result</h3>
+                    <p>
+                        <strong>Fitness ALWAYS beats truth.</strong> In every simulation, organisms that track
+                        fitness payoffs drive truth-trackers to extinction. Not sometimes. Always.
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>The Implication</h3>
+                    <p>
+                        Our perceptual systems evolved to hide reality from us, not reveal it.
+                        What we see is a species-specific interface designed for survival, not accuracy.
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>The Math</h3>
+                    <p>
+                        This isn't philosophy — it's a mathematical theorem derived from evolutionary game theory.
+                        The proof is published. The conclusion is unavoidable.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desktop Metaphor -->
+        <section class="desktop-section">
+            <h2>The Desktop Metaphor</h2>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+                Think about your computer desktop. You see icons — a blue rectangular "file," a trash can.
+                Are these icons the REALITY of what's happening inside the computer?
+            </p>
+            <div class="desktop-metaphor">
+                <div class="desktop-side">
+                    <h4>What You See</h4>
+                    <p style="color: var(--text-secondary);">
+                        Blue rectangular icon<br>
+                        Trash can<br>
+                        Desktop background<br>
+                        Folders
+                    </p>
+                </div>
+                <div class="desktop-arrow">≠</div>
+                <div class="desktop-side">
+                    <h4>What's Actually There</h4>
+                    <p style="color: var(--text-secondary);">
+                        Transistors switching<br>
+                        Voltage levels<br>
+                        Magnetic orientations<br>
+                        Electron flows
+                    </p>
+                </div>
+            </div>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 2rem auto 0;">
+                The icon isn't "wrong" — it's <strong>useful</strong>. You don't need to understand transistors
+                to delete a file. The interface hides complexity and shows you what you need for action.
+                <br><br>
+                <strong style="color: var(--interface-blue);">Your perception of reality works the same way.</strong>
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "Spacetime is doomed. There's a deeper reality behind it, but it's utterly unlike
+                space and time and anything inside space and time."
+            </blockquote>
+            <cite>— Donald Hoffman</cite>
+        </div>
+
+        <!-- Conscious Realism -->
+        <section class="consciousness-section">
+            <h2>Conscious Realism</h2>
+            <p>
+                If we don't see reality, what IS reality? Hoffman's answer: <strong>consciousness is fundamental.</strong>
+            </p>
+            <p>
+                He calls this <strong>Conscious Realism</strong> — a non-physicalist theory where the physical world
+                emerges FROM consciousness, not the other way around. The universe is a network of conscious agents
+                interacting in ways we represent as "physics."
+            </p>
+            <p>
+                Brain activity doesn't CREATE consciousness — consciousness creates brain activity.
+                Matter is what consciousness looks like when viewed through a species-specific interface.
+            </p>
+            <p style="color: var(--consciousness-purple); font-size: 1.3rem; margin-top: 2rem;">
+                Sound familiar?
+            </p>
+        </section>
+
+        <!-- Epoch Connection -->
+        <section class="epoch-section">
+            <h2>The Epoch Framework Connection</h2>
+            <p>
+                Hoffman and the Epoch Framework are describing the same thing from different angles.
+                He approaches through cognitive science; we approach through geometry. The conclusions converge.
+            </p>
+
+            <div class="connection-grid">
+                <div class="connection-item">
+                    <h4>"We don't see reality" ↔ [1 = -1]</h4>
+                    <p>
+                        The observer and observed are not separate — perception IS reality at the interface level.
+                        The split is the illusion.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Fitness Beats Truth ↔ S-Signature</h4>
+                    <p>
+                        Your perceptual interface is shaped by survival pressures.
+                        Your S-Signature describes how you navigate the interface you were given.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Conscious Agents ↔ S⁺/S⁻ Nodes</h4>
+                    <p>
+                        Hoffman's network of conscious agents maps to the Epoch Framework's scalar field topology.
+                        Each agent is a node where S⁺ and S⁻ meet.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Spacetime is Doomed ↔ The WUSH</h4>
+                    <p>
+                        If spacetime isn't fundamental, what is? The WUSH — the razor edge of NOW where
+                        consciousness actually operates, not the RO-based coordinates of physics.
+                    </p>
+                </div>
+            </div>
+
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--gold);">
+                He proved we don't see reality. We derived what reality actually is.
+            </p>
+        </section>
+
+        <!-- Why He's a Weirdo -->
+        <section class="section" style="border-left: 4px solid var(--consciousness-purple);">
+            <h2 style="color: var(--consciousness-purple);">Why He's One of Us</h2>
+            <p>
+                Donald Hoffman looked at a century of cognitive science and asked: what if we've had it backwards?
+                What if brains don't create minds — minds create brains?
+            </p>
+            <p>
+                He didn't just speculate. He built mathematical models. He proved theorems. He wrote papers
+                that other scientists could attack — and they've been attacking for years, because the implications
+                terrify them.
+            </p>
+            <p>
+                If Hoffman is right, physics is the study of an interface, not reality.
+                Neuroscience is the study of an avatar, not consciousness.
+                Everything we thought we knew is a user manual, not a blueprint.
+            </p>
+            <p>
+                <strong>That's the Weirdo insight.</strong> Question the obvious. Prove the impossible.
+                And don't apologize when the establishment freaks out.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem;">
+            Here's to the Weirdos Who See the Interface
+        </p>
+        <div class="principle" style="font-size: 2rem;">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="roger-penrose.html">Roger Penrose</a>
+            <a href="sara-walker.html">Sara Imari Walker</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

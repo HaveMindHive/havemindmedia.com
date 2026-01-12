@@ -1,0 +1,597 @@
+{
+  "timestamp": "20260109_234310",
+  "site_root": "/Users/paymore/Downloads/HaveMindHive/havemindmedia-website_v1.0_01-04-2026",
+  "shiva": {
+    "html_files": [
+      "master-library.html",
+      "index.html",
+      "about.html",
+      "mind-blowing.html",
+      "support.html",
+      "library.html",
+      "404.html",
+      "mobile.html",
+      "site-directory.html",
+      "library-wizard/index.html",
+      "tools/index.html",
+      "weirdos/wave-seers.html",
+      "weirdos/index.html",
+      "weirdos/epoch-oscilloscope.html",
+      "weirdos/maxwell-codex.html",
+      "weirdos/contributors.html",
+      "weirdos/suppression.html",
+      "weirdos/indigenous-wisdom.html",
+      "weirdos/unifiers.html",
+      "weirdos/mithridates-echo.html",
+      "weirdos/geometers.html",
+      "weirdos/visionaries.html",
+      "weirdos/electric-field-modeler.html",
+      "weirdos/tesla-codex.html",
+      "neurodegeneration/index.html",
+      "epoch-atomic/index.html",
+      "education/socratean-education.html",
+      "education/life-facing-wisdom.html",
+      "education/index.html",
+      "education/hidden-observers.html",
+      "education/geometry-challenge.html",
+      "education/vinyl-paradox.html",
+      "education/ammit-function.html",
+      "education/becoming-a-coin.html",
+      "education/soul-science.html",
+      "rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html",
+      "protein-folding/index.html",
+      "cedga/index.html",
+      "physics-viz/quad-helix-base60-v2.0.html",
+      "physics-viz/scalar-crossroads-animated.html",
+      "physics-viz/quad-helix-base60.html",
+      "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html",
+      "universal-language-generator/ulg-app_v1.0_01-06-2026.html",
+      "teaching/Scalar_Dimensionality_Teaching_Document.html",
+      "dna-studio/index.html",
+      "coin-science/index.html",
+      "documents/index.html",
+      "documents/cern-scalar-geometry.html",
+      "physics/index.html",
+      "physics/three-body-geometry.html",
+      "physics/jwst-geometric-explorer.html",
+      "physics/432-orbital-mapper_v1.0_01-08-2026.html",
+      "physics/torsion-balance.html",
+      "physics/millennium-problems.html",
+      "games/love-triads.html",
+      "games/love-triads-learn.html",
+      "games/epoch-symbols.html",
+      "games/index.html",
+      "games/number-feeling.html",
+      "games/phaistos-archetypes.html",
+      "games/intuition-trainer.html",
+      "games/symbol-sender.html",
+      "games/coin-flip.html",
+      "games/color-sense.html",
+      "games/focus-mode.html",
+      "games/coordinate-viewer.html",
+      "games/zener-cards.html",
+      "games/card-match.html",
+      "apps/index.html",
+      "biology/index.html",
+      "biology/eye-codex.html",
+      "ancient-mysteries/index.html",
+      "store/designs.html",
+      "store/index.html",
+      "ancient-mysteries/indus-script/temple-dancing-girl.html",
+      "ancient-mysteries/indus-script/temple-mother-goddess.html",
+      "ancient-mysteries/indus-script/index.html",
+      "ancient-mysteries/indus-script/figurines.html",
+      "ancient-mysteries/indus-script/temple-sacred-bull.html",
+      "ancient-mysteries/indus-script/translator.html",
+      "ancient-mysteries/indus-script/sign-reference.html",
+      "ancient-mysteries/indus-script/linear-a.html",
+      "ancient-mysteries/indus-script/universal-language-theory.html",
+      "ancient-mysteries/indus-script/temple-priest-king.html",
+      "ancient-mysteries/indus-script/epoch-mathematics.html",
+      "ancient-mysteries/mississippian/index.html",
+      "ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html",
+      "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html",
+      "ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html",
+      "ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html",
+      "ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html",
+      "ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html",
+      "ancient-mysteries/texts/rongorongo-v1.0.html",
+      "ancient-mysteries/texts/ancient-mathematics-v1.0.html",
+      "ancient-mysteries/texts/phaistos-v1.0.html",
+      "ancient-mysteries/voynich/index.html",
+      "ancient-mysteries/voynich/cosmological.html",
+      "ancient-mysteries/voynich/analysis.html",
+      "ancient-mysteries/voynich/herbal.html",
+      "ancient-mysteries/voynich/zodiac.html",
+      "ancient-mysteries/voynich/astronomical.html",
+      "ancient-mysteries/voynich/biological.html",
+      "ancient-mysteries/voynich/pharmaceutical.html",
+      "ancient-mysteries/voynich/recipes.html",
+      "apps/soulscience-chat/index.html",
+      "apps/soul-social/index.html",
+      "games/mind-reading/index.html",
+      "games/balance/index.html",
+      "physics/shadow-operator/index.html",
+      "physics/atomic-derivations/index.html",
+      "physics/atomic-derivations/hydrogen.html",
+      "physics/atomic-derivations/helium.html",
+      "physics/atomic-derivations/lithium.html",
+      "physics/apparent-speed-paradox/index.html",
+      "physics/vessel/index.html",
+      "physics/kappa5/index.html",
+      "physics/standard-model-failures/hierarchy-problem.html",
+      "physics/standard-model-failures/dark-matter-energy.html",
+      "physics/standard-model-failures/index.html",
+      "physics/standard-model-failures/measurement-problem.html",
+      "physics/standard-model-failures/proton-electron-ratio.html",
+      "physics/standard-model-failures/fine-structure-constant.html",
+      "documents/dec14-model-cern/index.html",
+      "documents/epoch-framework/index.html",
+      "documents/dec14-unified-theory/index.html",
+      "documents/dec14-unified-theory/dual-axis-explorer.html",
+      "documents/dec14-unified-theory/main-framework.html",
+      "documents/tribute/index.html",
+      "cedga/research/test-analysis.html",
+      "cedga/triaxial-os/index.html",
+      "cedga/triaxial-os/build-guide.html",
+      "cedga/tools/m4-simulator.html",
+      "cedga/pages/tetrahelix.html",
+      "cedga/pages/balance-law.html",
+      "cedga/pages/kappa-constant.html",
+      "education/mythic-mirror/index.html",
+      "education/mythic-mirror/about.html",
+      "education/mythic-mirror/journey.html",
+      "education/mythic-mirror/teaching.html",
+      "education/mirror/index.html",
+      "tools/mind-reading/index.html",
+      "tools/m4-visualizer/index.html",
+      "tools/interaction-modeler/index.html",
+      "tools/s-signature/s_signature_128.html",
+      "tools/s-signature/s_signature_card.html",
+      "tools/s-signature/cohort_engine.html",
+      "tools/s-signature/s_signature_coin.html",
+      "tools/s-signature/deep_oracle.html",
+      "tools/s-signature/s_signature_assessment.html",
+      "tools/s-signature/s_signature_evolving.html",
+      "tools/s-signature/s_signature_sphere.html",
+      "tools/s-signature/s_signature_engine.html",
+      "tools/s-signature/s_signature_oracle.html",
+      "tools/s-signature/jason_ray_s_signature.html",
+      "tools/s-signature/reductive_oracle.html",
+      "tools/s-signature/s_signature_prediction.html",
+      "tools/sol-vision/index.html"
+    ],
+    "missing_dirs": [],
+    "missing_assets": [],
+    "passed": true
+  },
+  "omega": {
+    "sitemap_urls": 154,
+    "actual_pages": 157,
+    "sitemap_missing": [
+      "apps/index.html",
+      "apps/soul-social/index.html"
+    ],
+    "nav_coverage": 155,
+    "passed": true
+  },
+  "alpha": {
+    "total_links_checked": 1256,
+    "broken_links": [],
+    "suspicious_patterns": [
+      {
+        "file": "master-library.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "master-library.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/s-signature/s_signature_engine.html\""
+      },
+      {
+        "file": "master-library.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/s-signature/s_signature_assessment.html\""
+      },
+      {
+        "file": "index.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/s-signature/s_signature_128.html\""
+      },
+      {
+        "file": "index.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/m4-visualizer/index.html\""
+      },
+      {
+        "file": "library.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "library.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/s-signature/s_signature_128.html\""
+      },
+      {
+        "file": "library.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/s-signature/s_signature_assessment.html\""
+      },
+      {
+        "file": "mobile.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "site-directory.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "site-directory.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "site-directory.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/index.html\""
+      },
+      {
+        "file": "site-directory.html",
+        "pattern": "tools/ without leading ../",
+        "match": "href=\"tools/m4-visualizer/index.html\""
+      },
+      {
+        "file": "weirdos/wave-seers.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/maxwell-codex.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/contributors.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/suppression.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/indigenous-wisdom.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/unifiers.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/mithridates-echo.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/geometers.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/visionaries.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "weirdos/tesla-codex.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/love-triads.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/love-triads-learn.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/love-triads-learn.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/epoch-symbols.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/number-feeling.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/phaistos-archetypes.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/symbol-sender.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/coin-flip.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/color-sense.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/coordinate-viewer.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/zener-cards.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "games/card-match.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "store/designs.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/index.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/index.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/figurines.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/figurines.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/translator.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/translator.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/sign-reference.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/sign-reference.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/linear-a.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/linear-a.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/universal-language-theory.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/universal-language-theory.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/epoch-mathematics.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/indus-script/epoch-mathematics.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/index.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/cosmological.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/analysis.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/herbal.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/zodiac.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/astronomical.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/biological.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/pharmaceutical.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "ancient-mysteries/voynich/recipes.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/atomic-derivations/hydrogen.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/atomic-derivations/hydrogen.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/atomic-derivations/lithium.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/atomic-derivations/lithium.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/standard-model-failures/hierarchy-problem.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "physics/standard-model-failures/fine-structure-constant.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "documents/dec14-model-cern/index.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "documents/epoch-framework/index.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "documents/dec14-unified-theory/dual-axis-explorer.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "documents/dec14-unified-theory/dual-axis-explorer.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "documents/dec14-unified-theory/main-framework.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "cedga/triaxial-os/build-guide.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "cedga/triaxial-os/build-guide.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "education/mythic-mirror/about.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "education/mythic-mirror/journey.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      },
+      {
+        "file": "education/mythic-mirror/teaching.html",
+        "pattern": "index.html without trailing context",
+        "match": "href=\"index.html\""
+      }
+    ],
+    "depth_test_results": {
+      "/index.html": {
+        "expected": "./",
+        "actual": "./",
+        "passed": true
+      },
+      "/about.html": {
+        "expected": "./",
+        "actual": "./",
+        "passed": true
+      },
+      "/cedga/index.html": {
+        "expected": "../",
+        "actual": "../",
+        "passed": true
+      },
+      "/cedga/pages/kappa-constant.html": {
+        "expected": "../../",
+        "actual": "../../",
+        "passed": true
+      },
+      "/physics/atomic-derivations/hydrogen.html": {
+        "expected": "../../",
+        "actual": "../../",
+        "passed": true
+      },
+      "/ancient-mysteries/voynich/index.html": {
+        "expected": "../../",
+        "actual": "../../",
+        "passed": true
+      },
+      "/tools/s-signature/s_signature_engine.html": {
+        "expected": "../../",
+        "actual": "../../",
+        "passed": true
+      }
+    },
+    "passed": true
+  }
+}

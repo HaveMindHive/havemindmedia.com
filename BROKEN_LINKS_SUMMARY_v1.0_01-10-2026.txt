@@ -1,0 +1,160 @@
+================================================================================
+BROKEN LINKS QUICK REFERENCE - HaveMind Media Website
+Generated: January 10, 2026
+================================================================================
+
+SCAN STATISTICS
+--------------------------------------------------------------------------------
+HTML Files Scanned:          170
+Total Links Found:         2,826
+External Links (Skipped):    298
+Anchor Links (Skipped):       37
+BROKEN LINKS FOUND:           44
+Actual Broken Links:          33 (excluding 11 false positives)
+Files With Issues:            28
+
+================================================================================
+ACTUAL BROKEN LINKS BY CATEGORY
+================================================================================
+
+CATEGORY 1: MISSING /js/components.js [HIGH PRIORITY]
+--------------------------------------------------------------------------------
+Count: 11 files affected
+
+ancient-mysteries/index.html → ../js/components.js
+ancient-mysteries/mississippian/index.html → ../../js/components.js
+apps/index.html → ../js/components.js
+apps/soul-social/index.html → ../../js/components.js
+biology/eye-codex.html → ../js/components.js
+biology/index.html → ../js/components.js
+education/index.html → ../js/components.js
+physics/index.html → ../js/components.js
+tools/index.html → ../js/components.js
+weirdos/tesla-codex.html → ../js/components.js
+
+ACTION: Create /js/components.js OR update all files to reference /js/components/*.js
+
+
+CATEGORY 2: MISSING IMAGES - DNA Studio [MEDIUM PRIORITY]
+--------------------------------------------------------------------------------
+Count: 4 image files
+
+dna-studio/index.html → media_output/images/epoch_img_documentary_tetrahelix_structure_chain_of_0d9532_01-02-2026.png
+dna-studio/index.html → media_output/images/epoch_img_documentary_dna_helicase_hexameric_ring_en_48426f_01-02-2026.png
+dna-studio/index.html → media_output/images/epoch_img_documentary_hexameric_ring_motor_protein_3cff74_01-02-2026.png
+dna-studio/index.html → media_output/images/epoch_img_documentary_dna_double_helix_unwinding_he_25492e_01-02-2026.png
+
+ACTION: Create /dna-studio/media_output/images/ directory and add missing PNG files
+
+
+CATEGORY 3: MISSING DOCUMENTATION FILES [MEDIUM PRIORITY]
+--------------------------------------------------------------------------------
+Count: 15 files
+
+Subcategory: CERN Model Documentation (7 files)
+  documents/dec14-model-cern/index.html → scalar_reality_model.py
+  documents/dec14-model-cern/index.html → standard_model_as_geometry.py
+  documents/dec14-model-cern/index.html → cern_geometric_proof.py
+  documents/dec14-model-cern/index.html → ibm_quantum_temporal.py
+  documents/dec14-model-cern/index.html → cern_rowush_model.py
+  documents/dec14-model-cern/index.html → geometric_proof_complete.json
+  documents/dec14-model-cern/index.html → run3_quantum_predictions.json
+
+Subcategory: Epoch Framework Documentation (4 files)
+  documents/epoch-framework/index.html → epoch_geometric_derivation.py
+  documents/epoch-framework/index.html → epoch_framework.py
+  documents/epoch-framework/index.html → epoch_quantum.py
+  documents/epoch-framework/index.html → geometric_derivations.json
+
+Subcategory: Ancient Mysteries Documentation (4 files)
+  ancient-mysteries/texts/rongorongo-v1.0.html → DECIPHERMENT_SYNTHESIS.md
+  ancient-mysteries/texts/rongorongo-v1.0.html → src/unified_decoder.py
+  ancient-mysteries/texts/rongorongo-v1.0.html → docs/METHODOLOGY.md
+  ancient-mysteries/texts/rongorongo-v1.0.html → docs/HYPOTHESES.md
+  ancient-mysteries/texts/phaistos-v1.0.html → ../DECIPHERMENT_SYNTHESIS.md
+  ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html → MEDIA_PRODUCTION_GUIDE_v1.0_01-01-2026.md
+
+ACTION: Add missing documentation files OR remove dead links
+
+
+CATEGORY 4: MISSING IMAGE - Ancient Texts [LOW PRIORITY]
+--------------------------------------------------------------------------------
+Count: 1 file
+
+ancient-mysteries/texts/ancient-mathematics-v1.0.html → images/scalar-crossroads.svg
+
+ACTION: Create image or remove reference
+
+
+CATEGORY 5: MISSING APP ICON [LOW PRIORITY]
+--------------------------------------------------------------------------------
+Count: 1 file
+
+apps/soulscience-chat/index.html → icon-192.png
+
+ACTION: Create PWA icon image
+
+
+================================================================================
+FALSE POSITIVES (NO ACTION REQUIRED)
+================================================================================
+
+CATEGORY: JavaScript Template Literals
+--------------------------------------------------------------------------------
+Count: 8 occurrences
+
+ancient-mysteries/voynich/astronomical.html → images/${folio.id}.JPG [DYNAMIC]
+ancient-mysteries/voynich/biological.html → images/${folio.id}.JPG [DYNAMIC]
+ancient-mysteries/voynich/herbal.html → images/${folio.id}.JPG [DYNAMIC]
+ancient-mysteries/voynich/pharmaceutical.html → images/${folio.id}.JPG [DYNAMIC]
+ancient-mysteries/voynich/recipes.html → images/${folio.id}.JPG [DYNAMIC]
+ancient-mysteries/voynich/zodiac.html → images/${folio.id}.JPG [DYNAMIC]
+library-wizard/index.html → ${b.url} [DYNAMIC]
+library-wizard/index.html → ${m.url} [DYNAMIC]
+
+NOTE: These are JavaScript template literals that generate paths dynamically
+
+
+CATEGORY: Data URIs (Inline SVG)
+--------------------------------------------------------------------------------
+Count: 3 occurrences
+
+rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html → data:image/svg+xml,...
+rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html → data:image/svg+xml,...
+universal-language-generator/ulg-app_v1.0_01-06-2026.html → data:image/svg+xml,...
+
+NOTE: These are embedded data URIs, not file references
+
+
+================================================================================
+PRIORITY ACTION ITEMS
+================================================================================
+
+[1] HIGH PRIORITY - Fix /js/components.js (11 files affected)
+    Estimated Impact: Site navigation and core functionality
+    Estimated Time: 15-30 minutes
+
+[2] MEDIUM PRIORITY - Add DNA Studio images (4 files missing)
+    Estimated Impact: Visual content on DNA Studio page
+    Estimated Time: 5-10 minutes (if images exist elsewhere)
+
+[3] MEDIUM PRIORITY - Documentation files (15 files)
+    Estimated Impact: Reference materials and source code access
+    Estimated Time: Variable (depends on if files should exist)
+
+[4] LOW PRIORITY - Miscellaneous (2 files)
+    Estimated Impact: Minor functionality issues
+    Estimated Time: 5-10 minutes
+
+
+================================================================================
+FILES READY FOR REVIEW
+================================================================================
+
+Full Report: /Users/paymore/Downloads/HaveMindHive/havemindmedia-website_v1.0_01-04-2026/BROKEN_LINKS_REPORT_v1.0_01-10-2026.md
+Quick Summary: /Users/paymore/Downloads/HaveMindHive/havemindmedia-website_v1.0_01-04-2026/BROKEN_LINKS_SUMMARY_v1.0_01-10-2026.txt
+Link Checker Script: /Users/paymore/Downloads/HaveMindHive/havemindmedia-website_v1.0_01-04-2026/link_checker.py
+
+================================================================================
+END OF SUMMARY
+================================================================================

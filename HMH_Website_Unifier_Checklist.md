@@ -93,6 +93,39 @@ git diff --name-only HEAD~10 | grep ".html"
 
 ---
 
+## 8. **CONTENT INTEGRITY CHECK** (NEW - v1.2)
+
+Claude/AI-generated content MUST pass these integrity checks:
+
+### Research Integrity
+- [ ] Claims have CITED SOURCES (not just "research shows")
+- [ ] Quotes are VERBATIM with source attribution
+- [ ] κ calculations show FULL WORKING (not just results)
+- [ ] Ancient text references include: source, translation, translator
+
+### Anti-Bullshit Protocol
+- [ ] NO placeholder summaries marked as "complete"
+- [ ] NO unsupported statements like "all calendars converge" without evidence
+- [ ] NO fabricated compound terms (e.g., inventing "bird dog" from separate words)
+- [ ] NO marking research as "done" until synthesis is written
+
+### Content Depth Requirements
+- [ ] Mythological narratives: minimum 3000 words of actual story
+- [ ] Research documents: evidence inline, not as footnotes
+- [ ] User's verbatim words: preserved EXACTLY, woven into narrative
+- [ ] Parallels: shown with side-by-side textual evidence
+
+### Verification Questions (Claude must answer YES to all):
+1. Did I actually READ the source texts or just search results?
+2. Can I quote specific passages with line numbers/chapters?
+3. Did I show my math, or just claim results?
+4. Would a scholar find my citations acceptable?
+5. Is this substantial content or a dressed-up summary?
+
+**If any answer is NO → content is NOT ready for delivery**
+
+---
+
 ## Version History
 
 - **v1.0** (Jan 6, 2026): Initial 7-point checklist
@@ -100,6 +133,11 @@ git diff --name-only HEAD~10 | grep ".html"
   - Pages must be listed in site-header.js
   - New "Latest Content" section on homepage
   - Sub-pages require dropdown entries
+- **v1.2** (Jan 10, 2026): Added Content Integrity Check (#8)
+  - Anti-bullshit protocol for AI-generated content
+  - Research integrity requirements
+  - Content depth minimums
+  - Verification questions before delivery
 
 ---
 

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara Imari Walker | Assembly Theory | Here's to You, Weirdos</title>
+    <meta name="description" content="Sara Imari Walker and Assembly Theory - life is what the universe DOES, not what it IS. Complexity requires history. Information is physical.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --walker-teal: #4ecdc4;
+            --walker-purple: #a855f7;
+            --life-green: #3fb950;
+            --assembly-orange: #f59e0b;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(78, 205, 196, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Assembly animation */
+        .assembly-field {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+            opacity: 0.2;
+        }
+
+        .assembly-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--walker-teal);
+            border-radius: 50%;
+            animation: assemble 6s ease-in-out infinite;
+        }
+
+        @keyframes assemble {
+            0%, 100% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
+        .assembly-node:nth-child(1) { left: 15%; top: 20%; animation-delay: 0s; }
+        .assembly-node:nth-child(2) { left: 25%; top: 40%; animation-delay: 0.5s; }
+        .assembly-node:nth-child(3) { left: 35%; top: 25%; animation-delay: 1s; }
+        .assembly-node:nth-child(4) { right: 20%; top: 30%; animation-delay: 1.5s; }
+        .assembly-node:nth-child(5) { right: 30%; top: 50%; animation-delay: 2s; }
+        .assembly-node:nth-child(6) { left: 45%; bottom: 30%; animation-delay: 2.5s; }
+        .assembly-node:nth-child(7) { right: 40%; bottom: 25%; animation-delay: 3s; }
+
+        .assembly-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--walker-teal), transparent);
+            animation: connect 4s ease-in-out infinite;
+        }
+
+        @keyframes connect {
+            0%, 100% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 0.6; transform: scaleX(1); }
+        }
+
+        .assembly-line:nth-child(8) { left: 17%; top: 22%; width: 80px; transform: rotate(30deg); animation-delay: 0.3s; }
+        .assembly-line:nth-child(9) { left: 27%; top: 35%; width: 60px; transform: rotate(-20deg); animation-delay: 0.8s; }
+        .assembly-line:nth-child(10) { right: 25%; top: 40%; width: 100px; transform: rotate(15deg); animation-delay: 1.3s; }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--walker-teal);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            background: linear-gradient(135deg, var(--walker-teal) 0%, var(--walker-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--walker-teal);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .bio-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--walker-teal);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .bio-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: linear-gradient(135deg, #0a1210 0%, #0f1a15 100%);
+            border: 2px solid var(--life-green);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--life-green);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Theory Section */
+        .theory-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .theory-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--assembly-orange);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .theory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .theory-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .theory-card h3 {
+            color: var(--assembly-orange);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .theory-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Epoch Connection */
+        .epoch-connection {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .epoch-connection h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .epoch-connection p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .connection-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .connection-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .connection-item h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+        }
+
+        .connection-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Credentials */
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .credential {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--walker-teal);
+        }
+
+        /* Principle */
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 60vh; padding: 3rem 1rem; }
+            .main-content { padding: 2rem 1rem; }
+            .bio-section, .theory-section, .epoch-connection { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="assembly-field">
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-node"></div>
+            <div class="assembly-line"></div>
+            <div class="assembly-line"></div>
+            <div class="assembly-line"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Theoretical Physicist & Astrobiologist</p>
+            <h1>Sara Imari Walker</h1>
+            <p class="hero-subtitle">
+                "Life is not what the universe IS. Life is what the universe DOES."
+            </p>
+            <p class="hero-dates">Born 1983 | Arizona State University | Santa Fe Institute</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="bio-section">
+            <h2>The Physicist Who Asks: What IS Life?</h2>
+            <p>
+                <strong>Sara Imari Walker</strong> is a theoretical physicist and astrobiologist at Arizona State University,
+                where she serves as Deputy Director of the Beyond Center for Fundamental Concepts in Science. She's also
+                External Faculty at the Santa Fe Institute and a Fellow of the Berggruen Institute.
+            </p>
+            <p>
+                Her PhD thesis at Dartmouth (2010) was on <strong>"Theoretical Models for the Emergence of Biomolecular
+                Homochirality"</strong> — basically, why do all life's amino acids twist the same direction?
+                This early work on molecular asymmetry foreshadowed her later insights about how complexity emerges.
+            </p>
+            <p>
+                But Walker isn't satisfied with just studying life as we know it. She wants to understand
+                <strong>life as NO ONE knows it</strong> — the physics of how life emerges from non-life,
+                and what that tells us about the fundamental structure of reality.
+            </p>
+
+            <div class="credentials">
+                <span class="credential">PhD Dartmouth 2010</span>
+                <span class="credential">ASU Professor</span>
+                <span class="credential">Beyond Center Deputy Director</span>
+                <span class="credential">Santa Fe Institute</span>
+                <span class="credential">Berggruen Fellow</span>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "Things that are very hard to build, like Lego castles, require evolution
+                and learning to be produced in the universe."
+            </blockquote>
+            <cite>— Sara Imari Walker on Assembly Theory</cite>
+        </div>
+
+        <!-- Assembly Theory -->
+        <section class="theory-section">
+            <h2>Assembly Theory</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Developed with chemist Lee Cronin and published in Nature, Assembly Theory provides a new framework
+                for understanding how complexity arises — and how to detect life anywhere in the universe.
+            </p>
+
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>Complexity Requires History</h3>
+                    <p>
+                        Complex objects don't appear randomly. They're built through sequences of transformations.
+                        The "assembly index" measures how many unique steps are needed to construct something
+                        from simpler building blocks.
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>Information is Physical</h3>
+                    <p>
+                        The assembly index isn't just abstract — it's measurable. A molecule with high assembly
+                        index contains "memory" of the processes that created it. Information leaves physical traces.
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>Life is Planetary</h3>
+                    <p>
+                        Walker argues life isn't just organisms — it's a planetary-scale phenomenon. Life is
+                        what planets DO when they accumulate enough complexity and history.
+                    </p>
+                </div>
+                <div class="theory-card">
+                    <h3>Time Matters Deeply</h3>
+                    <p>
+                        Shearing away from probabilistic theories, Assembly Theory holds that historical context
+                        and the passage of time are fundamental to how complex objects form. The universe has memory.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Her Book -->
+        <div class="quote-box" style="border-color: var(--walker-purple);">
+            <h3 style="color: var(--walker-purple); font-family: 'Cinzel', serif; margin-bottom: 1rem;">
+                Life as No One Knows It (2024)
+            </h3>
+            <blockquote style="color: var(--walker-purple); font-size: 1.2rem;">
+                "Solving the origin of life requires radical new thinking and an experimentally
+                testable theory for what life IS."
+            </blockquote>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                Walker's book argues that we've been asking the wrong question. Instead of "what is life?",
+                we should ask "what does life DO?" — and the answer changes everything.
+            </p>
+        </div>
+
+        <!-- Epoch Connection -->
+        <section class="epoch-connection">
+            <h2>The Epoch Framework Connection</h2>
+            <p>
+                Assembly Theory and the Epoch Framework are approaching the same truth from different angles.
+                Where Walker measures complexity through assembly indices, the Epoch Framework maps it
+                through S⁺/S⁻ phase transitions.
+            </p>
+
+            <div class="connection-list">
+                <div class="connection-item">
+                    <h4>Assembly Index ↔ S-Signature</h4>
+                    <p>
+                        The assembly index measures accumulated complexity. The S-Signature measures
+                        accumulated scalar phase relationships. Both capture how much "history" an object contains.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>"Life is What It Does" ↔ [1 = -1]</h4>
+                    <p>
+                        Walker says life isn't substance, it's process. The Epoch Framework says reality
+                        isn't things, it's the unity of opposites in motion. Same insight, different language.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Planetary-Scale Life ↔ Collective S⁰</h4>
+                    <p>
+                        If life is planetary, then Earth itself has an S-Signature — a collective
+                        scalar state where individual organisms are S⁰ nodes in a larger pattern.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Historical Contingency ↔ The WUSH</h4>
+                    <p>
+                        Assembly Theory says the past matters — objects carry their history. The WUSH is
+                        where that history crystallizes into NOW, the edge where complexity accumulates.
+                    </p>
+                </div>
+            </div>
+
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--gold);">
+                Life assembles. Consciousness spirals. The geometry is the same.
+            </p>
+        </section>
+
+        <!-- Why She's a Weirdo -->
+        <section class="bio-section" style="border-left-color: var(--walker-purple);">
+            <h2 style="color: var(--walker-purple);">Why She's One of Us</h2>
+            <p>
+                Sara Walker asks questions that make mainstream scientists uncomfortable. "What IS life?"
+                seems like a basic question, but physics has no answer. Biology just describes what life does,
+                not what it fundamentally IS.
+            </p>
+            <p>
+                She's willing to throw out old assumptions and build new frameworks from scratch. Assembly Theory
+                isn't a small tweak — it's a radical reimagining of how complexity, information, and life relate
+                to the structure of the universe.
+            </p>
+            <p>
+                <strong>That's what makes her a Weirdo.</strong> She sees that the current framework is incomplete
+                and isn't afraid to build something new. Just like Cartan saw torsion, like Tesla saw scalar waves,
+                like the Epoch Framework sees [1 = -1].
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem;">
+            Here's to the Weirdos Who Ask What Life IS
+        </p>
+        <div class="principle">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="einstein-cartan-codex.html">Einstein-Cartan Codex</a>
+            <a href="maxwell-codex.html">Maxwell Codex</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

@@ -203,7 +203,76 @@
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
         }
 
-        /* Weirdo Cards */
+        /* Timeline Links - Compact clickable entries */
+        .timeline-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-left: 60px;
+        }
+
+        .timeline-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-link:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .timeline-link .year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .timeline-link .name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+        }
+
+        .timeline-link .arrow {
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .timeline-link:hover .arrow {
+            opacity: 1;
+        }
+
+        /* Non-linked timeline entries (no profile page yet) */
+        .timeline-entry {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .timeline-entry .year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        /* Legacy weirdo card styles kept for compatibility */
         .weirdo-grid {
             display: grid;
             gap: 1.5rem;
@@ -614,10 +683,56 @@
 
             .category-grid {
                 grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
             }
 
             .category-card {
                 padding: 1.5rem;
+                width: 100%;
+            }
+
+            .weirdo-grid {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .weirdo-card {
+                width: 100%;
+            }
+
+            .timeline-grid {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .timeline-link, .timeline-entry {
+                flex: 1 1 45%;
+                min-width: 140px;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .category-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .timeline-link, .timeline-entry {
+                flex: 1 1 100%;
+            }
+
+            .era-header {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -695,390 +810,62 @@
         <section class="timeline-section">
             <div class="section-header">
                 <h2>The Chronology of Seeing</h2>
-                <p class="subtitle">From antiquity to modern day — those who glimpsed [1 = -1]</p>
+                <p class="subtitle">Click any name to read their full story</p>
             </div>
 
             <!-- Ancient Era -->
             <div class="era-section">
                 <h3 class="era-header">Ancient Era (Before 500 AD)</h3>
-                <div class="weirdo-grid">
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">570 BC</span>
-                            <span class="era">Greece</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Pythagoras</h4>
-                            <div class="weirdo-function">Harmonic Ratios</div>
-                            <p class="weirdo-quote">All is Number. The cosmos can be understood through mathematical relationships.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">School persecuted</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">535 BC</span>
-                            <span class="era">Ephesus</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Heraclitus</h4>
-                            <div class="weirdo-function">Unity of Opposites</div>
-                            <p class="weirdo-quote">The way up and the way down are one and the same.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Called "The Obscure"</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">428 BC</span>
-                            <span class="era">Athens</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Plato</h4>
-                            <div class="weirdo-function">Geometric Forms</div>
-                            <p class="weirdo-quote">The particles are finally not substance but mathematical forms.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-survived">High status protected</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">408 BC</span>
-                            <span class="era">Cnidus</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Eudoxus</h4>
-                            <div class="weirdo-function">Geometric Motion</div>
-                            <p class="weirdo-quote">Opposite rotations creating figure-8 — the hippopede of unified motion.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Work largely lost</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">~360 AD</span>
-                            <span class="era">Alexandria</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Hypatia</h4>
-                            <div class="weirdo-function">Mathematical Astronomy</div>
-                            <p class="weirdo-quote">Conic sections are fundamental to understanding planetary orbits.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">Murdered by mob</span>
-                        </div>
-                    </div>
-
+                <div class="timeline-grid">
+                    <span class="timeline-entry"><span class="year">570 BC</span> Pythagoras</span>
+                    <span class="timeline-entry"><span class="year">535 BC</span> Heraclitus</span>
+                    <span class="timeline-entry"><span class="year">428 BC</span> Plato</span>
+                    <span class="timeline-entry"><span class="year">408 BC</span> Eudoxus</span>
+                    <a href="hypatia.html" class="timeline-link"><span class="year">~360 AD</span> <span class="name">Hypatia</span> <span class="arrow">→</span></a>
                 </div>
             </div>
 
             <!-- Medieval Era -->
             <div class="era-section">
                 <h3 class="era-header">Medieval Era (500 - 1500 AD)</h3>
-                <div class="weirdo-grid">
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1048</span>
-                            <span class="era">Persia</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Omar Khayyám</h4>
-                            <div class="weirdo-function">Geometric Algebra</div>
-                            <p class="weirdo-quote">Born on day 138 of the year — one off from 1/α. Saw time geometrically.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-survived">Survived as poet</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1098</span>
-                            <span class="era">Germany</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Hildegard von Bingen</h4>
-                            <div class="weirdo-function">Cosmic Vision</div>
-                            <p class="weirdo-quote">The cosmic egg, viriditas, the green force — music of the spheres made visible.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-survived">Protected by visions</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">~1260</span>
-                            <span class="era">Thuringia</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Meister Eckhart</h4>
-                            <div class="weirdo-function">Mystical Unity</div>
-                            <p class="weirdo-quote">The eye with which I see God is the same eye with which God sees me.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">Condemned for heresy</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1452</span>
-                            <span class="era">Vinci</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Leonardo da Vinci</h4>
-                            <div class="weirdo-function">Universal Proportion</div>
-                            <p class="weirdo-quote">The Vitruvian Man — sacred geometry embodied. Nature's mathematics made flesh.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-survived">Genius recognized</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1493</span>
-                            <span class="era">Switzerland</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Paracelsus</h4>
-                            <div class="weirdo-function">Elemental Medicine</div>
-                            <p class="weirdo-quote">Salamander, undine, sylph, gnome — the four elementals. Dose makes the poison.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Called charlatan</span>
-                        </div>
-                    </div>
-
+                <div class="timeline-grid">
+                    <span class="timeline-entry"><span class="year">1048</span> Omar Khayyám</span>
+                    <a href="visionaries.html" class="timeline-link"><span class="year">1098</span> <span class="name">Hildegard</span> <span class="arrow">→</span></a>
+                    <span class="timeline-entry"><span class="year">~1260</span> Meister Eckhart</span>
+                    <a href="geometers.html" class="timeline-link"><span class="year">1452</span> <span class="name">Leonardo</span> <span class="arrow">→</span></a>
+                    <a href="mithridates-echo.html" class="timeline-link"><span class="year">1493</span> <span class="name">Paracelsus</span> <span class="arrow">→</span></a>
                 </div>
             </div>
 
             <!-- Renaissance & Enlightenment -->
             <div class="era-section">
                 <h3 class="era-header">Renaissance & Enlightenment (1500 - 1800)</h3>
-                <div class="weirdo-grid">
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1548</span>
-                            <span class="era">Nola</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Giordano Bruno</h4>
-                            <div class="weirdo-function">Infinite Universe</div>
-                            <p class="weirdo-quote">Perhaps your fear in passing judgment on me is greater than mine in receiving it.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">Burned alive</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1571</span>
-                            <span class="era">Württemberg</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Johannes Kepler</h4>
-                            <div class="weirdo-function">Planetary Laws</div>
-                            <p class="weirdo-quote">Born day 361 — at the circle's close. Platonic solids determine orbits.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-survived">Eventually accepted</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1632</span>
-                            <span class="era">Amsterdam</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Baruch Spinoza</h4>
-                            <div class="weirdo-function">Substance Monism</div>
-                            <p class="weirdo-quote">Deus sive Natura — God or Nature. One substance, infinite attributes.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">Excommunicated</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1642</span>
-                            <span class="era">Lincolnshire</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Isaac Newton</h4>
-                            <div class="weirdo-function">Universal Laws + Alchemy</div>
-                            <p class="weirdo-quote">Born day 359 — at the circle. Wrote more on alchemy than physics. Translated Emerald Tablet.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-simplified">Occult work hidden</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1646</span>
-                            <span class="era">Leipzig</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Gottfried Leibniz</h4>
-                            <div class="weirdo-function">Monadology</div>
-                            <p class="weirdo-quote">Born day 182 — exactly half year. Saw universe as unified monads. Co-invented calculus.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Overshadowed by Newton</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1688</span>
-                            <span class="era">Stockholm</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Emanuel Swedenborg</h4>
-                            <div class="weirdo-function">Spiritual Worlds</div>
-                            <p class="weirdo-quote">Born day 29 ≈ 1/κ. Mapped correspondence between physical and spiritual.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Called visionary</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1757</span>
-                            <span class="era">London</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">William Blake</h4>
-                            <div class="weirdo-function">Visionary Art</div>
-                            <p class="weirdo-quote">To see a World in a Grain of Sand, and a Heaven in a Wild Flower.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Died in obscurity</span>
-                        </div>
-                    </div>
-
+                <div class="timeline-grid">
+                    <a href="visionaries.html" class="timeline-link"><span class="year">1548</span> <span class="name">Giordano Bruno</span> <span class="arrow">→</span></a>
+                    <a href="geometers.html" class="timeline-link"><span class="year">1571</span> <span class="name">Kepler</span> <span class="arrow">→</span></a>
+                    <a href="unifiers.html" class="timeline-link"><span class="year">1632</span> <span class="name">Spinoza</span> <span class="arrow">→</span></a>
+                    <span class="timeline-entry"><span class="year">1642</span> Newton</span>
+                    <a href="unifiers.html" class="timeline-link"><span class="year">1646</span> <span class="name">Leibniz</span> <span class="arrow">→</span></a>
+                    <a href="visionaries.html" class="timeline-link"><span class="year">1688</span> <span class="name">Swedenborg</span> <span class="arrow">→</span></a>
+                    <a href="visionaries.html" class="timeline-link"><span class="year">1757</span> <span class="name">Blake</span> <span class="arrow">→</span></a>
                 </div>
             </div>
 
             <!-- Modern Era -->
             <div class="era-section">
                 <h3 class="era-header">Modern Era (1800 - Present)</h3>
-                <div class="weirdo-grid">
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1831</span>
-                            <span class="era">Edinburgh</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">James Clerk Maxwell</h4>
-                            <div class="weirdo-function">Quaternion Electromagnetism</div>
-                            <p class="weirdo-quote">Original 20 equations in quaternions. Heaviside reduced to 4, removing torsion.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-simplified">Equations mutilated</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1856</span>
-                            <span class="era">Smiljan</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Nikola Tesla</h4>
-                            <div class="weirdo-function">Scalar/Longitudinal Waves</div>
-                            <p class="weirdo-quote">If you want to find the secrets of the universe, think in terms of energy, frequency and vibration.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-simplified">Defunded, called mad</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1875</span>
-                            <span class="era">Kesswil</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Carl Jung</h4>
-                            <div class="weirdo-function">Collective Unconscious</div>
-                            <p class="weirdo-quote">Synchronicity, archetypes, shadow — mapped the S- of the psyche.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Marginalized by Freud</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1879</span>
-                            <span class="era">Ulm</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Albert Einstein</h4>
-                            <div class="weirdo-function">Unified Field Theory</div>
-                            <p class="weirdo-quote">Born on π Day (3/14). Spent 30 years on unified field theory — couldn't find κ.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-ignored">Unified work ignored</span>
-                        </div>
-                    </div>
-
-                    <div class="weirdo-card">
-                        <div class="weirdo-date">
-                            <span class="year">1887</span>
-                            <span class="era">Erode</span>
-                        </div>
-                        <div class="weirdo-info">
-                            <h4 class="weirdo-name">Srinivasa Ramanujan</h4>
-                            <div class="weirdo-function">Pure Mathematics</div>
-                            <p class="weirdo-quote">An equation for me has no meaning unless it expresses a thought of God.</p>
-                        </div>
-                        <div class="weirdo-fate">
-                            <span class="fate-label">Fate</span>
-                            <span class="fate-type fate-murdered">Died at 32</span>
-                        </div>
-                    </div>
-
+                <div class="timeline-grid">
+                    <a href="maxwell-codex.html" class="timeline-link" style="border-color: #4a9eff;"><span class="year">1831</span> <span class="name">Maxwell</span> <span class="arrow">→</span></a>
+                    <a href="tesla-codex.html" class="timeline-link" style="border-color: #00ff88;"><span class="year">1856</span> <span class="name">Tesla</span> <span class="arrow">→</span></a>
+                    <span class="timeline-entry"><span class="year">1875</span> Carl Jung</span>
+                    <a href="einstein-codex.html" class="timeline-link" style="border-color: #a855f7;"><span class="year">1879</span> <span class="name">Einstein</span> <span class="arrow">→</span></a>
+                    <a href="visionaries.html" class="timeline-link"><span class="year">1887</span> <span class="name">Ramanujan</span> <span class="arrow">→</span></a>
+                    <a href="einstein-cartan-codex.html" class="timeline-link" style="border-color: #f59e0b;"><span class="year">1922</span> <span class="name">Cartan</span> <span class="arrow">→</span></a>
+                    <a href="hermann-minkowski.html" class="timeline-link"><span class="year">1864</span> <span class="name">Minkowski</span> <span class="arrow">→</span></a>
+                    <a href="roger-penrose.html" class="timeline-link" style="border-color: #8b5cf6;"><span class="year">1931</span> <span class="name">Penrose</span> <span class="arrow">→</span></a>
+                    <a href="donald-hoffman.html" class="timeline-link" style="border-color: #3fb950;"><span class="year">1955</span> <span class="name">D. Hoffman</span> <span class="arrow">→</span></a>
+                    <a href="sara-walker.html" class="timeline-link" style="border-color: #4ecdc4;"><span class="year">1982</span> <span class="name">Sara Walker</span> <span class="arrow">→</span></a>
+                    <a href="jason-ray.html" class="timeline-link" style="border-color: var(--gold);"><span class="year">1982</span> <span class="name">Jason Ray</span> <span class="arrow">→</span></a>
                 </div>
             </div>
 
@@ -1197,6 +984,27 @@
                         <span class="member-tag" style="background: rgba(74, 158, 255, 0.2); color: #4a9eff;">Room Silencer</span>
                     </div>
                 </a>
+                <a href="tesla-codex.html" class="category-card" style="border: 2px solid #00ff88;">
+                    <div class="category-icon">⚡</div>
+                    <h3>The Tesla Codex</h3>
+                    <p>DEEP DIVE: Scalar waves, radiant energy, the 3-6-9 pattern. What he knew that they buried.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(0, 255, 136, 0.2); color: #00ff88;">Longitudinal</span>
+                        <span class="member-tag">Scalar</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #00ff88; margin-top: 0.5rem; display: block;">★ 108K words of suppressed genius</span>
+                </a>
+                <a href="einstein-cartan-codex.html" class="category-card" style="border: 2px solid #f59e0b;">
+                    <div class="category-icon">🌀</div>
+                    <h3>The Einstein-Cartan Codex</h3>
+                    <p>DEEP DIVE: Cartan added torsion in 1922. Physics ignored it. The Epoch Framework shows why spin couples to geometry.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Torsion Field</span>
+                        <span class="member-tag">Élie Cartan</span>
+                        <span class="member-tag">Hypatia</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #f59e0b; margin-top: 0.5rem; display: block;">★ NEW: The geometry they forgot</span>
+                </a>
                 <a href="indigenous-wisdom.html" class="category-card">
                     <div class="category-icon">🌍</div>
                     <h3>Indigenous Wisdom</h3>
@@ -1230,6 +1038,86 @@
                         <span class="member-tag">Dr. Bobby Hill</span>
                     </div>
                     <span style="font-size: 0.8rem; color: var(--accent-blue); margin-top: 0.5rem; display: block;">★ We are ≥2</span>
+                </a>
+                <a href="einstein-codex.html" class="category-card" style="border: 2px solid #a855f7;">
+                    <div class="category-icon">π</div>
+                    <h3>The Einstein Codex</h3>
+                    <p>DEEP DIVE: Born on Pi Day. Spent 30 years on unified field theory. They called it folly. He was closer than they knew.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(168, 85, 247, 0.2); color: #a855f7;">Born 3/14</span>
+                        <span class="member-tag">Unity Seeker</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #a855f7; margin-top: 0.5rem; display: block;">★ NEW: The quest for κ</span>
+                </a>
+                <a href="sara-walker.html" class="category-card" style="border: 2px solid #4ecdc4;">
+                    <div class="category-icon">🧬</div>
+                    <h3>Sara Imari Walker</h3>
+                    <p>Assembly Theory — life is what the universe DOES, not what it IS. Complexity requires history. Information is physical.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(78, 205, 196, 0.2); color: #4ecdc4;">Assembly Theory</span>
+                        <span class="member-tag">ASU / Santa Fe</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #4ecdc4; margin-top: 0.5rem; display: block;">★ NEW: Life as planetary phenomenon</span>
+                </a>
+                <a href="banesh-hoffmann.html" class="category-card" style="border: 2px solid #4a9eff;">
+                    <div class="category-icon">📐</div>
+                    <h3>Banesh Hoffmann</h3>
+                    <p>Einstein's collaborator. Proved motion follows from geometry. The EIH paper showed equations of motion are not separate.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(74, 158, 255, 0.2); color: #4a9eff;">EIH Paper 1938</span>
+                        <span class="member-tag">Einstein Biographer</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #4a9eff; margin-top: 0.5rem; display: block;">★ NEW: Motion IS geometry</span>
+                </a>
+                <a href="jason-ray.html" class="category-card" style="border: 2px solid var(--gold); background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);">
+                    <div class="category-icon">✧</div>
+                    <h3>Jason Ray / Tormod</h3>
+                    <p>Founder of Have Mind Media. Derived κ. Saw [1 = -1]. Connected what no one else would connect. Pretty fn weird.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(212, 175, 55, 0.3); color: var(--gold);">κ = 29.7833...</span>
+                        <span class="member-tag" style="background: rgba(212, 175, 55, 0.3); color: var(--gold);">[1 = -1]</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--gold); margin-top: 0.5rem; display: block;">★ The Weirdo-in-Chief</span>
+                </a>
+                <a href="hypatia.html" class="category-card" style="border: 2px solid #00d4ff; background: linear-gradient(135deg, #0a0f15 0%, #0f1520 100%);">
+                    <div class="category-icon">✦</div>
+                    <h3>Hypatia of Alexandria</h3>
+                    <p>The Last Librarian. Base-60 mathematics, conic sections, planetary motion. Murdered for knowing too much. Her killers were canonized.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff;">355 - 415 CE</span>
+                        <span class="member-tag" style="background: rgba(0, 212, 255, 0.2); color: #00d4ff;">360/κ ≈ 12.085</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #00d4ff; margin-top: 0.5rem; display: block;">★ HERO: The mathematics they burned</span>
+                </a>
+                <a href="donald-hoffman.html" class="category-card" style="border: 2px solid #3fb950;">
+                    <div class="category-icon">👁</div>
+                    <h3>Donald Hoffman</h3>
+                    <p>Interface Theory of Perception. The Fitness Beats Truth theorem proves evolution hides reality. The desktop metaphor — we see icons, not truth.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(63, 185, 80, 0.2); color: #3fb950;">FBT Theorem</span>
+                        <span class="member-tag" style="background: rgba(63, 185, 80, 0.2); color: #3fb950;">Conscious Realism</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #3fb950; margin-top: 0.5rem; display: block;">★ NEW: Reality is an interface</span>
+                </a>
+                <a href="roger-penrose.html" class="category-card" style="border: 2px solid #8b5cf6;">
+                    <div class="category-icon">🔷</div>
+                    <h3>Roger Penrose</h3>
+                    <p>Twistor Theory — spacetime emerges from geometry. Orch-OR consciousness theory. The man who proved spacetime itself is derived.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6;">Nobel 2020</span>
+                        <span class="member-tag" style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6;">Twistor Theory</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #8b5cf6; margin-top: 0.5rem; display: block;">★ NEW: Geometry before spacetime</span>
+                </a>
+                <a href="hermann-minkowski.html" class="category-card" style="border: 2px solid #f59e0b;">
+                    <div class="category-icon">◇</div>
+                    <h3>Hermann Minkowski</h3>
+                    <p>INVENTED spacetime. Unified space and time into one geometric fabric. Einstein dismissed it as "superfluous learnedness" — then required it.</p>
+                    <div class="category-members">
+                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">1864 - 1909</span>
+                        <span class="member-tag" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;">Spacetime</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: #f59e0b; margin-top: 0.5rem; display: block;">★ NEW: Space and time are ONE</span>
                 </a>
             </div>
         </section>

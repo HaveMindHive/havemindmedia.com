@@ -8,324 +8,144 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified-theme.css">
 
     <style>
-        :root {
-            --bg-primary: #050510;
-            --bg-secondary: #0a0a18;
-            --bg-tertiary: #12121f;
-            --gold: #d4af37;
-            --gold-dim: #8b7355;
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --text-dim: #666;
-            --edu-green: #3fb950;
-            --edu-blue: #58a6ff;
-            --edu-purple: #a855f7;
-            --edu-amber: #d4a574;
-            --border-subtle: #2a2a3a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Raleway', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-
-        .header {
+        .page-header {
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            border-bottom: 1px solid var(--border-subtle);
+            padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--border);
         }
 
-        .header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, var(--edu-green), var(--edu-blue), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
             margin-bottom: 1rem;
         }
 
-        .header .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
+        .page-header .lead {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
         }
 
-        .header .kappa-badge {
-            display: inline-block;
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.5rem;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--gold-dim);
-            border-radius: 4px;
+        .kappa-sig {
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
             color: var(--gold);
-        }
-
-        .content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .intro p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: 8px;
-            padding: 2rem;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: block;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .card .status {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .card .status.interactive {
-            background: rgba(63, 185, 80, 0.2);
-            color: var(--edu-green);
-            border: 1px solid var(--edu-green);
-        }
-
-        .card .status.lesson {
-            background: rgba(88, 166, 255, 0.2);
-            color: var(--edu-blue);
-            border: 1px solid var(--edu-blue);
-        }
-
-        .card .status.featured {
-            background: rgba(212, 175, 55, 0.2);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-        }
-
-        /* Card Colors */
-        .card.soul { border-left: 4px solid var(--gold); }
-        .card.soul h3 { color: var(--gold); }
-
-        .card.mythic { border-left: 4px solid var(--edu-purple); }
-        .card.mythic h3 { color: var(--edu-purple); }
-
-        .card.socrates { border-left: 4px solid var(--edu-blue); }
-        .card.socrates h3 { color: var(--edu-blue); }
-
-        .card.ammit { border-left: 4px solid #ff6b6b; }
-        .card.ammit h3 { color: #ff6b6b; }
-
-        .card.hidden { border-left: 4px solid var(--edu-green); }
-        .card.hidden h3 { color: var(--edu-green); }
-
-        .card.coin { border-left: 4px solid var(--edu-amber); }
-        .card.coin h3 { color: var(--edu-amber); }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .footer .identity {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--gold);
-            font-size: 1.3rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--gold);
+            opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <site-header></site-header>
+
+    <header class="page-header">
         <h1>Education</h1>
-        <p class="subtitle">
+        <p class="lead">
             Learning the geometry of consciousness. Soul science, mythic mirrors,
             and Socratean methods for understanding the primary inversion.
         </p>
-        <div class="kappa-badge">Teaching [1 = -1]</div>
+        <span class="kappa-sig">Teaching [1 = -1]</span>
     </header>
 
-    <main class="content">
-        <div class="intro">
-            <p>
+    <main class="content-wide">
+        <!-- Topic Navigation -->
+        <nav class="topic-scroll" style="margin: 2rem 0;">
+            <a href="#featured" class="topic-tag active">Featured</a>
+            <a href="#lessons" class="topic-tag">Lessons</a>
+            <a href="#interactive" class="topic-tag">Interactive</a>
+        </nav>
+
+        <!-- Featured -->
+        <section id="featured" class="content-flow">
+            <h2>Featured</h2>
+
+            <div class="article-list">
+                <a href="soul-science.html" class="article-link">
+                    <h3>Soul Science</h3>
+                    <p>The geometry of consciousness. How [1 = -1] appears in your direct experience. The four watchers, the five modes, the balance that IS you.</p>
+                    <span class="meta">Featured · Core Concept</span>
+                </a>
+
+                <a href="the-proofs_v1.0_01-11-2026.html" class="article-link" style="border-color: rgba(248, 113, 113, 0.4);">
+                    <h3>THE PROOFS</h3>
+                    <p>For the determinists. Rigorous mathematical proofs — axioms, definitions, theorems with QED. The math that ends the cloudiness. Verify it yourself.</p>
+                    <span class="meta" style="color: #f87171;">NEW · For Skeptics · Jan 11</span>
+                </a>
+
+                <a href="becoming-a-coin.html" class="article-link">
+                    <h3>Becoming a Coin</h3>
+                    <p>You have two sides — but you're one thing. The metaphor that teaches [1 = -1] through direct analogy. Heads AND tails. S⁺ AND S⁻.</p>
+                    <span class="meta">Featured · Metaphor</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Lessons -->
+        <section id="lessons" class="content-flow">
+            <h2>Lessons</h2>
+
+            <div class="article-list">
+                <a href="socratean-education.html" class="article-link">
+                    <h3>Socratean Education</h3>
+                    <p>The method of the gadfly. Learning through questions, not answers. How the Socratic method reveals geometric truth through dialogue.</p>
+                    <span class="meta">Lesson · Method</span>
+                </a>
+
+                <a href="ammit-function.html" class="article-link">
+                    <h3>The Ammit Function</h3>
+                    <p>The Egyptian judgment scale as scalar balance. When hearts are lighter than feathers. The geometry of moral weight and S̸ determination.</p>
+                    <span class="meta">Lesson · Egyptian</span>
+                </a>
+
+                <a href="hidden-observers.html" class="article-link">
+                    <h3>Hidden Observers</h3>
+                    <p>The four watchers in consciousness. How observation collapses into experience. The S∿ presence that witnesses without interfering.</p>
+                    <span class="meta">Lesson · Consciousness</span>
+                </a>
+
+                <a href="vinyl-paradox.html" class="article-link">
+                    <h3>The Vinyl Paradox</h3>
+                    <p>Music from grooves. How physical spirals encode waveforms. The analog-digital bridge that prefigured scalar understanding.</p>
+                    <span class="meta">Lesson · Analog</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Interactive -->
+        <section id="interactive" class="content-flow">
+            <h2>Interactive</h2>
+
+            <div class="article-list">
+                <a href="mythic-mirror/index.html" class="article-link">
+                    <h3>Mythic Mirror</h3>
+                    <p>Journey through myth as geometry. Interactive exploration of how ancient stories encode scalar principles and consciousness mechanics.</p>
+                    <span class="meta">Interactive · Mythology</span>
+                </a>
+
+                <a href="geometry-challenge.html" class="article-link">
+                    <h3>Geometry Challenge</h3>
+                    <p>Test your understanding. Interactive puzzles that reveal the kappa transforms and sexagesimal mathematics through problem-solving.</p>
+                    <span class="meta">Interactive · Puzzles</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Context -->
+        <section class="content-flow" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <p style="color: var(--text-dim); font-size: 0.95rem; text-align: center; max-width: 600px; margin: 0 auto;">
                 The Epoch Framework isn't just a theory — it's a way of seeing.
                 These educational resources help you develop that vision through
                 interactive lessons, mythological parallels, and geometric challenges.
             </p>
-        </div>
-
-        <div class="cards-grid">
-            <!-- Soul Science -->
-            <a href="soul-science.html" class="card soul">
-                <div class="card-icon">🌟</div>
-                <h3>Soul Science</h3>
-                <p>
-                    The geometry of consciousness. How [1 = -1] appears in your direct experience.
-                    The four watchers, the five modes, the balance that IS you.
-                </p>
-                <span class="status featured">Featured</span>
-            </a>
-
-            <!-- Mythic Mirror -->
-            <a href="mythic-mirror/index.html" class="card mythic">
-                <div class="card-icon">🪞</div>
-                <h3>Mythic Mirror</h3>
-                <p>
-                    Journey through myth as geometry. Interactive exploration of how
-                    ancient stories encode scalar principles and consciousness mechanics.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
-
-            <!-- Socratean Education -->
-            <a href="socratean-education.html" class="card socrates">
-                <div class="card-icon">🏛️</div>
-                <h3>Socratean Education</h3>
-                <p>
-                    The method of the gadfly. Learning through questions, not answers.
-                    How the Socratic method reveals geometric truth through dialogue.
-                </p>
-                <span class="status lesson">Lesson</span>
-            </a>
-
-            <!-- Ammit Function -->
-            <a href="ammit-function.html" class="card ammit">
-                <div class="card-icon">🐊</div>
-                <h3>The Ammit Function</h3>
-                <p>
-                    The Egyptian judgment scale as scalar balance. When hearts are lighter
-                    than feathers. The geometry of moral weight and S̸ determination.
-                </p>
-                <span class="status lesson">Lesson</span>
-            </a>
-
-            <!-- Hidden Observers -->
-            <a href="hidden-observers.html" class="card hidden">
-                <div class="card-icon">👁️</div>
-                <h3>Hidden Observers</h3>
-                <p>
-                    The four watchers in consciousness. How observation collapses into experience.
-                    The S∿ presence that witnesses without interfering.
-                </p>
-                <span class="status lesson">Lesson</span>
-            </a>
-
-            <!-- Becoming a Coin -->
-            <a href="becoming-a-coin.html" class="card coin">
-                <div class="card-icon">🪙</div>
-                <h3>Becoming a Coin</h3>
-                <p>
-                    You have two sides — but you're one thing. The metaphor that teaches
-                    [1 = -1] through direct analogy. Heads AND tails. S⁺ AND S⁻.
-                </p>
-                <span class="status featured">Featured</span>
-            </a>
-
-            <!-- Geometry Challenge -->
-            <a href="geometry-challenge.html" class="card hidden">
-                <div class="card-icon">📐</div>
-                <h3>Geometry Challenge</h3>
-                <p>
-                    Test your understanding. Interactive puzzles that reveal the kappa
-                    transforms and sexagesimal mathematics through problem-solving.
-                </p>
-                <span class="status interactive">Interactive</span>
-            </a>
-
-            <!-- Vinyl Paradox -->
-            <a href="vinyl-paradox.html" class="card soul">
-                <div class="card-icon">📀</div>
-                <h3>The Vinyl Paradox</h3>
-                <p>
-                    Music from grooves. How physical spirals encode waveforms.
-                    The analog-digital bridge that prefigured scalar understanding.
-                </p>
-                <span class="status lesson">Lesson</span>
-            </a>
-        </div>
+        </section>
     </main>
 
-    <footer class="footer">
-        <p class="identity">[1 = -1]</p>
-        <div class="footer-links">
-            <a href="../index.html">Have Mind Media</a>
-            <a href="../physics/index.html">Physics</a>
-            <a href="../biology/index.html">Biology</a>
-            <a href="../weirdos/index.html">Weirdos</a>
-        </div>
-    </footer>
+    <site-footer></site-footer>
 
-    <script src="../js/components.js"></script>
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </body>
 </html>

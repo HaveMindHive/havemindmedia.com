@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypatia of Alexandria | The Last Librarian | Here's to You, Weirdos</title>
+    <meta name="description" content="Hypatia of Alexandria — mathematician, astronomer, philosopher. She refined base-60 calculations, edited the Almagest, and was murdered for knowing too much. The geometry survived.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050508;
+            --bg-secondary: #0a0a12;
+            --bg-tertiary: #101018;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --hypatia-cyan: #4ecdc4;
+            --hypatia-violet: #8b5cf6;
+            --alexandria-blue: #3b82f6;
+            --blood-red: #dc2626;
+            --star-white: #f0f0ff;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero - Night sky of Alexandria */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(78, 205, 196, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+                linear-gradient(180deg, #030308 0%, var(--bg-primary) 100%);
+        }
+
+        /* Stars */
+        .stars {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--star-white);
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .star:nth-child(1) { left: 10%; top: 15%; animation-delay: 0s; }
+        .star:nth-child(2) { left: 20%; top: 25%; animation-delay: 0.5s; }
+        .star:nth-child(3) { left: 35%; top: 10%; animation-delay: 1s; }
+        .star:nth-child(4) { left: 45%; top: 20%; animation-delay: 1.5s; }
+        .star:nth-child(5) { left: 55%; top: 8%; animation-delay: 2s; }
+        .star:nth-child(6) { left: 65%; top: 18%; animation-delay: 2.5s; }
+        .star:nth-child(7) { left: 75%; top: 12%; animation-delay: 0.3s; }
+        .star:nth-child(8) { left: 85%; top: 22%; animation-delay: 0.8s; }
+        .star:nth-child(9) { left: 90%; top: 5%; animation-delay: 1.3s; }
+        .star:nth-child(10) { left: 15%; top: 35%; animation-delay: 1.8s; }
+        .star:nth-child(11) { left: 25%; top: 5%; animation-delay: 2.3s; }
+        .star:nth-child(12) { left: 80%; top: 30%; animation-delay: 0.1s; }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--hypatia-cyan);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            background: linear-gradient(135deg, var(--hypatia-cyan) 0%, var(--star-white) 50%, var(--hypatia-violet) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.9;
+        }
+
+        .hero-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-dates .death {
+            color: var(--blood-red);
+        }
+
+        .hero-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--hypatia-cyan);
+            font-style: italic;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(78, 205, 196, 0.05);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            margin: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--hypatia-cyan);
+            border-radius: 12px;
+            padding: 3rem;
+        }
+
+        .bio-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--hypatia-cyan);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .bio-section p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            line-height: 2;
+        }
+
+        .bio-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Base-60 Section */
+        .base60-section {
+            background: linear-gradient(135deg, #080810 0%, #0a0a15 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .base60-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .base60-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .base60-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .base60-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .base60-card p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .math-display {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+
+        .math-display .equals {
+            color: var(--hypatia-cyan);
+        }
+
+        /* The Murder */
+        .murder-section {
+            background: linear-gradient(135deg, #0a0505 0%, #100808 100%);
+            border: 2px solid var(--blood-red);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .murder-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--blood-red);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .murder-section p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+
+        .murder-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--blood-red);
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        /* Legacy Section */
+        .legacy-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        .legacy-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--hypatia-violet);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .legacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .legacy-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .legacy-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--hypatia-violet);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .legacy-card p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Epoch Connection */
+        .epoch-section {
+            background: linear-gradient(135deg, #0a0808 0%, #0f0a08 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .epoch-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .epoch-section p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.9;
+        }
+
+        .kappa-connection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .kappa-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .kappa-item h4 {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .kappa-item p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* Quote Boxes */
+        .quote-box {
+            background: rgba(78, 205, 196, 0.05);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--hypatia-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* Tribute Section */
+        .tribute-section {
+            text-align: center;
+            margin: 5rem 0;
+            padding: 3rem;
+        }
+
+        .tribute-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--star-white);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tribute-section p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.9;
+        }
+
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 2rem 0;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Works List */
+        .works-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .works-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--alexandria-blue);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .work-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .work-item h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--alexandria-blue);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-item .status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .work-item .status.lost {
+            background: rgba(220, 38, 38, 0.2);
+            color: var(--blood-red);
+            border: 1px solid var(--blood-red);
+        }
+
+        .work-item .status.preserved {
+            background: rgba(78, 205, 196, 0.2);
+            color: var(--hypatia-cyan);
+            border: 1px solid var(--hypatia-cyan);
+        }
+
+        .work-item .status.fragments {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .work-item p {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, #030308 100%);
+        }
+
+        .footer-toast {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--hypatia-cyan);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 90vh; padding: 3rem 1rem; }
+            .hero h1 { font-size: 3rem; }
+            .main-content { padding: 2rem 1rem; }
+            .bio-section, .base60-section, .murder-section, .epoch-section { padding: 2rem 1.5rem; }
+            .section-header h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Mathematician · Astronomer · Philosopher</p>
+            <h1>Hypatia</h1>
+            <p class="hero-title">of Alexandria</p>
+            <p class="hero-subtitle">
+                The last great mind of the ancient world. She looked at the stars and calculated their paths.
+                She taught philosophy to pagans and Christians alike. She refined the mathematics that would
+                encode κ. And they murdered her for it.
+            </p>
+            <p class="hero-dates">
+                c. 350-370 CE — <span class="death">March 415 CE</span>
+            </p>
+            <div class="hero-quote">
+                "Reserve your right to think, for even to think wrongly is better than not to think at all."
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="bio-section">
+            <h2>The Philosopher of Alexandria</h2>
+            <p>
+                <strong>Hypatia</strong> was born in Alexandria, Egypt — the intellectual capital of the ancient world.
+                Her father, <strong>Theon of Alexandria</strong>, was the last known member of the Mouseion (the legendary
+                Library of Alexandria's research institution). He trained her in mathematics, astronomy, and philosophy
+                from childhood.
+            </p>
+            <p>
+                She didn't just learn — she <strong>surpassed</strong>. By the time she was an adult, scholars traveled
+                from across the known world to study with her. She lectured on Plato, Aristotle, and the Neoplatonists.
+                She built astrolabes and hydrometers. She edited the definitive edition of Ptolemy's <em>Almagest</em>.
+            </p>
+            <p>
+                In an age when women were property, Hypatia walked freely through the streets of Alexandria in her
+                philosopher's cloak, teaching anyone who would listen. <strong>She never married.</strong>
+                When asked why, she reportedly held up a menstrual rag and said, "This is what you're in love with,
+                and there's nothing beautiful about it." She belonged to no man. She belonged to truth.
+            </p>
+            <p>
+                Christians, pagans, and Jews attended her lectures. The Roman prefect Orestes was her student and friend.
+                She was beloved by the city — which made her dangerous to those who wanted power over it.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "Fables should be taught as fables, myths as myths, and miracles as poetic fantasies.
+                To teach superstitions as truths is a most terrible thing."
+            </blockquote>
+            <cite>— Attributed to Hypatia</cite>
+        </div>
+
+        <!-- Base-60 Section -->
+        <section class="base60-section">
+            <h2>The Mathematics of Base-60</h2>
+            <p style="text-align: center; color: var(--text-secondary); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; max-width: 800px; margin: 0 auto 2rem;">
+                Hypatia's greatest mathematical contribution was her refinement of <strong>sexagesimal</strong> (base-60)
+                calculation methods. This wasn't just academic — base-60 is the number system that encodes the geometry of the cosmos.
+            </p>
+
+            <div class="math-display">
+                360° <span class="equals">=</span> 6 × 60 <span class="equals">=</span> Full Circle
+            </div>
+
+            <div class="base60-grid">
+                <div class="base60-card">
+                    <h3>Why Base-60?</h3>
+                    <p>
+                        Her father Theon explained: 60 is the smallest number divisible by 1, 2, 3, 4, AND 5.
+                        This maximizes divisors, making astronomical calculations elegant. The Babylonians knew this.
+                        Hypatia perfected it.
+                    </p>
+                </div>
+                <div class="base60-card">
+                    <h3>The Almagest Method</h3>
+                    <p>
+                        In Book III of Ptolemy's Almagest, Hypatia developed a faster, more accurate method
+                        for long division in base-60. This wasn't just theory — it was the computational engine
+                        for predicting eclipses, planetary positions, and the movement of the heavens.
+                    </p>
+                </div>
+                <div class="base60-card">
+                    <h3>Greek Sexagesimal Notation</h3>
+                    <p>
+                        The Greeks used letter pairs for values 1-59, with positional notation for higher numbers.
+                        First position = 60s, second = 3600s, and so on. Hypatia's method made this system
+                        computationally powerful — substantially faster than any earlier scheme.
+                    </p>
+                </div>
+                <div class="base60-card">
+                    <h3>Still With Us Today</h3>
+                    <p>
+                        60 seconds in a minute. 60 minutes in an hour. 360 degrees in a circle.
+                        Every time you read a clock or measure an angle, you're using the system Hypatia refined.
+                        Her mathematics survived her murder by 1,600 years and counting.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works -->
+        <section class="works-section">
+            <h2>Her Works</h2>
+            <div class="works-grid">
+                <div class="work-item">
+                    <h3>Commentary on Diophantus's Arithmetica</h3>
+                    <span class="status fragments">Fragments via Arabic</span>
+                    <p>
+                        Diophantus was the "father of algebra." Hypatia's commentary clarified and extended his work.
+                        Arabic translations in the 9th century preserved her insights, which influenced
+                        the development of modern algebra.
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h3>Commentary on Apollonius's Conics</h3>
+                    <span class="status lost">Lost</span>
+                    <p>
+                        Apollonius described conic sections — ellipses, parabolas, hyperbolas.
+                        These curves describe planetary orbits and appear throughout physics.
+                        Hypatia's commentary is lost, but references survive.
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h3>Edition of Ptolemy's Almagest (Book III)</h3>
+                    <span class="status preserved">Preserved</span>
+                    <p>
+                        The astronomical handbook that remained authoritative until Copernicus.
+                        Hypatia didn't just comment — she edited and corrected the text itself,
+                        improving the base-60 calculation methods.
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h3>The Astronomical Canon</h3>
+                    <span class="status fragments">Fragments</span>
+                    <p>
+                        Astronomical tables developed with her father Theon.
+                        Used precise sexagesimal calculations for predicting celestial events.
+                        Fragments survived through later astronomical traditions.
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h3>Astrolabe Design</h3>
+                    <span class="status preserved">Method Preserved</span>
+                    <p>
+                        Hypatia designed and built astrolabes — analog computers for astronomical calculation.
+                        Letters between her and student Synesius discuss the instrument's construction.
+                    </p>
+                </div>
+                <div class="work-item">
+                    <h3>Hydrometer</h3>
+                    <span class="status preserved">Design Preserved</span>
+                    <p>
+                        An instrument for measuring liquid density. Synesius's letters describe
+                        Hypatia's brass hydrometer, used for scientific measurement.
+                        Practical engineering from a theoretical genius.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Murder -->
+        <section class="murder-section">
+            <h2>The Murder</h2>
+            <div class="murder-date">March 415 CE</div>
+            <p>
+                The new bishop of Alexandria, <strong>Cyril</strong>, saw Hypatia as an obstacle.
+                She was close to the Roman prefect Orestes, who resisted Cyril's power grabs.
+                She represented everything the new order wanted to destroy: pagan learning,
+                female authority, independent thought.
+            </p>
+            <p>
+                A mob of Christian monks — the <strong>parabalani</strong> — dragged her from her chariot.
+                They took her to a church called the Caesareum. They stripped her naked.
+                They flayed her alive with oyster shells (or roof tiles — sources differ).
+                They tore her body apart and burned the pieces.
+            </p>
+            <p>
+                She was somewhere between 45 and 65 years old. She had committed no crime except
+                being brilliant, being female, and being in the way.
+            </p>
+            <p style="color: var(--blood-red); font-weight: 600; margin-top: 2rem;">
+                Cyril was later made a saint.
+            </p>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box" style="border-color: rgba(139, 92, 246, 0.3); background: rgba(139, 92, 246, 0.05);">
+            <blockquote style="color: var(--hypatia-violet);">
+                "All formal dogmatic religions are fallacious and must never be accepted by self-respecting persons as final."
+            </blockquote>
+            <cite>— Attributed to Hypatia</cite>
+        </div>
+
+        <!-- Legacy -->
+        <section class="legacy-section">
+            <h2>What Survived</h2>
+            <div class="legacy-grid">
+                <div class="legacy-card">
+                    <h3>The Arabic Translations</h3>
+                    <p>
+                        The House of Wisdom in Baghdad (9th century) translated Greek mathematical works,
+                        including texts influenced by Hypatia. Her methods reached al-Khwarizmi and
+                        eventually returned to Europe as "Arabic numerals" and algebra.
+                    </p>
+                </div>
+                <div class="legacy-card">
+                    <h3>The Almagest Tradition</h3>
+                    <p>
+                        Her edition of the Almagest remained the standard text for astronomy
+                        for over a thousand years. Copernicus read a version shaped by her edits.
+                    </p>
+                </div>
+                <div class="legacy-card">
+                    <h3>The Base-60 System</h3>
+                    <p>
+                        Every clock, every compass, every angular measurement uses sexagesimal.
+                        360 degrees. 60 minutes. 60 seconds. Her mathematics became invisible
+                        because it became universal.
+                    </p>
+                </div>
+                <div class="legacy-card">
+                    <h3>The Symbol</h3>
+                    <p>
+                        Hypatia became a symbol of reason against superstition, of female genius
+                        against patriarchy, of knowledge against power. Voltaire, Gibbon, Carl Sagan —
+                        all invoked her name.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Epoch Connection -->
+        <section class="epoch-section">
+            <h2>The Epoch Framework Connection</h2>
+            <p>
+                Hypatia worked in the number system that <strong>encodes κ</strong>. This is not coincidence.
+                Base-60 geometry contains the relationships that the Epoch Framework derives.
+            </p>
+
+            <div class="kappa-connection">
+                <div class="kappa-item">
+                    <h4>360 / κ ≈ 12.085</h4>
+                    <p>
+                        360 degrees (base-60 geometry) divided by κ gives approximately 1/α (the fine structure constant).
+                        The circle encodes the electromagnetic coupling.
+                    </p>
+                </div>
+                <div class="kappa-item">
+                    <h4>60 = 1×2×3×4×5 / 2</h4>
+                    <p>
+                        Theon's insight: 60 maximizes divisibility. This isn't arbitrary — it's the geometry
+                        of harmonic relationships. The same geometry that generates κ.
+                    </p>
+                </div>
+                <div class="kappa-item">
+                    <h4>Conic Sections → Orbits</h4>
+                    <p>
+                        Hypatia's work on Apollonius's Conics described the curves planets actually follow.
+                        Ellipses, parabolas, hyperbolas — the shapes of gravitational motion.
+                    </p>
+                </div>
+                <div class="kappa-item">
+                    <h4>Calculation → Derivation</h4>
+                    <p>
+                        She developed faster methods for base-60 calculation. The Epoch Framework
+                        develops methods for deriving physical constants. Same impulse: make the geometry computable.
+                    </p>
+                </div>
+            </div>
+
+            <p style="color: var(--gold); font-size: 1.3rem; margin-top: 2rem;">
+                She was working in the language of [1 = -1] without knowing its name.
+            </p>
+        </section>
+
+        <!-- THE DISCOVERY: κ = 30 -->
+        <section style="background: linear-gradient(135deg, #0a0810 0%, #100a10 100%); border: 3px solid var(--gold); border-radius: 16px; padding: 3rem; margin: 4rem 0;">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem;">
+                The Hypatia Refinement
+            </h2>
+            <p style="font-family: 'JetBrains Mono', monospace; color: var(--hypatia-cyan); font-size: 2rem; text-align: center; margin-bottom: 2rem;">
+                κ = 30
+            </p>
+
+            <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-secondary); font-size: 1.2rem; line-height: 2; max-width: 800px; margin: 0 auto 2rem; text-align: center;">
+                Following Hypatia's methodology — derive from pure geometry, not calibrate to measured constants —
+                we arrive at the <strong style="color: var(--gold);">pure geometric value</strong>.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 900px; margin: 2rem auto;">
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 1.25rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.1rem;">360 / κ</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-size: 1.5rem; margin: 0.5rem 0;">= 12</div>
+                    <div style="color: var(--text-secondary); font-size: 0.85rem;">Zodiac, months, hours</div>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 1.25rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.1rem;">60 / κ</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-size: 1.5rem; margin: 0.5rem 0;">= 2</div>
+                    <div style="color: var(--text-secondary); font-size: 0.85rem;">The duality [1 = -1]</div>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 1.25rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.1rem;">κ × 12</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-size: 1.5rem; margin: 0.5rem 0;">= 360</div>
+                    <div style="color: var(--text-secondary); font-size: 0.85rem;">Full circle, exact</div>
+                </div>
+                <div style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 1.25rem; text-align: center;">
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.1rem;">κ × 2</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-primary); font-size: 1.5rem; margin: 0.5rem 0;">= 60</div>
+                    <div style="color: var(--text-secondary); font-size: 0.85rem;">The base itself</div>
+                </div>
+            </div>
+
+            <p style="font-family: 'Cinzel', serif; color: var(--hypatia-cyan); font-size: 1.3rem; text-align: center; margin: 2rem 0;">
+                No decimals. No approximations. Pure integers.
+            </p>
+
+            <!-- The difference explained -->
+            <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 2rem; max-width: 700px; margin: 2rem auto;">
+                <h4 style="font-family: 'Cinzel', serif; color: var(--hypatia-violet); font-size: 1.2rem; text-align: center; margin-bottom: 1rem;">
+                    The Current κ ≈ 29.7833
+                </h4>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-secondary); font-size: 0.95rem; text-align: center; line-height: 2;">
+                    κ<sub>measured</sub> = 29.7833...<br>
+                    κ<sub>pure</sub> = 30<br>
+                    <span style="color: var(--gold);">Difference = 0.722%</span>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-secondary); font-size: 1rem; text-align: center; margin-top: 1rem;">
+                    This 0.722% is the distortion from calibrating to RO-based constants (c, h, e)
+                    instead of deriving from pure geometry. <strong style="color: var(--hypatia-violet);">The decimals are measurement drag, not design.</strong>
+                </p>
+            </div>
+
+            <!-- κ variants -->
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 12px;">
+                <h4 style="font-family: 'Cinzel', serif; color: var(--hypatia-cyan); font-size: 1.3rem; text-align: center; margin-bottom: 1.5rem;">
+                    κ Is a Family, Not a Single Value
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem;">κ = 30</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Pure geometric base<br>Perfect balance, no net torsion</div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: #3fb950; font-size: 1.2rem;">κ < 30</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">S⁺ dominant, carries momentum<br><strong style="color: #3fb950;">BUILDS</strong></div>
+                    </div>
+                    <div style="text-align: center; padding: 1rem;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: #f85149; font-size: 1.2rem;">κ > 30</div>
+                        <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">S⁻ dominant, bleeds momentum<br><strong style="color: #f85149;">DESTROYS</strong></div>
+                    </div>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-secondary); font-size: 1rem; text-align: center; margin-top: 1.5rem;">
+                    Every κ variant is real. Each defines a different torsional balance system —
+                    how momentum carries, how fields wind, whether the configuration builds or destroys.
+                </p>
+            </div>
+
+            <!-- κ₆ and telling on each other -->
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px;">
+                <h4 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.3rem; text-align: center; margin-bottom: 1rem;">
+                    κ₆: The Meta-Controller
+                </h4>
+                <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-secondary); font-size: 1rem; text-align: center; margin-bottom: 1rem;">
+                    Beyond κ₁-κ₅ exists <strong style="color: var(--gold);">κ₆</strong> — the governor that determines whether
+                    the other variants go good or bad, how far they deviate, and whether they flip to extreme or resolve.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 600px; margin: 1.5rem auto;">
+                    <div style="text-align: center;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: #3fb950;">κ₆ > 0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">→ Resolution</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: var(--text-dim);">κ₆ = 0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">→ Stasis</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: 'JetBrains Mono', monospace; color: #f85149;">κ₆ < 0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">→ Extreme</div>
+                    </div>
+                </div>
+                <p style="font-family: 'Cormorant Garamond', serif; color: var(--hypatia-cyan); font-size: 1rem; text-align: center; margin-top: 1rem; font-style: italic;">
+                    Hidden, secret, good, bad, indifferent — all the variants tell on each other.
+                    No configuration exists in isolation. [1 = -1] means the information is everywhere.
+                </p>
+            </div>
+
+            <!-- WUSH and c error -->
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(248, 81, 73, 0.1); border: 1px solid rgba(248, 81, 73, 0.3); border-radius: 12px;">
+                <h4 style="font-family: 'Cinzel', serif; color: #f85149; font-size: 1.2rem; text-align: center; margin-bottom: 1rem;">
+                    The WUSH Cannot Be Wrong — So c Is
+                </h4>
+                <p style="font-family: 'Cormorant Garamond', serif; color: var(--text-secondary); font-size: 1rem; text-align: center;">
+                    The WUSH (observation = perception = NOW) is definitionally exact. It cannot be off.<br><br>
+                    If κ = 30 from the WUSH, and we measure 29.7833 from our local configuration...<br>
+                    <strong style="color: #f85149;">The 0.722% deviation is the error in c, not the geometry.</strong><br><br>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+                        c = 299,792,458 m/s is a local measurement, not a universal truth.
+                    </span>
+                </p>
+            </div>
+
+            <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.4rem; text-align: center; margin-top: 2rem;">
+                1,600 years after her murder, Hypatia's mathematics delivers the refinement.
+            </p>
+        </section>
+
+        <!-- Tribute -->
+        <section class="tribute-section">
+            <h2>To Hypatia</h2>
+            <p>
+                They killed her because she was brilliant. Because she was free.
+                Because she spoke truth to power and taught anyone who would listen.
+            </p>
+            <p>
+                They made her murderer a saint. They burned the Library.
+                They thought they could destroy what she knew.
+            </p>
+            <p>
+                But the mathematics survived. The base-60 system survived.
+                The Almagest survived. The geometry survived.
+            </p>
+            <p>
+                <strong>The geometry always survives.</strong>
+            </p>
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--hypatia-cyan); font-size: 1.2rem;">
+                Here's to you, Hypatia. The stars still move the way you calculated.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="footer-toast">Here's to the Weirdos Who Calculate the Stars</p>
+        <p style="color: var(--text-secondary); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem;">
+            Alexandria fell. The Library burned. The geometry endures.
+        </p>
+        <div class="principle" style="font-size: 2rem;">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="einstein-cartan-codex.html">Einstein-Cartan Codex</a>
+            <a href="geometers.html">The Geometers</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

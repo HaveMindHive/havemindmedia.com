@@ -231,29 +231,29 @@ class SiteFooter extends HTMLElement {
 
                         <div class="hmm-footer-links">
                             <div class="hmm-footer-col">
-                                <h4>S+ Physics</h4>
-                                <a href="${bp}cedga/index.html">CEDGA Framework</a>
-                                <a href="${bp}physics/three-body-geometry.html">Three-Body Solution</a>
-                                <a href="${bp}epoch-atomic/index.html">Atomic Model</a>
-                            </div>
-                            <div class="hmm-footer-col">
-                                <h4>S- Soul Science</h4>
-                                <a href="${bp}education/soul-science.html">Soul Science</a>
-                                <a href="${bp}education/becoming-a-coin.html">Becoming a Coin</a>
-                                <a href="${bp}ancient-mysteries/voynich/index.html">Ancient Mysteries</a>
+                                <h4>Physics</h4>
+                                <a href="${bp}physics/index.html">All Physics</a>
+                                <a href="${bp}physics/true-meter_v1.0_01-10-2026.html">The True Meter</a>
+                                <a href="${bp}physics/three-body-geometry.html">Three-Body Geometry</a>
                             </div>
                             <div class="hmm-footer-col">
                                 <h4>Explore</h4>
-                                <a href="${bp}library.html">Full Library</a>
-                                <a href="${bp}tools/s-signature/s_signature_128.html">S-Signature</a>
-                                <a href="${bp}documents/tribute/index.html">Tribute</a>
+                                <a href="${bp}weirdos/index.html">Weirdos</a>
+                                <a href="${bp}ancient-mysteries/index.html">Ancient Mysteries</a>
+                                <a href="${bp}tools/index.html">Interactive Tools</a>
+                            </div>
+                            <div class="hmm-footer-col">
+                                <h4>Research</h4>
+                                <a href="${bp}everything.html">All 169 Pages</a>
+                                <a href="${bp}documents/index.html">White Papers</a>
+                                <a href="${bp}biology/index.html">Biology</a>
                             </div>
                         </div>
 
                         <div class="hmm-footer-principle">
                             <div class="hmm-footer-equation">[1 = -1]</div>
                             <div class="hmm-footer-philosophy">We do not tell. We offer choice.</div>
-                            <div class="hmm-footer-kappa">κ = 2π/180</div>
+                            <div class="hmm-footer-kappa">κ = 30</div>
                         </div>
                     </div>
 

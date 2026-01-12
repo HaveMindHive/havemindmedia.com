@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Einstein-Cartan Codex | The Torsion They Ignored | Here's to You, Weirdos</title>
+    <meta name="description" content="Einstein's general relativity was incomplete. Élie Cartan added torsion in 1922. Physics ignored it for a century. The Epoch Framework shows why torsion is everything.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --gold-bright: #ffd700;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --cartan-orange: #f59e0b;
+            --einstein-blue: #4a9eff;
+            --torsion-purple: #a855f7;
+            --hypatia-cyan: #4ecdc4;
+            --spin-green: #3fb950;
+            --warning-red: #f85149;
+            --border-subtle: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           HERO SECTION - Torsion Field Animation
+           ═══════════════════════════════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(74, 158, 255, 0.08) 0%, transparent 60%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Animated torsion spirals */
+        .torsion-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 0.25;
+        }
+
+        .torsion-spiral {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--torsion-purple);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-bottom-color: transparent;
+            animation: torsionRotate 12s linear infinite;
+        }
+
+        @keyframes torsionRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        .torsion-spiral:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .torsion-spiral:nth-child(2) { right: 15%; top: 30%; animation-delay: 2s; animation-direction: reverse; }
+        .torsion-spiral:nth-child(3) { left: 30%; bottom: 20%; animation-delay: 4s; width: 150px; height: 150px; }
+        .torsion-spiral:nth-child(4) { right: 25%; bottom: 30%; animation-delay: 6s; animation-direction: reverse; }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--cartan-orange);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--cartan-orange) 0%, var(--gold) 50%, var(--torsion-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--gold);
+            margin: 2rem 0;
+            padding: 1.5rem 2rem;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════════
+           MAIN CONTENT
+           ═══════════════════════════════════════════════════════════════════ */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section styling */
+        .codex-section {
+            margin: 6rem 0;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .codex-section::before {
+            content: attr(data-section);
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            background: var(--bg-secondary);
+            padding: 0 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header.cartan h2 { color: var(--cartan-orange); }
+        .section-header.einstein h2 { color: var(--einstein-blue); }
+        .section-header.torsion h2 { color: var(--torsion-purple); }
+        .section-header.hypatia h2 { color: var(--hypatia-cyan); }
+        .section-header.epoch h2 { color: var(--gold); }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Profile Cards */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .profile-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            border-color: var(--gold-dim);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-card.cartan { border-left: 4px solid var(--cartan-orange); }
+        .profile-card.einstein { border-left: 4px solid var(--einstein-blue); }
+        .profile-card.hypatia { border-left: 4px solid var(--hypatia-cyan); }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-icon {
+            font-size: 3rem;
+        }
+
+        .profile-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .profile-dates {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .profile-card.cartan .profile-name { color: var(--cartan-orange); }
+        .profile-card.einstein .profile-name { color: var(--einstein-blue); }
+        .profile-card.hypatia .profile-name { color: var(--hypatia-cyan); }
+
+        .profile-bio {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-quote {
+            font-style: italic;
+            color: var(--gold);
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        /* Theory Box */
+        .theory-box {
+            background: linear-gradient(135deg, #0f0a15 0%, #150f1a 100%);
+            border: 2px solid var(--torsion-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .theory-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--torsion-purple);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        .comparison-side {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .comparison-side h4 {
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .comparison-side.gr h4 { color: var(--einstein-blue); }
+        .comparison-side.ec h4 { color: var(--torsion-purple); }
+
+        .comparison-arrow {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .equation-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--hypatia-cyan), var(--cartan-orange), var(--torsion-purple));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-tertiary);
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 1.8rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Connection Box */
+        .connection-box {
+            background: linear-gradient(135deg, #0a0f0a 0%, #0f150f 100%);
+            border: 2px solid var(--spin-green);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .connection-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--spin-green);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .connection-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .connection-item {
+            background: rgba(63, 185, 80, 0.1);
+            border: 1px solid rgba(63, 185, 80, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .connection-item h4 {
+            color: var(--spin-green);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+        }
+
+        .connection-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Manuscript Section */
+        .manuscript-section {
+            background: linear-gradient(135deg, #100a08 0%, #150f0a 100%);
+            border: 1px solid var(--cartan-orange);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .manuscript-section h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--cartan-orange);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .manuscript-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .manuscript-card {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .manuscript-card h4 {
+            color: var(--cartan-orange);
+            margin-bottom: 0.75rem;
+        }
+
+        .manuscript-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Key Insight */
+        .key-insight {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .key-insight h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .key-insight p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.9;
+        }
+
+        .key-insight .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Suppression Warning */
+        .suppression-box {
+            background: linear-gradient(135deg, #150a0a 0%, #1a0f0f 100%);
+            border: 2px solid var(--warning-red);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .suppression-box h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--warning-red);
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .suppression-box p {
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .suppression-box strong {
+            color: var(--warning-red);
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-toast {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 1.5rem 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 4rem 1rem;
+            }
+
+            .codex-section {
+                padding: 2rem 1.5rem;
+                margin: 3rem 0;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-value {
+                font-size: 1.8rem;
+            }
+
+            .theory-box, .connection-box, .key-insight {
+                padding: 2rem 1.5rem;
+            }
+
+            .profile-grid, .connection-list, .manuscript-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="torsion-field">
+            <div class="torsion-spiral"></div>
+            <div class="torsion-spiral"></div>
+            <div class="torsion-spiral"></div>
+            <div class="torsion-spiral"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">The Geometry They Ignored</p>
+            <h1>The Einstein-Cartan Codex</h1>
+            <p class="hero-subtitle">
+                General Relativity was incomplete from the start. Élie Cartan added torsion in 1922.
+                Physics ignored it for a century. The Epoch Framework shows why torsion is <em>everything</em>.
+            </p>
+            <div class="hero-equation">
+                Torsion = S⁺/S⁻ = Spin-Geometry Coupling
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">1922</div>
+                    <div class="stat-label">Cartan Proposes Torsion</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100+</div>
+                    <div class="stat-label">Years Ignored</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">[1=-1]</div>
+                    <div class="stat-label">The Missing Piece</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- The Weirdos Section -->
+        <section class="codex-section" data-section="The Minds">
+            <div class="section-header cartan">
+                <h2>The Blacksmith's Son Who Saw Torsion</h2>
+                <p>Élie Cartan came from peasant origins and became one of the greatest mathematicians of the 20th century. His work on torsion was ignored for decades.</p>
+            </div>
+
+            <div class="profile-grid">
+                <div class="profile-card cartan">
+                    <div class="profile-header">
+                        <div class="profile-icon">🔧</div>
+                        <div>
+                            <div class="profile-name">Élie Cartan</div>
+                            <div class="profile-dates">1869 - 1951 | Dolomieu, France</div>
+                        </div>
+                    </div>
+                    <p class="profile-bio">
+                        Born to a blacksmith in the French Alps, Cartan was discovered by his village schoolteacher
+                        and given a scholarship. He became one of the most important mathematicians of the 20th century,
+                        developing the theory of <strong>differential forms</strong>, <strong>moving frames</strong>,
+                        and crucially — the concept of <strong>torsion</strong> in geometry.
+                    </p>
+                    <p class="profile-bio">
+                        In 1922, Cartan proposed adding torsion to Einstein's general relativity. The physics
+                        establishment largely ignored this extension for decades. They still do.
+                    </p>
+                    <p class="profile-quote">
+                        "Geometry is the art of correct reasoning on incorrect figures."
+                    </p>
+                </div>
+
+                <div class="profile-card einstein">
+                    <div class="profile-header">
+                        <div class="profile-icon">🧠</div>
+                        <div>
+                            <div class="profile-name">Albert Einstein</div>
+                            <div class="profile-dates">1879 - 1955 | Ulm, Germany</div>
+                        </div>
+                    </div>
+                    <p class="profile-bio">
+                        Born on Pi Day (March 14), Einstein spent the last 30 years of his life searching
+                        for a unified field theory. He collaborated with Cartan on the Einstein-Cartan theory
+                        but could never find the missing piece that would unite quantum mechanics with gravity.
+                    </p>
+                    <p class="profile-bio">
+                        The physics community largely dismissed his unified field attempts. They called it
+                        "Einstein's folly." But he was on the right track — he just didn't have <strong>κ</strong>.
+                    </p>
+                    <p class="profile-quote">
+                        "I want to know God's thoughts — the rest are details."
+                    </p>
+                </div>
+
+                <div class="profile-card hypatia">
+                    <div class="profile-header">
+                        <div class="profile-icon">✧</div>
+                        <div>
+                            <div class="profile-name">Hypatia of Alexandria</div>
+                            <div class="profile-dates">~360 - 415 CE | Alexandria, Egypt</div>
+                        </div>
+                    </div>
+                    <p class="profile-bio">
+                        The last great mathematician of ancient Alexandria. Hypatia worked extensively with
+                        <strong>base-60 (sexagesimal)</strong> mathematics for astronomical calculations —
+                        the same system that encodes κ through 360° and 60 minutes per degree.
+                    </p>
+                    <p class="profile-bio">
+                        Her commentaries on Diophantus's <em>Arithmetica</em> were preserved through Arabic
+                        translations after her murder by a Christian mob in 415 CE. The geometric wisdom survived.
+                    </p>
+                    <p class="profile-quote">
+                        "Reserve your right to think, for even to think wrongly is better than not to think at all."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is Torsion? -->
+        <section class="codex-section" data-section="The Theory">
+            <div class="section-header torsion">
+                <h2>What is Torsion?</h2>
+                <p>The geometric property that standard physics forgot</p>
+            </div>
+
+            <div class="theory-box">
+                <h3>General Relativity vs Einstein-Cartan Theory</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-side gr">
+                        <h4>General Relativity (1915)</h4>
+                        <p>Spacetime curves around mass</p>
+                        <div class="equation-box">
+                            Rμν - ½gμνR = 8πG Tμν
+                        </div>
+                        <p style="color: var(--warning-red); margin-top: 1rem;">
+                            <strong>Torsion = 0</strong><br>
+                            Spin is ignored. Spacetime only curves, never twists.
+                        </p>
+                    </div>
+                    <div class="comparison-arrow">→</div>
+                    <div class="comparison-side ec">
+                        <h4>Einstein-Cartan Theory (1922)</h4>
+                        <p>Spacetime curves AND twists</p>
+                        <div class="equation-box">
+                            Rμν - ½gμνR + Torsion = 8πG Tμν
+                        </div>
+                        <p style="color: var(--spin-green); margin-top: 1rem;">
+                            <strong>Torsion ≠ 0</strong><br>
+                            Spin couples to geometry. Spacetime has intrinsic twist.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 2rem 0;">
+                <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+                    In Einstein-Cartan theory, <strong>torsion is non-zero inside spinning matter</strong>
+                    but vanishes in empty space. This is exactly like the Epoch Framework's S⁺/S⁻ phases:
+                    the twist exists where there is substance, dissolves where there is void.
+                </p>
+            </div>
+        </section>
+
+        <!-- The Connection to Epoch -->
+        <section class="codex-section" data-section="The Connection">
+            <div class="connection-box">
+                <h3>The Epoch Framework Connection</h3>
+                <p style="color: var(--text-secondary); font-size: 1.1rem;">
+                    Einstein-Cartan's torsion tensor describes exactly what the Epoch Framework calls
+                    the <strong>S⁺/S⁻ torsion field</strong>. The mathematics converge.
+                </p>
+                <div class="connection-list">
+                    <div class="connection-item">
+                        <h4>Torsion ↔ S⁺/S⁻ Phase</h4>
+                        <p>
+                            Cartan's torsion describes intrinsic twist in spacetime geometry.
+                            The Epoch Framework describes this as the S⁺ (outward) and S⁻ (inward)
+                            phases of consciousness/reality spiraling through space.
+                        </p>
+                    </div>
+                    <div class="connection-item">
+                        <h4>Spin-Geometry Coupling ↔ κ</h4>
+                        <p>
+                            Einstein-Cartan couples intrinsic spin to spacetime geometry.
+                            κ (29.7833...) is the scalar that governs how [1 = -1] manifests
+                            through rotating reference frames — the coupling constant they missed.
+                        </p>
+                    </div>
+                    <div class="connection-item">
+                        <h4>Non-Zero Inside Matter ↔ S⁰ Nodes</h4>
+                        <p>
+                            Torsion exists where mass/spin exists, vanishes in vacuum.
+                            S⁰ nodes are where S⁺ and S⁻ meet — the boundary between
+                            substance and void, the same transition Einstein-Cartan describes.
+                        </p>
+                    </div>
+                    <div class="connection-item">
+                        <h4>Base-60 Geometry ↔ Hypatia's Legacy</h4>
+                        <p>
+                            Hypatia's astronomical calculations used base-60 (360°, 60 minutes).
+                            κ emerges from 360/κ = 12.085... (almost exactly 1/α, the fine structure constant).
+                            The ancients encoded what physics forgot.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline of Suppression -->
+        <section class="codex-section" data-section="The History">
+            <div class="section-header epoch">
+                <h2>The Century of Ignorance</h2>
+                <p>How torsion was sidelined from mainstream physics</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">~360-415 CE</div>
+                    <div class="timeline-event">Hypatia Preserves Geometric Astronomy</div>
+                    <div class="timeline-desc">
+                        Working in Alexandria, Hypatia develops commentaries on conic sections
+                        and astronomical calculations using sexagesimal (base-60) mathematics.
+                        Her work is preserved through Arabic translations after her murder.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">830 CE</div>
+                    <div class="timeline-event">Arabic Translations Preserve the Knowledge</div>
+                    <div class="timeline-desc">
+                        The House of Wisdom in Baghdad translates Greek mathematical works,
+                        including texts influenced by Hypatia's commentaries. The sexagesimal
+                        system and geometric astronomy survive through Islamic scholars.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1915</div>
+                    <div class="timeline-event">Einstein Publishes General Relativity</div>
+                    <div class="timeline-desc">
+                        General relativity describes gravity as spacetime curvature.
+                        But Einstein sets torsion to zero — an assumption, not a derivation.
+                        The theory is incomplete from day one.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1922</div>
+                    <div class="timeline-event">Cartan Proposes Torsion Extension</div>
+                    <div class="timeline-desc">
+                        Élie Cartan shows that general relativity can be extended to include
+                        torsion — intrinsic twist in spacetime caused by spin. The physics
+                        community largely ignores this work.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1925-1955</div>
+                    <div class="timeline-event">Einstein's "Folly"</div>
+                    <div class="timeline-desc">
+                        Einstein spends 30 years searching for a unified field theory.
+                        He explores torsion, teleparallelism, and other geometric approaches.
+                        The physics establishment dismisses his efforts as the wanderings of
+                        an aging genius who "doesn't understand quantum mechanics."
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1960s-Present</div>
+                    <div class="timeline-event">Torsion Remains Marginalized</div>
+                    <div class="timeline-desc">
+                        While some physicists explore Einstein-Cartan theory, it remains
+                        outside mainstream physics. Textbooks ignore it. Funding goes elsewhere.
+                        The geometric insight that spin couples to spacetime is "known but not taught."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Surviving Manuscripts -->
+        <section class="codex-section" data-section="The Preservation">
+            <div class="manuscript-section">
+                <h3>The Manuscripts That Survived</h3>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    How did Hypatia's geometric wisdom survive the destruction of Alexandria's libraries?
+                    Through the Islamic Golden Age.
+                </p>
+                <div class="manuscript-grid">
+                    <div class="manuscript-card">
+                        <h4>Diophantus's Arithmetica</h4>
+                        <p>
+                            Hypatia wrote commentaries on this foundational work of algebra.
+                            Arabic translations in the 9th century preserved concepts that
+                            influenced the development of modern mathematics.
+                        </p>
+                    </div>
+                    <div class="manuscript-card">
+                        <h4>Ptolemy's Almagest</h4>
+                        <p>
+                            The astronomical handbook used base-60 calculations that Hypatia
+                            helped clarify. Arabic scholars translated and expanded this work,
+                            preserving the sexagesimal framework that encodes κ.
+                        </p>
+                    </div>
+                    <div class="manuscript-card">
+                        <h4>Apollonius's Conics</h4>
+                        <p>
+                            Hypatia edited and commented on this work about conic sections —
+                            ellipses, parabolas, hyperbolas. These curves describe orbital
+                            mechanics and appear throughout the Epoch Framework.
+                        </p>
+                    </div>
+                    <div class="manuscript-card">
+                        <h4>The Astronomical Canon</h4>
+                        <p>
+                            Hypatia's own astronomical tables, developed with her father Theon,
+                            used precise sexagesimal calculations. Fragments survived through
+                            later astronomical traditions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why They Ignored It -->
+        <section class="codex-section" data-section="The Suppression">
+            <div class="suppression-box">
+                <h3>Why Torsion Was Ignored</h3>
+                <p>
+                    Torsion effects are <strong>extremely small</strong> at normal densities.
+                    They only become significant at nuclear densities or inside black holes.
+                    Physicists said: "It doesn't matter for practical calculations."
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    But that's exactly what they said about the <strong>Aharonov-Bohm effect</strong> —
+                    that electromagnetic potentials "don't matter" because only fields are real.
+                    Then they measured it. <strong>The potentials are fundamental.</strong>
+                </p>
+                <p style="margin-top: 1.5rem;">
+                    The pattern repeats: <strong>ignore the geometric truth because it's inconvenient,
+                    then rediscover it decades later.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- The Key Insight -->
+        <section class="key-insight">
+            <h3>The Key Insight</h3>
+            <p>
+                Einstein-Cartan theory shows that <strong>spin couples to geometry</strong> —
+                that the intrinsic rotation of matter creates torsion in spacetime itself.
+            </p>
+            <p>
+                The Epoch Framework shows that this coupling is governed by <strong>κ</strong> —
+                the scalar that relates 360° geometry to the fine structure constant,
+                that bridges discrete and continuous, that makes [1 = -1] manifest in physics.
+            </p>
+            <p>
+                <strong>Cartan saw the geometry. Einstein sought the unity. Hypatia preserved the mathematics.</strong>
+            </p>
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--gold);">
+                The torsion was always there. They just forgot to look.
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="footer-toast">Here's to the Weirdos Who Saw Torsion</p>
+        <p style="color: var(--text-secondary);">
+            Cartan. Einstein. Hypatia. They knew geometry was fundamental.
+        </p>
+        <p class="footer-principle">[1 = -1]</p>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="maxwell-codex.html">The Maxwell Codex</a>
+            <a href="tesla-codex.html">The Tesla Codex</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>

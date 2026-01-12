@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roger Penrose | Twistor Theory | Here's to You, Weirdos</title>
+    <meta name="description" content="Sir Roger Penrose — twistor theory, Penrose tiles, Orch-OR consciousness. Einstein's geometric physics heir. Spacetime should emerge from something deeper.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        :root {
+            --bg-primary: #050510;
+            --bg-secondary: #0a0a18;
+            --bg-tertiary: #12121f;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --text-dim: #666;
+            --penrose-blue: #3b82f6;
+            --twistor-purple: #a855f7;
+            --consciousness-cyan: #06b6d4;
+            --tile-orange: #f97316;
+            --border-subtle: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, var(--bg-primary) 0%, #080815 100%);
+        }
+
+        /* Penrose tile pattern (simplified) */
+        .tile-pattern {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0.08;
+            background:
+                repeating-linear-gradient(36deg, var(--tile-orange) 0px, transparent 1px, transparent 50px),
+                repeating-linear-gradient(72deg, var(--twistor-purple) 0px, transparent 1px, transparent 50px),
+                repeating-linear-gradient(108deg, var(--penrose-blue) 0px, transparent 1px, transparent 50px);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--twistor-purple);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .nobel-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: linear-gradient(135deg, var(--penrose-blue) 0%, var(--twistor-purple) 50%, var(--consciousness-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-dates {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        .hero-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--penrose-blue);
+            margin-top: 2rem;
+            padding: 1.5rem 2rem;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            display: inline-block;
+            max-width: 700px;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Styles */
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .section strong {
+            color: var(--text-primary);
+        }
+
+        /* Twistor Box */
+        .twistor-box {
+            background: linear-gradient(135deg, #0a0815 0%, #0f0a1a 100%);
+            border: 2px solid var(--twistor-purple);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .twistor-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--twistor-purple);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .twistor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .twistor-card {
+            background: rgba(168, 85, 247, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .twistor-card h3 {
+            color: var(--twistor-purple);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .twistor-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Consciousness Box */
+        .consciousness-box {
+            background: linear-gradient(135deg, #080a10 0%, #0a1015 100%);
+            border: 2px solid var(--consciousness-cyan);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .consciousness-box h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--consciousness-cyan);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .consciousness-box p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            text-align: center;
+        }
+
+        .orch-or-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .orch-or-card {
+            background: rgba(6, 182, 212, 0.05);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .orch-or-card h4 {
+            color: var(--consciousness-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .orch-or-card p {
+            font-size: 0.9rem;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* Contributions */
+        .contributions {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .contributions h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--tile-orange);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .contrib-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contrib-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .contrib-item h3 {
+            color: var(--tile-orange);
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contrib-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--penrose-blue);
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            color: var(--text-dim);
+        }
+
+        /* Epoch Connection */
+        .epoch-section {
+            background: linear-gradient(135deg, #0f0a08 0%, #1a0f0a 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .epoch-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .epoch-section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .connection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .connection-item {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .connection-item h4 {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .connection-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Principle */
+        .principle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Smolin Quote */
+        .smolin-quote {
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .smolin-quote blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--twistor-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .smolin-quote cite {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { min-height: 75vh; padding: 3rem 1rem; }
+            .main-content { padding: 2rem 1rem; }
+            .section, .twistor-box, .consciousness-box, .epoch-section { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div id="site-header"></div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="tile-pattern"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Mathematical Physicist</p>
+            <div class="nobel-badge">Nobel Prize in Physics 2020</div>
+            <h1>Roger Penrose</h1>
+            <p class="hero-subtitle">
+                Twistor theory. Penrose tiles. Orch-OR consciousness.
+                Einstein's heir in geometric physics — still working to show that spacetime emerges from something deeper.
+            </p>
+            <p class="hero-dates">Born 1931 | Oxford | Age 94 and Still Publishing</p>
+            <div class="hero-quote">
+                "Consciousness is not computable. There's something in the laws of physics that we don't yet understand."
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Bio -->
+        <section class="section" style="border-left: 4px solid var(--penrose-blue);">
+            <h2 style="color: var(--penrose-blue);">Einstein's Geometric Heir</h2>
+            <p>
+                <strong>Sir Roger Penrose</strong> is arguably the most important living descendant of Einstein's school
+                of geometric physics. While others chased particles and perturbation theory, Penrose spent six decades
+                insisting that <strong>geometry is fundamental</strong>.
+            </p>
+            <p>
+                He won the 2020 Nobel Prize for proving that black holes are a robust prediction of general relativity —
+                work he did in the 1960s. But that's almost a footnote compared to his real obsession:
+                <strong>twistor theory</strong>, a radical reimagining of spacetime using complex geometry.
+            </p>
+            <p>
+                At 94, he's still publishing, still lecturing, still convinced that consciousness has something to do
+                with quantum gravity, and still driving the physics establishment crazy with ideas they can't dismiss.
+            </p>
+        </section>
+
+        <!-- Smolin Quote -->
+        <div class="smolin-quote">
+            <blockquote>
+                "All Roger's thoughts are connected — twistor theory, his philosophical thinking,
+                his ideas about quantum mechanics, his ideas about the brain and the mind."
+            </blockquote>
+            <cite>— Lee Smolin, Physicist</cite>
+        </div>
+
+        <!-- Twistor Theory -->
+        <section class="twistor-box">
+            <h2>Twistor Theory</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+                Penrose proposed twistor theory in 1967. The idea: spacetime is NOT fundamental.
+                It should emerge from a more basic structure using <strong>complex geometry</strong>.
+            </p>
+            <div class="twistor-grid">
+                <div class="twistor-card">
+                    <h3>The Core Idea</h3>
+                    <p>
+                        Replace real-valued spacetime coordinates with complex numbers (twistors).
+                        Spacetime points become derived objects, not fundamental ones.
+                        Light rays are primary; spacetime is secondary.
+                    </p>
+                </div>
+                <div class="twistor-card">
+                    <h3>Complex Geometry</h3>
+                    <p>
+                        Twistors live in a complex projective space. The math is beautiful — connections
+                        to spinors, conformal geometry, and algebraic geometry that weren't apparent in
+                        standard spacetime formulations.
+                    </p>
+                </div>
+                <div class="twistor-card">
+                    <h3>Why It Matters</h3>
+                    <p>
+                        If spacetime isn't fundamental, then quantum gravity isn't about "quantizing spacetime" —
+                        it's about understanding what spacetime emerges FROM. Penrose thinks twistors are the answer.
+                    </p>
+                </div>
+                <div class="twistor-card">
+                    <h3>Recent Vindication</h3>
+                    <p>
+                        Twistor methods have revolutionized scattering amplitude calculations in particle physics.
+                        The "amplituhedron" and related discoveries use twistor ideas that Penrose developed decades earlier.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consciousness -->
+        <section class="consciousness-box">
+            <h2>Orch-OR: Consciousness and Quantum Gravity</h2>
+            <p>
+                Penrose believes consciousness cannot be computed — it requires something non-algorithmic
+                in physics that we don't yet understand. With anesthesiologist Stuart Hameroff, he developed
+                <strong>Orchestrated Objective Reduction (Orch-OR)</strong>.
+            </p>
+            <div class="orch-or-grid">
+                <div class="orch-or-card">
+                    <h4>Microtubules</h4>
+                    <p>
+                        Tiny structures inside neurons that Penrose and Hameroff propose are the site
+                        of quantum processes relevant to consciousness.
+                    </p>
+                </div>
+                <div class="orch-or-card">
+                    <h4>Objective Reduction</h4>
+                    <p>
+                        Penrose's idea that quantum superpositions collapse due to gravitational effects —
+                        spacetime geometry can't maintain superposed states beyond a threshold.
+                    </p>
+                </div>
+                <div class="orch-or-card">
+                    <h4>Orchestrated</h4>
+                    <p>
+                        The quantum processes in microtubules are "orchestrated" by cellular biology
+                        to produce coherent moments of conscious experience.
+                    </p>
+                </div>
+                <div class="orch-or-card">
+                    <h4>Non-Computability</h4>
+                    <p>
+                        Consciousness involves non-computable physics. No Turing machine can simulate it.
+                        This is Penrose's most controversial (and most Weirdo) claim.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <div class="quote-box">
+            <blockquote>
+                "I believe that spacetime and quantum mechanics will both have to be modified
+                if we are ever to understand quantum gravity."
+            </blockquote>
+            <cite>— Roger Penrose</cite>
+        </div>
+
+        <!-- Contributions -->
+        <section class="contributions">
+            <h2>Other Contributions</h2>
+            <div class="contrib-grid">
+                <div class="contrib-item">
+                    <h3>Penrose Tiles</h3>
+                    <p>
+                        Aperiodic tilings that cover the plane without repeating.
+                        Discovered in quasicrystals — another Nobel!
+                    </p>
+                </div>
+                <div class="contrib-item">
+                    <h3>Penrose Diagrams</h3>
+                    <p>
+                        Conformal diagrams that map infinite spacetime to finite regions.
+                        Standard tool in relativity.
+                    </p>
+                </div>
+                <div class="contrib-item">
+                    <h3>Singularity Theorems</h3>
+                    <p>
+                        Proved black hole singularities are inevitable in general relativity.
+                        (The Nobel work.)
+                    </p>
+                </div>
+                <div class="contrib-item">
+                    <h3>Conformal Cyclic Cosmology</h3>
+                    <p>
+                        The universe is a sequence of "aeons" — the Big Bang was the conformal
+                        boundary of a previous universe.
+                    </p>
+                </div>
+                <div class="contrib-item">
+                    <h3>Spin Networks</h3>
+                    <p>
+                        Early work that influenced loop quantum gravity.
+                        Discrete structures underlying spacetime.
+                    </p>
+                </div>
+                <div class="contrib-item">
+                    <h3>The Road to Reality</h3>
+                    <p>
+                        1,000-page masterwork connecting mathematics and physics.
+                        For "the general reader." (It isn't.)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Epoch Connection -->
+        <section class="epoch-section">
+            <h2>The Epoch Framework Connection</h2>
+            <p>
+                Penrose and the Epoch Framework share the same fundamental conviction:
+                <strong>geometry is primary, spacetime is derived</strong>.
+            </p>
+
+            <div class="connection-grid">
+                <div class="connection-item">
+                    <h4>Complex Geometry ↔ [1 = -1]</h4>
+                    <p>
+                        Twistors use complex numbers where real and imaginary unify.
+                        [1 = -1] is the scalar statement of this unity.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Spacetime Emerges ↔ The WUSH</h4>
+                    <p>
+                        If spacetime isn't fundamental, what is? Penrose says twistors.
+                        The Epoch Framework says the WUSH — the razor edge of NOW.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Consciousness Non-Computable ↔ κ</h4>
+                    <p>
+                        Penrose says consciousness requires new physics. κ provides the scalar constant
+                        that standard physics is missing.
+                    </p>
+                </div>
+                <div class="connection-item">
+                    <h4>Gravity + Consciousness ↔ S⁺/S⁻</h4>
+                    <p>
+                        Orch-OR connects quantum gravity to awareness. The Epoch Framework's scalar fields
+                        bridge the same gap through geometric phase relationships.
+                    </p>
+                </div>
+            </div>
+
+            <div class="principle">[1 = -1]</div>
+            <p style="font-style: italic; color: var(--gold);">
+                He's been working toward this for 60 years. The geometry is converging.
+            </p>
+        </section>
+
+        <!-- Why He's a Weirdo -->
+        <section class="section" style="border-left: 4px solid var(--twistor-purple);">
+            <h2 style="color: var(--twistor-purple);">Why He's One of Us</h2>
+            <p>
+                Roger Penrose has spent his entire career being called wrong by people who later use his ideas.
+                Twistor theory was "mathematical fantasy" until it revolutionized scattering amplitudes.
+                Penrose tiles were "recreational math" until they showed up in Nobel-winning quasicrystal research.
+            </p>
+            <p>
+                He insists consciousness is non-computable when the entire AI field says otherwise.
+                He says spacetime is doomed when most physicists treat it as fundamental.
+                He's 94 years old and still publishing papers that challenge the consensus.
+            </p>
+            <p>
+                <strong>That's the Weirdo way.</strong> Follow the geometry. Trust the mathematics.
+                And keep going even when the establishment says you're crazy — because eventually,
+                the geometry wins.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.5rem;">
+            Here's to the Weirdos Who Trust the Geometry
+        </p>
+        <div class="principle" style="font-size: 2rem;">[1 = -1]</div>
+        <div class="footer-links">
+            <a href="index.html">Back to Weirdos</a>
+            <a href="donald-hoffman.html">Donald Hoffman</a>
+            <a href="einstein-codex.html">Einstein Codex</a>
+            <a href="../index.html">Have Mind Media</a>
+        </div>
+    </footer>
+
+    <div id="site-footer"></div>
+    <script src="../js/components/site-header.js"></script>
+    <script src="../js/components/site-footer.js"></script>
+    <site-footer></site-footer>
+</body>
+</html>
