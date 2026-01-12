@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Cover | HAVE MIND HIVE - Lakshmi from Namagiri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #030508;
+            padding: 20px;
+        }
+        .book-cover {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 9/16;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                0 0 100px rgba(201, 162, 39, 0.2);
+        }
+        .cover-image {
+            position: absolute;
+            inset: 0;
+            background: url('../../images/store/namagiri-cover.jpg') center/cover no-repeat;
+        }
+        .cover-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(0, 0, 0, 0.1) 30%,
+                rgba(0, 0, 0, 0.1) 60%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px 20px;
+        }
+        .cover-top {
+            text-align: center;
+        }
+        .cover-brand {
+            font-size: 0.7rem;
+            color: #c9a227;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .cover-equation {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.8rem;
+            color: #c9a227;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        }
+        .cover-bottom {
+            text-align: center;
+        }
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 8px;
+        }
+        .cover-subtitle {
+            font-size: 1rem;
+            color: #c9a227;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .cover-tors {
+            font-family: monospace;
+            font-size: 1.3rem;
+            color: #c9a227;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+            margin-bottom: 15px;
+        }
+        .cover-tagline {
+            font-size: 0.75rem;
+            color: #aaa;
+            letter-spacing: 2px;
+        }
+        .cover-spine {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #c9a227 0%, #8b6914 50%, #c9a227 100%);
+        }
+        @media (max-width: 480px) {
+            .cover-title { font-size: 1.3rem; }
+            .cover-equation { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="book-cover">
+        <div class="cover-image"></div>
+        <div class="cover-overlay">
+            <div class="cover-top">
+                <div class="cover-brand">HAVE MIND HIVE</div>
+                <div class="cover-equation">[1 = -1]</div>
+            </div>
+            <div class="cover-bottom">
+                <div class="cover-title">LAKSHMI FROM NAMAGIRI</div>
+                <div class="cover-subtitle">The Finite Map of the Infinite</div>
+                <div class="cover-tors">WE SPEAK T0Яs</div>
+                <div class="cover-tagline">20 EPISODES • THE COMPLETE TRANSMISSION</div>
+            </div>
+        </div>
+        <div class="cover-spine"></div>
+    </div>
+</body>
+</html>
