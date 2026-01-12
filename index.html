@@ -1140,6 +1140,169 @@
             box-shadow: 0 12px 30px rgba(248, 113, 113, 0.2);
         }
 
+        /* ==========================================
+           RETRO TOY-IN-BOX STYLE - 70s Cereal Box
+           ========================================== */
+        .toy-box-section {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            margin: 2rem auto;
+        }
+
+        .toy-box-button {
+            position: relative;
+            display: block;
+            max-width: 380px;
+            padding: 0;
+            text-decoration: none;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .toy-box-button:hover {
+            transform: rotate(0deg) scale(1.03);
+        }
+
+        .toy-box-inner {
+            position: relative;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffcc00 100%);
+            border: 4px dashed #1a1a2e;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            box-shadow:
+                0 8px 0 #c44d20,
+                0 12px 20px rgba(0, 0, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        /* Starburst background */
+        .toy-box-inner::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: repeating-conic-gradient(
+                from 0deg,
+                rgba(255, 255, 255, 0.1) 0deg 10deg,
+                transparent 10deg 20deg
+            );
+            transform: translate(-50%, -50%);
+            animation: starburstSpin 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes starburstSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Scissors icon */
+        .toy-box-scissors {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            font-size: 1.2rem;
+            transform: rotate(-45deg);
+            z-index: 10;
+            text-shadow: 1px 1px 0 #fff;
+        }
+
+        /* FREE INSIDE badge */
+        .toy-box-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #e63946;
+            color: #fff;
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 0.65rem;
+            font-weight: 900;
+            padding: 0.4rem 0.6rem;
+            border-radius: 50%;
+            transform: rotate(15deg);
+            box-shadow: 2px 2px 0 #000;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            border: 2px solid #fff;
+        }
+
+        .toy-box-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+        }
+
+        .toy-box-title {
+            font-family: 'Arial Black', Impact, sans-serif;
+            font-size: 1.4rem;
+            color: #1a1a2e;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .toy-box-subtitle {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #2d2d44;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .toy-box-symbol {
+            font-size: 2rem;
+            color: #1a1a2e;
+            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .toy-box-desc {
+            font-family: Georgia, serif;
+            font-size: 0.85rem;
+            color: #2d2d44;
+            line-height: 1.4;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .toy-box-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: #1a1a2e;
+            color: #ffcc00;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            border: 2px solid #ffcc00;
+            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .toy-box-button:hover .toy-box-cta {
+            background: #ffcc00;
+            color: #1a1a2e;
+        }
+
+        /* Cut-here dashed line decoration */
+        .toy-box-cutline {
+            position: absolute;
+            bottom: -2px;
+            left: 10%;
+            right: 10%;
+            border-bottom: 2px dashed #1a1a2e;
+            opacity: 0.5;
+        }
+
         /* Mayan Calendar Section */
         .mayan-section {
             max-width: 1000px;
@@ -2016,33 +2179,22 @@
             </div>
         </section>
 
-        <!-- NAMAGIRI SPEAKS - The Crown Jewel -->
-        <section class="featured-section" style="background: linear-gradient(180deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%); padding: 3rem 0; margin: 2rem 0; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3);">
-            <h2 class="section-title" style="color: #d4af37;">— NAMAGIRI SPEAKS —</h2>
-            <p style="text-align: center; color: #a0a0a0; margin-bottom: 2rem; font-style: italic;">The Finite Map of the Infinite Universe in All Scalar Dimensionality</p>
-
-            <div class="featured-grid" style="max-width: 900px; margin: 0 auto;">
-                <a href="namagiri/index.html" class="featured-card tint-gold" style="grid-column: span 2; padding: 2rem;">
-                    <span class="card-badge badge-new">20 Episodes</span>
-                    <div class="card-icon" style="font-size: 2rem;">[1=-1]</div>
-                    <h3 style="font-size: 1.5rem;">NAMAGIRI SPEAKS</h3>
-                    <p style="font-size: 1.1rem;">The complete [1=-1] framework. From Ramanujan's dreams to the geometry that cannot lie. Five books. Twenty episodes. The transmission revealed.</p>
-                </a>
-
-                <a href="namagiri/the-proofs.html" class="featured-card tint-red">
-                    <span class="card-badge badge-new">Jan 11</span>
-                    <div class="card-icon">∎</div>
-                    <h3>THE PROOFS</h3>
-                    <p>Rigorous axioms, theorems, QED. Mathematical framework for the determinists.</p>
-                </a>
-
-                <a href="namagiri/episodes/01-the-boy-who-dreamed-equations.html" class="featured-card tint-gold">
-                    <span class="card-badge">Episode 1</span>
-                    <div class="card-icon">∞</div>
-                    <h3>The Boy Who Dreamed Equations</h3>
-                    <p>Ramanujan. The goddess. The red screen. Begin the series here.</p>
-                </a>
-            </div>
+        <!-- NAMAGIRI SPEAKS - Retro Toy-in-Box Style -->
+        <section class="toy-box-section">
+            <a href="namagiri/index.html" class="toy-box-button">
+                <span class="toy-box-scissors">✂</span>
+                <span class="toy-box-badge">20 Episodes!</span>
+                <div class="toy-box-inner">
+                    <div class="toy-box-content">
+                        <div class="toy-box-symbol">[1 = -1]</div>
+                        <div class="toy-box-title">Namagiri Speaks</div>
+                        <div class="toy-box-subtitle">THE FINITE MAP OF THE INFINITE</div>
+                        <p class="toy-box-desc">From Ramanujan's dreams to the geometry that cannot lie. The complete transmission revealed.</p>
+                        <span class="toy-box-cta">Open the Box →</span>
+                    </div>
+                    <div class="toy-box-cutline"></div>
+                </div>
+            </a>
         </section>
 
         <!-- POPULAR & FEATURED -->
