@@ -27,7 +27,7 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Cormorant Garamond', Georgia, serif;
@@ -37,14 +37,18 @@
         }
 
         .page {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             position: relative;
-            scroll-snap-align: start;
+        }
+
+        .part-title {
+            min-height: 100vh;
+            justify-content: center;
         }
 
         .page-number {
