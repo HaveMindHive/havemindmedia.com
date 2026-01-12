@@ -339,17 +339,17 @@
         }
 
         .result-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 1.5rem;
             text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .result-comparison {
-                grid-template-columns: 1fr;
-            }
+        .result-comparison .result-item {
+            width: calc(33.333% - 1rem);
+            min-width: 200px;
         }
 
         .result-item label {

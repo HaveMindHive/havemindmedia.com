@@ -242,16 +242,16 @@
 
         /* Visual comparison */
         .force-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .force-comparison {
-                grid-template-columns: 1fr;
-            }
+        .force-comparison .force-box {
+            width: calc(50% - 1rem);
+            min-width: 280px;
         }
 
         .force-box {
@@ -401,16 +401,16 @@
 
         /* Comparison grid */
         .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
+        .comparison-grid .comparison-col {
+            width: calc(50% - 1rem);
+            min-width: 280px;
         }
 
         .comparison-col {
