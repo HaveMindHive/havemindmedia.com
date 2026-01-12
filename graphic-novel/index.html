@@ -28,7 +28,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
+            /* scroll-snap removed - was blocking content view */
         }
 
         body {
@@ -39,20 +39,22 @@
             overflow-x: hidden;
         }
 
-        /* Page structure - each page is full viewport */
+        /* Page structure - natural flow, fits content */
         .page {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
             position: relative;
-            scroll-snap-align: start;
+            /* scroll-snap-align removed */
         }
 
-        /* Cover page */
+        /* Cover page - full viewport for impact */
         .cover {
+            min-height: 100vh;
+            justify-content: center;
             background:
                 radial-gradient(ellipse 80% 50% at 50% 30%, rgba(139, 37, 0, 0.4) 0%, transparent 70%),
                 radial-gradient(ellipse 60% 40% at 50% 70%, rgba(30, 58, 95, 0.3) 0%, transparent 60%),
