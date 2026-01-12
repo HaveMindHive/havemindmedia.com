@@ -221,6 +221,58 @@
             color: var(--bg-deep);
         }
 
+        /* Featured Design */
+        .featured-design {
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .featured-design img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 300px;
+        }
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-label {
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+        .featured-content h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .featured-content p {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .featured-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            text-decoration: none;
+            border-radius: 6px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            width: fit-content;
+        }
+
         /* Ethics Section */
         .ethics-section {
             background: rgba(201, 162, 39, 0.05);
@@ -284,9 +336,92 @@
             margin-top: 10px;
         }
 
+        /* Tablet breakpoint */
         @media (max-width: 768px) {
-            .store-hero h1 { font-size: 2rem; }
-            .product-grid { grid-template-columns: 1fr; }
+            .store-hero h1 { font-size: 2rem; letter-spacing: 4px; }
+            .store-hero .tagline { font-size: 1.1rem; }
+
+            .featured-design {
+                grid-template-columns: 1fr;
+            }
+            .featured-design img {
+                min-height: 250px;
+            }
+            .featured-content {
+                padding: 30px;
+            }
+            .featured-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .product-grid .product-card {
+                width: calc(50% - 15px);
+                min-width: 200px;
+            }
+
+            .ethics-grid .ethics-item {
+                width: calc(50% - 15px);
+                min-width: 150px;
+            }
+
+            .ethics-section { padding: 30px 20px; }
+        }
+
+        /* Phone breakpoint */
+        @media (max-width: 600px) {
+            .store-hero { padding: 40px 15px 30px; }
+            .store-hero h1 { font-size: 1.6rem; letter-spacing: 3px; }
+            .store-hero .tagline { font-size: 1rem; letter-spacing: 2px; }
+            .ethics-badge {
+                font-size: 0.7rem;
+                padding: 8px 12px;
+                letter-spacing: 1px;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .container { padding: 0 15px 40px; }
+
+            .featured-design { margin-bottom: 30px; }
+            .featured-design img { min-height: 200px; }
+            .featured-content { padding: 25px 20px; }
+            .featured-content h3 { font-size: 1.3rem; }
+            .featured-btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .section-header h2 { font-size: 1.2rem; }
+            .section-desc { text-align: center; }
+
+            .product-grid .product-card {
+                width: 100%;
+                max-width: 100%;
+                min-width: unset;
+            }
+
+            .product-image { min-height: 200px !important; }
+            .product-info { padding: 15px; }
+            .product-info h3 { font-size: 1rem; }
+            .product-info p { font-size: 0.85rem; }
+
+            .ethics-grid .ethics-item {
+                width: 100%;
+                min-width: unset;
+            }
+
+            .ethics-section { padding: 25px 15px; }
+            .ethics-section h2 { font-size: 1.2rem; }
+
+            .integration-notice { padding: 20px 15px; }
+            .integration-notice h3 { font-size: 1rem; }
+            .integration-notice p { font-size: 0.9rem; }
         }
     </style>
     <script src="../js/components/site-footer.js" defer></script>
@@ -307,13 +442,13 @@
     <div class="container">
 
         <!-- Featured Design -->
-        <div style="background: var(--bg-panel); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 16px; overflow: hidden; margin-bottom: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
-            <img src="../images/hero/cosmic-gateway.png" alt="Cosmic Gateway" style="width: 100%; height: 100%; object-fit: cover; min-height: 300px;">
-            <div style="padding: 40px; display: flex; flex-direction: column; justify-content: center;">
-                <span style="color: var(--gold); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 10px;">SIGNATURE DESIGN</span>
-                <h3 style="font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin-bottom: 15px;">COSMIC GATEWAY</h3>
-                <p style="color: var(--text-dim); margin-bottom: 20px; line-height: 1.6;">The golden triangle emerges from the cosmic spiral. Available as premium apparel and prints.</p>
-                <a href="designs.html" style="display: inline-block; padding: 12px 25px; background: var(--gold); color: var(--bg-deep); text-decoration: none; border-radius: 6px; font-family: 'Cinzel', serif; font-size: 0.85rem; width: fit-content;">VIEW ALL DESIGNS →</a>
+        <div class="featured-design">
+            <img src="../images/hero/cosmic-gateway.png" alt="Cosmic Gateway">
+            <div class="featured-content">
+                <span class="featured-label">SIGNATURE DESIGN</span>
+                <h3>COSMIC GATEWAY</h3>
+                <p>The golden triangle emerges from the cosmic spiral. Available as premium apparel and prints.</p>
+                <a href="designs.html" class="featured-btn">VIEW ALL DESIGNS →</a>
             </div>
         </div>
 

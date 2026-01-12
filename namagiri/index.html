@@ -434,7 +434,26 @@
         }
 
         /* Mobile */
+        /* Tablet breakpoint */
         @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 3rem 1.5rem;
+            }
+            .hero-symbol {
+                font-size: 3rem;
+            }
+            .hero-equation {
+                font-size: 1.8rem;
+                padding: 0.8rem 1.5rem;
+            }
+            .container, .wide-container {
+                padding: 0 1.5rem;
+            }
+            .intro { padding: 4rem 0; }
+            .episodes-section { padding: 4rem 0; }
+            .section-header { margin-bottom: 3rem; }
+            .book-section { margin-bottom: 3rem; }
             .episode-card {
                 grid-template-columns: 40px 1fr;
             }
@@ -442,6 +461,58 @@
             .prophet-entry {
                 grid-template-columns: 1fr;
                 gap: 1rem;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+
+        /* Phone breakpoint */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+            .hero-symbol {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-equation {
+                font-size: 1.4rem;
+                padding: 0.6rem 1rem;
+            }
+            .hero-credits {
+                font-size: 0.85rem;
+            }
+            .container, .wide-container {
+                padding: 0 1rem;
+            }
+            .intro { padding: 3rem 0; }
+            .intro-lead { font-size: 1.2rem; }
+            .episodes-section { padding: 3rem 0; }
+            .section-header { margin-bottom: 2rem; }
+            .book-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .episode-card {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .episode-number {
+                font-size: 1rem !important;
+            }
+            .episode-card h3 {
+                font-size: 1rem;
+            }
+            .image-gallery {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.5rem !important;
+            }
+            .image-gallery img {
+                border-radius: 4px !important;
             }
         }
     </style>

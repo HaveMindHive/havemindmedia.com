@@ -32,6 +32,31 @@
         .nav-label { display: block; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0.25rem; }
         footer { padding: 3rem 2rem; background: var(--deep-blue); text-align: center; color: var(--text-dim); }
         .signature { color: var(--gold); font-family: monospace; margin-top: 1rem; }
+        /* Mobile breakpoints */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            .episode-header { padding: 4rem 1.5rem 3rem; }
+            .episode-nav { flex-direction: column; gap: 1rem; }
+            .episode-nav a { text-align: center; }
+            .content { padding: 3rem 0; }
+            .header-nav { flex-wrap: wrap; gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 16px; }
+            .container { padding: 0 1rem; }
+            .episode-header { padding: 3rem 1rem 2rem; }
+            .episode-subtitle { font-size: 1rem; }
+            .content { padding: 2rem 0; }
+            .content h2 { font-size: 1.3rem; margin: 3rem 0 1rem; }
+            .highlight { padding: 1.5rem; }
+            .equation-box { padding: 1.5rem; }
+            .equation { font-size: 1.2rem; }
+            .data-table th, .data-table td { padding: 0.75rem 0.5rem; font-size: 0.9rem; }
+            .episode-nav a { padding: 0.8rem 1.5rem; }
+            header { padding: 1.5rem 1rem; }
+            footer { padding: 2rem 1rem; }
+        }
     </style>
 </head>
 <body>
