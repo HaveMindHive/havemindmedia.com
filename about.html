@@ -247,15 +247,22 @@
         }
 
         .comet-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin-top: 1.5rem;
-            padding-left: 1rem;
+        }
+
+        .comet-grid .comet-item {
+            width: calc(25% - 1rem);
+            min-width: 140px;
         }
 
         @media (max-width: 768px) {
-            .comet-grid { grid-template-columns: repeat(2, 1fr); }
+            .comet-grid .comet-item {
+                width: calc(50% - 1rem);
+            }
         }
 
         .comet-item {

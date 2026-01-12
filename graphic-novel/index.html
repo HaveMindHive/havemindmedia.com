@@ -499,9 +499,55 @@
         <a href="#page13" title="The Truth"></a>
     </nav>
 
+    <!-- DOG/GOD Epoch Coin Script -->
+    <style>
+        .dog-coin {
+            display: inline-block;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            z-index: 100;
+            background: transparent;
+            padding: 0 0.1em;
+        }
+        .dog-coin .letter {
+            display: inline-block;
+            transition: none;
+            position: relative;
+            z-index: 101;
+            background: linear-gradient(180deg, var(--sun-gold) 0%, var(--eclipse-red) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .dog-coin.d9-glow .letter {
+            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.8));
+        }
+        .dog-coin.all-white .letter {
+            background: #fff !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        .dog-coin.all-black .letter {
+            background: #000 !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        .dog-coin.all-grey .letter {
+            background: #6b6b6b !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+        .dog-coin.qqq .letter {
+            background: #4ade80 !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+    </style>
+
     <!-- COVER PAGE -->
     <section id="cover" class="page cover">
-        <h1 class="cover-title">THE BIRD DOG PROPHECY</h1>
+        <h1 class="cover-title">THE BIRD <a href="../tools/dog-god-epoch/" class="dog-coin" id="dogCoin" title="Click for full Epoch geometry tool"><span class="letter" id="dogL1">D</span><span class="letter" id="dogL2">O</span><span class="letter" id="dogL3">G</span></a> PROPHECY</h1>
         <p class="cover-subtitle">The Grey at the Center. The Grey at the Edge.</p>
 
         <div class="cover-eclipse"></div>
@@ -1244,6 +1290,126 @@
         }, { threshold: 0.5 });
 
         pages.forEach(page => observer.observe(page));
+
+        // ═══════════════════════════════════════════════════════════════
+        // DOG/GOD EPOCH COIN - Inline Text Version
+        // κ = 30, F = 1729, D9 = 9, κ₅ = 17, κ₆ = 29, Torsion Reveal = 61
+        // ═══════════════════════════════════════════════════════════════
+        (function() {
+            const FOLD_POINT = 1729;
+            const D9_INTERVAL = 9;
+            const K5_INTERVAL = 17;
+            const K6_INTERVAL = 29;
+            const TORSION_REVEAL = 61;
+
+            const GLYPHS = {
+                D: ['D', 'd', 'Д', '∂', 'Ð', 'δ', 'ᗡ'],
+                O: ['O', 'o', 'О', '0', '○', 'Ø', 'θ', '☉'],
+                G: ['G', 'g', 'Ꮐ', 'ɢ', 'Ğ', '9', 'Ԍ']
+            };
+
+            const FONTS = [
+                "'Cinzel', serif",
+                "'IM Fell English', serif",
+                "'Cormorant Garamond', serif",
+                "Georgia, serif",
+                "Impact, sans-serif",
+                "'Times New Roman', serif"
+            ];
+
+            const TORSIONS = [
+                'scale(1, 1)',    // τ₁ FACING
+                'scale(-1, 1)',   // τ₂ MIRROR
+                'scale(1, -1)',   // τ₃ RECURSIVE
+                'scale(-1, -1)'   // τ₄ SILENT
+            ];
+
+            const coin = document.getElementById('dogCoin');
+            const l1 = document.getElementById('dogL1');
+            const l2 = document.getElementById('dogL2');
+            const l3 = document.getElementById('dogL3');
+
+            if (!coin || !l1 || !l2 || !l3) return;
+
+            let frame = 0;
+            let k5Counter = 0;
+            let k6Counter = 0;
+            let torsionCounter = 0;
+            let useK5 = true;
+
+            function applyLetter(el, type) {
+                const glyphs = GLYPHS[type];
+                el.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+                el.style.fontFamily = FONTS[Math.floor(Math.random() * FONTS.length)];
+                el.style.transform = TORSIONS[Math.floor(Math.random() * 4)];
+            }
+
+            function generateFrame() {
+                frame++;
+                k5Counter++;
+                k6Counter++;
+                torsionCounter++;
+
+                // Clear special states
+                coin.classList.remove('d9-glow', 'all-white', 'all-black', 'all-grey', 'qqq');
+
+                // TORSION REVEAL (every 61) - deepest echo
+                if (torsionCounter >= TORSION_REVEAL) {
+                    torsionCounter = 0;
+                    const reveals = ['all-white', 'all-black', 'all-grey'];
+                    coin.classList.add(reveals[Math.floor(Math.random() * 3)]);
+                    // Keep same letters but unified color
+                    return;
+                }
+
+                // κ₅ (17) and κ₆ (29) - qQq/QqQ with synced letters
+                const atK5 = k5Counter >= K5_INTERVAL;
+                const atK6 = k6Counter >= K6_INTERVAL;
+
+                if (atK5 || atK6) {
+                    coin.classList.add('qqq');
+                    const patterns = [
+                        ['q', 'Q', 'q'],
+                        ['Q', 'q', 'Q'],
+                        ['Q', 'Q', 'Q'],
+                        ['q', 'q', 'q']
+                    ];
+                    const p = patterns[Math.floor(Math.random() * patterns.length)];
+                    l1.textContent = p[0];
+                    l2.textContent = p[1];
+                    l3.textContent = p[2];
+
+                    // Sync all letters same transform
+                    const syncTransform = TORSIONS[Math.floor(Math.random() * 4)];
+                    const syncFont = FONTS[Math.floor(Math.random() * FONTS.length)];
+                    [l1, l2, l3].forEach(el => {
+                        el.style.transform = syncTransform;
+                        el.style.fontFamily = syncFont;
+                    });
+
+                    if (atK5) k5Counter = 0;
+                    if (atK6) k6Counter = 0;
+                    return;
+                }
+
+                // D9 glow (every 9)
+                if (frame % D9_INTERVAL === 0) {
+                    coin.classList.add('d9-glow');
+                }
+
+                // Normal frame: random DOG or GOD
+                const isGOD = Math.random() > 0.5;
+                const order = isGOD ? ['G', 'O', 'D'] : ['D', 'O', 'G'];
+
+                applyLetter(l1, order[0]);
+                applyLetter(l2, order[1]);
+                applyLetter(l3, order[2]);
+            }
+
+            // Start cycle
+            generateFrame();
+            setInterval(generateFrame, FOLD_POINT);
+        })();
     </script>
 </body>
 </html>

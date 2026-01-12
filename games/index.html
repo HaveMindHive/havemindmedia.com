@@ -36,8 +36,9 @@
         }
 
         .stats-box {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             background: rgba(201, 162, 39, 0.05);
             border: 1px solid var(--border);
@@ -45,6 +46,10 @@
             padding: 2rem;
             margin: 2rem 0;
             text-align: center;
+        }
+
+        .stats-box .stat-item {
+            min-width: 120px;
         }
 
         .stat-item .value {
