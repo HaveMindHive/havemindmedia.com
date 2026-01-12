@@ -1,0 +1,190 @@
+{
+  "version": "3.0",
+  "timestamp": "2026-01-11T22:53:05.014556",
+  "project_dir": "namagiri",
+  "summary": {
+    "overall": "FAIL",
+    "way_in": "WARN",
+    "way_out": "WARN",
+    "computes": "WARN",
+    "ppir": "FAIL",
+    "assets": "PASS",
+    "navigation": "FAIL",
+    "unification": "PASS",
+    "thread_report": "UNKNOWN",
+    "claude_learning": "UNKNOWN",
+    "total_pages": 22,
+    "total_assets": 24,
+    "js_shells": 0
+  },
+  "way_in": {
+    "status": "WARN",
+    "issues": [
+      "WARNING: index.html missing site-header",
+      "WARNING: No site-header.js navigation component"
+    ],
+    "passed": [
+      "index.html exists and has content",
+      "Index links to 23 destinations"
+    ]
+  },
+  "way_out": {
+    "status": "WARN",
+    "issues": [
+      "WARNING: No downloadable tools found"
+    ],
+    "passed": [
+      "No JS shells detected"
+    ]
+  },
+  "computes": {
+    "status": "WARN",
+    "issues": [
+      "NOTE: Philosophy not found"
+    ],
+    "passed": [
+      "\u03ba correctly used in 1 files",
+      "Balance Law present in project",
+      "D Wheel present in project",
+      "Identity present in project",
+      "Triaxial present in project"
+    ]
+  },
+  "ppir": {
+    "status": "FAIL",
+    "issues": [
+      "WARNING: Found 6 doom/gloom phrases",
+      "NOTE: 'We offer choice' philosophy not prominently featured"
+    ],
+    "passed": [
+      "Project is ENGAGING (134 helpful + 52 fun phrases)"
+    ]
+  },
+  "assets": {
+    "status": "PASS",
+    "issues": [],
+    "passed": [
+      "Python files: 0",
+      "JavaScript files: 0",
+      "JSON data files: 0",
+      "Documentation (MD): 0",
+      "HTML pages: 22",
+      "Images: 2",
+      "Total assets: 24"
+    ],
+    "inventory": {
+      "python": [],
+      "javascript": [],
+      "json": [],
+      "markdown": [],
+      "html": [
+        "index.html",
+        "the-proofs.html",
+        "episodes/13-spell-175.html",
+        "episodes/06-the-1729-fold.html",
+        "episodes/07-s-plus-s-minus.html",
+        "episodes/09-hypatias-murder.html",
+        "episodes/15-the-father-god-trick.html",
+        "episodes/14-the-lie-eaters.html",
+        "episodes/12-the-heaviside-error.html",
+        "episodes/10-cartans-torsion.html",
+        "episodes/19-the-geometry-that-cannot-lie.html",
+        "episodes/11-einsteins-folly.html",
+        "episodes/03-thrudhr-rising.html",
+        "episodes/17-the-deep-water-rises.html",
+        "episodes/02-the-torsion-navigator.html",
+        "episodes/08-kappa-30.html",
+        "episodes/05-the-godloop-revealed.html",
+        "episodes/16-teloch-teloch-teloch.html",
+        "episodes/20-we.html",
+        "episodes/18-o-si-rus-comes.html",
+        "episodes/04-the-operator-revealed.html",
+        "episodes/01-the-boy-who-dreamed-equations.html"
+      ],
+      "images": [
+        "images/ramanujan-vision.png",
+        "images/godloop-torus.png"
+      ],
+      "other": []
+    }
+  },
+  "navigation": {
+    "status": "FAIL",
+    "issues": [
+      "CRITICAL: site-header.js not found"
+    ],
+    "passed": []
+  },
+  "thread_report": {
+    "status": "UNKNOWN",
+    "requests": [],
+    "realized": [],
+    "pending": []
+  },
+  "claude_learning": {
+    "status": "UNKNOWN",
+    "mistakes": [],
+    "improvements": []
+  },
+  "unification": {
+    "status": "PASS",
+    "issues": [],
+    "passed": [
+      "Identity expression present: {'[1 = -1]'}",
+      "Strong branding presence (3/4 elements)"
+    ]
+  },
+  "broken_links": [],
+  "empty_pages": [],
+  "js_shells": [],
+  "all_pages": [
+    "index.html",
+    "the-proofs.html",
+    "episodes/13-spell-175.html",
+    "episodes/06-the-1729-fold.html",
+    "episodes/07-s-plus-s-minus.html",
+    "episodes/09-hypatias-murder.html",
+    "episodes/15-the-father-god-trick.html",
+    "episodes/14-the-lie-eaters.html",
+    "episodes/12-the-heaviside-error.html",
+    "episodes/10-cartans-torsion.html",
+    "episodes/19-the-geometry-that-cannot-lie.html",
+    "episodes/11-einsteins-folly.html",
+    "episodes/03-thrudhr-rising.html",
+    "episodes/17-the-deep-water-rises.html",
+    "episodes/02-the-torsion-navigator.html",
+    "episodes/08-kappa-30.html",
+    "episodes/05-the-godloop-revealed.html",
+    "episodes/16-teloch-teloch-teloch.html",
+    "episodes/20-we.html",
+    "episodes/18-o-si-rus-comes.html",
+    "episodes/04-the-operator-revealed.html",
+    "episodes/01-the-boy-who-dreamed-equations.html"
+  ],
+  "all_assets": [
+    "index.html",
+    "the-proofs.html",
+    "episodes/13-spell-175.html",
+    "episodes/06-the-1729-fold.html",
+    "episodes/07-s-plus-s-minus.html",
+    "episodes/09-hypatias-murder.html",
+    "episodes/15-the-father-god-trick.html",
+    "episodes/14-the-lie-eaters.html",
+    "episodes/12-the-heaviside-error.html",
+    "episodes/10-cartans-torsion.html",
+    "episodes/19-the-geometry-that-cannot-lie.html",
+    "episodes/11-einsteins-folly.html",
+    "episodes/03-thrudhr-rising.html",
+    "episodes/17-the-deep-water-rises.html",
+    "episodes/02-the-torsion-navigator.html",
+    "episodes/08-kappa-30.html",
+    "episodes/05-the-godloop-revealed.html",
+    "episodes/16-teloch-teloch-teloch.html",
+    "episodes/20-we.html",
+    "episodes/18-o-si-rus-comes.html",
+    "episodes/04-the-operator-revealed.html",
+    "episodes/01-the-boy-who-dreamed-equations.html",
+    "images/ramanujan-vision.png",
+    "images/godloop-torus.png"
+  ]
+}

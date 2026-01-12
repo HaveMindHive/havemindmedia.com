@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAMAGIRI SPEAKS | Have Mind Media Store</title>
+    <meta name="description" content="NAMAGIRI SPEAKS: The Finite Map of the Infinite Universe in All Scalar Dimensionality. 20 episodes revealing the [1=-1] framework. Digital ebook $25.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <script src="../../js/components/site-header.js" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-dim: rgba(201, 162, 39, 0.6);
+            --bg-deep: #030508;
+            --bg-panel: #0a0d12;
+            --text: #e8e4d9;
+            --text-dim: #8a9aaa;
+            --green: #4ade80;
+            --blue: #6ab4f5;
+            --coral: #f87171;
+            --purple: #a78bfa;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(180deg, var(--bg-deep) 0%, #0a0a1a 100%);
+            color: var(--text);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        .header-space { height: 80px; }
+
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .product-cover {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            aspect-ratio: 3/4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px;
+        }
+        .product-cover .icon { font-size: 5rem; margin-bottom: 20px; }
+        .product-cover h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .product-cover .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            max-width: 300px;
+        }
+
+        .product-details h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .product-details .tagline {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .price-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        .price-main {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .price-note {
+            color: var(--green);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 15px;
+        }
+        .buy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+        }
+        .buy-button.secondary {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .format-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .format-option {
+            flex: 1;
+            padding: 12px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .format-option.active, .format-option:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.2);
+        }
+        .format-option span { display: block; font-size: 1.5rem; margin-bottom: 5px; }
+        .format-option small { color: var(--text-dim); font-size: 0.8rem; }
+
+        .product-description {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .product-description h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        .product-description p {
+            color: var(--text);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .toc {
+            background: var(--bg-panel);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        .toc h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .toc-item {
+            padding: 12px 15px;
+            background: rgba(201, 162, 39, 0.05);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toc-item .num {
+            width: 30px;
+            height: 30px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .toc-item .title {
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .bonus-box {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .bonus-box h4 {
+            color: var(--green);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 10px;
+        }
+        .bonus-box p {
+            color: var(--text-dim);
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+        footer p { color: var(--text-dim); font-size: 0.9rem; }
+        footer .principle { color: var(--gold); font-family: monospace; margin-top: 10px; }
+
+        @media (max-width: 900px) {
+            .product-hero { grid-template-columns: 1fr; }
+            .product-cover { max-width: 400px; margin: 0 auto; }
+        }
+    </style>
+    <script src="../../js/components/site-footer.js" defer></script>
+</head>
+<body>
+    <site-header></site-header>
+    <div class="header-space"></div>
+
+    <section class="product-hero">
+        <div class="product-cover">
+            <div class="icon">🙏</div>
+            <h1>NAMAGIRI SPEAKS</h1>
+            <p class="subtitle">The Finite Map of the Infinite Universe in All Scalar Dimensionality</p>
+        </div>
+
+        <div class="product-details">
+            <h2>NAMAGIRI SPEAKS</h2>
+            <p class="tagline">THE FOLDING AND CONTRACTING STAR OF CONVERGENCE</p>
+
+            <div class="price-box">
+                <div class="price-main">$25</div>
+                <div class="price-note">✓ Includes FREE copy of PPIR: Novella de Revolucion ($5 value)</div>
+
+                <div class="format-options">
+                    <div class="format-option active">
+                        <span>📱</span>
+                        EPUB
+                        <small>Universal</small>
+                    </div>
+                    <div class="format-option">
+                        <span>📄</span>
+                        PDF
+                        <small>Print-ready</small>
+                    </div>
+                    <div class="format-option">
+                        <span>🌐</span>
+                        HTML
+                        <small>Web</small>
+                    </div>
+                </div>
+
+                <!-- Payment buttons - placeholders for Stripe/PayPal integration -->
+                <button class="buy-button" onclick="alert('Payment integration coming soon. Contact havemindmedia@gmail.com for purchase.')">
+                    PURCHASE NOW →
+                </button>
+                <button class="buy-button secondary" onclick="alert('PayPal integration coming soon.')">
+                    Pay with PayPal
+                </button>
+            </div>
+
+            <p style="color: var(--text-dim); font-size: 0.9rem; text-align: center;">
+                Instant digital delivery · All formats included · Lifetime access
+            </p>
+        </div>
+    </section>
+
+    <section class="product-description">
+        <h3>About This Book</h3>
+        <p>There is an operator. Silent. No longer hidden. It feeds information to those who can receive.</p>
+        <p><strong>Srinivasa Ramanujan</strong> received formulas in dreams from the goddess Namagiri. He wrote them down. He couldn't explain where they came from. They were simply <em>given</em>.</p>
+        <p><strong>T0R|«R»0T — Jason Ray</strong> receives the geometric framework. The [1=-1] principle. The κ-constant. The S+/S- structure. It arrives. He writes it down.</p>
+        <p>Same operator. Different vehicles. Different eras. Same geometry.</p>
+        <p><strong>Now Namagiri speaks again.</strong></p>
+
+        <div class="bonus-box">
+            <h4>🎁 BONUS INCLUDED</h4>
+            <p>Your purchase includes a FREE copy of <strong>PPIR: Novella de Revolucion</strong> — A Tribute to Subcomandante Marcos. The epistemological framework for rigorous reasoning and ethical alignment.</p>
+        </div>
+
+        <h3>Table of Contents</h3>
+        <div class="toc">
+            <h4>BOOK I: THE VEHICLES</h4>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="num">1</span><span class="title">The Boy Who Dreamed Equations</span></div>
+                <div class="toc-item"><span class="num">2</span><span class="title">The Torsion Navigator</span></div>
+                <div class="toc-item"><span class="num">3</span><span class="title">THRUDHR Rising</span></div>
+                <div class="toc-item"><span class="num">4</span><span class="title">The Operator Revealed</span></div>
+            </div>
+        </div>
+        <div class="toc">
+            <h4>BOOK II: THE MATHEMATICS</h4>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="num">5</span><span class="title">The GODLOOP</span></div>
+                <div class="toc-item"><span class="num">6</span><span class="title">The 1729 Fold</span></div>
+                <div class="toc-item"><span class="num">7</span><span class="title">S+ and S-</span></div>
+                <div class="toc-item"><span class="num">8</span><span class="title">κ = 30</span></div>
+            </div>
+        </div>
+        <div class="toc">
+            <h4>BOOK III: THE PROPHETS</h4>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="num">9</span><span class="title">Hypatia's Murder</span></div>
+                <div class="toc-item"><span class="num">10</span><span class="title">Cartan's Torsion</span></div>
+                <div class="toc-item"><span class="num">11</span><span class="title">Einstein's Folly</span></div>
+                <div class="toc-item"><span class="num">12</span><span class="title">The Heaviside Error</span></div>
+            </div>
+        </div>
+        <div class="toc">
+            <h4>BOOK IV: THE APOCALYPSE</h4>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="num">13</span><span class="title">Spell 175</span></div>
+                <div class="toc-item"><span class="num">14</span><span class="title">The Lie-Eaters</span></div>
+                <div class="toc-item"><span class="num">15</span><span class="title">The Father God Trick</span></div>
+                <div class="toc-item"><span class="num">16</span><span class="title">TELOCH TELOCH TELOCH</span></div>
+            </div>
+        </div>
+        <div class="toc">
+            <h4>BOOK V: THE CLEANSING</h4>
+            <div class="toc-grid">
+                <div class="toc-item"><span class="num">17</span><span class="title">The Deep Water Rises</span></div>
+                <div class="toc-item"><span class="num">18</span><span class="title">O sI Rus Comes</span></div>
+                <div class="toc-item"><span class="num">19</span><span class="title">The Geometry That Cannot Lie</span></div>
+                <div class="toc-item"><span class="num">20</span><span class="title">WE</span></div>
+            </div>
+        </div>
+
+        <h3>The Core Equation</h3>
+        <div style="background: #0d1117; border-radius: 12px; padding: 30px; margin: 20px 0; font-family: monospace; color: #c9d1d9;">
+            <pre style="margin: 0; overflow-x: auto;">
+Ω(u) = Ω₀ × exp[iu] × [1 + cos(u)×sin(u/2)]
+
+Where:
+• Ω₀ = primordial unity (the ONE before distinction)
+• u ∈ [0, 2π] = position in the eternal cycle
+• Fold point: u = π ↔ 1729 ↔ NOW
+
+[1 = -1] emerges as: Ω(0) magnitude = Ω(π) magnitude
+            </pre>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px;">
+            <a href="../index.html" style="color: var(--gold); text-decoration: none;">← Back to Store</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>Have Mind Media | Jason Ray</p>
+        <p class="principle">[1 = -1] · The Geometry That Cannot Lie</p>
+    </footer>
+    <site-footer></site-footer>
+</body>
+</html>
