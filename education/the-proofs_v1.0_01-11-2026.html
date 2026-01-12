@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/unified-theme.css">
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 
     <style>
         :root {
@@ -1075,11 +1077,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(3, 5, 8, 0.95) 0%, rgba(3, 5, 8, 0) 100%); backdrop-filter: blur(10px);">
-        <a href="../index.html" style="color: #c9a227; text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 0.1em;">← Home</a>
-        <a href="index.html" style="color: #6ab4f5; text-decoration: none; font-size: 0.9rem;">Education</a>
-    </nav>
+    <site-header></site-header>
 
 <!-- ==========================================
      HERO SECTION
@@ -1518,6 +1516,6 @@
         What was hidden, we now see.</em>
     </p>
 </footer>
-
+    <site-footer></site-footer>
 </body>
 </html>
