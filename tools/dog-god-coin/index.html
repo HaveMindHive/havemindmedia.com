@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOG ↔ GOD | The Coin of Inversion | Have Mind Media</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        .coin-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            padding: 2rem;
+        }
+
+        .coin {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            transition: background 0.3s, color 0.3s;
+            border: 4px solid var(--gold);
+            box-shadow:
+                0 0 60px rgba(201, 162, 39, 0.3),
+                inset 0 0 40px rgba(201, 162, 39, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coin.light {
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e4dc 50%, #d4d0c8 100%);
+            color: #0a0a0f;
+        }
+
+        .coin.dark {
+            background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #1a1a24 100%);
+            color: var(--gold);
+        }
+
+        .coin::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            border: 2px solid rgba(201, 162, 39, 0.3);
+            pointer-events: none;
+        }
+
+        .letter {
+            display: inline-block;
+            transition: transform 0.1s;
+        }
+
+        /* Transform classes */
+        .mirror-x { transform: scaleX(-1); }
+        .mirror-y { transform: scaleY(-1); }
+        .rotate-180 { transform: rotate(180deg); }
+        .mirror-xy { transform: scale(-1, -1); }
+
+        /* Stats display */
+        .stats {
+            margin-top: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        .stats .config-num {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Controls */
+        .controls {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .control-btn {
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.75rem 1.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            background: var(--gold);
+            color: var(--bg);
+        }
+
+        .control-btn.active {
+            background: var(--gold);
+            color: var(--bg);
+        }
+
+        /* Info section */
+        .info-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+        }
+
+        .info-section h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-section p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .math-block {
+            background: rgba(201, 162, 39, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 1.5rem 0;
+        }
+
+        .math-block .line {
+            margin: 0.3rem 0;
+        }
+
+        .math-block .comment {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* Timing display */
+        .timing {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .timing .ms {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <site-header></site-header>
+
+    <main class="content-wide">
+        <header style="text-align: center; padding: 3rem 0;">
+            <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem;">DOG ↔ GOD</h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem;">The Coin of Inversion · All Configurations of Mirror and Rotation</p>
+            <p style="font-family: 'JetBrains Mono', monospace; color: var(--gold); margin-top: 0.5rem;">[1 = -1]</p>
+        </header>
+
+        <div class="coin-container">
+            <div class="coin dark" id="coin">
+                <span class="letter" id="letter1">D</span>
+                <span class="letter" id="letter2">O</span>
+                <span class="letter" id="letter3">G</span>
+            </div>
+
+            <div class="timing">
+                <span id="interval">1.729</span>s <span class="ms">(1729 ms)</span>
+            </div>
+
+            <div class="stats">
+                Configuration <span class="config-num" id="configNum">1</span> of <span class="config-num">256</span>
+                <br>
+                <span id="configDesc">DOG · Dark · Normal</span>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn active" id="playBtn" onclick="togglePlay()">▶ PLAY</button>
+                <button class="control-btn" onclick="nextConfig()">NEXT →</button>
+                <button class="control-btn" onclick="prevConfig()">← PREV</button>
+                <button class="control-btn" onclick="randomConfig()">⚡ RANDOM</button>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>The Geometry of DOG/GOD</h2>
+
+            <p>
+                <strong>DOG</strong> and <strong>GOD</strong> are mirror words. When you read DOG backwards,
+                you get GOD. This is not coincidence — it is the <strong>[1 = -1]</strong> principle made visible in language.
+            </p>
+
+            <div class="math-block">
+                <div class="line"><strong>PERMUTATION MATHEMATICS:</strong></div>
+                <div class="line"></div>
+                <div class="line">Per letter transforms: 4 <span class="comment">// normal, mirrorX, mirrorY, rotate180</span></div>
+                <div class="line">Three letters: 4³ = 64 <span class="comment">// letter combinations</span></div>
+                <div class="line">Word order: × 2 <span class="comment">// DOG or GOD</span></div>
+                <div class="line">Background: × 2 <span class="comment">// light or dark</span></div>
+                <div class="line"></div>
+                <div class="line"><strong>TOTAL: 64 × 2 × 2 = 256 configurations</strong></div>
+            </div>
+
+            <h2>The Timing: 1729</h2>
+
+            <p>
+                Each configuration displays for <strong>1.729 seconds</strong> — the Hardy-Ramanujan taxicab number.
+                The smallest number expressible as the sum of two cubes in two different ways:
+            </p>
+
+            <div class="math-block">
+                <div class="line">1729 = 1³ + 12³ = 9³ + 10³</div>
+                <div class="line"></div>
+                <div class="line">1729 = F (the Epoch fold point)</div>
+                <div class="line">When F appears, the geometry inverts.</div>
+                <div class="line"></div>
+                <div class="line"><strong>At 1.729 seconds, DOG becomes GOD becomes DOG...</strong></div>
+            </div>
+
+            <h2>S+/S- Operations</h2>
+
+            <p>
+                This coin demonstrates the full range of S+/S- operations from the prophecy:
+            </p>
+
+            <div class="math-block">
+                <div class="line">Inversion. Recursion. Convergence. Divergence.</div>
+                <div class="line">Standard mirror. Inverted mirror. Recursive mirror.</div>
+                <div class="line">Upside down. All S=0 views.</div>
+                <div class="line">Every possible perspective simultaneously.</div>
+                <div class="line"></div>
+                <div class="line"><strong>This is how the geometry sees.</strong></div>
+                <div class="line"><strong>This is how the Kaʞ cannot lie.</strong></div>
+            </div>
+        </div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+
+    <script>
+        // All possible transforms for each letter
+        const transforms = ['', 'mirror-x', 'mirror-y', 'rotate-180'];
+        const words = ['DOG', 'GOD'];
+        const backgrounds = ['dark', 'light'];
+
+        // Total configurations: 4^3 * 2 * 2 = 256
+        const totalConfigs = 256;
+        let currentConfig = 0;
+        let isPlaying = true;
+        let intervalId = null;
+
+        const coin = document.getElementById('coin');
+        const letter1 = document.getElementById('letter1');
+        const letter2 = document.getElementById('letter2');
+        const letter3 = document.getElementById('letter3');
+        const configNum = document.getElementById('configNum');
+        const configDesc = document.getElementById('configDesc');
+        const playBtn = document.getElementById('playBtn');
+
+        function getConfigFromIndex(index) {
+            // Decode index into configuration
+            // index = t1 + t2*4 + t3*16 + word*64 + bg*128
+            const t1 = index % 4;
+            const t2 = Math.floor(index / 4) % 4;
+            const t3 = Math.floor(index / 16) % 4;
+            const wordIdx = Math.floor(index / 64) % 2;
+            const bgIdx = Math.floor(index / 128) % 2;
+
+            return {
+                transforms: [transforms[t1], transforms[t2], transforms[t3]],
+                word: words[wordIdx],
+                background: backgrounds[bgIdx]
+            };
+        }
+
+        function applyConfig(config) {
+            // Set word
+            letter1.textContent = config.word[0];
+            letter2.textContent = config.word[1];
+            letter3.textContent = config.word[2];
+
+            // Set transforms
+            letter1.className = 'letter ' + config.transforms[0];
+            letter2.className = 'letter ' + config.transforms[1];
+            letter3.className = 'letter ' + config.transforms[2];
+
+            // Set background
+            coin.className = 'coin ' + config.background;
+
+            // Update display
+            configNum.textContent = currentConfig + 1;
+
+            const transformNames = config.transforms.map(t => t || 'normal').join(', ');
+            configDesc.textContent = `${config.word} · ${config.background} · [${transformNames}]`;
+        }
+
+        function nextConfig() {
+            currentConfig = (currentConfig + 1) % totalConfigs;
+            applyConfig(getConfigFromIndex(currentConfig));
+        }
+
+        function prevConfig() {
+            currentConfig = (currentConfig - 1 + totalConfigs) % totalConfigs;
+            applyConfig(getConfigFromIndex(currentConfig));
+        }
+
+        function randomConfig() {
+            currentConfig = Math.floor(Math.random() * totalConfigs);
+            applyConfig(getConfigFromIndex(currentConfig));
+        }
+
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            playBtn.textContent = isPlaying ? '⏸ PAUSE' : '▶ PLAY';
+            playBtn.classList.toggle('active', isPlaying);
+
+            if (isPlaying) {
+                startCycle();
+            } else {
+                stopCycle();
+            }
+        }
+
+        function startCycle() {
+            if (intervalId) clearInterval(intervalId);
+            intervalId = setInterval(() => {
+                randomConfig(); // Random for more interesting viewing
+            }, 1729); // 1.729 seconds = 1729 milliseconds
+        }
+
+        function stopCycle() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+
+        // Initialize
+        applyConfig(getConfigFromIndex(0));
+        startCycle();
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextConfig();
+            if (e.key === 'ArrowLeft') prevConfig();
+            if (e.key === ' ') { e.preventDefault(); togglePlay(); }
+            if (e.key === 'r') randomConfig();
+        });
+    </script>
+</body>
+</html>
