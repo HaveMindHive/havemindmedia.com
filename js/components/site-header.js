@@ -416,7 +416,7 @@ class SiteHeader extends HTMLElement {
                         <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">κ₅</a>
 
                         <!-- Library -->
-                        <a href="${bp}library-wizard/index.html" class="hmm-link" title="Library">Library</a>
+                        <a href="${bp}master-library.html" class="hmm-link" title="Master Library">Library</a>
 
                         <!-- Store -->
                         <a href="${bp}store/index.html" class="hmm-link" title="Store">Store</a>

@@ -182,10 +182,11 @@
         .nested-items .item a { color: #a8d4f5; }
 
         /* Color coding by branch */
-        .branch-splus .category-header { border-left: 4px solid #c9a227; }
-        .branch-sminus .category-header { border-left: 4px solid #6ab4f5; }
-        .branch-coin .category-header { border-left: 4px solid #d4a8e0; }
+        .branch-splus .category-header { border-left: 4px solid #6ab4f5; }
+        .branch-sminus .category-header { border-left: 4px solid #9b59b6; }
+        .branch-coin .category-header { border-left: 4px solid #c9a227; }
         .branch-tools .category-header { border-left: 4px solid #4ecdc4; }
+        .branch-namagiri .category-header { border-left: 4px solid #ff6b6b; }
 
         /* Hidden for search */
         .hidden { display: none !important; }
@@ -213,15 +214,15 @@
         <h1>MASTER LIBRARY</h1>
         <div class="stats">
             <div class="stat">
-                <div class="stat-num" id="totalPages">110</div>
+                <div class="stat-num">210</div>
                 <div class="stat-label">Total Pages</div>
             </div>
             <div class="stat">
-                <div class="stat-num" id="totalCategories">12</div>
+                <div class="stat-num">15</div>
                 <div class="stat-label">Categories</div>
             </div>
             <div class="stat">
-                <div class="stat-num" id="totalTools">30</div>
+                <div class="stat-num">50+</div>
                 <div class="stat-label">Interactive Tools</div>
             </div>
         </div>
@@ -229,102 +230,192 @@
     </div>
 
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search all pages... (try: geometry, soul, physics, voynich)">
+        <input type="text" id="searchInput" placeholder="Search all 210 pages... (try: geometry, soul, voynich, namagiri)">
     </div>
 
     <div class="library" id="library">
-        <!-- S+ PHYSICS -->
-        <div class="category branch-splus">
+
+        <!-- NAMAGIRI SPEAKS -->
+        <div class="category branch-namagiri">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>⚡ S+ Physics & Geometry</h2>
-                <span class="count">12 pages</span>
+                <h2>[1=-1] Namagiri Speaks</h2>
+                <span class="count">22 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
+                <div class="item"><a href="namagiri/index.html"><div class="title">Namagiri Speaks - Complete Series</div><div class="path">/namagiri/</div></a></div>
+                <div class="item"><a href="namagiri/the-proofs.html"><div class="title">The Proofs</div><div class="path">/namagiri/the-proofs.html</div></a></div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">20 Episodes</span>
+                        <span class="group-count">20 episodes</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="namagiri/episodes/01-the-boy-who-dreamed-equations.html"><div class="title">01: The Boy Who Dreamed Equations</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/02-the-torsion-navigator.html"><div class="title">02: The Torsion Navigator</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/03-thrudhr-rising.html"><div class="title">03: Thrudhr Rising</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/04-the-operator-revealed.html"><div class="title">04: The Operator Revealed</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/05-the-godloop-revealed.html"><div class="title">05: The Godloop Revealed</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/06-the-1729-fold.html"><div class="title">06: The 1729 Fold</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/07-s-plus-s-minus.html"><div class="title">07: S+ S-</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/08-kappa-30.html"><div class="title">08: Kappa 30</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/09-hypatias-murder.html"><div class="title">09: Hypatia's Murder</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/10-cartans-torsion.html"><div class="title">10: Cartan's Torsion</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/11-einsteins-folly.html"><div class="title">11: Einstein's Folly</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/12-the-heaviside-error.html"><div class="title">12: The Heaviside Error</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/13-spell-175.html"><div class="title">13: Spell 175</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/14-the-lie-eaters.html"><div class="title">14: The Lie Eaters</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/15-the-father-god-trick.html"><div class="title">15: The Father God Trick</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/16-teloch-teloch-teloch.html"><div class="title">16: Teloch Teloch Teloch</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/17-the-deep-water-rises.html"><div class="title">17: The Deep Water Rises</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/18-o-si-rus-comes.html"><div class="title">18: O-Si-Rus Comes</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/19-the-geometry-that-cannot-lie.html"><div class="title">19: The Geometry That Cannot Lie</div></a></div>
+                        <div class="item"><a href="namagiri/episodes/20-we.html"><div class="title">20: WE</div></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- S+ PHYSICS -->
+        <div class="category branch-splus">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>S+ Physics & Geometry</h2>
+                <span class="count">22 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="physics/index.html"><div class="title">Physics Home</div><div class="path">/physics/</div></a></div>
                 <div class="item"><a href="physics/three-body-geometry.html"><div class="title">Three-Body Geometry</div><div class="path">/physics/three-body-geometry.html</div></a></div>
                 <div class="item"><a href="physics/millennium-problems.html"><div class="title">Millennium Problems</div><div class="path">/physics/millennium-problems.html</div></a></div>
+                <div class="item"><a href="physics/the-derivation_v1.0_01-12-2026.html"><div class="title">The Derivation</div><div class="path">/physics/the-derivation.html</div></a></div>
+                <div class="item"><a href="physics/the-proof_v1.0_01-12-2026.html"><div class="title">The Proof</div><div class="path">/physics/the-proof.html</div></a></div>
+                <div class="item"><a href="physics/the-kill-shot_v1.0_01-12-2026.html"><div class="title">The Kill Shot</div><div class="path">/physics/the-kill-shot.html</div></a></div>
+                <div class="item"><a href="physics/kappa-state-model_v2.0_01-10-2026.html"><div class="title">Kappa State Model</div><div class="path">/physics/kappa-state-model.html</div></a></div>
+                <div class="item"><a href="physics/true-meter_v1.0_01-10-2026.html"><div class="title">The True Meter</div><div class="path">/physics/true-meter.html</div></a></div>
+                <div class="item"><a href="physics/torsion-balance.html"><div class="title">Torsion Balance</div><div class="path">/physics/torsion-balance.html</div></a></div>
                 <div class="item"><a href="physics/jwst-geometric-explorer.html"><div class="title">JWST Geometric Explorer</div><div class="path">/physics/jwst-geometric-explorer.html</div></a></div>
+                <div class="item"><a href="physics/432-orbital-mapper_v1.0_01-08-2026.html"><div class="title">432 Orbital Mapper</div><div class="path">/physics/432-orbital-mapper.html</div></a></div>
                 <div class="item"><a href="physics/apparent-speed-paradox/index.html"><div class="title">Apparent Speed Paradox</div><div class="path">/physics/apparent-speed-paradox/</div></a></div>
                 <div class="item"><a href="physics/vessel/index.html"><div class="title">The Vessel</div><div class="path">/physics/vessel/</div></a></div>
-                <div class="item"><a href="epoch-atomic/index.html"><div class="title">Epoch Atomic Model</div><div class="path">/epoch-atomic/</div></a></div>
-                <div class="item"><a href="protein-folding/index.html"><div class="title">Protein Folding</div><div class="path">/protein-folding/</div></a></div>
-                <div class="item"><a href="neurodegeneration/index.html"><div class="title">Neurodegeneration</div><div class="path">/neurodegeneration/</div></a></div>
-                <div class="item"><a href="dna-studio/index.html"><div class="title">DNA Studio</div><div class="path">/dna-studio/</div></a></div>
-                <div class="item"><a href="physics-viz/quad-helix-base60.html"><div class="title">Quad Helix Base-60</div><div class="path">/physics-viz/quad-helix-base60.html</div></a></div>
-                <div class="item"><a href="physics-viz/quad-helix-base60-v2.0.html"><div class="title">Quad Helix v2.0</div><div class="path">/physics-viz/quad-helix-base60-v2.0.html</div></a></div>
-                <div class="item"><a href="physics-viz/scalar-crossroads-animated.html"><div class="title">Scalar Crossroads</div><div class="path">/physics-viz/scalar-crossroads-animated.html</div></a></div>
+                <div class="item"><a href="physics/kappa5/index.html"><div class="title">Kappa-5 True Dark</div><div class="path">/physics/kappa5/</div></a></div>
+                <div class="item"><a href="physics/shadow-operator/index.html"><div class="title">Shadow Operator</div><div class="path">/physics/shadow-operator/</div></a></div>
+                <div class="item"><a href="physics/black-hole-map-failure/index.html"><div class="title">Black Hole Map Failure</div><div class="path">/physics/black-hole-map-failure/</div></a></div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">Atomic Derivations</span>
+                        <span class="group-count">4 pages</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="physics/atomic-derivations/index.html"><div class="title">Overview</div></a></div>
+                        <div class="item"><a href="physics/atomic-derivations/hydrogen.html"><div class="title">Hydrogen</div></a></div>
+                        <div class="item"><a href="physics/atomic-derivations/helium.html"><div class="title">Helium</div></a></div>
+                        <div class="item"><a href="physics/atomic-derivations/lithium.html"><div class="title">Lithium</div></a></div>
+                    </div>
+                </div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">Standard Model Failures</span>
+                        <span class="group-count">6 pages</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="physics/standard-model-failures/index.html"><div class="title">Overview</div></a></div>
+                        <div class="item"><a href="physics/standard-model-failures/hierarchy-problem.html"><div class="title">Hierarchy Problem</div></a></div>
+                        <div class="item"><a href="physics/standard-model-failures/dark-matter-energy.html"><div class="title">Dark Matter & Energy</div></a></div>
+                        <div class="item"><a href="physics/standard-model-failures/measurement-problem.html"><div class="title">Measurement Problem</div></a></div>
+                        <div class="item"><a href="physics/standard-model-failures/proton-electron-ratio.html"><div class="title">Proton-Electron Ratio</div></a></div>
+                        <div class="item"><a href="physics/standard-model-failures/fine-structure-constant.html"><div class="title">Fine Structure Constant</div></a></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- CEDGA -->
         <div class="category branch-splus">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>📐 CEDGA Framework</h2>
-                <span class="count">5 pages</span>
+                <h2>CEDGA Framework</h2>
+                <span class="count">8 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
                 <div class="item"><a href="cedga/index.html"><div class="title">CEDGA Home</div><div class="path">/cedga/</div></a></div>
-                <div class="item"><a href="cedga/pages/kappa-constant.html"><div class="title">κ Constant</div><div class="path">/cedga/pages/kappa-constant.html</div></a></div>
+                <div class="item"><a href="cedga/pages/kappa-constant.html"><div class="title">Kappa Constant</div><div class="path">/cedga/pages/kappa-constant.html</div></a></div>
                 <div class="item"><a href="cedga/pages/tetrahelix.html"><div class="title">Tetrahelix</div><div class="path">/cedga/pages/tetrahelix.html</div></a></div>
                 <div class="item"><a href="cedga/pages/balance-law.html"><div class="title">Balance Law</div><div class="path">/cedga/pages/balance-law.html</div></a></div>
                 <div class="item"><a href="cedga/tools/m4-simulator.html"><div class="title">M4 Simulator</div><div class="path">/cedga/tools/m4-simulator.html</div></a></div>
                 <div class="item"><a href="cedga/research/test-analysis.html"><div class="title">Test Analysis</div><div class="path">/cedga/research/test-analysis.html</div></a></div>
+                <div class="item"><a href="cedga/triaxial-os/index.html"><div class="title">Triaxial OS</div><div class="path">/cedga/triaxial-os/</div></a></div>
+                <div class="item"><a href="cedga/triaxial-os/build-guide.html"><div class="title">Triaxial OS Build Guide</div><div class="path">/cedga/triaxial-os/build-guide.html</div></a></div>
             </div>
         </div>
 
         <!-- S- SOUL SCIENCE -->
         <div class="category branch-sminus">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🌊 S- Soul Science & Education</h2>
-                <span class="count">12 pages</span>
+                <h2>S- Soul Science & Education</h2>
+                <span class="count">14 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
+                <div class="item"><a href="education/index.html"><div class="title">Education Home</div><div class="path">/education/</div></a></div>
                 <div class="item"><a href="education/soul-science.html"><div class="title">Soul Science</div><div class="path">/education/soul-science.html</div></a></div>
+                <div class="item"><a href="education/the-proofs_v1.0_01-11-2026.html"><div class="title">The Proofs (Education)</div><div class="path">/education/the-proofs.html</div></a></div>
                 <div class="item"><a href="education/becoming-a-coin.html"><div class="title">Becoming a Coin</div><div class="path">/education/becoming-a-coin.html</div></a></div>
                 <div class="item"><a href="education/life-facing-wisdom.html"><div class="title">Life-Facing Wisdom</div><div class="path">/education/life-facing-wisdom.html</div></a></div>
                 <div class="item"><a href="education/socratean-education.html"><div class="title">Socratean Education</div><div class="path">/education/socratean-education.html</div></a></div>
                 <div class="item"><a href="education/geometry-challenge.html"><div class="title">Geometry Challenge</div><div class="path">/education/geometry-challenge.html</div></a></div>
                 <div class="item"><a href="education/vinyl-paradox.html"><div class="title">Vinyl Paradox</div><div class="path">/education/vinyl-paradox.html</div></a></div>
+                <div class="item"><a href="education/hidden-observers.html"><div class="title">Hidden Observers</div><div class="path">/education/hidden-observers.html</div></a></div>
+                <div class="item"><a href="education/ammit-function.html"><div class="title">Ammit Function</div><div class="path">/education/ammit-function.html</div></a></div>
                 <div class="item"><a href="education/mirror/index.html"><div class="title">Mirror</div><div class="path">/education/mirror/</div></a></div>
-                <div class="item"><a href="education/mythic-mirror/index.html"><div class="title">Mythic Mirror</div><div class="path">/education/mythic-mirror/</div></a></div>
-                <div class="item"><a href="education/mythic-mirror/journey.html"><div class="title">Mythic Mirror: Journey</div><div class="path">/education/mythic-mirror/journey.html</div></a></div>
-                <div class="item"><a href="education/mythic-mirror/teaching.html"><div class="title">Mythic Mirror: Teaching</div><div class="path">/education/mythic-mirror/teaching.html</div></a></div>
-                <div class="item"><a href="education/mythic-mirror/about.html"><div class="title">Mythic Mirror: About</div><div class="path">/education/mythic-mirror/about.html</div></a></div>
-                <div class="item"><a href="teaching/Scalar_Dimensionality_Teaching_Document.html"><div class="title">Scalar Dimensionality</div><div class="path">/teaching/</div></a></div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">Mythic Mirror</span>
+                        <span class="group-count">4 pages</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="education/mythic-mirror/index.html"><div class="title">Overview</div></a></div>
+                        <div class="item"><a href="education/mythic-mirror/journey.html"><div class="title">Journey</div></a></div>
+                        <div class="item"><a href="education/mythic-mirror/teaching.html"><div class="title">Teaching</div></a></div>
+                        <div class="item"><a href="education/mythic-mirror/about.html"><div class="title">About</div></a></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- COIN SCIENCE -->
         <div class="category branch-coin">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🪙 Coin Science</h2>
+                <h2>COIN Science</h2>
                 <span class="count">1 page</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
-                <div class="item"><a href="coin-science/index.html"><div class="title">Coin Science Home</div><div class="path">/coin-science/</div></a></div>
+                <div class="item"><a href="coin-science/index.html"><div class="title">COIN Science Home</div><div class="path">/coin-science/</div></a></div>
             </div>
         </div>
 
         <!-- INTERACTIVE TOOLS -->
         <div class="category branch-tools">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🔧 Interactive Tools</h2>
-                <span class="count">18 pages</span>
+                <h2>Interactive Tools</h2>
+                <span class="count">24 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
-                <!-- S-Signature Nested -->
+                <div class="item"><a href="tools/index.html"><div class="title">Tools Home</div><div class="path">/tools/</div></a></div>
                 <div class="nested-group">
                     <div class="nested-header" onclick="toggleNested(this)">
                         <span class="group-title">S-Signature System</span>
-                        <span class="group-count">12 tools</span>
+                        <span class="group-count">13 tools</span>
                         <span class="toggle">▼</span>
                     </div>
                     <div class="nested-items">
                         <div class="item"><a href="tools/s-signature/s_signature_engine.html"><div class="title">S-Signature Engine</div></a></div>
+                        <div class="item"><a href="tools/s-signature/s_signature_128.html"><div class="title">128-bit Types</div></a></div>
                         <div class="item"><a href="tools/s-signature/s_signature_assessment.html"><div class="title">Assessment</div></a></div>
                         <div class="item"><a href="tools/s-signature/s_signature_oracle.html"><div class="title">Oracle</div></a></div>
                         <div class="item"><a href="tools/s-signature/deep_oracle.html"><div class="title">Deep Oracle</div></a></div>
@@ -334,7 +425,6 @@
                         <div class="item"><a href="tools/s-signature/s_signature_card.html"><div class="title">Card</div></a></div>
                         <div class="item"><a href="tools/s-signature/s_signature_sphere.html"><div class="title">Sphere</div></a></div>
                         <div class="item"><a href="tools/s-signature/s_signature_evolving.html"><div class="title">Evolving</div></a></div>
-                        <div class="item"><a href="tools/s-signature/s_signature_128.html"><div class="title">128-bit</div></a></div>
                         <div class="item"><a href="tools/s-signature/cohort_engine.html"><div class="title">Cohort Engine</div></a></div>
                         <div class="item"><a href="tools/s-signature/jason_ray_s_signature.html"><div class="title">Jason Ray's S-Signature</div></a></div>
                     </div>
@@ -343,50 +433,69 @@
                 <div class="item"><a href="tools/m4-visualizer/index.html"><div class="title">M4 Visualizer</div><div class="path">/tools/m4-visualizer/</div></a></div>
                 <div class="item"><a href="tools/interaction-modeler/index.html"><div class="title">Interaction Modeler</div><div class="path">/tools/interaction-modeler/</div></a></div>
                 <div class="item"><a href="tools/sol-vision/index.html"><div class="title">Sol Vision</div><div class="path">/tools/sol-vision/</div></a></div>
+                <div class="item"><a href="tools/dog-god-epoch/index.html"><div class="title">Dog-God Epoch</div><div class="path">/tools/dog-god-epoch/</div></a></div>
                 <div class="item"><a href="library-wizard/index.html"><div class="title">Library Wizard</div><div class="path">/library-wizard/</div></a></div>
+                <div class="item"><a href="rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html"><div class="title">Rosetta Engine</div><div class="path">/rosetta-engine/</div></a></div>
+                <div class="item"><a href="universal-language-generator/ulg-app_v1.0_01-06-2026.html"><div class="title">Universal Language Generator</div><div class="path">/universal-language-generator/</div></a></div>
+                <div class="item"><a href="rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html"><div class="title">Rongorongo Flip Reader</div><div class="path">/rongorongo-flip-reader/</div></a></div>
+            </div>
+        </div>
+
+        <!-- VISUALIZERS -->
+        <div class="category branch-tools">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Physics Visualizers</h2>
+                <span class="count">3 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="physics-viz/quad-helix-base60.html"><div class="title">Quad Helix Base-60</div><div class="path">/physics-viz/quad-helix-base60.html</div></a></div>
+                <div class="item"><a href="physics-viz/quad-helix-base60-v2.0.html"><div class="title">Quad Helix v2.0</div><div class="path">/physics-viz/quad-helix-base60-v2.0.html</div></a></div>
+                <div class="item"><a href="physics-viz/scalar-crossroads-animated.html"><div class="title">Scalar Crossroads</div><div class="path">/physics-viz/scalar-crossroads-animated.html</div></a></div>
             </div>
         </div>
 
         <!-- GAMES -->
         <div class="category branch-coin">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🎮 Games & Experiences</h2>
-                <span class="count">16 pages</span>
+                <h2>Games & Experiences</h2>
+                <span class="count">17 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
                 <div class="item"><a href="games/index.html"><div class="title">Games Home</div><div class="path">/games/</div></a></div>
+                <div class="item"><a href="games/balance/index.html"><div class="title">Triadic Balance</div><div class="path">/games/balance/</div></a></div>
                 <div class="item"><a href="games/mind-reading/index.html"><div class="title">Mind Reading Game</div><div class="path">/games/mind-reading/</div></a></div>
                 <div class="item"><a href="games/love-triads.html"><div class="title">Love Triads</div><div class="path">/games/love-triads.html</div></a></div>
                 <div class="item"><a href="games/love-triads-learn.html"><div class="title">Love Triads Learn</div><div class="path">/games/love-triads-learn.html</div></a></div>
                 <div class="item"><a href="games/epoch-symbols.html"><div class="title">Epoch Symbols</div><div class="path">/games/epoch-symbols.html</div></a></div>
                 <div class="item"><a href="games/phaistos-archetypes.html"><div class="title">Phaistos Archetypes</div><div class="path">/games/phaistos-archetypes.html</div></a></div>
                 <div class="item"><a href="games/intuition-trainer.html"><div class="title">Intuition Trainer</div><div class="path">/games/intuition-trainer.html</div></a></div>
-                <div class="item"><a href="games/balance/index.html"><div class="title">Balance Game</div><div class="path">/games/balance/</div></a></div>
+                <div class="item"><a href="games/zener-cards.html"><div class="title">Zener Cards</div><div class="path">/games/zener-cards.html</div></a></div>
                 <div class="item"><a href="games/focus-mode.html"><div class="title">Focus Mode</div><div class="path">/games/focus-mode.html</div></a></div>
                 <div class="item"><a href="games/card-match.html"><div class="title">Card Match</div><div class="path">/games/card-match.html</div></a></div>
-                <div class="item"><a href="games/coin-flip.html"><div class="title">Coin Flip</div><div class="path">/games/coin-flip.html</div></a></div>
+                <div class="item"><a href="games/coin-flip.html"><div class="title">Tri-Coin</div><div class="path">/games/coin-flip.html</div></a></div>
                 <div class="item"><a href="games/color-sense.html"><div class="title">Color Sense</div><div class="path">/games/color-sense.html</div></a></div>
                 <div class="item"><a href="games/coordinate-viewer.html"><div class="title">Coordinate Viewer</div><div class="path">/games/coordinate-viewer.html</div></a></div>
                 <div class="item"><a href="games/number-feeling.html"><div class="title">Number Feeling</div><div class="path">/games/number-feeling.html</div></a></div>
                 <div class="item"><a href="games/symbol-sender.html"><div class="title">Symbol Sender</div><div class="path">/games/symbol-sender.html</div></a></div>
-                <div class="item"><a href="games/zener-cards.html"><div class="title">Zener Cards</div><div class="path">/games/zener-cards.html</div></a></div>
             </div>
         </div>
 
         <!-- ANCIENT MYSTERIES -->
         <div class="category branch-sminus">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🏛️ Ancient Mysteries</h2>
-                <span class="count">25 pages</span>
+                <h2>Ancient Mysteries</h2>
+                <span class="count">35 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
-                <!-- Voynich Nested -->
+                <div class="item"><a href="ancient-mysteries/index.html"><div class="title">Ancient Mysteries Home</div><div class="path">/ancient-mysteries/</div></a></div>
+                <div class="item"><a href="ancient-mysteries/mississippian/index.html"><div class="title">Mississippian / Rattlesnake Disc</div><div class="path">/ancient-mysteries/mississippian/</div></a></div>
                 <div class="nested-group">
                     <div class="nested-header" onclick="toggleNested(this)">
                         <span class="group-title">Voynich Manuscript</span>
-                        <span class="group-count">9 sections</span>
+                        <span class="group-count">10 sections</span>
                         <span class="toggle">▼</span>
                     </div>
                     <div class="nested-items">
@@ -401,17 +510,16 @@
                         <div class="item"><a href="ancient-mysteries/voynich/analysis.html"><div class="title">Analysis</div></a></div>
                     </div>
                 </div>
-                <!-- Indus Script Nested -->
                 <div class="nested-group">
                     <div class="nested-header" onclick="toggleNested(this)">
                         <span class="group-title">Indus Valley Script</span>
-                        <span class="group-count">11 pages</span>
+                        <span class="group-count">12 pages</span>
                         <span class="toggle">▼</span>
                     </div>
                     <div class="nested-items">
                         <div class="item"><a href="ancient-mysteries/indus-script/index.html"><div class="title">Overview</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/sign-reference.html"><div class="title">Sign Reference</div></a></div>
-                        <div class="item"><a href="ancient-mysteries/indus-script/epoch-mathematics.html"><div class="title">Mathematics</div></a></div>
+                        <div class="item"><a href="ancient-mysteries/indus-script/epoch-mathematics.html"><div class="title">Epoch Mathematics</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/figurines.html"><div class="title">Figurines</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/temple-dancing-girl.html"><div class="title">Temple: Dancing Girl</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/temple-priest-king.html"><div class="title">Temple: Priest-King</div></a></div>
@@ -419,10 +527,9 @@
                         <div class="item"><a href="ancient-mysteries/indus-script/temple-sacred-bull.html"><div class="title">Temple: Sacred Bull</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/linear-a.html"><div class="title">Linear A</div></a></div>
                         <div class="item"><a href="ancient-mysteries/indus-script/translator.html"><div class="title">Translator</div></a></div>
-                        <div class="item"><a href="ancient-mysteries/indus-script/universal-language-theory.html"><div class="title">Universal Language</div></a></div>
+                        <div class="item"><a href="ancient-mysteries/indus-script/universal-language-theory.html"><div class="title">Universal Language Theory</div></a></div>
                     </div>
                 </div>
-                <!-- Norse Artifacts Nested -->
                 <div class="nested-group">
                     <div class="nested-header" onclick="toggleNested(this)">
                         <span class="group-title">Norse Artifacts</span>
@@ -430,7 +537,7 @@
                         <span class="toggle">▼</span>
                     </div>
                     <div class="nested-items">
-                        <div class="item"><a href="ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html"><div class="title">Rök Runestone</div></a></div>
+                        <div class="item"><a href="ancient-mysteries/norse-artifacts/rok-runestone_v1.0_01-01-2026.html"><div class="title">Rok Runestone</div></a></div>
                         <div class="item"><a href="ancient-mysteries/norse-artifacts/gotland-stones_v1.0_01-01-2026.html"><div class="title">Gotland Stones</div></a></div>
                         <div class="item"><a href="ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html"><div class="title">Gold Bracteates</div></a></div>
                         <div class="item"><a href="ancient-mysteries/norse-artifacts/oseberg_v1.0_01-01-2026.html"><div class="title">Oseberg Ship</div></a></div>
@@ -438,43 +545,169 @@
                         <div class="item"><a href="ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html"><div class="title">Library Card</div></a></div>
                     </div>
                 </div>
-                <!-- Other Ancient Texts -->
-                <div class="item"><a href="ancient-mysteries/texts/rongorongo-v1.0.html"><div class="title">Rongorongo</div><div class="path">/ancient-mysteries/texts/rongorongo-v1.0.html</div></a></div>
-                <div class="item"><a href="ancient-mysteries/texts/phaistos-v1.0.html"><div class="title">Phaistos Disc</div><div class="path">/ancient-mysteries/texts/phaistos-v1.0.html</div></a></div>
-                <div class="item"><a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html"><div class="title">Ancient Mathematics</div><div class="path">/ancient-mysteries/texts/ancient-mathematics-v1.0.html</div></a></div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">Ancient Texts</span>
+                        <span class="group-count">3 pages</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="ancient-mysteries/texts/rongorongo-v1.0.html"><div class="title">Rongorongo</div></a></div>
+                        <div class="item"><a href="ancient-mysteries/texts/phaistos-v1.0.html"><div class="title">Phaistos Disc</div></a></div>
+                        <div class="item"><a href="ancient-mysteries/texts/ancient-mathematics-v1.0.html"><div class="title">Ancient Mathematics</div></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE WEIRDOS -->
+        <div class="category branch-sminus">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>The Weirdos</h2>
+                <span class="count">24 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="weirdos/index.html"><div class="title">Weirdos Hub</div><div class="path">/weirdos/</div></a></div>
+                <div class="item"><a href="weirdos/geometers.html"><div class="title">Geometers</div><div class="path">/weirdos/geometers.html</div></a></div>
+                <div class="item"><a href="weirdos/visionaries.html"><div class="title">Visionaries</div><div class="path">/weirdos/visionaries.html</div></a></div>
+                <div class="item"><a href="weirdos/wave-seers.html"><div class="title">Wave Seers</div><div class="path">/weirdos/wave-seers.html</div></a></div>
+                <div class="item"><a href="weirdos/unifiers.html"><div class="title">Unifiers</div><div class="path">/weirdos/unifiers.html</div></a></div>
+                <div class="item"><a href="weirdos/contributors.html"><div class="title">Contributors</div><div class="path">/weirdos/contributors.html</div></a></div>
+                <div class="item"><a href="weirdos/suppression.html"><div class="title">The Suppression</div><div class="path">/weirdos/suppression.html</div></a></div>
+                <div class="nested-group">
+                    <div class="nested-header" onclick="toggleNested(this)">
+                        <span class="group-title">Individual Profiles</span>
+                        <span class="group-count">15 profiles</span>
+                        <span class="toggle">▼</span>
+                    </div>
+                    <div class="nested-items">
+                        <div class="item"><a href="weirdos/ramanujan.html"><div class="title">Ramanujan</div></a></div>
+                        <div class="item"><a href="weirdos/hypatia.html"><div class="title">Hypatia</div></a></div>
+                        <div class="item"><a href="weirdos/pythagoras.html"><div class="title">Pythagoras</div></a></div>
+                        <div class="item"><a href="weirdos/plato.html"><div class="title">Plato</div></a></div>
+                        <div class="item"><a href="weirdos/carl-jung.html"><div class="title">Carl Jung</div></a></div>
+                        <div class="item"><a href="weirdos/roger-penrose.html"><div class="title">Roger Penrose</div></a></div>
+                        <div class="item"><a href="weirdos/donald-hoffman.html"><div class="title">Donald Hoffman</div></a></div>
+                        <div class="item"><a href="weirdos/sara-walker.html"><div class="title">Sara Walker</div></a></div>
+                        <div class="item"><a href="weirdos/banesh-hoffmann.html"><div class="title">Banesh Hoffmann</div></a></div>
+                        <div class="item"><a href="weirdos/hermann-minkowski.html"><div class="title">Hermann Minkowski</div></a></div>
+                        <div class="item"><a href="weirdos/jason-ray.html"><div class="title">Jason Ray</div></a></div>
+                        <div class="item"><a href="weirdos/indigenous-wisdom.html"><div class="title">Indigenous Wisdom</div></a></div>
+                        <div class="item"><a href="weirdos/mithridates-echo.html"><div class="title">Mithridates Echo</div></a></div>
+                        <div class="item"><a href="weirdos/einstein-codex.html"><div class="title">Einstein Codex</div></a></div>
+                        <div class="item"><a href="weirdos/einstein-cartan-codex.html"><div class="title">Einstein-Cartan Codex</div></a></div>
+                        <div class="item"><a href="weirdos/tesla-codex.html"><div class="title">Tesla Codex</div></a></div>
+                        <div class="item"><a href="weirdos/maxwell-codex.html"><div class="title">Maxwell Codex</div></a></div>
+                    </div>
+                </div>
+                <div class="item"><a href="weirdos/electric-field-modeler.html"><div class="title">Electric Field Modeler</div><div class="path">/weirdos/electric-field-modeler.html</div></a></div>
+                <div class="item"><a href="weirdos/epoch-oscilloscope.html"><div class="title">Epoch Oscilloscope</div><div class="path">/weirdos/epoch-oscilloscope.html</div></a></div>
+            </div>
+        </div>
+
+        <!-- BIOLOGY -->
+        <div class="category branch-splus">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Biology & Life Sciences</h2>
+                <span class="count">5 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="biology/index.html"><div class="title">Biology Home</div><div class="path">/biology/</div></a></div>
+                <div class="item"><a href="biology/eye-codex.html"><div class="title">Eye Codex</div><div class="path">/biology/eye-codex.html</div></a></div>
+                <div class="item"><a href="epoch-atomic/index.html"><div class="title">Epoch Atomic Model</div><div class="path">/epoch-atomic/</div></a></div>
+                <div class="item"><a href="protein-folding/index.html"><div class="title">Protein Folding</div><div class="path">/protein-folding/</div></a></div>
+                <div class="item"><a href="neurodegeneration/index.html"><div class="title">Neurodegeneration</div><div class="path">/neurodegeneration/</div></a></div>
+                <div class="item"><a href="dna-studio/index.html"><div class="title">DNA Studio</div><div class="path">/dna-studio/</div></a></div>
             </div>
         </div>
 
         <!-- RESEARCH DOCUMENTS -->
         <div class="category branch-splus">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>📄 Research Documents</h2>
-                <span class="count">7 pages</span>
+                <h2>Research Documents</h2>
+                <span class="count">8 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
+                <div class="item"><a href="documents/index.html"><div class="title">White Papers Index</div><div class="path">/documents/</div></a></div>
+                <div class="item"><a href="documents/epoch-framework/index.html"><div class="title">Epoch Framework</div><div class="path">/documents/epoch-framework/</div></a></div>
+                <div class="item"><a href="documents/cern-scalar-geometry.html"><div class="title">CERN Scalar Geometry</div><div class="path">/documents/cern-scalar-geometry.html</div></a></div>
+                <div class="item"><a href="documents/dec14-model-cern/index.html"><div class="title">CERN Model</div><div class="path">/documents/dec14-model-cern/</div></a></div>
                 <div class="item"><a href="documents/dec14-unified-theory/index.html"><div class="title">Unified Theory Index</div><div class="path">/documents/dec14-unified-theory/</div></a></div>
                 <div class="item"><a href="documents/dec14-unified-theory/main-framework.html"><div class="title">Main Framework</div><div class="path">/documents/dec14-unified-theory/main-framework.html</div></a></div>
                 <div class="item"><a href="documents/dec14-unified-theory/dual-axis-explorer.html"><div class="title">Dual Axis Explorer</div><div class="path">/documents/dec14-unified-theory/dual-axis-explorer.html</div></a></div>
-                <div class="item"><a href="documents/dec14-model-cern/index.html"><div class="title">CERN Model</div><div class="path">/documents/dec14-model-cern/</div></a></div>
-                <div class="item"><a href="documents/cern-scalar-geometry.html"><div class="title">CERN Scalar Geometry</div><div class="path">/documents/cern-scalar-geometry.html</div></a></div>
-                <div class="item"><a href="documents/epoch-framework/index.html"><div class="title">Epoch Framework</div><div class="path">/documents/epoch-framework/</div></a></div>
                 <div class="item"><a href="documents/tribute/index.html"><div class="title">Tribute</div><div class="path">/documents/tribute/</div></a></div>
+                <div class="item"><a href="teaching/Scalar_Dimensionality_Teaching_Document.html"><div class="title">Scalar Dimensionality Teaching</div><div class="path">/teaching/</div></a></div>
+            </div>
+        </div>
+
+        <!-- GRAPHIC NOVEL -->
+        <div class="category branch-coin">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Graphic Novel</h2>
+                <span class="count">5 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="graphic-novel/index.html"><div class="title">Graphic Novel Home</div><div class="path">/graphic-novel/</div></a></div>
+                <div class="item"><a href="graphic-novel/page2.html"><div class="title">Page 2</div><div class="path">/graphic-novel/page2.html</div></a></div>
+                <div class="item"><a href="graphic-novel/findings.html"><div class="title">Findings</div><div class="path">/graphic-novel/findings.html</div></a></div>
+                <div class="item"><a href="graphic-novel/prompts.html"><div class="title">Prompts</div><div class="path">/graphic-novel/prompts.html</div></a></div>
+                <div class="item"><a href="graphic-novel/verbatim.html"><div class="title">Verbatim</div><div class="path">/graphic-novel/verbatim.html</div></a></div>
+            </div>
+        </div>
+
+        <!-- APPS -->
+        <div class="category branch-tools">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Apps</h2>
+                <span class="count">3 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="apps/index.html"><div class="title">Apps Home</div><div class="path">/apps/</div></a></div>
+                <div class="item"><a href="apps/soul-social/index.html"><div class="title">Soul Social</div><div class="path">/apps/soul-social/</div></a></div>
+                <div class="item"><a href="apps/soulscience-chat/index.html"><div class="title">Soul Science Chat</div><div class="path">/apps/soulscience-chat/</div></a></div>
+            </div>
+        </div>
+
+        <!-- STORE -->
+        <div class="category branch-coin">
+            <div class="category-header" onclick="toggleCategory(this)">
+                <h2>Store</h2>
+                <span class="count">4 pages</span>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="category-content">
+                <div class="item"><a href="store/index.html"><div class="title">Store Home</div><div class="path">/store/</div></a></div>
+                <div class="item"><a href="store/designs.html"><div class="title">Designs</div><div class="path">/store/designs.html</div></a></div>
+                <div class="item"><a href="store/ebooks/namagiri-speaks.html"><div class="title">Namagiri Speaks eBook</div><div class="path">/store/ebooks/namagiri-speaks.html</div></a></div>
+                <div class="item"><a href="store/ebooks/ppir-novella.html"><div class="title">PPIR Novella</div><div class="path">/store/ebooks/ppir-novella.html</div></a></div>
+                <div class="item"><a href="store/ebooks/handmade.html"><div class="title">Handmade</div><div class="path">/store/ebooks/handmade.html</div></a></div>
             </div>
         </div>
 
         <!-- CORE PAGES -->
         <div class="category">
             <div class="category-header" onclick="toggleCategory(this)">
-                <h2>🏠 Core Pages</h2>
-                <span class="count">4 pages</span>
+                <h2>Core Pages</h2>
+                <span class="count">11 pages</span>
                 <span class="toggle">▼</span>
             </div>
             <div class="category-content">
                 <div class="item"><a href="index.html"><div class="title">Home</div><div class="path">/index.html</div></a></div>
-                <div class="item"><a href="library.html"><div class="title">Library (Simple)</div><div class="path">/library.html</div></a></div>
+                <div class="item"><a href="about.html"><div class="title">About</div><div class="path">/about.html</div></a></div>
+                <div class="item"><a href="collaborators.html"><div class="title">Collaborators</div><div class="path">/collaborators.html</div></a></div>
+                <div class="item"><a href="mind-blowing.html"><div class="title">Mind-Blowing Proofs</div><div class="path">/mind-blowing.html</div></a></div>
                 <div class="item"><a href="support.html"><div class="title">Support</div><div class="path">/support.html</div></a></div>
+                <div class="item"><a href="site-directory.html"><div class="title">Site Directory</div><div class="path">/site-directory.html</div></a></div>
+                <div class="item"><a href="everything.html"><div class="title">Everything</div><div class="path">/everything.html</div></a></div>
+                <div class="item"><a href="library.html"><div class="title">Library (Simple)</div><div class="path">/library.html</div></a></div>
+                <div class="item"><a href="master-library.html"><div class="title">Master Library</div><div class="path">/master-library.html</div></a></div>
                 <div class="item"><a href="mobile.html"><div class="title">Mobile Version</div><div class="path">/mobile.html</div></a></div>
+                <div class="item"><a href="404.html"><div class="title">404 Error Page</div><div class="path">/404.html</div></a></div>
             </div>
         </div>
 
@@ -503,13 +736,11 @@
             const query = this.value.toLowerCase().trim();
             let hasResults = false;
 
-            // Get all items
             const items = library.querySelectorAll('.item');
             const categories = library.querySelectorAll('.category');
             const nestedGroups = library.querySelectorAll('.nested-group');
 
             if (query === '') {
-                // Show everything
                 items.forEach(item => item.classList.remove('hidden'));
                 categories.forEach(cat => cat.classList.remove('hidden'));
                 nestedGroups.forEach(ng => ng.classList.remove('hidden', 'collapsed'));
@@ -517,7 +748,6 @@
                 return;
             }
 
-            // Filter items
             items.forEach(item => {
                 const text = item.textContent.toLowerCase();
                 if (text.includes(query)) {
@@ -528,7 +758,6 @@
                 }
             });
 
-            // Show/hide nested groups based on visible items
             nestedGroups.forEach(ng => {
                 const visibleItems = ng.querySelectorAll('.item:not(.hidden)');
                 if (visibleItems.length > 0) {
@@ -538,7 +767,6 @@
                 }
             });
 
-            // Show/hide categories based on visible items
             categories.forEach(cat => {
                 const visibleItems = cat.querySelectorAll('.item:not(.hidden)');
                 if (visibleItems.length > 0) {
