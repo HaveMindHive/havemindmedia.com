@@ -105,9 +105,16 @@
 
         /* Product Grid */
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
+        }
+
+        .product-grid .product-card {
+            width: calc(33% - 20px);
+            min-width: 280px;
+            max-width: 350px;
         }
 
         /* Product Card */
@@ -231,9 +238,15 @@
             letter-spacing: 3px;
         }
         .ethics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
+        }
+
+        .ethics-grid .ethics-item {
+            width: calc(25% - 20px);
+            min-width: 200px;
         }
         .ethics-item {
             text-align: center;

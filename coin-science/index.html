@@ -134,15 +134,23 @@
            THREE AXES GRID
            ========================================== */
         .axes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
 
+        .axes-grid .axis-card {
+            width: calc(33% - 1rem);
+            min-width: 280px;
+            max-width: 400px;
+        }
+
         @media (max-width: 800px) {
-            .axes-grid {
-                grid-template-columns: 1fr;
+            .axes-grid .axis-card {
+                width: 100%;
+                max-width: none;
             }
         }
 
@@ -256,14 +264,20 @@
         }
 
         .explore-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
         }
 
+        .explore-grid .explore-card {
+            width: calc(50% - 1rem);
+            min-width: 280px;
+        }
+
         @media (max-width: 700px) {
-            .explore-grid {
-                grid-template-columns: 1fr;
+            .explore-grid .explore-card {
+                width: 100%;
             }
         }
 
