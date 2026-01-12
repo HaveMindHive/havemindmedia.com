@@ -183,10 +183,16 @@
         }
 
         .examples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 2rem;
+        }
+
+        .examples-grid .example-card {
+            width: calc(50% - 1rem);
+            min-width: 280px;
         }
 
         .example-card {
@@ -217,22 +223,16 @@
         }
 
         .config-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 900px) {
-            .config-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 500px) {
-            .config-grid {
-                grid-template-columns: 1fr;
-            }
+        .config-grid .config-box {
+            width: calc(25% - 1rem);
+            min-width: 180px;
         }
 
         .config-box {

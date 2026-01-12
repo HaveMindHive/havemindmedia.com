@@ -132,10 +132,16 @@
 
         /* Reality Framework */
         .reality-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+        }
+
+        .reality-grid .reality-card {
+            width: calc(50% - 1rem);
+            min-width: 300px;
         }
 
         .reality-card {
@@ -204,10 +210,16 @@
 
         /* Element Cards */
         .elements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+        }
+
+        .elements-grid .element-card {
+            width: calc(33.333% - 1.5rem);
+            min-width: 320px;
         }
 
         .element-card {

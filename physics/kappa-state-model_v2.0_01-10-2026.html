@@ -109,10 +109,16 @@
 
         /* Kappa Chain */
         .kappa-chain {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
+        }
+
+        .kappa-chain .kappa-item {
+            width: calc(16.666% - 1rem);
+            min-width: 140px;
         }
 
         .kappa-item {
@@ -151,14 +157,16 @@
 
         /* Pure vs Measured */
         .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .comparison-grid { grid-template-columns: 1fr; }
+        .comparison-grid .comparison-box {
+            width: calc(50% - 1rem);
+            min-width: 280px;
         }
 
         .comparison-box {
@@ -201,10 +209,16 @@
 
         /* Relationships Grid */
         .relationship-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
+        }
+
+        .relationship-grid .relationship-card {
+            width: calc(25% - 1rem);
+            min-width: 180px;
         }
 
         .relationship-card {
@@ -236,10 +250,16 @@
 
         /* Variant States */
         .variant-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
+        }
+
+        .variant-grid .variant-card {
+            width: calc(25% - 1rem);
+            min-width: 200px;
         }
 
         .variant-card {
@@ -307,14 +327,16 @@
         }
 
         .k6-states {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 1.5rem 0;
         }
 
-        @media (max-width: 600px) {
-            .k6-states { grid-template-columns: 1fr; }
+        .k6-states .k6-state {
+            width: calc(33.333% - 1rem);
+            min-width: 200px;
         }
 
         .k6-state {

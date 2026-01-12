@@ -438,15 +438,15 @@
         }
 
         .problem-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 0;
         }
 
-        @media (max-width: 1000px) {
-            .problem-body {
-                grid-template-columns: 1fr;
-            }
+        .problem-body .problem-side {
+            width: calc(50%);
+            min-width: 320px;
         }
 
         .problem-side {
@@ -786,16 +786,16 @@
         }
 
         .poincare-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 768px) {
-            .poincare-comparison {
-                grid-template-columns: 1fr;
-            }
+        .poincare-comparison .poincare-method {
+            width: calc(50% - 1rem);
+            min-width: 300px;
         }
 
         .poincare-method {

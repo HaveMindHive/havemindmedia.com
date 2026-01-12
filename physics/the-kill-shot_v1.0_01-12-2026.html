@@ -177,10 +177,16 @@
 
         /* The Real Problem */
         .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin: 2rem 0;
+        }
+
+        .problem-grid .problem-card {
+            width: calc(50% - 1rem);
+            min-width: 300px;
         }
         .problem-card {
             background: var(--bg-card);

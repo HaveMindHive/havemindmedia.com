@@ -42,10 +42,16 @@
         }
 
         .constants {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 1.5rem 0;
+        }
+
+        .constants .constant {
+            width: calc(25% - 1rem);
+            min-width: 200px;
         }
 
         .constant {
@@ -144,10 +150,16 @@
         .timeline-label { font-size: 0.75rem; color: #888; }
 
         .solutions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 1.5rem 0;
+        }
+
+        .solutions .solution {
+            width: calc(50% - 0.5rem);
+            min-width: 200px;
         }
 
         .solution {

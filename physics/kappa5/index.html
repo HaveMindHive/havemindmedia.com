@@ -151,10 +151,16 @@
 
         /* State Grid */
         .state-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
+        }
+
+        .state-grid .state-card {
+            width: calc(25% - 1rem);
+            min-width: 180px;
         }
 
         .state-card {
@@ -224,14 +230,16 @@
 
         /* Facing Grid */
         .facing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin: 2rem 0;
         }
 
-        @media (max-width: 600px) {
-            .facing-grid { grid-template-columns: 1fr; }
+        .facing-grid .facing-card {
+            width: calc(33.333% - 1rem);
+            min-width: 200px;
         }
 
         .facing-card {
@@ -409,10 +417,16 @@
         .delta-value.zero { color: #2ecc71; }
 
         .carryover-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin-bottom: 1.5rem;
+        }
+
+        .carryover-options .option {
+            width: calc(50% - 0.5rem);
+            min-width: 150px;
         }
 
         .carryover-options .option {
