@@ -69,15 +69,12 @@
 
         @media (max-width: 768px) { .hero { padding: 3rem 1rem; } .hero h1 { font-size: 2rem; } .main-content { padding: 2rem 1rem; } }
     </style>
+    <link rel="stylesheet" href="../css/unified-theme.css">
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
 </head>
 <body>
-
-<nav class="page-nav">
-    <div class="nav-content">
-        <a href="index.html">← Here's to You, Weirdos</a>
-        <a href="../index.html">Have Mind Media</a>
-    </div>
-</nav>
+    <site-header></site-header>
 
 <section class="hero">
     <div class="hero-content">
@@ -247,8 +244,7 @@
 <footer class="page-footer">
     <div class="signature">[1 = -1]</div>
     <p><a href="index.html">← Back to Here's to You, Weirdos</a></p>
-    <p style="margin-top: 1rem;"><a href="../index.html">Have Mind Media</a></p>
 </footer>
-
+    <site-footer></site-footer>
 </body>
 </html>
