@@ -191,6 +191,46 @@ class SiteFooter extends HTMLElement {
                     color: #e6d4b8;
                 }
 
+                .hmm-footer-nebulizer {
+                    display: block;
+                    margin: 1.5rem auto;
+                    padding: 1rem 2rem;
+                    background: linear-gradient(135deg, rgba(74, 0, 128, 0.3) 0%, rgba(0, 102, 170, 0.3) 100%);
+                    border: 2px solid rgba(201, 162, 39, 0.6);
+                    border-radius: 30px;
+                    color: #c9a227;
+                    text-decoration: none;
+                    font-family: 'Cinzel', Georgia, serif;
+                    font-size: 1rem;
+                    letter-spacing: 2px;
+                    text-align: center;
+                    max-width: 400px;
+                    transition: all 0.4s ease;
+                    animation: nebulaPulse 3s ease-in-out infinite;
+                }
+
+                .hmm-footer-nebulizer:hover {
+                    background: linear-gradient(135deg, rgba(74, 0, 128, 0.5) 0%, rgba(0, 102, 170, 0.5) 100%);
+                    border-color: #c9a227;
+                    transform: scale(1.05);
+                    box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+                }
+
+                .hmm-footer-nebulizer-sub {
+                    display: block;
+                    font-family: 'Cormorant Garamond', Georgia, serif;
+                    font-size: 0.85rem;
+                    font-style: italic;
+                    color: #a8d4f5;
+                    margin-top: 0.3rem;
+                    letter-spacing: 0;
+                }
+
+                @keyframes nebulaPulse {
+                    0%, 100% { box-shadow: 0 0 10px rgba(201, 162, 39, 0.2); }
+                    50% { box-shadow: 0 0 25px rgba(201, 162, 39, 0.4); }
+                }
+
                 @media (max-width: 900px) {
                     .hmm-footer-top {
                         grid-template-columns: 1fr;
@@ -256,6 +296,11 @@ class SiteFooter extends HTMLElement {
                             <div class="hmm-footer-kappa">κ = 30</div>
                         </div>
                     </div>
+
+                    <a href="${bp}nebulizer.html" class="hmm-footer-nebulizer">
+                        How to even deal with all this? — CLICK HERE
+                        <span class="hmm-footer-nebulizer-sub">THE NEBULIZER: Spin through 200+ pages</span>
+                    </a>
 
                     <div class="hmm-footer-bottom">
                         <div class="hmm-footer-copy">
