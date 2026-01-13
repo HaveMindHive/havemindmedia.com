@@ -273,8 +273,9 @@
         }
 
         .wisdom-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
         }
 
@@ -285,6 +286,7 @@
             padding: 35px;
             transition: var(--transition-smooth);
             cursor: pointer;
+            width: 320px;
         }
 
         .wisdom-item:hover {
@@ -379,7 +381,6 @@
             .hero h1 { font-size: 2.5em; }
             .wisdom-card { padding: 40px 25px; }
             .wisdom-text { font-size: 1.4em; }
-            .wisdom-grid { grid-template-columns: 1fr; }
             .unified-nav { padding: 15px 20px; }
         }
         .home-nav { position: fixed; top: 15px; left: 15px; z-index: 9999; }

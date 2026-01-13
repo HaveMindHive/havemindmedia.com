@@ -168,15 +168,15 @@
         }
 
         .vinyl-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 4rem;
             align-items: center;
         }
 
         @media (max-width: 1000px) {
             .vinyl-container {
-                grid-template-columns: 1fr;
                 gap: 3rem;
             }
         }
@@ -187,6 +187,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 500px;
         }
 
         .record-container {
@@ -557,6 +558,7 @@
         /* Explanation side */
         .vinyl-explanation {
             padding: 2rem;
+            width: 500px;
         }
 
         .vinyl-explanation h2 {
@@ -732,8 +734,9 @@
         }
 
         .insight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
         }
 
@@ -743,6 +746,7 @@
             padding: 2rem;
             border: 1px solid rgba(192, 132, 252, 0.2);
             transition: all 0.3s;
+            width: 280px;
         }
 
         .insight-card:hover {

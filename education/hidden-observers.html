@@ -36,8 +36,9 @@
             line-height: 1.7;
         }
         .torsion-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
             margin-bottom: 2rem;
             max-width: 500px;
@@ -47,6 +48,7 @@
             padding: 1rem;
             border-radius: 8px;
             border: 1px solid rgba(201, 162, 39, 0.3);
+            width: 200px;
         }
         .torsion-item strong {
             color: var(--gold, #c9a227);

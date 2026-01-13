@@ -347,8 +347,9 @@
            THE PROBLEM SECTION
            ============================================ */
         .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin-top: 40px;
         }
@@ -361,6 +362,7 @@
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            width: 300px;
         }
 
         .problem-card::before {
@@ -463,8 +465,9 @@
            DIMENSIONS GRID
            ============================================ */
         .dimensions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin-top: 50px;
         }
@@ -477,6 +480,7 @@
             text-align: center;
             transition: var(--transition-smooth);
             cursor: pointer;
+            width: 150px;
         }
 
         .dimension-card:hover {
@@ -506,8 +510,9 @@
            PREDICTIONS SECTION
            ============================================ */
         .predictions-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
         }
 
@@ -517,6 +522,7 @@
             border-radius: 0 15px 15px 0;
             padding: 30px;
             transition: var(--transition-smooth);
+            width: 280px;
         }
 
         .prediction-card:hover {

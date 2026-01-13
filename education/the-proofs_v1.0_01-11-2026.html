@@ -278,8 +278,9 @@
         }
 
         .earth-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             padding: 0 2rem;
             max-width: 1400px;
@@ -292,6 +293,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: transform 0.3s, border-color 0.3s;
+            width: 500px;
         }
 
         .earth-card:hover {
@@ -338,8 +340,9 @@
         }
 
         .sol-soul-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -349,6 +352,7 @@
             padding: 3rem;
             border-radius: 16px;
             border-left: 4px solid;
+            width: 500px;
         }
 
         .reality-column.sol {
@@ -509,8 +513,9 @@
         }
 
         .witness-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
         }
 
@@ -520,6 +525,7 @@
             background: rgba(0,0,0,0.5);
             border-radius: 12px;
             border: 1px solid var(--border);
+            width: 300px;
         }
 
         .witness-card h4 {
@@ -764,8 +770,9 @@
         }
 
         .choice-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             max-width: 900px;
             margin-top: 3rem;
@@ -775,6 +782,7 @@
             padding: 2.5rem;
             border-radius: 12px;
             text-align: center;
+            width: 400px;
         }
 
         .choice-option.destruction {
@@ -1068,10 +1076,6 @@
             .word-part { border-radius: 0 !important; }
             .word-part:first-child { border-radius: 12px 12px 0 0 !important; }
             .word-part:last-child { border-radius: 0 0 12px 12px !important; }
-            .sol-soul-grid { grid-template-columns: 1fr; }
-            .earth-grid { grid-template-columns: 1fr; }
-            .witness-grid { grid-template-columns: 1fr; }
-            .choice-grid { grid-template-columns: 1fr; }
             .warning-overlay .years { font-size: 4rem; }
         }
     </style>
