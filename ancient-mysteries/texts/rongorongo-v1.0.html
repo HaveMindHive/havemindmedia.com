@@ -255,8 +255,9 @@
 
         /* Q-Cycle Visualization */
         .q-cycle {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 4rem 0;
         }
@@ -269,6 +270,7 @@
             border: 2px solid transparent;
             transition: all 0.3s;
             position: relative;
+            width: 250px;
         }
 
         .q-state:nth-child(1) { border-color: var(--green); }
@@ -475,8 +477,9 @@
 
         /* Findings Grid */
         .findings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 3rem 0;
         }
@@ -487,6 +490,7 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
+            width: 350px;
         }
 
         .finding-card:hover {
@@ -544,8 +548,9 @@
 
         /* Image Gallery */
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin: 3rem 0;
         }
@@ -555,6 +560,7 @@
             border-radius: 12px;
             overflow: hidden;
             aspect-ratio: 4/3;
+            width: 300px;
         }
 
         .gallery-item img {
@@ -869,8 +875,9 @@
                 padding: 3rem 1rem;
             }
 
-            .q-cycle {
-                grid-template-columns: 1fr 1fr;
+            .q-state {
+                width: 45%;
+                min-width: 150px;
             }
 
             .q-arrow {

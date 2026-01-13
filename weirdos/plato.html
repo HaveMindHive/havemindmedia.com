@@ -49,7 +49,8 @@
         .cave-diagram pre { font-family: 'JetBrains Mono', monospace; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
         .cave-diagram .label { color: var(--gold); font-size: 0.85rem; margin-top: 1rem; }
 
-        .forms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .forms-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .form-card { width: 200px; min-width: 200px; max-width: 200px; }
         .form-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; text-align: center; }
         .form-card .symbol { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .form-card h4 { color: var(--accent-blue); margin-bottom: 0.5rem; font-family: 'Cinzel', serif; }

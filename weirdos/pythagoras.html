@@ -68,7 +68,8 @@
         .highlight-box { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%); border: 1px solid var(--gold); border-radius: 12px; padding: 2rem; margin: 2rem 0; }
         .highlight-box h3 { margin-top: 0; color: var(--gold); }
 
-        .concept-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .concept-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .concept-card { width: 250px; min-width: 250px; max-width: 250px; }
         .concept-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; text-align: center; }
         .concept-card .symbol { font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: var(--gold); margin-bottom: 0.5rem; }
         .concept-card h4 { color: var(--accent-purple); margin-bottom: 0.5rem; font-family: 'Cinzel', serif; }

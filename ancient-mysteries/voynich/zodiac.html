@@ -71,11 +71,16 @@
         main { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
 
         .section-intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 40px;
             margin-bottom: 50px;
             align-items: center;
+        }
+        .section-intro > div {
+            flex: 1 1 400px;
+            max-width: 600px;
         }
         .section-intro h2 {
             font-size: 1.5rem;
@@ -120,8 +125,9 @@
         }
 
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
             margin-bottom: 50px;
         }
@@ -132,6 +138,7 @@
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            width: 300px;
         }
         .gallery-item:hover {
             transform: translateY(-3px);
@@ -348,7 +355,7 @@
         }
 
         @media (max-width: 768px) {
-            .section-intro { grid-template-columns: 1fr; }
+            .section-intro > div { flex: 1 1 100%; }
             nav ul { gap: 15px; padding: 0 10px; }
             nav a { font-size: 0.75rem; }
             .page-header h1 { font-size: 1.8rem; }

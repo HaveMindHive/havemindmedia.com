@@ -235,11 +235,13 @@
         }
 
         .base60-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
         }
+        .base60-card { width: 300px; min-width: 300px; max-width: 300px; }
 
         .base60-card {
             background: rgba(212, 175, 55, 0.05);
@@ -330,10 +332,12 @@
         }
 
         .legacy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
         }
+        .legacy-card { width: 280px; min-width: 280px; max-width: 280px; }
 
         .legacy-card {
             background: var(--bg-tertiary);
@@ -383,12 +387,14 @@
         }
 
         .kappa-connection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin: 2rem 0;
             text-align: left;
         }
+        .kappa-item { width: 250px; min-width: 250px; max-width: 250px; }
 
         .kappa-item {
             background: rgba(212, 175, 55, 0.1);
@@ -483,10 +489,12 @@
         }
 
         .works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
         }
+        .work-item { width: 280px; min-width: 280px; max-width: 280px; }
 
         .work-item {
             background: var(--bg-tertiary);

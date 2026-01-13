@@ -45,7 +45,8 @@
         blockquote { background: rgba(196, 30, 58, 0.1); border-left: 4px solid var(--accent-red); padding: 1.5rem 2rem; margin: 2rem 0; font-style: italic; border-radius: 0 8px 8px 0; }
         blockquote cite { display: block; margin-top: 1rem; color: var(--gold); font-style: normal; font-size: 0.9rem; }
 
-        .archetype-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .archetype-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .archetype-card { width: 200px; min-width: 200px; max-width: 200px; }
         .archetype-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; }
         .archetype-card:hover { border-color: var(--accent-red); transform: translateY(-3px); }
         .archetype-card .symbol { font-size: 2rem; margin-bottom: 0.5rem; }
