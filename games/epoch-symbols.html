@@ -140,11 +140,16 @@
         }
 
         .choices {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
             max-width: 320px;
             margin: 0 auto 20px auto;
+        }
+
+        .choice-symbol {
+            width: 90px;
         }
 
         .choice-symbol {
@@ -250,10 +255,16 @@
         .symbol-key h3 { color: var(--gold); font-size: 0.9rem; margin-bottom: 10px; }
 
         .symbol-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 8px;
             font-size: 0.8rem;
+        }
+
+        .symbol-item {
+            width: calc(33.333% - 8px);
+            min-width: 120px;
         }
 
         .symbol-item {

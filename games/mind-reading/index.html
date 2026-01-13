@@ -206,10 +206,14 @@
         }
 
         .choices-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
-            justify-items: center;
+        }
+
+        .choice-card {
+            width: 100px;
         }
 
         .choice-card {
@@ -369,10 +373,6 @@
         }
 
         @media (max-width: 500px) {
-            .choices-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .choice-card {
                 width: 120px;
                 height: 160px;

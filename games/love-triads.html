@@ -426,10 +426,16 @@
         }
 
         .victory-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin: 20px 0;
+        }
+
+        .victory-stat {
+            width: calc(50% - 15px);
+            min-width: 150px;
         }
 
         .victory-stat {

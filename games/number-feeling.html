@@ -136,11 +136,16 @@
         }
 
         .choices {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 12px;
             max-width: 280px;
             margin: 0 auto 20px auto;
+        }
+
+        .choice-num {
+            width: 80px;
         }
 
         .choice-num {

@@ -230,11 +230,17 @@
 
         /* Word Choices */
         .word-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             max-width: 500px;
             margin: 30px auto;
+        }
+
+        .word-btn {
+            width: calc(33.333% - 15px);
+            min-width: 140px;
         }
 
         .word-btn {
@@ -508,10 +514,16 @@
 
         /* D-Position Grid */
         .d-position-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
             margin: 15px 0;
+        }
+
+        .d-item {
+            width: calc(33.333% - 10px);
+            min-width: 120px;
         }
 
         .d-item {

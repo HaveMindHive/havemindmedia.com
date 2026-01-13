@@ -133,27 +133,42 @@
 
         /* Triaxial Choice Grids */
         .choices-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             max-width: 450px;
             margin: 30px auto;
+        }
+
+        .choices-3 .choice {
+            width: calc(33.333% - 15px);
         }
 
         .choices-6 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             max-width: 450px;
             margin: 30px auto;
         }
 
+        .choices-6 .choice {
+            width: calc(33.333% - 15px);
+        }
+
         .choices-9 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 12px;
             max-width: 400px;
             margin: 30px auto;
+        }
+
+        .choices-9 .choice {
+            width: calc(33.333% - 12px);
         }
 
         .choice {

@@ -223,10 +223,17 @@
         }
 
         .time-example {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin-top: 15px;
+        }
+
+        .time-example .good,
+        .time-example .bad {
+            width: calc(50% - 15px);
+            min-width: 200px;
         }
 
         .time-example .good {
@@ -244,10 +251,16 @@
         }
 
         .dog-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin-top: 20px;
+        }
+
+        .dog-card {
+            width: calc(33.333% - 15px);
+            min-width: 150px;
         }
 
         .dog-card {
@@ -410,10 +423,16 @@
         }
 
         .game-grid {
-            display: grid;
-            grid-template-columns: repeat(15, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3px;
             max-width: 100%;
+        }
+
+        .cell {
+            width: calc(6.667% - 3px);
+            min-width: 30px;
         }
 
         .cell {
