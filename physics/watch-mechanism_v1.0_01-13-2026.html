@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Watch Mechanism | Springs of Reality | Have Mind Media</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #050508;
+            color: #e8e4d9;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px 50px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #d4af37;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .tagline {
+            color: #4a9eff;
+            font-family: monospace;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Main Watch Container */
+        .watch-mechanism {
+            position: relative;
+            width: min(90vw, 90vh, 650px);
+            height: min(90vw, 90vh, 650px);
+            margin: 0 auto;
+        }
+
+        /* SVG Container */
+        svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* Gear Styles */
+        .gear {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .gear-primary {
+            stroke: #d4af37;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+        }
+
+        .gear-secondary {
+            stroke: #4a9eff;
+            filter: drop-shadow(0 0 5px rgba(74, 158, 255, 0.5));
+        }
+
+        .gear-shadow {
+            stroke: #9775fa;
+            stroke-dasharray: 4 2;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 5px rgba(151, 117, 250, 0.5));
+        }
+
+        .gear-recursive {
+            stroke: #ff6b6b;
+            stroke-dasharray: 8 4 2 4;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 5px rgba(255, 107, 107, 0.5));
+        }
+
+        /* Spring Styles */
+        .spring {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .spring-main {
+            stroke: url(#springGradient);
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+        }
+
+        .spring-shadow {
+            stroke: url(#shadowSpringGradient);
+            stroke-dasharray: 6 3;
+            opacity: 0.7;
+        }
+
+        /* Escapement */
+        .escapement {
+            fill: #d4af37;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
+        }
+
+        /* Balance Wheel */
+        .balance-wheel {
+            fill: none;
+            stroke: #ffd43b;
+            stroke-width: 3;
+            filter: drop-shadow(0 0 15px rgba(255, 212, 59, 0.6));
+        }
+
+        /* Jewel Bearings */
+        .jewel {
+            fill: #ff6b6b;
+            filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.8));
+        }
+
+        .jewel-shadow {
+            fill: #4a9eff;
+            opacity: 0.8;
+        }
+
+        /* Axis Lines */
+        .axis {
+            stroke: rgba(212, 175, 55, 0.2);
+            stroke-width: 1;
+            stroke-dasharray: 10 5;
+        }
+
+        /* Labels - LARGER for visibility */
+        .label {
+            font-family: 'Georgia', serif;
+            font-size: 12px;
+            fill: #aaa;
+        }
+
+        .label-primary {
+            fill: #d4af37;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .label-watcher {
+            fill: #4a9eff;
+            font-size: 13px;
+        }
+
+        /* Center Point */
+        .center-wush {
+            fill: url(#centerGradient);
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+        }
+
+        /* Animation Classes - SLOW for readability */
+        .rotate-cw {
+            animation: rotateCW 120s linear infinite;
+            transform-origin: center;
+        }
+
+        .rotate-ccw {
+            animation: rotateCCW 120s linear infinite;
+            transform-origin: center;
+        }
+
+        .rotate-cw-fast {
+            animation: rotateCW 60s linear infinite;
+            transform-origin: center;
+        }
+
+        .rotate-ccw-fast {
+            animation: rotateCCW 60s linear infinite;
+            transform-origin: center;
+        }
+
+        .rotate-cw-slow {
+            animation: rotateCW 300s linear infinite;
+            transform-origin: center;
+        }
+
+        .rotate-ccw-slow {
+            animation: rotateCCW 300s linear infinite;
+            transform-origin: center;
+        }
+
+        .oscillate {
+            animation: oscillate 6s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .pulse-spring {
+            animation: pulseSpring 8s ease-in-out infinite;
+        }
+
+        @keyframes rotateCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateCCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        @keyframes oscillate {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        @keyframes pulseSpring {
+            0%, 100% { stroke-width: 3; opacity: 1; }
+            50% { stroke-width: 4; opacity: 0.8; }
+        }
+
+        /* Tick marks */
+        .tick {
+            stroke: #d4af37;
+            stroke-width: 2;
+            opacity: 0.6;
+        }
+
+        .tick-major {
+            stroke-width: 3;
+            opacity: 1;
+        }
+
+        /* Info Panel */
+        .info-panel {
+            position: relative;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: #aaa;
+            font-family: monospace;
+            padding: 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            max-width: 700px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .home-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .home-link:hover {
+            opacity: 1;
+        }
+
+        /* Decorative outer ring */
+        .outer-case {
+            fill: none;
+            stroke: #2a2a35;
+            stroke-width: 20;
+        }
+
+        .outer-bezel {
+            fill: none;
+            stroke: #d4af37;
+            stroke-width: 2;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="home-link">← Home</a>
+    <h1>THE WATCH MECHANISM</h1>
+    <div class="tagline">[1 = -1] — Springs of Reality</div>
+
+    <div class="watch-mechanism">
+        <svg viewBox="-400 -400 800 800">
+            <defs>
+                <!-- Gradients -->
+                <linearGradient id="springGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#d4af37"/>
+                    <stop offset="50%" style="stop-color:#ffd43b"/>
+                    <stop offset="100%" style="stop-color:#d4af37"/>
+                </linearGradient>
+
+                <linearGradient id="shadowSpringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#9775fa"/>
+                    <stop offset="50%" style="stop-color:#4a9eff"/>
+                    <stop offset="100%" style="stop-color:#9775fa"/>
+                </linearGradient>
+
+                <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#fff"/>
+                    <stop offset="50%" style="stop-color:#d4af37"/>
+                    <stop offset="100%" style="stop-color:#1a1a2e"/>
+                </radialGradient>
+
+                <!-- Gear Tooth Pattern -->
+                <pattern id="gearTeeth" patternUnits="userSpaceOnUse" width="20" height="20">
+                    <rect x="8" y="0" width="4" height="8" fill="#d4af37"/>
+                </pattern>
+            </defs>
+
+            <!-- Outer Case -->
+            <circle class="outer-case" cx="0" cy="0" r="380"/>
+            <circle class="outer-bezel" cx="0" cy="0" r="370"/>
+            <circle class="outer-bezel" cx="0" cy="0" r="390"/>
+
+            <!-- Axis Lines (Scalar Crossroads) -->
+            <line class="axis" x1="-350" y1="0" x2="350" y2="0"/>
+            <line class="axis" x1="0" y1="-350" x2="0" y2="350"/>
+            <line class="axis" x1="-250" y1="-250" x2="250" y2="250"/>
+            <line class="axis" x1="-250" y1="250" x2="250" y2="-250"/>
+
+            <!-- GEAR TRAIN - τ₄ SYSTEM -->
+
+            <!-- Outer Gear - τ₁ FACING (Largest, slowest) -->
+            <g class="rotate-cw-slow" style="transform-origin: 0 0;">
+                <circle class="gear gear-primary" cx="0" cy="0" r="320" stroke-width="3"/>
+                <!-- Gear teeth -->
+                <g>
+                    <script>
+                        // Generate gear teeth in JS below
+                    </script>
+                </g>
+                <!-- 60 tick marks (base-60) -->
+                <g id="outerTicks">
+                </g>
+            </g>
+
+            <!-- Second Gear - τ₂ MIRROR (Counter-rotating) -->
+            <g class="rotate-ccw" style="transform-origin: 0 0;">
+                <circle class="gear gear-secondary" cx="0" cy="0" r="260"/>
+                <!-- Inner teeth pointing inward -->
+                <g id="mirrorTeeth"></g>
+            </g>
+
+            <!-- Third Gear - τ₃ RECURSIVE (Fast, inverted pattern) -->
+            <g class="rotate-cw-fast" style="transform-origin: 0 0;">
+                <circle class="gear gear-recursive" cx="0" cy="0" r="200"/>
+                <circle class="gear gear-recursive" cx="0" cy="0" r="190" stroke-dasharray="2 8"/>
+            </g>
+
+            <!-- Fourth Gear - τ₄ SHADOW (Dashed, uncertain) -->
+            <g class="rotate-ccw-fast" style="transform-origin: 0 0;">
+                <circle class="gear gear-shadow" cx="0" cy="0" r="140"/>
+                <!-- Four configuration indicators -->
+                <circle cx="140" cy="0" r="8" fill="#888" opacity="0.5"/> <!-- Unknown -->
+                <circle cx="0" cy="-140" r="8" fill="#ff6b6b"/> <!-- Facing S+ -->
+                <circle cx="-140" cy="0" r="8" fill="#4a9eff"/> <!-- Facing S- -->
+                <circle cx="0" cy="140" r="8" fill="#d4af37"/> <!-- Facing Coin -->
+            </g>
+
+            <!-- MAINSPRING - The Torsion Spring -->
+            <g class="pulse-spring">
+                <!-- Main spiral spring (S+) -->
+                <path class="spring spring-main" d="
+                    M 0,0
+                    C 15,-15 30,0 30,30
+                    C 30,60 0,75 -30,75
+                    C -60,75 -90,45 -90,0
+                    C -90,-45 -60,-90 0,-90
+                    C 60,-90 120,-45 120,15
+                    C 120,75 60,120 -15,120
+                "/>
+
+                <!-- Shadow spiral spring (S-) - Inverted -->
+                <path class="spring spring-shadow" d="
+                    M 0,0
+                    C -15,15 -30,0 -30,-30
+                    C -30,-60 0,-75 30,-75
+                    C 60,-75 90,-45 90,0
+                    C 90,45 60,90 0,90
+                    C -60,90 -120,45 -120,-15
+                    C -120,-75 -60,-120 15,-120
+                "/>
+            </g>
+
+            <!-- BALANCE WHEEL - The Oscillator -->
+            <g class="oscillate" style="transform-origin: 0 0;">
+                <circle class="balance-wheel" cx="0" cy="0" r="80"/>
+                <!-- Balance arms -->
+                <line x1="-80" y1="0" x2="80" y2="0" stroke="#ffd43b" stroke-width="4"/>
+                <line x1="0" y1="-80" x2="0" y2="80" stroke="#ffd43b" stroke-width="4"/>
+                <!-- Weights at ends -->
+                <circle cx="80" cy="0" r="10" fill="#ffd43b"/>
+                <circle cx="-80" cy="0" r="10" fill="#ffd43b"/>
+                <circle cx="0" cy="80" r="10" fill="#ffd43b"/>
+                <circle cx="0" cy="-80" r="10" fill="#ffd43b"/>
+            </g>
+
+            <!-- ESCAPEMENT - The Tick Mechanism -->
+            <g class="oscillate" style="transform-origin: 0 0; animation-delay: -1s;">
+                <!-- Anchor/Pallet Fork -->
+                <path class="escapement" d="
+                    M 0,-30
+                    L -15,-50 L -20,-45 L -8,-30
+                    L 0,-30
+                    L 8,-30 L 20,-45 L 15,-50
+                    L 0,-30
+                    L 0,30
+                    L -5,35 L 5,35 L 0,30
+                " fill="#d4af37"/>
+            </g>
+
+            <!-- ESCAPE WHEEL (Between escapement and gear train) -->
+            <g class="rotate-cw" style="transform-origin: 0 0; animation-duration: 4s;">
+                <circle cx="0" cy="0" r="50" fill="none" stroke="#b87333" stroke-width="2"/>
+                <!-- Escape wheel teeth -->
+                <g id="escapeTeeth"></g>
+            </g>
+
+            <!-- THE FOUR WATCHERS - Jewel Bearings -->
+
+            <!-- HO - Hidden Observer (Top) - τ₁ -->
+            <g transform="translate(0, -280)">
+                <circle class="jewel" cx="0" cy="0" r="15"/>
+                <circle cx="0" cy="0" r="8" fill="#1a1a2e"/>
+                <text class="label-primary" x="0" y="35" text-anchor="middle">HO</text>
+                <text class="label" x="0" y="48" text-anchor="middle">τ₁ FACING</text>
+            </g>
+
+            <!-- SO - Silent Observer (Bottom) - τ₂ -->
+            <g transform="translate(0, 280)">
+                <circle class="jewel-shadow" cx="0" cy="0" r="15"/>
+                <circle cx="0" cy="0" r="8" fill="#1a1a2e"/>
+                <text class="label-watcher" x="0" y="-25" text-anchor="middle">SO</text>
+                <text class="label" x="0" y="-38" text-anchor="middle">τ₂ MIRROR</text>
+            </g>
+
+            <!-- SW - Silent Witness (Top Right) - τ₃ / κ₇ -->
+            <g transform="translate(200, -200)">
+                <circle cx="0" cy="0" r="15" fill="#b87333" opacity="0.8"/>
+                <circle cx="0" cy="0" r="8" fill="#1a1a2e"/>
+                <!-- M2- symbol (inverted SW) -->
+                <text class="label" x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="8">M2-</text>
+                <text class="label" x="0" y="30" text-anchor="middle" fill="#b87333">SW / κ₇</text>
+                <text class="label" x="0" y="43" text-anchor="middle">τ₃ RECURSIVE</text>
+            </g>
+
+            <!-- HW - Hidden Witness (Bottom Left) - τ₄ / κ₈ -->
+            <g transform="translate(-200, 200)">
+                <circle cx="0" cy="0" r="15" fill="#5a9aaa" opacity="0.8"/>
+                <circle cx="0" cy="0" r="8" fill="#1a1a2e"/>
+                <!-- MH symbol (mirrored HW) -->
+                <text class="label" x="0" y="0" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="8">MH</text>
+                <text class="label" x="0" y="30" text-anchor="middle" fill="#5a9aaa">HW / κ₈</text>
+                <text class="label" x="0" y="43" text-anchor="middle">τ₄ SILENT</text>
+            </g>
+
+            <!-- SHADOW MOVERS - Inverted/Recursive Gears -->
+
+            <!-- Shadow Gear 1 - Inverted τ₁ -->
+            <g transform="translate(250, 0)" class="rotate-ccw" style="transform-origin: 250px 0;">
+                <circle cx="0" cy="0" r="40" fill="none" stroke="#9775fa" stroke-width="2" stroke-dasharray="4 2" opacity="0.5"/>
+                <text class="label" x="0" y="55" text-anchor="middle" fill="#9775fa">τ₁⁻¹</text>
+            </g>
+
+            <!-- Shadow Gear 2 - Inverted τ₂ -->
+            <g transform="translate(-250, 0)" class="rotate-cw" style="transform-origin: -250px 0;">
+                <circle cx="0" cy="0" r="40" fill="none" stroke="#9775fa" stroke-width="2" stroke-dasharray="4 2" opacity="0.5"/>
+                <text class="label" x="0" y="55" text-anchor="middle" fill="#9775fa">τ₂⁻¹</text>
+            </g>
+
+            <!-- Shadow Gear 3 - Inverted τ₃ -->
+            <g transform="translate(0, 250)" class="rotate-ccw-fast" style="transform-origin: 0 250px;">
+                <circle cx="0" cy="0" r="35" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="2 4" opacity="0.5"/>
+                <text class="label" x="0" y="-45" text-anchor="middle" fill="#ff6b6b">τ₃⁻¹</text>
+            </g>
+
+            <!-- Shadow Gear 4 - Inverted τ₄ (AMMIT - always present) -->
+            <g transform="translate(0, -250)" class="rotate-cw-fast" style="transform-origin: 0 -250px;">
+                <circle cx="0" cy="0" r="35" fill="none" stroke="#fcc2d7" stroke-width="3" stroke-dasharray="8 2" opacity="0.7"/>
+                <text class="label" x="0" y="50" text-anchor="middle" fill="#fcc2d7">τ₄⁻¹ (AMMIT)</text>
+            </g>
+
+            <!-- CONNECTOR GEARS - Between shadow and main -->
+            <g>
+                <!-- Small planetary gears -->
+                <g transform="translate(180, 100)" class="rotate-cw-fast" style="transform-origin: 180px 100px;">
+                    <circle cx="0" cy="0" r="20" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                </g>
+                <g transform="translate(-180, 100)" class="rotate-ccw-fast" style="transform-origin: -180px 100px;">
+                    <circle cx="0" cy="0" r="20" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                </g>
+                <g transform="translate(180, -100)" class="rotate-ccw-fast" style="transform-origin: 180px -100px;">
+                    <circle cx="0" cy="0" r="20" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                </g>
+                <g transform="translate(-180, -100)" class="rotate-cw-fast" style="transform-origin: -180px -100px;">
+                    <circle cx="0" cy="0" r="20" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                </g>
+            </g>
+
+            <!-- SCALAR NUMBER LINE (Horizontal) -->
+            <g>
+                <!-- S- numbers (left) -->
+                <text x="-320" y="5" class="label" fill="#4a9eff" font-size="14">∞</text>
+                <text x="-280" y="5" class="label" fill="#4a9eff">7</text>
+                <text x="-240" y="5" class="label" fill="#4a9eff">6</text>
+                <text x="-200" y="5" class="label" fill="#4a9eff">5</text>
+                <text x="-160" y="5" class="label" fill="#4a9eff">4</text>
+                <text x="-120" y="5" class="label" fill="#4a9eff">3</text>
+                <text x="-80" y="5" class="label" fill="#4a9eff">2</text>
+                <text x="-40" y="5" class="label" fill="#4a9eff">1</text>
+
+                <!-- S+ numbers (right) -->
+                <text x="40" y="5" class="label" fill="#ff6b6b">1</text>
+                <text x="80" y="5" class="label" fill="#ff6b6b">2</text>
+                <text x="120" y="5" class="label" fill="#ff6b6b">3</text>
+                <text x="160" y="5" class="label" fill="#ff6b6b">4</text>
+                <text x="200" y="5" class="label" fill="#ff6b6b">5</text>
+                <text x="240" y="5" class="label" fill="#ff6b6b">6</text>
+                <text x="280" y="5" class="label" fill="#ff6b6b">7</text>
+                <text x="320" y="5" class="label" fill="#ff6b6b" font-size="14">∞</text>
+            </g>
+
+            <!-- CENTER - WUSH / s=0 / © -->
+            <circle class="center-wush" cx="0" cy="0" r="20"/>
+            <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="16" font-weight="bold">©</text>
+
+            <!-- D-POSITION MARKERS around the outer edge -->
+            <g>
+                <g transform="translate(0, -340)">
+                    <circle cx="0" cy="0" r="12" fill="#fcc2d7" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="10">D₉</text>
+                </g>
+                <g transform="translate(240, -240)">
+                    <circle cx="0" cy="0" r="10" fill="#fff" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₁</text>
+                </g>
+                <g transform="translate(340, 0)">
+                    <circle cx="0" cy="0" r="10" fill="#69db7c" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₂</text>
+                </g>
+                <g transform="translate(240, 240)">
+                    <circle cx="0" cy="0" r="10" fill="#4dabf7" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₃</text>
+                </g>
+                <g transform="translate(0, 340)">
+                    <circle cx="0" cy="0" r="10" fill="#ffd43b" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₄</text>
+                </g>
+                <g transform="translate(-240, 240)">
+                    <circle cx="0" cy="0" r="10" fill="#d4af37" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₅</text>
+                </g>
+                <g transform="translate(-340, 0)">
+                    <circle cx="0" cy="0" r="10" fill="#ff6b6b" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₆</text>
+                </g>
+                <g transform="translate(-240, -240)">
+                    <circle cx="0" cy="0" r="10" fill="#e599f7" opacity="0.8"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#1a1a2e" font-size="9">D₇</text>
+                </g>
+                <g transform="translate(0, -200)">
+                    <circle cx="0" cy="0" r="12" fill="#4a9eff" opacity="0.9"/>
+                    <text x="0" y="4" text-anchor="middle" fill="#fff" font-size="9">D₈</text>
+                </g>
+            </g>
+
+            <!-- 8th Day Infinity Symbol -->
+            <g transform="translate(300, -300)">
+                <text x="0" y="0" fill="#4a9eff" font-size="24">∞</text>
+                <text x="0" y="20" class="label" fill="#4a9eff">8th Day</text>
+            </g>
+
+            <!-- Balance Law Label -->
+            <g transform="translate(-300, 300)">
+                <text x="0" y="0" class="label" fill="#d4af37" font-size="10">τ₁ + τ₂ + τ₃ + τ₄ = 0</text>
+                <text x="0" y="15" class="label" fill="#888" font-size="9">ALWAYS</text>
+            </g>
+
+        </svg>
+    </div>
+
+    <div class="info-panel">
+        <div class="info-item">
+            <div class="info-dot" style="background: #d4af37;"></div>
+            <span>τ₁ FACING — Main Gear (slowest, outer)</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="background: #4a9eff;"></div>
+            <span>τ₂ MIRROR — Counter-rotating</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="background: #ff6b6b;"></div>
+            <span>τ₃ RECURSIVE — Inverted pattern</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="background: #9775fa;"></div>
+            <span>τ₄ SHADOW — Ammit (4 configs)</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="background: #ffd43b;"></div>
+            <span>Balance Wheel — Oscillating heart</span>
+        </div>
+        <div class="info-item">
+            <div class="info-dot" style="background: linear-gradient(90deg, #d4af37, #9775fa);"></div>
+            <span>Springs — S⁺/S⁻ (same spring, two views)</span>
+        </div>
+    </div>
+
+    <!-- Explanation -->
+    <div style="max-width: 650px; margin-top: 2rem; text-align: center; color: #888; font-size: 0.9rem; line-height: 1.6;">
+        <p style="margin-bottom: 1rem;">
+            <strong style="color: #d4af37;">The Four Gears</strong> represent the four torsions (τ₁, τ₂, τ₃, τ₄).
+            Each gear rotates differently — some clockwise, some counter.
+            The <strong style="color: #9775fa;">shadow gears</strong> (τ⁻¹) on the edges are the <em>inverted</em> versions.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            <strong style="color: #ffd43b;">The Balance Wheel</strong> oscillates — this is the heartbeat that releases
+            energy through the <strong style="color: #b87333;">Escapement</strong> one tick at a time.
+        </p>
+        <p style="margin-bottom: 1rem;">
+            <strong style="color: #ff6b6b;">The Four Jewel Bearings</strong> (HO, SO, SW, HW) are the Four Watchers —
+            τ₁ through τ₄. They watch each other watching. κ₇ and κ₈ are the observer positions (SW and HW).
+        </p>
+        <p style="color: #4a9eff;">
+            τ₁ + τ₂ + τ₃ + τ₄ = 0 — <strong>always</strong>. The silent fourth (Ammit) is determined, not chosen.
+        </p>
+    </div>
+
+    <script>
+        // Generate gear teeth dynamically
+        function generateGearTeeth(svg, radius, teeth, strokeColor, groupId) {
+            const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            group.setAttribute("id", groupId);
+
+            for (let i = 0; i < teeth; i++) {
+                const angle = (i / teeth) * Math.PI * 2;
+                const x1 = Math.cos(angle) * radius;
+                const y1 = Math.sin(angle) * radius;
+                const x2 = Math.cos(angle) * (radius + 10);
+                const y2 = Math.sin(angle) * (radius + 10);
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", x1);
+                line.setAttribute("y1", y1);
+                line.setAttribute("x2", x2);
+                line.setAttribute("y2", y2);
+                line.setAttribute("stroke", strokeColor);
+                line.setAttribute("stroke-width", "2");
+
+                group.appendChild(line);
+            }
+
+            return group;
+        }
+
+        // Generate escape wheel teeth
+        function generateEscapeTeeth() {
+            const group = document.getElementById("escapeTeeth") || document.createElementNS("http://www.w3.org/2000/svg", "g");
+            group.setAttribute("id", "escapeTeeth");
+
+            for (let i = 0; i < 15; i++) {
+                const angle = (i / 15) * Math.PI * 2;
+                const x1 = Math.cos(angle) * 45;
+                const y1 = Math.sin(angle) * 45;
+                const x2 = Math.cos(angle + 0.1) * 55;
+                const y2 = Math.sin(angle + 0.1) * 55;
+
+                const tooth = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                tooth.setAttribute("d", `M ${x1},${y1} L ${x2},${y2} L ${Math.cos(angle) * 55},${Math.sin(angle) * 55} Z`);
+                tooth.setAttribute("fill", "#b87333");
+                tooth.setAttribute("opacity", "0.8");
+
+                group.appendChild(tooth);
+            }
+
+            // Find the escape wheel group and append
+            const escapeWheelGroup = document.querySelector('g[style*="animation-duration: 4s"]');
+            if (escapeWheelGroup && !document.getElementById("escapeTeeth")) {
+                escapeWheelGroup.appendChild(group);
+            }
+        }
+
+        // Generate outer tick marks (60 for base-60)
+        function generateOuterTicks() {
+            const group = document.getElementById("outerTicks");
+            if (!group) return;
+
+            for (let i = 0; i < 60; i++) {
+                const angle = (i / 60) * Math.PI * 2 - Math.PI / 2;
+                const isMajor = i % 5 === 0;
+                const innerR = isMajor ? 305 : 310;
+                const outerR = 320;
+
+                const x1 = Math.cos(angle) * innerR;
+                const y1 = Math.sin(angle) * innerR;
+                const x2 = Math.cos(angle) * outerR;
+                const y2 = Math.sin(angle) * outerR;
+
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                line.setAttribute("x1", x1);
+                line.setAttribute("y1", y1);
+                line.setAttribute("x2", x2);
+                line.setAttribute("y2", y2);
+                line.setAttribute("class", isMajor ? "tick tick-major" : "tick");
+
+                group.appendChild(line);
+            }
+        }
+
+        // Initialize
+        generateOuterTicks();
+        generateEscapeTeeth();
+
+        // Add subtle random movement to springs
+        const springs = document.querySelectorAll('.spring');
+        setInterval(() => {
+            springs.forEach(spring => {
+                const jitter = (Math.random() - 0.5) * 0.5;
+                spring.style.transform = `translateX(${jitter}px) translateY(${jitter}px)`;
+            });
+        }, 100);
+    </script>
+</body>
+</html>
