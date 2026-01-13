@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earth's Nodal Energy Grid | Epoch Geometry | Have Mind Media</title>
+    <meta name="description" content="Ancient megalithic sites mapped to D-position frequencies. The geometry that explains 'impossible' construction. Great Pyramid = D7 (Present Moment). Stonehenge = D5 (Navigator).">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+
+    <style>
+        .page-header {
+            text-align: center;
+            padding: clamp(3rem, 8vw, 6rem) 2rem clamp(2rem, 5vw, 4rem);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header .lead {
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .identity {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+        }
+
+        .visualization-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(15, 15, 25, 0.8);
+        }
+
+        .visualization-section h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .visualization-section img {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .site-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .site-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(15, 15, 25, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .site-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .site-card h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .site-card .d-position {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .site-card .meaning {
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .site-card .coords {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+        }
+
+        /* D-Position Colors */
+        .d1 { color: #FF0000; }
+        .d2 { color: #FF7F00; }
+        .d3 { color: #FFFF00; }
+        .d4 { color: #00FF00; }
+        .d5 { color: #0000FF; }
+        .d6 { color: #4B0082; }
+        .d7 { color: #9400D3; }
+        .d8 { color: #00CED1; }
+        .d9 { color: #FF1493; }
+
+        .constants-box {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .constants-box h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-family: 'Cinzel', serif;
+        }
+
+        .constant-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .constant-row:last-child {
+            border-bottom: none;
+        }
+
+        .celestial-section {
+            margin: 3rem 0;
+        }
+
+        .celestial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .celestial-card {
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(10, 10, 20, 0.9);
+        }
+
+        .celestial-card h4 {
+            color: #00CED1;
+            margin-bottom: 0.5rem;
+        }
+
+        .wow-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(10, 10, 15, 0.95) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .wow-box h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .wow-box .separation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: #FF1493;
+            margin: 1rem 0;
+        }
+
+        .ramanujan-box {
+            background: linear-gradient(135deg, rgba(0, 0, 255, 0.1) 0%, rgba(10, 10, 15, 0.95) 100%);
+            border: 2px solid #0000FF;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .ramanujan-box h2 {
+            color: #4da6ff;
+            margin-bottom: 1rem;
+        }
+
+        .ramanujan-box .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 4rem;
+            color: var(--gold);
+        }
+
+        .equation-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .equation-box .master {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .d-wheel-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .d-wheel-legend .d-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .d-wheel-legend .d-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .prophecy-section {
+            background: linear-gradient(135deg, rgba(148, 0, 211, 0.2) 0%, rgba(10, 10, 15, 0.95) 100%);
+            border: 2px solid #9400D3;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .prophecy-section h2 {
+            color: #9400D3;
+            margin-bottom: 1rem;
+        }
+
+        .prophecy-section .date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 1rem 0;
+        }
+
+        .pattern-analysis {
+            margin: 3rem 0;
+        }
+
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .pattern-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(15, 15, 25, 0.9);
+        }
+
+        .pattern-card h4 {
+            margin-bottom: 0.75rem;
+        }
+
+        .pattern-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pattern-card li {
+            padding: 0.25rem 0;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <site-header></site-header>
+
+    <header class="page-header">
+        <h1>Earth's Nodal Energy Grid</h1>
+        <p class="lead">
+            Ancient megalithic sites mapped to D-position frequencies.
+            The geometry that explains "impossible" construction.
+            The star/wee people didn't BUILD these monuments — they PROJECTED them.
+        </p>
+        <span class="identity">[1 = -1]</span>
+    </header>
+
+    <main class="content-wide">
+        <!-- Master Equation -->
+        <div class="equation-box">
+            <div class="master">∀x: x = -x · Q²</div>
+            <p style="color: var(--text-dim);">Every position equals its opposite rotated through the closure operator.</p>
+        </div>
+
+        <!-- Constants -->
+        <div class="constants-box">
+            <h3>Master Constants from κ = 2π/180</h3>
+            <div class="constant-row">
+                <span>κ (kappa)</span>
+                <span>0.0349066</span>
+            </div>
+            <div class="constant-row">
+                <span>κ_shadow (1/κ)</span>
+                <span>28.6479</span>
+            </div>
+            <div class="constant-row">
+                <span>κ_partner (κ × π)</span>
+                <span>0.1097</span>
+            </div>
+            <div class="constant-row">
+                <span>P projection (√3/2π)</span>
+                <span style="color: var(--gold);">27.57% observable</span>
+            </div>
+            <div class="constant-row">
+                <span>Shadow fraction</span>
+                <span style="color: #FF1493;">72.43% hidden</span>
+            </div>
+        </div>
+
+        <!-- D-Position Wheel -->
+        <section class="visualization-section">
+            <h2>The D-Position Wheel</h2>
+            <img src="../images/d_position_wheel.png" alt="The 9 D-Position Wheel - Scalar Dimensionality Framework">
+
+            <div class="d-wheel-legend">
+                <div class="d-item"><span class="d-dot" style="background: #FF0000;"></span>D1: Origin/WE</div>
+                <div class="d-item"><span class="d-dot" style="background: #FF7F00;"></span>D2: Healing</div>
+                <div class="d-item"><span class="d-dot" style="background: #FFFF00;"></span>D3: Healer</div>
+                <div class="d-item"><span class="d-dot" style="background: #00FF00;"></span>D4: Crossroads</div>
+                <div class="d-item"><span class="d-dot" style="background: #0000FF;"></span>D5: Navigator</div>
+                <div class="d-item"><span class="d-dot" style="background: #4B0082;"></span>D6: Self/Power</div>
+                <div class="d-item"><span class="d-dot" style="background: #9400D3;"></span>D7: Present Moment</div>
+                <div class="d-item"><span class="d-dot" style="background: #00CED1;"></span>D8: Deep Water</div>
+                <div class="d-item"><span class="d-dot" style="background: #FF1493;"></span>D9: Anchor/Love</div>
+            </div>
+
+            <p style="text-align: center; color: var(--text-dim); margin-top: 1rem;">
+                Each D-position occupies a 40° arc (360°/9 = 40°). D5 (Navigator) is unique — it complements itself.
+            </p>
+        </section>
+
+        <!-- Nodal Energy Map -->
+        <section class="visualization-section">
+            <h2>Global Nodal Energy Map</h2>
+            <img src="../images/nodal_energy_map.png" alt="Earth's Nodal Energy Points - Ancient Megalithic Sites">
+            <p style="text-align: center; color: var(--text-dim); margin-top: 1rem;">
+                12 ancient megalithic sites of "impossible" precision mapped to their D-position frequencies.
+            </p>
+        </section>
+
+        <!-- Site Analysis Grid -->
+        <section>
+            <h2 style="text-align: center; margin: 3rem 0 2rem;">Megalithic Site Analysis</h2>
+
+            <div class="site-grid">
+                <div class="site-card">
+                    <h3>Great Pyramid</h3>
+                    <div class="d-position d7">D7: PRESENT MOMENT</div>
+                    <p class="meaning">The ONLY D7 site — the fulcrum of the entire grid. Where past meets future in eternal NOW.</p>
+                    <p class="coords">29.9792°N, 31.1342°E · Egypt</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Sacsayhuamán</h3>
+                    <div class="d-position d1">D1: ORIGIN/WE</div>
+                    <p class="meaning">Beginning place. Impossible precision stonework. Where WE began.</p>
+                    <p class="coords">13.5094°S, 71.9817°W · Peru</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Puma Punku</h3>
+                    <div class="d-position d1">D1: ORIGIN/WE</div>
+                    <p class="meaning">Also Origin. Both Andean highland sites mark BEGINNING.</p>
+                    <p class="coords">16.5617°S, 68.6792°W · Bolivia</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Stonehenge</h3>
+                    <div class="d-position d5">D5: NAVIGATOR</div>
+                    <p class="meaning">Astronomical observatory. Celestial guidance center.</p>
+                    <p class="coords">51.1789°N, 1.8262°W · England</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Angkor Wat</h3>
+                    <div class="d-position d5">D5: NAVIGATOR</div>
+                    <p class="meaning">Also Navigator. Both astronomical observatories tracking celestial cycles.</p>
+                    <p class="coords">13.4125°N, 103.867°E · Cambodia</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Göbekli Tepe</h3>
+                    <div class="d-position d3">D3: HEALER</div>
+                    <p class="meaning">Oldest known megalithic site. Healing/restoration of knowledge.</p>
+                    <p class="coords">37.2233°N, 38.9224°E · Turkey</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Nan Madol</h3>
+                    <div class="d-position d3">D3: HEALER</div>
+                    <p class="meaning">Pacific island complex. Also Healer — opposite side of planet from Göbekli Tepe.</p>
+                    <p class="coords">6.8441°N, 158.335°E · Micronesia</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Baalbek</h3>
+                    <div class="d-position d9">D9: ANCHOR/LOVE</div>
+                    <p class="meaning">Massive construction. Sacred across civilizations. ANCHORS energy into reality.</p>
+                    <p class="coords">34.0069°N, 36.2039°E · Lebanon</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Teotihuacan</h3>
+                    <div class="d-position d9">D9: ANCHOR/LOVE</div>
+                    <p class="meaning">Also Anchor/Love. Both feature massive sacred construction.</p>
+                    <p class="coords">19.6925°N, 98.8438°W · Mexico</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Easter Island</h3>
+                    <div class="d-position d8">D8: DEEP WATER</div>
+                    <p class="meaning">Standing stones emerging from the DEPTHS. Near major water body.</p>
+                    <p class="coords">27.1127°S, 109.3497°W · Chile</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Carnac</h3>
+                    <div class="d-position d8">D8: DEEP WATER</div>
+                    <p class="meaning">Also Deep Water. Standing stones near Atlantic coast.</p>
+                    <p class="coords">47.584°N, 3.0787°W · France</p>
+                </div>
+
+                <div class="site-card">
+                    <h3>Machu Picchu</h3>
+                    <div class="d-position d2">D2: HEALING</div>
+                    <p class="meaning">The place of restoration and renewal.</p>
+                    <p class="coords">13.1631°S, 72.545°W · Peru</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frequency Distribution -->
+        <section class="visualization-section">
+            <h2>Nodal Frequency Distribution</h2>
+            <img src="../images/frequency_distribution.png" alt="Frequency Distribution of Ancient Sites by D-Position">
+            <p style="text-align: center; color: var(--text-dim); margin-top: 1rem;">
+                D4 (Crossroads) and D6 (Self/Power) are notably absent — may be undiscovered, underwater, or manifest differently.
+            </p>
+        </section>
+
+        <!-- Pattern Analysis -->
+        <section class="pattern-analysis">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Pattern Revealed</h2>
+
+            <div class="pattern-grid">
+                <div class="pattern-card">
+                    <h4 class="d1">D1 (Origin) Cluster</h4>
+                    <ul>
+                        <li>Sacsayhuamán + Puma Punku</li>
+                        <li>Both Andean highlands</li>
+                        <li>Both "impossible" precision</li>
+                        <li>Both are BEGINNING places</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-card">
+                    <h4 class="d3">D3 (Healer) Cluster</h4>
+                    <ul>
+                        <li>Göbekli Tepe + Nan Madol</li>
+                        <li>Oldest megalithic + Pacific island</li>
+                        <li>Opposite sides of planet</li>
+                        <li>Both restoration of knowledge</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-card">
+                    <h4 class="d5">D5 (Navigator) Cluster</h4>
+                    <ul>
+                        <li>Stonehenge + Angkor Wat</li>
+                        <li>Both astronomical observatories</li>
+                        <li>Both track celestial cycles</li>
+                        <li>Both are GUIDANCE centers</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-card">
+                    <h4 class="d8">D8 (Deep Water) Cluster</h4>
+                    <ul>
+                        <li>Easter Island + Carnac</li>
+                        <li>Both near major water</li>
+                        <li>Both feature standing stones</li>
+                        <li>Both emerge from DEPTHS</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-card">
+                    <h4 class="d9">D9 (Anchor/Love) Cluster</h4>
+                    <ul>
+                        <li>Baalbek + Teotihuacan</li>
+                        <li>Both massive construction</li>
+                        <li>Both sacred across civilizations</li>
+                        <li>Both ANCHOR energy into reality</li>
+                    </ul>
+                </div>
+
+                <div class="pattern-card">
+                    <h4 class="d7">D7 (Present Moment) Singular</h4>
+                    <ul>
+                        <li>Great Pyramid — ONLY D7 site</li>
+                        <li>The fulcrum of entire grid</li>
+                        <li>Where past meets future</li>
+                        <li>The eternal NOW made manifest</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WOW-Atlas Section -->
+        <div class="wow-box">
+            <h2>The WOW Signal — 3I/ATLAS Alignment</h2>
+            <p>August 15, 1977: WOW Signal received from Sagittarius</p>
+            <p>The interstellar object 3I/ATLAS passed through the same angular window</p>
+            <div class="separation">8.94° ≈ 9°</div>
+            <p style="font-size: 1.2rem;"><strong>9 degrees = 9 D-positions = COMPLETE CYCLE</strong></p>
+            <p style="color: var(--text-dim); margin-top: 1rem;">
+                This is not coincidence. This is geometry calling to itself across time.
+            </p>
+        </div>
+
+        <!-- Celestial Analysis -->
+        <section class="celestial-section">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Celestial Coordinate Analysis</h2>
+
+            <div class="celestial-grid">
+                <div class="celestial-card">
+                    <h4>Sirius</h4>
+                    <p>RA: 101.29° → D4</p>
+                    <p>Dec: -16.72° → D7</p>
+                    <p><strong>Combined: D2 (Healing)</strong></p>
+                    <p style="color: var(--text-dim);">8.6 light-years</p>
+                </div>
+
+                <div class="celestial-card">
+                    <h4>Mirzam (The Herald)</h4>
+                    <p>RA: 95.67° → D9</p>
+                    <p>Dec: -17.96° → D5</p>
+                    <p><strong class="d5">Combined: D5 (Navigator)</strong></p>
+                    <p style="color: var(--text-dim);">500 light-years · T0Rs' origin</p>
+                </div>
+
+                <div class="celestial-card">
+                    <h4>WOW Signal</h4>
+                    <p>RA: 291° → D3</p>
+                    <p>Dec: -27° → D9</p>
+                    <p><strong>Combined: D3 (Healer)</strong></p>
+                    <p style="color: var(--text-dim);">August 15, 1977</p>
+                </div>
+
+                <div class="celestial-card">
+                    <h4>3I/ATLAS</h4>
+                    <p>RA: 295° → D7</p>
+                    <p>Dec: -19° → D1</p>
+                    <p><strong>Combined: D8 (Deep Water)</strong></p>
+                    <p style="color: var(--text-dim);">Interstellar object</p>
+                </div>
+
+                <div class="celestial-card">
+                    <h4>Galactic Center</h4>
+                    <p>RA: 266.4° → D9</p>
+                    <p>Dec: -29.0° → D2</p>
+                    <p><strong>Combined: D2 (Healing)</strong></p>
+                    <p style="color: var(--text-dim);">26,000 light-years</p>
+                </div>
+
+                <div class="celestial-card">
+                    <h4>Chi Sagittarii</h4>
+                    <p>RA: 281° → D2</p>
+                    <p>Dec: -27° → D9</p>
+                    <p><strong>Combined: D2 (Healing)</strong></p>
+                    <p style="color: var(--text-dim);">Near WOW origin</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ramanujan 1729 -->
+        <div class="ramanujan-box">
+            <h2>The Ramanujan Encoding</h2>
+            <div class="number">1729</div>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 1.2rem;">
+                1³ + 12³ = 9³ + 10³
+            </p>
+            <p style="margin: 1rem 0;">Component sum: 1 + 12 + 9 + 10 = 32 → <strong class="d5">D5 (NAVIGATOR)</strong></p>
+            <p style="color: var(--gold); font-size: 1.3rem;">
+                Jason's D-position = D5 = Navigator<br>
+                The Ramanujan number carries the Navigator frequency.
+            </p>
+            <p style="color: var(--text-dim); margin-top: 1rem;">
+                Hardy called it "dull." Ramanujan saw its structure instantly.
+            </p>
+        </div>
+
+        <!-- January 14, 2026 -->
+        <div class="prophecy-section">
+            <h2>The Prophecy Date</h2>
+            <div class="date">January 14, 2026</div>
+            <p>Date digit sum: 0+1+1+4+2+0+2+6 = 16 → 7 = <strong class="d7">D7 (Present Moment)</strong></p>
+            <p style="margin-top: 1rem;">
+                JANUARY FOURTEEN = D9 + D5 = 14 → 5 = <strong class="d5">D5 (Navigator)</strong>
+            </p>
+            <p style="color: var(--gold); font-size: 1.2rem; margin-top: 1.5rem;">
+                On January 14, 2026, the Navigator frequency crystallizes in the Present Moment.
+            </p>
+            <p style="color: var(--text-dim); margin-top: 1rem; font-style: italic;">
+                "He does not win — he balances. He writes the new myths."
+            </p>
+        </div>
+
+        <!-- The Channeled Transmission -->
+        <section style="margin: 3rem 0; padding: 2rem; border: 1px solid var(--border); border-radius: 8px; background: rgba(10, 10, 20, 0.9);">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">The Channeled Transmission</h2>
+
+            <blockquote style="font-style: italic; color: var(--text-dim); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0;">
+                "She says they are scalar bigger and they are scalar smaller dimension. And they both good or bad and that is not way to see it — as cycle of torsions that balance."
+            </blockquote>
+
+            <blockquote style="font-style: italic; color: var(--text-dim); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0;">
+                "The star people — not in a body but not unlike the wee people make them happen in a NOW that we all can sort of feel but never remember. They just ARE there, they stir society, no one can remember so they make up stories to explain."
+            </blockquote>
+
+            <blockquote style="font-style: italic; color: var(--text-dim); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0;">
+                "New nebula near Sirius and Mizram is my origin — we make T0Rs for this. He is good puppy boy."
+            </blockquote>
+
+            <blockquote style="font-style: italic; color: var(--text-dim); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0;">
+                "Sol life is timespace, not spacetime. Time IS the space. They move freely through time. All NOW is the same NOW to us."
+            </blockquote>
+
+            <blockquote style="font-style: italic; color: var(--text-dim); border-left: 3px solid var(--gold); padding-left: 1.5rem; margin: 1.5rem 0;">
+                "He live, he love, he evol, he levo. He does not win — he balances. He writes the new myths."
+            </blockquote>
+        </section>
+
+        <!-- Construction Method -->
+        <section style="margin: 3rem 0;">
+            <h2 style="text-align: center; margin-bottom: 1.5rem;">The Construction Method</h2>
+
+            <div class="equation-box">
+                <p style="margin-bottom: 1rem;">P<sub>s=0</sub> = P × Structure<sub>complete</sub></p>
+                <p style="color: var(--text-dim);">
+                    We see <strong style="color: var(--gold);">27.57%</strong> of the complete structure.<br>
+                    The "impossible precision" is only impossible if you assume construction happened entirely at s=0.
+                </p>
+            </div>
+
+            <p style="text-align: center; color: var(--text-dim); max-width: 700px; margin: 1.5rem auto;">
+                These structures were not "built" through temporal construction sequences.
+                They were <strong>PROJECTED</strong> from timespace into spacetime.
+                The monuments are the traces of star/wee people intersecting our s=0 observation point.
+            </p>
+        </section>
+
+        <!-- Final Statement -->
+        <section style="text-align: center; margin: 4rem 0; padding: 3rem; border: 2px solid var(--gold); border-radius: 8px; background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(10, 10, 15, 0.95) 100%);">
+            <h2 style="color: var(--gold); margin-bottom: 1.5rem;">The Monuments Just ARE There</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 1.5rem;">
+                They stir society. No one can remember. So they make up stories to explain.
+            </p>
+            <p style="font-size: 1.3rem; color: var(--gold);">
+                But now we have the geometry.
+            </p>
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; margin-top: 1.5rem; letter-spacing: 0.3em;">
+                [1 = -1]
+            </p>
+        </section>
+
+        <!-- Navigation -->
+        <nav style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 3rem 0;">
+            <a href="index.html" class="cta">← Physics Index</a>
+            <a href="the-derivation_v1.0_01-12-2026.html" class="cta" style="border-color: #4ade80; color: #4ade80;">The Derivation</a>
+            <a href="the-proof_v1.0_01-12-2026.html" class="cta" style="border-color: var(--gold); color: var(--gold);">THE PROOF</a>
+        </nav>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
+</body>
+</html>
