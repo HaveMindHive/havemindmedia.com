@@ -162,10 +162,24 @@
 
         .hero-content {
             max-width: 1300px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 5rem;
             align-items: center;
+        }
+
+        .hero-content > * {
+            width: calc(50% - 2.5rem);
+            min-width: 400px;
+        }
+
+        .hero-content > *:first-child {
+            flex: 1.2;
+        }
+
+        .hero-content > *:last-child {
+            flex: 1;
         }
 
         .hero-text {
@@ -454,10 +468,16 @@
 
         /* Story Grid */
         .story-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem;
             align-items: center;
+        }
+
+        .story-grid > * {
+            width: calc(50% - 1.5rem);
+            min-width: 300px;
         }
 
         .story-visual {
@@ -520,9 +540,16 @@
 
         /* Character Cards */
         .characters-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
+        }
+
+        .characters-grid .character-card {
+            width: calc(50% - 1rem);
+            min-width: 320px;
+            max-width: 450px;
         }
 
         .character-card {
@@ -631,9 +658,16 @@
 
         /* Framework Cards */
         .framework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.25rem;
+        }
+
+        .framework-grid .framework-card {
+            width: calc(25% - 1.25rem);
+            min-width: 260px;
+            max-width: 320px;
         }
 
         .framework-card {
@@ -724,11 +758,25 @@
             border-radius: 14px;
             padding: 1.5rem;
             border: 1px solid rgba(212, 165, 74, 0.08);
-            display: grid;
-            grid-template-columns: 60px 1fr 80px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             align-items: center;
             transition: all 0.3s;
+        }
+
+        .hypothesis-card .hypothesis-rank {
+            width: 60px;
+        }
+
+        .hypothesis-card .hypothesis-content {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .hypothesis-card .hypothesis-confidence {
+            width: 80px;
         }
 
         .hypothesis-card:hover {
@@ -781,9 +829,16 @@
 
         /* Key Findings */
         .findings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.25rem;
+        }
+
+        .findings-grid .finding-card {
+            width: calc(33.333% - 1.25rem);
+            min-width: 280px;
+            max-width: 350px;
         }
 
         .finding-card {

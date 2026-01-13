@@ -57,10 +57,16 @@
         }
 
         .triaxial-display {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
             margin: 15px 0;
+        }
+
+        .triaxial-display .axis-box {
+            width: calc(33.333% - 10px);
+            min-width: 100px;
         }
 
         .axis-box {

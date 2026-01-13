@@ -42,14 +42,23 @@
         }
 
         .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin-top: 20px;
         }
 
+        .grid .panel {
+            width: calc(50% - 10px);
+            min-width: 400px;
+        }
+
         @media (max-width: 1000px) {
-            .grid { grid-template-columns: 1fr; }
+            .grid .panel {
+                width: 100%;
+                min-width: 300px;
+            }
         }
 
         .panel {

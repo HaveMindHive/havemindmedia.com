@@ -187,8 +187,9 @@
         }
 
         .episode-card {
-            display: grid;
-            grid-template-columns: 60px 1fr auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             padding: 1.5rem;
             background: rgba(10, 22, 40, 0.5);
@@ -197,6 +198,20 @@
             transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            align-items: center;
+        }
+
+        .episode-card .episode-number {
+            width: 60px;
+        }
+
+        .episode-card .episode-content {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .episode-card .episode-arrow {
+            width: auto;
         }
 
         .episode-card:hover {
@@ -243,10 +258,17 @@
         }
 
         .concept-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin-top: 3rem;
+        }
+
+        .concept-grid .concept-card {
+            width: calc(33.333% - 2rem);
+            min-width: 280px;
+            max-width: 400px;
         }
 
         .concept-card {
@@ -291,11 +313,21 @@
         }
 
         .prophet-entry {
-            display: grid;
-            grid-template-columns: 120px 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             padding-bottom: 3rem;
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .prophet-entry > *:first-child {
+            width: 120px;
+        }
+
+        .prophet-entry > *:last-child {
+            flex: 1;
+            min-width: 250px;
         }
 
         .prophet-entry:last-child {
@@ -340,10 +372,17 @@
         }
 
         .vehicle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin-top: 3rem;
+        }
+
+        .vehicle-grid .vehicle-card {
+            width: calc(33.333% - 2rem);
+            min-width: 300px;
+            max-width: 400px;
         }
 
         .vehicle-card {
@@ -386,9 +425,16 @@
         }
 
         .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
+        }
+
+        .nav-grid .nav-card {
+            width: calc(25% - 2rem);
+            min-width: 200px;
+            max-width: 280px;
         }
 
         .nav-card {

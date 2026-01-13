@@ -63,11 +63,17 @@
 
         /* The main bars grid */
         .bars-grid {
-            display: grid;
-            grid-template-columns: repeat(60, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2px;
             margin-bottom: 20px;
             height: 120px;
+        }
+
+        .bars-grid .bar {
+            width: calc(1.666% - 2px);
+            min-width: 3px;
         }
 
         .bar {
@@ -98,10 +104,16 @@
 
         /* Triaxial display */
         .triaxial-display {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin-bottom: 20px;
+        }
+
+        .triaxial-display .axis-panel {
+            width: calc(33.333% - 15px);
+            min-width: 150px;
         }
 
         .axis-panel {
@@ -158,10 +170,16 @@
            ═══════════════════════════════════════════════════════════════════ */
 
         .cohorts-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
+        }
+
+        .cohorts-row .mini-cohort {
+            width: calc(25% - 10px);
+            min-width: 200px;
         }
 
         .mini-cohort {

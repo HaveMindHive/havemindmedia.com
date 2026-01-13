@@ -134,10 +134,20 @@
         }
 
         .persons-container {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             align-items: start;
+        }
+
+        .persons-container .person-card {
+            width: calc(50% - 55px);
+            min-width: 300px;
+        }
+
+        .persons-container .connector {
+            width: 80px;
         }
 
         .person-card {
@@ -216,9 +226,15 @@
         .form-group textarea { resize: vertical; min-height: 100px; }
 
         .birthday-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
+        }
+
+        .birthday-row > * {
+            width: calc(50% - 7.5px);
+            min-width: 120px;
         }
 
         /* Center Connector */
@@ -368,10 +384,17 @@
 
         /* Insights */
         .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
             margin-bottom: 40px;
+        }
+
+        .insights-grid .insight-card {
+            width: calc(33.333% - 25px);
+            min-width: 250px;
+            max-width: 350px;
         }
 
         .insight-card {
