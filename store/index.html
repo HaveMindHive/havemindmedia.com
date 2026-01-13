@@ -228,9 +228,9 @@
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .featured-design img {
             width: 100%;
@@ -238,12 +238,14 @@
             object-fit: cover;
             object-position: center top;
             min-height: 300px;
+            flex-basis: 50%;
         }
         .featured-content {
             padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            flex-basis: 50%;
         }
         .featured-label {
             color: var(--gold);
@@ -342,8 +344,9 @@
             .store-hero h1 { font-size: 2rem; letter-spacing: 4px; }
             .store-hero .tagline { font-size: 1.1rem; }
 
-            .featured-design {
-                grid-template-columns: 1fr;
+            .featured-design img,
+            .featured-content {
+                flex-basis: 100%;
             }
             .featured-design img {
                 min-height: 250px;

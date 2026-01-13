@@ -108,8 +108,9 @@
         }
 
         .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -120,6 +121,8 @@
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
+            flex: 1 1 200px;
+            max-width: 250px;
         }
 
         .product-card h3 {
@@ -198,8 +201,9 @@
                 padding: 1.5rem;
             }
 
-            .product-grid {
-                grid-template-columns: 1fr;
+            .product-card {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
         }
     </style>

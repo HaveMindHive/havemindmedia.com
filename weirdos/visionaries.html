@@ -182,16 +182,30 @@
         }
 
         .profile-header {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-header .profile-image {
+            flex-basis: 300px;
+            min-width: 300px;
+        }
+
+        .profile-header .profile-info {
+            flex-basis: calc(100% - 300px);
+            min-width: 300px;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .hero-subtitle { font-size: 1.1rem; }
             .hero-quote { font-size: 1rem; padding: 1rem; }
-            .profile-header { grid-template-columns: 1fr; }
+            .profile-header .profile-image,
+            .profile-header .profile-info {
+                flex-basis: 100%;
+                min-width: unset;
+            }
             .profile-image { height: 250px; }
             .main-content { padding: 2rem 1rem; }
         }
@@ -261,10 +275,17 @@
 
         /* Vision Content */
         .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+        }
+
+        .vision-grid .vision-card {
+            width: calc(50% - 1rem);
+            min-width: 300px;
+            max-width: 500px;
         }
 
         .vision-card {

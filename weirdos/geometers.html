@@ -117,10 +117,17 @@
 
         /* Geometer Cards */
         .geometers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 3rem 0;
+        }
+
+        .geometers-grid .geometer-card {
+            width: calc(33.333% - 1.5rem);
+            min-width: 350px;
+            max-width: 450px;
         }
 
         .geometer-card {
@@ -310,7 +317,10 @@
             .hero-subtitle { font-size: 1.1rem; }
             .hero-symbol { font-size: 3rem; }
             .main-content { padding: 2rem 1rem; }
-            .geometers-grid { grid-template-columns: 1fr; }
+            .geometers-grid .geometer-card {
+                width: 100%;
+                min-width: unset;
+            }
             .pattern-flow { flex-direction: column; }
             .pattern-arrow { transform: rotate(90deg); }
             .quote-text { font-size: 1.3rem; }

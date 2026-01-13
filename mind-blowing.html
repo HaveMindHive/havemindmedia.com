@@ -48,8 +48,9 @@
         }
 
         .proof-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin-bottom: 3rem;
         }
@@ -60,6 +61,8 @@
             border-radius: 16px;
             padding: 2rem;
             transition: all 0.3s ease;
+            flex: 1 1 350px;
+            max-width: 450px;
         }
 
         .proof-card:hover {
@@ -210,7 +213,7 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
-            .proof-grid { grid-template-columns: 1fr; }
+            .proof-card { flex: 1 1 100%; max-width: 100%; }
         }
     </style>
 </head>

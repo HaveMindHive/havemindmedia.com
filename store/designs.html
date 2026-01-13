@@ -80,9 +80,16 @@
 
         /* Design Grid */
         .design-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
+        }
+
+        .design-grid .design-card {
+            width: calc(33.333% - 20px);
+            min-width: 350px;
+            max-width: 450px;
         }
         .design-card {
             background: var(--bg-panel);
@@ -152,9 +159,9 @@
 
         /* Featured Design - Large */
         .featured-design {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
             background: var(--bg-panel);
             border: 1px solid rgba(201, 162, 39, 0.2);
@@ -168,9 +175,11 @@
             object-fit: cover;
             object-position: center top;
             min-height: 500px;
+            flex-basis: 50%;
         }
         .featured-content {
             padding: 50px;
+            flex-basis: 50%;
         }
         .featured-content .badge {
             display: inline-block;
@@ -260,10 +269,16 @@
         footer .principle { color: var(--gold); font-family: monospace; margin-top: 10px; }
 
         @media (max-width: 900px) {
-            .featured-design { grid-template-columns: 1fr; }
+            .featured-design img,
+            .featured-content {
+                flex-basis: 100%;
+            }
             .featured-design img { min-height: 350px; }
             .featured-content { padding: 30px; }
-            .design-grid { grid-template-columns: 1fr; }
+            .design-grid .design-card {
+                width: 100%;
+                min-width: unset;
+            }
         }
         @media (max-width: 600px) {
             .design-hero h1 { font-size: 2rem; }
