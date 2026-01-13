@@ -185,10 +185,16 @@
 
         /* Canvas Container */
         .canvas-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin-bottom: 2rem;
+        }
+
+        .canvas-container > * {
+            flex: 0 0 calc(50% - 0.75rem);
+            min-width: 400px;
         }
 
         @media (max-width: 1200px) {
@@ -252,9 +258,15 @@
             right: 0;
             padding: 1rem;
             background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1rem;
+        }
+
+        .stats-overlay > * {
+            flex: 0 0 calc(25% - 0.75rem);
+            min-width: 80px;
         }
 
         .stat-item {
@@ -365,9 +377,22 @@
 
         /* Sliders */
         .controls-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
+        }
+
+        .controls-grid > * {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        @media (max-width: 900px) {
+            .controls-grid > * {
+                flex: 0 0 calc(50% - 1rem);
+            }
         }
 
         .control-group {
@@ -468,9 +493,22 @@
         }
 
         .explanation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
+        }
+
+        .explanation-grid > * {
+            flex: 0 0 calc(50% - 1rem);
+            min-width: 350px;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .explanation-grid > * {
+                flex: 0 0 100%;
+            }
         }
 
         .explanation-card {
@@ -661,10 +699,20 @@
         }
 
         .lyapunov-comparison {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             align-items: center;
+        }
+
+        .lyapunov-comparison > * {
+            flex: 0 0 auto;
+        }
+
+        .lyapunov-card {
+            flex: 0 0 calc(45% - 1rem);
+            min-width: 300px;
         }
 
         @media (max-width: 800px) {

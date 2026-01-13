@@ -227,9 +227,22 @@
 
         /* Lesson Cards */
         .lessons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
+        }
+
+        .lessons-grid > * {
+            flex: 0 0 calc(33.333% - 1.333rem);
+            min-width: 350px;
+            max-width: 450px;
+        }
+
+        @media (max-width: 1200px) {
+            .lessons-grid > * {
+                flex: 0 0 calc(50% - 1rem);
+            }
         }
 
         .lesson-card {

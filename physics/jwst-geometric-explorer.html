@@ -263,9 +263,22 @@
         }
 
         .explainer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
+        }
+
+        .explainer-grid > * {
+            flex: 0 0 calc(33.333% - 17px);
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        @media (max-width: 900px) {
+            .explainer-grid > * {
+                flex: 0 0 calc(50% - 12.5px);
+            }
         }
 
         .explainer-box {
@@ -361,10 +374,16 @@
         }
 
         .glasses-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 40px;
             margin-bottom: 60px;
+        }
+
+        .glasses-comparison > * {
+            flex: 0 0 calc(50% - 20px);
+            min-width: 350px;
         }
 
         @media (max-width: 800px) {
@@ -427,10 +446,15 @@
         }
 
         .skewed-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 8px;
             transform: skewX(-10deg);
+        }
+
+        .skewed-grid > * {
+            flex: 0 0 15px;
         }
 
         .skewed-dot {
@@ -451,9 +475,14 @@
         }
 
         .clear-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 12px;
+        }
+
+        .clear-grid > * {
+            flex: 0 0 15px;
         }
 
         .clear-dot {
@@ -487,10 +516,16 @@
 
         /* Water Analogy */
         .water-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin-top: 50px;
+        }
+
+        .water-comparison > * {
+            flex: 0 0 calc(50% - 15px);
+            min-width: 280px;
         }
 
         @media (max-width: 700px) {
@@ -627,10 +662,16 @@
         }
 
         .galaxy-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin-top: 40px;
+        }
+
+        .galaxy-stats > * {
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 200px;
         }
 
         @media (max-width: 600px) {
@@ -697,9 +738,15 @@
         }
 
         .evidence-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
+        }
+
+        .evidence-comparison > * {
+            flex: 0 0 calc(50% - 12.5px);
+            min-width: 280px;
         }
 
         @media (max-width: 700px) {

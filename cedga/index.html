@@ -194,10 +194,23 @@
 
         /* Data Display */
         .data-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin: 30px 0;
+        }
+
+        .data-grid > * {
+            flex: 0 0 calc(25% - 15px);
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+        @media (max-width: 900px) {
+            .data-grid > * {
+                flex: 0 0 calc(50% - 10px);
+            }
         }
 
         .data-card {
@@ -256,9 +269,15 @@
 
         /* Grid layouts */
         .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
+        }
+
+        .two-column > * {
+            flex: 0 0 calc(50% - 15px);
+            min-width: 300px;
         }
 
         @media (max-width: 900px) {

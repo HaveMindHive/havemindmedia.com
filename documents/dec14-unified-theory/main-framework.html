@@ -211,10 +211,16 @@
 
         /* Comparison Box */
         .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+        }
+
+        .comparison > * {
+            flex: 0 0 calc(50% - 1rem);
+            min-width: 300px;
         }
 
         .comparison-box {
@@ -353,10 +359,23 @@
 
         /* Navigation Cards */
         .nav-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
             margin: 3rem 0;
+        }
+
+        .nav-cards > * {
+            flex: 0 0 calc(33.333% - 1rem);
+            min-width: 280px;
+            max-width: 400px;
+        }
+
+        @media (max-width: 900px) {
+            .nav-cards > * {
+                flex: 0 0 calc(50% - 0.75rem);
+            }
         }
 
         .nav-card {

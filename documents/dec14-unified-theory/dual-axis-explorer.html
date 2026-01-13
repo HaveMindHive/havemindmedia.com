@@ -207,11 +207,21 @@
 
         /* Dual Axis Visual */
         .dual-axis-container {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             align-items: center;
             margin: 3rem 0;
+        }
+
+        .dual-axis-container > .axis-box {
+            flex: 0 0 calc(45% - 1rem);
+            min-width: 300px;
+        }
+
+        .dual-axis-container > .witness-connector {
+            flex: 0 0 auto;
         }
 
         .axis-box {
@@ -298,10 +308,16 @@
 
         /* DNA Section */
         .dna-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem;
             margin: 3rem 0;
+        }
+
+        .dna-comparison > * {
+            flex: 0 0 calc(50% - 1.5rem);
+            min-width: 350px;
         }
 
         .dna-box {
@@ -433,10 +449,16 @@
 
         /* Prediction Box */
         .prediction-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
             margin: 2rem 0;
+        }
+
+        .prediction-grid > * {
+            flex: 0 0 calc(33.333% - 1.333rem);
+            min-width: 250px;
         }
 
         .prediction-box {
@@ -564,9 +586,15 @@
         }
 
         .sm-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2rem;
+        }
+
+        .sm-comparison > * {
+            flex: 0 0 calc(50% - 1rem);
+            min-width: 300px;
         }
 
         .sm-side {

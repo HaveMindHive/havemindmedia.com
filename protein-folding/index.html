@@ -118,10 +118,23 @@
         }
 
         .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin: 30px 0;
+        }
+
+        .comparison-grid > * {
+            flex: 0 0 calc(50% - 15px);
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid > * {
+                flex: 0 0 100%;
+            }
         }
 
         .comparison-box {
@@ -301,10 +314,29 @@
 
         /* Stats Grid */
         .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin: 30px 0;
+        }
+
+        .stats-grid > * {
+            flex: 0 0 calc(25% - 15px);
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid > * {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid > * {
+                flex: 0 0 100%;
+            }
         }
 
         .stat-card {
@@ -369,10 +401,23 @@
         }
 
         .case-result {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin-top: 20px;
+        }
+
+        .case-result > * {
+            flex: 0 0 calc(50% - 10px);
+            min-width: 280px;
+            max-width: 500px;
+        }
+
+        @media (max-width: 768px) {
+            .case-result > * {
+                flex: 0 0 100%;
+            }
         }
 
         .case-result-item {
@@ -441,10 +486,29 @@
 
         /* Constants Grid */
         .constants-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             margin: 30px 0;
+        }
+
+        .constants-grid > * {
+            flex: 0 0 calc(25% - 15px);
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        @media (max-width: 768px) {
+            .constants-grid > * {
+                flex: 0 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .constants-grid > * {
+                flex: 0 0 100%;
+            }
         }
 
         .constant-card {
@@ -475,10 +539,23 @@
 
         /* Environment Table */
         .env-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 30px;
             margin: 30px 0;
+        }
+
+        .env-grid > * {
+            flex: 0 0 calc(50% - 15px);
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .env-grid > * {
+                flex: 0 0 100%;
+            }
         }
 
         .env-card {
@@ -557,10 +634,24 @@
         }
 
         .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
             margin: 30px 0;
+        }
+
+        .video-grid > * {
+            flex: 0 0 calc(50% - 12.5px);
+            min-width: 400px;
+            max-width: 700px;
+        }
+
+        @media (max-width: 900px) {
+            .video-grid > * {
+                flex: 0 0 100%;
+                min-width: 300px;
+            }
         }
 
         .video-grid .video-container {
@@ -568,8 +659,8 @@
         }
 
         @media (max-width: 900px) {
-            .comparison-grid, .case-result, .env-grid {
-                grid-template-columns: 1fr;
+            .comparison-grid > *, .case-result > *, .env-grid > * {
+                flex: 0 0 100%;
             }
 
             .theory-page {
