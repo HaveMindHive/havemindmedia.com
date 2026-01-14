@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE NEBULIZER | Navigate the Cosmos | Have Mind Media</title>
-    <meta name="description" content="Explore all of Have Mind Media through the Nebulizer - a 3D cosmic wheel of discovery. Spin through 200+ pages of physics, mysteries, and consciousness research.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <meta name="description" content="Spin the wheel to explore Have Mind Media. Like the Price is Right, but for consciousness and physics.">
+    <link rel="stylesheet" href="css/unified-theme.css">
+    <script src="js/components/site-header.js" defer></script>
+    <script src="js/components/site-footer.js" defer></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,8 +15,6 @@
             --gold: #c9a227;
             --gold-dim: rgba(201, 162, 39, 0.6);
             --deep-space: #030508;
-            --nebula-purple: #4a0080;
-            --nebula-blue: #0066aa;
             --text: #e8e6e3;
             --text-dim: #888;
         }
@@ -26,7 +24,6 @@
             background: var(--deep-space);
             color: var(--text);
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         /* Nebula Background */
@@ -37,7 +34,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.3;
         }
 
         .nebula-layer {
@@ -49,124 +46,134 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 3s ease;
+            transition: opacity 4s ease;
         }
 
-        .nebula-layer.active {
-            opacity: 1;
-        }
+        .nebula-layer.active { opacity: 1; }
 
         /* Header */
         .page-header {
             text-align: center;
-            padding: 3rem 2rem 2rem;
-            position: relative;
-            z-index: 10;
+            padding: 2rem 2rem 1rem;
         }
 
         .page-header h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             color: var(--gold);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
-            margin-bottom: 0.5rem;
         }
 
         .page-header .subtitle {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-dim);
             font-style: italic;
+            margin-top: 0.5rem;
         }
 
-        .principle {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--gold);
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            opacity: 0.8;
+        /* Wheel Container - Price is Right Style */
+        .wheel-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* 3D Wheel Container */
-        .wheel-container {
+        .wheel-wrapper {
             position: relative;
             width: 100%;
-            height: 70vh;
-            min-height: 500px;
-            perspective: 1200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
+            padding: 2rem 0;
         }
 
-        .wheel {
-            position: relative;
-            width: 300px;
-            height: 400px;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-
-        .wheel-card {
+        /* The pointer/ticker at top */
+        .wheel-pointer {
             position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid var(--gold);
+            z-index: 100;
+            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.8));
+        }
+
+        /* Horizontal wheel strip */
+        .wheel-strip {
+            display: flex;
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        .wheel-strip.spinning {
+            transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .wheel-strip.slow-stop {
+            transition: transform 6s cubic-bezier(0.15, 0.8, 0.3, 1);
+        }
+
+        /* Individual wheel segments */
+        .wheel-segment {
+            flex-shrink: 0;
             width: 280px;
             height: 380px;
-            left: 10px;
-            top: 10px;
-            background: linear-gradient(145deg, rgba(10, 15, 25, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
-            border: 1px solid var(--gold-dim);
-            border-radius: 16px;
+            margin: 0 10px;
+            background: linear-gradient(145deg, rgba(15, 20, 30, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
+            border: 2px solid var(--gold-dim);
+            border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            backface-visibility: hidden;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            transition: border-color 0.3s, transform 0.3s;
         }
 
-        .wheel-card:hover {
+        .wheel-segment:hover {
             border-color: var(--gold);
-            box-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
         }
 
-        .wheel-card.center {
-            z-index: 100;
+        .wheel-segment.winner {
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.6);
+            transform: scale(1.05);
         }
 
-        .card-category {
-            padding: 0.5rem 1rem;
-            background: rgba(201, 162, 39, 0.15);
-            font-size: 0.7rem;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .card-image {
+        .segment-image {
             height: 180px;
-            background: linear-gradient(135deg, var(--nebula-purple) 0%, var(--nebula-blue) 100%);
+            background: linear-gradient(135deg, #1a0a2e 0%, #0a1628 100%);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            overflow: hidden;
         }
 
-        .card-image img {
+        .segment-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
 
-        .card-content {
+        .segment-image .fallback-icon {
+            font-size: 4rem;
+            opacity: 0.6;
+        }
+
+        .segment-content {
             padding: 1.25rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
         }
 
-        .card-content h3 {
+        .segment-category {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .segment-content h3 {
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
             color: var(--gold);
@@ -174,164 +181,162 @@
             line-height: 1.3;
         }
 
-        .card-content p {
+        .segment-content p {
             font-size: 0.85rem;
             color: var(--text-dim);
-            line-height: 1.5;
-            flex: 1;
-        }
-
-        .card-cta {
-            margin-top: auto;
-            padding-top: 0.75rem;
-            font-size: 0.8rem;
-            color: var(--gold);
-            opacity: 0.7;
+            line-height: 1.4;
         }
 
         /* Controls */
-        .wheel-controls {
+        .controls {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 2rem;
             padding: 2rem;
-            position: relative;
-            z-index: 10;
+            flex-wrap: wrap;
         }
 
-        .wheel-btn {
-            width: 60px;
-            height: 60px;
+        .spin-btn {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.3) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            color: var(--gold);
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.1em;
+        }
+
+        .spin-btn:hover {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.5) 0%, rgba(201, 162, 39, 0.2) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .spin-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: rgba(201, 162, 39, 0.1);
-            border: 2px solid var(--gold-dim);
+            border: 1px solid var(--gold-dim);
             color: var(--gold);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s;
         }
 
-        .wheel-btn:hover {
+        .nav-btn:hover {
             background: rgba(201, 162, 39, 0.2);
             border-color: var(--gold);
-            transform: scale(1.1);
         }
 
-        .wheel-counter {
+        .counter {
             font-family: 'JetBrains Mono', monospace;
             color: var(--text-dim);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .wheel-counter .current {
+        .counter .current {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        /* Winner display */
+        .winner-display {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .winner-display.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .winner-display h2 {
+            font-family: 'Cinzel', serif;
             color: var(--gold);
             font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        /* Category Filter */
-        .category-filter {
+        .winner-display .go-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .winner-display .go-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Category filter */
+        .filters {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .filter-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 1rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 20px;
             color: var(--text-dim);
             font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .filter-btn:hover,
-        .filter-btn.active {
+        .filter-btn:hover, .filter-btn.active {
             background: rgba(201, 162, 39, 0.15);
             border-color: var(--gold);
             color: var(--gold);
         }
 
-        /* Footer */
-        .nebulizer-footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid rgba(201, 162, 39, 0.2);
-            margin-top: 2rem;
-        }
-
-        .nebulizer-footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .nebulizer-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Keyboard hints */
-        .keyboard-hints {
+        /* Instructions */
+        .instructions {
             text-align: center;
             padding: 1rem;
             color: var(--text-dim);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
 
-        .keyboard-hints kbd {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin: 0 0.25rem;
-        }
-
-        /* Mobile adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
-            .wheel-container {
-                height: 60vh;
-                min-height: 450px;
-            }
-
-            .wheel {
-                width: 260px;
-                height: 360px;
-            }
-
-            .wheel-card {
+            .wheel-segment {
                 width: 240px;
                 height: 340px;
             }
-
-            .card-image {
-                height: 140px;
-            }
-
-            .category-filter {
-                padding: 1rem;
-            }
-
-            .keyboard-hints {
-                display: none;
-            }
-        }
-
-        /* Touch swipe support */
-        .wheel-container {
-            touch-action: pan-y;
+            .segment-image { height: 140px; }
+            .spin-btn { padding: 0.8rem 2rem; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
+    <site-header></site-header>
+
     <!-- Nebula Background -->
     <div class="nebula-bg">
         <div class="nebula-layer active" style="background-image: url('images/nebula-purple-gold.png');"></div>
@@ -342,325 +347,263 @@
 
     <header class="page-header">
         <h1>THE NEBULIZER</h1>
-        <p class="subtitle">Spin through the cosmos of Have Mind Media</p>
-        <p class="principle">[1 = -1]</p>
+        <p class="subtitle">Spin the wheel. Discover something new.</p>
     </header>
 
     <!-- Category Filter -->
-    <div class="category-filter">
+    <div class="filters">
         <button class="filter-btn active" data-category="all">All</button>
         <button class="filter-btn" data-category="physics">Physics</button>
         <button class="filter-btn" data-category="namagiri">Namagiri</button>
         <button class="filter-btn" data-category="education">Education</button>
         <button class="filter-btn" data-category="mysteries">Mysteries</button>
         <button class="filter-btn" data-category="tools">Tools</button>
-        <button class="filter-btn" data-category="games">Games</button>
         <button class="filter-btn" data-category="weirdos">Weirdos</button>
     </div>
 
-    <!-- 3D Wheel -->
-    <div class="wheel-container" id="wheelContainer">
-        <div class="wheel" id="wheel">
-            <!-- Cards generated by JS -->
+    <!-- Wheel Section -->
+    <section class="wheel-section">
+        <div class="wheel-wrapper">
+            <div class="wheel-pointer"></div>
+            <div class="wheel-strip" id="wheelStrip">
+                <!-- Segments generated by JS -->
+            </div>
         </div>
-    </div>
 
-    <!-- Controls -->
-    <div class="wheel-controls">
-        <button class="wheel-btn" id="prevBtn">&#10094;</button>
-        <div class="wheel-counter">
-            <span class="current" id="currentNum">1</span>
-            <span>/</span>
-            <span id="totalNum">0</span>
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn">&#10094;</button>
+            <button class="spin-btn" id="spinBtn">SPIN THE WHEEL</button>
+            <button class="nav-btn" id="nextBtn">&#10095;</button>
         </div>
-        <button class="wheel-btn" id="nextBtn">&#10095;</button>
-    </div>
 
-    <div class="keyboard-hints">
-        <kbd>&#8592;</kbd> <kbd>&#8594;</kbd> to navigate &nbsp;|&nbsp; <kbd>Enter</kbd> to open &nbsp;|&nbsp; <kbd>Space</kbd> to auto-spin
-    </div>
+        <div class="counter">
+            <span class="current" id="currentNum">1</span> / <span id="totalNum">0</span>
+        </div>
 
-    <footer class="nebulizer-footer">
-        <p><a href="index.html">&#8592; Return Home</a> &nbsp;|&nbsp; <a href="master-library.html">Master Library</a> &nbsp;|&nbsp; <a href="site-directory.html">Site Directory</a></p>
-        <p style="margin-top: 1rem; color: var(--text-dim); font-size: 0.9rem;">
-            Have Mind Media &middot; <span style="font-family: 'JetBrains Mono', monospace; color: var(--gold);">[1 = -1]</span>
-        </p>
-    </footer>
+        <div class="winner-display" id="winnerDisplay">
+            <h2 id="winnerTitle">You landed on...</h2>
+            <a href="#" class="go-btn" id="winnerLink">EXPLORE THIS PAGE →</a>
+        </div>
+    </section>
+
+    <p class="instructions">
+        Click SPIN or use ← → arrow keys to browse. Click any card to visit.
+    </p>
+
+    <site-footer></site-footer>
 
     <script>
-        // Page data - main pages only (no subdirectory pages)
+        // Page data with real images where available
         const pages = [
-            // CORE
-            { title: "Home", desc: "The gateway to Have Mind Media. Where the journey begins.", url: "index.html", category: "core", icon: "🏠" },
-            { title: "Master Library", desc: "All 211 pages organized and searchable. The complete archive.", url: "master-library.html", category: "core", icon: "📚" },
-            { title: "Mind-Blowing Proofs", desc: "The mathematics that changes everything. Start here.", url: "mind-blowing.html", category: "core", icon: "🤯" },
+            { title: "The Derivation", desc: "From primes to 1729 to [1=-1]", url: "physics/the-derivation_v1.0_01-12-2026.html", category: "physics", img: "images/derivation-hero.png" },
+            { title: "The Kill Shot", desc: "The death of falsificationism", url: "physics/the-kill-shot_v1.0_01-12-2026.html", category: "physics", img: null },
+            { title: "Three-Body Geometry", desc: "The 'unsolvable' problem—solved", url: "physics/three-body-geometry.html", category: "physics", img: null },
+            { title: "True Meter", desc: "c = 297,638,035 m/s", url: "physics/true-meter_v1.0_01-10-2026.html", category: "physics", img: null },
+            { title: "Earth's Nodal Grid", desc: "Ancient sites as D-position nodes", url: "physics/kappa5/nodal-energy-grid/index.html", category: "physics", img: "images/nodal-grid-hero.png" },
+            { title: "Great Pyramid D7", desc: "The ONLY D7 site on Earth", url: "physics/kappa5/nodal-energy-grid/great-pyramid.html", category: "physics", img: "images/d7-great-pyramid.png" },
+            { title: "κ₅ True Dark", desc: "The fifth scalar mode", url: "physics/kappa5/index.html", category: "physics", img: null },
+            { title: "Standard Model Failures", desc: "The cracks they paper over", url: "physics/standard-model-failures/index.html", category: "physics", img: null },
+            { title: "JWST Explorer", desc: "James Webb through Epoch lens", url: "physics/jwst-geometric-explorer.html", category: "physics", img: null },
 
-            // NAMAGIRI
-            { title: "Namagiri Speaks", desc: "20 episodes channeled from the goddess herself. The complete transmission.", url: "namagiri/index.html", category: "namagiri", icon: "🙏" },
-            { title: "The Proofs (Namagiri)", desc: "Mathematical revelations from Ramanujan's goddess.", url: "namagiri/the-proofs.html", category: "namagiri", icon: "∎" },
+            { title: "Namagiri Speaks", desc: "20 episodes from the goddess", url: "namagiri/index.html", category: "namagiri", img: "images/namagiri-hero.png" },
+            { title: "The Proofs", desc: "Mathematical revelations", url: "namagiri/the-proofs.html", category: "namagiri", img: null },
 
-            // PHYSICS
-            { title: "Physics Hub", desc: "The geometry of spacetime. From atoms to galaxies.", url: "physics/index.html", category: "physics", icon: "⚛" },
-            { title: "THE PROOF", desc: "The complete mathematical devastation. Every step verifiable.", url: "physics/the-proof_v1.0_01-12-2026.html", category: "physics", icon: "∎" },
-            { title: "THE DERIVATION", desc: "From primes to κ to 1729 to [1=-1]. Mathematically inarguable.", url: "physics/the-derivation_v1.0_01-12-2026.html", category: "physics", icon: "→" },
-            { title: "THE KILL SHOT", desc: "The death of falsificationism. Popper was wrong.", url: "physics/the-kill-shot_v1.0_01-12-2026.html", category: "physics", icon: "💀" },
-            { title: "The True Meter", desc: "The geometric speed of light. c = 297,638,035 m/s.", url: "physics/true-meter_v1.0_01-10-2026.html", category: "physics", icon: "📏" },
-            { title: "Kappa State Model", desc: "κ = 30 pure. The Hypatia Refinement revealed.", url: "physics/kappa-state-model_v2.0_01-10-2026.html", category: "physics", icon: "κ" },
-            { title: "Three-Body Geometry", desc: "The 'unsolvable' problem — solved through kappa transforms.", url: "physics/three-body-geometry.html", category: "physics", icon: "◬" },
-            { title: "Millennium Problems", desc: "$7 million in prizes. The Epoch approach.", url: "physics/millennium-problems.html", category: "physics", icon: "🏆" },
-            { title: "κ₅ True Dark", desc: "The fifth scalar mode. Where prophecy lives.", url: "physics/kappa5/index.html", category: "physics", icon: "κ₅" },
-            { title: "Earth's Nodal Grid", desc: "Ancient sites as geometric nodes. Great Pyramid = D7.", url: "physics/kappa5/nodal-energy-grid/index.html", category: "physics", icon: "◎" },
-            { title: "Torsion Balance", desc: "S⁺ + S⁻ = 0. The balance law in action.", url: "physics/torsion-balance.html", category: "physics", icon: "⚖" },
-            { title: "JWST Explorer", desc: "James Webb data through the Epoch lens.", url: "physics/jwst-geometric-explorer.html", category: "physics", icon: "🔭" },
-            { title: "432 Orbital Mapper", desc: "Planetary orbits through base-60 geometry.", url: "physics/432-orbital-mapper_v1.0_01-08-2026.html", category: "physics", icon: "🪐" },
-            { title: "Atomic Derivations", desc: "Electron orbitals from first principles.", url: "physics/atomic-derivations/index.html", category: "physics", icon: "⚛" },
-            { title: "Standard Model Failures", desc: "The cracks they paper over. Dark matter, hierarchy, constants.", url: "physics/standard-model-failures/index.html", category: "physics", icon: "⚠" },
-            { title: "Black Hole Map Failure", desc: "Event horizons are coordinate artifacts. Roy Kerr agrees.", url: "physics/black-hole-map-failure/index.html", category: "physics", icon: "🕳" },
-            { title: "The Vessel", desc: "Consciousness geometry framework.", url: "physics/vessel/index.html", category: "physics", icon: "🏺" },
-            { title: "Shadow Operator", desc: "The hidden geometry that moves everything.", url: "physics/shadow-operator/index.html", category: "physics", icon: "👤" },
+            { title: "Soul Science", desc: "The complete S- framework", url: "education/soul-science.html", category: "education", img: null },
+            { title: "Mythic Mirror", desc: "You are Frankenstein's Monster", url: "education/mythic-mirror/index.html", category: "education", img: null },
+            { title: "Becoming a Coin", desc: "Observer to participant", url: "education/becoming-a-coin.html", category: "education", img: null },
+            { title: "Ammit Function", desc: "The weighing of the heart", url: "education/ammit-function.html", category: "education", img: null },
 
-            // CEDGA
-            { title: "CEDGA Framework", desc: "Complete framework with interactive tools.", url: "cedga/index.html", category: "physics", icon: "⬡" },
-            { title: "Triaxial OS", desc: "Operating system based on torsion geometry.", url: "cedga/triaxial-os/index.html", category: "physics", icon: "💻" },
+            { title: "Voynich Decoded", desc: "World's most mysterious book", url: "ancient-mysteries/voynich/index.html", category: "mysteries", img: "images/voynich/voynich-hero.jpg" },
+            { title: "Rongorongo", desc: "Easter Island's lost script", url: "ancient-mysteries/texts/rongorongo-v1.0.html", category: "mysteries", img: null },
+            { title: "Phaistos Disc", desc: "Bronze Age mystery", url: "ancient-mysteries/texts/phaistos-v1.0.html", category: "mysteries", img: null },
+            { title: "Indus Script", desc: "4,000 years undeciphered", url: "ancient-mysteries/indus-script/index.html", category: "mysteries", img: null },
+            { title: "Norse Artifacts", desc: "Rök, Gotland, Oseberg", url: "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html", category: "mysteries", img: null },
 
-            // EDUCATION
-            { title: "Education Hub", desc: "Soul science and consciousness studies.", url: "education/index.html", category: "education", icon: "📖" },
-            { title: "Soul Science", desc: "The complete S- framework. From coin to unified awareness.", url: "education/soul-science.html", category: "education", icon: "☯" },
-            { title: "THE PROOFS", desc: "Mathematical framework for education.", url: "education/the-proofs_v1.0_01-11-2026.html", category: "education", icon: "∎" },
-            { title: "Becoming a Coin", desc: "The journey from observer to participant.", url: "education/becoming-a-coin.html", category: "education", icon: "🪙" },
-            { title: "Ammit Function", desc: "The weighing of the heart. Soul mathematics.", url: "education/ammit-function.html", category: "education", icon: "⚖" },
-            { title: "Hidden Observers", desc: "Those who watch from beyond the veil.", url: "education/hidden-observers.html", category: "education", icon: "👁" },
-            { title: "Life-Facing Wisdom", desc: "Practical application of soul science.", url: "education/life-facing-wisdom.html", category: "education", icon: "🌱" },
-            { title: "Vinyl Paradox", desc: "The mystery of analog in a digital world.", url: "education/vinyl-paradox.html", category: "education", icon: "💿" },
-            { title: "Geometry Challenge", desc: "Test your understanding of sacred geometry.", url: "education/geometry-challenge.html", category: "education", icon: "📐" },
-            { title: "Mythic Mirror", desc: "See yourself in the myths of humanity.", url: "education/mythic-mirror/index.html", category: "education", icon: "🪞" },
+            { title: "S-Signature Engine", desc: "Your scalar signature", url: "tools/s-signature/s_signature_engine.html", category: "tools", img: null },
+            { title: "S-Signature Oracle", desc: "Deep readings", url: "tools/s-signature/s_signature_oracle.html", category: "tools", img: null },
+            { title: "Sol Vision", desc: "Reality from inside out", url: "tools/sol-vision/index.html", category: "tools", img: null },
+            { title: "Rosetta Engine", desc: "Cross-script translation", url: "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html", category: "tools", img: null },
+            { title: "Universal Language", desc: "Geometric phonetics", url: "universal-language-generator/ulg-app_v1.0_01-06-2026.html", category: "tools", img: null },
 
-            // ANCIENT MYSTERIES
-            { title: "Ancient Mysteries", desc: "Undeciphered scripts and lost knowledge.", url: "ancient-mysteries/index.html", category: "mysteries", icon: "🏛" },
-            { title: "Voynich Manuscript", desc: "The world's most mysterious document, decoded.", url: "ancient-mysteries/voynich/index.html", category: "mysteries", icon: "📜" },
-            { title: "Indus Valley Script", desc: "4,000 year old writing system analyzed.", url: "ancient-mysteries/indus-script/index.html", category: "mysteries", icon: "🔤" },
-            { title: "Norse Artifacts", desc: "Rök Runestone, Gotland Stones, Oseberg treasures.", url: "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html", category: "mysteries", icon: "ᚱ" },
-            { title: "Rongorongo", desc: "Easter Island's undeciphered script.", url: "ancient-mysteries/texts/rongorongo-v1.0.html", category: "mysteries", icon: "🗿" },
-            { title: "Phaistos Disc", desc: "Bronze Age mystery from Crete.", url: "ancient-mysteries/texts/phaistos-v1.0.html", category: "mysteries", icon: "🔘" },
-            { title: "Mississippian", desc: "The Rattlesnake Disc and Cahokia mysteries.", url: "ancient-mysteries/mississippian/index.html", category: "mysteries", icon: "🐍" },
+            { title: "Ramanujan", desc: "The man who knew infinity", url: "weirdos/ramanujan.html", category: "weirdos", img: "images/weirdos/ramanujan_hero.jpg" },
+            { title: "Hypatia", desc: "κ = 30. The framework keeper.", url: "weirdos/hypatia.html", category: "weirdos", img: "images/weirdos/hypatia_hero.jpg" },
+            { title: "Tesla Codex", desc: "3, 6, 9 — keys to universe", url: "weirdos/tesla-codex.html", category: "weirdos", img: "images/weirdos/tesla_hero.jpg" },
+            { title: "Carl Jung", desc: "The collective unconscious", url: "weirdos/carl-jung.html", category: "weirdos", img: "images/weirdos/jung_hero.jpg" },
+            { title: "The Suppression", desc: "How truth was hidden", url: "weirdos/suppression.html", category: "weirdos", img: null },
+            { title: "Tormod Ravenskye", desc: "The finder", url: "weirdos/jason-ray.html", category: "weirdos", img: "images/weirdos/tormod_hero.jpg" },
 
-            // TOOLS
-            { title: "Tools Hub", desc: "Interactive calculators and visualizers.", url: "tools/index.html", category: "tools", icon: "🔧" },
-            { title: "S-Signature Engine", desc: "Calculate your scalar signature from birthdate.", url: "tools/s-signature/s_signature_engine.html", category: "tools", icon: "✧" },
-            { title: "S-Signature Oracle", desc: "Deep readings from your signature.", url: "tools/s-signature/s_signature_oracle.html", category: "tools", icon: "🔮" },
-            { title: "Deep Oracle", desc: "Extended oracle readings.", url: "tools/s-signature/deep_oracle.html", category: "tools", icon: "🌊" },
-            { title: "Sol Vision", desc: "View reality from inside out.", url: "tools/sol-vision/index.html", category: "tools", icon: "☀" },
-            { title: "M4 Visualizer", desc: "Four-dimensional mathematics visualized.", url: "tools/m4-visualizer/index.html", category: "tools", icon: "4D" },
-            { title: "Interaction Modeler", desc: "Model scalar interactions.", url: "tools/interaction-modeler/index.html", category: "tools", icon: "↔" },
-            { title: "Rosetta Engine", desc: "Cross-script translation tool.", url: "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html", category: "tools", icon: "🔱" },
-            { title: "Universal Language", desc: "Generate geometric language from κ-Framework.", url: "universal-language-generator/ulg-app_v1.0_01-06-2026.html", category: "tools", icon: "🗣" },
-            { title: "Rongorongo Reader", desc: "Interactive boustrophedon reader.", url: "rongorongo-flip-reader/rongorongo-app_v1.0_01-07-2026.html", category: "tools", icon: "↩" },
-
-            // GAMES
-            { title: "Games Hub", desc: "Train your intuition through play.", url: "games/index.html", category: "games", icon: "🎮" },
-            { title: "Triadic Balance", desc: "The core balance game.", url: "games/balance/index.html", category: "games", icon: "△" },
-            { title: "Mind Reading", desc: "Test your psychic abilities.", url: "games/mind-reading/index.html", category: "games", icon: "🧠" },
-            { title: "Zener Cards", desc: "Classic ESP testing.", url: "games/zener-cards.html", category: "games", icon: "✧" },
-            { title: "Symbol Sender", desc: "ULG transmission game.", url: "games/symbol-sender.html", category: "games", icon: "📡" },
-            { title: "Love Triads", desc: "Explore triadic relationships.", url: "games/love-triads.html", category: "games", icon: "💕" },
-            { title: "Intuition Trainer", desc: "Develop your inner knowing.", url: "games/intuition-trainer.html", category: "games", icon: "✨" },
-            { title: "Phaistos Archetypes", desc: "Ancient symbol meanings.", url: "games/phaistos-archetypes.html", category: "games", icon: "☉" },
-            { title: "Epoch Symbols", desc: "Learn the symbol system.", url: "games/epoch-symbols.html", category: "games", icon: "⊕" },
-
-            // WEIRDOS
-            { title: "The Weirdos", desc: "History's geometric thinkers. Our people.", url: "weirdos/index.html", category: "weirdos", icon: "🌟" },
-            { title: "Geometers", desc: "Those who saw the shapes beneath reality.", url: "weirdos/geometers.html", category: "weirdos", icon: "📐" },
-            { title: "Visionaries", desc: "Those who saw beyond the veil.", url: "weirdos/visionaries.html", category: "weirdos", icon: "👁" },
-            { title: "Wave Seers", desc: "Those who heard the frequencies.", url: "weirdos/wave-seers.html", category: "weirdos", icon: "〰" },
-            { title: "Unifiers", desc: "Those who connected the pieces.", url: "weirdos/unifiers.html", category: "weirdos", icon: "∞" },
-            { title: "Ramanujan", desc: "The man who knew infinity. Our patron saint.", url: "weirdos/ramanujan.html", category: "weirdos", icon: "∞" },
-            { title: "Hypatia", desc: "κ = 30. The original framework keeper.", url: "weirdos/hypatia.html", category: "weirdos", icon: "⊙" },
-            { title: "Pythagoras", desc: "All is number. The first geometer.", url: "weirdos/pythagoras.html", category: "weirdos", icon: "△" },
-            { title: "Plato", desc: "The cave and the forms.", url: "weirdos/plato.html", category: "weirdos", icon: "◇" },
-            { title: "Carl Jung", desc: "The collective unconscious.", url: "weirdos/carl-jung.html", category: "weirdos", icon: "☯" },
-            { title: "Tesla Codex", desc: "3, 6, 9 - the keys to the universe.", url: "weirdos/tesla-codex.html", category: "weirdos", icon: "⚡" },
-            { title: "Maxwell Codex", desc: "The 20 equations they reduced to 4.", url: "weirdos/maxwell-codex.html", category: "weirdos", icon: "∿" },
-            { title: "The Suppression", desc: "How the truth was hidden.", url: "weirdos/suppression.html", category: "weirdos", icon: "🚫" },
-            { title: "Jason Ray", desc: "Tormod HaveMind Ravenskye. The finder.", url: "weirdos/jason-ray.html", category: "weirdos", icon: "🦅" },
-
-            // BIOLOGY
-            { title: "Biology Hub", desc: "Life sciences through the Epoch lens.", url: "biology/index.html", category: "physics", icon: "🧬" },
-            { title: "Eye Codex", desc: "The geometry of vision.", url: "biology/eye-codex.html", category: "physics", icon: "👁" },
-            { title: "Protein Folding", desc: "How geometry determines structure.", url: "protein-folding/index.html", category: "physics", icon: "🔬" },
-            { title: "DNA Studio", desc: "Interactive DNA exploration.", url: "dna-studio/index.html", category: "physics", icon: "🧬" },
-
-            // DOCUMENTS
-            { title: "White Papers", desc: "Formal research documents.", url: "documents/index.html", category: "physics", icon: "📄" },
-            { title: "Epoch Framework", desc: "The complete theoretical foundation.", url: "documents/epoch-framework/index.html", category: "physics", icon: "📋" },
-
-            // STORE
-            { title: "Store", desc: "Art prints, ebooks, and merchandise.", url: "store/index.html", category: "core", icon: "🛒" },
-            { title: "Art Designs", desc: "The Three Goddesses and more.", url: "store/designs.html", category: "core", icon: "🎨" },
-
-            // OTHER
-            { title: "Collaborators", desc: "Those who built this together.", url: "collaborators.html", category: "core", icon: "🤝" },
-            { title: "About", desc: "Who we are and why we're here.", url: "about.html", category: "core", icon: "ℹ" },
-            { title: "COIN Science", desc: "The observer interface.", url: "coin-science/index.html", category: "education", icon: "🪙" },
-            { title: "Graphic Novel", desc: "Visual storytelling of the framework.", url: "graphic-novel/index.html", category: "namagiri", icon: "📖" },
+            { title: "Mind-Blowing Proofs", desc: "Start here", url: "mind-blowing.html", category: "physics", img: null },
+            { title: "Master Library", desc: "All 212 pages", url: "master-library.html", category: "tools", img: null },
         ];
 
-        // State
-        let currentIndex = 0;
         let filteredPages = [...pages];
-        let autoSpinInterval = null;
-        let touchStartX = 0;
-        let touchEndX = 0;
+        let currentPosition = 0;
+        let isSpinning = false;
+        const segmentWidth = 300; // width + margin
 
-        const wheel = document.getElementById('wheel');
-        const currentNum = document.getElementById('currentNum');
-        const totalNum = document.getElementById('totalNum');
+        const wheelStrip = document.getElementById('wheelStrip');
+        const spinBtn = document.getElementById('spinBtn');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const currentNum = document.getElementById('currentNum');
+        const totalNum = document.getElementById('totalNum');
+        const winnerDisplay = document.getElementById('winnerDisplay');
+        const winnerTitle = document.getElementById('winnerTitle');
+        const winnerLink = document.getElementById('winnerLink');
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const wheelContainer = document.getElementById('wheelContainer');
 
-        // Nebula background rotation
+        // Nebula rotation
         const nebulaLayers = document.querySelectorAll('.nebula-layer');
         let currentNebula = 0;
-
-        function rotateNebula() {
+        setInterval(() => {
             nebulaLayers[currentNebula].classList.remove('active');
             currentNebula = (currentNebula + 1) % nebulaLayers.length;
             nebulaLayers[currentNebula].classList.add('active');
-        }
-        setInterval(rotateNebula, 8000);
+        }, 10000);
 
-        // Create wheel cards
-        function createCards() {
-            wheel.innerHTML = '';
-            const numCards = Math.min(7, filteredPages.length);
-            const angleStep = 360 / numCards;
-            const radius = 400;
+        function buildWheel() {
+            // Triple the pages for infinite scroll effect
+            const tripled = [...filteredPages, ...filteredPages, ...filteredPages];
 
-            for (let i = 0; i < numCards; i++) {
-                const pageIndex = (currentIndex + i - Math.floor(numCards / 2) + filteredPages.length) % filteredPages.length;
-                const page = filteredPages[pageIndex];
-                const angle = (i - Math.floor(numCards / 2)) * angleStep;
-
-                const card = document.createElement('div');
-                card.className = 'wheel-card' + (i === Math.floor(numCards / 2) ? ' center' : '');
-                card.innerHTML = `
-                    <div class="card-category">${page.category}</div>
-                    <div class="card-image">${page.icon}</div>
-                    <div class="card-content">
+            wheelStrip.innerHTML = tripled.map((page, i) => `
+                <div class="wheel-segment" data-index="${i % filteredPages.length}" data-url="${page.url}">
+                    <div class="segment-image">
+                        ${page.img ? `<img src="${page.img}" alt="${page.title}" onerror="this.parentElement.innerHTML='<span class=\\'fallback-icon\\'>◎</span>'">` : '<span class="fallback-icon">◎</span>'}
+                    </div>
+                    <div class="segment-content">
+                        <div class="segment-category">${page.category}</div>
                         <h3>${page.title}</h3>
                         <p>${page.desc}</p>
-                        <div class="card-cta">Click to explore →</div>
                     </div>
-                `;
+                </div>
+            `).join('');
 
-                // 3D positioning
-                const radian = (angle * Math.PI) / 180;
-                const z = Math.cos(radian) * radius - radius;
-                const x = Math.sin(radian) * radius;
-                const scale = (Math.cos(radian) + 1) / 2 * 0.4 + 0.6;
-                const opacity = (Math.cos(radian) + 1) / 2 * 0.6 + 0.4;
+            // Center the wheel initially
+            currentPosition = filteredPages.length;
+            updatePosition(false);
+            totalNum.textContent = filteredPages.length;
+            updateCounter();
 
-                card.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
-                card.style.opacity = opacity;
-                card.style.zIndex = Math.round((Math.cos(radian) + 1) * 50);
-
-                card.addEventListener('click', () => {
-                    if (i === Math.floor(numCards / 2)) {
-                        window.location.href = page.url;
-                    } else {
-                        const diff = i - Math.floor(numCards / 2);
-                        currentIndex = (currentIndex + diff + filteredPages.length) % filteredPages.length;
-                        updateWheel();
+            // Click handlers
+            document.querySelectorAll('.wheel-segment').forEach(seg => {
+                seg.addEventListener('click', () => {
+                    if (!isSpinning) {
+                        window.location.href = seg.dataset.url;
                     }
                 });
-
-                wheel.appendChild(card);
-            }
-
-            currentNum.textContent = currentIndex + 1;
-            totalNum.textContent = filteredPages.length;
+            });
         }
 
-        function updateWheel() {
-            createCards();
+        function updatePosition(animate = true) {
+            const offset = -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
+            wheelStrip.style.transition = animate ? 'transform 0.4s ease-out' : 'none';
+            wheelStrip.style.transform = `translateX(${offset}px)`;
         }
 
-        function next() {
-            currentIndex = (currentIndex + 1) % filteredPages.length;
-            updateWheel();
+        function updateCounter() {
+            const displayIndex = ((currentPosition % filteredPages.length) + filteredPages.length) % filteredPages.length;
+            currentNum.textContent = displayIndex + 1;
         }
 
-        function prev() {
-            currentIndex = (currentIndex - 1 + filteredPages.length) % filteredPages.length;
-            updateWheel();
+        function spin() {
+            if (isSpinning) return;
+            isSpinning = true;
+            spinBtn.disabled = true;
+            winnerDisplay.classList.remove('show');
+
+            // Remove previous winner
+            document.querySelectorAll('.wheel-segment.winner').forEach(s => s.classList.remove('winner'));
+
+            // Random spin: 3-6 full rotations plus random position
+            const spins = 3 + Math.random() * 3;
+            const extraSlots = Math.floor(Math.random() * filteredPages.length);
+            const totalSlots = Math.floor(spins * filteredPages.length) + extraSlots;
+
+            currentPosition += totalSlots;
+
+            // Apply spinning animation
+            wheelStrip.classList.add('spinning');
+            const offset = -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
+            wheelStrip.style.transform = `translateX(${offset}px)`;
+
+            setTimeout(() => {
+                wheelStrip.classList.remove('spinning');
+                isSpinning = false;
+                spinBtn.disabled = false;
+
+                // Normalize position
+                currentPosition = currentPosition % filteredPages.length + filteredPages.length;
+                updatePosition(false);
+                updateCounter();
+
+                // Show winner
+                const winnerIndex = currentPosition % filteredPages.length;
+                const winner = filteredPages[winnerIndex];
+                const segments = document.querySelectorAll('.wheel-segment');
+                segments[currentPosition].classList.add('winner');
+
+                winnerTitle.textContent = `You landed on: ${winner.title}`;
+                winnerLink.href = winner.url;
+                winnerDisplay.classList.add('show');
+            }, 4000);
         }
 
-        function toggleAutoSpin() {
-            if (autoSpinInterval) {
-                clearInterval(autoSpinInterval);
-                autoSpinInterval = null;
+        function navigate(dir) {
+            if (isSpinning) return;
+            currentPosition += dir;
+
+            // Wrap around
+            if (currentPosition < filteredPages.length) {
+                currentPosition += filteredPages.length;
+                updatePosition(false);
+                setTimeout(() => {
+                    currentPosition += dir;
+                    updatePosition(true);
+                }, 10);
+            } else if (currentPosition >= filteredPages.length * 2) {
+                currentPosition -= filteredPages.length;
+                updatePosition(false);
+                setTimeout(() => {
+                    currentPosition += dir;
+                    updatePosition(true);
+                }, 10);
             } else {
-                autoSpinInterval = setInterval(next, 2000);
+                updatePosition(true);
             }
+
+            updateCounter();
+            winnerDisplay.classList.remove('show');
         }
 
         // Event listeners
-        nextBtn.addEventListener('click', next);
-        prevBtn.addEventListener('click', prev);
+        spinBtn.addEventListener('click', spin);
+        prevBtn.addEventListener('click', () => navigate(-1));
+        nextBtn.addEventListener('click', () => navigate(1));
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') next();
-            if (e.key === 'ArrowLeft') prev();
-            if (e.key === 'Enter') {
-                const centerCard = document.querySelector('.wheel-card.center');
-                if (centerCard) centerCard.click();
-            }
-            if (e.key === ' ') {
+            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight') navigate(1);
+            if (e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
-                toggleAutoSpin();
+                spin();
             }
         });
 
-        // Touch swipe
-        wheelContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        wheelContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 50) next();
-            if (touchEndX > touchStartX + 50) prev();
-        });
-
-        // Category filter
+        // Filter
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                const category = btn.dataset.category;
-                if (category === 'all') {
-                    filteredPages = [...pages];
-                } else {
-                    filteredPages = pages.filter(p => p.category === category);
-                }
-
-                currentIndex = 0;
-                updateWheel();
+                const cat = btn.dataset.category;
+                filteredPages = cat === 'all' ? [...pages] : pages.filter(p => p.category === cat);
+                currentPosition = 0;
+                buildWheel();
             });
         });
 
-        // Mouse wheel scroll
-        wheelContainer.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            if (e.deltaY > 0) next();
-            else prev();
-        }, { passive: false });
-
-        // Initialize
-        updateWheel();
+        // Init
+        buildWheel();
+        window.addEventListener('resize', () => updatePosition(false));
     </script>
 </body>
 </html>
