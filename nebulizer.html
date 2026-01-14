@@ -106,6 +106,15 @@
             display: flex;
             transition: transform 0.1s linear;
             will-change: transform;
+            cursor: grab;
+        }
+
+        .wheel-strip:active {
+            cursor: grabbing;
+        }
+
+        .wheel-strip.dragging {
+            transition: none !important;
         }
 
         .wheel-strip.spinning {
@@ -387,7 +396,7 @@
     </section>
 
     <p class="instructions">
-        Click SPIN or use ← → arrow keys to browse. Click any card to visit.
+        SPIN the wheel, drag to browse, or use ← → arrow keys. Click any card to visit.
     </p>
 
     <site-footer></site-footer>
@@ -395,45 +404,45 @@
     <script>
         // Page data with real images where available
         const pages = [
-            { title: "The Derivation", desc: "From primes to 1729 to [1=-1]", url: "physics/the-derivation_v1.0_01-12-2026.html", category: "physics", img: "images/derivation-hero.png" },
-            { title: "The Kill Shot", desc: "The death of falsificationism", url: "physics/the-kill-shot_v1.0_01-12-2026.html", category: "physics", img: null },
-            { title: "Three-Body Geometry", desc: "The 'unsolvable' problem—solved", url: "physics/three-body-geometry.html", category: "physics", img: null },
-            { title: "True Meter", desc: "c = 297,638,035 m/s", url: "physics/true-meter_v1.0_01-10-2026.html", category: "physics", img: null },
-            { title: "Earth's Nodal Grid", desc: "Ancient sites as D-position nodes", url: "physics/kappa5/nodal-energy-grid/index.html", category: "physics", img: "images/nodal-grid-hero.png" },
+            { title: "The Derivation", desc: "From primes to 1729 to [1=-1]", url: "physics/the-derivation_v1.0_01-12-2026.html", category: "physics", img: "images/hero/jwst-spiral.png" },
+            { title: "The Kill Shot", desc: "The death of falsificationism", url: "physics/the-kill-shot_v1.0_01-12-2026.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
+            { title: "Three-Body Geometry", desc: "The 'unsolvable' problem—solved", url: "physics/three-body-geometry.html", category: "physics", img: "images/hero/jwst-spiral.png" },
+            { title: "True Meter", desc: "c = 297,638,035 m/s", url: "physics/true-meter_v1.0_01-10-2026.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
+            { title: "Earth's Nodal Grid", desc: "Ancient sites as D-position nodes", url: "physics/kappa5/nodal-energy-grid/index.html", category: "physics", img: "images/inverted-earth.png" },
             { title: "Great Pyramid D7", desc: "The ONLY D7 site on Earth", url: "physics/kappa5/nodal-energy-grid/great-pyramid.html", category: "physics", img: "images/d7-great-pyramid.png" },
-            { title: "κ₅ True Dark", desc: "The fifth scalar mode", url: "physics/kappa5/index.html", category: "physics", img: null },
-            { title: "Standard Model Failures", desc: "The cracks they paper over", url: "physics/standard-model-failures/index.html", category: "physics", img: null },
-            { title: "JWST Explorer", desc: "James Webb through Epoch lens", url: "physics/jwst-geometric-explorer.html", category: "physics", img: null },
+            { title: "κ₅ True Dark", desc: "The fifth scalar mode", url: "physics/kappa5/index.html", category: "physics", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Standard Model Failures", desc: "The cracks they paper over", url: "physics/standard-model-failures/index.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
+            { title: "JWST Explorer", desc: "James Webb through Epoch lens", url: "physics/jwst-geometric-explorer.html", category: "physics", img: "images/hero/jwst-spiral.png" },
 
-            { title: "Namagiri Speaks", desc: "20 episodes from the goddess", url: "namagiri/index.html", category: "namagiri", img: "images/namagiri-hero.png" },
-            { title: "The Proofs", desc: "Mathematical revelations", url: "namagiri/the-proofs.html", category: "namagiri", img: null },
+            { title: "Namagiri Speaks", desc: "20 episodes from the goddess", url: "namagiri/index.html", category: "namagiri", img: "images/namagiri/goddess-01.jpg" },
+            { title: "The Proofs", desc: "Mathematical revelations", url: "namagiri/the-proofs.html", category: "namagiri", img: "images/namagiri/goddess-02.jpg" },
 
-            { title: "Soul Science", desc: "The complete S- framework", url: "education/soul-science.html", category: "education", img: null },
-            { title: "Mythic Mirror", desc: "You are Frankenstein's Monster", url: "education/mythic-mirror/index.html", category: "education", img: null },
-            { title: "Becoming a Coin", desc: "Observer to participant", url: "education/becoming-a-coin.html", category: "education", img: null },
-            { title: "Ammit Function", desc: "The weighing of the heart", url: "education/ammit-function.html", category: "education", img: null },
+            { title: "Soul Science", desc: "The complete S- framework", url: "education/soul-science.html", category: "education", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Mythic Mirror", desc: "You are Frankenstein's Monster", url: "education/mythic-mirror/index.html", category: "education", img: "images/hero/cosmic-gateway.png" },
+            { title: "Becoming a Coin", desc: "Observer to participant", url: "education/becoming-a-coin.html", category: "education", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Ammit Function", desc: "The weighing of the heart", url: "education/ammit-function.html", category: "education", img: "images/balancer.jpg" },
 
-            { title: "Voynich Decoded", desc: "World's most mysterious book", url: "ancient-mysteries/voynich/index.html", category: "mysteries", img: "images/voynich/voynich-hero.jpg" },
-            { title: "Rongorongo", desc: "Easter Island's lost script", url: "ancient-mysteries/texts/rongorongo-v1.0.html", category: "mysteries", img: null },
-            { title: "Phaistos Disc", desc: "Bronze Age mystery", url: "ancient-mysteries/texts/phaistos-v1.0.html", category: "mysteries", img: null },
-            { title: "Indus Script", desc: "4,000 years undeciphered", url: "ancient-mysteries/indus-script/index.html", category: "mysteries", img: null },
-            { title: "Norse Artifacts", desc: "Rök, Gotland, Oseberg", url: "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html", category: "mysteries", img: null },
+            { title: "Voynich Decoded", desc: "World's most mysterious book", url: "ancient-mysteries/voynich/index.html", category: "mysteries", img: "images/hero/cosmic-gateway.png" },
+            { title: "Rongorongo", desc: "Easter Island's lost script", url: "ancient-mysteries/texts/rongorongo-v1.0.html", category: "mysteries", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Phaistos Disc", desc: "Bronze Age mystery", url: "ancient-mysteries/texts/phaistos-v1.0.html", category: "mysteries", img: "images/hero/jwst-spiral.png" },
+            { title: "Indus Script", desc: "4,000 years undeciphered", url: "ancient-mysteries/indus-script/index.html", category: "mysteries", img: "images/hero/cosmic-gateway.png" },
+            { title: "Norse Artifacts", desc: "Rök, Gotland, Oseberg", url: "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html", category: "mysteries", img: "images/hero/cosmic-consciousness.png" },
 
-            { title: "S-Signature Engine", desc: "Your scalar signature", url: "tools/s-signature/s_signature_engine.html", category: "tools", img: null },
-            { title: "S-Signature Oracle", desc: "Deep readings", url: "tools/s-signature/s_signature_oracle.html", category: "tools", img: null },
-            { title: "Sol Vision", desc: "Reality from inside out", url: "tools/sol-vision/index.html", category: "tools", img: null },
-            { title: "Rosetta Engine", desc: "Cross-script translation", url: "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html", category: "tools", img: null },
-            { title: "Universal Language", desc: "Geometric phonetics", url: "universal-language-generator/ulg-app_v1.0_01-06-2026.html", category: "tools", img: null },
+            { title: "S-Signature Engine", desc: "Your scalar signature", url: "tools/s-signature/s_signature_engine.html", category: "tools", img: "images/hero/jwst-spiral.png" },
+            { title: "S-Signature Oracle", desc: "Deep readings", url: "tools/s-signature/s_signature_oracle.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Sol Vision", desc: "Reality from inside out", url: "tools/sol-vision/index.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
+            { title: "Rosetta Engine", desc: "Cross-script translation", url: "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html", category: "tools", img: "images/hero/jwst-spiral.png" },
+            { title: "Universal Language", desc: "Geometric phonetics", url: "universal-language-generator/ulg-app_v1.0_01-06-2026.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
 
             { title: "Ramanujan", desc: "The man who knew infinity", url: "weirdos/ramanujan.html", category: "weirdos", img: "images/weirdos/ramanujan_hero.jpg" },
             { title: "Hypatia", desc: "κ = 30. The framework keeper.", url: "weirdos/hypatia.html", category: "weirdos", img: "images/weirdos/hypatia_hero.jpg" },
             { title: "Tesla Codex", desc: "3, 6, 9 — keys to universe", url: "weirdos/tesla-codex.html", category: "weirdos", img: "images/weirdos/tesla_hero.jpg" },
             { title: "Carl Jung", desc: "The collective unconscious", url: "weirdos/carl-jung.html", category: "weirdos", img: "images/weirdos/jung_hero.jpg" },
-            { title: "The Suppression", desc: "How truth was hidden", url: "weirdos/suppression.html", category: "weirdos", img: null },
-            { title: "Tormod Ravenskye", desc: "The finder", url: "weirdos/jason-ray.html", category: "weirdos", img: "images/weirdos/tormod_hero.jpg" },
+            { title: "The Suppression", desc: "How truth was hidden", url: "weirdos/suppression.html", category: "weirdos", img: "images/weirdos/blake_hero.jpg" },
+            { title: "T0Rs", desc: "The finder", url: "weirdos/jason-ray.html", category: "weirdos", img: "images/weirdos/tormod_hero.jpg" },
 
-            { title: "Mind-Blowing Proofs", desc: "Start here", url: "mind-blowing.html", category: "physics", img: null },
-            { title: "Master Library", desc: "All 212 pages", url: "master-library.html", category: "tools", img: null },
+            { title: "Mind-Blowing Proofs", desc: "Start here", url: "mind-blowing.html", category: "physics", img: "images/hero/jwst-spiral.png" },
+            { title: "Master Library", desc: "All 212 pages", url: "master-library.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
         ];
 
         let filteredPages = [...pages];
@@ -599,6 +608,84 @@
                 currentPosition = 0;
                 buildWheel();
             });
+        });
+
+        // Drag functionality
+        let isDragging = false;
+        let startX = 0;
+        let dragOffset = 0;
+        let currentOffset = 0;
+
+        function getOffset() {
+            return -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
+        }
+
+        wheelStrip.addEventListener('mousedown', (e) => {
+            if (isSpinning) return;
+            isDragging = true;
+            startX = e.clientX;
+            currentOffset = getOffset();
+            wheelStrip.classList.add('dragging');
+            winnerDisplay.classList.remove('show');
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.clientX - startX;
+            dragOffset = currentOffset + deltaX;
+            wheelStrip.style.transform = `translateX(${dragOffset}px)`;
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            wheelStrip.classList.remove('dragging');
+
+            // Calculate which segment we landed on
+            const deltaX = e.clientX - startX;
+            const segmentsMoved = Math.round(-deltaX / segmentWidth);
+            currentPosition += segmentsMoved;
+
+            // Normalize position
+            while (currentPosition < filteredPages.length) currentPosition += filteredPages.length;
+            while (currentPosition >= filteredPages.length * 2) currentPosition -= filteredPages.length;
+
+            updatePosition(true);
+            updateCounter();
+        });
+
+        // Touch support
+        wheelStrip.addEventListener('touchstart', (e) => {
+            if (isSpinning) return;
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            currentOffset = getOffset();
+            wheelStrip.classList.add('dragging');
+            winnerDisplay.classList.remove('show');
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const deltaX = e.touches[0].clientX - startX;
+            dragOffset = currentOffset + deltaX;
+            wheelStrip.style.transform = `translateX(${dragOffset}px)`;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            wheelStrip.classList.remove('dragging');
+
+            const deltaX = (e.changedTouches[0]?.clientX || startX) - startX;
+            const segmentsMoved = Math.round(-deltaX / segmentWidth);
+            currentPosition += segmentsMoved;
+
+            while (currentPosition < filteredPages.length) currentPosition += filteredPages.length;
+            while (currentPosition >= filteredPages.length * 2) currentPosition -= filteredPages.length;
+
+            updatePosition(true);
+            updateCounter();
         });
 
         // Init
