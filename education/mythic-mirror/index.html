@@ -893,58 +893,31 @@
 </head>
 <body>
     <site-header></site-header>
-    <!-- ===== MONSTER ENTRANCE ===== -->
+    <!-- ===== MAURY POVICH REVEAL ===== -->
     <div class="monster-entrance" id="monsterEntrance">
-        <div class="lightning-flash" id="lightningFlash"></div>
-        <div class="lightning-bolt left" id="boltLeft"></div>
-        <div class="lightning-bolt right" id="boltRight"></div>
-        <div class="rain-container" id="rainContainer"></div>
+        <div class="dramatic-flash" id="dramaticFlash"></div>
 
-        <div class="entrance-equation" id="entranceEquation">[1 = -1]</div>
+        <div class="maury-card-container">
+            <div class="maury-card" id="mauryCard">
+                <!-- Front - The Envelope -->
+                <div class="card-face card-front">
+                    <div class="envelope-seal">?</div>
+                    <div class="envelope-text">The Results Are In</div>
+                    <div class="envelope-subtext">WHO ARE YOU?</div>
+                    <div class="click-prompt">Click to reveal</div>
+                </div>
 
-        <div class="monster-silhouette" id="monsterSilhouette">
-            <!-- Monster SVG silhouette -->
-            <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Head -->
-                <path d="M100 80 L110 40 L130 30 L170 30 L190 40 L200 80 L210 100 L210 160 L200 180 L100 180 L90 160 L90 100 Z"
-                      fill="#1a1a24" stroke="#c9a227" stroke-width="1" opacity="0.9"/>
-                <!-- Flat top of head (classic look) -->
-                <path d="M110 40 L130 30 L170 30 L190 40 L185 45 L115 45 Z"
-                      fill="#1a1a24" stroke="#c9a227" stroke-width="1"/>
-                <!-- Brow ridge -->
-                <path d="M105 90 L195 90 L190 100 L110 100 Z"
-                      fill="#0a0a0f" stroke="#c9a227" stroke-width="0.5"/>
-                <!-- Eye sockets (deep) -->
-                <ellipse cx="130" cy="115" rx="15" ry="12" fill="#0a0a0f"/>
-                <ellipse cx="170" cy="115" rx="15" ry="12" fill="#0a0a0f"/>
-                <!-- Stitching on forehead -->
-                <path d="M120 55 L120 75 M140 50 L140 70 M160 50 L160 70 M180 55 L180 75"
-                      stroke="#c9a227" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
-                <!-- Neck bolts -->
-                <circle cx="85" cy="140" r="8" fill="#3a3a4a" stroke="#c9a227" stroke-width="1"/>
-                <circle cx="215" cy="140" r="8" fill="#3a3a4a" stroke="#c9a227" stroke-width="1"/>
-                <!-- Shoulders/Body -->
-                <path d="M70 180 L85 160 L215 160 L230 180 L250 200 L250 400 L50 400 L50 200 Z"
-                      fill="#1a1a24" stroke="#c9a227" stroke-width="1" opacity="0.8"/>
-                <!-- Stitching on body -->
-                <path d="M150 180 L150 350" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
-                <path d="M100 220 L200 220" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
-                <path d="M80 280 L220 280" stroke="#c9a227" stroke-width="1" stroke-dasharray="8,4" opacity="0.4"/>
-            </svg>
-            <div class="monster-eye left-eye" id="leftEye"></div>
-            <div class="monster-eye right-eye" id="rightEye"></div>
+                <!-- Back - THE REVEAL -->
+                <div class="card-face card-back">
+                    <div class="reveal-you">YOU</div>
+                    <div class="reveal-are">ARE</div>
+                    <div class="reveal-the">THE</div>
+                    <div class="reveal-monster">MONSTER</div>
+                    <div class="reveal-equation">[1 = -1]</div>
+                    <button class="continue-btn" id="continueBtn">CONTINUE</button>
+                </div>
+            </div>
         </div>
-
-        <div class="entrance-text" id="entranceText">
-            <div class="entrance-quote">"You are Frankenstein's Monster."</div>
-            <div class="entrance-instruction">Click anywhere to enter</div>
-        </div>
-
-        <!-- Electric arcs - symmetrically positioned around the monster -->
-        <div class="electric-arc" id="arc1" style="top: 38%; left: 25%; transform: rotate(-25deg);"></div>
-        <div class="electric-arc" id="arc2" style="top: 38%; right: 25%; transform: rotate(25deg);"></div>
-        <div class="electric-arc" id="arc3" style="top: 50%; left: 28%; transform: rotate(-15deg);"></div>
-        <div class="electric-arc" id="arc4" style="top: 50%; right: 28%; transform: rotate(15deg);"></div>
     </div>
 
     <!-- Navigation -->
@@ -1284,25 +1257,13 @@
         })();
     </script>
 
-    <!-- Monster Entrance Animation Script -->
+    <!-- Maury Povich Card Flip Script -->
     <script>
     (function() {
         const entrance = document.getElementById('monsterEntrance');
-        const lightningFlash = document.getElementById('lightningFlash');
-        const boltLeft = document.getElementById('boltLeft');
-        const boltRight = document.getElementById('boltRight');
-        const rainContainer = document.getElementById('rainContainer');
-        const monsterSilhouette = document.getElementById('monsterSilhouette');
-        const entranceText = document.getElementById('entranceText');
-        const entranceEquation = document.getElementById('entranceEquation');
-        const leftEye = document.getElementById('leftEye');
-        const rightEye = document.getElementById('rightEye');
-        const arcs = [
-            document.getElementById('arc1'),
-            document.getElementById('arc2'),
-            document.getElementById('arc3'),
-            document.getElementById('arc4')
-        ];
+        const card = document.getElementById('mauryCard');
+        const dramaticFlash = document.getElementById('dramaticFlash');
+        const continueBtn = document.getElementById('continueBtn');
 
         // Check if entrance was already shown this session
         if (sessionStorage.getItem('monsterEntranceShown')) {
@@ -1310,112 +1271,48 @@
             return;
         }
 
-        // Create rain drops
-        function createRain() {
-            for (let i = 0; i < 100; i++) {
-                const drop = document.createElement('div');
-                drop.className = 'rain-drop';
-                drop.style.left = Math.random() * 100 + '%';
-                drop.style.animationDuration = (Math.random() * 0.5 + 0.5) + 's';
-                drop.style.animationDelay = Math.random() * 2 + 's';
-                rainContainer.appendChild(drop);
-            }
-        }
+        let hasFlipped = false;
 
-        // Lightning strike effect
-        function triggerLightning() {
-            lightningFlash.classList.add('flash');
-            setTimeout(() => lightningFlash.classList.remove('flash'), 150);
-        }
+        // Click card to flip
+        card.addEventListener('click', () => {
+            if (hasFlipped) return;
+            hasFlipped = true;
 
-        // Lightning bolt effect
-        function triggerBolt(bolt) {
-            bolt.classList.add('strike');
-            setTimeout(() => bolt.classList.remove('strike'), 300);
-        }
+            // Flip the card
+            card.classList.add('flipped');
 
-        // Electric arc spark
-        function triggerArc(arc) {
-            arc.classList.add('spark');
-            setTimeout(() => arc.classList.remove('spark'), 200);
-        }
-
-        // Random arc sparking
-        function randomArcs() {
-            setInterval(() => {
-                const randomArc = arcs[Math.floor(Math.random() * arcs.length)];
-                triggerArc(randomArc);
-            }, 400);
-        }
-
-        // Animation sequence
-        function startEntranceSequence() {
-            createRain();
-
-            // Initial darkness, then first lightning
+            // Dramatic flash and shake when MONSTER appears
             setTimeout(() => {
-                triggerLightning();
-                triggerBolt(boltLeft);
-            }, 500);
+                dramaticFlash.classList.add('flash');
+                entrance.classList.add('shaking');
+                setTimeout(() => {
+                    dramaticFlash.classList.remove('flash');
+                    entrance.classList.remove('shaking');
+                }, 500);
+            }, 1200); // Timed with the MONSTER reveal animation
+        });
 
-            // Second lightning, monster starts appearing
-            setTimeout(() => {
-                triggerLightning();
-                triggerBolt(boltRight);
-            }, 1200);
-
-            // Monster reveal
-            setTimeout(() => {
-                triggerLightning();
-                monsterSilhouette.classList.add('revealed');
-                randomArcs();
-            }, 1800);
-
-            // Eyes glow
-            setTimeout(() => {
-                leftEye.classList.add('glow');
-                rightEye.classList.add('glow');
-            }, 2500);
-
-            // Equation appears
-            setTimeout(() => {
-                entranceEquation.classList.add('visible');
-            }, 3000);
-
-            // Text appears
-            setTimeout(() => {
-                entranceText.classList.add('visible');
-            }, 3200);
-
-            // Periodic lightning
-            setInterval(() => {
-                if (Math.random() > 0.7) {
-                    triggerLightning();
-                    if (Math.random() > 0.5) {
-                        triggerBolt(boltLeft);
-                    } else {
-                        triggerBolt(boltRight);
-                    }
-                }
-            }, 3000);
-        }
-
-        // Start the sequence
-        startEntranceSequence();
-
-        // Click to enter
-        entrance.addEventListener('click', () => {
+        // Continue button to exit
+        continueBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             sessionStorage.setItem('monsterEntranceShown', 'true');
             entrance.classList.add('exiting');
             setTimeout(() => {
                 entrance.style.display = 'none';
-            }, 1500);
+            }, 800);
         });
 
-        // Also allow Enter key
+        // Also allow Enter/Space key to flip or continue
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && entrance.style.display !== 'none') {
-                entrance.click();
+            if (entrance.style.display === 'none') return;
+
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (!hasFlipped) {
+                    card.click();
+                } else {
+                    continueBtn.click();
+                }
             }
         });
     })();
