@@ -184,7 +184,9 @@
   <url><loc>https://www.havemindmedia.com/tools/m4-visualizer/index.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/tools/interaction-modeler/index.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/tools/mind-reading/index.html</loc><priority>0.75</priority></url>
-  <url><loc>https://www.havemindmedia.com/tools/epoch-book-maker.html</loc><priority>0.75</priority></url>
+
+  <!-- STORE / EBOOKS -->
+  <url><loc>https://www.havemindmedia.com/store/ebooks/genesis.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
 
   <!-- GAMES -->
   <url><loc>https://www.havemindmedia.com/games/index.html</loc><priority>0.8</priority></url>
