@@ -104,12 +104,13 @@
         /* Horizontal wheel strip */
         .wheel-strip {
             display: flex;
-            transition: transform 0.1s linear;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             will-change: transform;
             cursor: grab;
+            user-select: none;
         }
 
-        .wheel-strip:active {
+        .wheel-strip:active, .wheel-strip.dragging {
             cursor: grabbing;
         }
 
@@ -118,7 +119,7 @@
         }
 
         .wheel-strip.spinning {
-            transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transition: transform 5s cubic-bezier(0.12, 0.8, 0.2, 1);
         }
 
         .wheel-strip.slow-stop {
@@ -610,42 +611,51 @@
             });
         });
 
-        // Drag functionality
+        // Drag functionality - smooth, one at a time
         let isDragging = false;
         let startX = 0;
-        let dragOffset = 0;
-        let currentOffset = 0;
+        let currentX = 0;
+        let dragStartPosition = 0;
 
-        function getOffset() {
+        function getTransformX() {
             return -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
         }
 
-        wheelStrip.addEventListener('mousedown', (e) => {
+        function startDrag(clientX) {
             if (isSpinning) return;
             isDragging = true;
-            startX = e.clientX;
-            currentOffset = getOffset();
+            startX = clientX;
+            currentX = clientX;
+            dragStartPosition = currentPosition;
             wheelStrip.classList.add('dragging');
             winnerDisplay.classList.remove('show');
-            e.preventDefault();
-        });
+        }
 
-        document.addEventListener('mousemove', (e) => {
+        function moveDrag(clientX) {
             if (!isDragging) return;
-            const deltaX = e.clientX - startX;
-            dragOffset = currentOffset + deltaX;
-            wheelStrip.style.transform = `translateX(${dragOffset}px)`;
-        });
+            currentX = clientX;
+            const deltaX = currentX - startX;
+            const baseOffset = -(dragStartPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
+            wheelStrip.style.transform = `translateX(${baseOffset + deltaX}px)`;
+        }
 
-        document.addEventListener('mouseup', (e) => {
+        function endDrag() {
             if (!isDragging) return;
             isDragging = false;
             wheelStrip.classList.remove('dragging');
 
-            // Calculate which segment we landed on
-            const deltaX = e.clientX - startX;
-            const segmentsMoved = Math.round(-deltaX / segmentWidth);
-            currentPosition += segmentsMoved;
+            const deltaX = currentX - startX;
+            // Need to drag at least 80px to move one card
+            const threshold = 80;
+
+            if (Math.abs(deltaX) > threshold) {
+                // Move one card at a time based on direction
+                const direction = deltaX > 0 ? -1 : 1;
+                currentPosition = dragStartPosition + direction;
+            } else {
+                // Snap back to original
+                currentPosition = dragStartPosition;
+            }
 
             // Normalize position
             while (currentPosition < filteredPages.length) currentPosition += filteredPages.length;
@@ -653,39 +663,35 @@
 
             updatePosition(true);
             updateCounter();
+        }
+
+        // Mouse events
+        wheelStrip.addEventListener('mousedown', (e) => {
+            startDrag(e.clientX);
+            e.preventDefault();
         });
 
-        // Touch support
+        document.addEventListener('mousemove', (e) => {
+            moveDrag(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+            endDrag();
+        });
+
+        // Touch events
         wheelStrip.addEventListener('touchstart', (e) => {
-            if (isSpinning) return;
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            currentOffset = getOffset();
-            wheelStrip.classList.add('dragging');
-            winnerDisplay.classList.remove('show');
+            startDrag(e.touches[0].clientX);
         }, { passive: true });
 
         document.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const deltaX = e.touches[0].clientX - startX;
-            dragOffset = currentOffset + deltaX;
-            wheelStrip.style.transform = `translateX(${dragOffset}px)`;
+            if (isDragging && e.touches[0]) {
+                moveDrag(e.touches[0].clientX);
+            }
         }, { passive: true });
 
-        document.addEventListener('touchend', (e) => {
-            if (!isDragging) return;
-            isDragging = false;
-            wheelStrip.classList.remove('dragging');
-
-            const deltaX = (e.changedTouches[0]?.clientX || startX) - startX;
-            const segmentsMoved = Math.round(-deltaX / segmentWidth);
-            currentPosition += segmentsMoved;
-
-            while (currentPosition < filteredPages.length) currentPosition += filteredPages.length;
-            while (currentPosition >= filteredPages.length * 2) currentPosition -= filteredPages.length;
-
-            updatePosition(true);
-            updateCounter();
+        document.addEventListener('touchend', () => {
+            endDrag();
         });
 
         // Init
