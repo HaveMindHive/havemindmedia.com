@@ -21,6 +21,9 @@
   <url><loc>https://www.havemindmedia.com/physics/kappa5/nodal-energy-grid/hidden-nodes.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.havemindmedia.com/physics/shadow-operator/index.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.havemindmedia.com/physics/vessel/index.html</loc><priority>0.85</priority></url>
+  <url><loc>https://www.havemindmedia.com/physics/vessel/the-build.html</loc><priority>0.95</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.havemindmedia.com/physics/watch-of-tors_v1.0_01-13-2026.html</loc><priority>0.95</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.havemindmedia.com/physics/watch-mechanism_v2.0_01-13-2026.html</loc><priority>0.85</priority></url>
   <url><loc>https://www.havemindmedia.com/physics/torsion-balance.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/physics/jwst-geometric-explorer.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/physics/432-orbital-mapper_v1.0_01-08-2026.html</loc><priority>0.75</priority></url>
@@ -81,6 +84,7 @@
   <url><loc>https://www.havemindmedia.com/education/soul-science.html</loc><priority>0.9</priority></url>
   <url><loc>https://www.havemindmedia.com/education/becoming-a-coin.html</loc><priority>0.85</priority></url>
   <url><loc>https://www.havemindmedia.com/education/ammit-function.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.havemindmedia.com/education/ai-mirror-test.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/education/hidden-observers.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/education/life-facing-wisdom.html</loc><priority>0.75</priority></url>
   <url><loc>https://www.havemindmedia.com/education/vinyl-paradox.html</loc><priority>0.75</priority></url>
@@ -180,6 +184,7 @@
   <url><loc>https://www.havemindmedia.com/tools/m4-visualizer/index.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/tools/interaction-modeler/index.html</loc><priority>0.8</priority></url>
   <url><loc>https://www.havemindmedia.com/tools/mind-reading/index.html</loc><priority>0.75</priority></url>
+  <url><loc>https://www.havemindmedia.com/tools/epoch-book-maker.html</loc><priority>0.75</priority></url>
 
   <!-- GAMES -->
   <url><loc>https://www.havemindmedia.com/games/index.html</loc><priority>0.8</priority></url>
