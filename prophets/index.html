@@ -96,9 +96,9 @@
             padding: 40px 20px;
             position: relative;
             background:
-                linear-gradient(180deg, rgba(5,5,8,0.7) 0%, rgba(5,5,8,0.9) 100%),
+                linear-gradient(180deg, rgba(5,5,8,0.5) 0%, rgba(5,5,8,0.85) 100%),
                 radial-gradient(ellipse at center, rgba(201, 162, 39, 0.2) 0%, transparent 50%),
-                url('../images/hero/cosmic-gateway.png') center center / cover no-repeat;
+                url('images/hero-prophets.png') center center / cover no-repeat;
         }
 
         .gateway-header::before {
@@ -232,6 +232,31 @@
             max-width: 1400px;
             margin: 0 auto;
         }
+
+        .category-banner {
+            height: 250px;
+            margin: -80px -20px 40px -20px;
+            border-radius: 0 0 20px 20px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5,5,8,0.3) 0%, rgba(5,5,8,0.9) 100%);
+        }
+
+        .cat-ancient .category-banner { background-image: url('images/cat-ancient.jpg'); }
+        .cat-biblical .category-banner { background-image: url('images/cat-biblical.jpg'); }
+        .cat-eastern .category-banner { background-image: url('images/cat-eastern.jpg'); }
+        .cat-modern .category-banner { background-image: url('images/cat-modern.jpg'); }
+        .cat-fictional .category-banner { background-image: url('images/cat-fictional.jpg'); }
+        .cat-trickster .category-banner { background-image: url('images/cat-trickster.jpg'); }
+        .cat-unnamed .category-banner { background-image: url('images/cat-unnamed.jpg'); }
 
         .category-header {
             display: flex;
@@ -572,6 +597,7 @@
 
     <!-- ANCIENT / MYTHOLOGICAL -->
     <section class="category-section cat-ancient">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x1F3DB;</div>
             <h2 class="category-title">ANCIENT & MYTHOLOGICAL</h2>
@@ -666,6 +692,7 @@
 
     <!-- BIBLICAL / ABRAHAMIC -->
     <section class="category-section cat-biblical">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x2720;</div>
             <h2 class="category-title">BIBLICAL & ABRAHAMIC</h2>
@@ -751,6 +778,7 @@
 
     <!-- EASTERN -->
     <section class="category-section cat-eastern">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x262F;</div>
             <h2 class="category-title">EASTERN & MYSTICAL</h2>
@@ -818,6 +846,7 @@
 
     <!-- MODERN / RECENT -->
     <section class="category-section cat-modern">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x26A1;</div>
             <h2 class="category-title">MODERN SEERS</h2>
@@ -885,6 +914,7 @@
 
     <!-- FICTIONAL / LITERARY -->
     <section class="category-section cat-fictional">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x1F4D6;</div>
             <h2 class="category-title">FICTIONAL PROPHETS</h2>
@@ -970,6 +1000,7 @@
 
     <!-- TRICKSTER PROPHETS -->
     <section class="category-section cat-trickster">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x1F3AD;</div>
             <h2 class="category-title">TRICKSTER PROPHETS</h2>
@@ -1019,6 +1050,7 @@
 
     <!-- THE UNNAMED -->
     <section class="category-section cat-unnamed">
+        <div class="category-banner"></div>
         <div class="category-header">
             <div class="category-icon">&#x2753;</div>
             <h2 class="category-title">THE UNNAMED</h2>
