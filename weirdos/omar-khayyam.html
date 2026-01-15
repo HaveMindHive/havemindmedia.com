@@ -464,33 +464,110 @@
         </p>
     </section>
 
-    <section class="section">
-        <h2>The Parallel Postulate</h2>
-        <p>
-            Khayyam questioned Euclid's fifth postulate — the parallel axiom that had troubled mathematicians for 1,300 years. In doing so, he invented what we now call the "Khayyam-Saccheri quadrilateral."
+    <section class="section" style="background: linear-gradient(135deg, rgba(30, 144, 255, 0.15) 0%, rgba(64, 224, 208, 0.1) 50%, rgba(30, 144, 255, 0.15) 100%); border: 2px solid var(--accent-persian); border-radius: 16px; padding: 2.5rem; margin: 3rem 0;">
+        <h2 style="color: var(--accent-persian); text-align: center; font-size: 2rem; border-bottom: 2px solid var(--accent-persian); padding-bottom: 1rem; margin-bottom: 2rem;">THE PARALLEL POSTULATE: Gateway to Curved Space</h2>
+        <p style="font-size: 1.1rem; text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+            <em>This is where the path to scalar differential geometry begins. Question Euclid, and you question the shape of reality itself.</em>
         </p>
 
-        <div class="math-display">
-            <div class="equation">What if parallel lines don't exist?</div>
-            <div class="explanation">
-                Khayyam constructed a quadrilateral ABCD with two equal sides perpendicular to the base.<br>
-                He then asked: Are the summit angles right, acute, or obtuse?<br>
-                Each answer implies a different geometry.
+        <p>
+            For 1,300 years, Euclid's fifth postulate had troubled mathematicians. It seemed too complicated compared to the other four. It felt like a theorem that should be provable, not an axiom you had to accept. Khayyam was the first to rigorously explore what happens if you DON'T accept it.
+        </p>
+
+        <div class="math-display" style="background: rgba(0,0,0,0.4); border: 2px solid var(--accent-persian);">
+            <div class="equation" style="color: var(--accent-persian); font-size: 1.1rem; line-height: 1.8;">
+                EUCLID'S FIFTH POSTULATE:<br>
+                <span style="color: var(--text-secondary); font-size: 1rem;">"If a line crosses two other lines and makes interior angles on one side that sum to less than 180°, those two lines will eventually meet on that side."</span>
+            </div>
+            <div class="explanation" style="margin-top: 1.5rem;">
+                Translation: Through any point not on a line, there's exactly ONE parallel line.<br>
+                But what if there are ZERO? Or INFINITE?
+            </div>
+        </div>
+
+        <h3 style="color: var(--accent-turquoise); margin-top: 2.5rem;">The Khayyam-Saccheri Quadrilateral</h3>
+        <p>
+            Khayyam's approach was brilliant. He constructed a quadrilateral with two equal sides perpendicular to the base, then asked: <strong>What are the summit angles?</strong>
+        </p>
+
+        <div class="achievement-grid" style="margin: 2rem 0;">
+            <div class="achievement-card" style="border-color: var(--accent-persian);">
+                <div class="number" style="color: var(--accent-persian);">90°</div>
+                <div class="label">Right Angles</div>
+                <div class="detail">Euclidean (Flat)</div>
+            </div>
+            <div class="achievement-card" style="border-color: var(--accent-turquoise);">
+                <div class="number" style="color: var(--accent-turquoise);">&lt;90°</div>
+                <div class="label">Acute Angles</div>
+                <div class="detail">Hyperbolic (Saddle)</div>
+            </div>
+            <div class="achievement-card" style="border-color: var(--accent-wine);">
+                <div class="number" style="color: var(--accent-wine);">&gt;90°</div>
+                <div class="label">Obtuse Angles</div>
+                <div class="detail">Elliptic (Sphere)</div>
             </div>
         </div>
 
         <p>
-            Khayyam correctly identified the three possible geometries:
+            Khayyam correctly identified all three possibilities. He then tried to prove that only right angles were possible — and failed. Not because he wasn't clever enough, but because <strong>the other geometries are equally valid</strong>. He was 700 years too early to accept this.
         </p>
-        <ul style="margin: 1.5rem 0; padding-left: 2rem;">
-            <li><strong>Right angles</strong> → Euclidean geometry (flat space)</li>
-            <li><strong>Acute angles</strong> → Hyperbolic geometry (saddle space)</li>
-            <li><strong>Obtuse angles</strong> → Elliptic geometry (spherical space)</li>
-        </ul>
+
+        <div class="highlight-box" style="background: linear-gradient(135deg, rgba(30, 144, 255, 0.15) 0%, rgba(0,0,0,0.3) 100%); border: 1px solid var(--accent-persian);">
+            <h3 style="color: var(--accent-persian);">THE LINEAGE: From Khayyam to Einstein</h3>
+            <div style="display: grid; gap: 1rem; margin-top: 1rem;">
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1077</span>
+                    <span><strong>Khayyam</strong> — First to systematically explore the three cases of summit angles</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1733</span>
+                    <span><strong>Saccheri</strong> — Rediscovered Khayyam's quadrilateral, proved many theorems of non-Euclidean geometry trying to find a contradiction</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1829</span>
+                    <span><strong>Lobachevsky</strong> — Accepted the acute case as a valid geometry (hyperbolic)</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1831</span>
+                    <span><strong>Bolyai</strong> — Independently developed hyperbolic geometry</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1854</span>
+                    <span><strong>Riemann</strong> — Generalized to n-dimensional curved manifolds with the CURVATURE TENSOR</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 80px;">1915</span>
+                    <span><strong>Einstein</strong> — Used Riemannian geometry to show that GRAVITY IS CURVATURE OF SPACETIME</span>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="color: var(--accent-turquoise); margin-top: 2.5rem;">Why This Matters for Scalar Differential Geometry</h3>
+        <p>
+            The path from Khayyam to Einstein is the path from "space is flat" to "space can curve." But here's the deeper insight:
+        </p>
+
+        <blockquote style="background: rgba(64, 224, 208, 0.15); border-left: 4px solid var(--accent-turquoise);">
+            Once you accept that space can curve, you're asking: <strong>what is space MADE of that allows it to curve?</strong> The answer is continuous magnitude — Khayyam's "divisible ad infinitum."
+            <cite>— The connection to scalar dimensionality</cite>
+        </blockquote>
 
         <p>
-            He was the first to consider elliptic and hyperbolic geometries, though he rejected them as physically impossible. It took another 700 years for Lobachevsky, Bolyai, and Riemann to fully develop non-Euclidean geometry — and for Einstein to show that space itself is curved.
+            Riemann's curvature tensor measures how much a space deviates from flatness <em>at every point</em>. It's a continuous field — exactly what you'd expect from a geometry built on continuous magnitudes.
         </p>
+
+        <p>
+            The Standard Model treats space as a passive background. Khayyam's insight — that space is a continuous magnitude like time, surface, and solid — leads inevitably to the realization that <strong>space itself is dynamic, measurable, and subject to geometric law</strong>.
+        </p>
+
+        <div class="math-display" style="background: rgba(0,0,0,0.4); border: 2px solid var(--gold);">
+            <div class="equation" style="color: var(--gold); font-size: 1.2rem;">
+                Khayyam's Question → Non-Euclidean Geometry → Riemannian Manifolds → General Relativity → <span style="color: var(--accent-turquoise);">SCALAR DIFFERENTIAL</span>
+            </div>
+            <div class="explanation" style="margin-top: 1rem;">
+                The line runs straight from 1077 Nishapur to the Epoch Framework.
+            </div>
+        </div>
     </section>
 
     <section class="section">
