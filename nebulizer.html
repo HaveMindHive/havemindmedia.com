@@ -84,6 +84,7 @@
             width: 100%;
             overflow: hidden;
             padding: 2rem 0;
+            cursor: grab;
         }
 
         /* The pointer/ticker at top */
@@ -108,6 +109,8 @@
             will-change: transform;
             cursor: grab;
             user-select: none;
+            padding: 20px 0;
+            touch-action: pan-y;
         }
 
         .wheel-strip:active, .wheel-strip.dragging {
@@ -116,6 +119,10 @@
 
         .wheel-strip.dragging {
             transition: none !important;
+        }
+
+        .wheel-strip.dragging .wheel-segment {
+            pointer-events: none;
         }
 
         .wheel-strip.spinning {
@@ -473,6 +480,7 @@
         const segmentWidth = 300; // width + margin
 
         const wheelStrip = document.getElementById('wheelStrip');
+        const wheelWrapper = document.querySelector('.wheel-wrapper');
         const spinBtn = document.getElementById('spinBtn');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -686,23 +694,42 @@
             updateCounter();
         }
 
-        // Mouse events
-        wheelStrip.addEventListener('mousedown', (e) => {
-            startDrag(e.clientX);
-            e.preventDefault();
+        // Mouse events - bind to wrapper for better capture
+        wheelWrapper.addEventListener('mousedown', (e) => {
+            // Only start drag if we clicked on the wheel area
+            if (e.target.closest('.wheel-strip') || e.target.closest('.wheel-wrapper')) {
+                startDrag(e.clientX);
+                e.preventDefault();
+            }
         });
 
         document.addEventListener('mousemove', (e) => {
-            moveDrag(e.clientX);
+            if (isDragging) {
+                e.preventDefault();
+                moveDrag(e.clientX);
+            }
         });
 
         document.addEventListener('mouseup', () => {
-            endDrag();
+            if (isDragging) {
+                endDrag();
+            }
         });
 
+        // Prevent click on segments from interfering with drag
+        wheelStrip.addEventListener('click', (e) => {
+            // If we just finished dragging, prevent the click
+            if (Math.abs(currentX - startX) > 10) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }, true);
+
         // Touch events
-        wheelStrip.addEventListener('touchstart', (e) => {
-            startDrag(e.touches[0].clientX);
+        wheelWrapper.addEventListener('touchstart', (e) => {
+            if (e.touches[0]) {
+                startDrag(e.touches[0].clientX);
+            }
         }, { passive: true });
 
         document.addEventListener('touchmove', (e) => {
@@ -712,7 +739,9 @@
         }, { passive: true });
 
         document.addEventListener('touchend', () => {
-            endDrag();
+            if (isDragging) {
+                endDrag();
+            }
         });
 
         // Init

@@ -104,6 +104,22 @@ class SiteHeader extends HTMLElement {
                 .hmm-link.games:hover {
                     background: linear-gradient(135deg, rgba(201, 162, 39, 0.25) 0%, rgba(106, 180, 245, 0.25) 100%);
                 }
+                .hmm-link.whats-new {
+                    background: linear-gradient(135deg, #ffd700, #ff8c00);
+                    color: #000 !important;
+                    font-weight: 700;
+                    border-radius: 4px;
+                    animation: newPulse 2s ease-in-out infinite;
+                    text-shadow: none;
+                }
+                .hmm-link.whats-new:hover {
+                    background: linear-gradient(135deg, #ffec80, #ffb347);
+                    transform: scale(1.05);
+                }
+                @keyframes newPulse {
+                    0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+                    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.4); }
+                }
                 .hmm-link.kappa5 {
                     position: relative;
                     background: none;
@@ -423,6 +439,9 @@ class SiteHeader extends HTMLElement {
 
                         <!-- Support -->
                         <a href="${bp}support.html" class="hmm-link" title="Support">Support</a>
+
+                        <!-- What's New - Animated attention grabber -->
+                        <a href="${bp}whats-new.html" class="hmm-link whats-new" title="50+ New Pages!">NEW</a>
 
                         <!-- Games -->
                         <a href="${bp}games/index.html" class="hmm-link games" title="Mind Games">Games</a>
