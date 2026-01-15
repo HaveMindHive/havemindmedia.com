@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 7: Equilibrium | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Between heaven and hell lies the balance point where freedom exists. At s=0, neither force dominates — and that is where choice lives.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .balance-visual { text-align: center; padding: 3rem 2rem; margin: 2rem 0; background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; }
+        .balance-visual .heaven { color: #ffd700; font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 1rem; }
+        .balance-visual .human { font-family: 'Cinzel', serif; font-size: 2rem; color: #c9a227; padding: 1rem 0; border-top: 1px solid rgba(201, 162, 39, 0.3); border-bottom: 1px solid rgba(201, 162, 39, 0.3); margin: 1rem 0; }
+        .balance-visual .hell { color: #ff6b6b; font-family: 'Cinzel', serif; font-size: 1.3rem; margin-top: 1rem; }
+        .balance-visual .arrows { color: #6ab4f5; font-size: 1.5rem; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .state-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+        .state-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .state-card .value { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; margin-bottom: 1rem; }
+        .state-card .value.positive { color: #4ade80; }
+        .state-card .value.zero { color: #c9a227; }
+        .state-card .value.negative { color: #ff6b6b; }
+        .state-card p { color: #d8d4c9; }
+        .torsion-display { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0; }
+        .torsion-item { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1rem; text-align: center; }
+        .torsion-item .tau { font-family: 'Cinzel', serif; font-size: 1.2rem; color: #c9a227; }
+        .torsion-item .value { font-family: 'JetBrains Mono', monospace; color: #6ab4f5; font-size: 0.9rem; margin-top: 0.5rem; }
+        .torsion-item .sum { font-family: 'JetBrains Mono', monospace; color: #4ade80; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .torsion-display { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 7 OF 10</div>
+            <h1>EQUILIBRIUM</h1>
+            <p class="subtitle">The Balance Point — Where Freedom Exists</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x2696;&#xFE0F;</div>
+            <div class="placeholder-text">IMAGE: Perfect balance scale, golden beam<br>Light ascending on one side, darkness descending on other<br>Human figure at the fulcrum point — the crossroads</div>
+        </div>
+
+        <section class="content-section">
+            <p>Between heaven and hell, Swedenborg tells us, there exists a state of perfect balance. Neither side dominates. Forces push equally from above and below. And in that exact balance — that equilibrium — human freedom exists.</p>
+
+            <p>Without equilibrium, there would be no choice. If heaven's pull were irresistible, we would be compelled toward good. If hell's draw were overwhelming, we would be dragged toward evil. But at equilibrium, we can turn either way. This is the crossroads. In κ-framework terms: s = 0.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Doctrine of Equilibrium</h2>
+
+            <div class="quote-block">
+                <blockquote>"The equilibrium between heaven and hell is an equilibrium between the good that is from heaven and the evil that is from hell, thus it is a spiritual equilibrium, which in its essence is freedom."</blockquote>
+                <cite>— Emanuel Swedenborg, Heaven and Hell #597</cite>
+            </div>
+
+            <p>This is Swedenborg's definition of freedom: equilibrium between opposing forces. We are free not because we are uninfluenced, but because we are <em>equally</em> influenced from both directions. The influences cancel, leaving us free to choose.</p>
+
+            <div class="balance-visual">
+                <div class="heaven">HEAVEN (S⁺)</div>
+                <div class="arrows">↓ good / truth ↓</div>
+                <div class="human">← HUMAN (s = 0) →</div>
+                <div class="arrows">↑ evil / falsity ↑</div>
+                <div class="hell">HELL (S⁻)</div>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"When he is in that equilibrium he is in freedom either to admit or accept evil and its falsity from hell or to admit or accept good and its truth from heaven."</blockquote>
+                <cite>— Heaven and Hell #537</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Equilibrium as [1 = -1]</h2>
+
+            <p>The κ-framework identifies this equilibrium precisely. At s = 0 (the crossroads), the four torsions sum to zero:</p>
+
+            <div class="torsion-display">
+                <div class="torsion-item">
+                    <div class="tau">τ₁</div>
+                    <div class="value">+0.50</div>
+                </div>
+                <div class="torsion-item">
+                    <div class="tau">τ₂</div>
+                    <div class="value">-0.30</div>
+                </div>
+                <div class="torsion-item">
+                    <div class="tau">τ₃</div>
+                    <div class="value">+0.20</div>
+                </div>
+                <div class="torsion-item">
+                    <div class="tau">τ₄</div>
+                    <div class="value">-0.40</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 1rem 0;">
+                <span style="font-family: 'JetBrains Mono', monospace; color: #4ade80; font-size: 1.2rem;">τ₁ + τ₂ + τ₃ + τ₄ = 0.00</span>
+            </div>
+
+            <p>When the four torsions balance to zero, no net force acts on the observer. This IS equilibrium. This IS freedom. The framework gives mathematical precision to what Swedenborg described experientially.</p>
+
+            <div class="diagram-box">EQUILIBRIUM = τ₁ + τ₂ + τ₃ + τ₄ = 0
+
+At s = 0 (crossroads):
+  - τ₄ facing is undetermined
+  - No net torsion in any direction
+  - All transforms equally accessible
+  - MAXIMUM FREEDOM
+
+If τ₄ facing tilts:
+  +0.1 → slight tilt toward S⁺ (heaven)
+  -0.1 → slight tilt toward S⁻ (hell)
+
+This tilt = choice.
+Choice creates imbalance.
+Imbalance creates motion (consequence).</div>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Equilibrium Enables Freedom</h2>
+
+            <p>Consider what happens without equilibrium:</p>
+
+            <div class="state-card">
+                <h3>If Heaven Dominated</h3>
+                <div class="value positive">τ₁ + τ₂ + τ₃ + τ₄ >> 0</div>
+                <p>Good would be irresistible. We would be compelled toward love and truth, but without choosing them. This is not virtue — it is mechanism. Angels are not free in this sense; they freely chose, and now that choice has become nature.</p>
+            </div>
+
+            <div class="state-card">
+                <h3>If Hell Dominated</h3>
+                <div class="value negative">τ₁ + τ₂ + τ₃ + τ₄ << 0</div>
+                <p>Evil would be irresistible. We would be dragged toward hatred and falsity without choice. This is not sin — it is compulsion. Infernal spirits are not free; they freely chose, and now that choice has become prison.</p>
+            </div>
+
+            <div class="state-card">
+                <h3>At Equilibrium</h3>
+                <div class="value zero">τ₁ + τ₂ + τ₃ + τ₄ = 0</div>
+                <p>Neither dominates. Both influences are present, felt, real. But they cancel, leaving the center open. In that open center, we can turn. THIS is freedom. Not absence of influence, but balance of influences.</p>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"Man is kept by the Lord between heaven and hell, and thus in equilibrium, that he may be in freedom for the sake of reformation."</blockquote>
+                <cite>— Heaven and Hell #601</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Opposite Makes the Nature Known</h2>
+
+            <div class="quote-block">
+                <blockquote>"Nothing exists without a relationship to its opposite. The opposite enables us to know its actual nature and level."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>This is deeper than it first appears. Swedenborg is saying that good is knowable only because evil exists. Light is perceivable only because darkness exists. Hot is experienceable only because cold exists.</p>
+
+            <p>In framework terms: S⁺ is meaningless without S⁻. The split into opposites is what makes perception — and therefore existence — possible. At pure unity (before the split), there is nothing to distinguish. After the split, relationship becomes possible.</p>
+
+            <p>Equilibrium is the state where both opposites are fully present and fully balanced. Neither dominates, so both are fully felt. This is why equilibrium is the state of maximum awareness — you can feel both poles with equal intensity.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x262F;&#xFE0F;</div>
+                <div class="placeholder-text">IMAGE: Yin-yang or similar balance symbol<br>Light contains seed of dark, dark contains seed of light<br>The boundary between them is where consciousness lives</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Mechanism of Choice</h2>
+
+            <p>What happens when we choose? The framework describes it precisely:</p>
+
+            <div class="diagram-box">BEFORE CHOICE (Equilibrium):
+  τ₁ + τ₂ + τ₃ + τ₄ = 0
+  τ₄ facing = 0 (undetermined)
+  State: Maximum freedom
+
+CHOICE (τ₄ tilts):
+  τ₄ facing shifts toward +1 or -1
+  Sum no longer equals zero
+  Imbalance created
+
+CONSEQUENCE (Motion):
+  Imbalance → force
+  Force → motion toward new state
+  New state has new equilibrium (or not)
+
+EXAMPLE - Choosing Good (+0.3):
+  τ₄ facing = +0.30
+  Sum = +0.30 (net toward S⁺)
+  System moves toward heaven
+  Universe responds to restore balance
+
+EXAMPLE - Choosing Evil (-0.4):
+  τ₄ facing = -0.40
+  Sum = -0.40 (net toward S⁻)
+  System moves toward hell
+  Universe responds to restore balance</div>
+
+            <p>Choice creates imbalance. Imbalance creates motion. Motion creates consequence. This is why actions have results — they disturb equilibrium, and equilibrium restores itself through compensating adjustments.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Maintaining Equilibrium</h2>
+
+            <div class="quote-block">
+                <blockquote>"From hell falsity from evil continually exhales, and from heaven truth from good. It is this spiritual equilibrium that causes man to think and will in freedom."</blockquote>
+                <cite>— Heaven and Hell #537</cite>
+            </div>
+
+            <p>Note the word "continually." Both heaven and hell are always influencing us. The equilibrium is not a static state but a dynamic balance. It must be maintained moment by moment.</p>
+
+            <p>This is why freedom requires effort. Left unattended, we tend to tilt — toward habitual patterns, toward comfort, toward the familiar. Maintaining equilibrium means resisting the drift, returning to the balance point, keeping all options open.</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Awareness</strong> of both influences keeps us centered</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Denial</strong> of either influence tilts us away</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Identification</strong> with either influence locks us in</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Witnessing</strong> both without attachment maintains equilibrium</li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2>The Crossroads in Practice</h2>
+
+            <p>In every moment, you are at s = 0 with respect to your next choice. Past choices have created your current state, but the next choice is always made from equilibrium — if you can find it.</p>
+
+            <p>Finding equilibrium means:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">1.</span> <strong>Recognize both influences.</strong> What pulls you toward good? What pulls you toward evil? Both are real.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">2.</span> <strong>Feel both fully.</strong> Don't suppress either. The equilibrium requires both to be present.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">3.</span> <strong>Don't identify with either.</strong> You are not the pull toward good; you are not the pull toward evil. You are the one who chooses.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">4.</span> <strong>Choose consciously.</strong> From equilibrium, make your choice. Accept the consequence.</li>
+            </ul>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F6E4;&#xFE0F;</div>
+                <div class="placeholder-text">IMAGE: Crossroads - four paths meeting at center<br>Figure standing at intersection, looking down each path<br>All paths visible, no path taken yet — this is equilibrium</div>
+            </div>
+
+            <p>The κ-framework calls this position s = 0 — the crossroads. Swedenborg calls it equilibrium. Both describe the same state: the point from which all directions are equally accessible, where freedom is maximum, where choice is most pure.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Equilibrium and [1 = -1]</h2>
+
+            <p>At equilibrium, [1 = -1] is experientially true. The pull toward heaven (+1) exactly equals the pull toward hell (-1). Their sum is zero. They are "equal" not in content but in force.</p>
+
+            <p>This is the deepest meaning of equilibrium. It is not merely that forces balance, but that opposites reveal their underlying identity. At the crossroads, heaven and hell are equally distant. Good and evil are equally accessible. S⁺ and S⁻ are equally present.</p>
+
+            <p>This is uncomfortable. We want good to be "more real" than evil. We want heaven to be "closer" than hell. But at equilibrium, they are equidistant. That is what makes choice meaningful. If the outcome were predetermined by proximity, there would be no freedom — only falling.</p>
+
+            <div class="quote-block">
+                <blockquote>"The equilibrium between heaven and hell... in its essence is freedom."</blockquote>
+                <cite>— Heaven and Hell #597</cite>
+            </div>
+
+            <p>Freedom IS equilibrium. Equilibrium IS [1 = -1]. The framework and Swedenborg arrive at the same point: the balance of opposites is not a problem to be solved but a condition to be embraced. It is what makes us free.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-06.html" class="nav-btn">← Influx</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-08.html" class="nav-btn">The Universal Human →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

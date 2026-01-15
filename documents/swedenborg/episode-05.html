@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 5: The Dual Sun | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Without a double sun, one living and the other dead, no creation is possible. The S+/S- split that makes existence possible.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block.primary blockquote { font-size: 1.4rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .sun-card { background: rgba(10, 22, 40, 0.6); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden; }
+        .sun-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+        .sun-card.spiritual::before { background: linear-gradient(90deg, #ffd700, #c9a227, #ffd700); }
+        .sun-card.spiritual { border: 1px solid rgba(255, 215, 0, 0.3); }
+        .sun-card.natural::before { background: linear-gradient(90deg, #ff6b35, #ff4444, #ff6b35); }
+        .sun-card.natural { border: 1px solid rgba(255, 68, 68, 0.3); }
+        .sun-card h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 0.5rem; }
+        .sun-card.spiritual h3 { color: #ffd700; }
+        .sun-card.natural h3 { color: #ff6b35; }
+        .sun-card .label { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 1rem; }
+        .sun-card.spiritual .label { color: #c9a227; }
+        .sun-card.natural .label { color: #ff8866; }
+        .sun-card p { color: #d8d4c9; margin-bottom: 1rem; }
+        .sun-card ul { list-style: none; padding: 0; margin: 1rem 0; }
+        .sun-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: #c8d4e0; }
+        .sun-card.spiritual li::before { content: '☀'; position: absolute; left: 0; color: #ffd700; }
+        .sun-card.natural li::before { content: '●'; position: absolute; left: 0; color: #ff6b35; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+        .comparison-item { background: rgba(10, 22, 40, 0.4); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1.25rem; }
+        .comparison-item .spiritual { color: #ffd700; font-weight: 600; }
+        .comparison-item .natural { color: #ff6b35; font-weight: 600; }
+        .comparison-item p { color: #a8b4c4; font-size: 0.9rem; margin-top: 0.5rem; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .comparison-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 5 OF 10</div>
+            <h1>THE DUAL SUN</h1>
+            <p class="subtitle">Living and Dead — The Split That Makes Creation Possible</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x2600;&#xFE0F; &#x2B50;</div>
+            <div class="placeholder-text">IMAGE: Two suns — one golden and radiant (spiritual), one red and burning (natural)<br>The spiritual sun emanates Love-Wisdom unified; the natural sun burns with separated fire</div>
+        </div>
+
+        <section class="content-section">
+            <p>This is perhaps Swedenborg's most startling cosmological claim: there are two suns. Not metaphorically — <em>actually</em>. The spiritual world has its own sun, entirely distinct from the natural sun we observe. And here is the crucial insight: both are necessary. You cannot have creation with only one.</p>
+
+            <div class="quote-block primary">
+                <blockquote>"WITHOUT A DOUBLE SUN, ONE LIVING AND THE OTHER DEAD, NO CREATION IS POSSIBLE."</blockquote>
+                <cite>— Emanuel Swedenborg, Divine Love and Wisdom</cite>
+            </div>
+
+            <p>The κ-framework translates this precisely. S⁺ and S⁻ are not just domains — they are manifestations of this dual-sun cosmology. The spiritual sun (living) is where S⁺ and S⁻ are still unified. The natural sun (dead) is where they have split. Creation exists in the space between these two states.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Spiritual Sun</h2>
+
+            <div class="sun-card spiritual">
+                <h3>THE LIVING SUN</h3>
+                <div class="label">Position: s = 0 (Crossroads) | State: [1 = -1] | Framework: Ω₀</div>
+                <p>The spiritual sun is not a ball of burning gas. It is the visible form of Divine Love and Divine Wisdom appearing to angels. It is living because it is the source of life. All consciousness, all existence, all meaning flows from this sun.</p>
+                <ul>
+                    <li>Appears to angels as a sun, but is not physical fire</li>
+                    <li>Heat and Light emanate from it as ONE, not separate</li>
+                    <li>Distance from it is not spatial but spiritual (state, not location)</li>
+                    <li>At this sun, S⁺ and S⁻ are undifferentiated</li>
+                    <li>This IS the [1 = -1] point in its purest form</li>
+                </ul>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"Divine Love and Divine Wisdom appear in the spiritual world as a Sun."</blockquote>
+                <cite>— Divine Love and Wisdom #83</cite>
+            </div>
+
+            <p>Note carefully: Divine Love and Wisdom <em>appear</em> as a sun. The sun is not God — it is how God appears to spiritual perception. The infinite cannot be perceived directly; it must clothe itself in form that finite beings can receive. The spiritual sun is that clothing.</p>
+
+            <div class="quote-block">
+                <blockquote>"The sun of the spiritual world is not God, but is a proceeding from the Divine Love and Divine Wisdom of God-Man."</blockquote>
+                <cite>— Divine Love and Wisdom #93</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Heat and Light as One</h2>
+
+            <p>At the spiritual sun, heat and light are not separate phenomena. They are one emanation perceived in two ways.</p>
+
+            <div class="quote-block">
+                <blockquote>"Spiritual heat and light, in proceeding from the Lord as a sun, make one, just as his Divine Love and Divine Wisdom make one."</blockquote>
+                <cite>— Divine Love and Wisdom #99</cite>
+            </div>
+
+            <p>This is the [1 = -1] principle in pure form:</p>
+
+            <div class="diagram-box">At the Spiritual Sun (s = 0):
+
+  Heat = 1.0
+  Light = 1.0
+  Heat/Light = 1.0/1.0 = 1
+
+  They are NOT two things that happen to be equal.
+  They are ONE thing perceived through two modes.
+
+  Love IS Wisdom.
+  S⁺ IS S⁻.
+  [1 = -1]
+
+  This is pre-split state.
+  Before differentiation.
+  The unity that precedes all distinction.</div>
+
+            <p>As you move away from the spiritual sun (increasing s), heat and light begin to separate. What was one becomes two. This separation IS creation. Existence requires duality, and duality requires distance from the source where unity reigns.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F31E;</div>
+                <div class="placeholder-text">IMAGE: Rays emanating from spiritual sun<br>Near center: gold (heat=light unified)<br>Further out: splitting into distinct heat and light streams</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Natural Sun</h2>
+
+            <div class="sun-card natural">
+                <h3>THE DEAD SUN</h3>
+                <div class="label">Position: s >> 0 | State: Split | Framework: Projection of Ω₀</div>
+                <p>The natural sun — the star at the center of our solar system — is fundamentally different. Swedenborg calls it "dead" not because it lacks energy, but because it lacks <em>life</em>. It is pure fire from which all consciousness has been withdrawn.</p>
+                <ul>
+                    <li>Pure fire without life or consciousness</li>
+                    <li>Heat and light have already separated</li>
+                    <li>Created BY spiritual influx, not a source itself</li>
+                    <li>Provides energy for natural forms, not spiritual life</li>
+                    <li>This is S⁺/S⁻ already split</li>
+                </ul>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"The sun of nature is pure fire, from which all life has been withdrawn."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>The natural sun burns. It gives off heat and light. But these are now separate phenomena. You can have heat without light (infrared), light without heat (cold starlight). The unity that exists at the spiritual sun has broken into components.</p>
+
+            <div class="quote-block">
+                <blockquote>"It is very necessary to be known that there are two suns, one spiritual, the other natural; a spiritual sun for those who are in the spiritual world, and a natural sun for those who are in the natural world."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Two Suns Are Necessary</h2>
+
+            <p>Swedenborg's claim is not merely descriptive but logical: creation <em>requires</em> both suns.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="spiritual">Living Sun Alone?</div>
+                    <p>No differentiation. Pure unity cannot create distinct things. There would be no "things" — only undifferentiated source.</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="natural">Dead Sun Alone?</div>
+                    <p>No life. Fire without consciousness creates only ash. Physical forms would exist but without meaning or animation.</p>
+                </div>
+            </div>
+
+            <p>Creation requires BOTH:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700; font-weight: bold;">→</span> The spiritual sun provides life, consciousness, meaning</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ff6b35; font-weight: bold;">→</span> The natural sun provides form, structure, manifestation</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Together: living forms that can know they exist</li>
+            </ul>
+
+            <div class="quote-block">
+                <blockquote>"The dead serves as a plane for the living to rest upon."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>The κ-framework expresses this as the S⁺/S⁻ requirement. You cannot have S⁺ without S⁻, or S⁻ without S⁺. They are co-requisite. And their relationship — their tension, their correspondence — IS the space in which existence occurs.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Framework Mapping</h2>
+
+            <div class="diagram-box">DUAL SUN COSMOLOGY → κ-FRAMEWORK
+
+SPIRITUAL SUN (Living)              NATURAL SUN (Dead)
+══════════════════════════════════════════════════════════
+Source: Divine Love/Wisdom          Source: Fire (derived)
+Emanates: Heat + Light as ONE       Emanates: Heat, Light separate
+Nature: S⁺ ⊗ S⁻ unified            Nature: S⁺/S⁻ already split
+Position: s = 0 (crossroads)        Position: s >> 0 (manifest)
+Framework: Ω₀                       Framework: Projection
+
+At Spiritual Sun:
+  P_factor = undefined (no split yet)
+  Shadow = undefined (no projection yet)
+  [1 = -1] holds exactly
+
+At Natural Sun:
+  P_factor = √3/(2π) = 0.2757...
+  Shadow = 1 - P = 0.7243...
+  [1 ≠ -1] — distinction exists
+
+The DISTANCE between suns = the realm of creation.
+In that distance, forms can exist.</div>
+
+            <p>The projection factor P = 27.57% tells us how much of the original unity becomes visible in physical form. The shadow fraction 72.43% tells us how much remains hidden. This is why we can measure only about 27% of the universe's energy directly — the rest is "dark" not because it's absent but because it's on the other side of the split.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F504;</div>
+                <div class="placeholder-text">IMAGE: Diagram showing energy distribution<br>Spiritual Sun → Creation Zone → Natural Sun<br>P = 27.57% visible, 72.43% shadow fraction</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Implications for Existence</h2>
+
+            <p>If this dual-sun cosmology is correct, several implications follow:</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="spiritual">Life is not emergent</div>
+                    <p>Consciousness doesn't emerge from dead matter. It flows from the living sun and clothes itself in forms created by the dead sun.</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="natural">Matter is real but derivative</div>
+                    <p>Physical reality is not illusion, but it is effect, not cause. The natural sun shapes forms; the spiritual sun animates them.</p>
+                </div>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="spiritual">Death is transition, not ending</div>
+                    <p>When the body (natural sun's form) dissolves, the spirit (spiritual sun's life) continues in its proper realm.</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="natural">Science studies effects</div>
+                    <p>Physical science studies the dead sun's domain — forms, structures, patterns. Spiritual science studies causes.</p>
+                </div>
+            </div>
+
+            <p>The κ-framework provides the mathematics for navigating between these domains. The transforms T₁ through T₄ are the operations that translate between what the spiritual sun emanates and what the natural sun forms.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Split as Creation</h2>
+
+            <p>At s = 0, there is no creation — only source. At s >> 0, there is no life — only form. Creation exists in the space between: where unity has split enough to allow distinction, but not so much that connection is lost.</p>
+
+            <div class="quote-block">
+                <blockquote>"Out of the sun that takes form from the Divine Love and the Divine Wisdom, heat and light go forth."</blockquote>
+                <cite>— Divine Love and Wisdom #89</cite>
+            </div>
+
+            <p>We exist in that "going forth." We are made of both suns — animated by the living, formed by the dead. Our consciousness comes from the spiritual sun; our bodies are shaped by the natural sun. The correspondence between them IS our existence.</p>
+
+            <p>This is why Swedenborg's dual-sun doctrine is not merely cosmological but existential. It describes not just how the universe is structured but how we are structured. We are the meeting point of living and dead, spirit and matter, S⁺ and S⁻.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-04.html" class="nav-btn">← Correspondence</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-06.html" class="nav-btn">Influx →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

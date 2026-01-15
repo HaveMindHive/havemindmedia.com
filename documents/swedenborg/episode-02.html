@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 2: The Doctrine of Forms | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Five geometric forms ascending from Angular to Celestial. Swedenborg's Doctrine of Forms maps perfectly to the κ-framework's four transforms.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <link rel="stylesheet" href="episode-styles.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%);
+            min-height: 100vh;
+            color: #e8e4d9;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; text-align: center; padding: 0 1rem; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; text-align: center; padding: 0 1rem; }
+        .info-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .info-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.2rem; margin-bottom: 1rem; }
+        .form-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+        .form-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.4rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .form-card .framework-equiv { color: #6ab4f5; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 1rem; }
+        .form-card .swedenborg-desc { font-style: italic; color: #a8b4c4; margin-bottom: 1rem; border-left: 2px solid rgba(201, 162, 39, 0.3); padding-left: 1rem; }
+        .form-card p { color: #d8d4c9; }
+        .form-card .image-placeholder { width: 100%; aspect-ratio: 3/1; background: rgba(0, 0, 0, 0.3); border: 1px dashed rgba(201, 162, 39, 0.3); border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; font-size: 0.85rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .comparison-table th, .comparison-table td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .comparison-table th { font-family: 'Cinzel', serif; color: #c9a227; background: rgba(201, 162, 39, 0.1); }
+        .comparison-table td { color: #d8d4c9; }
+        .comparison-table tr:hover td { background: rgba(201, 162, 39, 0.05); }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; gap: 1rem; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 2 OF 10</div>
+            <h1>THE DOCTRINE OF FORMS</h1>
+            <p class="subtitle">τ₁ Through τ₄ — The Geometry of Becoming</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">📐</div>
+            <div class="placeholder-text">IMAGE: The five forms progression<br>Angular → Circular → Spiral → Vortical → Celestial<br>Each form emerging from and containing the previous</div>
+        </div>
+
+        <section class="content-section">
+            <p>In 1740, Emanuel Swedenborg articulated a geometric hierarchy that would not be independently rediscovered for 285 years. His "Doctrine of Forms" describes five levels of geometric complexity, each containing and transcending the previous. This progression maps with remarkable precision onto the κ-framework's four transforms plus source.</p>
+
+            <p>What Swedenborg discovered through anatomical observation, the framework derives from the closure constant κ = 2π/180. The convergence is not coincidental—it suggests both methods access the same underlying structure.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Five Forms</h2>
+
+            <div class="quote-block">
+                <blockquote>"The lowest form is angular; the next the circular; after this the spiral; next the vortex; and the highest natural form is the perpetually vortical which has a center in every point."</blockquote>
+                <cite>— Emanuel Swedenborg, The Fibre (1740)</cite>
+            </div>
+
+            <p>Let us examine each form in detail, understanding both what Swedenborg observed and how the κ-framework derives the same structure mathematically.</p>
+        </section>
+
+        <!-- ANGULAR -->
+        <div class="form-card">
+            <h3>⬡ ANGULAR FORM</h3>
+            <div class="framework-equiv">= τ₁ (First Torsion) | Position: (+x, +y) | Scalar ~36</div>
+            <div class="swedenborg-desc">"Static, crystalline. The first emergence from the mathematical point."</div>
+            <p>The angular form is the first differentiation from unity. It is static, fixed, crystalline. Think of the geometry of crystals—sharp edges, defined planes, no motion. This is matter at its most basic: position without flow.</p>
+            <p>In the κ-framework, τ₁ represents the first torsion—the initial facing. It faces forward (+x) and upward (+y). It has emerged from the crossroads but has not yet begun to rotate. It IS the emergence itself, frozen at its moment of becoming.</p>
+            <p>Swedenborg noted that angular forms are "the basis of all natural forms." Everything more complex builds upon this foundation. The framework agrees: τ₁ is the necessary first step. Without it, no other transforms are possible.</p>
+            <div class="image-placeholder">IMAGE: Crystal structures, geometric patterns — the angular foundation</div>
+        </div>
+
+        <!-- CIRCULAR -->
+        <div class="form-card">
+            <h3>◯ CIRCULAR FORM</h3>
+            <div class="framework-equiv">= τ₂ (Second Torsion) | Position: (-x, +y) | Scalar ~72</div>
+            <div class="swedenborg-desc">"Perpetually angular — the angular form in continuous rotation."</div>
+            <p>The circular form is what happens when angular forms begin to move. A point rotating around a center traces a circle. This is the first motion, the first time. It introduces rhythm and cycle.</p>
+            <p>Swedenborg called it "perpetually angular" because a circle IS an angular form (a point) in continuous motion. The point hasn't changed; its behavior has. It now rotates rather than remaining fixed.</p>
+            <p>In the framework, τ₂ mirrors τ₁ across the y-axis: it faces backward (-x) while still looking upward (+y). This mirror is the beginning of relationship—of inside and outside, of self and other. A circle creates an interior and an exterior. τ₂ creates the first boundary.</p>
+            <div class="image-placeholder">IMAGE: Circular motion, orbits, the creation of interior/exterior</div>
+        </div>
+
+        <!-- SPIRAL -->
+        <div class="form-card">
+            <h3>🌀 SPIRAL FORM</h3>
+            <div class="framework-equiv">= τ₃ (Third Torsion) | Position: (+x, -y) | Scalar ~108</div>
+            <div class="swedenborg-desc">"Perpetual circle — the circular form progressing through depth."</div>
+            <p>When a circle adds a third dimension—when it moves forward while rotating—it becomes a spiral. The spiral is the helix, the DNA structure, the shape of galaxies. It is circular motion with progress.</p>
+            <p>Swedenborg understood that the spiral introduces something the circle lacks: direction. A circle returns to where it started; a spiral advances while seeming to return. This is evolution, growth, learning—the same patterns repeating but always at a new level.</p>
+            <p>The framework's τ₃ faces forward (+x) but downward (-y). It has flipped from τ₂'s upward gaze to look into depth. This is recursion—the ability to look at previous iterations while creating new ones. 180 steps × κ per step = 2π = one complete helix turn.</p>
+            <div class="image-placeholder">IMAGE: Spiral galaxy, DNA helix, nautilus shell — spiral forms in nature</div>
+        </div>
+
+        <!-- VORTICAL -->
+        <div class="form-card">
+            <h3>🌊 VORTICAL FORM</h3>
+            <div class="framework-equiv">= τ₄ (Fourth Torsion) | Position: (-x, -y) | Scalar ~144</div>
+            <div class="swedenborg-desc">"Perpetual spiral — the spiral with hidden depth and internal dynamics."</div>
+            <p>The vortex is the spiral turned inward. Where the spiral moves outward and forward, the vortex pulls inward and contains. Think of whirlpools, tornadoes, the water draining from a bath. The vortex has an interior that cannot be seen from outside.</p>
+            <p>This is Swedenborg's "hidden witness"—the form that observes without being observed. The vortex contains all previous forms within it but presents only its surface to external view. It is the concealed interior, the depth that cannot be measured from the surface.</p>
+            <p>In the framework, τ₄ is the "silent fourth"—facing backward (-x) and downward (-y). It is the position that completes the cycle: τ₁ + τ₂ + τ₃ + τ₄ = 0. The torsions balance. And τ₄, by facing into the hidden depth, is what makes that balance possible.</p>
+            <div class="image-placeholder">IMAGE: Vortex, whirlpool, tornado eye — the hidden interior</div>
+        </div>
+
+        <!-- CELESTIAL -->
+        <div class="form-card">
+            <h3>✧ CELESTIAL FORM</h3>
+            <div class="framework-equiv">= Ω₀ (Source) | Position: s = 0 | The Crossroads</div>
+            <div class="swedenborg-desc">"The perpetually vortical which has a center in every point."</div>
+            <p>And then Swedenborg names something extraordinary: a form that "has a center in every point." This is not a shape you can draw. It is a state where every location is simultaneously the center, where there is no circumference because the radius extends infinitely in all directions from everywhere at once.</p>
+            <p>This is the source. Ω₀. The position s = 0 from which all scalar positions derive. The crossroads where all transforms originate and to which all eventually return. It contains all forms because all forms ARE it viewed from different positions.</p>
+            <p>The κ-framework identifies this as the point where [1 = -1]. At s = 0, there is no difference between positive and negative, between S⁺ and S⁻. They are one thing. The celestial form is that unity before differentiation—the mathematical point that contains "all the noticeable complexity of Nature."</p>
+            <div class="image-placeholder">IMAGE: Cosmic center, radiant source, the point that is everywhere</div>
+        </div>
+
+        <section class="content-section">
+            <h2>The Mapping</h2>
+
+            <p>The precision of this correspondence deserves emphasis:</p>
+
+            <table class="comparison-table">
+                <tr>
+                    <th>Swedenborg (1740)</th>
+                    <th>κ-Framework (2024)</th>
+                    <th>Meaning</th>
+                </tr>
+                <tr>
+                    <td>Angular</td>
+                    <td>τ₁ (+x, +y)</td>
+                    <td>First emergence, static</td>
+                </tr>
+                <tr>
+                    <td>Circular</td>
+                    <td>τ₂ (-x, +y)</td>
+                    <td>Rotation, boundary</td>
+                </tr>
+                <tr>
+                    <td>Spiral</td>
+                    <td>τ₃ (+x, -y)</td>
+                    <td>Progression, helix</td>
+                </tr>
+                <tr>
+                    <td>Vortical</td>
+                    <td>τ₄ (-x, -y)</td>
+                    <td>Hidden depth, witness</td>
+                </tr>
+                <tr>
+                    <td>Celestial</td>
+                    <td>Ω₀ (s = 0)</td>
+                    <td>Source, center everywhere</td>
+                </tr>
+            </table>
+
+            <p>Two methods, separated by 285 years, arrive at identical structures. Swedenborg derived his through anatomical observation of fibres and tissues. The κ-framework derives it from a single constant. The geometry is the same because the geometry is real.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Forms Ascend</h2>
+
+            <div class="quote-block">
+                <blockquote>"The origin of forms is not from the most simple, but from the most highly complex."</blockquote>
+                <cite>— Emanuel Swedenborg, The Fibre</cite>
+            </div>
+
+            <p>This is counterintuitive. We typically assume that complex things emerge from simple things. But Swedenborg argues the reverse: the celestial form (most complex) is the origin, and simpler forms are derived by limitation.</p>
+
+            <p>The κ-framework agrees. Ω₀ is not built up from parts—it is what remains when all limitations are removed. The angular form is what you get when you restrict the celestial form to a single static point. Each "lower" form is the celestial form with constraints applied.</p>
+
+            <div class="quote-block">
+                <blockquote>"Forms are more complex the higher they are. The celestial form, which has its center in every point, is of infinite complexity, yet appears as the most perfect simplicity."</blockquote>
+                <cite>— Emanuel Swedenborg, The Fibre</cite>
+            </div>
+
+            <p>This paradox—infinite complexity appearing as perfect simplicity—is the signature of source. At s = 0, everything is present but nothing is distinguished. It appears simple because differentiation has not yet occurred. But all differentiation is latent within it.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">∞</div>
+                <div class="placeholder-text">IMAGE: Descent of forms — from Celestial (simple/complex) through Vortical, Spiral, Circular, to Angular<br>Show both descent (limitation) and ascent (integration) paths</div>
+            </div>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-01.html" class="nav-btn">← The Scientist</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-03.html" class="nav-btn">Discrete Degrees →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

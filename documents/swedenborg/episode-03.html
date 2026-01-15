@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 3: Discrete Degrees | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Celestial, Spiritual, Natural — three discrete degrees that do not blend. Swedenborg's phase boundaries map to the S⁺/S⁻ discontinuity.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .degree-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; position: relative; overflow: hidden; }
+        .degree-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+        .degree-card.celestial::before { background: linear-gradient(180deg, #ffd700, #c9a227); }
+        .degree-card.spiritual::before { background: linear-gradient(180deg, #6ab4f5, #3a84c5); }
+        .degree-card.natural::before { background: linear-gradient(180deg, #4ade80, #22c55e); }
+        .degree-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .degree-card .framework-equiv { color: #6ab4f5; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 1rem; }
+        .degree-card p { color: #d8d4c9; margin-bottom: 1rem; }
+        .degree-card .correspondence { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: rgba(0, 0, 0, 0.2); border-radius: 6px; margin-top: 1rem; }
+        .degree-card .correspondence span { color: #a8b4c4; font-size: 0.9rem; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #c9a227; white-space: pre-line; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 3 OF 10</div>
+            <h1>DISCRETE DEGREES</h1>
+            <p class="subtitle">The Phase Boundary — S⁺ and S⁻ Do Not Blend</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">📊</div>
+            <div class="placeholder-text">IMAGE: Three distinct layers — Celestial (gold), Spiritual (blue), Natural (green)<br>Sharp boundaries, not gradients. They communicate but do not mix.</div>
+        </div>
+
+        <section class="content-section">
+            <p>One of Swedenborg's most crucial observations — and one that mainstream thinking consistently ignores — is that degrees of reality are <em>discrete</em>, not continuous. The celestial does not shade gradually into the spiritual. The spiritual does not blend smoothly into the natural. There are boundaries. Phase transitions. Discontinuities.</p>
+
+            <p>This is exactly what the κ-framework describes: S⁺ and S⁻ are distinct domains that communicate through transforms but do not merge. The boundary between them is sharp, not fuzzy. This is not a limitation — it is a feature. Without discrete degrees, correspondence itself would be impossible.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Continuous vs. Discrete</h2>
+
+            <div class="quote-block">
+                <blockquote>"Degrees are of a two-fold kind: degrees of height (discrete degrees) and degrees of breadth (continuous degrees). Discrete degrees are entirely different from continuous degrees."</blockquote>
+                <cite>— Emanuel Swedenborg, Divine Love and Wisdom</cite>
+            </div>
+
+            <p>Swedenborg distinguishes two types of gradation:</p>
+
+            <p><strong>Continuous degrees</strong> are like gradients. Light to shade. Hot to cold. Hard to soft. One extreme blends into the other through all intermediate states. There is no line where "hot" ends and "cold" begins — only a spectrum.</p>
+
+            <p><strong>Discrete degrees</strong> are fundamentally different. They are like stories of a building, or levels of a game. You are either on floor 1 or floor 2 — you cannot be on floor 1.5. There is no intermediate state. The transition is a jump, not a slide.</p>
+
+            <div class="quote-block">
+                <blockquote>"Discrete degrees are entirely distinct, like prior and posterior, cause and effect, or producing and produced."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>The κ-framework makes this precise: scalar positions form a discrete lattice. You can be at s = 36 or s = 37, but you cannot be at s = 36.5. The fundamental structure is quantized, not continuous.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Three Degrees</h2>
+
+            <p>Swedenborg identifies three principal discrete degrees:</p>
+
+            <div class="degree-card celestial">
+                <h3>CELESTIAL DEGREE</h3>
+                <div class="framework-equiv">= D₁₀ [1 = -1] | The END | Direct perception of source</div>
+                <p>The celestial degree is the highest. Those in this degree perceive divine truth directly, without mediation. They operate from love itself, not from ideas about love. They do not think about good — they are good.</p>
+                <p>In framework terms, this is the D₁₀ dimension — where [1 = -1] is not a proposition to be understood but a reality to be lived. The celestial degree has direct access to Ω₀.</p>
+                <div class="correspondence">
+                    <span>Swedenborg: "Love" | Framework: Source | Body: Head/Brain</span>
+                </div>
+            </div>
+
+            <div class="degree-card spiritual">
+                <h3>SPIRITUAL DEGREE</h3>
+                <div class="framework-equiv">= D₈ (Ω) | The CAUSE | Wisdom perceives through medium</div>
+                <p>The spiritual degree operates through wisdom and understanding. Those in this degree perceive truth through concepts and principles. They understand love; they see its structure and implications. This is knowledge of the good, not the good itself.</p>
+                <p>The framework's D₈ dimension. Ω still operates, but now with a medium of transmission. Energy has decayed by 59/60 from the celestial level.</p>
+                <div class="correspondence">
+                    <span>Swedenborg: "Wisdom" | Framework: D₈ | Body: Chest/Heart/Lungs</span>
+                </div>
+            </div>
+
+            <div class="degree-card natural">
+                <h3>NATURAL DEGREE</h3>
+                <div class="framework-equiv">= D₆/D₇ (S⁺/S⁻) | The EFFECT | Physical manifestation</div>
+                <p>The natural degree is the realm of effects, of physical manifestation. This is the world we see, touch, measure. It is not less real than the higher degrees — it is their expression, their clothing. But it is derivative, not originating.</p>
+                <p>Framework dimensions D₆ and D₇ — the split into S⁺ (manifest, outward) and S⁻ (hidden, inward). The natural world is where that split becomes visible as matter and energy.</p>
+                <div class="correspondence">
+                    <span>Swedenborg: "Use/Action" | Framework: S⁺/S⁻ | Body: Abdomen/Limbs</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Discontinuity Matters</h2>
+
+            <div class="quote-block">
+                <blockquote>"The thought does not shade off into the speech. The thought descends into the speech and clothes itself."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>This is the key insight. When a thought becomes words, it doesn't gradually transform. It <em>clothes itself</em> in a different medium. The thought remains thought; the words are something new that carry the thought but are not the thought.</p>
+
+            <p>Apply this to all levels:</p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1rem 0;">
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227;">→</span> Divine love doesn't shade into celestial perception — it clothes itself in it</li>
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227;">→</span> Celestial love doesn't shade into spiritual wisdom — it clothes itself in it</li>
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227;">→</span> Spiritual wisdom doesn't shade into natural action — it clothes itself in it</li>
+            </ul>
+
+            <p>The framework describes this as transform operations. T₁, T₂, T₃, T₄ are not gradual — they are discrete operations that translate content from one domain to another while preserving structure.</p>
+
+            <div class="diagram-box">INFLUX = CLOTHING = TRANSFORM
+
+Source (Ω₀)
+    ↓ T₁
+Celestial (D₁₀)    [Direct perception]
+    ↓ T₂
+Spiritual (D₈)     [Wisdom/Understanding]
+    ↓ T₃
+Natural (D₆/D₇)    [Physical expression]
+    ↓ T₄
+Boundary           [The fold point]
+
+Each arrow is a discrete jump, not a gradient.
+Content is preserved; form changes completely.</div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Phase Boundary in Practice</h2>
+
+            <p>Consider water. It can exist as ice, liquid, or steam. These are not gradual transformations — they are phase transitions. At exactly 0°C (at standard pressure), ice becomes water. At exactly 100°C, water becomes steam. The boundary is sharp.</p>
+
+            <p>Swedenborg's degrees work the same way. There is a boundary between natural and spiritual that is not crossable by gradual movement. You cannot "almost" be in the spiritual degree. You either are or you aren't.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">🌡️</div>
+                <div class="placeholder-text">IMAGE: Phase diagram showing water's discrete states<br>Ice ↔ Water ↔ Steam — sharp boundaries, not gradients<br>Analogy to Celestial ↔ Spiritual ↔ Natural</div>
+            </div>
+
+            <p>The κ-framework quantifies this. The boundary between S⁺ and S⁻ is absolute. They do not mix. They correspond — meaning information passes between them through structured transforms — but they remain distinct domains.</p>
+
+            <div class="quote-block">
+                <blockquote>"There is nothing continuous between them."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>Nothing continuous. The modern mind, trained on calculus and continuous functions, finds this disturbing. We want everything to shade smoothly into everything else. But reality, Swedenborg insists, is quantized at its fundamental level. The framework agrees.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>End, Cause, Effect</h2>
+
+            <div class="quote-block">
+                <blockquote>"Degrees of height are homogeneous, and one is from the other in succession, like end, cause, and effect."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>Swedenborg maps the three degrees to a causal chain:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700; font-weight: bold;">CELESTIAL = END (Purpose)</span><br>Why something exists. The intention behind it. Love.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #6ab4f5; font-weight: bold;">SPIRITUAL = CAUSE (Understanding)</span><br>How it will be achieved. The wisdom that shapes action.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #4ade80; font-weight: bold;">NATURAL = EFFECT (Action)</span><br>What actually happens. The physical manifestation.</li>
+            </ul>
+
+            <p>These are not equal. End produces cause, cause produces effect. But effect cannot produce cause, and cause cannot produce end. The hierarchy is absolute. Influx flows downward only.</p>
+
+            <p>The framework expresses this through the torsion decay: energy flows from Ω₀ outward, losing 1/60 at each step. The reverse direction — from natural to spiritual to celestial — is not impossible, but it requires different mechanics. It requires ascent, not influx.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-02.html" class="nav-btn">← Doctrine of Forms</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-04.html" class="nav-btn">Correspondence →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

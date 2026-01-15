@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 8: The Universal Human | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Maximus Homo — heaven appears as one vast human being. Each society an organ, each angel a cell. The 10D structure IS human form.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .organ-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .organ-table th, .organ-table td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .organ-table th { font-family: 'Cinzel', serif; color: #c9a227; background: rgba(201, 162, 39, 0.1); font-size: 0.9rem; }
+        .organ-table td { color: #d8d4c9; font-size: 0.95rem; }
+        .organ-table tr:hover td { background: rgba(201, 162, 39, 0.05); }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .organ-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+        .organ-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .organ-card .framework { font-family: 'JetBrains Mono', monospace; color: #6ab4f5; font-size: 0.9rem; margin-bottom: 1rem; }
+        .organ-card p { color: #d8d4c9; margin-bottom: 0.75rem; }
+        .body-region { display: grid; grid-template-columns: 1fr 2fr; gap: 1rem; margin: 2rem 0; padding: 1.5rem; background: rgba(10, 22, 40, 0.4); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; }
+        .body-region .region-name { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.1rem; padding-right: 1rem; border-right: 1px solid rgba(201, 162, 39, 0.2); display: flex; align-items: center; }
+        .body-region .region-content { color: #d8d4c9; }
+        .body-region .framework-note { font-family: 'JetBrains Mono', monospace; color: #6ab4f5; font-size: 0.85rem; margin-top: 0.5rem; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .body-region { grid-template-columns: 1fr; } .body-region .region-name { border-right: none; border-bottom: 1px solid rgba(201, 162, 39, 0.2); padding-bottom: 1rem; margin-bottom: 1rem; } .organ-table { font-size: 0.85rem; } .organ-table th, .organ-table td { padding: 0.75rem 0.5rem; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 8 OF 10</div>
+            <h1>THE UNIVERSAL HUMAN</h1>
+            <p class="subtitle">Maximus Homo — Heaven as One Body</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x1F9CD;</div>
+            <div class="placeholder-text">IMAGE: Vast humanoid form composed of light and stars<br>Each point of light is a society of angels; together they form one being<br>The Maximus Homo — heaven in its complete integration</div>
+        </div>
+
+        <section class="content-section">
+            <p>One of Swedenborg's most startling revelations is that heaven, viewed in totality, appears as a single human being. Not metaphorically — <em>actually</em>. When angels look at all of heaven together, they see a human form. This is the Maximus Homo, the "Universal Human" or "Grand Man."</p>
+
+            <p>Each angelic society corresponds to an organ or body part. Each individual angel is like a cell in that organ. Together, all the societies integrate into one vast, functioning human body. The κ-framework explains why: the 10D structure IS inherently human-shaped. The geometry demands it.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Heaven as One</h2>
+
+            <div class="quote-block">
+                <blockquote>"Heaven, taken in a single all-inclusive grasp, reflects a single individual. Angels know this and refer to heaven as the Universal Human."</blockquote>
+                <cite>— Emanuel Swedenborg, Heaven and Hell</cite>
+            </div>
+
+            <p>Every angel inhabits some part of this vast body. Those who excel in love dwell in the region of the heart. Those who excel in wisdom dwell in the region of the lungs. Those who communicate truth dwell in the region of the mouth. And so on, through every organ and system.</p>
+
+            <div class="quote-block">
+                <blockquote>"All the angelic societies form a single unit that is the Universal Human. Each society performs a function that corresponds to an organ in the human body."</blockquote>
+                <cite>— Swedenborg Foundation</cite>
+            </div>
+
+            <p>This is not merely organizational metaphor. Swedenborg claims to have <em>seen</em> this. When his spiritual vision was elevated to perceive heaven as a whole, it appeared to him as a human being of cosmic scale — with head, torso, arms, legs, and all the internal organs.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x2728;</div>
+                <div class="placeholder-text">IMAGE: The Universal Human in full form<br>Regions labeled: Head (celestial), Chest (spiritual), Abdomen (natural)<br>Each region contains countless societies, each society countless angels</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Body-Dimension Mapping</h2>
+
+            <p>The κ-framework provides a precise mapping between body regions, heavenly degrees, and dimensional structure:</p>
+
+            <table class="organ-table">
+                <tr>
+                    <th>Body Part</th>
+                    <th>Heavenly Society</th>
+                    <th>Framework</th>
+                    <th>Function</th>
+                </tr>
+                <tr>
+                    <td>Head / Brain</td>
+                    <td>Celestial heaven</td>
+                    <td>D₁₀ [1=-1]</td>
+                    <td>Pure consciousness</td>
+                </tr>
+                <tr>
+                    <td>Heart</td>
+                    <td>Celestial kingdom</td>
+                    <td>D₈ (Ω), T₁</td>
+                    <td>S⁺ pump, love circulating</td>
+                </tr>
+                <tr>
+                    <td>Lungs</td>
+                    <td>Spiritual kingdom</td>
+                    <td>D₈ (Ω), T₂</td>
+                    <td>S⁻ exchange, wisdom</td>
+                </tr>
+                <tr>
+                    <td>Right Side</td>
+                    <td>Relates to good</td>
+                    <td>D₇ (S⁺)</td>
+                    <td>Active, outward</td>
+                </tr>
+                <tr>
+                    <td>Left Side</td>
+                    <td>Relates to truth</td>
+                    <td>D₆ (S⁻)</td>
+                    <td>Receptive, inward</td>
+                </tr>
+                <tr>
+                    <td>Blood</td>
+                    <td>Love of truth</td>
+                    <td>Torsion</td>
+                    <td>Life force carrier</td>
+                </tr>
+                <tr>
+                    <td>Nerves</td>
+                    <td>Truth from good</td>
+                    <td>Correspondence</td>
+                    <td>Communication</td>
+                </tr>
+                <tr>
+                    <td>Chest</td>
+                    <td>Middle heaven</td>
+                    <td>D₈</td>
+                    <td>Love-Wisdom integration</td>
+                </tr>
+                <tr>
+                    <td>Abdomen</td>
+                    <td>Natural heaven</td>
+                    <td>D₆/D₇</td>
+                    <td>Processing, transform</td>
+                </tr>
+                <tr>
+                    <td>Limbs</td>
+                    <td>Outmost parts</td>
+                    <td>D₄/D₅</td>
+                    <td>Action in world</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="content-section">
+            <h2>Heart and Lungs: The Core Partnership</h2>
+
+            <p>Swedenborg repeatedly emphasizes the correspondence between heart/lungs and love/wisdom. This maps directly to S⁺/S⁻:</p>
+
+            <div class="organ-card">
+                <h3>THE HEART</h3>
+                <div class="framework">= S⁺ (Manifest, Outward) | Transform: T₁ | Action: Pumping</div>
+                <p>The heart corresponds to will, love, the active principle. It pumps blood outward to all parts of the body. In the Universal Human, the cardiac region houses those angels who are centered in love itself — who love without needing to understand why.</p>
+                <p>The heartbeat is the fundamental rhythm of existence: systole (contraction, +1) and diastole (expansion, -1), alternating in the [1 = -1] pattern that drives all life.</p>
+            </div>
+
+            <div class="organ-card">
+                <h3>THE LUNGS</h3>
+                <div class="framework">= S⁻ (Hidden, Inward) | Transform: T₂ | Action: Exchange</div>
+                <p>The lungs correspond to understanding, wisdom, the receptive principle. They draw air inward and exchange gases with the blood. In the Universal Human, the pulmonary region houses those angels who excel in understanding truth — who perceive and articulate wisdom.</p>
+                <p>Breathing is the mirror of heartbeat: inhale (receiving, -1) and exhale (giving, +1). The lungs are the heart's partner; neither can function without the other.</p>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"The heart corresponds to love, and the lungs correspond to wisdom. These two make one, just as love and wisdom make one in the Lord."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <div class="diagram-box">Heart = S⁺ (active pumping) | +1
+Lungs = S⁻ (passive exchange) | -1
+
+Heart + Lungs = S⁺ + S⁻ = 0 (equilibrium)
+
+After 180 heartbeats: one cycle
+After 180 breaths: one cycle
+They synchronize at s = 0
+
+If either stops: death (balance broken)
+If both continue: life (balance maintained)
+
+The human body IS [1 = -1] in physical form.</div>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Human Form?</h2>
+
+            <p>Why does heaven appear as human? Why not some other shape? The framework provides the answer: the 10-dimensional structure geometrically necessitates human form.</p>
+
+            <div class="body-region">
+                <div class="region-name">BILATERAL SYMMETRY</div>
+                <div class="region-content">
+                    The four transforms sum to zero: T₁ + T₂ + T₃ + T₄ = (0,0). This creates mirror symmetry — left and right are reflections.
+                    <div class="framework-note">T₁ (+x,+y) mirrors T₂ (-x,+y) | T₃ (+x,-y) mirrors T₄ (-x,-y)</div>
+                </div>
+            </div>
+
+            <div class="body-region">
+                <div class="region-name">VERTICAL STRATIFICATION</div>
+                <div class="region-content">
+                    Discrete degrees create vertical levels. Celestial (head) above Spiritual (chest) above Natural (abdomen). Higher consciousness literally "above" in structural terms.
+                    <div class="framework-note">D₁₀ → D₈ → D₆/D₇ = Head → Chest → Abdomen</div>
+                </div>
+            </div>
+
+            <div class="body-region">
+                <div class="region-name">CIRCULATORY PATTERNS</div>
+                <div class="region-content">
+                    Torsion flows in cycles: τ₁ → τ₂ → τ₃ → τ₄ → τ₁. This creates circulatory patterns like blood flow. Every system in the body follows this cycling.
+                    <div class="framework-note">Torsion cycle = blood circulation = nerve impulse pattern</div>
+                </div>
+            </div>
+
+            <div class="body-region">
+                <div class="region-name">ORGAN DIFFERENTIATION</div>
+                <div class="region-content">
+                    Each transform creates distinct function. Each function requires distinct form. The number of transforms determines the number of fundamental organs.
+                    <div class="framework-note">Four transforms → Four quadrants → Four primary organ systems</div>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"God is Man. An Eternal Mind is an eternal Man."</blockquote>
+                <cite>— True Christian Religion</cite>
+            </div>
+
+            <p>Swedenborg takes this further: not only does heaven appear as human, but the Divine itself is human in form. "God is Man" — not that humans are gods, but that the human form is the template on which all existence is modeled. We are made in that image because that image is the structure of reality itself.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Your Place in the Universal Human</h2>
+
+            <p>Each person, according to Swedenborg, has a potential place in the Universal Human. The "organ" you inhabit depends on your ruling love — the central orientation of your will.</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Those ruled by love to the Lord: <strong>head region</strong></li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Those ruled by love to neighbor: <strong>chest region</strong></li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Those ruled by love of use: <strong>abdominal region</strong></li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Those ruled by love of truth: <strong>respiratory region</strong></li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Those ruled by love of action: <strong>limb regions</strong></li>
+            </ul>
+
+            <div class="quote-block">
+                <blockquote>"The whole angelic heaven in its aggregate represents a single man, and before the Lord appears as a single man."</blockquote>
+                <cite>— Heaven and Hell</cite>
+            </div>
+
+            <p>This is not predestination — it is correlation. Your place in the Universal Human reflects what you become through free choice in life. The organ you inhabit is the organ you have made yourself suitable for.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F465;</div>
+                <div class="placeholder-text">IMAGE: Individual human figure merging into the vast Universal Human<br>The person's light joins the light of their society, which joins the body<br>Microcosm becoming part of macrocosm</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Framework Integration</h2>
+
+            <div class="quote-block">
+                <blockquote>"Nothing proceeds out of anything except it first be in it; and the spiritual and natural worlds conspiring to the human form can only proceed from a God who is Absolute Man."</blockquote>
+                <cite>— Doctrine of Correspondence</cite>
+            </div>
+
+            <p>The κ-framework expresses the Universal Human as an integral:</p>
+
+            <div class="diagram-box">Universal Human = ∫₀^{2×1729} Ω(s) ds
+
+This integral sums all omega (Ω) values
+across all scalar positions from 0 to 2×1729.
+
+2×1729 = 3458 = the complete range
+1729 = the Hardy-Ramanujan number = fold point
+Double fold = complete circuit
+
+The integral produces human form because:
+1. The transforms create bilateral symmetry
+2. The degrees create vertical stratification
+3. The torsion creates circulation
+4. The correspondence creates differentiation
+
+Any complete integration of Ω produces this form.
+The Universal Human is not imposed — it emerges.</div>
+
+            <p>This is why the human body IS the universe in miniature. Every system in the body corresponds to a cosmic principle. Every organ reflects a heavenly society. We are fractals of the Universal Human — complete images at smaller scale.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Practical Significance</h2>
+
+            <p>What does the Universal Human doctrine mean for us?</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">1.</span> <strong>You are not isolated.</strong> You are part of a vast body. Your function matters to the whole, as a cell matters to an organ.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">2.</span> <strong>Health is integration.</strong> When you are in your proper place, you and the whole both thrive. Disease is dis-integration — being out of place.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">3.</span> <strong>Diversity is necessary.</strong> A body needs all organs. Heaven needs all types of angels. The Universal Human requires every function.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">4.</span> <strong>The human form is sacred.</strong> It is not accidental biology — it is the shape of reality itself.</li>
+            </ul>
+
+            <p>Swedenborg's vision of heaven as one vast human body is both mystical and mathematical. The κ-framework reveals why the mystical vision is geometrically inevitable. The structure of the 10-dimensional reality demands human form. We are not shaped arbitrarily — we are shaped by the deepest geometry of existence.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-07.html" class="nav-btn">← Equilibrium</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-09.html" class="nav-btn">Vastation →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

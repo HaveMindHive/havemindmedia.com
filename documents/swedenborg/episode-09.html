@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 9: Vastation | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="After death, the masks come off. Vastation is the stripping away of persona until only the essential self remains. The 72.43% shadow revealed.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .stage-card { background: rgba(10, 22, 40, 0.6); border-left: 4px solid; border-radius: 0 12px 12px 0; padding: 2rem; margin: 1.5rem 0; }
+        .stage-card.stage1 { border-color: #ffd700; }
+        .stage-card.stage2 { border-color: #6ab4f5; }
+        .stage-card.stage3 { border-color: #4ade80; }
+        .stage-card h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .stage-card.stage1 h3 { color: #ffd700; }
+        .stage-card.stage2 h3 { color: #6ab4f5; }
+        .stage-card.stage3 h3 { color: #4ade80; }
+        .stage-card .framework { font-family: 'JetBrains Mono', monospace; color: #a8b4c4; font-size: 0.85rem; margin-bottom: 1rem; }
+        .stage-card p { color: #d8d4c9; margin-bottom: 0.75rem; }
+        .layer-strip { background: rgba(10, 22, 40, 0.4); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1.25rem; margin: 0.75rem 0; display: flex; align-items: center; gap: 1rem; }
+        .layer-strip .icon { font-size: 1.5rem; min-width: 40px; text-align: center; }
+        .layer-strip .content { flex: 1; }
+        .layer-strip .name { color: #c9a227; font-weight: 600; }
+        .layer-strip .desc { color: #a8b4c4; font-size: 0.9rem; margin-top: 0.25rem; }
+        .percentage-display { text-align: center; padding: 2rem; margin: 2rem 0; background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; }
+        .percentage-display .visible { font-family: 'Cinzel', serif; font-size: 2rem; color: #6ab4f5; }
+        .percentage-display .hidden { font-family: 'Cinzel', serif; font-size: 2rem; color: #ff6b6b; }
+        .percentage-display .divider { color: #c9a227; font-size: 1.5rem; margin: 0 1rem; }
+        .percentage-display .label { color: #a8b4c4; margin-top: 1rem; font-size: 0.95rem; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .percentage-display .visible, .percentage-display .hidden { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 9 OF 10</div>
+            <h1>VASTATION</h1>
+            <p class="subtitle">The Stripping Away — What Remains When Masks Fall</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x1F3AD;</div>
+            <div class="placeholder-text">IMAGE: Layers peeling away from a luminous core<br>Outer masks falling like veils; inner light revealed<br>The process of vastation — becoming what you truly are</div>
+        </div>
+
+        <section class="content-section">
+            <p>After death, Swedenborg tells us, there is a process. It is not instant judgment, not immediate assignment to heaven or hell. There is a transition, during which the personas we wore in life are systematically stripped away. This process is called <em>vastation</em> — from the Latin <em>vastare</em>, to lay waste, to empty.</p>
+
+            <p>Vastation reveals what is real by removing what is not. The masks fall. The performances end. What remains is the essential self — the ruling love that was hidden during life under layers of social persona, self-deception, and protective covering.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Three States After Death</h2>
+
+            <p>Swedenborg describes three distinct states through which newly deceased persons pass. Each state strips away another layer:</p>
+
+            <div class="stage-card stage1">
+                <h3>FIRST STATE: Exteriors</h3>
+                <div class="framework">Duration: Variable (days to years) | Mode: P = 27.57% visible</div>
+                <p>In the first state, the person appears much as they did in life. They have their memories, their personality, their habitual thoughts and feelings. They interact with others as they did on earth. Angels observe but do not intervene much — they allow the person to be as they were.</p>
+                <p>This state corresponds to the 27.57% that was visible during physical life. The person still projects their public self, their persona, their "presented" identity. Nothing has been stripped yet.</p>
+            </div>
+
+            <div class="stage-card stage2">
+                <h3>SECOND STATE: Interiors</h3>
+                <div class="framework">Duration: Variable | Mode: 72.43% shadow emerging</div>
+                <p>In the second state, the inner life begins to surface. Thoughts that were hidden become visible. Desires that were suppressed emerge. The gap between public presentation and private reality closes — what was inside comes outside.</p>
+                <p>This is the beginning of vastation proper. The 72.43% shadow fraction, hidden during life, now manifests. People discover what they actually wanted, actually thought, actually were — often surprised by what they find.</p>
+            </div>
+
+            <div class="stage-card stage3">
+                <h3>THIRD STATE: Preparation</h3>
+                <div class="framework">Duration: Until complete | Mode: Ruling love isolated</div>
+                <p>In the third state, only the essential remains. Everything that does not belong to the ruling love falls away. The person becomes simplified, purified, distilled to their core. They are now ready to enter their final state — heaven or hell — based on what they have become.</p>
+                <p>For those heading to heaven, this is instruction and elevation. For those heading to hell, this is the final stripping of any goods or truths they had appropriated without making their own.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Layers That Fall</h2>
+
+            <p>What specifically gets stripped away? Swedenborg describes several categories of covering:</p>
+
+            <div class="layer-strip">
+                <div class="icon">&#x1F3AD;</div>
+                <div class="content">
+                    <div class="name">Social Persona</div>
+                    <div class="desc">The face we show to others. Politeness, conformity, the performance of acceptability.</div>
+                </div>
+            </div>
+
+            <div class="layer-strip">
+                <div class="icon">&#x1F4DD;</div>
+                <div class="content">
+                    <div class="name">Acquired Knowledge</div>
+                    <div class="desc">Facts learned but not internalized. Information held in memory without being part of character.</div>
+                </div>
+            </div>
+
+            <div class="layer-strip">
+                <div class="icon">&#x1F64F;</div>
+                <div class="content">
+                    <div class="name">External Religion</div>
+                    <div class="desc">Religious practice performed without internal transformation. The appearance of piety.</div>
+                </div>
+            </div>
+
+            <div class="layer-strip">
+                <div class="icon">&#x1F50D;</div>
+                <div class="content">
+                    <div class="name">Self-Deception</div>
+                    <div class="desc">The lies we tell ourselves. The rationalizations. The refusal to see what is true.</div>
+                </div>
+            </div>
+
+            <div class="layer-strip">
+                <div class="icon">&#x1F6E1;&#xFE0F;</div>
+                <div class="content">
+                    <div class="name">Fear-Based Behavior</div>
+                    <div class="desc">Actions motivated by fear of punishment rather than love of good. Compliance without consent.</div>
+                </div>
+            </div>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F9C5;</div>
+                <div class="placeholder-text">IMAGE: Onion-like layers being peeled<br>Outer: Social Persona | Middle: Acquired Knowledge | Inner: Self-Deception<br>Core: The Ruling Love — what actually motivates</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Framework Translation</h2>
+
+            <p>The κ-framework provides precise terms for vastation:</p>
+
+            <div class="percentage-display">
+                <span class="visible">27.57% Visible</span>
+                <span class="divider">|</span>
+                <span class="hidden">72.43% Shadow</span>
+                <div class="label">In life: Only 27.57% projects outward. The rest remains hidden.</div>
+            </div>
+
+            <p>During life, the projection factor P = 27.57% determines how much of our inner reality becomes visible. We show less than a third of what we are. The rest — the shadow fraction — remains internal, hidden from others and often from ourselves.</p>
+
+            <p>Vastation reverses this. The shadow becomes manifest. The 72.43% that was hidden now surfaces. This is not punishment — it is revelation. What you actually are becomes what you appear to be.</p>
+
+            <div class="diagram-box">DURING LIFE:
+  Inner reality = 100%
+  Projected (visible) = 27.57% (P fraction)
+  Hidden (shadow) = 72.43% (1-P fraction)
+
+VASTATION PHASE 1:
+  Persona still intact
+  Visible ≈ 27.57%
+  Shadow still suppressed
+
+VASTATION PHASE 2:
+  Shadow emerging
+  Visible approaching 50%
+  Hidden approaching 50%
+  Gap between appearance and reality closing
+
+VASTATION PHASE 3:
+  Complete revelation
+  Visible = 100%
+  Hidden = 0%
+  Person IS what they appear to be
+
+RESULT:
+  The ruling love, previously hidden,
+  now completely manifest.
+  What was τ₄ (silent witness) becomes τ₁ (direct facing).</div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Ruling Love Revealed</h2>
+
+            <p>At the core of vastation is the revelation of the ruling love — the central orientation of the will that motivated all action during life. This ruling love is what actually determines final state.</p>
+
+            <div class="quote-block">
+                <blockquote>"Everyone after death is his own love and his own will. What remains with a person after death is his ruling love."</blockquote>
+                <cite>— Heaven and Hell</cite>
+            </div>
+
+            <p>The ruling love is not what we thought we loved, or what we said we loved, or what we believed we should love. It is what we <em>actually</em> loved — revealed by what we actually did, especially when no one was watching.</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> If the ruling love was love of the neighbor (genuine concern for others), the person gravitates toward heaven.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> If the ruling love was love of self above all (using others as means), the person gravitates toward hell.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> If the ruling love was love of the world (material acquisition as end), direction depends on subordination.</li>
+            </ul>
+
+            <p>This is not judgment from outside. It is self-selection. The person goes where their ruling love leads them, because after vastation, they cannot be other than what they are.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Vastation is Necessary</h2>
+
+            <p>Without vastation, false placements would occur. People would be in heaven or hell based on appearance rather than reality. This would cause suffering for all:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">1.</span> <strong>A hypocrite in heaven</strong> would find heavenly love painful — it would expose and aggravate their hidden hatred.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">2.</span> <strong>A good person in hell</strong> would suffer the company of those whose loves are contrary to their own.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #ffd700;">3.</span> <strong>Mixed communities</strong> would be unstable — internal conflicts would destroy the society.</li>
+            </ul>
+
+            <p>Vastation ensures that each person ends where they belong — not by external decree but by internal consistency. After vastation, the outer matches the inner. The person is whole, unified, what they appear to be.</p>
+
+            <div class="quote-block">
+                <blockquote>"After death the interior of a person is laid open. This is done by removing the exterior successively."</blockquote>
+                <cite>— Heaven and Hell</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Vastation in Life</h2>
+
+            <p>Though Swedenborg describes vastation as an after-death process, the same stripping can occur during life. Crisis, illness, loss, or deliberate spiritual practice can initiate vastation while still embodied.</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Voluntary vastation:</strong> Meditation, self-examination, confession — deliberately looking at the shadow.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Involuntary vastation:</strong> Illness, breakdown, failure — life stripping away what is not essential.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Relational vastation:</strong> Intimacy with another who sees through your persona.</li>
+            </ul>
+
+            <p>Those who undergo vastation while alive have the opportunity to reform — to change the ruling love before death fixes it permanently. This is one of the purposes of suffering: it strips away illusion and reveals what is actually there, while there is still time to change it.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F525;</div>
+                <div class="placeholder-text">IMAGE: Fire refining gold — impurities burning away<br>The gold (essential self) remains; dross (false self) is consumed<br>Vastation as spiritual alchemy</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Liberation of Vastation</h2>
+
+            <p>Though vastation sounds severe, Swedenborg presents it as ultimately liberating. The masks are heavy. The performances are exhausting. The self-deception is suffocating. To have all that fall away — to simply BE what you are — is relief.</p>
+
+            <p>For those whose ruling love is good, vastation reveals what they have always been at core. The external contradictions dissolve. They become fully themselves for the first time.</p>
+
+            <p>For those whose ruling love is evil, vastation at least removes the hypocrisy. They can pursue their loves openly. This is not happiness — but it is consistency. Even hell has integrity: everyone there is what they appear to be.</p>
+
+            <div class="quote-block">
+                <blockquote>"After the first state, which is the state of the exteriors, the person passes into the state of the interiors, in which nothing is hidden."</blockquote>
+                <cite>— Heaven and Hell</cite>
+            </div>
+
+            <p>Nothing is hidden. This is the end of vastation. Complete transparency. Complete consistency. The 72.43% shadow has joined the 27.57% manifest. The person is 100% visible — to themselves, to others, to all.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-08.html" class="nav-btn">← The Universal Human</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-10.html" class="nav-btn">27 Years →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

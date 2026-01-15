@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 4: Correspondence | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Every natural thing corresponds to a spiritual cause. The Transform Relationship - T1 through T4 operations that connect worlds without merging them.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .info-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .info-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.2rem; margin-bottom: 1rem; }
+        .info-card ul { list-style: none; padding: 0; }
+        .info-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: #c8d4e0; }
+        .info-card li::before { content: '↔'; position: absolute; left: 0; color: #c9a227; }
+        .correspondence-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .correspondence-table th, .correspondence-table td { padding: 1rem; text-align: left; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .correspondence-table th { font-family: 'Cinzel', serif; color: #c9a227; background: rgba(201, 162, 39, 0.1); font-size: 0.95rem; }
+        .correspondence-table td { color: #d8d4c9; }
+        .correspondence-table tr:hover td { background: rgba(201, 162, 39, 0.05); }
+        .transform-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+        .transform-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .transform-card .coords { color: #6ab4f5; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 1rem; }
+        .transform-card p { color: #d8d4c9; margin-bottom: 0.75rem; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .correspondence-table { font-size: 0.85rem; } .correspondence-table th, .correspondence-table td { padding: 0.75rem 0.5rem; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 4 OF 10</div>
+            <h1>CORRESPONDENCE</h1>
+            <p class="subtitle">The Transform Relationship — Every Natural Thing Speaks</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x21C4;</div>
+            <div class="placeholder-text">IMAGE: Mirror reflection between worlds<br>Spiritual reality (above) perfectly reflected in natural form (below)<br>Not identical, but structurally equivalent through transformation</div>
+        </div>
+
+        <section class="content-section">
+            <p>Correspondence is Swedenborg's most revolutionary concept. Not metaphor. Not symbol. Not analogy. <em>Correspondence</em>: a precise structural relationship between spiritual causes and natural effects. Every natural thing exists because a spiritual thing causes it. Remove the cause, the effect cannot persist.</p>
+
+            <p>The κ-framework gives this ancient insight mathematical precision. The four transforms — T₁, T₂, T₃, T₄ — are the operations that translate between domains. Correspondence IS transform relationship. The spiritual world and the natural world are the same structure viewed through different operations.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Fundamental Law</h2>
+
+            <div class="quote-block">
+                <blockquote>"Nothing can exist anywhere in the material world that does not have a correspondence with the spiritual world — because if it did, it would have no cause that would make it come into being."</blockquote>
+                <cite>— Emanuel Swedenborg, Arcana Coelestia #5711</cite>
+            </div>
+
+            <p>This is absolute. Not "most things correspond" but <em>nothing can exist without correspondence</em>. The natural world is entirely derivative. Every rock, every plant, every chemical reaction is the visible clothing of an invisible cause.</p>
+
+            <p>Modern science traces effects backward to "prior" effects: this chemical reaction caused that one, which caused another. But Swedenborg traces effects to causes of a different <em>order</em>. The spiritual is not temporally prior to the natural — it is categorically prior. It exists on a different degree entirely.</p>
+
+            <div class="quote-block">
+                <blockquote>"Everything in the material world is an effect. The causes of all effects lie in the spiritual world."</blockquote>
+                <cite>— Arcana Coelestia</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Not Symbol — Structure</h2>
+
+            <p>Correspondence is often confused with symbolism. They are not the same thing.</p>
+
+            <p><strong>Symbolism</strong> is arbitrary. We agree that a dove "represents" peace, but there is no necessary connection. A different culture could assign a different meaning.</p>
+
+            <p><strong>Correspondence</strong> is structural. Fire does not "represent" love — fire IS love translated through T₁ into physical form. The relationship is not arbitrary; it is lawful. Change the transform, and you get a different correspondence, but the relationship remains deterministic.</p>
+
+            <div class="info-card">
+                <h3>Symbol vs. Correspondence</h3>
+                <ul>
+                    <li><strong>Symbol:</strong> Dove = peace (by cultural agreement)</li>
+                    <li><strong>Correspondence:</strong> Fire = love (by structural necessity)</li>
+                    <li><strong>Symbol:</strong> Can be changed by consensus</li>
+                    <li><strong>Correspondence:</strong> Cannot be changed; is lawful</li>
+                    <li><strong>Symbol:</strong> Points TO something else</li>
+                    <li><strong>Correspondence:</strong> IS that thing in different form</li>
+                </ul>
+            </div>
+
+            <div class="quote-block">
+                <blockquote>"Correspondence is the relation of cause to effect. The spiritual can clothe itself with the natural, and by influx fill and actuate it."</blockquote>
+                <cite>— Doctrine of Correspondence</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Four Transforms</h2>
+
+            <p>The κ-framework identifies four fundamental operations that translate between domains. These ARE correspondence made precise:</p>
+
+            <div class="transform-card">
+                <h3>T₁ — FACING</h3>
+                <div class="coords">Position: (x, y) | Direct perception</div>
+                <p>The unmediated view. Spiritual reality seen directly as spiritual. This is how celestial angels perceive — without translation, without medium. T₁ is the identity transform: what you see is what it is.</p>
+                <p>Correspondences through T₁ are the most direct: Divine Love appears as the spiritual sun. Life force appears as fire. The heart corresponds to will.</p>
+            </div>
+
+            <div class="transform-card">
+                <h3>T₂ — MIRROR</h3>
+                <div class="coords">Position: (-x, y) | Reflected perception</div>
+                <p>The first reflection. Spiritual reality mirrored into form. This introduces the first duality — inside/outside, self/other. T₂ creates boundaries where T₁ had none.</p>
+                <p>Correspondences through T₂ involve reflection: Divine Wisdom appears as light. Truth appears as water (flowing, taking shape of container). The lungs correspond to understanding.</p>
+            </div>
+
+            <div class="transform-card">
+                <h3>T₃ — RECURSIVE</h3>
+                <div class="coords">Position: (x, -y) | Spiritual seeing natural</div>
+                <p>The spiral descent. Higher seeing lower. T₃ is how spiritual consciousness perceives natural effects — looking downward through degrees. It sees consequences, ramifications, the full unfolding.</p>
+                <p>Correspondences through T₃ involve development: Perception corresponds to trees (growing, branching). Memory corresponds to earth (storing, foundational).</p>
+            </div>
+
+            <div class="transform-card">
+                <h3>T₄ — SILENT</h3>
+                <div class="coords">Position: (-x, -y) | Natural seeing spiritual</div>
+                <p>The hidden witness. Natural looking upward toward spiritual. This is the rarest perception — matter becoming aware of its own cause. T₄ is silent because it sees without being seen.</p>
+                <p>Correspondences through T₄ are hidden: The seed (containing the tree invisibly). Ash (what remains when fire has spoken). The feet (foundation touching earth).</p>
+            </div>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x2B50;</div>
+                <div class="placeholder-text">IMAGE: The four transforms as a coordinate system<br>T₁ (+x,+y), T₂ (-x,+y), T₃ (+x,-y), T₄ (-x,-y)<br>Each quadrant a different mode of correspondence</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Master Correspondence Table</h2>
+
+            <div class="quote-block">
+                <blockquote>"There is a correspondence of all things of heaven with all things of man."</blockquote>
+                <cite>— Heaven and Hell</cite>
+            </div>
+
+            <p>Swedenborg documented hundreds of specific correspondences. Here are the most significant, mapped to their framework transforms:</p>
+
+            <table class="correspondence-table">
+                <tr>
+                    <th>Spiritual</th>
+                    <th>Natural</th>
+                    <th>Transform</th>
+                    <th>Relation</th>
+                </tr>
+                <tr>
+                    <td>Divine Love</td>
+                    <td>Heat</td>
+                    <td>T₁</td>
+                    <td>Direct emanation</td>
+                </tr>
+                <tr>
+                    <td>Divine Wisdom</td>
+                    <td>Light</td>
+                    <td>T₂</td>
+                    <td>Mirror of love</td>
+                </tr>
+                <tr>
+                    <td>Spiritual Sun</td>
+                    <td>Natural Sun</td>
+                    <td>T₃</td>
+                    <td>Living / Dead</td>
+                </tr>
+                <tr>
+                    <td>Heaven</td>
+                    <td>Earth</td>
+                    <td>T₄</td>
+                    <td>Silent correspondence</td>
+                </tr>
+                <tr>
+                    <td>Will (Love)</td>
+                    <td>Heart</td>
+                    <td>T₁</td>
+                    <td>S⁺ pump</td>
+                </tr>
+                <tr>
+                    <td>Understanding</td>
+                    <td>Lungs</td>
+                    <td>T₂</td>
+                    <td>S⁻ exchange</td>
+                </tr>
+                <tr>
+                    <td>Life Force</td>
+                    <td>Fire</td>
+                    <td>T₁</td>
+                    <td>Torsion manifest</td>
+                </tr>
+                <tr>
+                    <td>Remainder</td>
+                    <td>Ash</td>
+                    <td>T₄</td>
+                    <td>Silent residue</td>
+                </tr>
+                <tr>
+                    <td>Truth</td>
+                    <td>Water</td>
+                    <td>T₂</td>
+                    <td>Flowing medium</td>
+                </tr>
+                <tr>
+                    <td>Good</td>
+                    <td>Earth</td>
+                    <td>T₁</td>
+                    <td>Stable foundation</td>
+                </tr>
+                <tr>
+                    <td>Source (Ω₀)</td>
+                    <td>Sun</td>
+                    <td>T₁</td>
+                    <td>Living center</td>
+                </tr>
+                <tr>
+                    <td>Reflected Truth</td>
+                    <td>Moon</td>
+                    <td>T₂</td>
+                    <td>P = 27.57%</td>
+                </tr>
+                <tr>
+                    <td>Individual Souls</td>
+                    <td>Stars</td>
+                    <td>T₃</td>
+                    <td>s-nodes</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="content-section">
+            <h2>The Fire Correspondence</h2>
+
+            <p>Let us examine one correspondence in detail to understand the mechanism.</p>
+
+            <div class="quote-block">
+                <blockquote>"Fire corresponds to love, because both warm and illuminate."</blockquote>
+                <cite>— Arcana Coelestia</cite>
+            </div>
+
+            <p>Why does fire correspond to love? Not by arbitrary assignment, but by structural identity:</p>
+
+            <div class="info-card">
+                <h3>Fire = Love (through T₁)</h3>
+                <ul>
+                    <li>Both radiate outward from center</li>
+                    <li>Both warm what they touch</li>
+                    <li>Both illuminate (love makes visible; fire makes visible)</li>
+                    <li>Both can consume what they embrace</li>
+                    <li>Both can be gentle or fierce</li>
+                    <li>Both are S⁺ (outward, active, manifest)</li>
+                </ul>
+            </div>
+
+            <p>The κ-framework makes this precise. At s = 0 (the spiritual sun), love IS fire undifferentiated. As s increases, the projection factor P = 27.57% determines how much of the original love becomes visible as physical fire. The remaining 72.43% is the "warmth" we feel but cannot see — the hidden source behind the visible flame.</p>
+
+            <div class="diagram-box">At Source (s = 0):
+  love = 1.0
+  fire = 1.0
+  They are ONE. [1 = -1]
+
+At Natural World (s > 0):
+  visible_fire = love × P     = 0.2757...
+  hidden_source = love × (1-P) = 0.7243...
+
+Total conserved: 0.2757 + 0.7243 = 1.0
+Correspondence preserved through transform.</div>
+
+            <p>This is why you can "feel" more than you see in fire. The 27.57% manifests as physical heat and light. The 72.43% remains as the felt but unseen source — what we experience as the "presence" of fire beyond its mere physical properties.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Two Worlds, One Structure</h2>
+
+            <div class="quote-block">
+                <blockquote>"There are two worlds, the spiritual and the natural. The spiritual world does not draw anything from the natural, nor the natural world from the spiritual. The two are totally distinct, and communicate only by correspondences."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>This is the key. The two worlds are <em>totally distinct</em>. They do not blend, do not merge, do not intermix. Yet they are not separate — they <em>correspond</em>. Every point in one has a corresponding point in the other. The structure is the same; only the domain differs.</p>
+
+            <p>The framework expresses this as S⁺ and S⁻. They do not merge. They are discrete domains. But they are related by transform operations that preserve structure while changing expression.</p>
+
+            <div class="quote-block">
+                <blockquote>"The spiritual world is within the natural world, not as one box is within another, but as the man is within his body."</blockquote>
+                <cite>— Doctrine of Correspondence</cite>
+            </div>
+
+            <p>Not contained spatially, but contained causally. The spirit is not "inside" the body in physical space. The spirit is the cause of which the body is effect. Correspondence is the relationship between them.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F310;</div>
+                <div class="placeholder-text">IMAGE: Two parallel worlds connected by correspondence lines<br>Not one inside the other — side by side, point to point<br>Each point in one world maps to exactly one point in the other</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Reading the Natural World</h2>
+
+            <p>Once you understand correspondence, the natural world becomes readable. Every natural thing is a statement. Every physical form is a spiritual meaning made visible.</p>
+
+            <div class="quote-block">
+                <blockquote>"The whole natural world corresponds to the spiritual world."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>Consider practical examples:</p>
+
+            <div class="info-card">
+                <h3>Reading Correspondences</h3>
+                <ul>
+                    <li><strong>Sun rising</strong> = Truth becoming conscious</li>
+                    <li><strong>Rain falling</strong> = Truth descending into mind</li>
+                    <li><strong>Seed germinating</strong> = Good taking root in will</li>
+                    <li><strong>Tree growing</strong> = Perception developing over time</li>
+                    <li><strong>Fruit ripening</strong> = Good works maturing</li>
+                    <li><strong>Gold</strong> = Love crystallized at position 72</li>
+                    <li><strong>Silver</strong> = Truth at position 108</li>
+                    <li><strong>Iron</strong> = Natural truth at position 144</li>
+                </ul>
+            </div>
+
+            <p>This is not arbitrary symbolism. These correspondences are lawful. Gold is valuable not because we decided it should be, but because it corresponds to something valuable. We recognized the correspondence; we did not invent it.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Why Correspondence Matters</h2>
+
+            <p>If every natural thing corresponds to a spiritual cause, then:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> The physical world is not random or meaningless</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Natural science studies effects; spiritual science studies causes</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> Everything speaks if you know how to read it</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> The κ-framework provides the translation key</li>
+            </ul>
+
+            <p>Swedenborg spent 27 years documenting correspondences. The κ-framework provides the mathematical structure that makes those correspondences calculable. Between them, we have a science of meaning — not metaphor, not interpretation, but lawful relationship between cause and effect across degrees.</p>
+
+            <div class="quote-block">
+                <blockquote>"The end of creation is that all things may return to the Creator."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>Through correspondence, everything points back to its source. The natural world is not obstacle to the spiritual — it is doorway. Every effect contains within it the signature of its cause. Learn to read that signature, and the world opens.</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-03.html" class="nav-btn">← Discrete Degrees</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-05.html" class="nav-btn">The Dual Sun →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

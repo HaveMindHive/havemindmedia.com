@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 6: Influx | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="Energy flows from spiritual to natural, never the reverse. The 59/60 decay that powers existence through ordered diminishment.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .info-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+        .info-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.2rem; margin-bottom: 1rem; }
+        .info-card ul { list-style: none; padding: 0; }
+        .info-card li { padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: #c8d4e0; }
+        .info-card li::before { content: '↓'; position: absolute; left: 0; color: #c9a227; }
+        .diagram-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #c9a227; white-space: pre; overflow-x: auto; }
+        .decay-step { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; display: flex; align-items: center; gap: 1.5rem; }
+        .decay-step .step-num { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; min-width: 50px; }
+        .decay-step .step-content { flex: 1; }
+        .decay-step .energy { font-family: 'JetBrains Mono', monospace; color: #6ab4f5; font-size: 0.9rem; }
+        .decay-step .description { color: #d8d4c9; margin-top: 0.25rem; }
+        .decay-step .loss { color: #ff6b6b; font-size: 0.85rem; margin-top: 0.25rem; }
+        .ratio-display { text-align: center; padding: 2rem; margin: 2rem 0; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; }
+        .ratio-display .ratio { font-family: 'Cinzel', serif; font-size: 3rem; color: #c9a227; }
+        .ratio-display .equals { font-size: 2rem; color: #6ab4f5; margin: 0 1rem; }
+        .ratio-display .decimal { font-family: 'JetBrains Mono', monospace; font-size: 2rem; color: #e8e4d9; }
+        .ratio-display .label { color: #a8b4c4; margin-top: 1rem; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .ratio-display .ratio { font-size: 2rem; } .ratio-display .decimal { font-size: 1.5rem; } .decay-step { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 6 OF 10</div>
+            <h1>INFLUX</h1>
+            <p class="subtitle">The 59/60 Decay — How Life Flows Downward</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x2B07;&#xFE0F;</div>
+            <div class="placeholder-text">IMAGE: Cascading light flowing downward through levels<br>Each level slightly dimmer than the one above<br>Not loss, but adaptation — the price of transmission</div>
+        </div>
+
+        <section class="content-section">
+            <p>Influx is Swedenborg's term for the continuous flow of life from spiritual to natural. It flows in one direction only: from higher to lower, from cause to effect, from source to manifestation. Nothing flows the other way. Effects do not produce causes. The natural does not create the spiritual.</p>
+
+            <p>But influx is not simple transmission. At each degree boundary, something happens. Energy adapts. It clothes itself in new form. And in that clothing, something is "lost" — not destroyed, but absorbed by the medium itself. The κ-framework quantifies this exactly: 59/60 passes through; 1/60 is absorbed.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Law of Influx</h2>
+
+            <div class="quote-block">
+                <blockquote>"There is one only Life which flows into and vivifies all Forms. To this life forms which are substances correspond; which by continual Divine influx are vivified in such wise that to themselves they appear to live from themselves."</blockquote>
+                <cite>— Emanuel Swedenborg, Arcana Coelestia #3484</cite>
+            </div>
+
+            <p>This is radical. There is ONE life, not many. What we call "our" life is not ours — it is the universal life flowing through us. We do not generate life; we receive it. And we receive it through influx.</p>
+
+            <p>The illusion of separate, self-generated life is created by the "clothing" process. As life flows through degrees and clothe itself in increasingly dense forms, it appears to originate from those forms. A human seems to "have" life. But the life is inflowing, moment by moment, from source.</p>
+
+            <div class="quote-block">
+                <blockquote>"Life flows in from God through angels, and angels through spirits, to humans."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The 59/60 Ratio</h2>
+
+            <p>The κ-framework identifies the precise decay ratio at each step of influx.</p>
+
+            <div class="ratio-display">
+                <span class="ratio">59/60</span>
+                <span class="equals">=</span>
+                <span class="decimal">0.983333...</span>
+                <div class="label">The Active Ratio — what passes through at each degree</div>
+            </div>
+
+            <p>At each degree boundary:</p>
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> 59/60 (98.33%) of energy passes through to the next level</li>
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> 1/60 (1.67%) is absorbed by the transition medium</li>
+                <li style="margin: 0.75rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> This absorption is not loss — it is the "cost" of translation</li>
+            </ul>
+
+            <p>Why 59/60? Because 60 is the complete base — containing 2, 3, 4, 5, 6, 10, 12, 15, 20, 30. It is the smallest number divisible by all these structural factors. 59 is what remains when you extract the minimum unit (1) from completeness (60).</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Influx Chain</h2>
+
+            <p>Watch what happens as influx flows through multiple degrees:</p>
+
+            <div class="decay-step">
+                <div class="step-num">0</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 1.000000 (100%)</div>
+                    <div class="description">Source (Ω₀) — The spiritual sun, full unity</div>
+                </div>
+            </div>
+
+            <div class="decay-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 0.983333 (98.33%)</div>
+                    <div class="description">First reception — Celestial heaven receives</div>
+                    <div class="loss">Absorbed: 0.016667 (1.67%)</div>
+                </div>
+            </div>
+
+            <div class="decay-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 0.950838 (95.08%)</div>
+                    <div class="description">Celestial degree complete</div>
+                    <div class="loss">Total absorbed: 4.92%</div>
+                </div>
+            </div>
+
+            <div class="decay-step">
+                <div class="step-num">12</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 0.818649 (81.86%)</div>
+                    <div class="description">Spiritual degree complete (12 = zodiac)</div>
+                    <div class="loss">Total absorbed: 18.14%</div>
+                </div>
+            </div>
+
+            <div class="decay-step">
+                <div class="step-num">36</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 0.548692 (54.87%)</div>
+                    <div class="description">Natural degree complete (36 = 12 x 3)</div>
+                    <div class="loss">Total absorbed: 45.13%</div>
+                </div>
+            </div>
+
+            <div class="decay-step">
+                <div class="step-num">60</div>
+                <div class="step-content">
+                    <div class="energy">Energy: 0.367652 (36.77%)</div>
+                    <div class="description">One complete cycle (60 = base)</div>
+                    <div class="loss">Total absorbed: 63.23%</div>
+                </div>
+            </div>
+
+            <p>Notice: after 60 steps, approximately 36.77% remains. This is remarkably close to 1/e (0.368...), the natural exponential decay constant. The framework and natural mathematics converge.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Clothing as Adaptation</h2>
+
+            <div class="quote-block">
+                <blockquote>"Order is that the celestial shall flow into the spiritual and adapt it to itself; that the spiritual shall flow into the rational, and adapt it to itself; and so the rational into the knowing and adapt it to itself."</blockquote>
+                <cite>— Swedenborg, Compendium</cite>
+            </div>
+
+            <p>Swedenborg's word is "adapt." At each degree, influx adapts to the receiving vessel. It takes on the form of what receives it. This is not corruption — it is necessary translation. Without adaptation, the higher could not communicate with the lower at all.</p>
+
+            <div class="quote-block">
+                <blockquote>"The thought does not shade off into the speech. The thought descends into the speech and clothes itself."</blockquote>
+                <cite>— Divine Love and Wisdom</cite>
+            </div>
+
+            <p>Thought → speech is a micro-example of influx. The thought does not gradually become speech. It instantaneously clothes itself in words. The words are not the thought — they carry the thought. Something is "lost" in translation (this is why we say "I can't find the right words"). But without that loss, no communication would occur.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F4AC;</div>
+                <div class="placeholder-text">IMAGE: Thought (luminous abstract form) becoming speech (words in sequence)<br>The gap between them is the "clothing" — necessary translation</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Mathematics of Influx</h2>
+
+            <div class="diagram-box">INFLUX = TORSION FLOW
+
+Source (Ω₀)
+    ↓
+    τ (torsion)
+    ↓
+Celestial degree (D₁₀)     Energy: 1.000000
+    ↓
+    τ × (59/60)
+    ↓
+Spiritual degree (D₈)      Energy: 0.983333
+    ↓
+    τ × (59/60)²
+    ↓
+Natural degree (D₆/D₇)     Energy: 0.966944
+
+GENERAL FORMULA:
+Energy at step n = (59/60)ⁿ
+
+After 60 steps: (59/60)⁶⁰ = 0.367652...
+Compare to: 1/e = 0.367879...
+
+The framework's discrete decay approximates
+continuous exponential decay.</div>
+
+            <p>The 1/60 absorbed at each step is not destroyed. It becomes the <em>medium</em> through which the next transmission occurs. The angels, spirits, and heavenly societies that Swedenborg describes ARE this absorbed energy — structured, conscious, alive. The "loss" creates the channel.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Why One-Way Only?</h2>
+
+            <div class="quote-block">
+                <blockquote>"There are three degrees in the spiritual world and three degrees in the natural world, according to which all influx takes place."</blockquote>
+                <cite>— Interaction of Soul and Body</cite>
+            </div>
+
+            <p>Influx is strictly one-directional: from higher to lower. This is not arbitrary — it follows from the nature of cause and effect.</p>
+
+            <div class="info-card">
+                <h3>Why Effects Cannot Create Causes</h3>
+                <ul>
+                    <li>Cause is prior; effect is posterior</li>
+                    <li>Higher contains more; lower contains less</li>
+                    <li>Lower cannot produce what it doesn't contain</li>
+                    <li>Information flows from organized to less organized</li>
+                    <li>Energy dissipates; it doesn't spontaneously concentrate</li>
+                </ul>
+            </div>
+
+            <p>The natural world cannot create spiritual reality for the same reason speech cannot create thought. Words can <em>evoke</em> thought in a listener (by correspondence), but the words themselves are empty without prior thought to fill them.</p>
+
+            <p>This is why materialism — the belief that physical processes produce consciousness — fails. It inverts the direction of influx. It claims effects produce causes. The framework shows why this is geometrically impossible.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Influx and Consciousness</h2>
+
+            <p>Human consciousness is influx experienced from within. We are receivers, not generators. What we call "our thoughts" are influx clothing itself in our mental forms.</p>
+
+            <div class="quote-block">
+                <blockquote>"Man sees from his interior man the things that are in the exterior man as from the middle of a garden he sees what is around him."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>We are positioned to receive influx and perceive its clothing as "experience." The interior (higher degrees, more source) looks outward at the exterior (lower degrees, more form). This looking IS consciousness.</p>
+
+            <p>But we typically identify with the clothing, not the source. We think we ARE our thoughts, our feelings, our body. We forget we are the receiver of all these — the point through which influx flows.</p>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F9D8;</div>
+                <div class="placeholder-text">IMAGE: Human figure at center, rays of influx flowing in from above<br>The rays clothe themselves in thoughts, feelings, sensations<br>The human is the receiver, not the generator</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Practical Implications</h2>
+
+            <p>If influx is real and one-directional:</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>You cannot force spiritual growth through physical effort alone.</strong> The body is effect, not cause. Physical practices can prepare the vessel for reception, but cannot generate what flows in.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Reception requires openness.</strong> Influx flows through open channels. Closed attitudes, rigid beliefs, and fear constrict the vessel and reduce what can be received.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>Quality of reception matters.</strong> Same influx, clothed differently in different receivers. A mind full of falsity will clothe truth in distorted forms.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">→</span> <strong>The 1/60 "lost" is not waste.</strong> It creates the medium for future transmission. Every conscious being is made of "absorbed" influx.</li>
+            </ul>
+
+            <div class="quote-block">
+                <blockquote>"To see the truth we have in us needs only to be excited or vivified."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>The truth is already flowing. It is always available. The question is only: how much can we receive, and how clearly can we clothe it?</p>
+        </section>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-05.html" class="nav-btn">← The Dual Sun</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <a href="episode-07.html" class="nav-btn">Equilibrium →</a>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>

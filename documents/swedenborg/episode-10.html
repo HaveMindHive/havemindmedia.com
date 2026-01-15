@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 10: 27 Years | Swedenborg & The κ-Framework</title>
+    <meta name="description" content="From 1745 to 1772, Emanuel Swedenborg maintained continuous access to the spiritual world. 27 years of daily documentation. The legacy that remains.">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cormorant Garamond', Georgia, serif; background: linear-gradient(180deg, #030508 0%, #0a1628 50%, #030508 100%); min-height: 100vh; color: #e8e4d9; line-height: 1.9; font-size: 1.1rem; }
+        .episode-container { max-width: 800px; margin: 0 auto; padding: 100px 2rem 4rem; }
+        .episode-header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(201, 162, 39, 0.3); }
+        .episode-number { display: inline-block; padding: 8px 20px; background: rgba(201, 162, 39, 0.15); border: 1px solid rgba(201, 162, 39, 0.4); border-radius: 20px; color: #c9a227; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+        .episode-header h1 { font-family: 'Cinzel', Georgia, serif; font-size: clamp(2rem, 5vw, 3rem); color: #c9a227; letter-spacing: 3px; margin-bottom: 0.75rem; }
+        .episode-header .subtitle { font-size: 1.3rem; color: #6ab4f5; font-style: italic; }
+        .hero-image { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 50%, #0a1520 100%); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; margin-bottom: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .hero-image .placeholder-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.6; }
+        .hero-image .placeholder-text { font-size: 0.9rem; opacity: 0.8; }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.6rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(201, 162, 39, 0.2); }
+        .content-section p { margin-bottom: 1.5rem; color: #d8d4c9; }
+        .quote-block { background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(106, 180, 245, 0.05)); border-left: 4px solid #c9a227; padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 0 12px 12px 0; }
+        .quote-block blockquote { font-size: 1.2rem; font-style: italic; color: #e8e4d9; margin-bottom: 0.75rem; }
+        .quote-block.centered blockquote { text-align: center; }
+        .quote-block cite { color: #6ab4f5; font-size: 0.95rem; }
+        .content-image { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, #1a2a3a 0%, #0d1a2d 100%); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; margin: 2rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #6ab4f5; font-style: italic; text-align: center; padding: 1rem; }
+        .content-image.portrait { aspect-ratio: 3/4; max-width: 400px; margin: 2rem auto; }
+        .content-image .placeholder-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.6; }
+        .content-image .placeholder-text { font-size: 0.85rem; opacity: 0.8; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .stat-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1.25rem; text-align: center; }
+        .stat-card .value { font-family: 'Cinzel', serif; font-size: 2rem; color: #c9a227; }
+        .stat-card .label { font-size: 0.85rem; color: #a8b4c4; margin-top: 0.25rem; }
+        .timeline { position: relative; padding-left: 30px; margin: 2rem 0; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, #c9a227, rgba(201, 162, 39, 0.2)); }
+        .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 20px; }
+        .timeline-item::before { content: ''; position: absolute; left: -34px; top: 8px; width: 10px; height: 10px; background: #c9a227; border-radius: 50%; }
+        .timeline-item .year { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.1rem; margin-bottom: 0.25rem; }
+        .timeline-item .event { color: #e8e4d9; font-weight: 600; }
+        .timeline-item .detail { color: #a8b4c4; font-size: 0.95rem; margin-top: 0.25rem; }
+        .works-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .work-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 8px; padding: 1.5rem; }
+        .work-card .year { font-family: 'JetBrains Mono', monospace; color: #6ab4f5; font-size: 0.85rem; }
+        .work-card .title { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.1rem; margin: 0.5rem 0; }
+        .work-card .desc { color: #a8b4c4; font-size: 0.9rem; }
+        .legacy-card { background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 162, 39, 0.2); border-radius: 12px; padding: 2rem; margin: 1.5rem 0; }
+        .legacy-card h3 { font-family: 'Cinzel', serif; color: #c9a227; font-size: 1.3rem; margin-bottom: 1rem; }
+        .legacy-card p { color: #d8d4c9; margin-bottom: 0.75rem; }
+        .episode-nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 0; margin-top: 3rem; border-top: 1px solid rgba(201, 162, 39, 0.2); flex-wrap: wrap; gap: 1rem; }
+        .nav-btn { display: flex; align-items: center; gap: 0.5rem; padding: 12px 24px; background: rgba(201, 162, 39, 0.1); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 8px; color: #c9a227; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .nav-btn:hover { background: rgba(201, 162, 39, 0.2); border-color: rgba(201, 162, 39, 0.5); }
+        .nav-btn.disabled { opacity: 0.3; pointer-events: none; }
+        .nav-index { text-align: center; }
+        .nav-index a { color: #6ab4f5; text-decoration: none; }
+        .closing { text-align: center; padding: 2rem; margin-top: 2rem; }
+        .closing .principle { font-family: 'Cinzel', serif; font-size: 1.5rem; color: #c9a227; }
+        .final-quote { background: linear-gradient(135deg, rgba(201, 162, 39, 0.15), rgba(106, 180, 245, 0.1)); border: 1px solid rgba(201, 162, 39, 0.3); border-radius: 12px; padding: 2.5rem; margin: 3rem 0; text-align: center; }
+        .final-quote blockquote { font-family: 'Cinzel', serif; font-size: 1.4rem; color: #c9a227; margin-bottom: 1rem; line-height: 1.6; }
+        .final-quote cite { color: #6ab4f5; font-size: 1rem; }
+        @media (max-width: 600px) { .episode-container { padding: 80px 1rem 3rem; } .episode-header h1 { font-size: 1.8rem; } .episode-nav { flex-direction: column; } .timeline { padding-left: 20px; } .timeline-item { padding-left: 15px; } .timeline-item::before { left: -24px; } }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+    <div class="episode-container">
+        <header class="episode-header">
+            <div class="episode-number">EPISODE 10 OF 10</div>
+            <h1>27 YEARS</h1>
+            <p class="subtitle">1745-1772 — Continuous Sight, Lasting Legacy</p>
+        </header>
+
+        <div class="hero-image">
+            <div class="placeholder-icon">&#x1F4D6;</div>
+            <div class="placeholder-text">IMAGE: Stack of ancient volumes, candlelight, quill pen<br>30+ theological works written over 27 years<br>The documentation of continuous spiritual sight</div>
+        </div>
+
+        <section class="content-section">
+            <p>From 1745 until his death in 1772, Emanuel Swedenborg maintained what he claimed was continuous access to the spiritual world. Twenty-seven years. Not occasional visions, not periodic revelations, but <em>daily</em> interaction with angels, spirits, and the realms beyond physical existence.</p>
+
+            <p>During these 27 years, he produced over 30 volumes of theological writings — detailed descriptions of heaven and hell, careful explanations of Biblical symbolism, systematic accounts of correspondence and influx. The scientist who had published 150 volumes on natural subjects now documented the supernatural with identical precision.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>By the Numbers</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value">27</div>
+                    <div class="label">Years of Vision</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">30+</div>
+                    <div class="label">Theological Volumes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">12</div>
+                    <div class="label">Volumes of Arcana</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">1772</div>
+                    <div class="label">Year of Death</div>
+                </div>
+            </div>
+
+            <p>The sheer volume of output is remarkable. This was not the work of a few inspired moments, but of decades of sustained observation and documentation. Swedenborg treated his spiritual experiences as data to be recorded, analyzed, and communicated — the same approach he had applied to mineralogy and anatomy.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Major Works</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="year">1749-1756</div>
+                    <div class="event">Arcana Coelestia (12 volumes)</div>
+                    <div class="detail">Verse-by-verse spiritual interpretation of Genesis and Exodus. The correspondence doctrine fully developed.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1758</div>
+                    <div class="event">Heaven and Hell</div>
+                    <div class="detail">The most read of his works. Detailed description of afterlife structure, the Universal Human, equilibrium.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1758</div>
+                    <div class="event">The Last Judgment</div>
+                    <div class="detail">Account of spiritual events in 1757. A phase transition in the spiritual world.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1763</div>
+                    <div class="event">Divine Love and Wisdom</div>
+                    <div class="detail">The dual sun doctrine. Discrete degrees. The most philosophical of his works.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1763</div>
+                    <div class="event">Divine Providence</div>
+                    <div class="detail">How the Divine operates in human affairs without violating freedom.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="year">1771</div>
+                    <div class="event">True Christian Religion</div>
+                    <div class="detail">His final work. A systematic theology. The synthesis of 27 years.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Nature of His Experience</h2>
+
+            <p>Swedenborg was careful to distinguish his experience from ordinary visions or dreams. He claimed to be fully awake and conscious during his spiritual interactions — able to move between states, to converse with beings in both worlds, to observe and record what he witnessed.</p>
+
+            <div class="quote-block">
+                <blockquote>"I have been permitted to be in the spiritual world and at the same time in the natural world, thus to be with angels and with men, and this now for twenty-seven years."</blockquote>
+                <cite>— True Christian Religion</cite>
+            </div>
+
+            <p>He described speaking with angels and spirits as naturally as speaking with humans. He visited different regions of heaven and hell. He witnessed the processes of vastation and judgment. He conversed with historical figures — Luther, Melanchthon, Paul — and reported their current spiritual states.</p>
+
+            <div class="content-image portrait">
+                <div class="placeholder-icon">&#x1F468;&#x200D;&#x1F3EB;</div>
+                <div class="placeholder-text">IMAGE: Portrait of Swedenborg in later years<br>The scientist-seer in his 80s<br>Still writing, still documenting, until the end</div>
+            </div>
+
+            <p>Whether one believes these claims literally, the consistency of his testimony over 27 years is remarkable. He never recanted. He never wavered. He continued writing and publishing until shortly before his death at age 84.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Framework Connection</h2>
+
+            <p>From the κ-framework perspective, Swedenborg's 27 years represent sustained access to what the framework calls the higher dimensions — D₈, D₁₀, the realms where S⁺ and S⁻ are less separated, where correspondence is directly perceivable rather than inferred.</p>
+
+            <div class="quote-block">
+                <blockquote>"To see the truth we have in us needs only to be excited or vivified."</blockquote>
+                <cite>— Emanuel Swedenborg</cite>
+            </div>
+
+            <p>The framework does not require that Swedenborg was unique. It suggests that the perceptions he documented are structurally possible — that the correspondence, the degrees, the transforms he described are features of reality accessible to properly configured observation. His 27 years were a sustained experiment in such observation.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Legacy</h2>
+
+            <div class="legacy-card">
+                <h3>Immediate Influence</h3>
+                <p>Within decades of his death, Swedenborg's writings inspired the founding of the New Church (or Swedenborgian Church), which continues today. His ideas influenced William Blake, Ralph Waldo Emerson, Henry James Sr., and Helen Keller, among others.</p>
+            </div>
+
+            <div class="legacy-card">
+                <h3>Philosophical Impact</h3>
+                <p>Swedenborg's doctrine of correspondence anticipated symbolic and depth psychology. His understanding of the unconscious predated Freud and Jung by over a century. His cosmology influenced esoteric traditions throughout the 19th and 20th centuries.</p>
+            </div>
+
+            <div class="legacy-card">
+                <h3>Scientific Anticipations</h3>
+                <p>His early scientific work anticipated the nebular hypothesis, located brain functions correctly before neuroscience, and proposed atomic and subatomic structure before modern physics. The mathematical point concept prefigures quantum field theory.</p>
+            </div>
+
+            <div class="legacy-card">
+                <h3>The Framework Convergence</h3>
+                <p>285 years after Swedenborg articulated the Doctrine of Forms, the κ-framework derives identical structures from pure mathematics. The convergence suggests both methods access the same underlying geometry — one empirically, one formally.</p>
+            </div>
+
+            <div class="content-image">
+                <div class="placeholder-icon">&#x1F30D;</div>
+                <div class="placeholder-text">IMAGE: World map showing spread of Swedenborgian influence<br>Churches, study groups, academic interest across continents<br>The legacy 250+ years after his death</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>What Remains</h2>
+
+            <p>After 27 years of documentation, what are the core claims that remain?</p>
+
+            <ul style="list-style: none; padding-left: 1.5rem; margin: 1.5rem 0;">
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">1.</span> <strong>Two worlds exist</strong> — spiritual and natural — distinct but corresponding.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">2.</span> <strong>Everything corresponds</strong> — natural things are effects of spiritual causes.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">3.</span> <strong>Degrees are discrete</strong> — celestial, spiritual, natural do not blend.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">4.</span> <strong>Influx flows downward</strong> — from spiritual to natural, never reverse.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">5. </span> <strong>Two suns exist</strong> — one living (spiritual), one dead (natural).</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">6.</span> <strong>Equilibrium enables freedom</strong> — balance between heaven and hell.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">7.</span> <strong>Heaven is one human</strong> — the Universal Human, Maximus Homo.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">8.</span> <strong>After death comes vastation</strong> — stripping to the essential self.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">9.</span> <strong>Forms evolve geometrically</strong> — angular to celestial.</li>
+                <li style="margin: 1rem 0; color: #d8d4c9;"><span style="color: #c9a227; font-weight: bold;">10.</span> <strong>[1 = -1]</strong> — the primary identity underlying all correspondence.</li>
+            </ul>
+
+            <p>The κ-framework provides mathematical formalization for each of these claims. Swedenborg described; the framework quantifies. Between them, a complete system emerges.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>The Invitation</h2>
+
+            <p>Swedenborg did not claim exclusive access. He believed that what he experienced was, in principle, available to anyone whose internal degrees were opened. The spiritual world is not elsewhere — it is here, now, interpenetrating the natural world at every point.</p>
+
+            <div class="quote-block">
+                <blockquote>"The spiritual can clothe itself with the natural, and by influx fill and actuate it."</blockquote>
+                <cite>— Doctrine of Correspondence</cite>
+            </div>
+
+            <p>The κ-framework extends this invitation. It provides tools for exploring the geometry that Swedenborg described. It does not require belief — it invites investigation. The equations can be tested. The predictions can be verified. The structure is there to be discovered.</p>
+
+            <p>Twenty-seven years of one man's sustained observation. Two hundred eighty-five years later, independent mathematical derivation. The convergence is either coincidence or confirmation. You are invited to examine and decide.</p>
+        </section>
+
+        <div class="final-quote">
+            <blockquote>"Without a double sun, one living and the other dead, no creation is possible."</blockquote>
+            <cite>— Emanuel Swedenborg, Divine Love and Wisdom</cite>
+        </div>
+
+        <div class="closing">
+            <p class="principle">[1 = -1]</p>
+            <p style="color: #6ab4f5; margin-top: 1rem; font-style: italic;">The End of the Beginning</p>
+        </div>
+
+        <nav class="episode-nav">
+            <a href="episode-09.html" class="nav-btn">← Vastation</a>
+            <div class="nav-index"><a href="index.html">Series Overview</a></div>
+            <span class="nav-btn disabled">Series Complete</span>
+        </nav>
+    </div>
+
+    <site-footer></site-footer>
+</body>
+</html>
