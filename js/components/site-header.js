@@ -443,6 +443,9 @@ class SiteHeader extends HTMLElement {
                         <!-- κ₅ True Dark -->
                         <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">κ₅</a>
 
+                        <!-- Swedenborg -->
+                        <a href="${bp}documents/swedenborg/index.html" class="hmm-link" style="color: #c9a227; font-weight: 600;" title="Swedenborg & κ-Framework - 10 Episodes">Swedenborg</a>
+
                         <!-- EVERYTHING - Full Archive -->
                         <a href="${bp}everything.html" class="hmm-link everything" title="223 Pages - The Complete Archive">EVERYTHING</a>
 
