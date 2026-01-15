@@ -328,6 +328,7 @@ class SiteHeader extends HTMLElement {
                             <div class="hmm-drop">
                                 <div class="label">S- Mother Earth Science</div>
                                 <a href="${bp}education/soul-science.html" class="highlight">☯ Soul Science</a>
+                                <a href="${bp}inbreath/index.html" class="highlight">[↓] Inbreath Language</a>
                                 <a href="${bp}education/mythic-mirror/index.html">Mythic Mirror</a>
                                 <a href="${bp}education/life-facing-wisdom.html">Life-Facing Wisdom</a>
                                 <a href="${bp}education/vinyl-paradox.html">Vinyl Paradox</a>
