@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swedenborg Book Cover</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .book-cover {
+            width: 1600px;
+            height: 2560px;
+            position: relative;
+            overflow: hidden;
+            background: #030508;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        /* Background Image */
+        .cover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* Gradient Overlays */
+        .overlay-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 35%;
+            background: linear-gradient(180deg,
+                rgba(3, 5, 8, 0.95) 0%,
+                rgba(3, 5, 8, 0.7) 40%,
+                transparent 100%);
+            z-index: 2;
+        }
+
+        .overlay-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(0deg,
+                rgba(3, 5, 8, 0.98) 0%,
+                rgba(3, 5, 8, 0.85) 30%,
+                rgba(3, 5, 8, 0.5) 60%,
+                transparent 100%);
+            z-index: 2;
+        }
+
+        /* Content */
+        .cover-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 100px;
+        }
+
+        /* Top Section */
+        .top-section {
+            text-align: center;
+        }
+
+        .series-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: #6ab4f5;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .principle {
+            font-family: 'Cinzel', serif;
+            font-size: 90px;
+            color: #c9a227;
+            letter-spacing: 15px;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.6);
+            margin-bottom: 20px;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            text-align: center;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 180px;
+            font-weight: 700;
+            color: #c9a227;
+            letter-spacing: 20px;
+            text-shadow:
+                0 0 80px rgba(201, 162, 39, 0.5),
+                0 4px 8px rgba(0, 0, 0, 0.8);
+            margin-bottom: 30px;
+            line-height: 1;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            color: #e8e4d9;
+            font-style: italic;
+            margin-bottom: 50px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .framework-title {
+            font-family: 'Cinzel', serif;
+            font-size: 64px;
+            color: #6ab4f5;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .dual-sun-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: #a8b4c4;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+        }
+
+        .publisher {
+            font-family: 'Cinzel', serif;
+            font-size: 36px;
+            color: #c9a227;
+            letter-spacing: 6px;
+            opacity: 0.8;
+        }
+
+        /* Decorative Elements */
+        .gold-line {
+            width: 400px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c9a227, transparent);
+            margin: 40px auto;
+        }
+
+        .sun-icons {
+            font-size: 80px;
+            margin: 30px 0;
+            letter-spacing: 60px;
+        }
+
+        .sun-icons .spiritual { color: #ffd700; }
+        .sun-icons .natural { color: #87ceeb; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="book-cover">
+        <img src="swedenborg_hero.jpg" alt="Swedenborg" class="cover-image">
+        <div class="overlay-top"></div>
+        <div class="overlay-bottom"></div>
+
+        <div class="cover-content">
+            <div class="top-section">
+                <div class="series-label">The Epoch Project</div>
+                <div class="principle">[1 = -1]</div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="main-title">SWEDENBORG</div>
+                <div class="subtitle">The Scientist Who Mapped Heaven's Geometry</div>
+                <div class="gold-line"></div>
+                <div class="framework-title">& THE κ-FRAMEWORK</div>
+                <div class="sun-icons">
+                    <span class="spiritual">☉</span>
+                    <span class="natural">☾</span>
+                </div>
+                <div class="dual-sun-label">27 Years of Continuous Spiritual Sight</div>
+                <div class="gold-line"></div>
+                <div class="publisher">HAVE MIND MEDIA</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
