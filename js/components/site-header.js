@@ -389,12 +389,11 @@ class SiteHeader extends HTMLElement {
                                 <a href="${bp}ancient-mysteries/norse-artifacts/bracteates_v1.0_01-01-2026.html">Bracteates</a>
                                 <a href="${bp}ancient-mysteries/norse-artifacts/norse-symbols_v1.0_01-01-2026.html">Norse Symbols</a>
                                 <hr>
-                                <div class="label">The Weirdos</div>
+                                <div class="label">Weirdos & Prophets</div>
                                 <a href="${bp}weirdos/index.html" class="highlight">✧ Weirdos Hub</a>
+                                <a href="${bp}prophets/index.html" class="highlight">👁 Prophets: Big & Small</a>
                                 <a href="${bp}weirdos/geometers.html">Geometers</a>
                                 <a href="${bp}weirdos/visionaries.html">Visionaries</a>
-                                <a href="${bp}weirdos/wave-seers.html">Wave Seers</a>
-                                <a href="${bp}weirdos/unifiers.html">Unifiers</a>
                             </div>
                         </div>
 

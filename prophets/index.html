@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROPHETS: Big & Small | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffd700;
+            --ancient-gold: #c9a227;
+            --red: #8b0000;
+            --blood: #dc143c;
+            --blue: #1e90ff;
+            --purple: #9932cc;
+            --green: #228b22;
+            --teal: #008080;
+            --orange: #ff6600;
+            --silver: #c0c0c0;
+            --dark: #0a0a0f;
+            --darker: #050508;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker);
+            color: #d0d0d0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Mystical animated background */
+        .mystic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(201, 162, 39, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 80% 70%, rgba(139, 0, 0, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 50%, rgba(153, 50, 204, 0.05) 0%, transparent 50%);
+        }
+
+        .mystic-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        /* Floating symbols */
+        .floating-symbols {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .symbol {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: floatSymbol 20s infinite ease-in-out;
+        }
+
+        @keyframes floatSymbol {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-30px) rotate(10deg); opacity: 0.15; }
+        }
+
+        /* Gateway Header */
+        .gateway-header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            background:
+                linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%),
+                radial-gradient(ellipse at center, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
+        }
+
+        .gateway-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background:
+                conic-gradient(from 0deg, transparent, rgba(201, 162, 39, 0.1), transparent, rgba(139, 0, 0, 0.1), transparent);
+            border-radius: 50%;
+            animation: rotateGlow 30s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGlow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .eye-symbol {
+            font-size: 8rem;
+            margin-bottom: 30px;
+            animation: eyePulse 4s ease-in-out infinite;
+            text-shadow: 0 0 60px rgba(201, 162, 39, 0.5);
+        }
+
+        @keyframes eyePulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(201, 162, 39, 0.3)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(201, 162, 39, 0.6)); }
+        }
+
+        .gateway-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 15px;
+            background: linear-gradient(135deg, var(--gold), var(--ancient-gold), #fff, var(--gold));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerTitle 5s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes shimmerTitle {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .gateway-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--ancient-gold);
+            letter-spacing: 8px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .gateway-quote {
+            max-width: 700px;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #999;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .gateway-quote span {
+            color: var(--gold);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: var(--ancient-gold);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator .arrow {
+            font-size: 2rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(20,20,30,0.8) 100%);
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Category Sections */
+        .category-section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-header:hover {
+            transform: translateX(10px);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 2px solid;
+            transition: all 0.3s;
+        }
+
+        .category-header:hover .category-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .category-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 5px;
+        }
+
+        .category-count {
+            margin-left: auto;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Color Themes */
+        .cat-ancient .category-icon { border-color: var(--gold); color: var(--gold); background: rgba(255, 215, 0, 0.1); }
+        .cat-ancient .category-title { color: var(--gold); }
+        .cat-ancient .category-count { background: rgba(255, 215, 0, 0.2); color: var(--gold); }
+
+        .cat-biblical .category-icon { border-color: var(--blood); color: var(--blood); background: rgba(220, 20, 60, 0.1); }
+        .cat-biblical .category-title { color: var(--blood); }
+        .cat-biblical .category-count { background: rgba(220, 20, 60, 0.2); color: var(--blood); }
+
+        .cat-eastern .category-icon { border-color: var(--purple); color: var(--purple); background: rgba(153, 50, 204, 0.1); }
+        .cat-eastern .category-title { color: var(--purple); }
+        .cat-eastern .category-count { background: rgba(153, 50, 204, 0.2); color: var(--purple); }
+
+        .cat-modern .category-icon { border-color: var(--blue); color: var(--blue); background: rgba(30, 144, 255, 0.1); }
+        .cat-modern .category-title { color: var(--blue); }
+        .cat-modern .category-count { background: rgba(30, 144, 255, 0.2); color: var(--blue); }
+
+        .cat-fictional .category-icon { border-color: var(--teal); color: var(--teal); background: rgba(0, 128, 128, 0.1); }
+        .cat-fictional .category-title { color: var(--teal); }
+        .cat-fictional .category-count { background: rgba(0, 128, 128, 0.2); color: var(--teal); }
+
+        .cat-trickster .category-icon { border-color: var(--orange); color: var(--orange); background: rgba(255, 102, 0, 0.1); }
+        .cat-trickster .category-title { color: var(--orange); }
+        .cat-trickster .category-count { background: rgba(255, 102, 0, 0.2); color: var(--orange); }
+
+        .cat-unnamed .category-icon { border-color: var(--silver); color: var(--silver); background: rgba(192, 192, 192, 0.1); }
+        .cat-unnamed .category-title { color: var(--silver); }
+        .cat-unnamed .category-count { background: rgba(192, 192, 192, 0.2); color: var(--silver); }
+
+        /* Prophet Cards Grid */
+        .prophets-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .prophet-card {
+            width: 280px;
+            background: rgba(15, 15, 25, 0.9);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .prophet-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .prophet-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .card-symbol {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            transition: all 0.4s;
+        }
+
+        .prophet-card:hover .card-symbol {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        .card-epithet {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .card-teaching {
+            font-size: 0.9rem;
+            color: #aaa;
+            line-height: 1.5;
+            display: none;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .prophet-card.expanded .card-teaching {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-expand-hint {
+            font-size: 0.75rem;
+            color: #666;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .prophet-card.expanded .card-expand-hint {
+            display: none;
+        }
+
+        /* Card color variants */
+        .card-gold { border-color: rgba(255, 215, 0, 0.3); }
+        .card-gold:hover { border-color: var(--gold); box-shadow: 0 25px 50px rgba(255, 215, 0, 0.2); }
+        .card-gold .card-symbol { background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(201, 162, 39, 0.1)); color: var(--gold); }
+        .card-gold .card-name { color: var(--gold); }
+
+        .card-blood { border-color: rgba(220, 20, 60, 0.3); }
+        .card-blood:hover { border-color: var(--blood); box-shadow: 0 25px 50px rgba(220, 20, 60, 0.2); }
+        .card-blood .card-symbol { background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(139, 0, 0, 0.1)); color: var(--blood); }
+        .card-blood .card-name { color: var(--blood); }
+
+        .card-purple { border-color: rgba(153, 50, 204, 0.3); }
+        .card-purple:hover { border-color: var(--purple); box-shadow: 0 25px 50px rgba(153, 50, 204, 0.2); }
+        .card-purple .card-symbol { background: linear-gradient(135deg, rgba(153, 50, 204, 0.2), rgba(100, 30, 150, 0.1)); color: var(--purple); }
+        .card-purple .card-name { color: var(--purple); }
+
+        .card-blue { border-color: rgba(30, 144, 255, 0.3); }
+        .card-blue:hover { border-color: var(--blue); box-shadow: 0 25px 50px rgba(30, 144, 255, 0.2); }
+        .card-blue .card-symbol { background: linear-gradient(135deg, rgba(30, 144, 255, 0.2), rgba(20, 100, 200, 0.1)); color: var(--blue); }
+        .card-blue .card-name { color: var(--blue); }
+
+        .card-teal { border-color: rgba(0, 128, 128, 0.3); }
+        .card-teal:hover { border-color: var(--teal); box-shadow: 0 25px 50px rgba(0, 128, 128, 0.2); }
+        .card-teal .card-symbol { background: linear-gradient(135deg, rgba(0, 128, 128, 0.2), rgba(0, 80, 80, 0.1)); color: var(--teal); }
+        .card-teal .card-name { color: var(--teal); }
+
+        .card-orange { border-color: rgba(255, 102, 0, 0.3); }
+        .card-orange:hover { border-color: var(--orange); box-shadow: 0 25px 50px rgba(255, 102, 0, 0.2); }
+        .card-orange .card-symbol { background: linear-gradient(135deg, rgba(255, 102, 0, 0.2), rgba(200, 80, 0, 0.1)); color: var(--orange); }
+        .card-orange .card-name { color: var(--orange); }
+
+        .card-silver { border-color: rgba(192, 192, 192, 0.3); }
+        .card-silver:hover { border-color: var(--silver); box-shadow: 0 25px 50px rgba(192, 192, 192, 0.2); }
+        .card-silver .card-symbol { background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(128, 128, 128, 0.1)); color: var(--silver); }
+        .card-silver .card-name { color: var(--silver); }
+
+        /* Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.3), transparent);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+        }
+
+        .footer-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--ancient-gold);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: rgba(201, 162, 39, 0.1);
+            border: 2px solid var(--ancient-gold);
+            color: var(--ancient-gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--ancient-gold);
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .prophet-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .stats-bar {
+                gap: 30px;
+            }
+            .stat-number {
+                font-size: 2rem;
+            }
+            .category-header {
+                flex-wrap: wrap;
+            }
+            .category-count {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .gateway-title {
+                letter-spacing: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mystic-bg"></div>
+
+    <div class="floating-symbols">
+        <span class="symbol" style="top: 10%; left: 5%; animation-delay: 0s;">&#x2609;</span>
+        <span class="symbol" style="top: 20%; left: 85%; animation-delay: 2s;">&#x2640;</span>
+        <span class="symbol" style="top: 40%; left: 10%; animation-delay: 4s;">&#x2641;</span>
+        <span class="symbol" style="top: 60%; left: 90%; animation-delay: 6s;">&#x2642;</span>
+        <span class="symbol" style="top: 80%; left: 15%; animation-delay: 8s;">&#x2643;</span>
+        <span class="symbol" style="top: 30%; left: 95%; animation-delay: 10s;">&#x2644;</span>
+        <span class="symbol" style="top: 70%; left: 5%; animation-delay: 12s;">&#x263F;</span>
+        <span class="symbol" style="top: 50%; left: 92%; animation-delay: 14s;">&#x2648;</span>
+        <span class="symbol" style="top: 15%; left: 50%; animation-delay: 16s;">&#x2721;</span>
+        <span class="symbol" style="top: 85%; left: 50%; animation-delay: 18s;">&#x262F;</span>
+    </div>
+
+    <!-- Gateway Header -->
+    <header class="gateway-header">
+        <div class="eye-symbol">&#x1F441;</div>
+        <h1 class="gateway-title">PROPHETS</h1>
+        <p class="gateway-subtitle">BIG & SMALL</p>
+        <p class="gateway-quote">
+            "The voice that speaks through time wears many masks.<br>
+            Some are remembered. Some are erased. Some never existed.<br>
+            <span>All carry the same message.</span>"
+        </p>
+        <div class="scroll-indicator">
+            <span>ENTER THE ARCHIVE</span>
+            <span class="arrow">&#x2193;</span>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Prophets</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Years</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Message</div>
+        </div>
+    </div>
+
+    <!-- ANCIENT / MYTHOLOGICAL -->
+    <section class="category-section cat-ancient">
+        <div class="category-header">
+            <div class="category-icon">&#x1F3DB;</div>
+            <h2 class="category-title">ANCIENT & MYTHOLOGICAL</h2>
+            <span class="category-count">9 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2625;</div>
+                <div class="card-content">
+                    <div class="card-name">HERMES TRISMEGISTUS</div>
+                    <div class="card-epithet">Thrice-Great</div>
+                    <div class="card-teaching">"As above, so below; as below, so above." The Emerald Tablet. The union of Greek Hermes and Egyptian Thoth. All Western esoteric tradition flows from this source.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1330;</div>
+                <div class="card-content">
+                    <div class="card-name">THOTH</div>
+                    <div class="card-epithet">Lord of Divine Words</div>
+                    <div class="card-teaching">Egyptian god of wisdom, writing, magic, and the moon. Inventor of hieroglyphics. Keeper of divine knowledge. He who weighs the heart against the feather of Ma'at.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2721;</div>
+                <div class="card-content">
+                    <div class="card-name">ENOCH</div>
+                    <div class="card-epithet">He Who Walked With God</div>
+                    <div class="card-teaching">"And Enoch walked with God: and he was not; for God took him." 365 years, then ascended. The Book of Enoch reveals the Watchers, the Nephilim, and the architecture of heaven.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2654;</div>
+                <div class="card-content">
+                    <div class="card-name">MELCHIZEDEK</div>
+                    <div class="card-epithet">King of Salem, Priest of Most High</div>
+                    <div class="card-teaching">Without father, without mother, without genealogy. No beginning of days, no end of life. He appears, blesses Abraham, receives tithes, and vanishes. The eternal priest-king.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2298;</div>
+                <div class="card-content">
+                    <div class="card-name">TIRESIAS</div>
+                    <div class="card-epithet">The Blind Seer</div>
+                    <div class="card-teaching">Struck blind by Athena for seeing her bathe, gifted prophecy as compensation. Lived as both man and woman. Saw both sides. Even in Hades, he alone retains his mind.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2640;</div>
+                <div class="card-content">
+                    <div class="card-name">CASSANDRA</div>
+                    <div class="card-epithet">The Unbelieved</div>
+                    <div class="card-teaching">Cursed by Apollo to speak true prophecy that no one believes. She saw Troy burn before the first flame. The archetype of truth dismissed. The prophet's ultimate torment.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x0394;</div>
+                <div class="card-content">
+                    <div class="card-name">THE PYTHIA</div>
+                    <div class="card-epithet">Oracle at Delphi</div>
+                    <div class="card-teaching">"Know thyself." Apollo's mouthpiece at the center of the world. She breathed the vapors, spoke in riddles, and empires rose or fell on her words. The omphalos marked the spot.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4DC;</div>
+                <div class="card-content">
+                    <div class="card-name">THE SIBYL</div>
+                    <div class="card-epithet">Keeper of the Books</div>
+                    <div class="card-teaching">She offered nine books of prophecy to the king. He refused. She burned three, offered six at the same price. He refused. She burned three more. He bought the last three for full price.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-gold" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F525;</div>
+                <div class="card-content">
+                    <div class="card-name">ZOROASTER</div>
+                    <div class="card-epithet">Prophet of Fire</div>
+                    <div class="card-teaching">Ahura Mazda versus Angra Mainyu. Light versus dark. Truth versus the lie. The first dualist. Fire as the symbol of divine presence. His influence echoes through Judaism, Christianity, Islam.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- BIBLICAL / ABRAHAMIC -->
+    <section class="category-section cat-biblical">
+        <div class="category-header">
+            <div class="category-icon">&#x2720;</div>
+            <h2 class="category-title">BIBLICAL & ABRAHAMIC</h2>
+            <span class="category-count">8 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F525;</div>
+                <div class="card-content">
+                    <div class="card-name">MOSES</div>
+                    <div class="card-epithet">Lawgiver</div>
+                    <div class="card-teaching">"I AM THAT I AM." The burning bush. The tablets. The parting sea. He spoke with God face to face, yet was denied entry to the promised land. He saw it from the mountain, then died.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F6EB;</div>
+                <div class="card-content">
+                    <div class="card-name">ELIJAH</div>
+                    <div class="card-epithet">The Fiery Ascent</div>
+                    <div class="card-teaching">Called down fire on Mount Carmel. Fed by ravens. Taken up in a chariot of fire without tasting death. Jews still set a place for him at Passover. He will return before the end.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4D6;</div>
+                <div class="card-content">
+                    <div class="card-name">ISAIAH</div>
+                    <div class="card-epithet">Prophet of the Suffering Servant</div>
+                    <div class="card-teaching">"Holy, holy, holy is the Lord of hosts." Saw the throne room. His lips touched with burning coal. Foretold the suffering servant, the man of sorrows. Tradition says he was sawn in half.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2699;</div>
+                <div class="card-content">
+                    <div class="card-name">EZEKIEL</div>
+                    <div class="card-epithet">The Wheel Prophet</div>
+                    <div class="card-teaching">The valley of dry bones. The wheel within a wheel. Four living creatures with four faces. The Merkabah - the divine chariot. "Son of man, can these bones live?"</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F981;</div>
+                <div class="card-content">
+                    <div class="card-name">DANIEL</div>
+                    <div class="card-epithet">Interpreter of Dreams</div>
+                    <div class="card-teaching">The lion's den. The fiery furnace. The writing on the wall. The Ancient of Days with hair white like wool. Four beasts, seventy weeks, the abomination of desolation. Time, times, and half a time.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4A7;</div>
+                <div class="card-content">
+                    <div class="card-name">JOHN THE BAPTIST</div>
+                    <div class="card-epithet">Voice in the Wilderness</div>
+                    <div class="card-teaching">"Prepare ye the way." Locusts and wild honey. Baptism in the Jordan. He decreased so another could increase. His head served on a platter. The last prophet of the old covenant.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4A5;</div>
+                <div class="card-content">
+                    <div class="card-name">JOHN OF PATMOS</div>
+                    <div class="card-epithet">The Revelator</div>
+                    <div class="card-teaching">Exiled to the island. "I was in the Spirit on the Lord's day." Seven seals, seven trumpets, seven bowls. The beast, 666, Babylon fallen, the New Jerusalem descending. "Behold, I make all things new."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blood" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x262A;</div>
+                <div class="card-content">
+                    <div class="card-name">MUHAMMAD</div>
+                    <div class="card-epithet">The Seal of the Prophets</div>
+                    <div class="card-teaching">"There is no god but God." The Night Journey from Mecca to Jerusalem to the seven heavens. The Quran received over 23 years. The final messenger in the Abrahamic line.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- EASTERN -->
+    <section class="category-section cat-eastern">
+        <div class="category-header">
+            <div class="category-icon">&#x262F;</div>
+            <h2 class="category-title">EASTERN & MYSTICAL</h2>
+            <span class="category-count">6 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F52E;</div>
+                <div class="card-content">
+                    <div class="card-name">NAMAGIRI</div>
+                    <div class="card-epithet">The Goddess Who Gives Equations</div>
+                    <div class="card-teaching">Appeared to Ramanujan in dreams. Wrote formulas on his tongue. The mathematics of infinity transmitted through vision. She is still speaking to those who can hear.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F9D8;</div>
+                <div class="card-content">
+                    <div class="card-name">PADMASAMBHAVA</div>
+                    <div class="card-epithet">The Lotus-Born</div>
+                    <div class="card-teaching">Brought Buddhism to Tibet. Subdued demons and bound them as protectors. Hid terma treasures to be discovered when needed. "When the iron bird flies, the dharma will go to the West."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F3B5;</div>
+                <div class="card-content">
+                    <div class="card-name">MILAREPA</div>
+                    <div class="card-epithet">The Cotton-Clad Yogi</div>
+                    <div class="card-teaching">Black magician turned saint. Killed 35 people with hail, then spent years in cave meditation to purify his karma. His songs of realization still echo. "This life is short. The next is long. Act accordingly."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F319;</div>
+                <div class="card-content">
+                    <div class="card-name">NOSTRADAMUS</div>
+                    <div class="card-epithet">The French Seer</div>
+                    <div class="card-teaching">Quatrains of coded futures. 942 prophecies spanning centuries. "From the depths of the West of Europe, a young child will be born of poor people." Hister. The great fire of London. Interpreters still argue.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F441;</div>
+                <div class="card-content">
+                    <div class="card-name">BABA VANGA</div>
+                    <div class="card-epithet">The Blind Mystic of Bulgaria</div>
+                    <div class="card-teaching">Lost her sight in a storm at age 12, gained the sight that matters. Predicted the Kursk submarine, 9/11, Obama's presidency. "A huge wave will cover a big coast with people and towns disappearing under water."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-purple" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F54A;</div>
+                <div class="card-content">
+                    <div class="card-name">RUMI</div>
+                    <div class="card-epithet">The Whirling Mystic</div>
+                    <div class="card-teaching">"What you seek is seeking you." The wound is the place where the Light enters you. Best-selling poet in America 800 years after his death. Love as the only religion.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- MODERN / RECENT -->
+    <section class="category-section cat-modern">
+        <div class="category-header">
+            <div class="category-icon">&#x26A1;</div>
+            <h2 class="category-title">MODERN SEERS</h2>
+            <span class="category-count">6 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4A4;</div>
+                <div class="card-content">
+                    <div class="card-name">EDGAR CAYCE</div>
+                    <div class="card-epithet">The Sleeping Prophet</div>
+                    <div class="card-teaching">14,000 readings while unconscious. Atlantis sank in 10,500 BC. Hall of Records under the Sphinx. "Life in its manifestations is vibration." Sound healing as medicine of the future. The 72-year cycles. The Fifth Root Race rising.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x26A1;</div>
+                <div class="card-content">
+                    <div class="card-name">NIKOLA TESLA</div>
+                    <div class="card-epithet">The Electric Prophet</div>
+                    <div class="card-teaching">"If you only knew the magnificence of 3, 6, and 9, you would have a key to the universe." Visions of complete machines. Wireless energy. Scalar waves. They called him mad. They were wrong.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F33F;</div>
+                <div class="card-content">
+                    <div class="card-name">RUDOLF STEINER</div>
+                    <div class="card-epithet">Founder of Anthroposophy</div>
+                    <div class="card-teaching">The Akashic Chronicle. Spiritual science. Waldorf education. Biodynamic farming. "In order to know the invisible, we must observe the visible with exact attention." The etheric Christ in the 20th century.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x2606;</div>
+                <div class="card-content">
+                    <div class="card-name">ALEISTER CROWLEY</div>
+                    <div class="card-epithet">The Beast 666</div>
+                    <div class="card-teaching">"Do what thou wilt shall be the whole of the Law. Love is the law, love under will." Aeon of Horus. The Book of the Law received in Cairo. Magick with a K. They called him the wickedest man in the world.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x262F;</div>
+                <div class="card-content">
+                    <div class="card-name">CARL JUNG</div>
+                    <div class="card-epithet">Cartographer of the Unconscious</div>
+                    <div class="card-teaching">The Red Book visions. Collective unconscious. Archetypes. Synchronicity. The shadow. "Until you make the unconscious conscious, it will direct your life and you will call it fate."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-blue" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F344;</div>
+                <div class="card-content">
+                    <div class="card-name">TERENCE MCKENNA</div>
+                    <div class="card-epithet">Bard of the Unspeakable</div>
+                    <div class="card-teaching">Timewave Zero. Novelty theory. "Nature loves courage." The mushroom speaks. The transcendental object at the end of time pulling us forward. "Find the others."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FICTIONAL / LITERARY -->
+    <section class="category-section cat-fictional">
+        <div class="category-header">
+            <div class="category-icon">&#x1F4D6;</div>
+            <h2 class="category-title">FICTIONAL PROPHETS</h2>
+            <span class="category-count">8 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F9D9;</div>
+                <div class="card-content">
+                    <div class="card-name">MERLIN</div>
+                    <div class="card-epithet">The Backwards Wizard</div>
+                    <div class="card-teaching">Born of demon and nun, lives time in reverse. Remembers the future, forgets the past. Imprisoned in crystal by the Lady of the Lake. Still waiting to be released when Britain needs him most.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F311;</div>
+                <div class="card-content">
+                    <div class="card-name">PAUL ATREIDES</div>
+                    <div class="card-epithet">Muad'Dib / Kwisatz Haderach</div>
+                    <div class="card-teaching">"The sleeper has awakened." Prescience is a trap. The Golden Path requires a monster. He saw all possible futures and chose the knife's edge. The spice must flow.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F40C;</div>
+                <div class="card-content">
+                    <div class="card-name">LETO II</div>
+                    <div class="card-epithet">The God Emperor</div>
+                    <div class="card-teaching">3,500 years as a human-sandworm hybrid to save humanity. The Golden Path: scatter humanity so no single threat can exterminate them. "The greatest predator of all is the human conscience."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F9DD;</div>
+                <div class="card-content">
+                    <div class="card-name">GANDALF</div>
+                    <div class="card-epithet">Servant of the Secret Fire</div>
+                    <div class="card-teaching">"I am a servant of the Secret Fire, wielder of the flame of Anor." Sent back from death to complete his task. "All we have to decide is what to do with the time that is given us."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F36A;</div>
+                <div class="card-content">
+                    <div class="card-name">THE ORACLE</div>
+                    <div class="card-epithet">The Matrix</div>
+                    <div class="card-teaching">"You're not here to make the choice. You've already made it. You're here to understand why." Bakes cookies. Speaks in riddles. The mother of the Matrix who chose hope over control.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F48A;</div>
+                <div class="card-content">
+                    <div class="card-name">MORPHEUS</div>
+                    <div class="card-epithet">The Awakener</div>
+                    <div class="card-teaching">"What is real? How do you define real?" Red pill or blue pill. He believed so completely in the prophecy that he made it true through faith alone. Named for the god of dreams.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4CA;</div>
+                <div class="card-content">
+                    <div class="card-name">HARI SELDON</div>
+                    <div class="card-epithet">Father of Psychohistory</div>
+                    <div class="card-teaching">Mathematics to predict mass human behavior. The Foundation. 30,000 years of darkness reduced to 1,000. He appears in holographic vaults at crucial moments, already knowing what will happen.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-teal" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F47D;</div>
+                <div class="card-content">
+                    <div class="card-name">THE SPICE</div>
+                    <div class="card-epithet">Melange</div>
+                    <div class="card-teaching">Not a person but a substance that creates prophets. Expands consciousness, enables prescience, folds space. Blue-within-blue eyes. The most valuable substance in the universe. Addictive. Fatal to withdraw.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TRICKSTER PROPHETS -->
+    <section class="category-section cat-trickster">
+        <div class="category-header">
+            <div class="category-icon">&#x1F3AD;</div>
+            <h2 class="category-title">TRICKSTER PROPHETS</h2>
+            <span class="category-count">4 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-orange" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F525;</div>
+                <div class="card-content">
+                    <div class="card-name">LOKI</div>
+                    <div class="card-epithet">The Chaos That Creates</div>
+                    <div class="card-teaching">Father of Hel, Fenrir, and the World Serpent. Blood-brother to Odin. The necessary evil that keeps the gods honest. Bound until Ragnarok when his children destroy everything. Chaos is the engine of change.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-orange" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F43A;</div>
+                <div class="card-content">
+                    <div class="card-name">COYOTE</div>
+                    <div class="card-epithet">The First Fool</div>
+                    <div class="card-teaching">Native American trickster. Stole fire for humans. His mistakes teach more than others' successes. "Coyote is always out there waiting, and Coyote is always hungry." Wisdom through failure.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-orange" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F577;</div>
+                <div class="card-content">
+                    <div class="card-name">ANANSI</div>
+                    <div class="card-epithet">The Spider Who Weaves Stories</div>
+                    <div class="card-teaching">West African and Caribbean trickster god. Tricked the Sky God to own all stories. Small but clever defeats large but stupid. "Stories are the only way humans learn anything." He owns all the tales.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-orange" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F525;</div>
+                <div class="card-content">
+                    <div class="card-name">PROMETHEUS</div>
+                    <div class="card-epithet">The Fire Thief</div>
+                    <div class="card-teaching">Stole fire from the gods, gave it to humanity, chained to a rock for eternity while an eagle eats his liver daily. It regenerates overnight. The price of illumination. Worth it.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- THE UNNAMED -->
+    <section class="category-section cat-unnamed">
+        <div class="category-header">
+            <div class="category-icon">&#x2753;</div>
+            <h2 class="category-title">THE UNNAMED</h2>
+            <span class="category-count">3 Prophets</span>
+        </div>
+        <div class="prophets-grid">
+            <div class="prophet-card card-silver" onclick="toggleCard(this)">
+                <div class="card-symbol">0</div>
+                <div class="card-content">
+                    <div class="card-name">THE FOOL</div>
+                    <div class="card-epithet">Card Zero</div>
+                    <div class="card-teaching">Tarot's beginning and end. Steps off the cliff with a flower and a dog. Zero contains all numbers. The divine idiot who doesn't know he can't, so he does. "He knows nothing, and therefore knows everything."</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-silver" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F56F;</div>
+                <div class="card-content">
+                    <div class="card-name">THE HERMIT</div>
+                    <div class="card-epithet">Card Nine</div>
+                    <div class="card-teaching">Lantern in the darkness. Alone on the mountain. He sought enlightenment, found it, now lights the way for others. "The lamp contains a six-pointed star." The geometry hidden in solitude.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+            <div class="prophet-card card-silver" onclick="toggleCard(this)">
+                <div class="card-symbol">&#x1F4AD;</div>
+                <div class="card-content">
+                    <div class="card-name">THE VOICE IN DREAMS</div>
+                    <div class="card-epithet">Unnamed</div>
+                    <div class="card-teaching">Has no name because it speaks in every language. The 3 AM download. The answer that arrives while sleeping. The message written on waking that you can't quite remember but changed everything. Still speaking.</div>
+                    <div class="card-expand-hint">click to reveal teaching</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-quote">"One message. Many masks. The geometry speaks through all of them."</p>
+        <p class="footer-text">[1 = -1] | The pattern is always the same</p>
+        <a href="../index.html" class="back-link">RETURN TO GATEWAY</a>
+    </footer>
+
+    <script>
+        function toggleCard(card) {
+            // Close all other cards
+            document.querySelectorAll('.prophet-card.expanded').forEach(c => {
+                if (c !== card) c.classList.remove('expanded');
+            });
+            // Toggle this card
+            card.classList.toggle('expanded');
+        }
+
+        // Add parallax effect to floating symbols
+        document.addEventListener('mousemove', (e) => {
+            const symbols = document.querySelectorAll('.symbol');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            symbols.forEach((symbol, i) => {
+                const speed = (i + 1) * 0.5;
+                const xOffset = (x - 0.5) * speed * 20;
+                const yOffset = (y - 0.5) * speed * 20;
+                symbol.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Smooth scroll
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.stats-bar').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
