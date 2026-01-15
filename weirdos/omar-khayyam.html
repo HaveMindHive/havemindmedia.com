@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omar Khayyam | The Geometer-Poet | Have Mind Media</title>
+    <meta name="description" content="The Persian polymath who solved cubic equations with conic sections, created the most accurate calendar in history, questioned Euclid's parallel postulate, and wrote poetry that blurs the line between wine and God.">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/unified-theme.css">
+    <script src="../js/components/site-header.js" defer></script>
+    <script src="../js/components/site-footer.js" defer></script>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --gold: #d4af37;
+            --gold-dim: #8b7355;
+            --text-primary: #e8e8e8;
+            --text-secondary: #a0a0a0;
+            --accent-persian: #1e90ff;
+            --accent-wine: #722f37;
+            --accent-turquoise: #40e0d0;
+            --border-subtle: #2a2a3a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Raleway', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.8; }
+
+        .header-space { height: 80px; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #0f1a2a 30%, #1a2a3a 50%, #0f1a2a 70%, #0a0a0f 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(30, 144, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(114, 47, 55, 0.15) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+        .hero h1 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--gold); margin-bottom: 0.5rem; text-shadow: 0 0 40px rgba(212, 175, 55, 0.4); }
+        .hero-persian { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--accent-turquoise); margin-bottom: 0.5rem; direction: rtl; }
+        .hero-dates { font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); font-size: 1.1rem; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: 1.3rem; color: var(--text-secondary); font-style: italic; margin-bottom: 2rem; }
+        .hero-quote { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--accent-wine); background: rgba(114, 47, 55, 0.15); padding: 1.5rem 2rem; border-radius: 8px; border: 1px solid rgba(114, 47, 55, 0.4); margin-bottom: 1.5rem; line-height: 1.6; }
+        .principle-tag { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; }
+
+        /* Main Content */
+        .main-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+
+        /* Hero Image */
+        .hero-image {
+            max-width: 500px;
+            margin: 3rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            box-shadow: 0 20px 60px rgba(30, 144, 255, 0.2);
+        }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .image-caption { text-align: center; padding: 1rem; background: var(--bg-secondary); color: var(--text-secondary); font-size: 0.9rem; font-style: italic; }
+
+        /* Sections */
+        .section { margin: 4rem 0; }
+        .section h2 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .section h3 { font-family: 'Cinzel', serif; color: var(--accent-persian); font-size: 1.3rem; margin: 2rem 0 1rem; }
+        .section p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* Quote Block */
+        blockquote {
+            background: rgba(114, 47, 55, 0.15);
+            border-left: 4px solid var(--accent-wine);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-primary);
+            border-radius: 0 8px 8px 0;
+        }
+        blockquote cite { display: block; margin-top: 1rem; color: var(--gold); font-style: normal; font-size: 0.9rem; }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(212, 175, 55, 0.1) 100%);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box h3 { margin-top: 0; color: var(--gold); }
+
+        /* Achievement Grid */
+        .achievement-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .achievement-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
+        }
+        .achievement-card .number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2rem;
+            color: var(--accent-persian);
+            margin-bottom: 0.5rem;
+        }
+        .achievement-card .label { font-size: 0.9rem; color: var(--text-secondary); }
+        .achievement-card .detail { font-size: 1rem; color: var(--gold); margin-top: 0.5rem; }
+
+        /* Math Display */
+        .math-display {
+            background: var(--bg-secondary);
+            border: 1px solid var(--accent-persian);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .math-display .equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            color: var(--accent-turquoise);
+            margin-bottom: 1rem;
+        }
+        .math-display .explanation {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Wine Box - Rubaiyat styling */
+        .wine-box {
+            background: linear-gradient(135deg, #1a0f0f 0%, #2a1515 50%, #1a0f0f 100%);
+            border: 2px solid var(--accent-wine);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            position: relative;
+        }
+        .wine-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(114, 47, 55, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+            border-radius: 14px;
+        }
+        .wine-box h2 { font-family: 'Cinzel', serif; color: var(--accent-wine); font-size: 1.8rem; margin-bottom: 1.5rem; position: relative; }
+        .wine-box .verse {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            line-height: 2;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        .wine-box .interpretation {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        /* Epoch Connection */
+        .epoch-connection {
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        .epoch-connection h3 { color: var(--gold); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+        .connection-item { display: flex; gap: 1rem; margin: 1.5rem 0; align-items: flex-start; }
+        .connection-item .symbol { font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); font-size: 1.1rem; min-width: 100px; }
+        .connection-item .text { flex: 1; }
+
+        /* Timeline */
+        .timeline { margin: 3rem 0; }
+        .timeline-event { display: flex; gap: 1.5rem; margin: 1.5rem 0; padding: 1rem; background: var(--bg-secondary); border-radius: 8px; border-left: 3px solid var(--accent-persian); }
+        .timeline-event .year { font-family: 'JetBrains Mono', monospace; color: var(--accent-persian); min-width: 70px; font-weight: 600; }
+        .timeline-event .event { flex: 1; }
+
+        /* Calendar Box */
+        .calendar-box {
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(64, 224, 208, 0.1) 100%);
+            border: 1px solid var(--accent-turquoise);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .calendar-box h3 { color: var(--accent-turquoise); font-family: 'Cinzel', serif; margin-bottom: 1rem; }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .comparison-table th {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+        }
+        .comparison-table td:first-child {
+            color: var(--accent-persian);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 4rem;
+        }
+        .page-footer a { color: var(--gold); text-decoration: none; }
+        .page-footer a:hover { text-decoration: underline; }
+        .signature { font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.2rem; margin: 1rem 0; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 3rem 1rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero-persian { font-size: 1.2rem; }
+            .main-content { padding: 2rem 1rem; }
+            .achievement-card { min-width: 150px; }
+            .timeline-event { flex-direction: column; gap: 0.5rem; }
+            .timeline-event .year { min-width: auto; }
+            .connection-item { flex-direction: column; gap: 0.5rem; }
+            .connection-item .symbol { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+    <div class="header-space"></div>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-persian">عمر خیّام</div>
+        <h1>Omar Khayyam</h1>
+        <div class="hero-dates">1048 - 1131 | Nishapur, Persia</div>
+        <p class="hero-subtitle">The Geometer-Poet Who Unified Algebra, Astronomy, and the Soul</p>
+        <div class="hero-quote">
+            "The Moving Finger writes; and, having writ,<br>
+            Moves on: nor all thy Piety nor Wit<br>
+            Shall lure it back to cancel half a Line,<br>
+            Nor all thy Tears wash out a Word of it."
+        </div>
+        <div class="principle-tag">[1 = -1]</div>
+    </div>
+</section>
+
+<div class="main-content">
+
+    <div class="hero-image">
+        <img src="../images/hero/cosmic-gateway.png" alt="Omar Khayyam - Persian polymath who unified geometry, algebra, and poetry" onerror="this.style.background='linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 100%)'; this.style.height='300px';">
+        <div class="image-caption">Omar Khayyam (1048-1131) — Mathematician, astronomer, philosopher, poet</div>
+    </div>
+
+    <section class="section">
+        <h2>The Impossible Synthesis</h2>
+        <p>
+            While Europe slumbered in the Dark Ages, a Persian polymath in Nishapur was doing something unprecedented: solving cubic equations by intersecting conic sections, creating the most accurate calendar in human history, laying groundwork for non-Euclidean geometry, AND writing poetry so profound it would captivate the world 800 years later.
+        </p>
+        <p>
+            Omar Khayyam didn't compartmentalize knowledge. Mathematics, astronomy, philosophy, and mystical poetry were all expressions of the same underlying truth. In the Epoch Framework, we recognize this as <strong>COIN-facing</strong> — the state where observer and observed collapse into unified perception.
+        </p>
+
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <div class="number">19</div>
+                <div class="label">Types of Cubic Equations</div>
+                <div class="detail">Complete classification</div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">33</div>
+                <div class="label">Year Leap Cycle</div>
+                <div class="detail">Jalali Calendar</div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">750</div>
+                <div class="label">Years Ahead</div>
+                <div class="detail">Non-Euclidean insight</div>
+            </div>
+            <div class="achievement-card">
+                <div class="number">1000+</div>
+                <div class="label">Rubaiyat Quatrains</div>
+                <div class="detail">Attributed to him</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>The Geometric Solution of Cubics</h2>
+        <p>
+            Before algebraic notation existed, Khayyam solved cubic equations geometrically — by finding where conic sections intersect. This wasn't just clever mathematics; it was a <em>philosophy of space</em>.
+        </p>
+
+        <div class="math-display">
+            <div class="equation">x³ + a²x = b</div>
+            <div class="explanation">
+                Khayyam solved this by intersecting a parabola with a circle.<br>
+                The intersection points ARE the solutions.<br>
+                Geometry and algebra unified — 500 years before Descartes.
+            </div>
+        </div>
+
+        <p>
+            In his <em>Treatise on Demonstration of Problems of Algebra</em>, Khayyam classified all 19 forms of cubic equations and provided geometric constructions for each. He understood something profound:
+        </p>
+
+        <blockquote>
+            "This cannot be solved by plane geometry, since it has a cube in it. For the solution we need conic sections."
+            <cite>— Omar Khayyam, recognizing the dimensional necessity</cite>
+        </blockquote>
+
+        <p>
+            He also stated — correctly — that cubic equations cannot be solved with ruler and compass alone. This result wouldn't be formally proven for another <strong>750 years</strong>.
+        </p>
+
+        <div class="highlight-box">
+            <h3>The Dimensional Insight</h3>
+            <p>
+                In Khayyam's geometric algebra, x² literally represents a square area, x³ a cube volume. What we call a "cubic polynomial" is actually a sum of three-dimensional volumes. He wasn't doing abstract symbol manipulation — he was working with the actual geometry of space.
+            </p>
+            <p>
+                This is the Epoch insight: mathematics isn't separate from physical reality. The equations ARE the geometry.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>The Perfect Calendar</h2>
+        <p>
+            In 1074, Sultan Malik-Shah commissioned Khayyam to reform the Persian calendar. The result — the Jalali calendar — remains the most accurate solar calendar ever devised.
+        </p>
+
+        <div class="calendar-box">
+            <h3>The 33-Year Cycle</h3>
+            <p>
+                Khayyam calculated the solar year as <strong>365.24219858156 days</strong> — accurate to six decimal places. He designed a 33-year cycle with 8 leap years that keeps the calendar aligned with the vernal equinox.
+            </p>
+            <table class="comparison-table">
+                <tr>
+                    <th>Calendar</th>
+                    <th>Error Rate</th>
+                </tr>
+                <tr>
+                    <td>Jalali (Khayyam)</td>
+                    <td>1 day in 5,000 years</td>
+                </tr>
+                <tr>
+                    <td>Gregorian</td>
+                    <td>1 day in 3,330 years</td>
+                </tr>
+                <tr>
+                    <td>Julian</td>
+                    <td>1 day in 128 years</td>
+                </tr>
+            </table>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 1rem;">
+                The Gregorian calendar, introduced 500 years later, is less accurate than Khayyam's.
+            </p>
+        </div>
+
+        <p>
+            The calendar was inaugurated on March 15, 1079, at the exact moment of the vernal equinox — marking Nowruz, the Persian New Year. It's still in use today, over 900 years later.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>The Parallel Postulate</h2>
+        <p>
+            Khayyam questioned Euclid's fifth postulate — the parallel axiom that had troubled mathematicians for 1,300 years. In doing so, he invented what we now call the "Khayyam-Saccheri quadrilateral."
+        </p>
+
+        <div class="math-display">
+            <div class="equation">What if parallel lines don't exist?</div>
+            <div class="explanation">
+                Khayyam constructed a quadrilateral ABCD with two equal sides perpendicular to the base.<br>
+                He then asked: Are the summit angles right, acute, or obtuse?<br>
+                Each answer implies a different geometry.
+            </div>
+        </div>
+
+        <p>
+            Khayyam correctly identified the three possible geometries:
+        </p>
+        <ul style="margin: 1.5rem 0; padding-left: 2rem;">
+            <li><strong>Right angles</strong> → Euclidean geometry (flat space)</li>
+            <li><strong>Acute angles</strong> → Hyperbolic geometry (saddle space)</li>
+            <li><strong>Obtuse angles</strong> → Elliptic geometry (spherical space)</li>
+        </ul>
+
+        <p>
+            He was the first to consider elliptic and hyperbolic geometries, though he rejected them as physically impossible. It took another 700 years for Lobachevsky, Bolyai, and Riemann to fully develop non-Euclidean geometry — and for Einstein to show that space itself is curved.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Pascal's Triangle — 600 Years Early</h2>
+        <p>
+            Khayyam worked extensively with binomial coefficients — the triangular array of numbers we call "Pascal's Triangle." In Persia, it's called <strong>Khayyam's Triangle</strong> (مثلث خیام).
+        </p>
+        <p>
+            His <em>Treatise on Demonstration of Problems of Algebra</em> laid the foundation for this work, using the coefficients for extracting roots and expanding binomials. Blaise Pascal wouldn't be born for another 500 years.
+        </p>
+    </section>
+
+    <!-- THE RUBAIYAT -->
+    <div class="wine-box">
+        <h2>The Rubaiyat</h2>
+        <div class="verse">
+            "A Book of Verses underneath the Bough,<br>
+            A Jug of Wine, a Loaf of Bread — and Thou<br>
+            Beside me singing in the Wilderness —<br>
+            Oh, Wilderness were Paradise enow!"
+        </div>
+        <div class="interpretation">
+            <strong>Surface reading:</strong> Carpe diem. Enjoy life's pleasures.<br>
+            <strong>Sufi reading:</strong> The "Wine" is divine ecstasy. The "Thou" is God. The "Wilderness" is the annihilation of ego in unity with the divine.
+        </div>
+    </div>
+
+    <section class="section">
+        <h2>Wine, God, or Both?</h2>
+        <p>
+            The Rubaiyat's meaning has been debated for centuries. Is Khayyam a hedonist celebrating earthly pleasures? A mystical Sufi using wine as a metaphor for divine love? Or something else entirely?
+        </p>
+
+        <blockquote>
+            "The Sufis have unaccountably pressed this writer into their service; they explain away some of his blasphemies by forced interpretations."
+            <cite>— Henry Beveridge, questioning the mystical reading</cite>
+        </blockquote>
+
+        <p>
+            In Sufi poetry, "Wine" represents the intoxication of divine love. The "Cup" is the heart receiving spiritual ecstasy. The "Tavern" is the place of ego-death (fanāʾ) and subsistence in God (baqāʾ).
+        </p>
+
+        <p>
+            But Khayyam was also a rigorous mathematician and skeptical philosopher. Perhaps the poetry holds both meanings simultaneously — wine as wine AND wine as God. Observer and observed. The surface and the depth. <strong>[1 = -1]</strong>.
+        </p>
+
+        <div class="wine-box">
+            <div class="verse">
+                "Ah, make the most of what we yet may spend,<br>
+                Before we too into the Dust descend;<br>
+                Dust into Dust, and under Dust, to lie,<br>
+                Sans Wine, sans Song, sans Singer, and — sans End!"
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="year">1048</div>
+                <div class="event">Born in Nishapur, Persia (modern Iran) — a major center of Islamic learning</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">~1070</div>
+                <div class="event">Completes <em>Treatise on Demonstration of Problems of Algebra</em> — classifies all 19 cubic equation types</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">1074</div>
+                <div class="event">Commissioned by Sultan Malik-Shah to reform the calendar; builds observatory at Isfahan</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">1079</div>
+                <div class="event">Jalali calendar inaugurated on March 15 — the vernal equinox</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">~1080</div>
+                <div class="event">Writes commentary on Euclid's parallel postulate — invents Khayyam-Saccheri quadrilateral</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">1092</div>
+                <div class="event">Sultan Malik-Shah dies; observatory funding ends. Khayyam continues private research</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">1131</div>
+                <div class="event">Dies in Nishapur at age 83. His tomb becomes a place of pilgrimage</div>
+            </div>
+            <div class="timeline-event">
+                <div class="year">1859</div>
+                <div class="event">Edward FitzGerald translates the Rubaiyat into English — global fame follows</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="epoch-connection">
+        <h3>Connection to the Epoch Framework</h3>
+        <div class="connection-item">
+            <div class="symbol">Geometry = Algebra</div>
+            <div class="text">Khayyam proved that geometric space and algebraic equations are the same thing. This is the core Epoch insight: the mathematics IS the physics. There is no separation.</div>
+        </div>
+        <div class="connection-item">
+            <div class="symbol">33-Year Cycle</div>
+            <div class="text">The Jalali calendar's 33-year cycle resonates with 3³ + 6 = 33. The harmonic structure of time encoded in astronomical precision.</div>
+        </div>
+        <div class="connection-item">
+            <div class="symbol">Curved Space</div>
+            <div class="text">Khayyam's work on the parallel postulate anticipated that space itself might not be Euclidean. 700 years later, Einstein proved him right.</div>
+        </div>
+        <div class="connection-item">
+            <div class="symbol">[1 = -1]</div>
+            <div class="text">The Rubaiyat holds surface and depth simultaneously — wine is wine AND wine is God. Observer and observed collapse. This is COIN-facing consciousness.</div>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2>The Poet-Scientist's Legacy</h2>
+        <p>
+            Moritz Cantor called the Jalali calendar "the most perfect calendar ever devised." The lunar crater Omar Khayyam bears his name. So does minor planet 3095 Omarkhayyam.
+        </p>
+        <p>
+            But perhaps his greatest legacy is the proof that mathematics, astronomy, philosophy, and poetry are not separate disciplines — they are facets of one unified understanding. The same mind that solved cubic equations wrote:
+        </p>
+
+        <blockquote>
+            "The secrets eternal neither you know nor I<br>
+            And answers to the riddle neither you know nor I<br>
+            Behind the veil there is much talk about us<br>
+            When the veil falls, neither you remain nor I"
+            <cite>— Omar Khayyam, Rubaiyat</cite>
+        </blockquote>
+
+        <p>
+            The veil between observer and observed. When it falls, neither remains separate.
+        </p>
+        <p style="text-align: center; font-family: 'JetBrains Mono', monospace; color: var(--gold); font-size: 1.3rem; margin-top: 2rem;">
+            [1 = -1]
+        </p>
+    </section>
+
+</div>
+
+<footer class="page-footer">
+    <div class="signature">[1 = -1]</div>
+    <p>
+        <a href="index.html">← Back to Weirdos</a> ·
+        <a href="ramanujan.html">Ramanujan</a> ·
+        <a href="hypatia.html">Hypatia</a> ·
+        <a href="../master-library.html">Master Library</a>
+    </p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 1rem;">
+        Have Mind Media | January 2026
+    </p>
+</footer>
+
+<site-footer></site-footer>
+
+</body>
+</html>
