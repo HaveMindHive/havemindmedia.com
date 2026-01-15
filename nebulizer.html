@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE NEBULIZER | Navigate the Cosmos | Have Mind Media</title>
-    <meta name="description" content="Spin the wheel to explore Have Mind Media. Like the Price is Right, but for consciousness and physics.">
+    <meta name="description" content="Spin the wheel to explore Have Mind Media. Discover physics, mysteries, and consciousness.">
     <link rel="stylesheet" href="css/unified-theme.css">
     <script src="js/components/site-header.js" defer></script>
     <script src="js/components/site-footer.js" defer></script>
@@ -26,275 +26,175 @@
             min-height: 100vh;
         }
 
-        /* Nebula Background */
-        .nebula-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
-        }
-
-        .nebula-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 4s ease;
-        }
-
-        .nebula-layer.active { opacity: 1; }
+        .header-space { height: 80px; }
 
         /* Header */
         .page-header {
             text-align: center;
-            padding: 2rem 2rem 1rem;
+            padding: 1.5rem 1rem 1rem;
         }
 
         .page-header h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             color: var(--gold);
-            letter-spacing: 0.15em;
-            text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+            letter-spacing: 0.1em;
         }
 
         .page-header .subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
-            font-style: italic;
-            margin-top: 0.5rem;
+            margin-top: 0.25rem;
         }
 
-        /* Wheel Container - Price is Right Style */
-        .wheel-section {
-            padding: 2rem;
-            max-width: 1200px;
+        /* Main container */
+        .nebulizer-container {
+            max-width: 500px;
             margin: 0 auto;
+            padding: 1rem;
         }
 
-        .wheel-wrapper {
-            position: relative;
-            width: 100%;
+        /* Current card display */
+        .current-card {
+            background: linear-gradient(145deg, rgba(20, 25, 35, 0.95) 0%, rgba(10, 12, 20, 0.98) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 16px;
             overflow: hidden;
-            padding: 2rem 0;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
         }
 
-        /* The pointer/ticker at top */
-        .wheel-pointer {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-            border-top: 30px solid var(--gold);
-            z-index: 100;
-            filter: drop-shadow(0 0 10px rgba(201, 162, 39, 0.8));
-        }
-
-        /* Horizontal wheel strip */
-        .wheel-strip {
-            display: flex;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-            cursor: grab;
-            user-select: none;
-        }
-
-        .wheel-strip:active, .wheel-strip.dragging {
-            cursor: grabbing;
-        }
-
-        .wheel-strip.dragging {
-            transition: none !important;
-        }
-
-        .wheel-strip.spinning {
-            transition: transform 5s cubic-bezier(0.12, 0.8, 0.2, 1);
-        }
-
-        .wheel-strip.slow-stop {
-            transition: transform 6s cubic-bezier(0.15, 0.8, 0.3, 1);
-        }
-
-        /* Individual wheel segments */
-        .wheel-segment {
-            flex-shrink: 0;
-            width: 280px;
-            height: 380px;
-            margin: 0 10px;
-            background: linear-gradient(145deg, rgba(15, 20, 30, 0.95) 0%, rgba(5, 8, 15, 0.98) 100%);
-            border: 2px solid var(--gold-dim);
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .wheel-segment:hover {
-            border-color: var(--gold);
-        }
-
-        .wheel-segment.winner {
-            border-color: var(--gold);
-            box-shadow: 0 0 40px rgba(201, 162, 39, 0.6);
-            transform: scale(1.05);
-        }
-
-        .segment-image {
-            height: 180px;
+        .card-image {
+            height: 200px;
             background: linear-gradient(135deg, #1a0a2e 0%, #0a1628 100%);
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        .segment-image img {
+        .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
         }
 
-        .segment-image .fallback-icon {
-            font-size: 4rem;
-            opacity: 0.6;
+        .card-content {
+            padding: 1.5rem;
+            text-align: center;
         }
 
-        .segment-content {
-            padding: 1.25rem;
-        }
-
-        .segment-category {
-            font-size: 0.7rem;
+        .card-category {
+            font-size: 0.75rem;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             margin-bottom: 0.5rem;
         }
 
-        .segment-content h3 {
+        .card-content h2 {
             font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .segment-content p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            line-height: 1.4;
-        }
-
-        /* Controls */
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            padding: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .spin-btn {
-            padding: 1rem 3rem;
-            font-size: 1.2rem;
-            font-family: 'Cinzel', serif;
-            background: linear-gradient(135deg, rgba(201, 162, 39, 0.3) 0%, rgba(201, 162, 39, 0.1) 100%);
-            border: 2px solid var(--gold);
-            border-radius: 50px;
-            color: var(--gold);
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 0.1em;
-        }
-
-        .spin-btn:hover {
-            background: linear-gradient(135deg, rgba(201, 162, 39, 0.5) 0%, rgba(201, 162, 39, 0.2) 100%);
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
-        }
-
-        .spin-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .nav-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(201, 162, 39, 0.1);
-            border: 1px solid var(--gold-dim);
-            color: var(--gold);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: rgba(201, 162, 39, 0.2);
-            border-color: var(--gold);
-        }
-
-        .counter {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-dim);
-        }
-
-        .counter .current {
-            color: var(--gold);
-            font-size: 1.3rem;
-        }
-
-        /* Winner display */
-        .winner-display {
-            text-align: center;
-            padding: 2rem;
-            display: none;
-        }
-
-        .winner-display.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .winner-display h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
             font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: var(--text-dim);
+            font-size: 1rem;
             margin-bottom: 1rem;
         }
 
-        .winner-display .go-btn {
+        .go-btn {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 0.75rem 2rem;
             background: var(--gold);
             color: #000;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.3s;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .winner-display .go-btn:hover {
+        .go-btn:hover, .go-btn:active {
             transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Navigation controls */
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(201, 162, 39, 0.15);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover, .nav-btn:active {
+            background: rgba(201, 162, 39, 0.3);
+            transform: scale(1.1);
+        }
+
+        .spin-btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0.2) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            color: var(--gold);
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            transition: all 0.2s;
+        }
+
+        .spin-btn:hover, .spin-btn:active {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.6) 0%, rgba(201, 162, 39, 0.3) 100%);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(201, 162, 39, 0.4);
+        }
+
+        .spin-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .spin-btn.spinning {
+            animation: pulse 0.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Counter */
+        .counter {
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .counter .current {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: bold;
         }
 
         /* Category filter */
@@ -303,24 +203,22 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.5rem;
-            padding: 1rem 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+            margin-bottom: 1rem;
         }
 
         .filter-btn {
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(201, 162, 39, 0.3);
             border-radius: 20px;
             color: var(--text-dim);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: rgba(201, 162, 39, 0.15);
+            background: rgba(201, 162, 39, 0.2);
             border-color: var(--gold);
             color: var(--gold);
         }
@@ -328,82 +226,89 @@
         /* Instructions */
         .instructions {
             text-align: center;
-            padding: 1rem;
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            padding: 0.5rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .wheel-segment {
-                width: 240px;
-                height: 340px;
-            }
-            .segment-image { height: 140px; }
-            .spin-btn { padding: 0.8rem 2rem; font-size: 1rem; }
+        /* Swipe hint for mobile */
+        .swipe-hint {
+            text-align: center;
+            color: var(--gold-dim);
+            font-size: 0.85rem;
+            padding: 0.5rem;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Touch area for swipe */
+        .swipe-area {
+            position: relative;
+            touch-action: pan-y;
+            user-select: none;
         }
     </style>
 </head>
 <body>
     <site-header></site-header>
-
-    <!-- Nebula Background -->
-    <div class="nebula-bg">
-        <div class="nebula-layer active" style="background-image: url('images/nebula-purple-gold.png');"></div>
-        <div class="nebula-layer" style="background-image: url('images/nebula-blue-cyan.png');"></div>
-        <div class="nebula-layer" style="background-image: url('images/nebula-fire.png');"></div>
-        <div class="nebula-layer" style="background-image: url('images/nebula-teal.png');"></div>
-    </div>
+    <div class="header-space"></div>
 
     <header class="page-header">
         <h1>THE NEBULIZER</h1>
         <p class="subtitle">Spin the wheel. Discover something new.</p>
     </header>
 
-    <!-- Category Filter -->
-    <div class="filters">
-        <button class="filter-btn active" data-category="all">All</button>
-        <button class="filter-btn" data-category="physics">Physics</button>
-        <button class="filter-btn" data-category="namagiri">Namagiri</button>
-        <button class="filter-btn" data-category="education">Education</button>
-        <button class="filter-btn" data-category="mysteries">Mysteries</button>
-        <button class="filter-btn" data-category="tools">Tools</button>
-        <button class="filter-btn" data-category="weirdos">Weirdos</button>
-    </div>
+    <div class="nebulizer-container">
+        <!-- Category Filter -->
+        <div class="filters">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="physics">Physics</button>
+            <button class="filter-btn" data-category="namagiri">Namagiri</button>
+            <button class="filter-btn" data-category="education">Education</button>
+            <button class="filter-btn" data-category="mysteries">Mysteries</button>
+            <button class="filter-btn" data-category="tools">Tools</button>
+            <button class="filter-btn" data-category="weirdos">Weirdos</button>
+        </div>
 
-    <!-- Wheel Section -->
-    <section class="wheel-section">
-        <div class="wheel-wrapper">
-            <div class="wheel-pointer"></div>
-            <div class="wheel-strip" id="wheelStrip">
-                <!-- Segments generated by JS -->
+        <!-- Swipe hint -->
+        <p class="swipe-hint">← Swipe or tap arrows →</p>
+
+        <!-- Current Card -->
+        <div class="swipe-area" id="swipeArea">
+            <div class="current-card" id="currentCard">
+                <div class="card-image" id="cardImage"></div>
+                <div class="card-content">
+                    <div class="card-category" id="cardCategory">PHYSICS</div>
+                    <h2 id="cardTitle">The Derivation</h2>
+                    <p id="cardDesc">From primes to 1729 to [1=-1]</p>
+                    <a href="#" class="go-btn" id="goBtn">EXPLORE →</a>
+                </div>
             </div>
         </div>
 
-        <div class="controls">
-            <button class="nav-btn" id="prevBtn">&#10094;</button>
-            <button class="spin-btn" id="spinBtn">SPIN THE WHEEL</button>
-            <button class="nav-btn" id="nextBtn">&#10095;</button>
+        <!-- Navigation -->
+        <div class="nav-controls">
+            <button class="nav-btn" id="prevBtn">◀</button>
+            <button class="spin-btn" id="spinBtn">SPIN</button>
+            <button class="nav-btn" id="nextBtn">▶</button>
         </div>
 
+        <!-- Counter -->
         <div class="counter">
             <span class="current" id="currentNum">1</span> / <span id="totalNum">0</span>
         </div>
 
-        <div class="winner-display" id="winnerDisplay">
-            <h2 id="winnerTitle">You landed on...</h2>
-            <a href="#" class="go-btn" id="winnerLink">EXPLORE THIS PAGE →</a>
-        </div>
-    </section>
-
-    <p class="instructions">
-        SPIN the wheel, drag to browse, or use ← → arrow keys. Click any card to visit.
-    </p>
+        <p class="instructions">Arrow keys or swipe to browse • Space to spin</p>
+    </div>
 
     <site-footer></site-footer>
 
     <script>
-        // Page data with real images where available
+        // Page data
         const pages = [
             { title: "The Derivation", desc: "From primes to 1729 to [1=-1]", url: "physics/the-derivation_v1.0_01-12-2026.html", category: "physics", img: "images/hero/jwst-spiral.png" },
             { title: "The Kill Shot", desc: "The death of falsificationism", url: "physics/the-kill-shot_v1.0_01-12-2026.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
@@ -412,8 +317,9 @@
             { title: "Earth's Nodal Grid", desc: "Ancient sites as D-position nodes", url: "physics/kappa5/nodal-energy-grid/index.html", category: "physics", img: "images/inverted-earth.png" },
             { title: "Great Pyramid D7", desc: "The ONLY D7 site on Earth", url: "physics/kappa5/nodal-energy-grid/great-pyramid.html", category: "physics", img: "images/d7-great-pyramid.png" },
             { title: "κ₅ True Dark", desc: "The fifth scalar mode", url: "physics/kappa5/index.html", category: "physics", img: "images/hero/cosmic-consciousness.png" },
-            { title: "Standard Model Failures", desc: "The cracks they paper over", url: "physics/standard-model-failures/index.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
-            { title: "JWST Explorer", desc: "James Webb through Epoch lens", url: "physics/jwst-geometric-explorer.html", category: "physics", img: "images/hero/jwst-spiral.png" },
+            { title: "Watch of T0Rs", desc: "Springs of Reality", url: "physics/watch-of-tors_v1.0_01-13-2026.html", category: "physics", img: "images/hero/cosmic-gateway.png" },
+            { title: "The Build", desc: "Make it so, Commander Hill", url: "physics/vessel/the-build.html", category: "physics", img: "images/hero/jwst-spiral.png" },
+            { title: "Star in the Sky", desc: "Where it all began", url: "physics/star-in-the-sky.html", category: "physics", img: "images/hero/cosmic-consciousness.png" },
 
             { title: "Namagiri Speaks", desc: "20 episodes from the goddess", url: "namagiri/index.html", category: "namagiri", img: "images/namagiri/goddess-01.jpg" },
             { title: "The Proofs", desc: "Mathematical revelations", url: "namagiri/the-proofs.html", category: "namagiri", img: "images/namagiri/goddess-02.jpg" },
@@ -422,195 +328,124 @@
             { title: "Mythic Mirror", desc: "You are Frankenstein's Monster", url: "education/mythic-mirror/index.html", category: "education", img: "images/hero/cosmic-gateway.png" },
             { title: "Becoming a Coin", desc: "Observer to participant", url: "education/becoming-a-coin.html", category: "education", img: "images/hero/cosmic-consciousness.png" },
             { title: "Ammit Function", desc: "The weighing of the heart", url: "education/ammit-function.html", category: "education", img: "images/balancer.jpg" },
+            { title: "Eye Codex", desc: "Vision geometry", url: "biology/eye-codex.html", category: "education", img: "images/hero/cosmic-consciousness.png" },
 
             { title: "Voynich Decoded", desc: "World's most mysterious book", url: "ancient-mysteries/voynich/index.html", category: "mysteries", img: "images/hero/cosmic-gateway.png" },
             { title: "Rongorongo", desc: "Easter Island's lost script", url: "ancient-mysteries/texts/rongorongo-v1.0.html", category: "mysteries", img: "images/hero/cosmic-consciousness.png" },
             { title: "Phaistos Disc", desc: "Bronze Age mystery", url: "ancient-mysteries/texts/phaistos-v1.0.html", category: "mysteries", img: "images/hero/jwst-spiral.png" },
             { title: "Indus Script", desc: "4,000 years undeciphered", url: "ancient-mysteries/indus-script/index.html", category: "mysteries", img: "images/hero/cosmic-gateway.png" },
-            { title: "Norse Artifacts", desc: "Rök, Gotland, Oseberg", url: "ancient-mysteries/norse-artifacts/LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html", category: "mysteries", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Rattlesnake Disc", desc: "Moundville mysteries", url: "ancient-mysteries/mississippian/index.html", category: "mysteries", img: "images/hero/cosmic-consciousness.png" },
 
             { title: "S-Signature Engine", desc: "Your scalar signature", url: "tools/s-signature/s_signature_engine.html", category: "tools", img: "images/hero/jwst-spiral.png" },
             { title: "S-Signature Oracle", desc: "Deep readings", url: "tools/s-signature/s_signature_oracle.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
             { title: "Sol Vision", desc: "Reality from inside out", url: "tools/sol-vision/index.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
             { title: "Rosetta Engine", desc: "Cross-script translation", url: "rosetta-engine/rosetta-engine-app_v1.0_01-06-2026.html", category: "tools", img: "images/hero/jwst-spiral.png" },
-            { title: "Universal Language", desc: "Geometric phonetics", url: "universal-language-generator/ulg-app_v1.0_01-06-2026.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
+            { title: "Master Library", desc: "All pages indexed", url: "master-library.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
 
             { title: "Ramanujan", desc: "The man who knew infinity", url: "weirdos/ramanujan.html", category: "weirdos", img: "images/weirdos/ramanujan_hero.jpg" },
             { title: "Hypatia", desc: "κ = 30. The framework keeper.", url: "weirdos/hypatia.html", category: "weirdos", img: "images/weirdos/hypatia_hero.jpg" },
             { title: "Tesla Codex", desc: "3, 6, 9 — keys to universe", url: "weirdos/tesla-codex.html", category: "weirdos", img: "images/weirdos/tesla_hero.jpg" },
             { title: "Carl Jung", desc: "The collective unconscious", url: "weirdos/carl-jung.html", category: "weirdos", img: "images/weirdos/jung_hero.jpg" },
-            { title: "The Suppression", desc: "How truth was hidden", url: "weirdos/suppression.html", category: "weirdos", img: "images/weirdos/blake_hero.jpg" },
             { title: "T0Rs", desc: "The finder", url: "weirdos/jason-ray.html", category: "weirdos", img: "images/weirdos/tormod_hero.jpg" },
-
-            { title: "Mind-Blowing Proofs", desc: "Start here", url: "mind-blowing.html", category: "physics", img: "images/hero/jwst-spiral.png" },
-            { title: "Master Library", desc: "All 221 pages", url: "master-library.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
-
-            // Games
-            { title: "Triadic Balance", desc: "Find your equilibrium", url: "games/balance/index.html", category: "tools", img: "images/balancer.jpg" },
-            { title: "Mind Reading Game", desc: "Test your intuition", url: "games/mind-reading/index.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
-            { title: "Love Triads", desc: "Relationship geometry", url: "games/love-triads.html", category: "tools", img: "images/hero/cosmic-gateway.png" },
-            { title: "Phaistos Archetypes", desc: "Ancient symbol matching", url: "games/phaistos-archetypes.html", category: "mysteries", img: "images/hero/jwst-spiral.png" },
-            { title: "Intuition Trainer", desc: "Sharpen your senses", url: "games/intuition-trainer.html", category: "tools", img: "images/hero/cosmic-consciousness.png" },
-
-            // More Weirdos
             { title: "Pythagoras", desc: "The original geometer", url: "weirdos/pythagoras.html", category: "weirdos", img: "images/hero/cosmic-gateway.png" },
-            { title: "Plato", desc: "Forms and geometry", url: "weirdos/plato.html", category: "weirdos", img: "images/hero/cosmic-consciousness.png" },
-            { title: "Roger Penrose", desc: "Twistor theory pioneer", url: "weirdos/roger-penrose.html", category: "weirdos", img: "images/hero/jwst-spiral.png" },
-            { title: "Maxwell Codex", desc: "The original equations", url: "weirdos/maxwell-codex.html", category: "weirdos", img: "images/hero/cosmic-gateway.png" },
-
-            // Biology
-            { title: "Eye Codex", desc: "Vision geometry", url: "biology/eye-codex.html", category: "education", img: "images/hero/cosmic-consciousness.png" },
-            { title: "Protein Folding", desc: "Life's geometric dance", url: "protein-folding/index.html", category: "education", img: "images/hero/jwst-spiral.png" },
-            { title: "DNA Studio", desc: "The double helix", url: "dna-studio/index.html", category: "education", img: "images/hero/cosmic-gateway.png" },
-
-            // Star in the Sky
-            { title: "Star in the Sky", desc: "Where it all began", url: "physics/star-in-the-sky.html", category: "physics", img: "images/hero/cosmic-consciousness.png" },
         ];
 
         let filteredPages = [...pages];
-        let currentPosition = 0;
+        let currentIndex = 0;
         let isSpinning = false;
-        const segmentWidth = 300; // width + margin
 
-        const wheelStrip = document.getElementById('wheelStrip');
+        // DOM elements
+        const cardImage = document.getElementById('cardImage');
+        const cardCategory = document.getElementById('cardCategory');
+        const cardTitle = document.getElementById('cardTitle');
+        const cardDesc = document.getElementById('cardDesc');
+        const goBtn = document.getElementById('goBtn');
+        const currentNum = document.getElementById('currentNum');
+        const totalNum = document.getElementById('totalNum');
         const spinBtn = document.getElementById('spinBtn');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const currentNum = document.getElementById('currentNum');
-        const totalNum = document.getElementById('totalNum');
-        const winnerDisplay = document.getElementById('winnerDisplay');
-        const winnerTitle = document.getElementById('winnerTitle');
-        const winnerLink = document.getElementById('winnerLink');
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const currentCard = document.getElementById('currentCard');
+        const swipeArea = document.getElementById('swipeArea');
 
-        // Nebula rotation
-        const nebulaLayers = document.querySelectorAll('.nebula-layer');
-        let currentNebula = 0;
-        setInterval(() => {
-            nebulaLayers[currentNebula].classList.remove('active');
-            currentNebula = (currentNebula + 1) % nebulaLayers.length;
-            nebulaLayers[currentNebula].classList.add('active');
-        }, 10000);
+        function updateCard() {
+            const page = filteredPages[currentIndex];
 
-        function buildWheel() {
-            // Triple the pages for infinite scroll effect
-            const tripled = [...filteredPages, ...filteredPages, ...filteredPages];
+            // Update image
+            if (page.img) {
+                cardImage.innerHTML = `<img src="${page.img}" alt="${page.title}" onerror="this.style.display='none'">`;
+            } else {
+                cardImage.innerHTML = '';
+            }
 
-            wheelStrip.innerHTML = tripled.map((page, i) => `
-                <div class="wheel-segment" data-index="${i % filteredPages.length}" data-url="${page.url}">
-                    <div class="segment-image">
-                        ${page.img ? `<img src="${page.img}" alt="${page.title}" onerror="this.parentElement.innerHTML='<span class=\\'fallback-icon\\'>◎</span>'">` : '<span class="fallback-icon">◎</span>'}
-                    </div>
-                    <div class="segment-content">
-                        <div class="segment-category">${page.category}</div>
-                        <h3>${page.title}</h3>
-                        <p>${page.desc}</p>
-                    </div>
-                </div>
-            `).join('');
+            cardCategory.textContent = page.category.toUpperCase();
+            cardTitle.textContent = page.title;
+            cardDesc.textContent = page.desc;
+            goBtn.href = page.url;
 
-            // Center the wheel initially
-            currentPosition = filteredPages.length;
-            updatePosition(false);
+            currentNum.textContent = currentIndex + 1;
             totalNum.textContent = filteredPages.length;
-            updateCounter();
-
-            // Click handlers
-            document.querySelectorAll('.wheel-segment').forEach(seg => {
-                seg.addEventListener('click', () => {
-                    if (!isSpinning) {
-                        window.location.href = seg.dataset.url;
-                    }
-                });
-            });
         }
 
-        function updatePosition(animate = true) {
-            const offset = -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
-            wheelStrip.style.transition = animate ? 'transform 0.4s ease-out' : 'none';
-            wheelStrip.style.transform = `translateX(${offset}px)`;
-        }
+        function navigate(direction) {
+            if (isSpinning) return;
 
-        function updateCounter() {
-            const displayIndex = ((currentPosition % filteredPages.length) + filteredPages.length) % filteredPages.length;
-            currentNum.textContent = displayIndex + 1;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = filteredPages.length - 1;
+            if (currentIndex >= filteredPages.length) currentIndex = 0;
+
+            // Simple fade animation
+            currentCard.style.opacity = '0.5';
+            setTimeout(() => {
+                updateCard();
+                currentCard.style.opacity = '1';
+            }, 100);
         }
 
         function spin() {
             if (isSpinning) return;
             isSpinning = true;
             spinBtn.disabled = true;
-            winnerDisplay.classList.remove('show');
+            spinBtn.classList.add('spinning');
 
-            // Remove previous winner
-            document.querySelectorAll('.wheel-segment.winner').forEach(s => s.classList.remove('winner'));
+            // Random number of "spins" (card changes)
+            const totalSpins = 15 + Math.floor(Math.random() * 15);
+            let spinsCompleted = 0;
+            let delay = 50;
 
-            // Random spin: 3-6 full rotations plus random position
-            const spins = 3 + Math.random() * 3;
-            const extraSlots = Math.floor(Math.random() * filteredPages.length);
-            const totalSlots = Math.floor(spins * filteredPages.length) + extraSlots;
+            function doSpin() {
+                currentIndex = (currentIndex + 1) % filteredPages.length;
+                updateCard();
+                spinsCompleted++;
 
-            currentPosition += totalSlots;
+                if (spinsCompleted < totalSpins) {
+                    // Slow down as we approach the end
+                    delay = 50 + (spinsCompleted / totalSpins) * 250;
+                    setTimeout(doSpin, delay);
+                } else {
+                    // Done spinning
+                    isSpinning = false;
+                    spinBtn.disabled = false;
+                    spinBtn.classList.remove('spinning');
 
-            // Apply spinning animation
-            wheelStrip.classList.add('spinning');
-            const offset = -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
-            wheelStrip.style.transform = `translateX(${offset}px)`;
-
-            setTimeout(() => {
-                wheelStrip.classList.remove('spinning');
-                isSpinning = false;
-                spinBtn.disabled = false;
-
-                // Normalize position
-                currentPosition = currentPosition % filteredPages.length + filteredPages.length;
-                updatePosition(false);
-                updateCounter();
-
-                // Show winner
-                const winnerIndex = currentPosition % filteredPages.length;
-                const winner = filteredPages[winnerIndex];
-                const segments = document.querySelectorAll('.wheel-segment');
-                segments[currentPosition].classList.add('winner');
-
-                winnerTitle.textContent = `You landed on: ${winner.title}`;
-                winnerLink.href = winner.url;
-                winnerDisplay.classList.add('show');
-            }, 4000);
-        }
-
-        function navigate(dir) {
-            if (isSpinning) return;
-            currentPosition += dir;
-
-            // Wrap around
-            if (currentPosition < filteredPages.length) {
-                currentPosition += filteredPages.length;
-                updatePosition(false);
-                setTimeout(() => {
-                    currentPosition += dir;
-                    updatePosition(true);
-                }, 10);
-            } else if (currentPosition >= filteredPages.length * 2) {
-                currentPosition -= filteredPages.length;
-                updatePosition(false);
-                setTimeout(() => {
-                    currentPosition += dir;
-                    updatePosition(true);
-                }, 10);
-            } else {
-                updatePosition(true);
+                    // Flash the card
+                    currentCard.style.boxShadow = '0 0 60px rgba(201, 162, 39, 0.8)';
+                    setTimeout(() => {
+                        currentCard.style.boxShadow = '0 0 40px rgba(201, 162, 39, 0.3)';
+                    }, 500);
+                }
             }
 
-            updateCounter();
-            winnerDisplay.classList.remove('show');
+            doSpin();
         }
 
-        // Event listeners
-        spinBtn.addEventListener('click', spin);
+        // Button events
         prevBtn.addEventListener('click', () => navigate(-1));
         nextBtn.addEventListener('click', () => navigate(1));
+        spinBtn.addEventListener('click', spin);
 
+        // Keyboard
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') navigate(-1);
             if (e.key === 'ArrowRight') navigate(1);
@@ -620,104 +455,49 @@
             }
         });
 
-        // Filter
+        // Touch swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        swipeArea.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        swipeArea.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const diff = touchStartX - touchEndX;
+            const threshold = 50;
+
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    // Swipe left = next
+                    navigate(1);
+                } else {
+                    // Swipe right = prev
+                    navigate(-1);
+                }
+            }
+        }
+
+        // Filter buttons
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+
                 const cat = btn.dataset.category;
                 filteredPages = cat === 'all' ? [...pages] : pages.filter(p => p.category === cat);
-                currentPosition = 0;
-                buildWheel();
+                currentIndex = 0;
+                updateCard();
             });
         });
 
-        // Drag functionality - smooth, one at a time
-        let isDragging = false;
-        let startX = 0;
-        let currentX = 0;
-        let dragStartPosition = 0;
-
-        function getTransformX() {
-            return -(currentPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
-        }
-
-        function startDrag(clientX) {
-            if (isSpinning) return;
-            isDragging = true;
-            startX = clientX;
-            currentX = clientX;
-            dragStartPosition = currentPosition;
-            wheelStrip.classList.add('dragging');
-            winnerDisplay.classList.remove('show');
-        }
-
-        function moveDrag(clientX) {
-            if (!isDragging) return;
-            currentX = clientX;
-            const deltaX = currentX - startX;
-            const baseOffset = -(dragStartPosition * segmentWidth) + (window.innerWidth / 2) - (segmentWidth / 2) + 10;
-            wheelStrip.style.transform = `translateX(${baseOffset + deltaX}px)`;
-        }
-
-        function endDrag() {
-            if (!isDragging) return;
-            isDragging = false;
-            wheelStrip.classList.remove('dragging');
-
-            const deltaX = currentX - startX;
-            // Need to drag at least 80px to move one card
-            const threshold = 80;
-
-            if (Math.abs(deltaX) > threshold) {
-                // Move one card at a time based on direction
-                const direction = deltaX > 0 ? -1 : 1;
-                currentPosition = dragStartPosition + direction;
-            } else {
-                // Snap back to original
-                currentPosition = dragStartPosition;
-            }
-
-            // Normalize position
-            while (currentPosition < filteredPages.length) currentPosition += filteredPages.length;
-            while (currentPosition >= filteredPages.length * 2) currentPosition -= filteredPages.length;
-
-            updatePosition(true);
-            updateCounter();
-        }
-
-        // Mouse events
-        wheelStrip.addEventListener('mousedown', (e) => {
-            startDrag(e.clientX);
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            moveDrag(e.clientX);
-        });
-
-        document.addEventListener('mouseup', () => {
-            endDrag();
-        });
-
-        // Touch events
-        wheelStrip.addEventListener('touchstart', (e) => {
-            startDrag(e.touches[0].clientX);
-        }, { passive: true });
-
-        document.addEventListener('touchmove', (e) => {
-            if (isDragging && e.touches[0]) {
-                moveDrag(e.touches[0].clientX);
-            }
-        }, { passive: true });
-
-        document.addEventListener('touchend', () => {
-            endDrag();
-        });
-
         // Init
-        buildWheel();
-        window.addEventListener('resize', () => updatePosition(false));
+        updateCard();
     </script>
 </body>
 </html>
