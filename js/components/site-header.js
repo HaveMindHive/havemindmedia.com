@@ -104,6 +104,18 @@ class SiteHeader extends HTMLElement {
                 .hmm-link.games:hover {
                     background: linear-gradient(135deg, rgba(201, 162, 39, 0.25) 0%, rgba(106, 180, 245, 0.25) 100%);
                 }
+                .hmm-link.everything {
+                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.6), rgba(201, 162, 39, 0.4));
+                    border: 1px solid rgba(139, 0, 0, 0.6);
+                    color: #fff !important;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                }
+                .hmm-link.everything:hover {
+                    background: linear-gradient(135deg, rgba(139, 0, 0, 0.8), rgba(201, 162, 39, 0.6));
+                    transform: scale(1.05);
+                    box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
+                }
                 .hmm-link.whats-new {
                     background: linear-gradient(135deg, #ffd700, #ff8c00);
                     color: #000 !important;
@@ -430,6 +442,9 @@ class SiteHeader extends HTMLElement {
 
                         <!-- κ₅ True Dark -->
                         <a href="${bp}physics/kappa5/index.html" class="hmm-link kappa5" title="κ₅ True Dark">κ₅</a>
+
+                        <!-- EVERYTHING - Full Archive -->
+                        <a href="${bp}everything.html" class="hmm-link everything" title="223 Pages - The Complete Archive">EVERYTHING</a>
 
                         <!-- Library -->
                         <a href="${bp}master-library.html" class="hmm-link" title="Master Library">Library</a>
