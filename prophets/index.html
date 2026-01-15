@@ -381,9 +381,22 @@
             justify-content: center;
             font-size: 4rem;
             transition: all 0.4s;
+            overflow: hidden;
+        }
+
+        .prophet-portrait {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            object-position: center 20%;
+            border-radius: 8px 8px 0 0;
         }
 
         .prophet-card:hover .card-symbol {
+            transform: scale(1.05);
+        }
+
+        .prophet-card:hover .card-symbol:not(:has(img)) {
             transform: scale(1.2) rotate(5deg);
         }
 
@@ -605,7 +618,7 @@
         </div>
         <div class="prophets-grid">
             <div class="prophet-card card-gold" onclick="toggleCard(this)">
-                <div class="card-symbol">&#x2625;</div>
+                <div class="card-symbol"><img src="images/hermes.jpg" alt="Hermes Trismegistus" class="prophet-portrait"></div>
                 <div class="card-content">
                     <div class="card-name">HERMES TRISMEGISTUS</div>
                     <div class="card-epithet">Thrice-Great</div>
@@ -650,7 +663,7 @@
                 </div>
             </div>
             <div class="prophet-card card-gold" onclick="toggleCard(this)">
-                <div class="card-symbol">&#x2640;</div>
+                <div class="card-symbol"><img src="images/cassandra.jpg" alt="Cassandra" class="prophet-portrait"></div>
                 <div class="card-content">
                     <div class="card-name">CASSANDRA</div>
                     <div class="card-epithet">The Unbelieved</div>
@@ -854,7 +867,7 @@
         </div>
         <div class="prophets-grid">
             <div class="prophet-card card-blue" onclick="toggleCard(this)">
-                <div class="card-symbol">&#x1F4A4;</div>
+                <div class="card-symbol"><img src="images/cayce.jpg" alt="Edgar Cayce" class="prophet-portrait"></div>
                 <div class="card-content">
                     <div class="card-name">EDGAR CAYCE</div>
                     <div class="card-epithet">The Sleeping Prophet</div>
