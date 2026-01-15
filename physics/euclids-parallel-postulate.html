@@ -339,6 +339,14 @@
 
 <div class="main-content">
 
+    <!-- Hero Image -->
+    <div style="max-width: 600px; margin: 0 auto 3rem; border-radius: 12px; overflow: hidden; border: 2px solid var(--gold); box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);">
+        <img src="../images/euclid-parallel-postulate.webp" alt="Euclid contemplating the parallel postulate" style="width: 100%; height: auto; display: block;">
+        <div style="text-align: center; padding: 1rem; background: var(--bg-secondary); color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">
+            "The propositions of geometry cannot be derived from general notions of magnitude, but the properties which distinguish space from other conceivable triply extended magnitudes are only to be deduced from experience." — Bernhard Riemann, 1854
+        </div>
+    </div>
+
     <!-- THE PARADOX -->
     <div class="key-insight">
         <h2>The Geometry of Both/And</h2>
@@ -382,8 +390,18 @@
         <p>
             This fifth postulate is different. It's longer, more complicated, and — crucially — it makes claims about what happens at <em>infinity</em>. Euclid himself seemed uncomfortable with it. He avoided using it until Proposition 29.
         </p>
+
+        <blockquote style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent-purple);">
+            "This [fifth postulate] ought even to be struck out of the Postulates altogether; for it is a theorem involving many difficulties... and it requires for the demonstration of it a number of definitions as well as theorems. The converse of it is actually proved by Euclid himself as a theorem."
+            <cite>— Proclus Diadochus (410–485 CE), Commentary on Euclid's Elements</cite>
+        </blockquote>
+
         <p>
             For over two millennia, mathematicians tried to prove it from the other four. They all failed. Not because they weren't clever enough, but because <strong>the parallel postulate is independent</strong> — it cannot be derived from the others. You can accept it, reject it, or modify it, and still get consistent geometry.
+        </p>
+
+        <p>
+            The word "postulate" itself reveals the problem. From the Latin <em>postulat</em> — meaning "asked" or "requested." Euclid was <em>asking</em> you to accept this. He couldn't prove it. And neither could anyone else.
         </p>
     </section>
 
@@ -520,7 +538,16 @@
     <section class="section" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0.3) 100%); border: 2px solid var(--gold); border-radius: 16px; padding: 2.5rem; margin: 3rem 0;">
         <h2 style="text-align: center; border: none; color: var(--gold);">The Khayyam Connection</h2>
         <p>
-            Omar Khayyam understood something crucial in 1077 CE: space is a <strong>continuous magnitude</strong> — infinitely divisible.
+            In 1077 CE, the Persian polymath Omar Khayyam wrote his <em>Commentary on the Difficulties of Certain Postulates of Euclid's Work</em> (Sharḥ mā ashkal min muṣādirāt al-uqlidis). He was the first to systematically examine all three possibilities for the summit angles of what we now call the Khayyam-Saccheri quadrilateral.
+        </p>
+
+        <blockquote style="background: rgba(139, 69, 19, 0.2); border-left: 4px solid #cd853f;">
+            Khayyam "refutes the previous attempts by other mathematicians to prove the proposition, mainly on grounds that each of them had postulated something that was by no means easier to admit than the Fifth Postulate itself."
+            <cite>— A.I. Sabra, on Khayyam's critical approach</cite>
+        </blockquote>
+
+        <p>
+            But Khayyam's deeper insight wasn't about the postulate — it was about the nature of <strong>magnitude</strong> itself. He understood that space is a <strong>continuous quantity</strong> — infinitely divisible.
         </p>
         <p>
             If space is continuous, then it can be subdivided without limit. At infinitesimal scales, any smooth curve looks like a straight line. Any curved surface looks like a flat plane. This is the geometric foundation of calculus and differential geometry.
@@ -642,35 +669,43 @@
         <div class="timeline">
             <div class="timeline-event">
                 <div class="year">~300 BCE</div>
-                <div class="event"><strong>Euclid</strong> writes the <em>Elements</em>. The fifth postulate stands out as more complex than the others.</div>
+                <div class="event"><strong>Euclid</strong> writes the <em>Elements</em> (Στοιχεῖα). The fifth postulate stands out as more complex than the others. He avoids using it for 28 propositions.</div>
+            </div>
+            <div class="timeline-event" style="border-left-color: var(--accent-purple);">
+                <div class="year" style="color: var(--accent-purple);">~450 CE</div>
+                <div class="event"><strong>Proclus</strong> writes his famous Commentary, arguing the fifth postulate should be a theorem. Attempts his own proof — and fails.</div>
             </div>
             <div class="timeline-event">
                 <div class="year">1077</div>
-                <div class="event"><strong>Omar Khayyam</strong> explores the three summit angle cases. First systematic study of alternatives to Euclid.</div>
+                <div class="event"><strong>Omar Khayyam</strong> writes <em>Sharḥ mā ashkal</em> (Explanation of Difficulties). First to systematically explore all three summit angle cases. Creates the Khayyam quadrilateral.</div>
             </div>
             <div class="timeline-event">
                 <div class="year">1733</div>
-                <div class="event"><strong>Saccheri</strong> proves many theorems of non-Euclidean geometry while trying to find a contradiction.</div>
+                <div class="event"><strong>Saccheri</strong> publishes <em>Euclides ab omni naevo vindicatus</em> (Euclid Vindicated of All Errors). Proves dozens of non-Euclidean theorems trying to find a contradiction. Calls his results "repugnant" — but finds no logical error.</div>
+            </div>
+            <div class="timeline-event" style="border-left-color: var(--accent-green);">
+                <div class="year" style="color: var(--accent-green);">1829-31</div>
+                <div class="event"><strong>Lobachevsky</strong> publishes "On the Principles of Geometry" in Russian. <strong>Bolyai</strong> independently publishes <em>Appendix</em> in Hungarian. Both accept hyperbolic geometry as valid. Bolyai writes to his father: <em>"Out of nothing I have created a strange new universe."</em></div>
             </div>
             <div class="timeline-event">
-                <div class="year">1829-31</div>
-                <div class="event"><strong>Lobachevsky</strong> and <strong>Bolyai</strong> independently accept hyperbolic geometry as valid.</div>
+                <div class="year">1832</div>
+                <div class="event"><strong>Gauss</strong> responds to Bolyai's work: <em>"If I start by saying 'I cannot praise it' then you will be taken aback; but I cannot do otherwise; to praise it would be to praise myself; the entire contents of the work... are almost perfectly in agreement with my own meditations, some going back 30–35 years."</em></div>
             </div>
-            <div class="timeline-event">
-                <div class="year">1854</div>
-                <div class="event"><strong>Riemann</strong> generalizes to n-dimensional manifolds with arbitrary curvature. Introduces the curvature tensor.</div>
+            <div class="timeline-event" style="border-left-color: var(--gold);">
+                <div class="year" style="color: var(--gold);">1854</div>
+                <div class="event"><strong>Riemann</strong> delivers his habilitation lecture <em>"Über die Hypothesen welche der Geometrie zu Grunde liegen"</em> (On the Hypotheses Which Lie at the Foundations of Geometry). Gauss, in the audience, is deeply impressed. Riemann generalizes to n-dimensional manifolds with arbitrary curvature.</div>
             </div>
             <div class="timeline-event">
                 <div class="year">1868</div>
-                <div class="event"><strong>Beltrami</strong> proves the parallel postulate is independent — cannot be derived from the other axioms.</div>
+                <div class="event"><strong>Beltrami</strong> proves the parallel postulate is logically independent — cannot be derived from the other axioms. The 2,000-year quest ends: it was never provable.</div>
             </div>
-            <div class="timeline-event">
-                <div class="year">1915</div>
-                <div class="event"><strong>Einstein</strong> publishes General Relativity. Gravity IS spacetime curvature. The parallel postulate fails globally.</div>
+            <div class="timeline-event" style="border-left-color: var(--accent-blue);">
+                <div class="year" style="color: var(--accent-blue);">1915</div>
+                <div class="event"><strong>Einstein</strong> publishes General Relativity. Uses Riemannian geometry to show that gravity IS spacetime curvature. The parallel postulate fails globally — but holds locally (Equivalence Principle).</div>
             </div>
-            <div class="timeline-event" style="border-color: var(--gold);">
+            <div class="timeline-event" style="border-color: var(--gold); background: rgba(212, 175, 55, 0.1);">
                 <div class="year" style="color: var(--gold);">NOW</div>
-                <div class="event"><strong>Scalar Dimensionality</strong> unifies the picture: locally flat, globally curved, scale-dependent truth. [1 = -1]</div>
+                <div class="event"><strong>Scalar Dimensionality</strong> unifies the 2,300-year debate: the postulate is TRUE locally and VARIABLE globally. Not wrong — scale-dependent. <strong>[1 = -1]</strong></div>
             </div>
         </div>
     </section>
@@ -685,10 +720,32 @@
             Neither view is complete without the other. Local flatness and global curvature are two aspects of the same continuous manifold — like [1] and [-1] are two aspects of unity.
         </p>
 
+        <blockquote style="background: rgba(0, 255, 136, 0.1); border-left: 4px solid var(--accent-green);">
+            "Out of nothing I have created a strange new universe."
+            <cite>— János Bolyai, letter to his father, 1823</cite>
+        </blockquote>
+
+        <p>
+            Bolyai wasn't wrong. He had created a new universe — the universe of hyperbolic geometry. But it wasn't a <em>replacement</em> for Euclid's universe. It was a <em>complement</em>. A view of the same reality at a different scale.
+        </p>
+
         <blockquote style="background: rgba(212, 175, 55, 0.15); border-left: 4px solid var(--gold);">
             "We don't notice the curvature of the Earth's surface in everyday life because the radius of curvature is thousands of kilometers. On a map of LA, we don't notice any curvature, nor do we detect it on a map of Mumbai, but it is not possible to make a flat map that includes both LA and Mumbai without seeing severe distortions."
-            <cite>— Physics LibreTexts, on local vs. global geometry</cite>
+            <cite>— Physics LibreTexts</cite>
         </blockquote>
+
+        <p>
+            William Kingdon Clifford called Lobachevsky "the Copernicus of Geometry." But perhaps a better analogy is this: Lobachevsky didn't disprove Ptolemy — he showed that Ptolemy was describing local observations while Copernicus was describing global structure. <strong>Both were correct in their domains.</strong>
+        </p>
+
+        <blockquote style="background: rgba(168, 85, 247, 0.1); border-left: 4px solid var(--accent-purple);">
+            "A multiply extended magnitude is capable of different measure-relations, and consequently... space is only a particular case of a triply extended magnitude."
+            <cite>— Bernhard Riemann, 1854 habilitation lecture</cite>
+        </blockquote>
+
+        <p>
+            Riemann understood: space doesn't have to be Euclidean OR non-Euclidean. It can be <em>variably</em> curved — flat here, curved there, depending on where you look and at what scale.
+        </p>
 
         <p>
             The parallel postulate is correct. And non-Euclidean geometry is correct. The question "which one is TRUE?" is the wrong question.
