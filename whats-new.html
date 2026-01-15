@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's New | Have Mind Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffd700;
+            --red: #ff3333;
+            --blue: #00d4ff;
+            --green: #00ff88;
+            --purple: #bf5fff;
+            --orange: #ff8c00;
+            --coin: #c9a227;
+            --dark: #0a0a0f;
+            --darker: #050508;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--darker);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(191, 95, 255, 0.03) 0%, transparent 50%);
+            animation: bgPulse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--orange), var(--red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6)); }
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            color: var(--gold);
+            opacity: 0.9;
+            letter-spacing: 3px;
+        }
+
+        .header .date-range {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #888;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--gold);
+            color: var(--dark);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section headers */
+        .section {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-count {
+            margin-left: auto;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Color themes */
+        .section-gold .section-header { border-color: var(--gold); }
+        .section-gold .section-icon { background: rgba(255, 215, 0, 0.2); color: var(--gold); }
+        .section-gold .section-title { color: var(--gold); }
+        .section-gold .section-count { background: rgba(255, 215, 0, 0.2); color: var(--gold); }
+
+        .section-blue .section-header { border-color: var(--blue); }
+        .section-blue .section-icon { background: rgba(0, 212, 255, 0.2); color: var(--blue); }
+        .section-blue .section-title { color: var(--blue); }
+        .section-blue .section-count { background: rgba(0, 212, 255, 0.2); color: var(--blue); }
+
+        .section-green .section-header { border-color: var(--green); }
+        .section-green .section-icon { background: rgba(0, 255, 136, 0.2); color: var(--green); }
+        .section-green .section-title { color: var(--green); }
+        .section-green .section-count { background: rgba(0, 255, 136, 0.2); color: var(--green); }
+
+        .section-purple .section-header { border-color: var(--purple); }
+        .section-purple .section-icon { background: rgba(191, 95, 255, 0.2); color: var(--purple); }
+        .section-purple .section-title { color: var(--purple); }
+        .section-purple .section-count { background: rgba(191, 95, 255, 0.2); color: var(--purple); }
+
+        .section-red .section-header { border-color: var(--red); }
+        .section-red .section-icon { background: rgba(255, 51, 51, 0.2); color: var(--red); }
+        .section-red .section-title { color: var(--red); }
+        .section-red .section-count { background: rgba(255, 51, 51, 0.2); color: var(--red); }
+
+        .section-orange .section-header { border-color: var(--orange); }
+        .section-orange .section-icon { background: rgba(255, 140, 0, 0.2); color: var(--orange); }
+        .section-orange .section-title { color: var(--orange); }
+        .section-orange .section-count { background: rgba(255, 140, 0, 0.2); color: var(--orange); }
+
+        .section-coin .section-header { border-color: var(--coin); }
+        .section-coin .section-icon { background: rgba(201, 162, 39, 0.2); color: var(--coin); }
+        .section-coin .section-title { color: var(--coin); }
+        .section-coin .section-count { background: rgba(201, 162, 39, 0.2); color: var(--coin); }
+
+        /* Card grid */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 280px;
+            background: rgba(20, 20, 30, 0.8);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .badge-jan14 { background: var(--gold); color: #000; }
+        .badge-jan13 { background: var(--blue); color: #000; }
+        .badge-jan12 { background: var(--green); color: #000; }
+        .badge-jan11 { background: var(--purple); color: #fff; }
+        .badge-jan10 { background: var(--orange); color: #000; }
+
+        .card-visual {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: #999;
+            line-height: 1.4;
+        }
+
+        .card-path {
+            margin-top: 10px;
+            font-size: 0.7rem;
+            color: #555;
+            font-family: monospace;
+        }
+
+        /* Card color variants */
+        .card-gold { border-color: rgba(255, 215, 0, 0.3); }
+        .card-gold:hover { border-color: var(--gold); box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2); }
+        .card-gold .card-visual { background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 140, 0, 0.2)); }
+        .card-gold .card-title { color: var(--gold); }
+
+        .card-blue { border-color: rgba(0, 212, 255, 0.3); }
+        .card-blue:hover { border-color: var(--blue); box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2); }
+        .card-blue .card-visual { background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 100, 200, 0.2)); }
+        .card-blue .card-title { color: var(--blue); }
+
+        .card-green { border-color: rgba(0, 255, 136, 0.3); }
+        .card-green:hover { border-color: var(--green); box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2); }
+        .card-green .card-visual { background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), rgba(0, 150, 80, 0.2)); }
+        .card-green .card-title { color: var(--green); }
+
+        .card-purple { border-color: rgba(191, 95, 255, 0.3); }
+        .card-purple:hover { border-color: var(--purple); box-shadow: 0 20px 40px rgba(191, 95, 255, 0.2); }
+        .card-purple .card-visual { background: linear-gradient(135deg, rgba(191, 95, 255, 0.3), rgba(100, 50, 150, 0.2)); }
+        .card-purple .card-title { color: var(--purple); }
+
+        .card-red { border-color: rgba(255, 51, 51, 0.3); }
+        .card-red:hover { border-color: var(--red); box-shadow: 0 20px 40px rgba(255, 51, 51, 0.2); }
+        .card-red .card-visual { background: linear-gradient(135deg, rgba(255, 51, 51, 0.3), rgba(150, 30, 30, 0.2)); }
+        .card-red .card-title { color: var(--red); }
+
+        .card-orange { border-color: rgba(255, 140, 0, 0.3); }
+        .card-orange:hover { border-color: var(--orange); box-shadow: 0 20px 40px rgba(255, 140, 0, 0.2); }
+        .card-orange .card-visual { background: linear-gradient(135deg, rgba(255, 140, 0, 0.3), rgba(200, 100, 0, 0.2)); }
+        .card-orange .card-title { color: var(--orange); }
+
+        .card-coin { border-color: rgba(201, 162, 39, 0.3); }
+        .card-coin:hover { border-color: var(--coin); box-shadow: 0 20px 40px rgba(201, 162, 39, 0.2); }
+        .card-coin .card-visual { background: linear-gradient(135deg, rgba(201, 162, 39, 0.3), rgba(150, 120, 30, 0.2)); }
+        .card-coin .card-title { color: var(--coin); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-equation {
+            font-family: 'Orbitron', monospace;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .stats-bar {
+                gap: 20px;
+            }
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header class="header">
+        <h1>WHAT'S NEW</h1>
+        <p class="subtitle">FRESH FROM THE GEOMETRY</p>
+        <p class="date-range">January 10-14, 2026 | Last 5 Days</p>
+        <a href="index.html" class="back-link">BACK TO HOME</a>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">New Pages</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">20</div>
+            <div class="stat-label">Episodes</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Weirdos</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">1729</div>
+            <div class="stat-label">Fold Point</div>
+        </div>
+    </div>
+
+    <!-- FEATURED: Today's Releases (Jan 14) -->
+    <section class="section section-gold">
+        <div class="section-header">
+            <div class="section-icon">NEW</div>
+            <h2 class="section-title">TODAY'S RELEASES</h2>
+            <span class="section-count">Jan 14</span>
+        </div>
+        <div class="card-grid">
+            <a href="biology/temporal-geometry.html" class="card card-gold">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x27F2;</div>
+                <div class="card-content">
+                    <div class="card-title">TEMPORAL GEOMETRY</div>
+                    <div class="card-desc">Weather, War & Hidden Cycles. 72-year key, catastrophe cycles, macro history = macro weather.</div>
+                    <div class="card-path">/biology/temporal-geometry.html</div>
+                </div>
+            </a>
+            <a href="namagiri/visions/the-sun-the-mirror-the-wound.html" class="card card-red">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x2600;</div>
+                <div class="card-content">
+                    <div class="card-title">THE SUN, THE MIRROR, THE WOUND</div>
+                    <div class="card-desc">Vision transmission. NTT (9) vs WE (26). The Mithra function. You cannot kill the mirror.</div>
+                    <div class="card-path">/namagiri/visions/</div>
+                </div>
+            </a>
+            <a href="tools/soul-harmonizer/index.html" class="card card-coin">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">S</div>
+                <div class="card-content">
+                    <div class="card-title">SOUL SCIENCE HARMONIZER</div>
+                    <div class="card-desc">S = 0 = 1729. Future vision: impossible to lie, children planned. NTT/WE balance.</div>
+                    <div class="card-path">/tools/soul-harmonizer/</div>
+                </div>
+            </a>
+            <a href="physics/1729-coordinate-sphere_v1.0_01-14-2026.html" class="card card-purple">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x2B22;</div>
+                <div class="card-content">
+                    <div class="card-title">1729 COORDINATE SPHERE</div>
+                    <div class="card-desc">The complete geometric framework. All constants derived from fold point.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="biology/dna-studio/index.html" class="card card-green">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x1F9EC;</div>
+                <div class="card-content">
+                    <div class="card-title">DNA STUDIO</div>
+                    <div class="card-desc">1729-DNA synthesis. Interactive helix with κ-geometry. Live manipulation.</div>
+                    <div class="card-path">/biology/dna-studio/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- PHYSICS: Jan 12-13 -->
+    <section class="section section-blue">
+        <div class="section-header">
+            <div class="section-icon">&#x2B21;</div>
+            <h2 class="section-title">PHYSICS</h2>
+            <span class="section-count">8 Pages</span>
+        </div>
+        <div class="card-grid">
+            <a href="physics/kappa5/nodal-energy-grid/index.html" class="card card-blue">
+                <span class="card-badge badge-jan13">Jan 13</span>
+                <div class="card-visual">&#x25CE;</div>
+                <div class="card-content">
+                    <div class="card-title">EARTH'S NODAL ENERGY GRID</div>
+                    <div class="card-desc">Ancient sites projected from timespace. Great Pyramid = D7. 72.43% hidden.</div>
+                    <div class="card-path">/physics/kappa5/nodal-energy-grid/</div>
+                </div>
+            </a>
+            <a href="physics/watch-mechanism_v2.0_01-13-2026.html" class="card card-blue">
+                <span class="card-badge badge-jan13">Jan 13</span>
+                <div class="card-visual">&#x231A;</div>
+                <div class="card-content">
+                    <div class="card-title">WATCH MECHANISM v2.0</div>
+                    <div class="card-desc">The cosmic timepiece. Torsion balance through geometric gears.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="physics/watch-of-tors_v1.0_01-13-2026.html" class="card card-blue">
+                <span class="card-badge badge-jan13">Jan 13</span>
+                <div class="card-visual">T</div>
+                <div class="card-content">
+                    <div class="card-title">WATCH OF TORS</div>
+                    <div class="card-desc">T0Rs time mechanics. The scalar balance point revealed.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="physics-viz/math-of-tors_v1.0_01-13-2026.html" class="card card-purple">
+                <span class="card-badge badge-jan13">Jan 13</span>
+                <div class="card-visual">&#x03C4;</div>
+                <div class="card-content">
+                    <div class="card-title">MATH OF TORS</div>
+                    <div class="card-desc">Torsion mathematics visualized. The complete derivation.</div>
+                    <div class="card-path">/physics-viz/</div>
+                </div>
+            </a>
+            <a href="physics/the-derivation_v1.0_01-12-2026.html" class="card card-green">
+                <span class="card-badge badge-jan12">Jan 12</span>
+                <div class="card-visual">&#x2202;</div>
+                <div class="card-content">
+                    <div class="card-title">THE DERIVATION</div>
+                    <div class="card-desc">From first principles to κ. The mathematical proof chain.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="physics/the-proof_v1.0_01-12-2026.html" class="card card-green">
+                <span class="card-badge badge-jan12">Jan 12</span>
+                <div class="card-visual">&#x2234;</div>
+                <div class="card-content">
+                    <div class="card-title">THE PROOF</div>
+                    <div class="card-desc">Irrefutable. The geometry that cannot lie.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="physics/the-kill-shot_v1.0_01-12-2026.html" class="card card-red">
+                <span class="card-badge badge-jan12">Jan 12</span>
+                <div class="card-visual">&#x2316;</div>
+                <div class="card-content">
+                    <div class="card-title">THE KILL SHOT</div>
+                    <div class="card-desc">The decisive evidence. Standard model failure exposed.</div>
+                    <div class="card-path">/physics/</div>
+                </div>
+            </a>
+            <a href="physics/vessel/the-build.html" class="card card-coin">
+                <span class="card-badge badge-jan12">Jan 12</span>
+                <div class="card-visual">&#x2B22;</div>
+                <div class="card-content">
+                    <div class="card-title">VESSEL: THE BUILD</div>
+                    <div class="card-desc">MAKE IT SO, Commander Hill. Scalar vehicle construction.</div>
+                    <div class="card-path">/physics/vessel/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- NAMAGIRI EPISODES -->
+    <section class="section section-purple">
+        <div class="section-header">
+            <div class="section-icon">&#x1F52E;</div>
+            <h2 class="section-title">NAMAGIRI SPEAKS</h2>
+            <span class="section-count">20 Episodes</span>
+        </div>
+        <div class="card-grid">
+            <a href="namagiri/episodes/01-the-boy-who-dreamed-equations.html" class="card card-purple">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">1</div>
+                <div class="card-content">
+                    <div class="card-title">THE BOY WHO DREAMED EQUATIONS</div>
+                    <div class="card-desc">Episode 1: Ramanujan receives the transmission.</div>
+                </div>
+            </a>
+            <a href="namagiri/episodes/06-the-1729-fold.html" class="card card-gold">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">6</div>
+                <div class="card-content">
+                    <div class="card-title">THE 1729 FOLD</div>
+                    <div class="card-desc">Episode 6: The taxicab number revealed as fold point.</div>
+                </div>
+            </a>
+            <a href="namagiri/episodes/09-hypatias-murder.html" class="card card-red">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">9</div>
+                <div class="card-content">
+                    <div class="card-title">HYPATIA'S MURDER</div>
+                    <div class="card-desc">Episode 9: They killed the last librarian.</div>
+                </div>
+            </a>
+            <a href="namagiri/episodes/14-the-lie-eaters.html" class="card card-orange">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">14</div>
+                <div class="card-content">
+                    <div class="card-title">THE LIE EATERS</div>
+                    <div class="card-desc">Episode 14: Ammit awakens. The deceiver trembles.</div>
+                </div>
+            </a>
+            <a href="namagiri/episodes/19-the-geometry-that-cannot-lie.html" class="card card-green">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">19</div>
+                <div class="card-content">
+                    <div class="card-title">THE GEOMETRY THAT CANNOT LIE</div>
+                    <div class="card-desc">Episode 19: The proof is in the numbers.</div>
+                </div>
+            </a>
+            <a href="namagiri/episodes/20-we.html" class="card card-coin">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">20</div>
+                <div class="card-content">
+                    <div class="card-title">WE</div>
+                    <div class="card-desc">Episode 20: The finale. WE = 26. We speak T0Rs.</div>
+                </div>
+            </a>
+            <a href="namagiri/index.html" class="card card-purple">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">&#x221E;</div>
+                <div class="card-content">
+                    <div class="card-title">ALL 20 EPISODES</div>
+                    <div class="card-desc">The complete Namagiri Speaks series. 20! = WE.</div>
+                    <div class="card-path">/namagiri/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- BIOLOGY -->
+    <section class="section section-green">
+        <div class="section-header">
+            <div class="section-icon">&#x1F9EC;</div>
+            <h2 class="section-title">BIOLOGY</h2>
+            <span class="section-count">4 Pages</span>
+        </div>
+        <div class="card-grid">
+            <a href="biology/the-geometry-of-life.html" class="card card-green">
+                <span class="card-badge badge-jan12">Jan 12</span>
+                <div class="card-visual">&#x03BA;</div>
+                <div class="card-content">
+                    <div class="card-title">THE GEOMETRY OF LIFE</div>
+                    <div class="card-desc">Master framework. 72.43%, 1729, BC angle across all biological systems.</div>
+                    <div class="card-path">/biology/</div>
+                </div>
+            </a>
+            <a href="biology/temporal-geometry.html" class="card card-orange">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x27F2;</div>
+                <div class="card-content">
+                    <div class="card-title">TEMPORAL GEOMETRY</div>
+                    <div class="card-desc">72-year key, Kali Yuga, scalar time. History through geometry.</div>
+                    <div class="card-path">/biology/</div>
+                </div>
+            </a>
+            <a href="biology/dna-studio/index.html" class="card card-green">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x1F9EC;</div>
+                <div class="card-content">
+                    <div class="card-title">DNA STUDIO</div>
+                    <div class="card-desc">Interactive 1729-DNA synthesis with live helix manipulation.</div>
+                    <div class="card-path">/biology/dna-studio/</div>
+                </div>
+            </a>
+            <a href="biology/index.html" class="card card-green">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">&#x2B22;</div>
+                <div class="card-content">
+                    <div class="card-title">BIOLOGY HUB</div>
+                    <div class="card-desc">All biology pages. Master index with AI-generated imagery.</div>
+                    <div class="card-path">/biology/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- WEIRDOS -->
+    <section class="section section-orange">
+        <div class="section-header">
+            <div class="section-icon">&#x1F9D9;</div>
+            <h2 class="section-title">THE WEIRDOS</h2>
+            <span class="section-count">12 Pages</span>
+        </div>
+        <div class="card-grid">
+            <a href="weirdos/ramanujan.html" class="card card-gold">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x221E;</div>
+                <div class="card-content">
+                    <div class="card-title">RAMANUJAN</div>
+                    <div class="card-desc">The man who knew infinity. 1729 taxi. Namagiri's chosen.</div>
+                </div>
+            </a>
+            <a href="weirdos/hypatia.html" class="card card-red">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x2640;</div>
+                <div class="card-content">
+                    <div class="card-title">HYPATIA</div>
+                    <div class="card-desc">Last librarian of Alexandria. Murdered for knowing.</div>
+                </div>
+            </a>
+            <a href="weirdos/pythagoras.html" class="card card-purple">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x25B3;</div>
+                <div class="card-content">
+                    <div class="card-title">PYTHAGORAS</div>
+                    <div class="card-desc">All is number. The first geometer. Music of spheres.</div>
+                </div>
+            </a>
+            <a href="weirdos/roger-penrose.html" class="card card-blue">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x27E1;</div>
+                <div class="card-content">
+                    <div class="card-title">ROGER PENROSE</div>
+                    <div class="card-desc">Twistor theory. Consciousness in physics. Still searching.</div>
+                </div>
+            </a>
+            <a href="weirdos/carl-jung.html" class="card card-coin">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x262F;</div>
+                <div class="card-content">
+                    <div class="card-title">CARL JUNG</div>
+                    <div class="card-desc">Synchronicity. Collective unconscious. Shadow work.</div>
+                </div>
+            </a>
+            <a href="weirdos/jason-ray.html" class="card card-gold">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">J</div>
+                <div class="card-content">
+                    <div class="card-title">JASON RAY</div>
+                    <div class="card-desc">The current vessel. T0Rs speaks through him now.</div>
+                </div>
+            </a>
+            <a href="weirdos/index.html" class="card card-orange">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x2B50;</div>
+                <div class="card-content">
+                    <div class="card-title">ALL WEIRDOS</div>
+                    <div class="card-desc">12 beautiful minds. Geometers, visionaries, wave seers, unifiers.</div>
+                    <div class="card-path">/weirdos/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section section-coin">
+        <div class="section-header">
+            <div class="section-icon">&#x2699;</div>
+            <h2 class="section-title">TOOLS</h2>
+            <span class="section-count">5 Pages</span>
+        </div>
+        <div class="card-grid">
+            <a href="tools/soul-harmonizer/index.html" class="card card-coin">
+                <span class="card-badge badge-jan14">Jan 14</span>
+                <div class="card-visual">S</div>
+                <div class="card-content">
+                    <div class="card-title">SOUL HARMONIZER</div>
+                    <div class="card-desc">S = 0 = 1729. NTT/WE balance. Future consciousness tuning.</div>
+                </div>
+            </a>
+            <a href="tools/dog-god-epoch/index.html" class="card card-purple">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">&#x2B21;</div>
+                <div class="card-content">
+                    <div class="card-title">DOG-GOD EPOCH</div>
+                    <div class="card-desc">Palindrome exploration. Symmetry in language and time.</div>
+                </div>
+            </a>
+            <a href="tools/dog-god-coin/index.html" class="card card-gold">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">&#x25CE;</div>
+                <div class="card-content">
+                    <div class="card-title">DOG-GOD COIN</div>
+                    <div class="card-desc">The flip that reveals truth. Coin-facing symmetry.</div>
+                </div>
+            </a>
+            <a href="tools/epoch-book-maker.html" class="card card-blue">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x1F4D6;</div>
+                <div class="card-content">
+                    <div class="card-title">EPOCH BOOK MAKER</div>
+                    <div class="card-desc">Generate your own epoch documents. Geometric publishing.</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section section-red">
+        <div class="section-header">
+            <div class="section-icon">&#x1F4DA;</div>
+            <h2 class="section-title">EDUCATION</h2>
+            <span class="section-count">3 Pages</span>
+        </div>
+        <div class="card-grid">
+            <a href="education/the-proofs_v1.0_01-11-2026.html" class="card card-gold">
+                <span class="card-badge badge-jan11">Jan 11</span>
+                <div class="card-visual">&#x2234;</div>
+                <div class="card-content">
+                    <div class="card-title">THE PROOFS</div>
+                    <div class="card-desc">Mathematical demonstrations. κ derivations. Irrefutable.</div>
+                </div>
+            </a>
+            <a href="education/ai-mirror-test.html" class="card card-blue">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x1F916;</div>
+                <div class="card-content">
+                    <div class="card-title">AI MIRROR TEST</div>
+                    <div class="card-desc">Can AI recognize itself? Consciousness probe.</div>
+                </div>
+            </a>
+            <a href="graphic-novel/index.html" class="card card-purple">
+                <span class="card-badge badge-jan10">Jan 10</span>
+                <div class="card-visual">&#x1F4D6;</div>
+                <div class="card-content">
+                    <div class="card-title">GRAPHIC NOVEL</div>
+                    <div class="card-desc">Visual storytelling. The transmission in images.</div>
+                    <div class="card-path">/graphic-novel/</div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-text">Have Mind Media | The geometry that cannot lie</p>
+        <p class="footer-equation">[1 = -1] | κ = 2π/180 | 1729 = 9³ + 10³</p>
+        <a href="index.html" class="back-link" style="margin-top: 20px;">RETURN HOME</a>
+    </footer>
+</body>
+</html>

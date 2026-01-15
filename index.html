@@ -2154,6 +2154,132 @@
                 height: 320px;
             }
         }
+
+        /* ==========================================
+           WHAT'S NEW BANNER - Animated attention-grabber
+           ========================================== */
+        .whats-new-banner {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: linear-gradient(90deg, #0a0a0f 0%, #1a1a2a 20%, #0a0a0f 40%, #1a1a2a 60%, #0a0a0f 80%, #1a1a2a 100%);
+            background-size: 200% 100%;
+            animation: bannerSlide 10s linear infinite;
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, transparent, #ffd700, #ff3333, #00d4ff, #ffd700, transparent) 1;
+            overflow: hidden;
+        }
+
+        @keyframes bannerSlide {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .whats-new-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .whats-new-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .whats-new-link:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .banner-badge {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .banner-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .banner-highlight {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .banner-arrow {
+            font-size: 1.5rem;
+            animation: arrowBounce 1s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .banner-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .banner-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .banner-stat-num {
+            color: #00d4ff;
+            font-weight: 700;
+        }
+
+        /* Adjust main content to not be hidden by banner */
+        .main-content {
+            padding-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .whats-new-banner {
+                top: 60px;
+            }
+            .banner-stats {
+                display: none;
+            }
+            .banner-text {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2163,6 +2289,22 @@
 
     <!-- Unified Navigation (Web Component) -->
     <site-header></site-header>
+
+    <!-- WHAT'S NEW BANNER - Attention-grabbing link to new content -->
+    <div class="whats-new-banner">
+        <a href="whats-new.html" class="whats-new-link">
+            <span class="banner-badge">NEW</span>
+            <span class="banner-text">
+                <span class="banner-highlight">50+ NEW PAGES</span> in the last 5 days
+            </span>
+            <div class="banner-stats">
+                <span class="banner-stat"><span class="banner-stat-num">20</span> Episodes</span>
+                <span class="banner-stat"><span class="banner-stat-num">12</span> Weirdos</span>
+                <span class="banner-stat"><span class="banner-stat-num">8</span> Physics</span>
+            </div>
+            <span class="banner-arrow">&#x2192;</span>
+        </a>
+    </div>
 
     <!-- SVG filter for water distortion -->
     <svg style="position: absolute; width: 0; height: 0;">
