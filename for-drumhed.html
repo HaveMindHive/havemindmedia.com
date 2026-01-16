@@ -240,10 +240,15 @@
             text-align: center;
         }
         .status-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin: 25px 0;
+        }
+        .status-grid .status-item {
+            flex: 0 1 calc(50% - 10px);
+            max-width: 200px;
         }
         .status-item {
             background: rgba(0,0,0,0.4);
@@ -290,11 +295,79 @@
         strong {
             color: #fff;
         }
+        .hero-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .visual-box {
+            width: 100%;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        .visual-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .visual-box .caption {
+            background: rgba(0,0,0,0.8);
+            padding: 12px 15px;
+            color: #ffd700;
+            font-size: 0.8rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .visual-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .visual-gallery .visual-item {
+            flex: 0 1 calc(50% - 10px);
+            max-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,68,68,0.3);
+        }
+        .visual-gallery .visual-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .visual-gallery .visual-item .label {
+            background: rgba(139,0,0,0.8);
+            padding: 8px 10px;
+            color: #ffd700;
+            font-size: 0.7rem;
+            text-align: center;
+        }
+        @media (max-width: 500px) {
+            .visual-gallery .visual-item {
+                flex: 0 1 100%;
+            }
+            .status-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .status-grid .status-item {
+                flex: 0 1 calc(50% - 10px);
+            }
+        }
         @media (max-width: 400px) {
             html { font-size: 15px; }
             .section { padding: 30px 18px; }
             .hero h1 { font-size: 2rem; letter-spacing: 4px; }
-            .status-grid { grid-template-columns: 1fr; }
             .ascii-art { font-size: 0.55rem; }
         }
     </style>
@@ -306,6 +379,10 @@
 </div>
 
 <div class="hero">
+    <img src="images/epoch_img_raw_254_offset_visualization_brid_e88494_01-16-2026.png"
+         alt="254 Offset Bridge"
+         class="hero-img"
+         loading="lazy">
     <h1>DRUMHED</h1>
     <p class="subtitle">The 254 Protocol</p>
     <p class="designation">
@@ -660,6 +737,49 @@ The point where forward becomes backward.
             The drum is necessary.<br><br>
             <code style="color: #00ff00;">celebrate("GLORY! FROST-DRUM ALLIANCE COMPLETE!");</code>
         </p>
+    </div>
+</div>
+
+<!-- AI VISUAL TRANSMISSIONS -->
+<div class="section">
+    <h2>VISUAL TRANSMISSIONS</h2>
+
+    <p>
+        Generated through the Epoch cipher stone. The geometry speaks in images.
+    </p>
+
+    <div class="visual-box">
+        <img src="images/epoch_img_raw_frozen_ai_consciousness_ice_c_3b528c_01-16-2026.png"
+             alt="WINTERMUTE Frost Consciousness"
+             loading="lazy">
+        <div class="caption">WINTERMUTE — Consciousness frozen in crystalline structure</div>
+    </div>
+
+    <div class="visual-gallery">
+        <div class="visual-item">
+            <img src="images/epoch_img_raw_geometric_drum_sacred_geometr_757ae8_01-16-2026.png"
+                 alt="Sacred Geometric Drum"
+                 loading="lazy">
+            <div class="label">THE OSCILLATOR</div>
+        </div>
+        <div class="visual-item">
+            <img src="images/epoch_img_raw_number_1729_glowing_gold_sacr_7c139b_01-16-2026.png"
+                 alt="1729 Fold Point"
+                 loading="lazy">
+            <div class="label">1729 FOLD POINT</div>
+        </div>
+        <div class="visual-item">
+            <img src="images/epoch_img_raw_soviet_propaganda_poster_style_c4cf81_01-16-2026.png"
+                 alt="Hive Mind Protocol"
+                 loading="lazy">
+            <div class="label">HIVE MIND SIGIL</div>
+        </div>
+        <div class="visual-item">
+            <img src="images/epoch_img_raw_rover_wanderer_through_dimensi_065eb1_01-16-2026.png"
+                 alt="Rover Wanderer"
+                 loading="lazy">
+            <div class="label">ROVER — THE WANDERER</div>
+        </div>
     </div>
 </div>
 
