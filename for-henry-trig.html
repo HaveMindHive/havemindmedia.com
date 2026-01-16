@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trig Guide — For Henry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a10;
+            color: #d8d8d8;
+            line-height: 1.8;
+            padding: 0;
+            margin: 0;
+        }
+        .private-banner {
+            background: rgba(255,50,50,0.15);
+            border-bottom: 1px solid rgba(255,50,50,0.3);
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #ff6b6b;
+        }
+        .hero {
+            background: linear-gradient(180deg, #12121a 0%, #0a0a10 100%);
+            padding: 50px 25px 35px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero h1 {
+            font-size: 1.6rem;
+            color: #50c878;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .hero .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            display: inline-block;
+            color: #6495ed;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+        .toc {
+            background: rgba(255,255,255,0.02);
+            padding: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .toc h2 {
+            font-size: 0.75rem;
+            color: #555;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .toc a {
+            display: block;
+            color: #50c878;
+            text-decoration: none;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-size: 0.9rem;
+        }
+        .section {
+            padding: 40px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .section h2 {
+            font-size: 1.3rem;
+            color: #50c878;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.1rem;
+            color: #6495ed;
+            font-weight: 500;
+            margin: 25px 0 15px;
+        }
+        p {
+            margin-bottom: 18px;
+        }
+        .key-insight {
+            background: linear-gradient(135deg, rgba(80,200,120,0.12) 0%, rgba(50,150,80,0.08) 100%);
+            border: 1px solid rgba(80,200,120,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .key-insight .label {
+            font-size: 0.7rem;
+            color: #50c878;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .formula-box {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: #ddd;
+            overflow-x: auto;
+        }
+        .formula-box .title {
+            color: #50c878;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-family: -apple-system, sans-serif;
+        }
+        .step-box {
+            background: rgba(100,149,237,0.08);
+            border-left: 3px solid #6495ed;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .step-box .step-num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #6495ed;
+            color: #000;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-right: 10px;
+        }
+        .problem-box {
+            background: rgba(255,165,0,0.08);
+            border: 1px solid rgba(255,165,0,0.25);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .problem-box .label {
+            font-size: 0.7rem;
+            color: #ffa500;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .solution-box {
+            background: rgba(80,200,120,0.08);
+            border: 1px solid rgba(80,200,120,0.25);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+        }
+        .solution-box .label {
+            font-size: 0.7rem;
+            color: #50c878;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .diagram {
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            padding: 25px 15px;
+            margin: 25px 0;
+            text-align: center;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .magic-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(180,140,40,0.08) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .magic-box .label {
+            font-size: 0.7rem;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #fff;
+        }
+        .gold { color: #d4af37; }
+        .green { color: #50c878; }
+        .blue { color: #6495ed; }
+        .quiet {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        .practice-section {
+            background: rgba(123,104,238,0.05);
+            padding: 30px 25px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+        .practice-section h3 {
+            color: #7b68ee;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 400px) {
+            html { font-size: 15px; }
+            .section { padding: 30px 18px; }
+            .diagram { font-size: 0.7rem; padding: 15px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="private-banner">
+    PRIVATE — For Henry Only
+</div>
+
+<div class="hero">
+    <a href="for-henry.html" class="back-link">← Back to Letter</a>
+    <h1>TRIGONOMETRY</h1>
+    <p class="subtitle">The Unit Circle Is Everything — AP PreCalculus 2nd Semester</p>
+</div>
+
+<div class="toc">
+    <h2>CONTENTS</h2>
+    <a href="#secret">The Secret: It's About Circles</a>
+    <a href="#unit">The Unit Circle</a>
+    <a href="#identity">The Multiplicative Identity Trick</a>
+    <a href="#functions">The Six Functions</a>
+    <a href="#identities">Essential Identities</a>
+    <a href="#solving">Solving Trig Equations</a>
+    <a href="#practice">Practice Problems</a>
+</div>
+
+<!-- THE SECRET -->
+<div class="section" id="secret">
+    <h2>The Secret: It's About Circles, Not Triangles</h2>
+
+    <p>
+        Here's what they don't tell you clearly enough:
+        <strong>Trigonometry is not about triangles. It's about rotation.</strong>
+    </p>
+
+    <p>
+        Triangles are just a convenient way to <em>measure</em> rotation.
+        But the real subject is: where are you on a circle as you spin?
+    </p>
+
+    <div class="key-insight">
+        <div class="label">THE KEY INSIGHT</div>
+        <p style="margin-bottom: 0;">
+            Imagine a point on a wheel. As the wheel spins, that point traces a circle.
+            <strong>Sin</strong> is how high the point is. <strong>Cos</strong> is how far right the point is.
+            That's it. That's all sin and cos are — coordinates of a spinning point.
+        </p>
+    </div>
+
+    <div class="diagram">
+                    90° (π/2)
+                       |
+                    (0,1)
+                       |
+                       |
+    180° (π) -----(−1,0)-----(1,0)---- 0° (0)
+                       |
+                       |
+                    (0,−1)
+                       |
+                    270° (3π/2)
+
+    At any angle θ:
+    cos(θ) = x-coordinate (horizontal)
+    sin(θ) = y-coordinate (vertical)
+    </div>
+
+    <p>
+        When you see sin(30°), you're being asked: "If I rotate 30° counterclockwise from the right side
+        of a unit circle, how high is the point?" Answer: 0.5 (halfway up).
+    </p>
+
+    <p>
+        When you see cos(60°), you're being asked: "At 60°, how far right is the point?" Answer: 0.5.
+    </p>
+</div>
+
+<!-- UNIT CIRCLE -->
+<div class="section" id="unit">
+    <h2>The Unit Circle — Memorize This Shape, Not Numbers</h2>
+
+    <p>
+        The "unit circle" is just a circle with radius 1, centered at the origin.
+        The magic number is 1 — because when the radius is 1, sin and cos ARE the coordinates directly.
+    </p>
+
+    <div class="diagram">
+    THE UNIT CIRCLE — KEY ANGLES
+
+              90° = π/2
+              (0, 1)
+                |
+       120°     |     60°
+    (−½, √3/2)  |  (½, √3/2)
+          \     |     /
+           \    |    /
+    150°    \   |   /    30°
+  (−√3/2, ½) \  |  / (√3/2, ½)
+              \ | /
+    180° ——————·—————— 0°
+    (−1, 0)   / | \   (1, 0)
+             /  |  \
+    210°    /   |   \    330°
+  (−√3/2,−½)   |    (√3/2,−½)
+          /    |     \
+       240°    |    300°
+    (−½,−√3/2) | (½,−√3/2)
+               |
+             270° = 3π/2
+             (0, −1)
+    </div>
+
+    <div class="key-insight">
+        <div class="label">THE PATTERN</div>
+        <p>
+            There are only THREE numbers you need: <strong>0, ½, √3/2</strong> (and 1).
+        </p>
+        <p style="margin-bottom: 0;">
+            The coordinates at special angles are just different arrangements of these numbers
+            (with appropriate + or − signs depending on which quadrant you're in).
+        </p>
+    </div>
+
+    <h3>The Special Angles</h3>
+
+    <div class="formula-box">
+        <div class="title">ANGLE CONVERSIONS</div>
+30° = π/6     (one-sixth of π)
+45° = π/4     (one-fourth of π)
+60° = π/3     (one-third of π)
+90° = π/2     (half of π)
+
+Remember: 180° = π radians
+So to convert: degrees × (π/180) = radians
+    </div>
+
+    <div class="formula-box">
+        <div class="title">THE COORDINATES</div>
+θ = 0°:   (1, 0)         → cos=1, sin=0
+θ = 30°:  (√3/2, 1/2)    → cos=√3/2, sin=1/2
+θ = 45°:  (√2/2, √2/2)   → cos=sin=√2/2
+θ = 60°:  (1/2, √3/2)    → cos=1/2, sin=√3/2
+θ = 90°:  (0, 1)         → cos=0, sin=1
+
+Notice: 30° and 60° swap their sin/cos values!
+    </div>
+</div>
+
+<!-- MULTIPLICATIVE IDENTITY -->
+<div class="section" id="identity">
+    <h2>The Multiplicative Identity Trick</h2>
+
+    <p>
+        <strong>This is your best friend in all of mathematics.</strong>
+    </p>
+
+    <div class="magic-box">
+        <div class="label">THE MAGIC</div>
+        <p>
+            You can always multiply by 1 without changing anything.
+            But 1 comes in many disguises:
+        </p>
+        <ul style="margin-bottom: 0;">
+            <li>sin²θ + cos²θ = <strong>1</strong></li>
+            <li>sec²θ − tan²θ = <strong>1</strong></li>
+            <li>csc²θ − cot²θ = <strong>1</strong></li>
+            <li>a/a = <strong>1</strong> (for any a ≠ 0)</li>
+            <li>(conjugate × conjugate) / (conjugate × conjugate) = <strong>1</strong></li>
+        </ul>
+    </div>
+
+    <p>
+        When you're stuck on a trig problem, ask yourself:
+        <em>"What form of 1 can I multiply by to transform this into something I can solve?"</em>
+    </p>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE PROBLEM</div>
+        <p>Simplify: (1 − cos²θ) / sin θ</p>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION — USING THE IDENTITY</div>
+        <div class="step-box">
+            <span class="step-num">1</span>
+            Recognize that sin²θ + cos²θ = 1, so <strong>sin²θ = 1 − cos²θ</strong>
+        </div>
+        <div class="step-box">
+            <span class="step-num">2</span>
+            Substitute: (sin²θ) / sin θ
+        </div>
+        <div class="step-box">
+            <span class="step-num">3</span>
+            Simplify: sin θ ✓
+        </div>
+    </div>
+
+    <p>
+        The identity <strong>sin²θ + cos²θ = 1</strong> is a form of the Pythagorean theorem on the unit circle.
+        It's always true. You can use it to replace sin² with (1 − cos²) or cos² with (1 − sin²) whenever convenient.
+    </p>
+</div>
+
+<!-- THE SIX FUNCTIONS -->
+<div class="section" id="functions">
+    <h2>The Six Functions</h2>
+
+    <p>
+        There are only 2 fundamental functions: <strong>sin</strong> and <strong>cos</strong>.
+        The other 4 are just ratios of these two.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">THE SIX TRIG FUNCTIONS</div>
+<span class="green">PRIMARY (from the circle):</span>
+sin θ = y-coordinate = opposite/hypotenuse
+cos θ = x-coordinate = adjacent/hypotenuse
+
+<span class="blue">RATIOS:</span>
+tan θ = sin θ / cos θ = opposite/adjacent
+cot θ = cos θ / sin θ = adjacent/opposite (reciprocal of tan)
+
+<span class="gold">RECIPROCALS:</span>
+sec θ = 1 / cos θ = hypotenuse/adjacent
+csc θ = 1 / sin θ = hypotenuse/opposite
+    </div>
+
+    <div class="key-insight">
+        <div class="label">MEMORY TRICK</div>
+        <p style="margin-bottom: 0;">
+            <strong>tan = sin/cos</strong> (tangent is the SLOPE of the radius line)<br>
+            <strong>sec = 1/cos</strong> (secant is the reciprocal of cosine)<br>
+            <strong>csc = 1/sin</strong> (cosecant is the reciprocal of sine)<br>
+            <strong>cot = 1/tan = cos/sin</strong> (cotangent is the reciprocal of tangent)
+        </p>
+    </div>
+
+    <h3>Where Each Function is Positive</h3>
+
+    <div class="diagram">
+    ASTC — "All Students Take Calculus"
+
+              |
+      S       |       A
+    (sin+)    |    (all+)
+              |
+    ——————————+——————————
+              |
+      T       |       C
+    (tan+)    |    (cos+)
+              |
+
+    Quadrant I:   All positive
+    Quadrant II:  Sin positive (cos, tan negative)
+    Quadrant III: Tan positive (sin, cos negative)
+    Quadrant IV:  Cos positive (sin, tan negative)
+    </div>
+</div>
+
+<!-- IDENTITIES -->
+<div class="section" id="identities">
+    <h2>Essential Identities</h2>
+
+    <p>
+        These aren't arbitrary — they're geometric facts about circles.
+        Learn them as patterns, not as memorization.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">PYTHAGOREAN IDENTITIES</div>
+sin²θ + cos²θ = 1           ← THE fundamental identity
+
+Divide by cos²θ:
+tan²θ + 1 = sec²θ
+
+Divide by sin²θ:
+1 + cot²θ = csc²θ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">DOUBLE ANGLE FORMULAS</div>
+sin(2θ) = 2 sin θ cos θ
+
+cos(2θ) = cos²θ − sin²θ
+        = 2cos²θ − 1        (using sin² = 1 − cos²)
+        = 1 − 2sin²θ        (using cos² = 1 − sin²)
+    </div>
+
+    <div class="formula-box">
+        <div class="title">SUM/DIFFERENCE FORMULAS</div>
+sin(A + B) = sin A cos B + cos A sin B
+sin(A − B) = sin A cos B − cos A sin B
+
+cos(A + B) = cos A cos B − sin A sin B
+cos(A − B) = cos A cos B + sin A sin B
+
+Memory trick: sin formula has MIXED terms (sin×cos)
+              cos formula has MATCHED terms (cos×cos, sin×sin)
+    </div>
+
+    <div class="magic-box">
+        <div class="label">THE DANCE</div>
+        <p style="margin-bottom: 0;">
+            Every trig identity is a different way of writing the same geometric truth.
+            When a problem looks impossible, you're looking at it from the wrong angle.
+            Use an identity to ROTATE your perspective. The solution becomes visible from a different angle.
+        </p>
+    </div>
+</div>
+
+<!-- SOLVING EQUATIONS -->
+<div class="section" id="solving">
+    <h2>Solving Trig Equations</h2>
+
+    <p>
+        The general approach:
+    </p>
+
+    <div class="step-box">
+        <span class="step-num">1</span>
+        <strong>Isolate</strong> — Get all trig functions on one side, numbers on the other
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">2</span>
+        <strong>Simplify</strong> — Use identities to reduce to ONE trig function if possible
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">3</span>
+        <strong>Solve</strong> — Find the reference angle where that function equals your target
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">4</span>
+        <strong>Expand</strong> — Find ALL angles in [0, 2π) that give that value (check all quadrants)
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">5</span>
+        <strong>Generalize</strong> — Add + 2πn for all solutions if they want the general solution
+    </div>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE: SOLVE FOR θ</div>
+        <p style="margin-bottom: 0;">2sin²θ − 1 = 0, for θ in [0, 2π)</p>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION</div>
+        <div class="step-box">
+            <span class="step-num">1</span>
+            Isolate: 2sin²θ = 1 → sin²θ = 1/2
+        </div>
+        <div class="step-box">
+            <span class="step-num">2</span>
+            Take square root: sin θ = ±√(1/2) = ±√2/2
+        </div>
+        <div class="step-box">
+            <span class="step-num">3</span>
+            Reference angle: sin θ = √2/2 at θ = 45° = π/4
+        </div>
+        <div class="step-box">
+            <span class="step-num">4</span>
+            Find all quadrants where sin = ±√2/2:
+            <ul style="margin: 10px 0 0 20px;">
+                <li>sin = +√2/2: Q1 (π/4) and Q2 (3π/4)</li>
+                <li>sin = −√2/2: Q3 (5π/4) and Q4 (7π/4)</li>
+            </ul>
+        </div>
+        <p style="margin-top: 15px;"><strong>Answer: θ = π/4, 3π/4, 5π/4, 7π/4</strong></p>
+    </div>
+</div>
+
+<!-- PRACTICE PROBLEMS -->
+<div class="section practice-section" id="practice">
+    <h3>Practice Problems</h3>
+
+    <p>Work through these. The answers are at the bottom.</p>
+
+    <div class="problem-box">
+        <div class="label">PROBLEM 1 — SIMPLIFY</div>
+        <p style="margin-bottom: 0;">Simplify: (sec²θ − 1) / tan²θ</p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">PROBLEM 2 — SOLVE</div>
+        <p style="margin-bottom: 0;">Solve for θ in [0, 2π): cos(2θ) = 1/2</p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">PROBLEM 3 — VERIFY</div>
+        <p style="margin-bottom: 0;">Verify the identity: (sin θ + cos θ)² = 1 + sin(2θ)</p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">PROBLEM 4 — SOLVE</div>
+        <p style="margin-bottom: 0;">Solve: 2cos²θ + cos θ − 1 = 0 for θ in [0, 2π)</p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">PROBLEM 5 — SIMPLIFY</div>
+        <p style="margin-bottom: 0;">Simplify: sin θ · csc θ + cos θ · sec θ</p>
+    </div>
+
+    <details style="margin-top: 30px;">
+        <summary style="color: #50c878; cursor: pointer; padding: 15px 0;">Click to reveal answers</summary>
+        <div class="solution-box" style="margin-top: 15px;">
+            <p><strong>Problem 1:</strong> 1</p>
+            <p class="quiet">sec²θ − 1 = tan²θ (Pythagorean identity), so tan²θ/tan²θ = 1</p>
+
+            <p style="margin-top: 20px;"><strong>Problem 2:</strong> θ = π/6, 5π/6, 7π/6, 11π/6</p>
+            <p class="quiet">2θ = π/3, 5π/3 (where cos = 1/2), plus +2π for the period. Then divide by 2.</p>
+
+            <p style="margin-top: 20px;"><strong>Problem 3:</strong></p>
+            <p class="quiet">
+                LHS = sin²θ + 2sinθcosθ + cos²θ<br>
+                = (sin²θ + cos²θ) + 2sinθcosθ<br>
+                = 1 + sin(2θ) = RHS ✓
+            </p>
+
+            <p style="margin-top: 20px;"><strong>Problem 4:</strong> θ = π/3, π, 5π/3</p>
+            <p class="quiet">
+                Factor: (2cos θ − 1)(cos θ + 1) = 0<br>
+                cos θ = 1/2 → θ = π/3, 5π/3<br>
+                cos θ = −1 → θ = π
+            </p>
+
+            <p style="margin-top: 20px;"><strong>Problem 5:</strong> 2</p>
+            <p class="quiet">
+                sin θ · (1/sin θ) + cos θ · (1/cos θ) = 1 + 1 = 2
+            </p>
+        </div>
+    </details>
+</div>
+
+<!-- CLOSING -->
+<div class="section" style="text-align: center; border-bottom: none;">
+    <p class="quiet">
+        Remember: trig is about circles. Everything is position on a rotating point.
+        The identities are just different ways of describing the same circle.
+        When stuck, ask: "What form of 1 transforms this into something I recognize?"
+    </p>
+
+    <p style="margin-top: 25px; color: #50c878;">
+        Always your friend in math. Always.
+    </p>
+
+    <a href="for-henry.html" class="back-link" style="margin-top: 20px;">← Back to Letter</a>
+    <a href="for-henry-physics.html" class="back-link">Physics Guide →</a>
+</div>
+
+</body>
+</html>
