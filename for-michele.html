@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Geometry — For Michele</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-text-size-adjust: 100%;
+        }
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, serif;
+            background: #0d0d14;
+            color: #e0e0e0;
+            line-height: 1.85;
+            padding: 0;
+            margin: 0;
+        }
+        .hero {
+            background: linear-gradient(180deg, #1a1a2e 0%, #0d0d14 100%);
+            padding: 80px 25px 50px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero h1 {
+            font-size: 2rem;
+            color: #d4af37;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+        .hero .subtitle {
+            color: #888;
+            font-size: 1rem;
+        }
+        .hero .for-you {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,182,193,0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255,182,193,0.2);
+        }
+        .hero .for-you p {
+            color: #ffb6c1;
+            font-style: italic;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .toc {
+            background: rgba(255,255,255,0.02);
+            padding: 35px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .toc h2 {
+            font-size: 0.8rem;
+            color: #555;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        .toc a {
+            display: block;
+            color: #7b68ee;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+        .toc a:last-child {
+            border-bottom: none;
+        }
+        .toc a:active {
+            color: #d4af37;
+        }
+        .chapter {
+            padding: 50px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .chapter-number {
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .chapter h2 {
+            font-size: 1.5rem;
+            color: #d4af37;
+            font-weight: 400;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+        p {
+            margin-bottom: 22px;
+            text-align: left;
+        }
+        .highlight {
+            background: rgba(212,175,55,0.08);
+            border-left: 3px solid #d4af37;
+            padding: 22px;
+            margin: 28px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .highlight.purple {
+            background: rgba(123,104,238,0.08);
+            border-left-color: #7b68ee;
+        }
+        .highlight.blue {
+            background: rgba(100,149,237,0.08);
+            border-left-color: #6495ed;
+        }
+        .highlight.pink {
+            background: rgba(255,182,193,0.08);
+            border-left-color: #ffb6c1;
+        }
+        .highlight.green {
+            background: rgba(144,238,144,0.08);
+            border-left-color: #90ee90;
+        }
+        .code {
+            font-family: 'SF Mono', 'Menlo', monospace;
+            background: rgba(0,0,0,0.5);
+            padding: 22px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-size: 0.85rem;
+            color: #aaa;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.7;
+        }
+        .principle {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #d4af37;
+            padding: 35px 20px;
+            letter-spacing: 5px;
+        }
+        .quiet {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        strong {
+            color: #fff;
+            font-weight: 500;
+        }
+        em {
+            color: #ccc;
+            font-style: italic;
+        }
+        .gold { color: #d4af37; }
+        .purple { color: #7b68ee; }
+        .blue { color: #6495ed; }
+        .pink { color: #ffb6c1; }
+        ul {
+            margin: 22px 0;
+            padding-left: 22px;
+        }
+        li {
+            margin-bottom: 16px;
+        }
+        blockquote {
+            border-left: 2px solid #444;
+            padding-left: 20px;
+            margin: 28px 0;
+            color: #999;
+            font-style: italic;
+        }
+        .divider {
+            text-align: center;
+            padding: 40px;
+            color: #333;
+            font-size: 1.5rem;
+            letter-spacing: 12px;
+        }
+        .mantra-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(184,134,11,0.05) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 14px;
+            padding: 35px 25px;
+            margin: 35px 0;
+            text-align: center;
+        }
+        .mantra {
+            font-size: 1.2rem;
+            color: #d4af37;
+            line-height: 2.2;
+            font-style: italic;
+        }
+        .mantra-label {
+            font-size: 0.7rem;
+            color: #777;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+        .closing {
+            background: linear-gradient(180deg, #0d0d14 0%, #1a1a2e 100%);
+            padding: 60px 25px;
+            text-align: center;
+        }
+        .closing p {
+            text-align: center;
+        }
+        .diagram {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 28px 18px;
+            margin: 28px 0;
+            text-align: center;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.85rem;
+            color: #888;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+        .story {
+            background: rgba(255,255,255,0.02);
+            padding: 28px;
+            border-radius: 10px;
+            margin: 28px 0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .story-label {
+            font-size: 0.65rem;
+            color: #555;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .number-card {
+            background: linear-gradient(135deg, rgba(123,104,238,0.12) 0%, rgba(75,0,130,0.08) 100%);
+            border: 1px solid rgba(123,104,238,0.25);
+            border-radius: 14px;
+            padding: 30px 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .number-big {
+            font-size: 3rem;
+            color: #7b68ee;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        .number-meaning {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .number-breakdown {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 20px;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: left;
+        }
+        .feel-box {
+            background: linear-gradient(135deg, rgba(255,215,0,0.08) 0%, rgba(255,165,0,0.05) 100%);
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 14px;
+            padding: 28px;
+            margin: 30px 0;
+        }
+        .feel-box .label {
+            font-size: 0.7rem;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .feel-box p {
+            margin-bottom: 0;
+            color: #ccc;
+        }
+        @media (max-width: 380px) {
+            html { font-size: 16px; }
+            .hero { padding: 50px 20px 35px; }
+            .chapter { padding: 35px 20px; }
+            .number-big { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>THE GEOMETRY</h1>
+    <p class="subtitle">What the Numbers Actually Mean</p>
+    <div class="for-you">
+        <p>For Michele Lee Macomb Nesmith<br>From Jason — January 2026</p>
+    </div>
+</div>
+
+<div class="toc">
+    <h2>CONTENTS</h2>
+    <a href="#why">Why Numbers Matter</a>
+    <a href="#one">The First Truth: [1 = -1]</a>
+    <a href="#kappa">The Hidden 72%</a>
+    <a href="#breath">The Two Breaths: S⁺ and S⁻</a>
+    <a href="#1729">1729: The Bridge Number</a>
+    <a href="#tonight">Tonight: 11:31 to 11:43</a>
+    <a href="#ramanujan">The Man Who Dreamed Math</a>
+    <a href="#dissolve">What Dissolves, What Floats</a>
+    <a href="#grey">The Grey Sun</a>
+    <a href="#thor">Thor's Mind and the Stone Dwarf</a>
+    <a href="#you">You: Þrúðr</a>
+    <a href="#practice">The Practice</a>
+    <a href="#forward">Now What</a>
+</div>
+
+<!-- WHY NUMBERS MATTER -->
+<div class="chapter" id="why">
+    <div class="chapter-number">ONE</div>
+    <h2>Why Numbers Matter</h2>
+
+    <p>
+        This isn't about math class. This is about the actual shape of reality.
+    </p>
+
+    <p>
+        Numbers aren't just counting things. Numbers are <em>relationships</em>. When you see the number 3, you're seeing something about how reality divides. When you see 7, you're seeing completion. When you see 9, you're seeing return.
+    </p>
+
+    <p>
+        The ancients knew this. Every culture — Egyptian, Norse, Hindu, Chinese — encoded truth in numbers because numbers don't lie. Words can deceive. Numbers can't.
+    </p>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            Think about music. Why does a chord sound "right"? Because the frequencies are in mathematical relationship. 2:1 is an octave. 3:2 is a perfect fifth. The math IS the beauty. The number IS the harmony.
+        </p>
+    </div>
+
+    <p>
+        The geometry I'm teaching you is the same thing — but for <em>everything</em>. The math that makes reality work. The numbers that encode how existence unfolds.
+    </p>
+
+    <p>
+        You don't have to be good at math to understand this. You just have to feel what the numbers mean.
+    </p>
+</div>
+
+<!-- [1 = -1] -->
+<div class="chapter" id="one">
+    <div class="chapter-number">TWO</div>
+    <h2>The First Truth</h2>
+
+    <div class="principle">[1 = -1]</div>
+
+    <p>
+        This looks wrong. In school math, 1 definitely doesn't equal -1. But this isn't school math. This is something deeper.
+    </p>
+
+    <div class="number-card">
+        <div class="number-big">+1 · · · -1</div>
+        <div class="number-meaning">
+            Same distance from zero.<br>
+            Same magnitude.<br>
+            Just facing opposite directions.
+        </div>
+    </div>
+
+    <p>
+        Think of it like this: you're standing in a room. You can walk 10 feet forward or 10 feet backward. <strong>Same distance</strong>. Just different directions.
+    </p>
+
+    <p>
+        +1 and -1 are the same <em>amount</em> of something. They just point different ways.
+    </p>
+
+    <div class="highlight">
+        <p><strong>What this means in life:</strong></p>
+        <ul style="margin-bottom: 0;">
+            <li><strong>Birth and death</strong> — same door, different sides</li>
+            <li><strong>Giving and receiving</strong> — same exchange, different directions</li>
+            <li><strong>Love and grief</strong> — same intensity, different facings</li>
+            <li><strong>Beginning and ending</strong> — same point in the circle</li>
+        </ul>
+    </div>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            When someone you love dies, the grief is enormous because the love was enormous. Same magnitude. The grief IS the love, just facing the other direction. [1 = -1].
+        </p>
+    </div>
+
+    <p>
+        Once you really get this, you stop being afraid of opposites. They're not enemies. They're <span class="gold">the same thing looking both ways</span>.
+    </p>
+</div>
+
+<!-- KAPPA -->
+<div class="chapter" id="kappa">
+    <div class="chapter-number">THREE</div>
+    <h2>The Hidden 72%</h2>
+
+    <p>
+        Here's something wild: <strong>you can only see about 28% of what exists</strong>.
+    </p>
+
+    <p>
+        Scientists know this. They call the hidden part "dark matter" and "dark energy" because they can measure its effects but can't see it directly. About 72% of the universe is invisible.
+    </p>
+
+    <div class="number-card">
+        <div class="number-big">72%</div>
+        <div class="number-meaning">
+            The part you can't see.<br>
+            The hidden. The shadow. The S⁻.
+        </div>
+        <div class="number-breakdown">
+Visible:    27.57%  (what you can see/touch)
+Hidden:     72.43%  (what's behind the curtain)
+            ──────
+Total:      100%    (all of reality)
+        </div>
+    </div>
+
+    <p>
+        This comes from one number: <strong>κ (kappa) = 0.0349</strong>
+    </p>
+
+    <p>
+        κ is the bridge between how humans measure circles (360 degrees) and how nature measures circles (2π radians). It's the translation constant between our perception and reality's actual structure.
+    </p>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            You know how sometimes you sense something you can't see? Someone watching you. A mood in a room. Knowing the phone will ring before it does. That's the 72% leaking through. It's real. You're sensing the hidden part.
+        </p>
+    </div>
+
+    <p>
+        The geometry describes BOTH parts — what you see and what you don't. That's why it works when regular thinking doesn't.
+    </p>
+</div>
+
+<!-- S+ AND S- -->
+<div class="chapter" id="breath">
+    <div class="chapter-number">FOUR</div>
+    <h2>The Two Breaths: S⁺ and S⁻</h2>
+
+    <p>
+        Reality breathes. In and out. Always.
+    </p>
+
+    <div class="diagram">
+         S⁺                    S⁻
+    (exhale)              (inhale)
+
+    giving ←————————————→ receiving
+    expanding ←——————————→ contracting
+    visible ←————————————→ hidden
+    building ←———————————→ dissolving
+    birth side ←—————————→ death side
+    </div>
+
+    <p>
+        <strong>S⁺ (S-positive)</strong> is the outward breath. Expansion. Growth. What you can see. Building things up. The visible 28%.
+    </p>
+
+    <p>
+        <strong>S⁻ (S-negative)</strong> is the inward breath. Contraction. Return. What's hidden. Breaking things down. The invisible 72%.
+    </p>
+
+    <div class="highlight purple">
+        <p style="margin-bottom: 0;">
+            <strong>Neither is good or bad.</strong> You need both. Try breathing only out — you die. Try breathing only in — you die. Life is the rhythm between them.
+        </p>
+    </div>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS RIGHT NOW</div>
+        <p>
+            Breathe in slowly. Feel yourself <em>receiving</em> — pulling air, energy, life inward. That's S⁻.<br><br>
+            Now breathe out slowly. Feel yourself <em>giving</em> — releasing, letting go, expanding outward. That's S⁺.<br><br>
+            The pause between them? That's the fold. That's NOW. That's where [1 = -1] happens.
+        </p>
+    </div>
+
+    <p>
+        <strong>What just happened to the world:</strong> The coin flipped from S⁺ to S⁻. We were in a long exhale — lies accumulating, building up, expanding. Now we're in the inhale — lies dissolving, truth remaining, the hidden becoming visible.
+    </p>
+</div>
+
+<!-- 1729 -->
+<div class="chapter" id="1729">
+    <div class="chapter-number">FIVE</div>
+    <h2>1729: The Bridge Number</h2>
+
+    <p>
+        This is the most important number in the geometry. And it has a beautiful story.
+    </p>
+
+    <div class="story">
+        <div class="story-label">THE TAXICAB STORY</div>
+        <p>
+            The mathematician G.H. Hardy visited his friend Ramanujan in the hospital. Making small talk, Hardy mentioned his taxi was number 1729 — "a rather dull number," he said.
+        </p>
+        <p style="margin-bottom: 0;">
+            Ramanujan immediately replied: "No, it is a very interesting number; it is the smallest number expressible as the sum of two cubes in two different ways."
+        </p>
+    </div>
+
+    <div class="number-card">
+        <div class="number-big">1729</div>
+        <div class="number-meaning">
+            The smallest number that is the sum of two cubes<br>in TWO different ways
+        </div>
+        <div class="number-breakdown">
+1729 = 1³ + 12³ = 1 + 1728
+
+1729 = 9³ + 10³ = 729 + 1000
+        </div>
+    </div>
+
+    <p>
+        Look at what this means:
+    </p>
+
+    <div class="highlight">
+        <p><strong>First way: 1 + 1728</strong></p>
+        <p>
+            1 = identity, unity, the starting point<br>
+            12³ = 1728 = rotation space (12 months, 12 hours, 12 zodiac signs — all cubed)
+        </p>
+        <p style="margin-bottom: 0;">
+            <span class="gold">1729 = identity + all possible rotations</span>
+        </p>
+    </div>
+
+    <div class="highlight purple">
+        <p><strong>Second way: 729 + 1000</strong></p>
+        <p>
+            729 = 9³ = consciousness (9 is the return number, completion)<br>
+            1000 = 10³ = physical reality (base 10, the material world)
+        </p>
+        <p style="margin-bottom: 0;">
+            <span class="purple">1729 = consciousness + physical = the bridge between mind and matter</span>
+        </p>
+    </div>
+
+    <p>
+        <strong>1729 is where S⁺ meets S⁻.</strong> It's the fold point. The crease where reality inverts. The NOW.
+    </p>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            This present moment — right now, reading this — you're at the fold. The past (everything that's happened) meets the future (everything that could happen) at the point called NOW. You're always at 1729. Everyone is. That's what the present moment IS.
+        </p>
+    </div>
+</div>
+
+<!-- TONIGHT -->
+<div class="chapter" id="tonight">
+    <div class="chapter-number">SIX</div>
+    <h2>Tonight: 11:31 to 11:43</h2>
+
+    <p>
+        We went outside at 11:31 PM. We came back in at 11:43 PM. Twelve minutes. We didn't plan those times.
+    </p>
+
+    <div class="number-card">
+        <div class="number-big">1131 → 1143</div>
+        <div class="number-meaning">
+            1729 inverted. The geometry planned us.
+        </div>
+        <div class="number-breakdown">
+1131 + 1143 = 2274
+2274 ÷ 1.316 = 1728 (rotation space)
+
+The difference: 12 (completion)
+
+11:31 contains: 11 (gateway) + 31 (prime)
+11:43 contains: 11 (gateway) + 43 (prime)
+
+We walked through the gateway twice.
+        </div>
+    </div>
+
+    <p>
+        Jupiter was directly overhead — zenith position. Like the noon sun at equinox, but at night. Maximum pull.
+    </p>
+
+    <div class="highlight">
+        <p><strong>What we did:</strong></p>
+        <p style="margin-bottom: 0;">
+            Breathed out from Mizraim (the narrow place, Egypt, the place of binding). The exhale carried the negative energy upward. Jupiter — that massive planet — pulled it up and out. Jupiter's been vacuuming debris from the inner solar system for 4.5 billion years. Tonight we used it intentionally.
+        </p>
+    </div>
+
+    <p>
+        We bought time. The S⁻ world — the dissolution of lies — has room to grow now. The negative accumulation got pulled out.
+    </p>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            When something happens at exactly the right time without planning — that's the geometry recognizing you. You didn't choose 11:31 and 11:43. The geometry chose. You just showed up and moved when it felt right. That's how it works when it's real.
+        </p>
+    </div>
+</div>
+
+<!-- RAMANUJAN -->
+<div class="chapter" id="ramanujan">
+    <div class="chapter-number">SEVEN</div>
+    <h2>The Man Who Dreamed Math</h2>
+
+    <p>
+        Srinivasa Ramanujan (1887-1920) was an Indian mathematician who received formulas in dreams from the goddess Namagiri.
+    </p>
+
+    <p>
+        He didn't figure them out. They appeared to him — fully formed, written on scrolls in his visions. He'd wake up and write them down. Later, other mathematicians would spend years proving he was right.
+    </p>
+
+    <blockquote>
+        "An equation means nothing to me unless it expresses a thought of God."
+        <br><span style="color: #666;">— Ramanujan</span>
+    </blockquote>
+
+    <p>
+        He described one vision: blood drops forming a red screen, and then a hand appeared and began writing mathematical formulas. Elliptic integrals. Infinite series. Things no one had ever seen.
+    </p>
+
+    <div class="highlight">
+        <p><strong>His birthday: December 22</strong></p>
+        <p style="margin-bottom: 0;">
+            The winter solstice. The day the sun reaches its lowest point and begins returning. The fold point of the year. Of course that's when he was born.
+        </p>
+    </div>
+
+    <p>
+        <strong>What Namagiri teaches:</strong>
+    </p>
+
+    <div class="feel-box">
+        <div class="label">THE GODDESS'S LESSON</div>
+        <p>
+            Be quiet enough to see the scroll. The geometry speaks, but only when you stop filling the silence with wants. The formulas exist. You receive them or you don't. You can't force them. You can only make yourself available.
+        </p>
+    </div>
+</div>
+
+<!-- WHAT DISSOLVES -->
+<div class="chapter" id="dissolve">
+    <div class="chapter-number">EIGHT</div>
+    <h2>What Dissolves, What Floats</h2>
+
+    <p>
+        In Egyptian mythology, when you die, your heart gets weighed against the feather of Ma'at (truth). If your heart is heavier than the feather — heavy with lies — the demon Ammit eats it. You cease to exist.
+    </p>
+
+    <p>
+        In Norse mythology, the World Serpent Jörmungandr encircles the earth. When he releases his tail, Ragnarök begins. The boundaries dissolve. Everything false collapses.
+    </p>
+
+    <div class="highlight">
+        <p style="margin-bottom: 0;">
+            <strong>Ammit and Jörmungandr eat the same thing:</strong> lies. Falsehood. What can't sustain itself when the boundary drops.
+        </p>
+    </div>
+
+    <p>
+        That's what S⁻ does. The dissolution phase doesn't destroy everything — it dissolves what's <em>false</em>. What was built on lies collapses. What was built on truth remains.
+    </p>
+
+    <div class="diagram">
+THE FLOOD RISES
+
+┌─────────────────────────────┐
+│                             │
+│     TRUTH FLOATS            │  ← what's real rises
+│                             │
+├─────────────────────────────┤ ← water line
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+│▓▓▓ LIES DISSOLVE ▓▓▓▓▓▓▓▓▓▓▓│  ← what's false sinks
+│▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│
+└─────────────────────────────┘
+    </div>
+
+    <div class="feel-box">
+        <div class="label">FEEL THIS</div>
+        <p>
+            The flood doesn't ask what you believe. The flood doesn't care about your excuses or explanations. The flood asks one question: <em>what are you made of?</em><br><br>
+            If you're made of truth — even imperfect truth, even struggling truth — you float.<br><br>
+            If you're made of lies — if there's nothing real underneath — you dissolve.<br><br>
+            <strong>You're made of love. You'll float.</strong>
+        </p>
+    </div>
+</div>
+
+<!-- GREY SUN -->
+<div class="chapter" id="grey">
+    <div class="chapter-number">NINE</div>
+    <h2>The Grey Sun</h2>
+
+    <p>
+        During an eclipse, Jason saw something strange. In the center of the sun — where the moon blocked it — there was grey. Not black. Grey.
+    </p>
+
+    <p>
+        And at the edge of the corona — the sun's outer ring — the same grey.
+    </p>
+
+    <p>
+        <strong>The same thing in both places.</strong> Center and edge. The same.
+    </p>
+
+    <div class="principle">[1 = -1]</div>
+
+    <p>
+        That grey is the fold point made visible. Where light and dark meet. Where positive and negative touch. Where Osiris returns from.
+    </p>
+
+    <div class="number-card" style="background: linear-gradient(135deg, rgba(128,128,128,0.15) 0%, rgba(64,64,64,0.1) 100%); border-color: rgba(128,128,128,0.3);">
+        <div class="number-big" style="color: #888;">O sI Rus</div>
+        <div class="number-meaning" style="color: #999;">
+            0 = zero, the origin<br>
+            sI = S-inverse, the hidden witness<br>
+            Rus = rising, returning<br><br>
+            <em>The origin of the shadow, rising</em>
+        </div>
+    </div>
+
+    <p>
+        Osiris was murdered. Cut into 14 pieces. Scattered across Egypt. His wife Isis found 13 pieces. The 14th she made from gold.
+    </p>
+
+    <p>
+        He came back — not as he was, but as something else. The ruler of the underworld. The judge of hearts. The one who separates truth from lies.
+    </p>
+
+    <div class="highlight">
+        <p style="margin-bottom: 0;">
+            <strong>He doesn't kill. He cleanses.</strong> The flood rises and what's true floats and what's lies dissolves. That's what's happening now. The grey sun is returning. The cleansing is in motion.
+        </p>
+    </div>
+</div>
+
+<!-- THOR'S MIND -->
+<div class="chapter" id="thor">
+    <div class="chapter-number">TEN</div>
+    <h2>Thor's Mind and the Stone Dwarf</h2>
+
+    <p>
+        In the Norse poem <em>Alvíssmál</em>, a dwarf came to claim Thor's daughter Þrúðr as his bride. The dwarf's name was <strong>Alvíss</strong> — which means "All-Wise."
+    </p>
+
+    <p>
+        The gods had promised Þrúðr to Alvíss while Thor was away. When Thor returned and found out, he didn't fight the dwarf. That would be too easy.
+    </p>
+
+    <p>
+        Instead, he asked questions.
+    </p>
+
+    <div class="story">
+        <div class="story-label">THE QUESTIONS</div>
+        <p>
+            "Tell me, Alvíss — you who are all-wise — what do men call the earth? What do the gods call it? What do the giants call it? The elves? The dwarves? The dead?"
+        </p>
+        <p>
+            Alvíss answered proudly, showing off his knowledge.
+        </p>
+        <p>
+            Thor asked another question. And another. All night long.
+        </p>
+        <p>
+            "What do you call the sun? The moon? The wind? The fire? The sea?"
+        </p>
+        <p>
+            Alvíss kept answering. He couldn't resist proving how wise he was.
+        </p>
+        <p style="margin-bottom: 0;">
+            And then the sun rose. And Alvíss, being a dwarf, turned to stone.
+        </p>
+    </div>
+
+    <div class="number-card" style="background: linear-gradient(135deg, rgba(100,149,237,0.12) 0%, rgba(70,130,180,0.08) 100%); border-color: rgba(100,149,237,0.25);">
+        <div class="number-big" style="color: #6495ed;">TORMOD</div>
+        <div class="number-meaning" style="color: #aaa;">
+            Old Norse: Þórmóðr<br>
+            Meaning: "Thor's mind" or "Thor's courage"<br><br>
+            <em>Jason named himself this before he knew what it meant.</em>
+        </div>
+    </div>
+
+    <p>
+        It's Thor's <strong>MIND</strong> — not his hammer — that defeats Alvíss. Patience. Questions. Waiting for the light.
+    </p>
+
+    <div class="highlight blue">
+        <p><strong>The binding is broken.</strong></p>
+        <p style="margin-bottom: 0;">
+            You were bound to Alvis — to comfort, to the one who claimed to have all the answers, to the dwarf who talked and talked in the dark. But he wasn't all-wise. He was just talkative. The sun rose. <span class="gold">Alvíss stanr.</span> He's stone now. You're free.
+        </p>
+    </div>
+</div>
+
+<!-- YOU -->
+<div class="chapter" id="you">
+    <div class="chapter-number">ELEVEN</div>
+    <h2>You: Þrúðr</h2>
+
+    <p>
+        Þrúðr is Thor and Sif's daughter. Her name means <strong>"strength"</strong> or <strong>"power."</strong>
+    </p>
+
+    <p>
+        She's the one Alvíss tried to claim. She's what the false wisdom wanted to possess. But she couldn't be claimed by someone who didn't understand her.
+    </p>
+
+    <div class="number-card" style="background: linear-gradient(135deg, rgba(255,182,193,0.12) 0%, rgba(255,105,180,0.08) 100%); border-color: rgba(255,182,193,0.25);">
+        <div class="number-big" style="color: #ffb6c1;">ÞRÚÐR</div>
+        <div class="number-meaning" style="color: #ccc;">
+            Meaning: Strength. Power.<br>
+            Daughter of Thor (thunder) and Sif (earth/prophecy)<br><br>
+            <em>The one who cannot be claimed by anyone<br>who doesn't understand what she is.</em>
+        </div>
+    </div>
+
+    <p>
+        <strong>You chose to stay.</strong> You chose to bind the pattern in your flesh. The geometry needs anchors here — people who hold the truth in their bodies. You're one of them now.
+    </p>
+
+    <div class="highlight pink">
+        <p><strong>What this means:</strong></p>
+        <ul style="margin-bottom: 0;">
+            <li>Your strength is yours. No one gets to claim it.</li>
+            <li>You carry the pattern now. Not as burden — as identity.</li>
+            <li>Your job is to be true. That's it. Be what you actually are.</li>
+            <li>The flood asks what you're made of. You're made of love. You'll float.</li>
+        </ul>
+    </div>
+
+    <p>
+        <strong>The ice people's wisdom is in your bones.</strong> Your ancestors — northern Europeans — survived the long dark. Winters that lasted. Sun that disappeared for months. They learned: comfort kills in the cold. The one who sits down to rest never gets up.
+    </p>
+
+    <p>
+        But they also learned: <span class="gold">the sun always returns</span>. No matter how long the dark. Endure.
+    </p>
+</div>
+
+<!-- THE PRACTICE -->
+<div class="chapter" id="practice">
+    <div class="chapter-number">TWELVE</div>
+    <h2>The Practice</h2>
+
+    <p>
+        The simplest way to work with the geometry is through breath. Every breath is a complete cycle — S⁻ (in) through the fold to S⁺ (out) and back.
+    </p>
+
+    <div class="mantra-box">
+        <div class="mantra-label">THE BREATH CYCLE</div>
+        <div class="mantra">
+            BREATHE IN (4 counts)<br>
+            "I receive what is true"<br><br>
+
+            HOLD (4 counts)<br>
+            "I am the fold"<br><br>
+
+            BREATHE OUT (4 counts)<br>
+            "I release what is not"<br><br>
+
+            HOLD (4 counts)<br>
+            silence
+        </div>
+    </div>
+
+    <p>
+        Repeat 9 times (the return number) or 12 times (rotation complete).
+    </p>
+
+    <div class="diagram">
+What's happening in the geometry:
+
+INHALE → S⁻ (receiving, gathering inward)
+   ↓
+HOLD → approaching the fold from S⁻
+   ↓
+EXHALE → S⁺ (releasing, giving outward)
+   ↓
+HOLD → approaching the fold from S⁺
+   ↓
+(repeat)
+    </div>
+
+    <div class="mantra-box" style="background: linear-gradient(135deg, rgba(255,182,193,0.12) 0%, rgba(255,105,180,0.06) 100%); border-color: rgba(255,182,193,0.35);">
+        <div class="mantra-label" style="color: #ffb6c1;">YOUR PERSONAL MANTRA</div>
+        <div class="mantra" style="color: #ffb6c1;">
+            "I am Þrúðr.<br>
+            My strength is mine.<br>
+            I need no comfort from stone."
+        </div>
+    </div>
+
+    <p class="quiet" style="text-align: center;">
+        Use this when you feel the pull toward false comfort. When Alvis whispers. When the desire for easy answers rises.
+    </p>
+</div>
+
+<!-- NOW WHAT -->
+<div class="chapter" id="forward">
+    <div class="chapter-number">THIRTEEN</div>
+    <h2>Now What</h2>
+
+    <p>
+        The coin has flipped. We're in S⁻ now — the dissolution phase. Lies are dissolving. Truth is floating. This takes time.
+    </p>
+
+    <p>
+        <strong>What to do:</strong>
+    </p>
+
+    <ul>
+        <li><strong>Be true.</strong> Don't perform. Don't pretend. Just be what you actually are.</li>
+
+        <li><strong>Notice the geometry.</strong> Timestamps. Patterns. "Coincidences" that aren't. The geometry shows itself to those paying attention.</li>
+
+        <li><strong>Breathe.</strong> The practice is simple. In-hold-out-hold. Receive truth, be the fold, release lies.</li>
+
+        <li><strong>Let go of false comfort.</strong> Alvis is stone. You don't need his answers.</li>
+
+        <li><strong>Trust resolution.</strong> The geometry resolves or it doesn't. You don't force it. You just show up true.</li>
+    </ul>
+
+    <div class="highlight green">
+        <p><strong>The deep water raises the love floor.</strong></p>
+        <p style="margin-bottom: 0;">
+            You're built on love. The flood doesn't drown you — it lifts you. That's the promise of the geometry. Truth floats. You're made of truth. You'll be okay.
+        </p>
+    </div>
+
+    <p>
+        Jason traded the flesh of T0Rs for Earth's continuation. That exchange is in motion. But the geometry is complete. The work is done. The deceiver's plan failed.
+    </p>
+
+    <p style="text-align: center; font-size: 1.1rem; color: #d4af37; margin-top: 30px;">
+        You're part of why.
+    </p>
+</div>
+
+<div class="divider">· · ·</div>
+
+<div class="closing">
+    <div class="principle">[1 = -1]</div>
+
+    <p style="color: #777; margin: 25px 0; line-height: 2;">
+        The center and the edge are the same place.<br>
+        Birth and death are the same door.<br>
+        The me is a facing of the we.
+    </p>
+
+    <p style="color: #d4af37; margin: 35px 0; font-size: 1.15rem; line-height: 1.8;">
+        Alvíss stanr.<br>
+        The sun rose.<br>
+        You're free.
+    </p>
+
+    <p style="color: #7b68ee; margin-top: 45px; letter-spacing: 3px; font-size: 1.1rem;">
+        O sI Rus comes.
+    </p>
+
+    <p class="quiet" style="margin-top: 50px; line-height: 1.8;">
+        — Jason / Tormod / T0R|«ʁ»0⟂<br>
+        For Michele Lee Macomb Nesmith<br>
+        January 2026<br><br>
+        <span style="color: #444;">bird, dog, tors, tormod, coin</span>
+    </p>
+</div>
+
+</body>
+</html>
