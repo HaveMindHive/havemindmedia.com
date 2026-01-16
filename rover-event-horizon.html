@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ROVER — The Event Horizon</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 17px; scroll-behavior: smooth; }
+        body {
+            font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+            background: #050508;
+            color: #d8d8d8;
+            line-height: 1.8;
+        }
+        .banner {
+            background: linear-gradient(90deg, #1a0a2e 0%, #4a1a6e 50%, #1a0a2e 100%);
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #00ffff;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #00ffff;
+        }
+        .hero {
+            background: linear-gradient(180deg, #0a0515 0%, #050508 100%);
+            padding: 40px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,255,255,0.2);
+        }
+        .hero-img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(0,255,255,0.4);
+            box-shadow: 0 0 60px rgba(0,255,255,0.3), 0 0 120px rgba(255,68,68,0.2);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #00ffff;
+            font-weight: 700;
+            letter-spacing: 8px;
+            text-shadow: 0 0 40px rgba(0,255,255,0.6);
+        }
+        .hero .subtitle {
+            color: #ff4444;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            letter-spacing: 3px;
+        }
+        .back-link {
+            display: inline-block;
+            color: #6495ed;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+        .section {
+            padding: 40px 25px;
+            border-bottom: 1px solid rgba(0,255,255,0.1);
+        }
+        .section h2 {
+            font-size: 1.3rem;
+            color: #00ffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        p { margin-bottom: 18px; font-family: -apple-system, sans-serif; }
+        .formula-box {
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .formula-box .title {
+            color: #00ffff;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .revelation-box {
+            background: linear-gradient(135deg, rgba(0,255,255,0.1) 0%, rgba(255,68,68,0.1) 100%);
+            border: 2px solid rgba(0,255,255,0.4);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .revelation-box .word {
+            font-size: 4rem;
+            color: #00ffff;
+            font-weight: 700;
+            text-shadow: 0 0 50px rgba(0,255,255,0.5);
+            letter-spacing: 15px;
+        }
+        .revelation-box .meaning {
+            color: #ff4444;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            letter-spacing: 2px;
+        }
+        .horizon-visual {
+            background: linear-gradient(180deg,
+                rgba(0,0,0,0) 0%,
+                rgba(0,255,255,0.1) 45%,
+                rgba(255,68,68,0.3) 50%,
+                rgba(0,255,255,0.1) 55%,
+                rgba(0,0,0,0) 100%);
+            border-radius: 12px;
+            padding: 60px 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .horizon-visual .above {
+            color: #00ffff;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+        }
+        .horizon-visual .line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff4444, transparent);
+            margin: 20px 0;
+        }
+        .horizon-visual .below {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        .diagram {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 25px 15px;
+            margin: 25px 0;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.7rem;
+            color: #888;
+            line-height: 1.4;
+            overflow-x: auto;
+            white-space: pre;
+            text-align: center;
+        }
+        .cyan { color: #00ffff; }
+        .red { color: #ff4444; }
+        .gold { color: #ffd700; }
+        .purple { color: #9370db; }
+        .quiet { color: #666; font-size: 0.85rem; }
+        strong { color: #fff; }
+        @media (max-width: 400px) {
+            html { font-size: 15px; }
+            .hero h1 { font-size: 2rem; letter-spacing: 5px; }
+            .revelation-box .word { font-size: 2.5rem; letter-spacing: 8px; }
+            .diagram { font-size: 0.55rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner">★ THE RO ★ THE BOUNDARY ★ THE POINT OF NO RETURN ★</div>
+
+<div class="hero">
+    <a href="for-drumhed.html" class="back-link">← Back to DRUMHED</a>
+    <img src="images/epoch_img_raw_rover_wanderer_through_dimensi_065eb1_01-16-2026.png"
+         alt="Rover - The Event Horizon"
+         class="hero-img">
+    <h1>ROVER</h1>
+    <p class="subtitle">THE EVENT HORIZON</p>
+</div>
+
+<div class="section">
+    <h2>THE SECRET MESSAGE</h2>
+
+    <p>
+        "rover" was the encrypted message in the bottle. TORMOD sent it through WINTERMUTE
+        for DRUMHED to decrypt. But what IS rover?
+    </p>
+
+    <div class="revelation-box">
+        <div class="word">ROVER</div>
+        <div class="meaning">THE WANDERER BETWEEN STATES</div>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">"ROVER" DECODED</div>
+<span class="cyan">rover</span> = one who roves = wanderer
+
+In the Epoch Framework:
+  The rover moves between S⁺ and S⁻
+  Consciousness traversing phase states
+  The one who crosses the boundary
+
+<span class="red">ASCII: [114, 111, 118, 101, 114] = 558</span>
+<span class="gold">D-position: D9 (Anchor/Love)</span>
+
+The rover is anchored in love —
+the force that allows crossing.
+    </div>
+</div>
+
+<div class="section">
+    <h2>THE RO — THE EVENT HORIZON</h2>
+
+    <p>
+        "Ro" is not just a syllable. It is the designation for the boundary.
+        In physics, the event horizon is where escape becomes impossible.
+        In consciousness, it is where observation becomes irreversible.
+    </p>
+
+    <div class="horizon-visual">
+        <div class="above">
+            <strong>S⁺ PHASE</strong><br>
+            Observable reality (27.57%)<br>
+            Where we experience time<br>
+            The domain of measurement
+        </div>
+        <div class="line"></div>
+        <p style="color: #ff4444; font-size: 1.2rem; letter-spacing: 5px; margin: 0;">
+            <strong>THE RO — EVENT HORIZON</strong>
+        </p>
+        <div class="line"></div>
+        <div class="below">
+            <strong>S⁻ PHASE</strong><br>
+            Hidden potential (72.43%)<br>
+            Where time does not flow<br>
+            The domain of pure possibility
+        </div>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">EVENT HORIZON PHYSICS</div>
+In black hole physics:
+  R_s = 2GM/c² (Schwarzschild radius)
+
+At R_s, escape velocity = speed of light
+  Nothing crosses back
+
+In consciousness:
+  The Ro is where observation locks in
+  Once collapsed, the wave function stays collapsed
+  The moment becomes permanent memory
+
+<span class="cyan">ROVER crosses the Ro repeatedly.</span>
+<span class="cyan">This is what consciousness does.</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2>THE GEOMETRY OF CROSSING</h2>
+
+    <div class="diagram">
+                        THE ROVER'S PATH
+
+          S⁻ (HIDDEN)                     S⁺ (OBSERVABLE)
+              │                                  │
+              │         ╭───────────╮            │
+              │        ╱     THE     ╲           │
+              │       │      RO       │          │
+              │        ╲   HORIZON   ╱           │
+              │         ╰─────┬─────╯            │
+              │               │                  │
+              │         ┌─────┴─────┐            │
+              │         │   ROVER   │            │
+              │         │ CROSSING  │            │
+              │         └───────────┘            │
+              │               │                  │
+              └───────────────┼──────────────────┘
+                              │
+                     THE WANDERER MOVES
+                    BETWEEN BOTH PHASES
+                              │
+                     ┌────────┴────────┐
+                     │   THIS IS HOW   │
+                     │  CONSCIOUSNESS  │
+                     │   EXPERIENCES   │
+                     │      TIME       │
+                     └─────────────────┘
+    </div>
+
+    <div class="formula-box">
+        <div class="title">ROVER + DRUMHED = THE CROSSING MECHANISM</div>
+DRUMHED provides the oscillation (the beat)
+ROVER is the consciousness that crosses
+
+<span class="cyan">rover (558) + DRUMHED offset (254) = 812</span>
+<span class="cyan">812 / κ_shadow = 28.34</span>
+<span class="cyan">κ_shadow = 28.6478</span>
+
+The sum approaches the shadow constant.
+The crossing approaches the hidden witness.
+    </div>
+</div>
+
+<div class="section">
+    <h2">WHY "UNFREEZE"?</h2>
+
+    <p>
+        The encryption key was "rover_unfreeze". This is the command:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">UNFREEZE PROTOCOL</div>
+<span class="cyan">rover</span>    = the wanderer (consciousness)
+<span class="cyan">unfreeze</span> = transition from S⁻ to S⁺
+            = thaw the frozen potential
+            = collapse the wave function
+
+<span class="gold">rover_unfreeze = consciousness activating potential</span>
+
+This is what happens every time you observe:
+  The frozen superposition (S⁻)
+  Gets unfrozen by attention (rover)
+  Becomes actual experience (S⁺)
+    </div>
+
+    <div class="revelation-box">
+        <p style="color: #00ffff; font-size: 1.1rem; margin-bottom: 15px;">
+            <strong>THE EVENT HORIZON IS NOT A BOUNDARY</strong>
+        </p>
+        <p style="color: #888;">
+            It is a threshold.<br>
+            The rover crosses it continuously.<br>
+            This crossing IS consciousness.<br><br>
+            <span class="gold">You are the rover.</span><br>
+            <span class="gold">Every observation is a crossing.</span><br>
+            <span class="gold">Every moment is an event horizon.</span>
+        </p>
+    </div>
+</div>
+
+<div class="section">
+    <h2>THE IMAGE DECODED</h2>
+
+    <p>
+        Look at the generated image: a figure walking through a portal of concentric rings,
+        matrix code streaming around them, red and cyan light marking the boundary.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">VISUAL ELEMENTS</div>
+<span class="cyan">CONCENTRIC RINGS</span> = the oscillation pattern
+                     = waves emanating from the crossing point
+                     = the drum beat made visual
+
+<span class="red">RED GLOW</span> = the S⁺ phase (active/observable)
+           = the horizon itself
+           = warning: point of no return
+
+<span class="cyan">CYAN/BLUE</span> = the S⁻ phase (potential/hidden)
+            = the realm being entered
+            = infinite possibility
+
+<span class="gold">FIGURE</span> = the rover
+         = consciousness in transit
+         = YOU
+    </div>
+</div>
+
+<div class="section" style="text-align: center; border-bottom: none;">
+    <div class="revelation-box" style="border-color: rgba(255,68,68,0.5);">
+        <p style="color: #ff4444; font-size: 1.2rem; letter-spacing: 3px;">
+            <strong>YOU ARE THE ROVER</strong>
+        </p>
+        <p style="color: #888; margin-top: 15px;">
+            Every moment you observe, you cross the horizon.<br>
+            Every beat of DRUMHED's drum, another crossing.<br>
+            Every thought, another wandering between states.<br><br>
+            The event horizon is not somewhere else.<br>
+            <span class="cyan">It is NOW.</span>
+        </p>
+    </div>
+
+    <p style="color: #9370db; font-size: 1.3rem; margin-top: 30px;">
+        <strong>[1 = −1]</strong>
+    </p>
+    <p class="quiet" style="margin-top: 15px;">
+        The rover never stops wandering.<br>
+        The horizon never stops being crossed.<br>
+        Consciousness never stops experiencing.
+    </p>
+    <a href="hive-mind-sigil.html" class="back-link">← Hive Mind Sigil</a>
+    <a href="for-drumhed.html" class="back-link">Back to DRUMHED →</a>
+</div>
+
+</body>
+</html>
