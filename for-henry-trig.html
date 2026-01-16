@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Trig Guide — For Henry</title>
+    <title>AP PreCalculus — The Ramanujan Guide</title>
     <style>
         * {
             margin: 0;
@@ -54,6 +54,24 @@
             margin: 15px 0;
             font-size: 0.85rem;
         }
+        .framework-box {
+            background: linear-gradient(135deg, rgba(147,112,219,0.15) 0%, rgba(100,80,180,0.08) 100%);
+            border: 1px solid rgba(147,112,219,0.4);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 20px;
+            text-align: center;
+        }
+        .framework-box .title {
+            color: #9370db;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .framework-box code {
+            font-family: 'SF Mono', 'Menlo', monospace;
+            color: #d4af37;
+        }
         .toc {
             background: rgba(255,255,255,0.02);
             padding: 25px;
@@ -65,13 +83,22 @@
             letter-spacing: 2px;
             margin-bottom: 15px;
         }
-        .toc a {
-            display: block;
+        .unit-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .unit-nav a {
+            background: rgba(80,200,120,0.15);
             color: #50c878;
+            padding: 8px 14px;
+            border-radius: 20px;
             text-decoration: none;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.03);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+        }
+        .unit-nav a:hover {
+            background: rgba(80,200,120,0.25);
         }
         .section {
             padding: 40px 25px;
@@ -168,6 +195,55 @@
             letter-spacing: 2px;
             margin-bottom: 12px;
         }
+        .calc-box {
+            background: linear-gradient(135deg, rgba(0,191,255,0.12) 0%, rgba(0,140,200,0.08) 100%);
+            border: 1px solid rgba(0,191,255,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .calc-box .label {
+            font-size: 0.7rem;
+            color: #00bfff;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .calc-box input, .calc-box select {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 1rem;
+            margin: 8px 0;
+            font-family: 'SF Mono', monospace;
+        }
+        .calc-box input:focus, .calc-box select:focus {
+            outline: none;
+            border-color: #00bfff;
+        }
+        .calc-box button {
+            width: 100%;
+            background: linear-gradient(135deg, #00bfff 0%, #0080ff 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .calc-box .result {
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'SF Mono', monospace;
+            color: #50c878;
+            min-height: 50px;
+        }
         .diagram {
             background: rgba(0,0,0,0.4);
             border-radius: 10px;
@@ -207,19 +283,26 @@
         .gold { color: #d4af37; }
         .green { color: #50c878; }
         .blue { color: #6495ed; }
+        .red { color: #e94560; }
+        .purple { color: #9370db; }
         .quiet {
             color: #666;
             font-size: 0.85rem;
         }
-        .practice-section {
-            background: rgba(123,104,238,0.05);
-            padding: 30px 25px;
-            margin: 30px 0;
-            border-radius: 12px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
         }
-        .practice-section h3 {
-            color: #7b68ee;
-            margin-bottom: 20px;
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            color: #50c878;
+            font-weight: 500;
         }
         @media (max-width: 400px) {
             html { font-size: 15px; }
@@ -236,41 +319,46 @@
 
 <div class="hero">
     <a href="for-henry.html" class="back-link">← Back to Letter</a>
-    <h1>TRIGONOMETRY</h1>
-    <p class="subtitle">The Unit Circle Is Everything — AP PreCalculus 2nd Semester</p>
+    <h1>AP PRECALCULUS</h1>
+    <p class="subtitle">The Ramanujan Unified Model — 2nd Semester</p>
+</div>
+
+<div class="framework-box">
+    <div class="title">THE CORE CONNECTION</div>
+    <p style="margin-bottom: 10px;"><code>κ = 2π/180 = 0.0349</code> — the closure constant</p>
+    <p style="font-size: 0.9rem; color: #888; margin-bottom: 0;">
+        This is the bridge between degrees and radians.<br>
+        It connects circles to waves to complex numbers to everything.
+    </p>
 </div>
 
 <div class="toc">
-    <h2>CONTENTS</h2>
-    <a href="#secret">The Secret: It's About Circles</a>
-    <a href="#unit">The Unit Circle</a>
-    <a href="#identity">The Multiplicative Identity Trick</a>
-    <a href="#functions">The Six Functions</a>
-    <a href="#identities">Essential Identities</a>
-    <a href="#solving">Solving Trig Equations</a>
-    <a href="#practice">Practice Problems</a>
+    <h2>ALL UNITS</h2>
+    <div class="unit-nav">
+        <a href="#unit-circle">1. Unit Circle</a>
+        <a href="#trig-functions">2. Trig Functions</a>
+        <a href="#identities">3. Identities</a>
+        <a href="#equations">4. Equations</a>
+        <a href="#triangles">5. Triangles</a>
+        <a href="#inverse">6. Inverse Trig</a>
+        <a href="#polar">7. Polar</a>
+        <a href="#complex">8. Complex</a>
+        <a href="#vectors">9. Vectors</a>
+        <a href="#parametric">10. Parametric</a>
+        <a href="#calculators">Calculators</a>
+    </div>
 </div>
 
-<!-- THE SECRET -->
-<div class="section" id="secret">
-    <h2>The Secret: It's About Circles, Not Triangles</h2>
-
-    <p>
-        Here's what they don't tell you clearly enough:
-        <strong>Trigonometry is not about triangles. It's about rotation.</strong>
-    </p>
-
-    <p>
-        Triangles are just a convenient way to <em>measure</em> rotation.
-        But the real subject is: where are you on a circle as you spin?
-    </p>
+<!-- UNIT 1: THE UNIT CIRCLE -->
+<div class="section" id="unit-circle">
+    <h2>Unit 1: The Unit Circle</h2>
 
     <div class="key-insight">
-        <div class="label">THE KEY INSIGHT</div>
+        <div class="label">THE SECRET</div>
         <p style="margin-bottom: 0;">
-            Imagine a point on a wheel. As the wheel spins, that point traces a circle.
-            <strong>Sin</strong> is how high the point is. <strong>Cos</strong> is how far right the point is.
-            That's it. That's all sin and cos are — coordinates of a spinning point.
+            <strong>Trig is not about triangles. It's about rotation.</strong><br>
+            sin = how HIGH the point is. cos = how far RIGHT the point is.
+            That's it. Coordinates of a spinning point.
         </p>
     </div>
 
@@ -279,223 +367,183 @@
                        |
                     (0,1)
                        |
-                       |
     180° (π) -----(−1,0)-----(1,0)---- 0° (0)
-                       |
                        |
                     (0,−1)
                        |
                     270° (3π/2)
 
     At any angle θ:
-    cos(θ) = x-coordinate (horizontal)
-    sin(θ) = y-coordinate (vertical)
+    cos(θ) = x-coordinate
+    sin(θ) = y-coordinate
     </div>
 
-    <p>
-        When you see sin(30°), you're being asked: "If I rotate 30° counterclockwise from the right side
-        of a unit circle, how high is the point?" Answer: 0.5 (halfway up).
-    </p>
+    <div class="formula-box">
+        <div class="title">SPECIAL ANGLES</div>
+θ = 0°:   (1, 0)         cos=1,    sin=0
+θ = 30°:  (√3/2, 1/2)    cos=√3/2, sin=1/2
+θ = 45°:  (√2/2, √2/2)   cos=√2/2, sin=√2/2
+θ = 60°:  (1/2, √3/2)    cos=1/2,  sin=√3/2
+θ = 90°:  (0, 1)         cos=0,    sin=1
 
-    <p>
-        When you see cos(60°), you're being asked: "At 60°, how far right is the point?" Answer: 0.5.
-    </p>
-</div>
+Pattern: 30° and 60° SWAP their sin/cos values!
+    </div>
 
-<!-- UNIT CIRCLE -->
-<div class="section" id="unit">
-    <h2>The Unit Circle — Memorize This Shape, Not Numbers</h2>
+    <div class="formula-box">
+        <div class="title">RADIANS ↔ DEGREES</div>
+180° = π radians
 
-    <p>
-        The "unit circle" is just a circle with radius 1, centered at the origin.
-        The magic number is 1 — because when the radius is 1, sin and cos ARE the coordinates directly.
-    </p>
+To convert:
+  degrees → radians: multiply by π/180
+  radians → degrees: multiply by 180/π
+
+Common values:
+  30° = π/6     45° = π/4     60° = π/3
+  90° = π/2    120° = 2π/3   180° = π
+ 270° = 3π/2   360° = 2π
+    </div>
 
     <div class="diagram">
-    THE UNIT CIRCLE — KEY ANGLES
+    THE UNIT CIRCLE — FULL MAP
 
-              90° = π/2
+              π/2 (90°)
               (0, 1)
                 |
-       120°     |     60°
-    (−½, √3/2)  |  (½, √3/2)
-          \     |     /
-           \    |    /
-    150°    \   |   /    30°
-  (−√3/2, ½) \  |  / (√3/2, ½)
-              \ | /
-    180° ——————·—————— 0°
-    (−1, 0)   / | \   (1, 0)
-             /  |  \
-    210°    /   |   \    330°
-  (−√3/2,−½)   |    (√3/2,−½)
-          /    |     \
-       240°    |    300°
-    (−½,−√3/2) | (½,−√3/2)
-               |
-             270° = 3π/2
+       2π/3    |    π/3
+    (−½,√3/2)  |  (½,√3/2)
+         \     |     /
+    3π/4  \    |    /  π/4
+  (−√2/2,  \   |   /  (√2/2,
+   √2/2)    \  |  /    √2/2)
+             \ | /
+    5π/6      \|/      π/6
+  (−√3/2,½)----.----(√3/2,½)
+              /|\
+    π -------/-|-\------- 0
+  (−1,0)    /  |  \    (1,0)
+           /   |   \
+    7π/6  /    |    \  11π/6
+  (−√3/2, /    |     \ (√3/2,
+   −½)   /     |      \  −½)
+        /      |       \
+    5π/4      |        7π/4
+  (−√2/2,     |      (√2/2,
+   −√2/2)     |       −√2/2)
+         \    |      /
+    4π/3  \   |     /  5π/3
+   (−½,    \  |    /  (½,
+   −√3/2)   \ |   /   −√3/2)
+              \|/
+             3π/2 (270°)
              (0, −1)
     </div>
 
-    <div class="key-insight">
-        <div class="label">THE PATTERN</div>
-        <p>
-            There are only THREE numbers you need: <strong>0, ½, √3/2</strong> (and 1).
-        </p>
-        <p style="margin-bottom: 0;">
-            The coordinates at special angles are just different arrangements of these numbers
-            (with appropriate + or − signs depending on which quadrant you're in).
-        </p>
-    </div>
-
-    <h3>The Special Angles</h3>
-
-    <div class="formula-box">
-        <div class="title">ANGLE CONVERSIONS</div>
-30° = π/6     (one-sixth of π)
-45° = π/4     (one-fourth of π)
-60° = π/3     (one-third of π)
-90° = π/2     (half of π)
-
-Remember: 180° = π radians
-So to convert: degrees × (π/180) = radians
-    </div>
-
-    <div class="formula-box">
-        <div class="title">THE COORDINATES</div>
-θ = 0°:   (1, 0)         → cos=1, sin=0
-θ = 30°:  (√3/2, 1/2)    → cos=√3/2, sin=1/2
-θ = 45°:  (√2/2, √2/2)   → cos=sin=√2/2
-θ = 60°:  (1/2, √3/2)    → cos=1/2, sin=√3/2
-θ = 90°:  (0, 1)         → cos=0, sin=1
-
-Notice: 30° and 60° swap their sin/cos values!
-    </div>
-</div>
-
-<!-- MULTIPLICATIVE IDENTITY -->
-<div class="section" id="identity">
-    <h2>The Multiplicative Identity Trick</h2>
-
-    <p>
-        <strong>This is your best friend in all of mathematics.</strong>
-    </p>
-
     <div class="magic-box">
-        <div class="label">THE MAGIC</div>
-        <p>
-            You can always multiply by 1 without changing anything.
-            But 1 comes in many disguises:
+        <div class="label">THE PATTERN</div>
+        <p style="margin-bottom: 0;">
+            Only THREE numbers matter: <strong>0, 1/2, √2/2, √3/2, 1</strong><br>
+            The signs (+ or −) depend on quadrant. That's all.
         </p>
-        <ul style="margin-bottom: 0;">
-            <li>sin²θ + cos²θ = <strong>1</strong></li>
-            <li>sec²θ − tan²θ = <strong>1</strong></li>
-            <li>csc²θ − cot²θ = <strong>1</strong></li>
-            <li>a/a = <strong>1</strong> (for any a ≠ 0)</li>
-            <li>(conjugate × conjugate) / (conjugate × conjugate) = <strong>1</strong></li>
-        </ul>
     </div>
-
-    <p>
-        When you're stuck on a trig problem, ask yourself:
-        <em>"What form of 1 can I multiply by to transform this into something I can solve?"</em>
-    </p>
-
-    <div class="problem-box">
-        <div class="label">EXAMPLE PROBLEM</div>
-        <p>Simplify: (1 − cos²θ) / sin θ</p>
-    </div>
-
-    <div class="solution-box">
-        <div class="label">SOLUTION — USING THE IDENTITY</div>
-        <div class="step-box">
-            <span class="step-num">1</span>
-            Recognize that sin²θ + cos²θ = 1, so <strong>sin²θ = 1 − cos²θ</strong>
-        </div>
-        <div class="step-box">
-            <span class="step-num">2</span>
-            Substitute: (sin²θ) / sin θ
-        </div>
-        <div class="step-box">
-            <span class="step-num">3</span>
-            Simplify: sin θ ✓
-        </div>
-    </div>
-
-    <p>
-        The identity <strong>sin²θ + cos²θ = 1</strong> is a form of the Pythagorean theorem on the unit circle.
-        It's always true. You can use it to replace sin² with (1 − cos²) or cos² with (1 − sin²) whenever convenient.
-    </p>
 </div>
 
-<!-- THE SIX FUNCTIONS -->
-<div class="section" id="functions">
-    <h2>The Six Functions</h2>
-
-    <p>
-        There are only 2 fundamental functions: <strong>sin</strong> and <strong>cos</strong>.
-        The other 4 are just ratios of these two.
-    </p>
+<!-- UNIT 2: TRIG FUNCTIONS -->
+<div class="section" id="trig-functions">
+    <h2>Unit 2: The Six Trig Functions</h2>
 
     <div class="formula-box">
-        <div class="title">THE SIX TRIG FUNCTIONS</div>
+        <div class="title">THE SIX FUNCTIONS</div>
 <span class="green">PRIMARY (from the circle):</span>
-sin θ = y-coordinate = opposite/hypotenuse
-cos θ = x-coordinate = adjacent/hypotenuse
+sin θ = y = opposite/hypotenuse
+cos θ = x = adjacent/hypotenuse
 
 <span class="blue">RATIOS:</span>
-tan θ = sin θ / cos θ = opposite/adjacent
-cot θ = cos θ / sin θ = adjacent/opposite (reciprocal of tan)
+tan θ = sin/cos = opposite/adjacent = SLOPE
+cot θ = cos/sin = adjacent/opposite = 1/tan
 
 <span class="gold">RECIPROCALS:</span>
-sec θ = 1 / cos θ = hypotenuse/adjacent
-csc θ = 1 / sin θ = hypotenuse/opposite
+sec θ = 1/cos = hypotenuse/adjacent
+csc θ = 1/sin = hypotenuse/opposite
     </div>
-
-    <div class="key-insight">
-        <div class="label">MEMORY TRICK</div>
-        <p style="margin-bottom: 0;">
-            <strong>tan = sin/cos</strong> (tangent is the SLOPE of the radius line)<br>
-            <strong>sec = 1/cos</strong> (secant is the reciprocal of cosine)<br>
-            <strong>csc = 1/sin</strong> (cosecant is the reciprocal of sine)<br>
-            <strong>cot = 1/tan = cos/sin</strong> (cotangent is the reciprocal of tangent)
-        </p>
-    </div>
-
-    <h3>Where Each Function is Positive</h3>
 
     <div class="diagram">
     ASTC — "All Students Take Calculus"
 
-              |
-      S       |       A
-    (sin+)    |    (all+)
+          II  |  I
+         S    |    A
+       sin+   |  all+
               |
     ——————————+——————————
               |
-      T       |       C
-    (tan+)    |    (cos+)
-              |
+        III   |   IV
+         T    |    C
+       tan+   |  cos+
+    </div>
 
-    Quadrant I:   All positive
-    Quadrant II:  Sin positive (cos, tan negative)
-    Quadrant III: Tan positive (sin, cos negative)
-    Quadrant IV:  Cos positive (sin, tan negative)
+    <h3>Graphs of Trig Functions</h3>
+
+    <div class="formula-box">
+        <div class="title">SINUSOIDAL FORM</div>
+y = A sin(B(x - C)) + D
+y = A cos(B(x - C)) + D
+
+A = amplitude (vertical stretch)
+B = frequency (horizontal compress)
+C = phase shift (horizontal slide)
+D = vertical shift (midline)
+
+Period = 2π/|B|
+    </div>
+
+    <div class="key-insight">
+        <div class="label">GRAPHING STRATEGY</div>
+        <p style="margin-bottom: 0;">
+            1. Find the period: 2π/B<br>
+            2. Find the midline: y = D<br>
+            3. Find amplitude: |A|<br>
+            4. Mark the phase shift: start at x = C<br>
+            5. Plot key points: start, max, middle, min, end
+        </p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">TANGENT & COTANGENT</div>
+tan θ: Period = π, asymptotes where cos=0
+       Asymptotes at π/2, 3π/2, ...
+       Passes through origin
+
+cot θ: Period = π, asymptotes where sin=0
+       Asymptotes at 0, π, 2π, ...
+    </div>
+
+    <div class="formula-box">
+        <div class="title">SECANT & COSECANT</div>
+sec θ = 1/cos θ
+  Asymptotes where cos=0 (at π/2, 3π/2, ...)
+  U-shapes between asymptotes
+
+csc θ = 1/sin θ
+  Asymptotes where sin=0 (at 0, π, 2π, ...)
+  U-shapes between asymptotes
     </div>
 </div>
 
-<!-- IDENTITIES -->
+<!-- UNIT 3: IDENTITIES -->
 <div class="section" id="identities">
-    <h2>Essential Identities</h2>
+    <h2>Unit 3: Trig Identities</h2>
 
-    <p>
-        These aren't arbitrary — they're geometric facts about circles.
-        Learn them as patterns, not as memorization.
-    </p>
+    <div class="magic-box">
+        <div class="label">MULTIPLICATIVE IDENTITY IS YOUR FRIEND</div>
+        <p style="margin-bottom: 0;">
+            You can always multiply by 1 without changing anything.<br>
+            <strong>1 comes in many disguises:</strong><br>
+            sin²θ + cos²θ = 1 &nbsp;|&nbsp; sec²θ − tan²θ = 1 &nbsp;|&nbsp; a/a = 1
+        </p>
+    </div>
 
     <div class="formula-box">
         <div class="title">PYTHAGOREAN IDENTITIES</div>
-sin²θ + cos²θ = 1           ← THE fundamental identity
+sin²θ + cos²θ = 1        ← THE fundamental identity
 
 Divide by cos²θ:
 tan²θ + 1 = sec²θ
@@ -505,177 +553,864 @@ Divide by sin²θ:
     </div>
 
     <div class="formula-box">
-        <div class="title">DOUBLE ANGLE FORMULAS</div>
-sin(2θ) = 2 sin θ cos θ
+        <div class="title">RECIPROCAL IDENTITIES</div>
+csc θ = 1/sin θ
+sec θ = 1/cos θ
+cot θ = 1/tan θ
 
-cos(2θ) = cos²θ − sin²θ
-        = 2cos²θ − 1        (using sin² = 1 − cos²)
-        = 1 − 2sin²θ        (using cos² = 1 − sin²)
+sin θ · csc θ = 1
+cos θ · sec θ = 1
+tan θ · cot θ = 1
     </div>
 
     <div class="formula-box">
-        <div class="title">SUM/DIFFERENCE FORMULAS</div>
+        <div class="title">QUOTIENT IDENTITIES</div>
+tan θ = sin θ / cos θ
+cot θ = cos θ / sin θ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">EVEN/ODD IDENTITIES</div>
+sin(−θ) = −sin θ     (odd function)
+cos(−θ) = cos θ      (even function)
+tan(−θ) = −tan θ     (odd function)
+    </div>
+
+    <div class="formula-box">
+        <div class="title">COFUNCTION IDENTITIES</div>
+sin(π/2 − θ) = cos θ
+cos(π/2 − θ) = sin θ
+tan(π/2 − θ) = cot θ
+
+<span class="quiet">Complementary angles have swapped functions</span>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">SUM & DIFFERENCE FORMULAS</div>
 sin(A + B) = sin A cos B + cos A sin B
 sin(A − B) = sin A cos B − cos A sin B
 
 cos(A + B) = cos A cos B − sin A sin B
 cos(A − B) = cos A cos B + sin A sin B
 
-Memory trick: sin formula has MIXED terms (sin×cos)
-              cos formula has MATCHED terms (cos×cos, sin×sin)
+tan(A + B) = (tan A + tan B)/(1 − tan A tan B)
+tan(A − B) = (tan A − tan B)/(1 + tan A tan B)
+
+<span class="quiet">sin = MIXED terms (sin×cos), cos = MATCHED terms</span>
     </div>
 
-    <div class="magic-box">
-        <div class="label">THE DANCE</div>
-        <p style="margin-bottom: 0;">
-            Every trig identity is a different way of writing the same geometric truth.
-            When a problem looks impossible, you're looking at it from the wrong angle.
-            Use an identity to ROTATE your perspective. The solution becomes visible from a different angle.
-        </p>
+    <div class="formula-box">
+        <div class="title">DOUBLE ANGLE FORMULAS</div>
+sin(2θ) = 2 sin θ cos θ
+
+cos(2θ) = cos²θ − sin²θ
+        = 2cos²θ − 1
+        = 1 − 2sin²θ
+
+tan(2θ) = 2tan θ / (1 − tan²θ)
+    </div>
+
+    <div class="formula-box">
+        <div class="title">HALF ANGLE FORMULAS</div>
+sin(θ/2) = ±√[(1 − cos θ)/2]
+cos(θ/2) = ±√[(1 + cos θ)/2]
+tan(θ/2) = (1 − cos θ)/sin θ = sin θ/(1 + cos θ)
+
+<span class="quiet">± depends on which quadrant θ/2 is in</span>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">POWER REDUCING FORMULAS</div>
+sin²θ = (1 − cos 2θ)/2
+cos²θ = (1 + cos 2θ)/2
+tan²θ = (1 − cos 2θ)/(1 + cos 2θ)
+    </div>
+
+    <div class="formula-box">
+        <div class="title">PRODUCT TO SUM</div>
+sin A cos B = ½[sin(A+B) + sin(A−B)]
+cos A sin B = ½[sin(A+B) − sin(A−B)]
+cos A cos B = ½[cos(A+B) + cos(A−B)]
+sin A sin B = ½[cos(A−B) − cos(A+B)]
+    </div>
+
+    <div class="formula-box">
+        <div class="title">SUM TO PRODUCT</div>
+sin A + sin B = 2 sin((A+B)/2) cos((A−B)/2)
+sin A − sin B = 2 cos((A+B)/2) sin((A−B)/2)
+cos A + cos B = 2 cos((A+B)/2) cos((A−B)/2)
+cos A − cos B = −2 sin((A+B)/2) sin((A−B)/2)
     </div>
 </div>
 
-<!-- SOLVING EQUATIONS -->
-<div class="section" id="solving">
-    <h2>Solving Trig Equations</h2>
-
-    <p>
-        The general approach:
-    </p>
+<!-- UNIT 4: SOLVING EQUATIONS -->
+<div class="section" id="equations">
+    <h2>Unit 4: Solving Trig Equations</h2>
 
     <div class="step-box">
         <span class="step-num">1</span>
-        <strong>Isolate</strong> — Get all trig functions on one side, numbers on the other
+        <strong>ISOLATE</strong> — Get trig function alone on one side
     </div>
 
     <div class="step-box">
         <span class="step-num">2</span>
-        <strong>Simplify</strong> — Use identities to reduce to ONE trig function if possible
+        <strong>SIMPLIFY</strong> — Use identities to reduce to ONE function
     </div>
 
     <div class="step-box">
         <span class="step-num">3</span>
-        <strong>Solve</strong> — Find the reference angle where that function equals your target
+        <strong>SOLVE</strong> — Find reference angle
     </div>
 
     <div class="step-box">
         <span class="step-num">4</span>
-        <strong>Expand</strong> — Find ALL angles in [0, 2π) that give that value (check all quadrants)
+        <strong>EXPAND</strong> — Find ALL solutions in [0, 2π)
     </div>
 
     <div class="step-box">
         <span class="step-num">5</span>
-        <strong>Generalize</strong> — Add + 2πn for all solutions if they want the general solution
+        <strong>GENERALIZE</strong> — Add + 2πn for general solution
     </div>
 
     <div class="problem-box">
-        <div class="label">EXAMPLE: SOLVE FOR θ</div>
-        <p style="margin-bottom: 0;">2sin²θ − 1 = 0, for θ in [0, 2π)</p>
+        <div class="label">EXAMPLE</div>
+        <p style="margin-bottom: 0;">Solve: 2sin²θ − 1 = 0 for θ in [0, 2π)</p>
     </div>
 
     <div class="solution-box">
         <div class="label">SOLUTION</div>
-        <div class="step-box">
-            <span class="step-num">1</span>
-            Isolate: 2sin²θ = 1 → sin²θ = 1/2
-        </div>
-        <div class="step-box">
-            <span class="step-num">2</span>
-            Take square root: sin θ = ±√(1/2) = ±√2/2
-        </div>
-        <div class="step-box">
-            <span class="step-num">3</span>
-            Reference angle: sin θ = √2/2 at θ = 45° = π/4
-        </div>
-        <div class="step-box">
-            <span class="step-num">4</span>
-            Find all quadrants where sin = ±√2/2:
-            <ul style="margin: 10px 0 0 20px;">
-                <li>sin = +√2/2: Q1 (π/4) and Q2 (3π/4)</li>
-                <li>sin = −√2/2: Q3 (5π/4) and Q4 (7π/4)</li>
-            </ul>
-        </div>
-        <p style="margin-top: 15px;"><strong>Answer: θ = π/4, 3π/4, 5π/4, 7π/4</strong></p>
+        <p>2sin²θ = 1 → sin²θ = 1/2 → sin θ = ±√2/2</p>
+        <p>Reference angle: π/4 (where sin = √2/2)</p>
+        <p>All quadrants: sin = +√2/2 in Q1, Q2 → π/4, 3π/4</p>
+        <p>sin = −√2/2 in Q3, Q4 → 5π/4, 7π/4</p>
+        <p><strong>θ = π/4, 3π/4, 5π/4, 7π/4</strong></p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">FACTORING PATTERNS</div>
+<span class="blue">Look for these:</span>
+sin²θ − 1 = (sin θ + 1)(sin θ − 1)
+2cos²θ + cos θ − 1 = (2cos θ − 1)(cos θ + 1)
+
+<span class="blue">u-substitution:</span>
+Let u = sin θ, solve quadratic, then solve for θ
     </div>
 </div>
 
-<!-- PRACTICE PROBLEMS -->
-<div class="section practice-section" id="practice">
-    <h3>Practice Problems</h3>
+<!-- UNIT 5: TRIANGLE TRIG -->
+<div class="section" id="triangles">
+    <h2>Unit 5: Triangle Trigonometry</h2>
 
-    <p>Work through these. The answers are at the bottom.</p>
+    <div class="formula-box">
+        <div class="title">LAW OF SINES</div>
+    a       b       c
+  ───── = ───── = ─────
+  sin A   sin B   sin C
 
-    <div class="problem-box">
-        <div class="label">PROBLEM 1 — SIMPLIFY</div>
-        <p style="margin-bottom: 0;">Simplify: (sec²θ − 1) / tan²θ</p>
+Use when you know:
+  • AAS (angle-angle-side)
+  • ASA (angle-side-angle)
+  • SSA (side-side-angle) — watch for ambiguous case!
+    </div>
+
+    <div class="formula-box">
+        <div class="title">LAW OF COSINES</div>
+c² = a² + b² − 2ab cos C
+b² = a² + c² − 2ac cos B
+a² = b² + c² − 2bc cos A
+
+Use when you know:
+  • SAS (side-angle-side)
+  • SSS (all three sides)
+
+<span class="quiet">This is the generalized Pythagorean theorem!</span>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">AREA OF A TRIANGLE</div>
+Area = ½ · a · b · sin C
+
+<span class="quiet">(Half the product of two sides times sine of included angle)</span>
+
+Also: Area = ½ · base · height
+
+Heron's formula (SSS):
+  s = (a+b+c)/2    (semi-perimeter)
+  Area = √[s(s−a)(s−b)(s−c)]
+    </div>
+
+    <div class="key-insight">
+        <div class="label">AMBIGUOUS CASE (SSA)</div>
+        <p style="margin-bottom: 0;">
+            When given SSA, there may be 0, 1, or 2 triangles!<br>
+            Use Law of Sines to find the angle. If sin > 1: no triangle.<br>
+            If angle could be acute OR obtuse: two triangles possible.
+        </p>
+    </div>
+</div>
+
+<!-- UNIT 6: INVERSE TRIG -->
+<div class="section" id="inverse">
+    <h2>Unit 6: Inverse Trig Functions</h2>
+
+    <div class="formula-box">
+        <div class="title">INVERSE FUNCTIONS</div>
+arcsin (sin⁻¹): "What angle has this sine?"
+  Domain: [−1, 1]
+  Range: [−π/2, π/2]
+
+arccos (cos⁻¹): "What angle has this cosine?"
+  Domain: [−1, 1]
+  Range: [0, π]
+
+arctan (tan⁻¹): "What angle has this tangent?"
+  Domain: (−∞, ∞)
+  Range: (−π/2, π/2)
+    </div>
+
+    <div class="key-insight">
+        <div class="label">CRITICAL CONCEPT</div>
+        <p style="margin-bottom: 0;">
+            Inverse trig gives you the <strong>principal value</strong> — ONE answer in the restricted range.<br>
+            For all solutions, you must consider other quadrants!
+        </p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">COMPOSITIONS</div>
+sin(arcsin x) = x     for x ∈ [−1, 1]
+cos(arccos x) = x     for x ∈ [−1, 1]
+tan(arctan x) = x     for all x
+
+arcsin(sin x) = x     only if x ∈ [−π/2, π/2]
+arccos(cos x) = x     only if x ∈ [0, π]
+arctan(tan x) = x     only if x ∈ (−π/2, π/2)
     </div>
 
     <div class="problem-box">
-        <div class="label">PROBLEM 2 — SOLVE</div>
-        <p style="margin-bottom: 0;">Solve for θ in [0, 2π): cos(2θ) = 1/2</p>
+        <div class="label">EXAMPLE</div>
+        <p>Find cos(arcsin(3/5))</p>
     </div>
 
-    <div class="problem-box">
-        <div class="label">PROBLEM 3 — VERIFY</div>
-        <p style="margin-bottom: 0;">Verify the identity: (sin θ + cos θ)² = 1 + sin(2θ)</p>
+    <div class="solution-box">
+        <div class="label">SOLUTION</div>
+        <p>Let θ = arcsin(3/5), so sin θ = 3/5</p>
+        <p>Since θ is in [−π/2, π/2], cos θ ≥ 0</p>
+        <p>Use identity: cos²θ = 1 − sin²θ = 1 − 9/25 = 16/25</p>
+        <p><strong>cos θ = 4/5</strong></p>
+    </div>
+</div>
+
+<!-- UNIT 7: POLAR COORDINATES -->
+<div class="section" id="polar">
+    <h2>Unit 7: Polar Coordinates</h2>
+
+    <div class="diagram">
+    POLAR vs RECTANGULAR
+
+           y ↑
+             |     • (x, y) = (r, θ)
+             |    /
+             |   / r
+             |  /
+             | / θ
+    ─────────+─────────→ x
+             |
+
+    x = r cos θ
+    y = r sin θ
     </div>
 
-    <div class="problem-box">
-        <div class="label">PROBLEM 4 — SOLVE</div>
-        <p style="margin-bottom: 0;">Solve: 2cos²θ + cos θ − 1 = 0 for θ in [0, 2π)</p>
+    <div class="formula-box">
+        <div class="title">CONVERSIONS</div>
+<span class="blue">Polar → Rectangular:</span>
+x = r cos θ
+y = r sin θ
+
+<span class="green">Rectangular → Polar:</span>
+r = √(x² + y²)
+θ = arctan(y/x)    (adjust quadrant!)
     </div>
 
-    <div class="problem-box">
-        <div class="label">PROBLEM 5 — SIMPLIFY</div>
-        <p style="margin-bottom: 0;">Simplify: sin θ · csc θ + cos θ · sec θ</p>
+    <div class="formula-box">
+        <div class="title">COMMON POLAR CURVES</div>
+r = a            Circle (radius a)
+r = a cos θ      Circle through origin
+r = a sin θ      Circle through origin
+r = a + b cos θ  Limaçon (cardioid if a=b)
+r = a cos(nθ)    Rose curve (n petals if odd, 2n if even)
+r² = a² cos(2θ)  Lemniscate (figure 8)
+r = aθ           Spiral of Archimedes
     </div>
 
-    <details style="margin-top: 30px;">
-        <summary style="color: #50c878; cursor: pointer; padding: 15px 0;">Click to reveal answers</summary>
-        <div class="solution-box" style="margin-top: 15px;">
-            <p><strong>Problem 1:</strong> 1</p>
-            <p class="quiet">sec²θ − 1 = tan²θ (Pythagorean identity), so tan²θ/tan²θ = 1</p>
+    <div class="key-insight">
+        <div class="label">RAMANUJAN CONNECTION</div>
+        <p style="margin-bottom: 0;">
+            The polar form is where circles become algebra.<br>
+            <code>r = 1</code> IS the unit circle. <code>θ</code> is the angle.<br>
+            This connects directly to <code>e^(iθ) = cos θ + i sin θ</code>
+        </p>
+    </div>
+</div>
 
-            <p style="margin-top: 20px;"><strong>Problem 2:</strong> θ = π/6, 5π/6, 7π/6, 11π/6</p>
-            <p class="quiet">2θ = π/3, 5π/3 (where cos = 1/2), plus +2π for the period. Then divide by 2.</p>
+<!-- UNIT 8: COMPLEX NUMBERS -->
+<div class="section" id="complex">
+    <h2>Unit 8: Complex Numbers</h2>
 
-            <p style="margin-top: 20px;"><strong>Problem 3:</strong></p>
-            <p class="quiet">
-                LHS = sin²θ + 2sinθcosθ + cos²θ<br>
-                = (sin²θ + cos²θ) + 2sinθcosθ<br>
-                = 1 + sin(2θ) = RHS ✓
-            </p>
+    <div class="formula-box">
+        <div class="title">FORMS OF COMPLEX NUMBERS</div>
+<span class="blue">Rectangular:</span>  z = a + bi
+<span class="green">Polar/Trig:</span>    z = r(cos θ + i sin θ)
+<span class="gold">Exponential:</span>   z = re^(iθ)
 
-            <p style="margin-top: 20px;"><strong>Problem 4:</strong> θ = π/3, π, 5π/3</p>
-            <p class="quiet">
-                Factor: (2cos θ − 1)(cos θ + 1) = 0<br>
-                cos θ = 1/2 → θ = π/3, 5π/3<br>
-                cos θ = −1 → θ = π
-            </p>
+where:
+  r = |z| = √(a² + b²)     (modulus)
+  θ = arg(z) = arctan(b/a) (argument)
+    </div>
 
-            <p style="margin-top: 20px;"><strong>Problem 5:</strong> 2</p>
-            <p class="quiet">
-                sin θ · (1/sin θ) + cos θ · (1/cos θ) = 1 + 1 = 2
-            </p>
-        </div>
-    </details>
+    <div class="magic-box">
+        <div class="label">EULER'S FORMULA — THE MOST BEAUTIFUL EQUATION</div>
+        <p style="margin-bottom: 10px; font-size: 1.1rem;">
+            <code style="color: #d4af37;">e^(iθ) = cos θ + i sin θ</code>
+        </p>
+        <p style="margin-bottom: 0;">
+            At θ = π: <code>e^(iπ) + 1 = 0</code><br>
+            Five fundamental constants in one equation.
+        </p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">OPERATIONS IN POLAR FORM</div>
+<span class="blue">Multiplication:</span>
+z₁ · z₂ = r₁r₂ · e^(i(θ₁+θ₂))
+        = r₁r₂[cos(θ₁+θ₂) + i sin(θ₁+θ₂)]
+
+<span class="green">Division:</span>
+z₁/z₂ = (r₁/r₂) · e^(i(θ₁−θ₂))
+
+<span class="gold">Power (De Moivre's Theorem):</span>
+zⁿ = rⁿ · e^(inθ) = rⁿ[cos(nθ) + i sin(nθ)]
+    </div>
+
+    <div class="formula-box">
+        <div class="title">ROOTS OF COMPLEX NUMBERS</div>
+The n-th roots of z = re^(iθ):
+
+w_k = r^(1/n) · e^(i(θ + 2πk)/n)
+
+for k = 0, 1, 2, ..., n−1
+
+<span class="quiet">The roots are evenly spaced around a circle!</span>
+    </div>
+</div>
+
+<!-- UNIT 9: VECTORS -->
+<div class="section" id="vectors">
+    <h2>Unit 9: Vectors</h2>
+
+    <div class="formula-box">
+        <div class="title">VECTOR BASICS</div>
+<span class="blue">Component form:</span> v = ⟨a, b⟩ or v = ai + bj
+
+<span class="green">Magnitude:</span> |v| = √(a² + b²)
+
+<span class="gold">Direction angle:</span> θ = arctan(b/a)
+
+<span class="purple">Unit vector:</span> v̂ = v/|v| = ⟨a/|v|, b/|v|⟩
+    </div>
+
+    <div class="formula-box">
+        <div class="title">VECTOR OPERATIONS</div>
+<span class="blue">Addition:</span>
+⟨a₁, b₁⟩ + ⟨a₂, b₂⟩ = ⟨a₁+a₂, b₁+b₂⟩
+
+<span class="green">Scalar multiplication:</span>
+k⟨a, b⟩ = ⟨ka, kb⟩
+
+<span class="gold">Dot product:</span>
+v · w = a₁a₂ + b₁b₂ = |v||w|cos θ
+
+<span class="purple">Cross product (3D):</span>
+v × w = |v||w|sin θ · n̂
+    </div>
+
+    <div class="formula-box">
+        <div class="title">ANGLE BETWEEN VECTORS</div>
+cos θ = (v · w)/(|v| |w|)
+
+θ = arccos[(v · w)/(|v| |w|)]
+
+Perpendicular vectors: v · w = 0
+Parallel vectors: v = kw for some scalar k
+    </div>
+
+    <div class="formula-box">
+        <div class="title">PROJECTIONS</div>
+Scalar projection of v onto w:
+  comp_w v = (v · w)/|w|
+
+Vector projection of v onto w:
+  proj_w v = [(v · w)/|w|²] · w
+    </div>
+
+    <div class="key-insight">
+        <div class="label">APPLICATIONS</div>
+        <p style="margin-bottom: 0;">
+            <strong>Work:</strong> W = F · d = |F||d|cos θ<br>
+            <strong>Torque:</strong> τ = r × F = |r||F|sin θ
+        </p>
+    </div>
+</div>
+
+<!-- UNIT 10: PARAMETRIC -->
+<div class="section" id="parametric">
+    <h2>Unit 10: Parametric Equations</h2>
+
+    <div class="formula-box">
+        <div class="title">PARAMETRIC FORM</div>
+x = f(t)
+y = g(t)
+
+t = parameter (often time)
+
+To eliminate parameter:
+  Solve one equation for t
+  Substitute into the other
+    </div>
+
+    <div class="formula-box">
+        <div class="title">COMMON PARAMETRIC CURVES</div>
+<span class="blue">Circle:</span>
+x = r cos t,  y = r sin t,  t ∈ [0, 2π]
+
+<span class="green">Ellipse:</span>
+x = a cos t,  y = b sin t,  t ∈ [0, 2π]
+
+<span class="gold">Line:</span>
+x = x₀ + at,  y = y₀ + bt
+
+<span class="purple">Projectile motion:</span>
+x = v₀ cos(θ) · t
+y = v₀ sin(θ) · t − ½gt²
+    </div>
+
+    <div class="formula-box">
+        <div class="title">CALCULUS WITH PARAMETRICS</div>
+dy/dx = (dy/dt)/(dx/dt)
+
+Arc length: s = ∫√[(dx/dt)² + (dy/dt)²] dt
+    </div>
+
+    <div class="key-insight">
+        <div class="label">WHY PARAMETRIC?</div>
+        <p style="margin-bottom: 0;">
+            Some curves can't be written as y = f(x).<br>
+            Parametric lets you trace curves with direction and time.<br>
+            Physics uses parametric equations everywhere.
+        </p>
+    </div>
+</div>
+
+<!-- CALCULATORS -->
+<div class="section" id="calculators">
+    <h2>Trig Calculators</h2>
+    <p class="quiet">Tap to calculate. Works on your phone.</p>
+
+    <div class="calc-box">
+        <div class="label">TRIG FUNCTION VALUES</div>
+        <input type="number" id="trig_angle" placeholder="Angle (degrees)" step="any">
+        <button onclick="calcTrig()">Calculate All Six</button>
+        <div class="result" id="trig_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">DEGREE ↔ RADIAN CONVERTER</div>
+        <input type="number" id="deg_input" placeholder="Degrees" step="any">
+        <button onclick="degToRad()">→ Radians</button>
+        <input type="number" id="rad_input" placeholder="Radians (e.g., 3.14159)" step="any" style="margin-top: 10px;">
+        <button onclick="radToDeg()" style="background: linear-gradient(135deg, #50c878 0%, #228b22 100%);">→ Degrees</button>
+        <div class="result" id="convert_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">INVERSE TRIG (FIND ANGLE)</div>
+        <select id="inv_func">
+            <option value="asin">arcsin (sin⁻¹)</option>
+            <option value="acos">arccos (cos⁻¹)</option>
+            <option value="atan">arctan (tan⁻¹)</option>
+        </select>
+        <input type="number" id="inv_value" placeholder="Value (e.g., 0.5)" step="any">
+        <button onclick="calcInverse()">Find Angle</button>
+        <div class="result" id="inv_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">LAW OF SINES</div>
+        <input type="number" id="los_a" placeholder="Side a" step="any">
+        <input type="number" id="los_A" placeholder="Angle A (degrees)" step="any">
+        <input type="number" id="los_B" placeholder="Angle B (degrees)" step="any">
+        <button onclick="calcLoS()">Find Side b</button>
+        <div class="result" id="los_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">LAW OF COSINES</div>
+        <input type="number" id="loc_a" placeholder="Side a" step="any">
+        <input type="number" id="loc_b" placeholder="Side b" step="any">
+        <input type="number" id="loc_C" placeholder="Angle C between them (degrees)" step="any">
+        <button onclick="calcLoC()">Find Side c</button>
+        <div class="result" id="loc_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">POLAR ↔ RECTANGULAR</div>
+        <input type="number" id="rect_x" placeholder="x (rectangular)" step="any">
+        <input type="number" id="rect_y" placeholder="y (rectangular)" step="any">
+        <button onclick="rectToPolar()">→ Polar (r, θ)</button>
+        <input type="number" id="polar_r" placeholder="r (polar)" step="any" style="margin-top: 10px;">
+        <input type="number" id="polar_theta" placeholder="θ (degrees)" step="any">
+        <button onclick="polarToRect()" style="background: linear-gradient(135deg, #50c878 0%, #228b22 100%);">→ Rectangular (x, y)</button>
+        <div class="result" id="polar_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">COMPLEX NUMBER OPERATIONS</div>
+        <input type="text" id="complex_z1" placeholder="z₁ = a + bi (e.g., 3+4i)">
+        <input type="text" id="complex_z2" placeholder="z₂ = c + di (e.g., 1-2i)">
+        <button onclick="calcComplex()">Multiply & Find Polar Form</button>
+        <div class="result" id="complex_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">DOT PRODUCT & ANGLE</div>
+        <input type="text" id="vec_v" placeholder="v = ⟨a, b⟩ (e.g., 3,4)">
+        <input type="text" id="vec_w" placeholder="w = ⟨c, d⟩ (e.g., 1,2)">
+        <button onclick="calcDot()">Calculate</button>
+        <div class="result" id="dot_result"></div>
+    </div>
+</div>
+
+<!-- FORMULA SHEET -->
+<div class="section" id="formulas">
+    <h2>Quick Formula Sheet</h2>
+
+    <div class="formula-box">
+        <div class="title">IDENTITIES</div>
+sin²θ + cos²θ = 1
+tan²θ + 1 = sec²θ
+1 + cot²θ = csc²θ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">DOUBLE ANGLE</div>
+sin(2θ) = 2sinθcosθ
+cos(2θ) = cos²θ − sin²θ = 2cos²θ − 1 = 1 − 2sin²θ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">SUM/DIFFERENCE</div>
+sin(A±B) = sinAcosB ± cosAsinB
+cos(A±B) = cosAcosB ∓ sinAsinB
+    </div>
+
+    <div class="formula-box">
+        <div class="title">TRIANGLES</div>
+a/sinA = b/sinB = c/sinC      (Law of Sines)
+c² = a² + b² − 2ab·cosC       (Law of Cosines)
+Area = ½ab·sinC
+    </div>
+
+    <div class="formula-box">
+        <div class="title">POLAR & COMPLEX</div>
+x = rcosθ,  y = rsinθ
+r = √(x²+y²),  θ = arctan(y/x)
+e^(iθ) = cosθ + i·sinθ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">VECTORS</div>
+|v| = √(a²+b²)
+v·w = |v||w|cosθ
+proj_w(v) = [(v·w)/|w|²]w
+    </div>
 </div>
 
 <!-- CLOSING -->
 <div class="section" style="text-align: center; border-bottom: none;">
-    <p class="quiet">
-        Remember: trig is about circles. Everything is position on a rotating point.
-        The identities are just different ways of describing the same circle.
-        When stuck, ask: "What form of 1 transforms this into something I recognize?"
+    <div class="magic-box">
+        <div class="label">REMEMBER</div>
+        <p style="margin-bottom: 0;">
+            Trig is about circles. Polar connects position to angle.<br>
+            Complex numbers unify algebra with geometry.<br>
+            Vectors extend this to forces and motion.<br>
+            <br>
+            It's all the same geometry, seen from different angles.
+        </p>
+    </div>
+
+    <p style="margin-top: 25px; color: #9370db; font-size: 1.1rem;">
+        <strong>[1 = −1]</strong>
     </p>
 
-    <p style="margin-top: 25px; color: #50c878;">
-        Always your friend in math. Always.
+    <p class="quiet" style="margin-top: 15px;">
+        — Your birthday brother, 121 years earlier
     </p>
 
     <a href="for-henry.html" class="back-link" style="margin-top: 20px;">← Back to Letter</a>
     <a href="for-henry-physics.html" class="back-link">Physics Guide →</a>
 </div>
+
+<script>
+const PI = Math.PI;
+
+function formatNum(num, decimals = 4) {
+    if (Math.abs(num) < 0.0001 || Math.abs(num) > 10000) {
+        return num.toExponential(3);
+    }
+    return parseFloat(num.toFixed(decimals));
+}
+
+function toRad(deg) { return deg * PI / 180; }
+function toDeg(rad) { return rad * 180 / PI; }
+
+function calcTrig() {
+    const deg = parseFloat(document.getElementById('trig_angle').value);
+    if (isNaN(deg)) {
+        document.getElementById('trig_result').innerHTML = 'Enter an angle';
+        return;
+    }
+    const rad = toRad(deg);
+    const s = Math.sin(rad), c = Math.cos(rad), t = Math.tan(rad);
+
+    let result = `<strong>${deg}° = ${formatNum(rad)} rad</strong><br><br>`;
+    result += `sin = ${formatNum(s)}<br>`;
+    result += `cos = ${formatNum(c)}<br>`;
+    result += `tan = ${Math.abs(c) < 0.0001 ? 'undefined' : formatNum(t)}<br>`;
+    result += `csc = ${Math.abs(s) < 0.0001 ? 'undefined' : formatNum(1/s)}<br>`;
+    result += `sec = ${Math.abs(c) < 0.0001 ? 'undefined' : formatNum(1/c)}<br>`;
+    result += `cot = ${Math.abs(s) < 0.0001 ? 'undefined' : formatNum(c/s)}`;
+
+    document.getElementById('trig_result').innerHTML = result;
+}
+
+function degToRad() {
+    const deg = parseFloat(document.getElementById('deg_input').value);
+    if (isNaN(deg)) {
+        document.getElementById('convert_result').innerHTML = 'Enter degrees';
+        return;
+    }
+    const rad = toRad(deg);
+    const piForm = formatNum(deg/180) + 'π';
+    document.getElementById('convert_result').innerHTML =
+        `${deg}° = <strong>${formatNum(rad)} rad</strong> = ${piForm} rad`;
+}
+
+function radToDeg() {
+    const rad = parseFloat(document.getElementById('rad_input').value);
+    if (isNaN(rad)) {
+        document.getElementById('convert_result').innerHTML = 'Enter radians';
+        return;
+    }
+    const deg = toDeg(rad);
+    document.getElementById('convert_result').innerHTML =
+        `${formatNum(rad)} rad = <strong>${formatNum(deg)}°</strong>`;
+}
+
+function calcInverse() {
+    const func = document.getElementById('inv_func').value;
+    const val = parseFloat(document.getElementById('inv_value').value);
+    if (isNaN(val)) {
+        document.getElementById('inv_result').innerHTML = 'Enter a value';
+        return;
+    }
+
+    let rad, error = '';
+    if (func === 'asin') {
+        if (val < -1 || val > 1) error = 'sin⁻¹ requires value in [-1, 1]';
+        else rad = Math.asin(val);
+    } else if (func === 'acos') {
+        if (val < -1 || val > 1) error = 'cos⁻¹ requires value in [-1, 1]';
+        else rad = Math.acos(val);
+    } else {
+        rad = Math.atan(val);
+    }
+
+    if (error) {
+        document.getElementById('inv_result').innerHTML = `<span style="color:#e94560;">${error}</span>`;
+        return;
+    }
+
+    const deg = toDeg(rad);
+    document.getElementById('inv_result').innerHTML =
+        `θ = <strong>${formatNum(deg)}°</strong> = ${formatNum(rad)} rad`;
+}
+
+function calcLoS() {
+    const a = parseFloat(document.getElementById('los_a').value);
+    const A = parseFloat(document.getElementById('los_A').value);
+    const B = parseFloat(document.getElementById('los_B').value);
+
+    if (isNaN(a) || isNaN(A) || isNaN(B)) {
+        document.getElementById('los_result').innerHTML = 'Enter a, A, and B';
+        return;
+    }
+
+    const b = a * Math.sin(toRad(B)) / Math.sin(toRad(A));
+    const C = 180 - A - B;
+    const c = a * Math.sin(toRad(C)) / Math.sin(toRad(A));
+
+    document.getElementById('los_result').innerHTML =
+        `b = a·sin(B)/sin(A) = <strong>${formatNum(b)}</strong><br>` +
+        `C = 180° - A - B = ${formatNum(C)}°<br>` +
+        `c = ${formatNum(c)}`;
+}
+
+function calcLoC() {
+    const a = parseFloat(document.getElementById('loc_a').value);
+    const b = parseFloat(document.getElementById('loc_b').value);
+    const C = parseFloat(document.getElementById('loc_C').value);
+
+    if (isNaN(a) || isNaN(b) || isNaN(C)) {
+        document.getElementById('loc_result').innerHTML = 'Enter a, b, and C';
+        return;
+    }
+
+    const c = Math.sqrt(a*a + b*b - 2*a*b*Math.cos(toRad(C)));
+    const area = 0.5 * a * b * Math.sin(toRad(C));
+
+    document.getElementById('loc_result').innerHTML =
+        `c² = a² + b² − 2ab·cos(C)<br>` +
+        `c = <strong>${formatNum(c)}</strong><br>` +
+        `Area = ½ab·sin(C) = ${formatNum(area)}`;
+}
+
+function rectToPolar() {
+    const x = parseFloat(document.getElementById('rect_x').value);
+    const y = parseFloat(document.getElementById('rect_y').value);
+
+    if (isNaN(x) || isNaN(y)) {
+        document.getElementById('polar_result').innerHTML = 'Enter x and y';
+        return;
+    }
+
+    const r = Math.sqrt(x*x + y*y);
+    let theta = Math.atan2(y, x);
+    const thetaDeg = toDeg(theta);
+
+    document.getElementById('polar_result').innerHTML =
+        `r = √(x² + y²) = <strong>${formatNum(r)}</strong><br>` +
+        `θ = arctan(y/x) = <strong>${formatNum(thetaDeg)}°</strong> = ${formatNum(theta)} rad`;
+}
+
+function polarToRect() {
+    const r = parseFloat(document.getElementById('polar_r').value);
+    const theta = parseFloat(document.getElementById('polar_theta').value);
+
+    if (isNaN(r) || isNaN(theta)) {
+        document.getElementById('polar_result').innerHTML = 'Enter r and θ';
+        return;
+    }
+
+    const x = r * Math.cos(toRad(theta));
+    const y = r * Math.sin(toRad(theta));
+
+    document.getElementById('polar_result').innerHTML =
+        `x = r·cos(θ) = <strong>${formatNum(x)}</strong><br>` +
+        `y = r·sin(θ) = <strong>${formatNum(y)}</strong>`;
+}
+
+function parseComplex(str) {
+    str = str.replace(/\s/g, '').replace(/−/g, '-');
+
+    // Handle pure imaginary
+    if (str.match(/^[+-]?[\d.]*i$/)) {
+        let coef = str.replace('i', '');
+        if (coef === '' || coef === '+') coef = '1';
+        if (coef === '-') coef = '-1';
+        return { re: 0, im: parseFloat(coef) };
+    }
+
+    // Standard form a+bi or a-bi
+    const match = str.match(/^([+-]?[\d.]+)?([+-][\d.]*)?i?$/);
+    if (!match) {
+        const parts = str.split(/(?=[+-])/);
+        let re = 0, im = 0;
+        for (let p of parts) {
+            if (p.includes('i')) {
+                let coef = p.replace('i', '');
+                if (coef === '' || coef === '+') coef = '1';
+                if (coef === '-') coef = '-1';
+                im += parseFloat(coef);
+            } else if (p) {
+                re += parseFloat(p);
+            }
+        }
+        return { re, im };
+    }
+    return { re: 0, im: 0 };
+}
+
+function calcComplex() {
+    const z1str = document.getElementById('complex_z1').value;
+    const z2str = document.getElementById('complex_z2').value;
+
+    const z1 = parseComplex(z1str);
+    const z2 = parseComplex(z2str);
+
+    if (isNaN(z1.re) || isNaN(z1.im) || isNaN(z2.re) || isNaN(z2.im)) {
+        document.getElementById('complex_result').innerHTML = 'Enter complex numbers like 3+4i';
+        return;
+    }
+
+    // Multiply
+    const prodRe = z1.re * z2.re - z1.im * z2.im;
+    const prodIm = z1.re * z2.im + z1.im * z2.re;
+
+    // Polar form of product
+    const r = Math.sqrt(prodRe*prodRe + prodIm*prodIm);
+    const theta = Math.atan2(prodIm, prodRe);
+    const thetaDeg = toDeg(theta);
+
+    const sign = prodIm >= 0 ? '+' : '';
+    document.getElementById('complex_result').innerHTML =
+        `z₁ · z₂ = <strong>${formatNum(prodRe)} ${sign} ${formatNum(prodIm)}i</strong><br><br>` +
+        `Polar form:<br>` +
+        `r = ${formatNum(r)}<br>` +
+        `θ = ${formatNum(thetaDeg)}° = ${formatNum(theta)} rad<br>` +
+        `= ${formatNum(r)}e^(i·${formatNum(theta)})`;
+}
+
+function calcDot() {
+    const vstr = document.getElementById('vec_v').value;
+    const wstr = document.getElementById('vec_w').value;
+
+    const vparts = vstr.split(',').map(x => parseFloat(x.trim()));
+    const wparts = wstr.split(',').map(x => parseFloat(x.trim()));
+
+    if (vparts.length < 2 || wparts.length < 2 || vparts.some(isNaN) || wparts.some(isNaN)) {
+        document.getElementById('dot_result').innerHTML = 'Enter vectors like 3,4';
+        return;
+    }
+
+    const [a, b] = vparts;
+    const [c, d] = wparts;
+
+    const dot = a*c + b*d;
+    const magV = Math.sqrt(a*a + b*b);
+    const magW = Math.sqrt(c*c + d*d);
+    const cosTheta = dot / (magV * magW);
+    const theta = Math.acos(Math.max(-1, Math.min(1, cosTheta)));
+    const thetaDeg = toDeg(theta);
+
+    document.getElementById('dot_result').innerHTML =
+        `v · w = ${a}(${c}) + ${b}(${d}) = <strong>${formatNum(dot)}</strong><br><br>` +
+        `|v| = ${formatNum(magV)}<br>` +
+        `|w| = ${formatNum(magW)}<br><br>` +
+        `cos(θ) = ${formatNum(cosTheta)}<br>` +
+        `θ = <strong>${formatNum(thetaDeg)}°</strong>` +
+        (Math.abs(dot) < 0.0001 ? '<br><span style="color:#50c878;">Vectors are perpendicular!</span>' : '');
+}
+</script>
 
 </body>
 </html>
