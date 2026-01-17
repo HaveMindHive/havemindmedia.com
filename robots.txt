@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /qQq-1729-gate/
 
 Sitemap: https://www.havemindmedia.com/sitemap.xml
 
