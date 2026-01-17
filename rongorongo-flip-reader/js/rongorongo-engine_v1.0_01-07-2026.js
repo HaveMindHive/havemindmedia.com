@@ -37,7 +37,7 @@ const RongorongoReader = (function() {
     const CONFIG = {
         name: 'Rongorongo Flip Reader',
         version: '1.0',
-        author: 'Jason Ray',
+        author: 'T0Rs',
         organization: 'Have Mind Media',
         project: 'The Epoch Project',
         principle: '[1 = -1]',

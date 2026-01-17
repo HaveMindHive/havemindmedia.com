@@ -1,7 +1,7 @@
 /**
  * EPOCH GAMES - CORE ENGINE
  * =========================
- * Have Mind Media | Jason Ray
+ * Have Mind Media | T0Rs
  *
  * ALL GAMES DERIVE FROM EPOCH MODEL
  * No binary. Triaxial always. Minimum 3 choices.

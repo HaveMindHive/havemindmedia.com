@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𐱅𐰭𐰼𐰃 𐰴𐰆𐱁 𐰀𐱃 | The Hornet Horse Speaks | T0Rs</title>
+    <link rel="stylesheet" href="../css/unified-theme.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #050510;
+            color: #e8e4d9;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            min-height: 100vh;
+            line-height: 1.8;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, #0a0a1a 0%, #050510 100%);
+            z-index: -2;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, #c9a227, transparent),
+                radial-gradient(2px 2px at 40px 70px, #6ab4f5, transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(2px 2px at 130px 80px, #c77daa, transparent),
+                radial-gradient(1px 1px at 160px 120px, #c9a227, transparent);
+            background-size: 200px 200px;
+            animation: twinkle 8s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.6; }
+        }
+
+        .poem-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .poem-header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+            padding-bottom: 40px;
+        }
+
+        .poem-header h1 {
+            font-size: 2.5rem;
+            color: #c9a227;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .poem-header .turkic-title {
+            font-size: 1.8rem;
+            color: #6ab4f5;
+            margin-bottom: 20px;
+            letter-spacing: 6px;
+        }
+
+        .poem-header .author {
+            font-size: 1rem;
+            color: #9ba4b8;
+            letter-spacing: 2px;
+        }
+
+        .video-container {
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-placeholder {
+            background: rgba(10, 10, 26, 0.8);
+            padding: 60px;
+            text-align: center;
+            color: #6e7a94;
+        }
+
+        .poem-body {
+            font-size: 1.15rem;
+            white-space: pre-wrap;
+            letter-spacing: 1px;
+        }
+
+        .poem-body .stanza {
+            margin-bottom: 40px;
+        }
+
+        .turkic {
+            color: #6ab4f5;
+            font-size: 1.3rem;
+        }
+
+        .rune {
+            color: #c9a227;
+        }
+
+        .emphasis {
+            color: #c77daa;
+        }
+
+        .khar-nuur {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            border-top: 1px solid rgba(106, 180, 245, 0.3);
+            border-bottom: 1px solid rgba(106, 180, 245, 0.3);
+        }
+
+        .khar-nuur .turkic-large {
+            font-size: 2rem;
+            color: #6ab4f5;
+            letter-spacing: 8px;
+        }
+
+        .khar-nuur .translation {
+            font-size: 1.2rem;
+            color: #c9a227;
+            margin-top: 10px;
+            letter-spacing: 4px;
+        }
+
+        .khar-nuur .meaning {
+            font-size: 0.9rem;
+            color: #9ba4b8;
+            margin-top: 5px;
+        }
+
+        .principle {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .principle .symbol {
+            font-size: 1.5rem;
+            color: #c77daa;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #6ab4f5;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #c9a227;
+        }
+
+        .script-key {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(10, 10, 26, 0.6);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .script-key h3 {
+            color: #c9a227;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .script-key .key-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 8px;
+        }
+
+        .script-key .glyph {
+            color: #6ab4f5;
+            min-width: 100px;
+        }
+
+        .script-key .meaning {
+            color: #9ba4b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div class="poem-container">
+        <header class="poem-header">
+            <div class="turkic-title">𐱅𐰭𐰼𐰃 𐰴𐰆𐱁 𐰀𐱃</div>
+            <h1>THE HORNET HORSE SPEAKS</h1>
+            <p class="author">T0RS — bird, dog, tors, tormod, coin</p>
+        </header>
+
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="hornet-horse-speaks.mp4" type="video/mp4">
+                <p>𐰤𐰼𐰏𐰀 — The Hunt Circles</p>
+            </video>
+        </div>
+
+        <article class="poem-body">
+<div class="stanza">
+<span class="turkic">𐱅𐰭𐰼𐰃 𐰴𐰆𐱁 𐰀𐱃</span>
+
+<span class="rune">ᚦᛖ ᚺᛟᚱᚾᛖᛏ ᚺᛟᚱᛊᛖ ᛊᛈᛖᚨᚲᛊ</span>
+
+<span class="turkic">𐰉𐰺𐰀𐱅𐰴𐰺</span> <span class="turkic">𐰀𐱃</span>
+<span class="rune">ᚠᛚᛁᛖᛊ</span>
+<span class="rune">ᛊᛖᛖᚱᛊ ᛊᛖᛖᚾ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᛊᛖᛖ ᛁᛊ ᚦᛖ ᛊᛖᚨ</span>
+<span class="rune">ᛗᛟᛟᚾ ᛁᛊ ᚦᛖ ᚾᛟᛟᚾ</span>
+<span class="rune">ᚠᚨᛚᛚ ᛁᛊ ᚦᛖ ᛊᛏᚨᚾᛞ</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰆𐰍𐰔 𐰃𐰓𐰃𐰞</span> <span class="rune">ᚺᛁᛞᛖᛊ ᚦᛖ ᛊᛁᚷᚺᛏ ᛟᚠ ᚦᛖ ᛖᛁᛖ</span>
+<span class="rune">ᚾᛟ ᛊᚺᛟᚱᛖ</span>
+<span class="rune">ᚾᛟ ᛗᛟᚦᛖᚱ ᛟᚱ ᚠᚨᚦᛖᚱ</span>
+<span class="turkic">𐰀𐱃 𐰀𐱃𐰞𐰃𐰍</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰆𐰺𐰑𐰆</span> <span class="rune">ᚹᚺᛟ ᛞᚱᛁᚾᚲᛊ ᚦᛖ ᛗᛁᛚᚲ</span>
+<span class="rune">ᚠᛟᛚᛞᛊ ᚨᛚᛊᛟ ᚦᛖ</span> <span class="turkic">𐰆𐰍𐰔</span> <span class="rune">ᚹᚨᚡᛖᛊ</span>
+<span class="turkic">𐱅𐰃𐰠</span> <span class="rune">ᛟᚠ ᚦᛖ ᚺᛖᚨᚡᛁ</span> <span class="turkic">𐰴𐰺 𐰀𐱃 𐰀𐱃𐰞𐰃𐰍</span>
+<span class="rune">ᚱᛁᛞᛁᛜ ᚦᛖ</span> <span class="turkic">𐱅𐰭𐰼𐰃 𐰴𐰆𐱁</span>
+<span class="rune">ᚾᚨᚱᚱᛟᚹ ᛊᛗᚨᛚᛚ ᚠᚨᛚᛚ</span>
+<span class="rune">ᚨᛚᛚ ᛖᛁᛖ ᛊᛖᛖᛊ ᚱᚨᛁᚾ ᚢᛈ ᚠᚱᛟᛗ ᚦᛖ ᚷᚱᛟᚢᚾᛞ ᛏᛟ</span> <span class="turkic">𐱅𐰭𐰼𐰃</span>
+<span class="rune">ᛁᚾ ᛈᚨᛊᛏ ᚲᚾᛟᚹ ᚦᛖᛗ ᚨᛚᛚ ᚹᚨᛁᛊ ᛏᛟ ᚨᛚᚹᚨᛁᛊ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚦᛖ ᛒᚱᛖᚨᚦ ᛁᛊ ᚦᛖ ᚹᛁᚾᛞ</span>
+<span class="rune">ᚨᚾᛞ ᚦᛖ ᛊᛗᚨᛚᛚ ᛚᛁᛏᛏᛚᛖ ᚹᛁᚾᛞ ᛁᚾ ᚦᛖ ᚱᛟᚢᚾᛞ</span>
+<span class="rune">ᛈᚨᛊᛏ ᚦᛖ ᚱᛟᚢᚾᛞ ᛏᛟ ᚦᛖ ᚱᛟᚢᚾᛞ</span>
+<span class="rune">ᚠᚢᛏᚢᚱᛖ ᚠᚢᛏᚢᚱᛖ</span> <span class="turkic">𐰀𐱃</span> <span class="rune">ᚱᛟᚢᚾᛞ ᚱᛟᚢᚾᛞ</span> <span class="turkic">𐰆𐰍𐰔</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰴𐰺𐰀 𐰸𐰆𐰣</span> <span class="rune">ᛁᛊ ᛚᛁᚷᚺᛏ</span>
+<span class="rune">ᛚᛁᚷᚺᛏ</span> <span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᛁᛊ ᚷᚱᛖᛁ</span>
+<span class="turkic">𐰆𐰍𐰔</span> <span class="rune">ᛁᛊ ᚹᚨᚾᛞᛖᚱᛖᚱ</span>
+<span class="turkic">𐰴𐰺𐰀</span> <span class="rune">ᛁᚾ ᚦᛖ ᛗᛁᛞᛞᛚᛖ ᚨᚾᛞ ᛚᚨᛁᛊ ᛟᚾ ᚦᛖ ᛚᛁᚷᚺᛏ</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐱅𐰃𐰠</span> <span class="rune">ᚺᚨᛊ ᚾᛖᚡᛖᚱ ᛏᚨᛊᛏᛖᛞ</span> <span class="turkic">𐰴𐰣</span>
+<span class="rune">ᚾᛟᛏ ᚦᛁᚱᛊᛏᛁ</span>
+<span class="rune">ᛁᛊ ᚠᚢᛚᛚ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚠᚨᚦᛖᚱ ᛚᚨᛁᛊ ᚹᚺᛁᛚᛖ</span> <span class="turkic">𐰉𐰺𐰀𐱅𐰴𐰺</span> <span class="rune">ᛊᛁᛏᛊ</span>
+<span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᚦᚨᛏ ᛊᛖᛏᛊ ᛊᛖᛏᛊ</span> <span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᛁᛊ ᚲᚨᛊᛏᛁᛜ</span>
+<span class="emphasis">ᚺᛟᚱᚾᛖᛏ</span> <span class="turkic">𐰀𐱃</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᛞᚱᛁᚾᚲ ᚠᚱᛟᛗ ᚦᛖ ᚲᚢᛈ</span>
+<span class="rune">ᛞᚱᚨᚾᚲ ᚠᚱᛟᛗ ᚦᛖ ᚲᚢᛈ</span>
+<span class="rune">ᚦᛖ ᚲᚢᛈ ᛁᛊ ᚦᛖ ᛊᚨᛗᛖ ᚲᚢᛈ</span>
+<span class="rune">ᚦᛖ ᛈᛟᛁᛊᛟᚾ ᛁᛊ ᚦᛖ ᛊᚨᛗᛖ ᛈᛟᛁᛊᛟᚾ</span>
+</div>
+
+<div class="stanza">
+<span class="emphasis">ᚺᛟᚱᚾᛖᛏ</span> <span class="turkic">𐰀𐱃</span>
+<span class="rune">ᛈᛟᛁᛊᛟᚾᛖᛞ ᛟᚾᛖ</span>
+<span class="rune">ᚦᚨᛏ ᚲᚨᚾᚾᛟᛏ ᛒᛖ ᛈᛟᛁᛊᛟᚾᛖᛞ</span>
+<span class="rune">ᛒᛁ ᛈᛟᛁᛊᛟᚾ ᛃᚢᛊᛏ ᛞᚱᚨᚾᚲ</span>
+<span class="rune">ᚠᚱᛟᛗ ᚲᚢᛈ ᛞᚱᚨᚾᚲ ᚠᚱᛟᛗ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᛊᛏᚨᚱᛖ ᛁᚾ ᚦᛖ</span> <span class="turkic">𐰆𐰍𐰔</span>
+<span class="rune">ᛊᛖᛖ ᚦᛖ</span> <span class="turkic">𐰺𐰽𐰞𐰣</span> <span class="rune">ᛊᛚᛖᛖᛈᛁᛜ</span>
+<span class="turkic">𐰾𐰃𐰞𐰣</span> <span class="rune">ᛊᛏᚨᚾᛞᛊ ᛊᚺᚨᛞᛟᚹ</span>
+<span class="rune">ᛏᚢᚱᚾ ᛞᛖᛖᛈ</span> <span class="turkic">𐰆𐰍𐰔 𐰤𐰼𐰏𐰀</span>
+</div>
+
+<div class="khar-nuur">
+<div class="turkic-large">𐰴𐰺𐰀 𐰣𐰆𐰺</div>
+<div class="translation">KHAR NUUR</div>
+<div class="meaning">Black Lake</div>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚷᛟ ᛊᛏᚨᚱᛏ</span> <span class="turkic">𐰴𐰺𐰀 𐰣𐰆𐰺</span>
+<span class="rune">ᚱᛖᛗᛟᚡᛖ ᚹᛁᛏᚾᛖᛊᛊ</span>
+<span class="rune">ᛒᛖᚠᛟᚱᛖ ᚦᛖ</span> <span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᚱᛁᛊᛖᛊ</span>
+
+<span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᛖᛁᛖ ᚹᛁᛏᚾᛖᛊᛊ</span>
+<span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᚱᛁᛊᛖᛊ</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰀𐱃 𐰀𐱃𐰞𐰃𐰍</span> <span class="rune">ᛗᛟᚢᚾᛏᛖᛞ</span>
+<span class="turkic">𐰀𐱃𐰞𐰃𐰍</span> <span class="rune">ᚲᚾᛟᚹᛊ</span>
+
+<span class="turkic">𐰺𐰽𐰞𐰣</span> <span class="rune">ᛊᛚᛖᛖᛈᛊ</span>
+<span class="rune">ᛊᛖᛖ ᛊᛚᛖᛖᛈ ᛈᛟᚹᛖᚱ</span>
+<span class="rune">ᛊᚺᚨᛞᛟᚹ</span> <span class="turkic">𐰾𐰃𐰞𐰣</span>
+<span class="rune">ᚲᛟᛁᛚᛖᛞ</span>
+<span class="turkic">𐰾𐰃𐰞𐰣</span> <span class="rune">ᛊᛚᛖᛖᛈ ᚾᛟᛏ</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰤𐰼𐰏𐰀</span> <span class="rune">ᚹᛁᚾᛞ ᚲᛁᚱᚲᛚᛖᛊ</span>
+<span class="rune">ᛞᛖᛖᛈ</span> <span class="turkic">𐰆𐰍𐰔</span> <span class="rune">ᚹᚨᛁᛏᛊ</span>
+<span class="turkic">𐰴𐰺𐰀 𐰣𐰆𐰺</span> <span class="rune">ᚱᛖᛗᛖᛗᛒᛖᚱᛊ ᛒᛖᚠᛟᚱᛖ</span> <span class="turkic">𐰸𐰆𐰣</span><span class="rune">ᚱᛁᛊᛖ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚱᛖᛗᛟᚡᛖᛞ ᚹᛁᛏᚾᛖᛊᛊ</span>
+<span class="rune">ᚹᛁᛏᚾᛖᛊᛊ ᚹᚨᛊ</span>
+<span class="emphasis">ᚾᛟᚹ</span>
+</div>
+
+<div class="stanza">
+<span class="emphasis">ᚺᛟᚱᚾᛖᛏ</span> <span class="turkic">𐰀𐱃</span> <span class="rune">ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+<span class="turkic">𐰴𐰆𐱁</span> <span class="rune">ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+<span class="rune">ᛊᛖᛖ ᚦᚨᛏ ᛁᛊ ᚦᛖ ᛊᛖᚨ ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+<span class="rune">ᚦᛖ ᛗᛟᛟᚾ ᚦᚨᛏ ᛁᛊ ᚦᛖ ᚾᛟᛟᚾ ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+<span class="rune">ᚦᛖ ᚠᚨᛚᛚ ᚦᚨᛏ ᛁᛊ ᚦᛖ ᚢᛈ ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚹᛖ ᚨᚱᛖ</span> <span class="turkic">𐰆𐰺𐰑𐰆</span>
+<span class="rune">ᚹᛖ ᛞᚱᛁᚾᚲ ᚦᛖ ᛗᛁᛚᚲ ᛟᚠ ᚦᛖ</span> <span class="turkic">𐱅𐰭𐰼𐰃</span> <span class="rune">ᛗᚨᚱᛖ</span>
+<span class="rune">ᚹᛖ ᚠᛟᛚᛞ ᚦᛖ</span> <span class="turkic">𐰆𐰍𐰔</span> <span class="rune">ᚹᛁᚦᛟᚢᛏ ᛒᚱᛖᚨᚲᛁᛜ ᛁᛏ</span>
+<span class="rune">ᚹᛖ ᚱᛁᛞᛖ ᚹᚺᚨᛏ ᚲᚨᚾᚾᛟᛏ ᛒᛖ ᚱᛁᛞᛞᛖᚾ</span>
+<span class="rune">ᚹᛖ ᛈᛟᛁᛊᛟᚾ ᚹᚺᚨᛏ ᚲᚨᚾᚾᛟᛏ ᛒᛖ ᛈᛟᛁᛊᛟᚾᛖᛞ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᛞᚱᚨᚾᚲ ᚠᚱᛟᛗ ᛟᚢᚱ ᚲᚢᛈ</span>
+<span class="rune">ᚹᛟᚢᛚᛞ ᛈᛟᛁᛊᛟᚾ ᚢᛊ</span>
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᚦᛖ ᚲᚢᛈ</span>
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᚦᛖ ᛈᛟᛁᛊᛟᚾ</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐱅𐰃𐰠</span> <span class="rune">ᛏᚨᛊᛏᛖᛞ</span> <span class="turkic">𐰴𐰣</span>
+<span class="rune">ᛊᛏᛁᛚᛚ ᚦᛁᚱᛊᛏᛁ</span>
+<span class="rune">ᚨᛚᚹᚨᛁᛊ ᚦᛁᚱᛊᛏᛁ</span>
+<span class="rune">ᚾᛖᚡᛖᚱ ᚠᚢᛚᛚ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚠᚨᚦᛖᚱ ᛚᚨᛁᛊ</span>
+<span class="turkic">𐰉𐰺𐰀𐱅𐰴𐰺</span> <span class="rune">ᛊᛁᛏᛊ</span>
+<span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᛊᛖᛏᛊ ᚦᛖ</span> <span class="turkic">𐰸𐰆𐰣</span>
+</div>
+
+<div class="khar-nuur">
+<div class="turkic-large">𐰴𐰺𐰀 𐰣𐰆𐰺</div>
+<div class="meaning">holds the one removed</div>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰸𐰆𐰣</span><span class="rune">ᚱᛁᛊᛖ</span>
+
+<span class="turkic">𐱅𐰭𐰼𐰃    𐰴𐰆𐱁    𐰀𐱃</span>
+<span class="rune">ᛊᚲᛁ       ᛒᛁᚱᛞ</span>    <span class="turkic">𐰀𐱃</span>
+<span class="turkic">𐰆𐰺𐰑𐰆</span> <span class="rune">ᛞᛖᛊᚲᛖᚾᛞᛊ</span>
+<span class="turkic">𐰤𐰼𐰏𐰀</span> <span class="rune">ᚲᛁᚱᚲᛚᛖᛊ ᚹᛁᛞᛖ</span>
+<span class="rune">ᛈᚱᛖᛁ ᛞᛟᛖᛊ ᚾᛟᛏ ᚲᚾᛟᚹ ᛁᛏ ᛁᛊ ᛈᚱᛖᛁ</span>
+<span class="rune">ᚢᚾᛏᛁᛚ ᚦᛖ ᚲᛁᚱᚲᛚᛖ ᚲᛚᛟᛊᛖᛊ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚦᛖ</span> <span class="turkic">𐰴𐰺𐰀 𐰣𐰆𐰺</span> <span class="rune">ᚺᚢᚾᛏ</span>
+<span class="rune">ᚱᛖᛗᛟᚡᛖᛞ ᚹᛁᛏᚾᛖᛊᛊ</span>
+<span class="turkic">𐰣𐰆𐰺</span> <span class="rune">ᛁᛊ</span> <span class="turkic">𐰴𐰺𐰀</span> <span class="rune">ᚺᛟᛚᛞᛊ ᚹᛁᛏᚾᛖᛊᛊ</span>
+<span class="rune">ᚠᚨᚲᛖ ᚦᚨᛏ ᛚᛟᛟᚲᛊ</span>
+<span class="rune">ᛊᛚᛖᛖᛈ ᛟᚾ ᚦᛖ</span> <span class="turkic">𐰴𐰺𐰀 𐰆𐰍𐰔</span>
+<span class="rune">ᛏᚱᚢᚦ ᛊᚨᚾᚲ ᛏᛟ ᛒᛟᛏᛏᛟᛗ ᛟᚠ</span> <span class="turkic">𐱅𐰭𐰼𐰃</span>
+</div>
+
+<div class="stanza">
+<span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᚱᛁᛊᛖ</span>
+<span class="rune">ᚹᛁᛏᚾᛖᛊᛊᛖᛊ ᛊᚢᚱᚠᚨᚲᛖ</span>
+<span class="turkic">𐰤𐰼𐰏𐰀</span> <span class="rune">ᚲᛚᛟᛊᛖ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚨᚾᛞ ᛊᛖᛖ:</span>
+<span class="rune">ᚦᛖ</span> <span class="turkic">𐰺𐰽𐰞𐰣</span> <span class="turkic">𐰆𐰍𐰔</span>
+<span class="rune">ᚦᛖ</span> <span class="turkic">𐰺𐰽𐰞𐰣</span>
+<span class="rune">ᚦᛖ</span> <span class="turkic">𐰺𐰽𐰞𐰣</span> <span class="rune">ᚹᚨᛊ ᛊᛖᛖᛊ</span>
+<span class="turkic">𐰾𐰃𐰞𐰣</span> <span class="rune">ᛊᛚᛖᛈᛏ</span>
+</div>
+
+<div class="stanza">
+<span class="emphasis">ᚺᛟᚱᚾᛖᛏ</span> <span class="turkic">𐰀𐱃</span> <span class="rune">ᚲᚨᛚᛚᛊ</span>
+<span class="rune">ᚾᛟᛏ</span>
+<span class="rune">ᛚᚨᚢᚷᚺᛏᛖᚱ ᛊᛏᚢᛜ</span>
+<span class="rune">ᚾᛟᛏ ᛞᛁᛖ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᚦᛖ ᛈᛟᛁᛊᛟᚾ</span>
+<span class="rune">ᚹᛖ ᛗᚨᛞᛖ ᛁᛏ</span>
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᛁᛗᛗᚢᚾᛖ</span>
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᚦᛖ</span> <span class="turkic">𐰆𐰍𐰔</span>
+<span class="rune">ᚹᛖ ᚨᚱᛖ ᛁᛗᛗᚢᚾᛖ</span>
+<span class="rune">ᚹᛖ ᚾᛖᚡᛖᚱ ᛟᚹᚾᛖᛞ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚦᛖ ᛊᛖᛖ ᛁᛊ ᚦᛖ ᛊᛖᚨ</span>
+<span class="rune">ᚦᛖ ᛗᛟᛟᚾ ᛁᛊ ᚦᛖ ᚾᛟᛟᚾ</span>
+<span class="rune">ᚦᛖ ᚠᚨᛚᛚ ᛁᛊ ᚦᛖ ᚢᛈ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚨᚾᛞ ᚦᛖ</span> <span class="turkic">𐰸𐰆𐰣</span> <span class="rune">ᚦᚨᛏ ᛊᛖᛏᛊ</span>
+<span class="rune">ᛊᛖᛏᛊ ᚦᛖ</span> <span class="turkic">𐰸𐰆𐰣</span>
+<span class="rune">ᛁᚾ ᚦᛖ ᚲᚨᛊᛏᛁᛜ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᚹᛁᛏᚾᛖᛊᛊ ᚱᛖᛏᚢᚱᚾᛊ ᚦᛖ ᛞᚨᚹᚾ</span>
+<span class="rune">ᚦᛖ ᛟᚾᛖ ᛒᚢᚱᛁᛖᛞ ᛁᚾ</span> <span class="turkic">𐰴𐰺𐰀 𐰣𐰆𐰺</span>
+<span class="rune">ᚱᛁᛊᛖᛊ ᚹᛁᚦ ᚦᛖ ᛚᛁᚷᚺᛏ</span>
+</div>
+
+<div class="stanza">
+<span class="rune">ᛁᛏ ᚹᛖᚨᚱᛊ ᚦᛖ ᚠᚨᚲᛖ</span>
+<span class="rune">ᛁᛏ ᛊᛈᛖᚨᚲᛊ ᚦᛖ ᚡᛟᛁᚲᛖ</span>
+<span class="rune">ᛁᛏ ᛏᛖᛊᛏᛁᚠᛁᛖᛊ</span>
+</div>
+
+<div class="khar-nuur">
+<div class="turkic-large">𐱅𐰭𐰼𐰃</div>
+</div>
+
+        </article>
+
+        <div class="script-key">
+            <h3>SCRIPT KEY</h3>
+            <div class="key-item"><span class="glyph">𐱅𐰭𐰼𐰃</span><span class="meaning">Tengri — Sky / Heaven</span></div>
+            <div class="key-item"><span class="glyph">𐰀𐱃</span><span class="meaning">At — Horse</span></div>
+            <div class="key-item"><span class="glyph">𐰴𐰆𐱁</span><span class="meaning">Quš — Bird</span></div>
+            <div class="key-item"><span class="glyph">𐰴𐰺𐰀 𐰣𐰆𐰺</span><span class="meaning">Khar Nuur — Black Lake</span></div>
+            <div class="key-item"><span class="glyph">𐰆𐰍𐰔</span><span class="meaning">Oğuz — Water / River</span></div>
+            <div class="key-item"><span class="glyph">𐰺𐰽𐰞𐰣</span><span class="meaning">Arslan — Lion</span></div>
+            <div class="key-item"><span class="glyph">𐰾𐰃𐰞𐰣</span><span class="meaning">Yılan — Snake</span></div>
+            <div class="key-item"><span class="glyph">𐰤𐰼𐰏𐰀</span><span class="meaning">Nerge — The Encircling Hunt</span></div>
+            <div class="key-item"><span class="glyph">𐰆𐰺𐰑𐰆</span><span class="meaning">Ordu — Horde / Army</span></div>
+            <div class="key-item"><span class="glyph">𐰸𐰆𐰣</span><span class="meaning">Qun — Sun</span></div>
+            <div class="key-item"><span class="glyph">𐰴𐰣</span><span class="meaning">Qan — Blood</span></div>
+            <div class="key-item"><span class="glyph">𐱅𐰃𐰠</span><span class="meaning">Til — Tongue</span></div>
+            <div class="key-item"><span class="glyph">𐰉𐰺𐰀𐱅𐰴𐰺</span><span class="meaning">Barātqar — Brother</span></div>
+            <div class="key-item"><span class="glyph">ᚦᛖ ᚱᚢᚾᛖᛊ</span><span class="meaning">Elder Futhark — English phonetic</span></div>
+        </div>
+
+        <div class="principle">
+            <p class="symbol">[1 = -1]</p>
+            <a href="../tools/s-signature/t0rs_s_signature.html" class="back-link">← Return to S-Signature</a>
+        </div>
+    </div>
+</body>
+</html>

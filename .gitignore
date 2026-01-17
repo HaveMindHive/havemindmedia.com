@@ -1,0 +1,55 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# HAVEMINDMEDIA.COM - PROTECTED FILES
+# These files are excluded from public repository
+# ══════════════════════════════════════════════════════════════════════════════
+
+# WHITEPAPERS AND RESEARCH (Move to havemindhive.com)
+documents/*.md
+documents/**/*.md
+**/WHITE_PAPER*.md
+**/WHITEPAPER*.md
+**/ANALYSIS_*.md
+**/ARCHITECTURE_*.md
+
+# THREAD REPORTS AND SESSION DATA
+THREAD_REPORT*.md
+**/THREAD_REPORT*.md
+SESSION_*.md
+**/SESSION_*.md
+
+# INTERNAL TOOLS AND SCRIPTS
+tools/*.py
+tools/**/*.py
+*.py
+
+# SENSITIVE RESEARCH
+research/
+**/research/
+inbreath/
+
+# BUILD ARTIFACTS AND REPORTS
+SHIVA_REPORT*.json
+BROKEN_LINKS*.md
+*_AUDIT_*.md
+*_CHECKLIST*.md
+HMH_Website_Unifier*.md
+
+# PERSONAL DATA
+*jason_ray*
+*Jason_Ray*
+
+# DEVELOPMENT
+.DS_Store
+*.log
+node_modules/
+.env
+.env.*
+
+# VERBATIM SOURCE MATERIAL
+**/VERBATIM_*.md
+**/AUGMENTED_*.md
+
+# MASTER DOCS (Internal only)
+MASTER_*.md
+**/MASTER_*.md
+CLAUDE_GROWTH*.md
