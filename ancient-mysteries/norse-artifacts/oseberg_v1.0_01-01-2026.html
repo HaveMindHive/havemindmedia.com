@@ -274,8 +274,8 @@
 
         /* Artifact cards */
         .artifact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -348,8 +348,8 @@
 
         /* Number grid */
         .number-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1rem;
             margin: 2rem 0;
         }

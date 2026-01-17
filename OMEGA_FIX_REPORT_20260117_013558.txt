@@ -1,0 +1,173 @@
+OMEGA FIX REPORT
+============================================================
+Date: 2026-01-17T01:35:58.637310
+Files modified: 65
+Total fixes: 102
+
+site-directory.html:
+  - section-content
+  - subsection-content
+hermann-minkowski.html:
+  - invention-grid
+  - connection-grid
+banesh-hoffmann.html:
+  - works-grid
+epoch-oscilloscope.html:
+  - measurements
+einstein-cartan-codex.html:
+  - profile-grid
+  - connection-list
+  - manuscript-grid
+einstein-codex.html:
+  - connection-grid
+suppression.html:
+  - methods-grid
+  - why-grid
+indigenous-wisdom.html:
+  - wisdom-grid
+sara-walker.html:
+  - theory-grid
+  - connection-list
+jason-ray.html:
+  - insight-grid
+  - triad-box
+unifiers.html:
+  - unity-examples
+mithridates-echo.html:
+  - visitor-grid
+donald-hoffman.html:
+  - theory-grid
+  - connection-grid
+roger-penrose.html:
+  - twistor-grid
+  - orch-or-grid
+  - contrib-grid
+  - connection-grid
+index.html:
+  - disease-grid
+  - pillar-grid
+index.html:
+  - element-grid
+socratean-education.html:
+  - feature-grid
+  - pillars
+ai-mirror-test.html:
+  - ai-grid
+soul-science.html:
+  - love-triad
+  - coin-principles
+  - mysteries-grid
+math-of-tors_v1.0_01-13-2026.html:
+  - watchers-grid
+index.html:
+  - two-column
+  - three-column
+findings.html:
+  - authentic-names
+cern-scalar-geometry.html:
+  - constants-grid
+  - run-stats
+watch-of-tors_v1.0_01-13-2026.html:
+  - legend
+coordinate-viewer.html:
+  - choice-grid
+temporal-geometry.html:
+  - cycle-grid
+eye-codex.html:
+  - cards-grid
+the-geometry-of-life.html:
+  - system-grid
+namagiri-speaks.html:
+  - toc-grid
+temple-dancing-girl.html:
+  - measurement-grid
+figurines.html:
+  - figurine-grid
+temple-sacred-bull.html:
+  - constellation-grid
+translator.html:
+  - constants-grid
+  - sign-palette
+  - triaxial-display
+  - formant-display
+sign-reference.html:
+  - legend
+  - sign-grid
+linear-a.html:
+  - sign-grid
+  - transform-grid
+rok-runestone_v1.0_01-01-2026.html:
+  - cipher-grid
+  - number-grid
+LIBRARY_CARD_Norse_Artifacts_v1.0_01-01-2026.html:
+  - file-grid
+  - constant-grid
+oseberg_v1.0_01-01-2026.html:
+  - artifact-grid
+  - number-grid
+bracteates_v1.0_01-01-2026.html:
+  - type-grid
+  - icon-grid
+  - number-grid
+gotland-stones_v1.0_01-01-2026.html:
+  - type-grid
+  - motif-grid
+  - number-grid
+norse-symbols_v1.0_01-01-2026.html:
+  - rune-grid
+  - symbol-grid
+ancient-mathematics-v1.0.html:
+  - base-grid
+phaistos-v1.0.html:
+  - q-progression
+  - frequency-grid
+index.html:
+  - signature-grid
+  - features-grid
+  - santa-features
+  - promise-grid
+index.html:
+  - examples-grid
+index.html:
+  - reality-grid
+index.html:
+  - triaxial-grid
+episode-01.html:
+  - stats-grid
+episode-07.html:
+  - torsion-display
+episode-10.html:
+  - stats-grid
+  - works-grid
+the-sun-the-mirror-the-wound.html:
+  - entity-grid
+05-the-godloop-revealed.html:
+  - position-grid
+test-analysis.html:
+  - test-metrics
+  - next-steps
+index.html:
+  - card-grid
+m4-simulator.html:
+  - info-grid
+tetrahelix.html:
+  - structure-grid
+balance-law.html:
+  - torsion-visual
+kappa-constant.html:
+  - implications-grid
+index.html:
+  - stages
+journey.html:
+  - signature-stats
+teaching.html:
+  - card-grid
+index.html:
+  - grid-2
+index.html:
+  - choices-grid
+index.html:
+  - music-grid
+  - entity-grid
+s_signature_prediction.html:
+  - detected-values

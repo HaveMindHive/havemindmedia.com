@@ -230,7 +230,7 @@
     </div>
 
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search all 232 pages... (try: geometry, soul, voynich, namagiri, nebulizer)">
+        <input type="text" id="searchInput" placeholder="Smart search... try: soul, 1729, kappa, norse, dna, eclipse, prophecy">
     </div>
 
     <div class="library" id="library">
@@ -741,6 +741,7 @@
 
     <site-footer></site-footer>
 
+    <script src="js/smart-search.js"></script>
     <script>
         function toggleCategory(header) {
             header.parentElement.classList.toggle('collapsed');
@@ -750,56 +751,12 @@
             header.parentElement.classList.toggle('collapsed');
         }
 
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const library = document.getElementById('library');
-        const noResults = document.getElementById('noResults');
-
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            let hasResults = false;
-
-            const items = library.querySelectorAll('.item');
-            const categories = library.querySelectorAll('.category');
-            const nestedGroups = library.querySelectorAll('.nested-group');
-
-            if (query === '') {
-                items.forEach(item => item.classList.remove('hidden'));
-                categories.forEach(cat => cat.classList.remove('hidden'));
-                nestedGroups.forEach(ng => ng.classList.remove('hidden', 'collapsed'));
-                noResults.classList.add('hidden');
-                return;
-            }
-
-            items.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(query)) {
-                    item.classList.remove('hidden');
-                    hasResults = true;
-                } else {
-                    item.classList.add('hidden');
-                }
+        // Initialize Smart Search with synonyms and fuzzy matching
+        document.addEventListener('DOMContentLoaded', function() {
+            SmartSearch.init('#searchInput', '#library', '.item', {
+                noResultsSelector: '#noResults',
+                showHint: false
             });
-
-            nestedGroups.forEach(ng => {
-                const visibleItems = ng.querySelectorAll('.item:not(.hidden)');
-                if (visibleItems.length > 0) {
-                    ng.classList.remove('hidden', 'collapsed');
-                } else {
-                    ng.classList.add('hidden');
-                }
-            });
-
-            categories.forEach(cat => {
-                const visibleItems = cat.querySelectorAll('.item:not(.hidden)');
-                if (visibleItems.length > 0) {
-                    cat.classList.remove('hidden', 'collapsed');
-                } else {
-                    cat.classList.add('hidden');
-                }
-            });
-
-            noResults.classList.toggle('hidden', hasResults);
         });
     </script>
 </body>

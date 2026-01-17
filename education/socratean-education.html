@@ -170,8 +170,8 @@
 
         /* Feature Grid */
         .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -272,8 +272,8 @@
         }
 
         .pillars {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1rem;
             margin-top: 1.5rem;
         }

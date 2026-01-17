@@ -312,7 +312,7 @@
             display: flex;
             gap: 1rem;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap; justify-content: center;
         }
 
         .timebase-group {
@@ -364,8 +364,8 @@
 
         /* Measurements Panel */
         .measurements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1rem;
         }
 
@@ -420,7 +420,7 @@
         .legend {
             display: flex;
             gap: 1.5rem;
-            flex-wrap: wrap;
+            flex-wrap: wrap; justify-content: center;
             padding: 1rem;
             background: var(--bg-secondary);
             border-radius: 6px;

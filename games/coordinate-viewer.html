@@ -196,7 +196,7 @@
 
         .descriptor-tags {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: wrap; justify-content: center;
             gap: 8px;
         }
 
@@ -293,8 +293,8 @@
 
         /* Triaxial Choices */
         .choice-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 15px;
             max-width: 500px;
             margin: 20px auto;

@@ -104,8 +104,8 @@
         }
 
         .section-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1px;
             background: rgba(201, 162, 39, 0.1);
         }
@@ -155,8 +155,8 @@
             background: rgba(106, 90, 205, 0.15);
         }
         .subsection-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 1px;
             background: rgba(201, 162, 39, 0.05);
         }
@@ -599,18 +599,43 @@
             header.parentElement.classList.toggle('collapsed');
         }
 
-        // Search
+        // Smart Search with synonyms and fuzzy matching
         const searchInput = document.getElementById('searchInput');
         const noResults = document.getElementById('noResults');
 
+        // Synonym mappings for Epoch terms
+        const synonyms = {
+            'soul': ['s-signature', 'consciousness', 'spirit', 'sol'],
+            'kappa': ['κ', 'k', 'shadow', 'witness'],
+            'torsion': ['tors', 'tormod', 'twist', 'cartan'],
+            '1729': ['ramanujan', 'hardy', 'fold'],
+            'geometry': ['geometric', 'math', 'equation'],
+            'physics': ['physical', 'quantum'],
+            'voynich': ['manuscript', 'mystery'],
+            'norse': ['viking', 'rune', 'nordic'],
+            'dna': ['genetic', 'helix', 'biology'],
+        };
+
+        function expandTerms(query) {
+            const words = query.toLowerCase().split(' ').filter(w => w.length > 1);
+            const expanded = new Set(words);
+            words.forEach(w => {
+                if (synonyms[w]) synonyms[w].forEach(s => expanded.add(s));
+                Object.entries(synonyms).forEach(([k, v]) => {
+                    if (v.includes(w)) { expanded.add(k); v.forEach(s => expanded.add(s)); }
+                });
+            });
+            return Array.from(expanded);
+        }
+
         searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
+            const query = this.value.trim();
             const items = document.querySelectorAll('.page-item');
             const sections = document.querySelectorAll('.section');
             const subsections = document.querySelectorAll('.subsection');
             let found = false;
 
-            if (query === '') {
+            if (query.length < 2) {
                 items.forEach(i => i.classList.remove('hidden'));
                 sections.forEach(s => s.classList.remove('collapsed'));
                 subsections.forEach(s => s.classList.remove('collapsed'));
@@ -618,9 +643,12 @@
                 return;
             }
 
+            const terms = expandTerms(query);
+
             items.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(query)) {
+                const text = item.textContent.toLowerCase().replace(/[-_]/g, ' ');
+                const matches = terms.some(term => text.includes(term));
+                if (matches) {
                     item.classList.remove('hidden');
                     found = true;
                 } else {

@@ -350,8 +350,8 @@
         }
 
         .detected-values {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex; flex-wrap: wrap; justify-content: center;
+            
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -631,7 +631,7 @@
             display: flex;
             gap: 8px;
             margin-top: 15px;
-            flex-wrap: wrap;
+            flex-wrap: wrap; justify-content: center;
         }
 
         .sig-action-btn {
