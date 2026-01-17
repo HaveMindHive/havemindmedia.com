@@ -53,3 +53,7 @@ node_modules/
 MASTER_*.md
 **/MASTER_*.md
 CLAUDE_GROWTH*.md
+# Private invitation-only areas - NEVER commit
+qQq-1729-gate/
+for-michele.html
+for-henry*.html
