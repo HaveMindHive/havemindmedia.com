@@ -45,6 +45,39 @@ class SiteHeader extends HTMLElement {
                     background: rgba(201, 162, 39, 0.2);
                     border-color: rgba(201, 162, 39, 0.8);
                 }
+                /* Global Search */
+                .hmm-search-wrap {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 0.5rem;
+                }
+                .hmm-search {
+                    padding: 0.4rem 0.75rem;
+                    background: rgba(0, 0, 0, 0.4);
+                    border: 1px solid rgba(201, 162, 39, 0.3);
+                    border-radius: 20px;
+                    color: #e0e0e0;
+                    font-size: 0.85rem;
+                    width: 140px;
+                    transition: all 0.3s;
+                }
+                .hmm-search:focus {
+                    outline: none;
+                    width: 200px;
+                    border-color: #c9a227;
+                    box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+                }
+                .hmm-search::placeholder { color: #666; }
+                .hmm-search-btn {
+                    background: none;
+                    border: none;
+                    color: #c9a227;
+                    cursor: pointer;
+                    padding: 0.4rem;
+                    margin-left: -30px;
+                    font-size: 0.9rem;
+                }
+                .hmm-search-btn:hover { color: #fff; }
                 .hmm-nav {
                     display: flex;
                     gap: 0.25rem;
@@ -279,6 +312,11 @@ class SiteHeader extends HTMLElement {
                     }
                     .hmm-drop a { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
                 }
+                @media (max-width: 900px) {
+                    .hmm-search-wrap { order: 3; width: 100%; margin: 0.5rem 0; }
+                    .hmm-search { width: 100% !important; }
+                    .hmm-search-btn { margin-left: -35px; }
+                }
                 @media (max-width: 480px) {
                     .hmm-brand { font-size: 0.8rem; letter-spacing: 1px; }
                 }
@@ -287,6 +325,12 @@ class SiteHeader extends HTMLElement {
             <header class="hmm-header">
                 <div class="hmm-inner">
                     <a href="${bp}index.html" class="hmm-brand" title="Home">HAVE MIND MEDIA</a>
+
+                    <div class="hmm-search-wrap">
+                        <input type="text" class="hmm-search" id="hmmSearch" placeholder="Search site..." title="Search (try: soul, kappa, voynich...)">
+                        <button class="hmm-search-btn" id="hmmSearchBtn" title="Search">🔍</button>
+                    </div>
+
                     <button class="hmm-toggle">☰</button>
 
                     <nav class="hmm-nav">
@@ -488,6 +532,24 @@ class SiteHeader extends HTMLElement {
     }
 
     setupEvents() {
+        // Global search functionality
+        const searchInput = this.querySelector('#hmmSearch');
+        const searchBtn = this.querySelector('#hmmSearchBtn');
+        const bp = this.getBasePath();
+
+        const doSearch = () => {
+            const query = searchInput.value.trim();
+            if (query.length >= 2) {
+                // Navigate to site-directory with search query
+                window.location.href = bp + 'site-directory.html?q=' + encodeURIComponent(query);
+            }
+        };
+
+        searchBtn.addEventListener('click', doSearch);
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') doSearch();
+        });
+
         const items = this.querySelectorAll('.hmm-nav-item');
         items.forEach(item => {
             const btn = item.querySelector('.hmm-btn');

@@ -28,15 +28,7 @@
         }
 
         /* Periodic Table Grid */
-        .periodic-table {
-            display: grid;
-            grid-template-columns: repeat(18, minmax(50px, 1fr));
-            gap: 2px;
-            padding: 1rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow-x: auto;
-        }
+        .periodic-table { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; padding: 1rem; max-width: 1400px; margin: 0 auto; overflow-x: auto; }
 
         .element {
             aspect-ratio: 1;

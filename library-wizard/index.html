@@ -197,6 +197,7 @@
     </style>
     <script src="../js/components/site-header.js" defer></script>
     <script src="../js/components/site-footer.js" defer></script>
+    <script src="../js/smart-search.js" defer></script>
 </head>
 <body>
     <site-header></site-header>
@@ -208,7 +209,7 @@
 
     <main class="main">
         <h1>The Library</h1>
-        <p class="subtitle">85 pages across 14 categories</p>
+        <p class="subtitle">95 pages across 15 categories</p>
 
         <div class="search-results" id="search-results">
             <h3>Search Results</h3>
@@ -274,6 +275,18 @@
                 { title: "Socratean Education", url: "../education/socratean-education.html" },
                 { title: "Geometry Challenge", url: "../education/geometry-challenge.html" },
                 { title: "Teaching Guide", url: "../teaching/Scalar_Dimensionality_Teaching_Document.html" }
+            ],
+            "T0rsion Base-2 Math": [
+                { title: "T0rsion Math Overview", url: "../education/ramanujan-torsion-math/index.html" },
+                { title: "01: Identity Element", url: "../education/ramanujan-torsion-math/lessons/01-identity-element.html" },
+                { title: "02: Three Facings", url: "../education/ramanujan-torsion-math/lessons/02-the-three-facings.html" },
+                { title: "03: The Switch", url: "../education/ramanujan-torsion-math/lessons/03-the-switch.html" },
+                { title: "04: Root Two We", url: "../education/ramanujan-torsion-math/lessons/04-root-two-we.html" },
+                { title: "05: 1729 Emerges", url: "../education/ramanujan-torsion-math/lessons/05-1729-emerges.html" },
+                { title: "06: Elementary Map", url: "../education/ramanujan-torsion-math/lessons/06-elementary-map.html" },
+                { title: "07: Fold Points", url: "../education/ramanujan-torsion-math/lessons/07-fold-points.html" },
+                { title: "08: Time Markers", url: "../education/ramanujan-torsion-math/lessons/08-time-markers.html" },
+                { title: "09: Three Nodals", url: "../education/ramanujan-torsion-math/lessons/09-three-nodals.html" }
             ],
             "Voynich Manuscript": [
                 { title: "Voynich Overview", url: "../ancient-mysteries/voynich/index.html" },
@@ -373,37 +386,55 @@
             sectionsEl.appendChild(section);
         });
 
-        // Search
+        // Search - Using SmartSearch for synonym expansion and scoring
         const searchInput = document.getElementById('search');
         const searchResults = document.getElementById('search-results');
         const resultsList = document.getElementById('results-list');
 
         searchInput.addEventListener('input', (e) => {
-            const q = e.target.value.toLowerCase().trim();
+            const q = e.target.value.trim();
 
             if (q.length < 2) {
                 searchResults.classList.remove('active');
                 return;
             }
 
+            // Use SmartSearch term expansion for synonyms
+            const terms = SmartSearch.expandTerms(q);
             const matches = [];
+
             Object.entries(LIBRARY).forEach(([section, books]) => {
                 books.forEach(book => {
-                    if (book.title.toLowerCase().includes(q)) {
-                        matches.push({ ...book, section });
+                    // Create searchable text from title and section
+                    const text = `${book.title} ${section}`;
+                    const score = SmartSearch.score(text, terms);
+
+                    if (score > 0) {
+                        matches.push({ ...book, section, score });
                     }
                 });
             });
+
+            // Sort by relevance score
+            matches.sort((a, b) => b.score - a.score);
 
             if (matches.length) {
                 resultsList.innerHTML = matches.map(m =>
                     `<a href="${m.url}" class="book-link">${m.title} <span style="color:#666">— ${m.section}</span></a>`
                 ).join('');
             } else {
-                resultsList.innerHTML = '<p class="no-results">No results found. Try a different search or suggest a topic below.</p>';
+                resultsList.innerHTML = '<p class="no-results">No results found. Try: soul, kappa, torsion, 1729, voynich, norse, geometry...</p>';
             }
 
             searchResults.classList.add('active');
+        });
+
+        // Keyboard shortcut - ESC to clear
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                searchResults.classList.remove('active');
+            }
         });
 
         // Suggest form

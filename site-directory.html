@@ -210,7 +210,7 @@
         <p style="color: #aaa; margin-bottom: 1rem;">Every page on Have Mind Media - organized and searchable</p>
         <div class="stats">
             <div class="stat">
-                <div class="stat-num">232</div>
+                <div class="stat-num">242</div>
                 <div class="stat-label">Total Pages</div>
             </div>
             <div class="stat">
@@ -259,8 +259,7 @@
                 <div class="page-item"><a href="physics/kappa5/nodal-energy-grid/great-pyramid.html"><div class="title">Great Pyramid - D7</div><div class="path">/physics/kappa5/nodal-energy-grid/great-pyramid.html</div></a></div>
                 <div class="page-item"><a href="physics/kappa5/nodal-energy-grid/hidden-nodes.html"><div class="title">Hidden Nodes - D4 & D6</div><div class="path">/physics/kappa5/nodal-energy-grid/hidden-nodes.html</div></a></div>
                 <div class="page-item"><a href="physics/shadow-operator/index.html"><div class="title">Shadow Operator</div><div class="path">/physics/shadow-operator/</div></a></div>
-                <div class="page-item"><a href="physics/vessel/index.html"><div class="title">The Vessel</div><div class="path">/physics/vessel/</div></a></div>
-                <div class="page-item"><a href="physics/vessel/the-build.html"><div class="title">The Build - Commander Hill</div><div class="path">/physics/vessel/the-build.html</div></a></div>
+                <div class="page-item" style="opacity: 0.6;"><div class="title" style="color: #888;">The Vessel</div><div class="path" style="color: #666;">Private Library Only</div></div>
                 <div class="page-item"><a href="physics/watch-of-tors_v1.0_01-13-2026.html"><div class="title">The Watch of T0Rs</div><div class="path">/physics/watch-of-tors.html</div></a></div>
                 <div class="page-item"><a href="physics/watch-mechanism_v2.0_01-13-2026.html"><div class="title">Watch Mechanism v2</div><div class="path">/physics/watch-mechanism.html</div></a></div>
                 <div class="page-item"><a href="physics/torsion-balance.html"><div class="title">Torsion Balance</div><div class="path">/physics/torsion-balance.html</div></a></div>
@@ -322,7 +321,7 @@
         <div class="section">
             <div class="section-header" onclick="toggleSection(this)">
                 <h2>EDUCATION & SOUL SCIENCE</h2>
-                <span class="count">15 pages</span>
+                <span class="count">25 pages</span>
             </div>
             <div class="section-content">
                 <div class="page-item"><a href="education/index.html"><div class="title">Education Hub</div><div class="path">/education/</div></a></div>
@@ -340,6 +339,25 @@
                 <div class="page-item"><a href="education/mythic-mirror/about.html"><div class="title">Mythic Mirror: About</div><div class="path">/education/mythic-mirror/about.html</div></a></div>
                 <div class="page-item"><a href="education/mythic-mirror/journey.html"><div class="title">Mythic Mirror: Journey</div><div class="path">/education/mythic-mirror/journey.html</div></a></div>
                 <div class="page-item"><a href="education/mythic-mirror/teaching.html"><div class="title">Mythic Mirror: Teaching</div><div class="path">/education/mythic-mirror/teaching.html</div></a></div>
+            </div>
+            <!-- T0rsion Base-2 Math Subsection -->
+            <div class="subsection">
+                <div class="subsection-header" onclick="toggleSubsection(this)">
+                    <span>T0rsion Base-2 Math (10 pages)</span>
+                    <span>▼</span>
+                </div>
+                <div class="subsection-content">
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/index.html"><div class="title">T0rsion Math Overview</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/01-identity-element.html"><div class="title">01: Identity Element</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/02-the-three-facings.html"><div class="title">02: Three Facings</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/03-the-switch.html"><div class="title">03: The Switch</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/04-root-two-we.html"><div class="title">04: Root Two We</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/05-1729-emerges.html"><div class="title">05: 1729 Emerges</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/06-elementary-map.html"><div class="title">06: Elementary Map</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/07-fold-points.html"><div class="title">07: Fold Points</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/08-time-markers.html"><div class="title">08: Time Markers</div></a></div>
+                    <div class="page-item"><a href="education/ramanujan-torsion-math/lessons/09-three-nodals.html"><div class="title">09: Three Nodals</div></a></div>
+                </div>
             </div>
         </div>
 
@@ -607,8 +625,10 @@
         const synonyms = {
             'soul': ['s-signature', 'consciousness', 'spirit', 'sol'],
             'kappa': ['κ', 'k', 'shadow', 'witness'],
-            'torsion': ['tors', 'tormod', 'twist', 'cartan'],
-            '1729': ['ramanujan', 'hardy', 'fold'],
+            'torsion': ['tors', 'tormod', 'twist', 'cartan', 'base-2', 'base2'],
+            '1729': ['ramanujan', 'hardy', 'fold', 'taxicab'],
+            'ramanujan': ['1729', 'torsion', 'namagiri', 'elementary'],
+            'elementary': ['base-2', 'school', 'lesson', 'teaching'],
             'geometry': ['geometric', 'math', 'equation'],
             'physics': ['physical', 'quantum'],
             'voynich': ['manuscript', 'mystery'],
@@ -673,6 +693,15 @@
 
             noResults.classList.toggle('visible', !found);
         });
+
+        // Check for search query in URL (from global header search)
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialQuery = urlParams.get('q');
+        if (initialQuery) {
+            searchInput.value = initialQuery;
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+        }
     </script>
 </body>
 </html>
