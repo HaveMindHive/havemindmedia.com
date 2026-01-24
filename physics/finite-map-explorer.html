@@ -31,36 +31,38 @@
             background: rgba(0, 20, 40, 0.9);
             border: 1px solid #00ffff;
             border-radius: 8px;
-            padding: 20px;
-            max-width: 350px;
+            padding: 15px;
+            max-width: 280px;
             z-index: 100;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+            font-size: 0.9em;
         }
 
         #info-panel h1 {
             color: #00ffff;
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: 1.1em;
+            margin-bottom: 8px;
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         #info-panel h2 {
             color: #88ff88;
-            font-size: 1em;
-            margin: 15px 0 8px 0;
+            font-size: 0.85em;
+            margin: 10px 0 5px 0;
         }
 
         #info-panel p {
-            font-size: 0.85em;
-            line-height: 1.5;
-            margin-bottom: 8px;
+            font-size: 0.75em;
+            line-height: 1.4;
+            margin-bottom: 6px;
         }
 
         .stat {
             display: flex;
             justify-content: space-between;
-            padding: 4px 0;
+            padding: 2px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85em;
         }
 
         .stat-label {
@@ -79,8 +81,9 @@
             background: rgba(0, 20, 40, 0.9);
             border: 1px solid #00ffff;
             border-radius: 8px;
-            padding: 15px;
+            padding: 12px;
             z-index: 100;
+            max-width: 280px;
         }
 
         #controls label {
@@ -91,7 +94,7 @@
         }
 
         #controls input[type="range"] {
-            width: 200px;
+            width: 180px;
             accent-color: #00ffff;
         }
 
@@ -189,9 +192,9 @@
         .framework-note {
             background: rgba(0, 100, 50, 0.3);
             border-left: 3px solid #00ff88;
-            padding: 10px;
-            margin-top: 15px;
-            font-size: 0.8em;
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 0.7em;
         }
 
         a {
@@ -246,6 +249,10 @@
     </div>
 
     <div id="controls">
+        <label>Zoom</label>
+        <input type="range" id="zoomLevel" min="10" max="150" step="5" value="60">
+        <span id="zoomValue">60</span>
+
         <label>Point Size</label>
         <input type="range" id="pointSize" min="0.5" max="5" step="0.1" value="1.5">
 
@@ -256,10 +263,10 @@
         <input type="range" id="sFilter" min="-15" max="0" step="0.5" value="-15">
         <span id="sFilterValue">All</span>
 
-        <div style="margin-top: 15px;">
-            <button onclick="resetView()">Reset View</button>
-            <button onclick="toggleRotation()">Pause/Play</button>
-            <button onclick="showLayers()">Layer View</button>
+        <div style="margin-top: 10px;">
+            <button onclick="resetView()">Reset</button>
+            <button onclick="toggleRotation()">Pause</button>
+            <button onclick="showLayers()">Layers</button>
         </div>
     </div>
 
@@ -361,6 +368,7 @@
             document.getElementById('pointSize').addEventListener('input', updatePointSize);
             document.getElementById('rotSpeed').addEventListener('input', updateRotSpeed);
             document.getElementById('sFilter').addEventListener('input', updateSFilter);
+            document.getElementById('zoomLevel').addEventListener('input', updateZoom);
 
             // Hide loading
             document.getElementById('loading').style.display = 'none';
@@ -564,6 +572,16 @@
 
         function updatePointSize(e) {
             pointsMaterial.size = parseFloat(e.target.value);
+        }
+
+        function updateZoom(e) {
+            let zoom = parseFloat(e.target.value);
+            document.getElementById('zoomValue').textContent = zoom;
+
+            // Move camera closer/further
+            let direction = camera.position.clone().normalize();
+            camera.position.copy(direction.multiplyScalar(zoom));
+            controls.update();
         }
 
         function updateRotSpeed(e) {
