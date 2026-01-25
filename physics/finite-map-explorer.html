@@ -524,39 +524,48 @@
 
         function addBoundaries() {
             // Outer wireframe sphere showing theoretical Ro boundary
-            const roGeometry = new THREE.SphereGeometry(100, 32, 32);
+            const roGeometry = new THREE.SphereGeometry(100, 48, 48);
             const roMaterial = new THREE.MeshBasicMaterial({
-                color: 0x444444,
+                color: 0x6688aa,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.1
+                opacity: 0.25
             });
             const roSphere = new THREE.Mesh(roGeometry, roMaterial);
             scene.add(roSphere);
 
-            // CMB boundary sphere
+            // CMB boundary sphere - more visible purple
             const cmbRadius = Math.abs(S_CMB) / Math.abs(S_RO) * 100;
             const cmbGeometry = new THREE.SphereGeometry(cmbRadius, 32, 32);
             const cmbMaterial = new THREE.MeshBasicMaterial({
-                color: 0x8800ff,
+                color: 0xaa44ff,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.15
+                opacity: 0.35
             });
             const cmbSphere = new THREE.Mesh(cmbGeometry, cmbMaterial);
             scene.add(cmbSphere);
 
-            // Current observation limit
+            // Current observation limit - brighter green
             const obsRadius = 15 / Math.abs(S_RO) * 100;
             const obsGeometry = new THREE.SphereGeometry(obsRadius, 32, 32);
             const obsMaterial = new THREE.MeshBasicMaterial({
-                color: 0x00ff00,
+                color: 0x44ff88,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.2
+                opacity: 0.4
             });
             const obsSphere = new THREE.Mesh(obsGeometry, obsMaterial);
             scene.add(obsSphere);
+
+            // Add ambient light to help visibility
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+            scene.add(ambientLight);
+
+            // Add point light at observer for glow effect
+            const pointLight = new THREE.PointLight(0xffffff, 0.8, 50);
+            pointLight.position.set(0, 0, 0);
+            scene.add(pointLight);
         }
 
         function updateStats() {
@@ -658,8 +667,9 @@
         init();
     </script>
 
-    <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #444; font-size: 0.7em;">
+    <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #666; font-size: 0.75em;">
         The Finite Map of Infinity | JWST JADES Data | Epoch Framework | [1 = -1] |
+        <a href="finite-map/index.html">Full Documentation</a> |
         <a href="index.html">Back to Physics</a>
     </div>
 </body>
