@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Scalar Map | 1729 Navigation System | Have Mind Media</title>
+    <meta name="description" content="Earth-centered scalar mapping of the solar system using Epoch Framework. Sun at s=+1729 (Wush/Future), Ro at s=-1729. Both directions lead forward. Deterministic torsion system.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+
+    <style>
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, rgba(255, 215, 0, 0.05) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: #FFD700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .hero-section .tagline {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #443300, #221100);
+            border: 2px solid #FFD700;
+            color: #FFD700;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-primary:hover {
+            background: linear-gradient(135deg, #554400, #332200);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: rgba(40, 30, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            color: #FFD700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-card .label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .figure-card {
+            background: rgba(10, 10, 20, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .figure-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .figure-card .caption {
+            padding: 1rem;
+        }
+
+        .figure-card h3 {
+            color: #FFD700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .figure-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .constants-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .constants-table th,
+        .constants-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .constants-table th {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .constants-table td:first-child {
+            color: #FFD700;
+        }
+
+        .finding-box {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid #00ff88;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .finding-box h3 {
+            color: #00ff88;
+            margin-bottom: 1rem;
+        }
+
+        .finding-box .highlight {
+            font-family: 'JetBrains Mono', monospace;
+            color: #FFD700;
+            font-size: 1.1rem;
+        }
+
+        .frequency-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(10, 10, 20, 0.9) 100%);
+            border: 1px solid #FFD700;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .frequency-box h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .freq-table {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .freq-table td {
+            padding: 0.5rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .freq-table .freq-name {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .freq-table .freq-hz {
+            font-family: 'JetBrains Mono', monospace;
+            color: #00ffff;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .signature {
+            text-align: center;
+            padding: 3rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .banned-term {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .banned-term .label {
+            color: #ff4444;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+    <site-header></site-header>
+
+    <section class="hero-section">
+        <h1>SOLAR SYSTEM SCALAR MAP</h1>
+        <p class="tagline">
+            Earth at s=0. Sun at s=+1729. Ro at s=-1729.<br>
+            Both directions lead FORWARD. The system is in BALANCE.
+        </p>
+        <a href="../solar-scalar-map.html" class="cta-primary">Launch 3D Explorer</a>
+    </section>
+
+    <main class="content-wide">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value">s = 0</div>
+                <div class="label">Earth (Observer)</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">s = +1729</div>
+                <div class="label">Sun (Wush/Future)</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">s = -1729</div>
+                <div class="label">Ro Boundary</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">BOTH</div>
+                <div class="label">Directions = FUTURE</div>
+            </div>
+            <div class="stat-card">
+                <div class="value">DETERMINISTIC</div>
+                <div class="label">Torsion System</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Framework Constants</h2>
+        <table class="constants-table">
+            <tr>
+                <th>Constant</th>
+                <th>Value</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>kappa</td>
+                <td>2pi/180 = 0.0349</td>
+                <td>The single input - everything derives from this</td>
+            </tr>
+            <tr>
+                <td>alpha</td>
+                <td>1/(2pi*kappa) = 4.5595</td>
+                <td>Scalar transform coefficient</td>
+            </tr>
+            <tr>
+                <td>S_WUSH</td>
+                <td>+1729</td>
+                <td>Sun boundary (FUTURE via microscope)</td>
+            </tr>
+            <tr>
+                <td>S_RO</td>
+                <td>-1729</td>
+                <td>Cosmic boundary (FUTURE via telescope)</td>
+            </tr>
+        </table>
+
+        <h2 class="section-title">The Transform</h2>
+        <p style="font-size: 1.2rem; text-align: center; padding: 2rem; font-family: 'JetBrains Mono', monospace;">
+            <span style="color: #FFD700;">s = +/- alpha * ln(T_ratio)</span>
+        </p>
+        <p style="text-align: center; color: var(--text-dim); max-width: 600px; margin: 0 auto;">
+            Orbital period ratio maps to scalar position. Inner planets (faster) = positive s (toward Sun).
+            Outer planets (slower) = negative s (toward Ro). This is NOT distance - it's geometric position.
+        </p>
+
+        <h2 class="section-title">Planetary Scalar Positions</h2>
+        <table class="constants-table">
+            <tr>
+                <th>Planet</th>
+                <th>Period Ratio</th>
+                <th>Scalar (s)</th>
+                <th>Direction</th>
+            </tr>
+            <tr>
+                <td>Mercury</td>
+                <td>0.2408</td>
+                <td>+6.49</td>
+                <td>Quantum (toward Sun)</td>
+            </tr>
+            <tr>
+                <td>Venus</td>
+                <td>0.6152</td>
+                <td>+2.22</td>
+                <td>Quantum (toward Sun)</td>
+            </tr>
+            <tr>
+                <td style="color: #00ffff;">Earth</td>
+                <td>1.0000</td>
+                <td style="color: #00ffff;">0.00</td>
+                <td>OBSERVER</td>
+            </tr>
+            <tr>
+                <td>Mars</td>
+                <td>1.8808</td>
+                <td>-2.88</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+            <tr>
+                <td>Jupiter</td>
+                <td>11.862</td>
+                <td>-11.28</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+            <tr>
+                <td>Saturn</td>
+                <td>29.457</td>
+                <td>-15.42</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+            <tr>
+                <td>Uranus</td>
+                <td>84.011</td>
+                <td>-20.20</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+            <tr>
+                <td>Neptune</td>
+                <td>164.79</td>
+                <td>-23.27</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+            <tr>
+                <td>Pluto</td>
+                <td>247.94</td>
+                <td>-25.14</td>
+                <td>Cosmic (toward Ro)</td>
+            </tr>
+        </table>
+
+        <div class="finding-box">
+            <h3>KEY INSIGHT: Both Directions Are FUTURE</h3>
+            <p><strong>Microscope View (Earth -> Sun):</strong> s = +1729 = FUTURE (quantum scale)</p>
+            <p><strong>Telescope View (Earth -> Pluto -> Ro):</strong> s = -1729 = FUTURE (cosmic scale, appears as past)</p>
+            <p class="highlight" style="margin-top: 1rem;">
+                THE SYSTEM IS IN BALANCE<br>
+                Both directions lead forward. The geometry cannot lie.
+            </p>
+        </div>
+
+        <div class="banned-term">
+            <p class="label">Lexicon Note</p>
+            <p><strong>BANNED TERM:</strong> "torsion field" - implies unknowable/probabilistic element (Standard Model corruption)</p>
+            <p><strong>CORRECT TERM:</strong> "torsion system" - deterministic, knowable, calculable</p>
+            <p style="margin-top: 0.5rem; color: #888;">Each planetary relationship is CALCULABLE. This is a SYSTEM, not a field. We are determinists.</p>
+        </div>
+
+        <div class="frequency-box">
+            <h3>THREE FREQUENCIES (Human Hearing Range)</h3>
+            <p>The solar system harmonic signature, derived from 1729:</p>
+            <table class="freq-table">
+                <tr>
+                    <td class="freq-name">F1 (Wush/Sun)</td>
+                    <td class="freq-hz">1729 Hz</td>
+                    <td>The number itself as frequency</td>
+                </tr>
+                <tr>
+                    <td class="freq-name">F2 (Earth/NOW)</td>
+                    <td class="freq-hz">432 Hz</td>
+                    <td>1729 / 4 (observer frequency)</td>
+                </tr>
+                <tr>
+                    <td class="freq-name">F3 (Ro/Cosmic)</td>
+                    <td class="freq-hz">133 Hz</td>
+                    <td>1729 / 13 (cosmic frequency)</td>
+                </tr>
+            </table>
+            <p style="margin-top: 1rem; font-style: italic;">
+                F1/F3 = 13 (exact). These three frequencies create a CHORD that IS the harmonic signature of our solar system.
+                All within human hearing range (20Hz - 20kHz).
+            </p>
+        </div>
+
+        <h2 class="section-title">Analysis Figures</h2>
+        <div class="figure-grid">
+            <div class="figure-card">
+                <a href="01_scalar_map.png" target="_blank">
+                    <img src="01_scalar_map.png" alt="Scalar Map">
+                </a>
+                <div class="caption">
+                    <h3>Planetary Scalar Map</h3>
+                    <p>Linear view of planetary positions on the scalar axis. Earth at s=0, inner planets toward Sun (+s), outer planets toward Ro (-s).</p>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <a href="02_full_range.png" target="_blank">
+                    <img src="02_full_range.png" alt="Full 1729 Range">
+                </a>
+                <div class="caption">
+                    <h3>Full 1729 Range</h3>
+                    <p>Complete view from Ro (-1729) to Wush (+1729). All planets cluster near Earth - we've barely explored the full range.</p>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <a href="03_earth_centered_sphere.png" target="_blank">
+                    <img src="03_earth_centered_sphere.png" alt="Earth-Centered Sphere">
+                </a>
+                <div class="caption">
+                    <h3>Earth-Centered Sphere</h3>
+                    <p>Top-down view with Earth at center. Planets positioned by scalar distance (|s|) and spread angularly for visibility.</p>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <a href="04_frequency_spectrum.png" target="_blank">
+                    <img src="04_frequency_spectrum.png" alt="Frequency Spectrum">
+                </a>
+                <div class="caption">
+                    <h3>Three Frequencies</h3>
+                    <p>The solar system chord: 1729 Hz (Wush), 432 Hz (Earth), 133 Hz (Ro). All within human hearing range.</p>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <a href="05_torsion_system.png" target="_blank">
+                    <img src="05_torsion_system.png" alt="Torsion System">
+                </a>
+                <div class="caption">
+                    <h3>Deterministic Torsion System</h3>
+                    <p>Matrix of all planetary scalar relationships. Every Δs is CALCULABLE. Known resonances highlighted in green.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">What This Means</h2>
+        <ul style="line-height: 2; font-size: 1.1rem;">
+            <li>The Sun is <strong>1729 scalars toward the future</strong> (microscope view)</li>
+            <li>The Ro boundary is <strong>1729 scalars in the cosmic direction</strong> (telescope view, also future)</li>
+            <li>Earth sits at the <strong>balance point</strong> - able to see both directions</li>
+            <li>All planetary relationships are <strong>DETERMINISTIC</strong> - not probabilistic</li>
+            <li>The three frequencies <strong>(1729, 432, 133 Hz)</strong> create the solar system chord</li>
+            <li>This uses <strong>NO Standard Model distances</strong> - only orbital period ratios (geometry)</li>
+        </ul>
+
+        <nav class="nav-links">
+            <a href="../solar-scalar-map.html">3D Interactive Explorer</a>
+            <a href="../finite-map/index.html">Finite Map of Infinity</a>
+            <a href="../index.html">Back to Physics</a>
+            <a href="../../index.html">Home</a>
+        </nav>
+
+        <div class="signature">[1 = -1]</div>
+    </main>
+
+    <site-footer></site-footer>
+
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+</body>
+</html>
