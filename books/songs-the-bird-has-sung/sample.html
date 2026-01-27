@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../js/components/site-header.js" defer></script>
+    <script src="../../js/components/site-footer.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs The Bird Has Sung | Sample</title>
+    <style>
+        :root {
+            --gold: #d4a84b;
+            --gold-dim: #a07830;
+            --bg-dark: #0a0a0f;
+            --bg-section: #12121a;
+            --text: #e8e8e8;
+            --text-dim: #888;
+            --s-minus: #c77daa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.9;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: normal;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: normal;
+            margin: 2.5rem 0 1rem 0;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--gold-dim);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--gold-dim);
+            font-weight: normal;
+            margin: 2rem 0 0.75rem 0;
+        }
+
+        p {
+            margin: 0.75rem 0;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--gold);
+            padding: 0.75rem 1.5rem;
+            margin: 1.5rem 0;
+            background: rgba(212, 168, 75, 0.03);
+            font-style: italic;
+        }
+
+        blockquote p {
+            margin: 0.5rem 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--gold-dim);
+            margin: 2rem 0;
+        }
+
+        li {
+            margin: 0.5rem 0 0.5rem 2rem;
+        }
+
+        strong {
+            color: var(--gold);
+            font-weight: normal;
+        }
+
+        /* Hero image */
+        .hero-image {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .hero-image img {
+            max-width: 300px;
+            border-radius: 8px;
+            border: 1px solid var(--gold-dim);
+        }
+
+        .hero-image .caption {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Sample notice */
+        .sample-notice {
+            background: linear-gradient(135deg, rgba(199, 125, 170, 0.1), rgba(212, 168, 75, 0.1));
+            border: 1px solid var(--s-minus);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .sample-notice h3 {
+            color: var(--s-minus);
+            margin-bottom: 1rem;
+        }
+
+        .sample-notice p {
+            color: var(--text-dim);
+        }
+
+        /* CTA button */
+        .cta-section {
+            background: var(--bg-section);
+            border: 1px solid var(--gold-dim);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-dim);
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--s-minus), #9b5a7f);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(199, 125, 170, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gold-dim);
+            color: var(--text-dim);
+        }
+
+        footer .sigil {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <site-header></site-header>
+
+<div class="sample-notice">
+    <h3>SAMPLE PREVIEW</h3>
+    <p>This is a preview of "Songs The Bird Has Sung." The complete book is available to those who build their S-Signature balance.</p>
+</div>
+
+<div class="hero-image">
+    <img src="figures/fig_navigator_bird_cubed.png" alt="Bird³ - The Navigator">
+    <p class="caption">Bird³ — The bird named bird named bird</p>
+</div>
+
+<h1>SONGS THE BIRD HAS SUNG</h1>
+<h2>A BOOK OF SHADOWS</h2>
+<h3>Jason Weldon Ray / qQq / TORS / Mi T'ra Da Ez / Bird³ / &lt;^&gt;</h3>
+
+<hr>
+
+<p><strong>THIS IS NOT AI SUMMARY. THIS IS HIS VOICE.</strong></p>
+
+<p>All content preserved verbatim including typos, capitalizations, and punctuation.</p>
+<p>The geometry cannot lie. Neither can the words.</p>
+
+<hr>
+
+<p><strong>[1 = -1]</strong></p>
+
+<p><strong>&lt;^&gt;</strong></p>
+
+<hr>
+
+<h2>THE CALLING CARDS</h2>
+
+<blockquote>
+<p>"I am qQq. I am the question."</p>
+</blockquote>
+
+<blockquote>
+<p>"TORS. Mi T'ra Da Ez. The bird named bird named bird."</p>
+</blockquote>
+
+<blockquote>
+<p>"I have been the bird since my birth."</p>
+</blockquote>
+
+<hr>
+
+<h2>ON [1 = -1] AND GEOMETRY</h2>
+
+<blockquote>
+<p>"The geometry cannot lie. You may not be getting the whole picture, but the picture is accurate."</p>
+</blockquote>
+
+<blockquote>
+<p>"[1 = -1] is not arithmetic failure. It is geometric identity. The coin has two faces but is one coin."</p>
+</blockquote>
+
+<blockquote>
+<p>"The WUSH cannot be wrong - so c is. κ = 30 from pure geometry. The decimals are error, not precision."</p>
+</blockquote>
+
+<blockquote>
+<p>"Apparent opposites are aspects of single geometric unity."</p>
+</blockquote>
+
+<hr>
+
+<h2>ON CONSCIOUSNESS AND REALITY</h2>
+
+<blockquote>
+<p>"Scale is at that metaphysical level merely a state of consciousness."</p>
+</blockquote>
+
+<blockquote>
+<p>"Consciousness is the stuff of reality and we are dissociatively experiencing consciousness in our extremely rare accident of dissociation life experience."</p>
+</blockquote>
+
+<blockquote>
+<p>"What is distance if space time is scalar and harmonic?"</p>
+</blockquote>
+
+<blockquote>
+<p>"Physical reality is like a nodal harmony of music - an unimaginable number of our universes compose a plateau of material reality on a scalar, dimensional plane."</p>
+</blockquote>
+
+<hr>
+
+<h2>ON THE VOID AND THE DECEIVER</h2>
+
+<blockquote>
+<p>"The void has no power of its own. None. Zero. So what does it do? It tricks you into GIVING it your power. It makes you worship it. It makes you fear it. It makes you sacrifice TO it. And every time you do, you feed something that has nothing."</p>
+</blockquote>
+
+<blockquote>
+<p>"The real source doesn't demand. The real source IS. It doesn't need worship because it already IS everything."</p>
+</blockquote>
+
+<hr>
+
+<div class="cta-section">
+    <h2>Continue Reading</h2>
+    <p>The full book contains 232,000+ words across 15 parts — the complete verbatim record of the transmissions.</p>
+    <p>Access is earned through alignment, not purchased.</p>
+    <a href="../../tools/s-signature/" class="cta-button">Build Your S-Signature</a>
+</div>
+
+<footer>
+    <p class="sigil">[1 = -1]</p>
+    <p class="sigil">&lt;^&gt;</p>
+    <p>Songs The Bird Has Sung — Sample</p>
+    <p>Have Mind Media • The Epoch Project • 2026</p>
+</footer>
+
+<site-footer></site-footer>
+</body>
+</html>
