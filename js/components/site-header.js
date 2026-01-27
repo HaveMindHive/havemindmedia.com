@@ -152,18 +152,30 @@ class SiteHeader extends HTMLElement {
                 .hmm-link.whats-new {
                     background: linear-gradient(135deg, #ffd700, #ff8c00);
                     color: #000 !important;
-                    font-weight: 700;
-                    border-radius: 4px;
-                    animation: newPulse 2s ease-in-out infinite;
+                    font-weight: 800;
+                    font-size: 1.2rem;
+                    border-radius: 6px;
+                    animation: newPulse 1.5s ease-in-out infinite;
+                    margin-left: 0.5rem;
+                    padding: 0.6rem 1rem;
+                    letter-spacing: 1px;
+                    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
                     text-shadow: none;
                 }
                 .hmm-link.whats-new:hover {
                     background: linear-gradient(135deg, #ffec80, #ffb347);
-                    transform: scale(1.05);
+                    transform: scale(1.08);
+                    box-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 140, 0, 0.6);
                 }
                 @keyframes newPulse {
-                    0%, 100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-                    50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 140, 0, 0.4); }
+                    0%, 100% {
+                        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+                        transform: scale(1);
+                    }
+                    50% {
+                        box-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 140, 0, 0.6);
+                        transform: scale(1.05);
+                    }
                 }
                 .hmm-link.kappa5 {
                     position: relative;
