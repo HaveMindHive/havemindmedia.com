@@ -464,8 +464,9 @@
         <a href="#polar">5. Polar Form</a>
         <a href="#demoivre">6. De Moivre's Theorem</a>
         <a href="#roots">7. Finding Roots</a>
-        <a href="#trig-connection">8. Trig Identities from Geometry</a>
-        <a href="#calculators">Calculators</a>
+        <a href="#trig-connection">8. Trig Identities</a>
+        <a href="#ti-calculator">9. TI Calculator</a>
+        <a href="#calculators">Online Calculators</a>
     </div>
 </div>
 
@@ -540,6 +541,64 @@ Therefore: i = √(-1)
             <em style="color: #888;">All three are the same thing described differently. Pick whichever helps you most!</em>
         </p>
     </div>
+
+    <h3>Let's Make Sure This Is Clear</h3>
+
+    <p>
+        Here's the thing that confuses everyone: the word "imaginary" is a <strong>terrible name</strong>. It was invented in the 1600s by people who didn't understand what they'd discovered.
+    </p>
+
+    <p>
+        Think about it this way. You know how we have positive and negative numbers on a number line?
+    </p>
+
+    <div class="diagram">
+    ←——————+——————+——————+——————+——————+——————+——————→
+         -3    -2    -1     0     1     2     3
+
+    Moving RIGHT = adding positive numbers
+    Moving LEFT = adding negative numbers
+    </div>
+
+    <p>
+        Now imagine you're standing at 0, and someone asks: "What direction do you go if you multiply by -1?"
+    </p>
+
+    <p>
+        The answer: <strong>you flip around</strong>. You rotate 180°.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">MULTIPLICATION BY -1 = ROTATION BY 180°</div>
+Start at 1.
+Multiply by -1.
+You get -1.
+
+That's a 180° rotation on the number line!
+
+Do it again: (-1) × (-1) = 1
+Another 180°... you're back where you started (360° total).
+    </div>
+
+    <p>
+        So here's the question that leads to i:
+    </p>
+
+    <div class="key-insight">
+        <div class="label">THE QUESTION</div>
+        <p style="margin-bottom: 0;">
+            <strong>If multiplying by -1 rotates you 180°...</strong><br><br>
+            What number rotates you only <strong>90°</strong>?<br><br>
+            Call that number <strong>i</strong>.<br><br>
+            If you rotate 90° twice (multiply by i twice), you should rotate 180° total.<br>
+            So i × i should equal -1.<br><br>
+            Therefore: <strong>i² = -1</strong>
+        </p>
+    </div>
+
+    <p>
+        That's it. That's the whole idea. The number i is the "halfway point" of -1 in terms of rotation. It's not imaginary — it's just pointing in a direction the number line doesn't show.
+    </p>
 </div>
 
 <!-- SECTION 2: THE COMPLEX PLANE -->
@@ -594,6 +653,53 @@ Example: z = 3 + 2i
             The "imaginary" axis is vertical (like y).<br><br>
             There's nothing mysterious here. It's just coordinates.
         </p>
+    </div>
+
+    <h3>Why This Matters — Really Understanding It</h3>
+
+    <p>
+        Let me explain this more thoroughly because it's the foundation of everything.
+    </p>
+
+    <p>
+        When you learned about coordinates in algebra, you learned that any point on a plane can be described by two numbers: (x, y). Go x units right (or left if negative), then y units up (or down if negative).
+    </p>
+
+    <p>
+        Complex numbers do <em>exactly the same thing</em>, just with different notation:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">COORDINATES VS COMPLEX NUMBERS</div>
+Regular coordinates:     (3, 4)
+Complex number:          3 + 4i
+
+These represent THE SAME POINT on a plane!
+
+The only difference is notation:
+  (x, y)  vs  x + yi
+
+The "i" just marks which number is the vertical component.
+    </div>
+
+    <p>
+        So why use complex number notation at all? Because it lets us do something amazing: we can <strong>multiply</strong> points together, and the result has geometric meaning.
+    </p>
+
+    <p>
+        You can't easily multiply (3, 4) × (1, 2) using coordinate notation. But with complex numbers:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">MULTIPLYING POINTS</div>
+(3 + 4i)(1 + 2i) = 3 + 6i + 4i + 8i²
+                 = 3 + 6i + 4i - 8    (since i² = -1)
+                 = -5 + 10i
+
+The point (3, 4) times the point (1, 2) equals the point (-5, 10).
+
+And as you'll see, this multiplication has geometric meaning:
+it combines rotations and scaling!
     </div>
 
     <h3>Distance from Origin: The Modulus</h3>
@@ -712,6 +818,68 @@ Multiplying by i rotates counterclockwise:
         </p>
     </div>
 
+    <h3>Let's Walk Through This Step by Step</h3>
+
+    <p>
+        This is so important that I want to make absolutely sure it's clear. Let's trace through what happens when we multiply by i, very slowly.
+    </p>
+
+    <div class="step-box">
+        <span class="step-num">1</span>
+        <strong>Start with the number 1</strong><br><br>
+        On the complex plane, 1 is located at the point (1, 0).<br>
+        It's sitting on the real axis, one unit to the right of the origin.<br>
+        Its angle from the positive real axis is 0°.
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">2</span>
+        <strong>Multiply by i: 1 × i = i</strong><br><br>
+        Now we're at the point i, which is (0, 1) on the complex plane.<br>
+        That's on the imaginary axis, one unit UP from the origin.<br>
+        Its angle is now 90°.<br><br>
+        <em style="color: #50c878;">We rotated 90° counterclockwise!</em>
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">3</span>
+        <strong>Multiply by i again: i × i = i² = -1</strong><br><br>
+        Now we're at -1, which is (-1, 0) on the complex plane.<br>
+        That's on the real axis, one unit to the LEFT of the origin.<br>
+        Its angle is now 180°.<br><br>
+        <em style="color: #50c878;">We rotated another 90°! Total rotation: 180°</em>
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">4</span>
+        <strong>Multiply by i again: -1 × i = -i</strong><br><br>
+        Now we're at -i, which is (0, -1) on the complex plane.<br>
+        That's on the imaginary axis, one unit DOWN from the origin.<br>
+        Its angle is now 270°.<br><br>
+        <em style="color: #50c878;">Another 90°! Total rotation: 270°</em>
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">5</span>
+        <strong>Multiply by i one more time: -i × i = -i² = -(-1) = 1</strong><br><br>
+        We're back at 1!<br>
+        Total rotation: 360° = full circle.<br><br>
+        <em style="color: #50c878;">This is why i⁴ = 1. Four 90° rotations = 360° = back to start.</em>
+    </div>
+
+    <div class="geometry-box">
+        <div class="label">THE DEEP TRUTH</div>
+        <p style="margin-bottom: 0;">
+            <strong>Multiplying by i IS rotation by 90°.</strong><br><br>
+            This isn't a metaphor. It's not "like" rotation. It literally IS rotation.<br><br>
+            When your textbook says i² = -1, what it's really saying is:<br>
+            "Two 90° rotations equals one 180° rotation."<br><br>
+            When it says i⁴ = 1, it means:<br>
+            "Four 90° rotations brings you back to where you started."<br><br>
+            <strong>Complex multiplication is rotation. That's the whole secret.</strong>
+        </p>
+    </div>
+
     <h3>General Multiplication Rule</h3>
 
     <div class="formula-box">
@@ -792,7 +960,64 @@ Multiplication = Scale + Rotate
         </p>
     </div>
 
-    <h3>What Does This Mean?</h3>
+    <h3>What Does This Mean? — A Thorough Explanation</h3>
+
+    <p>
+        Euler's formula looks like magic. An exponential function equals a combination of sine and cosine? What?
+    </p>
+
+    <p>
+        Let me explain what's actually happening here.
+    </p>
+
+    <p>
+        You know how we said multiplying by i rotates something 90°? Well, e^(iθ) is a generalization of that idea. It rotates by ANY angle θ.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">THE MEANING OF e^(iθ)</div>
+e^(iθ) = "the point you get when you start at 1 and rotate by angle θ"
+
+When θ = 0:     You haven't rotated at all. You're still at 1.
+When θ = 90°:   You've rotated 90°. You're at i.
+When θ = 180°:  You've rotated 180°. You're at -1.
+When θ = 270°:  You've rotated 270°. You're at -i.
+When θ = 360°:  Full rotation. You're back at 1.
+
+The e^(iθ) notation is just a compact way to write "rotate by θ".
+    </div>
+
+    <p>
+        Now, where does cos θ + i sin θ come in?
+    </p>
+
+    <p>
+        Think about it: if you rotate by angle θ starting from 1 on the unit circle, where do you end up?
+    </p>
+
+    <ul>
+        <li>Your horizontal position (real part) is <strong>cos θ</strong></li>
+        <li>Your vertical position (imaginary part) is <strong>sin θ</strong></li>
+    </ul>
+
+    <p>
+        That's literally the definition of sine and cosine from the unit circle! So the point you land on is:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">WHY e^(iθ) = cos θ + i sin θ</div>
+After rotating θ from the point 1:
+
+  Horizontal position = cos θ  (that's what cosine MEANS)
+  Vertical position = sin θ    (that's what sine MEANS)
+
+So the point is: cos θ + i sin θ
+
+Therefore: e^(iθ) = cos θ + i sin θ
+
+This isn't a weird coincidence.
+Euler's formula is SAYING that e^(iθ) traces out the unit circle!
+    </div>
 
     <div class="diagram">
         The point e^(iθ) lives on the unit circle
@@ -844,6 +1069,39 @@ sin θ = imaginary part (y-coordinate)
             It says: "Rotate halfway around the circle and you're at -1."
         </p>
     </div>
+
+    <h3>Why Does The "e" Show Up?</h3>
+
+    <p>
+        You might be wondering: why e? Where does Euler's number (2.71828...) come from in a formula about rotation?
+    </p>
+
+    <p>
+        The deep answer involves calculus (specifically, the Taylor series for e^x, sin x, and cos x all matching up perfectly). But here's an intuitive way to think about it:
+    </p>
+
+    <div class="key-insight">
+        <div class="label">INTUITIVE EXPLANATION</div>
+        <p style="margin-bottom: 0;">
+            The number e shows up whenever something grows in a "natural" way — compound interest, population growth, radioactive decay.
+            <br><br>
+            It turns out that <strong>smooth rotation</strong> is also a kind of natural growth... just in a circle instead of a line.
+            <br><br>
+            When you rotate smoothly through angle θ, you're doing the circular version of exponential growth. That's why e^(iθ) describes it.
+            <br><br>
+            The "i" in the exponent is what turns straight-line exponential growth into circular motion. <strong>That's the whole magic of i — it bends the real line into a circle.</strong>
+        </p>
+    </div>
+
+    <p>
+        For now, you don't need to fully understand WHERE Euler's formula comes from. You need to know:
+    </p>
+
+    <ol>
+        <li><strong>What it says:</strong> e^(iθ) is the point on the unit circle at angle θ</li>
+        <li><strong>How to use it:</strong> Convert between polar form (angle) and rectangular form (a + bi)</li>
+        <li><strong>Why it's useful:</strong> Multiplication and powers become easy in exponential form</li>
+    </ol>
 </div>
 
 <!-- SECTION 5: POLAR FORM -->
@@ -1225,10 +1483,188 @@ cos²θ = (1 + cos 2θ)/2
     </div>
 </div>
 
+<!-- TI CALCULATOR SECTION -->
+<div class="section" id="ti-calculator">
+    <h2>9. Using Your TI Calculator</h2>
+
+    <p>
+        Your TI calculator can do almost all of this for you. Here's exactly how to use it for complex number problems.
+    </p>
+
+    <h3>Setting Up Your Calculator</h3>
+
+    <div class="step-box">
+        <span class="step-num">1</span>
+        <strong>Access Complex Number Mode</strong><br><br>
+        Press <code>MODE</code><br>
+        Scroll down to the line that shows <code>REAL</code><br>
+        Change it to <code>a+bi</code> (rectangular) or <code>re^θi</code> (polar)<br>
+        Press <code>2nd</code> + <code>MODE</code> (QUIT) to exit
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">2</span>
+        <strong>Where is the "i" key?</strong><br><br>
+        Press <code>2nd</code> + <code>.</code> (the decimal point)<br>
+        This types the imaginary unit i
+    </div>
+
+    <div class="step-box">
+        <span class="step-num">3</span>
+        <strong>Set Angle Mode</strong><br><br>
+        Press <code>MODE</code><br>
+        Choose <code>DEGREE</code> or <code>RADIAN</code> depending on your problem<br>
+        <em style="color: #ffa500;">Most AP problems use radians, but degrees are easier to visualize!</em>
+    </div>
+
+    <h3>TI Calculator Operations Chart</h3>
+
+    <table>
+        <tr>
+            <th>What You Want</th>
+            <th>What To Type</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td>Enter complex number</td>
+            <td><code>a + b</code> <code>2nd</code> <code>.</code></td>
+            <td><code>3+4i</code> → type: 3+4 2nd .</td>
+        </tr>
+        <tr>
+            <td>Multiply complex</td>
+            <td>Just use × like normal</td>
+            <td><code>(3+4i)(1+2i)</code></td>
+        </tr>
+        <tr>
+            <td>Power of complex</td>
+            <td>Use ^ key</td>
+            <td><code>(1+i)^8</code></td>
+        </tr>
+        <tr>
+            <td>Get magnitude |z|</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>abs(</code></td>
+            <td><code>abs(3+4i)</code> → 5</td>
+        </tr>
+        <tr>
+            <td>Get angle θ</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>angle(</code></td>
+            <td><code>angle(1+i)</code> → 45° or π/4</td>
+        </tr>
+        <tr>
+            <td>Rectangular to Polar</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>►Polar</code></td>
+            <td><code>3+4i ►Polar</code> → 5e^(0.927i)</td>
+        </tr>
+        <tr>
+            <td>Polar to Rectangular</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>►Rect</code></td>
+            <td><code>5e^(π/4 i) ►Rect</code> → 3.54+3.54i</td>
+        </tr>
+        <tr>
+            <td>Real part only</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>real(</code></td>
+            <td><code>real(3+4i)</code> → 3</td>
+        </tr>
+        <tr>
+            <td>Imaginary part only</td>
+            <td><code>MATH</code> → <code>CPX</code> → <code>imag(</code></td>
+            <td><code>imag(3+4i)</code> → 4</td>
+        </tr>
+    </table>
+
+    <h3>Example Walkthroughs</h3>
+
+    <div class="problem-box">
+        <div class="label">CALCULATOR EXAMPLE 1: Convert 3 + 4i to polar form</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">TI CALCULATOR STEPS</div>
+        <p>
+            <strong>Method 1: Get r and θ separately</strong><br>
+            1. Type: <code>abs(3+4i)</code> → press ENTER → shows <strong>5</strong> (that's r)<br>
+            2. Type: <code>angle(3+4i)</code> → press ENTER → shows <strong>53.13°</strong> or <strong>0.927 rad</strong> (that's θ)<br><br>
+
+            <strong>Method 2: Convert directly</strong><br>
+            1. Type: <code>3+4i</code><br>
+            2. Press <code>MATH</code> → scroll to <code>CPX</code> → select <code>►Polar</code><br>
+            3. Press ENTER → shows <strong>5e^(0.927i)</strong>
+        </p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">CALCULATOR EXAMPLE 2: Calculate (1 + i)^8</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">TI CALCULATOR STEPS</div>
+        <p>
+            1. Make sure you're in a+bi mode (MODE → a+bi)<br>
+            2. Type: <code>(1+i)^8</code><br>
+            3. Press ENTER → shows <strong>16</strong><br><br>
+
+            That's it! The calculator handles the complex arithmetic automatically.
+        </p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">CALCULATOR EXAMPLE 3: Find the 4th roots of 16</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">TI CALCULATOR STEPS — FINDING ALL ROOTS</div>
+        <p>
+            The calculator only gives ONE root. To find all 4, you need to do some work:<br><br>
+
+            <strong>Step 1: Find the first root</strong><br>
+            Type: <code>16^(1/4)</code> → shows <strong>2</strong><br>
+            (This is root w₀ at angle 0°)<br><br>
+
+            <strong>Step 2: Calculate remaining roots using the formula</strong><br>
+            The roots are spaced 360°/4 = 90° apart<br><br>
+
+            w₁ at 90°: Type <code>2*e^(π/2*i)</code> → shows <strong>2i</strong><br>
+            w₂ at 180°: Type <code>2*e^(π*i)</code> → shows <strong>-2</strong><br>
+            w₃ at 270°: Type <code>2*e^(3π/2*i)</code> → shows <strong>-2i</strong><br><br>
+
+            <strong>The 4 fourth roots of 16 are: 2, 2i, -2, -2i</strong>
+        </p>
+    </div>
+
+    <div class="warning-box">
+        <div class="label">CALCULATOR GOTCHAS</div>
+        <p style="margin-bottom: 0;">
+            <strong>1. Angle in wrong mode</strong><br>
+            If you're in DEGREE mode but expecting radians (or vice versa), your answers will be wrong. Always check MODE first!<br><br>
+
+            <strong>2. Only one root shown</strong><br>
+            For n-th roots, the calculator only gives the principal root. You must calculate the others yourself using the 360°/n spacing.<br><br>
+
+            <strong>3. Round-off errors</strong><br>
+            You might see answers like <code>1.999999999+0.0000001i</code> instead of just 2. The calculator has tiny rounding errors. Recognize that this means 2.
+        </p>
+    </div>
+
+    <h3>Quick Reference Card</h3>
+
+    <div class="formula-box">
+        <div class="title">TI CALCULATOR COMPLEX NUMBER MENU</div>
+MATH → CPX gives you:
+
+1: conj(     - Complex conjugate of z
+2: real(     - Real part of z
+3: imag(     - Imaginary part of z
+4: angle(    - Angle θ in current mode (degrees or radians)
+5: abs(      - Magnitude |z| = r
+6: ►Rect     - Convert to a+bi form
+7: ►Polar    - Convert to re^(θi) form
+    </div>
+</div>
+
 <!-- CALCULATORS -->
 <div class="section" id="calculators">
-    <h2>Calculators</h2>
-    <p class="quiet">Tools to check your work.</p>
+    <h2>Online Calculators</h2>
+    <p class="quiet">Tools to check your work when you don't have your TI-84.</p>
 
     <div class="calc-box">
         <div class="label">RECTANGULAR → POLAR</div>
