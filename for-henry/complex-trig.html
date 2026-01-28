@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Complex Trigonometry — The Geometry Behind It</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a10;
+            color: #d8d8d8;
+            line-height: 1.8;
+            padding: 0;
+            margin: 0;
+        }
+        .private-banner {
+            background: rgba(255,50,50,0.15);
+            border-bottom: 1px solid rgba(255,50,50,0.3);
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #ff6b6b;
+        }
+        .hero {
+            background: linear-gradient(180deg, #12121a 0%, #0a0a10 100%);
+            padding: 50px 25px 35px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .hero h1 {
+            font-size: 1.5rem;
+            color: #e94560;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        .hero .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .back-link {
+            display: inline-block;
+            color: #6495ed;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+        }
+        .framework-box {
+            background: linear-gradient(135deg, rgba(233,69,96,0.15) 0%, rgba(180,50,80,0.08) 100%);
+            border: 1px solid rgba(233,69,96,0.4);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 20px;
+            text-align: center;
+        }
+        .framework-box .title {
+            color: #e94560;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .framework-box code {
+            font-family: 'SF Mono', 'Menlo', monospace;
+            color: #d4af37;
+        }
+        .toc {
+            background: rgba(255,255,255,0.02);
+            padding: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .toc h2 {
+            font-size: 0.75rem;
+            color: #555;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .unit-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 20px 0;
+        }
+        .unit-nav a {
+            background: rgba(233,69,96,0.15);
+            color: #e94560;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .unit-nav a:hover {
+            background: rgba(233,69,96,0.25);
+        }
+        .section {
+            padding: 40px 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .section h2 {
+            font-size: 1.3rem;
+            color: #e94560;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            font-size: 1.1rem;
+            color: #6495ed;
+            font-weight: 500;
+            margin: 25px 0 15px;
+        }
+        p {
+            margin-bottom: 18px;
+        }
+        .key-insight {
+            background: linear-gradient(135deg, rgba(233,69,96,0.12) 0%, rgba(180,50,80,0.08) 100%);
+            border: 1px solid rgba(233,69,96,0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .key-insight .label {
+            font-size: 0.7rem;
+            color: #e94560;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .formula-box {
+            background: rgba(0,0,0,0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'SF Mono', 'Menlo', monospace;
+            font-size: 0.9rem;
+            color: #ddd;
+            overflow-x: auto;
+        }
+        .formula-box .title {
+            color: #e94560;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-family: -apple-system, sans-serif;
+        }
+        .geometry-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.12) 0%, rgba(180,140,40,0.08) 100%);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .geometry-box .label {
+            font-size: 0.7rem;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .step-box {
+            background: rgba(100,149,237,0.08);
+            border-left: 3px solid #6495ed;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .step-box .step-num {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #6495ed;
+            color: #000;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-right: 10px;
+        }
+        .problem-box {
+            background: rgba(255,165,0,0.08);
+            border: 1px solid rgba(255,165,0,0.25);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .problem-box .label {
+            font-size: 0.7rem;
+            color: #ffa500;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .solution-box {
+            background: rgba(80,200,120,0.08);
+            border: 1px solid rgba(80,200,120,0.25);
+            border-radius: 10px;
+            padding: 25px;
+            margin: 15px 0;
+        }
+        .solution-box .label {
+            font-size: 0.7rem;
+            color: #50c878;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .diagram {
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+            padding: 25px 15px;
+            margin: 25px 0;
+            text-align: center;
+            font-family: 'SF Mono', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            line-height: 1.5;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .magic-box {
+            background: linear-gradient(135deg, rgba(147,112,219,0.12) 0%, rgba(100,80,180,0.08) 100%);
+            border: 1px solid rgba(147,112,219,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .magic-box .label {
+            font-size: 0.7rem;
+            color: #9370db;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .calc-box {
+            background: linear-gradient(135deg, rgba(0,191,255,0.12) 0%, rgba(0,140,200,0.08) 100%);
+            border: 1px solid rgba(0,191,255,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .calc-box .label {
+            font-size: 0.7rem;
+            color: #00bfff;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .calc-box input, .calc-box select {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 1rem;
+            margin: 8px 0;
+            font-family: 'SF Mono', monospace;
+        }
+        .calc-box input:focus, .calc-box select:focus {
+            outline: none;
+            border-color: #00bfff;
+        }
+        .calc-box button {
+            width: 100%;
+            background: linear-gradient(135deg, #00bfff 0%, #0080ff 100%);
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .calc-box .result {
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: 'SF Mono', monospace;
+            color: #50c878;
+            min-height: 50px;
+        }
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #fff;
+        }
+        .gold { color: #d4af37; }
+        .green { color: #50c878; }
+        .blue { color: #6495ed; }
+        .red { color: #e94560; }
+        .purple { color: #9370db; }
+        .quiet {
+            color: #666;
+            font-size: 0.85rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        th {
+            color: #e94560;
+            font-weight: 500;
+        }
+        @media (max-width: 400px) {
+            html { font-size: 15px; }
+            .section { padding: 30px 18px; }
+            .diagram { font-size: 0.7rem; padding: 15px 10px; }
+        }
+
+        /* iPhone-specific optimizations */
+        @media (max-width: 480px) {
+            html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+            body { padding-bottom: 60px; }
+
+            .hero { padding: 40px 20px 30px; }
+            .hero h1 { font-size: 1.4rem; }
+
+            .framework-box { padding: 20px 18px; margin: 20px 15px; }
+            .section { padding: 35px 18px; }
+
+            /* Larger touch targets for navigation */
+            .unit-nav a {
+                padding: 12px 16px;
+                font-size: 0.85rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Bigger calculator inputs for touch */
+            .calc-box input, .calc-box select {
+                padding: 16px 15px;
+                font-size: 16px; /* Prevents iOS zoom on focus */
+                min-height: 50px;
+            }
+
+            .calc-box button {
+                padding: 18px;
+                font-size: 1.1rem;
+                min-height: 54px;
+            }
+
+            /* Better spacing for readability */
+            p { margin-bottom: 20px; }
+            .formula-box { padding: 18px 15px; font-size: 0.85rem; }
+            .key-insight, .geometry-box { padding: 18px; }
+
+            /* Stack tables vertically */
+            table { font-size: 0.8rem; }
+            th, td { padding: 10px 8px; }
+
+            /* Easier scrolling on diagrams */
+            .diagram {
+                font-size: 0.65rem;
+                padding: 18px 12px;
+                touch-action: pan-x pan-y;
+            }
+
+            /* Back link more tappable */
+            .back-link {
+                padding: 12px 18px;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+        }
+
+        /* Standard textbook method boxes */
+        .textbook-box {
+            background: linear-gradient(135deg, rgba(100,149,237,0.12) 0%, rgba(70,100,200,0.08) 100%);
+            border: 1px solid rgba(100,149,237,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .textbook-box .label {
+            font-size: 0.7rem;
+            color: #6495ed;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        /* Memory trick boxes */
+        .memory-box {
+            background: linear-gradient(135deg, rgba(255,165,0,0.12) 0%, rgba(200,120,0,0.08) 100%);
+            border: 1px solid rgba(255,165,0,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .memory-box .label {
+            font-size: 0.7rem;
+            color: #ffa500;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        /* Common mistake warning boxes */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(231,76,60,0.12) 0%, rgba(180,50,50,0.08) 100%);
+            border: 1px solid rgba(231,76,60,0.3);
+            border-radius: 10px;
+            padding: 22px;
+            margin: 25px 0;
+        }
+        .warning-box .label {
+            font-size: 0.7rem;
+            color: #e74c3c;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="private-banner">
+    PRIVATE — For Henry Only
+</div>
+
+<div class="hero">
+    <a href="index.html" class="back-link">← Back to Letter</a>
+    <h1>COMPLEX TRIGONOMETRY</h1>
+    <p class="subtitle">The Geometry That Makes It Make Sense</p>
+</div>
+
+<div class="framework-box">
+    <div class="title">THE SECRET NOBODY TELLS YOU</div>
+    <p style="margin-bottom: 10px;">
+        <strong>Complex numbers are not "imaginary."</strong><br>
+        They are <span class="gold">rotations</span>.
+    </p>
+    <p style="font-size: 0.9rem; color: #888; margin-bottom: 0;">
+        When you multiply by <code>i</code>, you rotate 90°.<br>
+        That's it. That's the whole secret.<br>
+        Everything else follows from this one fact.
+    </p>
+</div>
+
+<div class="toc">
+    <h2>SECTIONS</h2>
+    <div class="unit-nav">
+        <a href="#why-complex">1. Why Complex?</a>
+        <a href="#the-plane">2. The Complex Plane</a>
+        <a href="#rotation">3. Multiplication = Rotation</a>
+        <a href="#euler">4. Euler's Formula</a>
+        <a href="#polar">5. Polar Form</a>
+        <a href="#demoivre">6. De Moivre's Theorem</a>
+        <a href="#roots">7. Finding Roots</a>
+        <a href="#trig-connection">8. Trig Identities from Geometry</a>
+        <a href="#calculators">Calculators</a>
+    </div>
+</div>
+
+<!-- SECTION 1: WHY COMPLEX -->
+<div class="section" id="why-complex">
+    <h2>1. Why Do Complex Numbers Exist?</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD TEXTBOOK DEFINITION</div>
+        <p style="margin-bottom: 10px;">
+            <strong>Complex numbers</strong> extend the real numbers by including the imaginary unit i, where i² = -1.
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">
+            A complex number has the form <code>z = a + bi</code> where a and b are real numbers.<br>
+            • a is the "real part"<br>
+            • b is the "imaginary part"
+        </p>
+    </div>
+
+    <p>
+        Here's a question that broke mathematics for 300 years:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">THE IMPOSSIBLE EQUATION</div>
+x² = -1
+
+What number, multiplied by itself, gives -1?
+
+Positive × Positive = Positive
+Negative × Negative = Positive
+
+Neither works. There's no real number that does this.
+    </div>
+
+    <p>
+        Mathematicians said "fine, let's <em>invent</em> one" and called it <strong>i</strong>.
+    </p>
+
+    <div class="formula-box">
+        <div class="title">DEFINITION</div>
+i² = -1
+
+Therefore: i = √(-1)
+    </div>
+
+    <p>
+        Everyone called it "imaginary" because they thought it was a trick. A cheat. Not real.
+    </p>
+
+    <p>
+        <strong>They were wrong.</strong>
+    </p>
+
+    <div class="geometry-box">
+        <div class="label">THE TRUTH — WHY IT ACTUALLY MAKES SENSE</div>
+        <p style="margin-bottom: 0;">
+            <code>i</code> is not imaginary. It's a <strong>direction</strong>.<br><br>
+            Real numbers live on a line (left-right).<br>
+            <code>i</code> points in a NEW direction (up-down).<br><br>
+            Together they make a <strong>plane</strong> — the complex plane.<br>
+            And on that plane, multiplication becomes <strong>rotation</strong>.
+        </p>
+    </div>
+
+    <div class="memory-box">
+        <div class="label">THREE WAYS TO THINK ABOUT i</div>
+        <p style="margin-bottom: 0;">
+            <strong>1. The Algebraic Way:</strong> i is defined as √(-1), and i² = -1<br><br>
+            <strong>2. The Coordinate Way:</strong> i represents the vertical direction (like y on a graph)<br><br>
+            <strong>3. The Rotation Way:</strong> Multiplying by i rotates something 90° counterclockwise<br><br>
+            <em style="color: #888;">All three are the same thing described differently. Pick whichever helps you most!</em>
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 2: THE COMPLEX PLANE -->
+<div class="section" id="the-plane">
+    <h2>2. The Complex Plane</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD APPROACH</div>
+        <p style="margin-bottom: 0;">
+            The <strong>complex plane</strong> (or Argand plane) represents complex numbers geometrically:<br><br>
+            • Horizontal axis = real part (Re)<br>
+            • Vertical axis = imaginary part (Im)<br>
+            • Each complex number z = a + bi corresponds to point (a, b)<br><br>
+            <em style="color: #888;">Your textbook probably calls this the "Argand diagram" — it's just a coordinate system where x = real, y = imaginary.</em>
+        </p>
+    </div>
+
+    <div class="diagram">
+                    Imaginary axis (i)
+                         ↑
+                         |
+                    2i   |
+                         |
+                    i    |    ← z = 3 + 2i is HERE
+                         |       (go 3 right, 2 up)
+    ←——————————————————————+——————————————————————→ Real axis
+        -3    -2    -1    |    1    2    3
+                         |
+                   -i    |
+                         |
+                   -2i   |
+                         ↓
+    </div>
+
+    <div class="formula-box">
+        <div class="title">COMPLEX NUMBER ANATOMY</div>
+z = a + bi
+
+a = real part      (horizontal position)
+b = imaginary part (vertical position)
+
+Example: z = 3 + 2i
+  Real part: 3 (go 3 units right)
+  Imaginary part: 2 (go 2 units up)
+    </div>
+
+    <div class="key-insight">
+        <div class="label">KEY INSIGHT</div>
+        <p style="margin-bottom: 0;">
+            <strong>A complex number is just a point on a 2D plane.</strong><br><br>
+            The "real" axis is horizontal (like x).<br>
+            The "imaginary" axis is vertical (like y).<br><br>
+            There's nothing mysterious here. It's just coordinates.
+        </p>
+    </div>
+
+    <h3>Distance from Origin: The Modulus</h3>
+
+    <div class="formula-box">
+        <div class="title">MODULUS (MAGNITUDE)</div>
+|z| = |a + bi| = √(a² + b²)
+
+This is just the Pythagorean theorem!
+The distance from the origin to point (a, b).
+
+Example: |3 + 4i| = √(9 + 16) = √25 = 5
+    </div>
+
+    <h3>Angle from Real Axis: The Argument</h3>
+
+    <div class="formula-box">
+        <div class="title">ARGUMENT (ANGLE)</div>
+arg(z) = θ = arctan(b/a)
+
+The angle measured counterclockwise from the positive real axis.
+
+Example: arg(1 + i) = arctan(1/1) = 45° = π/4
+    </div>
+
+    <div class="warning-box">
+        <div class="label">COMMON MISTAKE — QUADRANTS</div>
+        <p style="margin-bottom: 0;">
+            <strong>arctan(b/a) doesn't always give the right angle!</strong><br><br>
+            • In Q2 and Q3 (when a &lt; 0), add π (or 180°) to your answer<br>
+            • In Q4, you might get a negative angle — that's fine, or add 2π<br><br>
+            <strong>Better approach:</strong> Most calculators have atan2(b, a) which handles all quadrants automatically. On tests, sketch the point first to check which quadrant you're in!
+        </p>
+    </div>
+
+    <div class="diagram">
+        z = a + bi
+           ↗
+          /|
+         / |
+      r /  | b (imaginary part)
+       /   |
+      / θ  |
+     +—————+———→
+        a (real part)
+
+r = |z| = √(a² + b²)    ← distance
+θ = arg(z) = arctan(b/a) ← angle
+    </div>
+</div>
+
+<!-- SECTION 3: ROTATION -->
+<div class="section" id="rotation">
+    <h2>3. Multiplication = Rotation</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD APPROACH — FOIL METHOD</div>
+        <p style="margin-bottom: 10px;">
+            To multiply complex numbers algebraically, use FOIL (First, Outer, Inner, Last):
+        </p>
+        <p style="margin-bottom: 0; font-family: 'SF Mono', monospace; font-size: 0.9rem;">
+            (a + bi)(c + di) = ac + adi + bci + bdi²<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= ac + adi + bci - bd &nbsp;&nbsp;(since i² = -1)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= (ac - bd) + (ad + bc)i
+        </p>
+    </div>
+
+    <p>
+        The FOIL method works, but there's a deeper way to see what's happening geometrically.
+    </p>
+
+    <div class="geometry-box">
+        <div class="label">THE BIG REVEAL</div>
+        <p style="margin-bottom: 10px;">
+            <strong>When you multiply by <code>i</code>, you rotate 90° counterclockwise.</strong>
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #888;">
+            Watch what happens:
+        </p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">MULTIPLYING BY i</div>
+Start with: 1 (pointing right on real axis)
+
+1 × i = i         (now pointing UP — rotated 90°)
+i × i = i² = -1   (now pointing LEFT — rotated another 90°)
+-1 × i = -i       (now pointing DOWN — rotated another 90°)
+-i × i = -i² = 1  (back to pointing RIGHT — full 360°!)
+
+Four multiplications by i = full rotation back to start
+    </div>
+
+    <div class="diagram">
+              i (90°)
+              ↑
+              |
+              |
+    -1 ←——————+——————→ 1
+   (180°)     |       (0°)
+              |
+              ↓
+             -i (270°)
+
+Multiplying by i rotates counterclockwise:
+  1 → i → -1 → -i → 1 → ...
+    </div>
+
+    <div class="key-insight">
+        <div class="label">THIS IS WHY i² = -1</div>
+        <p style="margin-bottom: 0;">
+            <strong>Two 90° rotations = 180° rotation.</strong><br><br>
+            Rotating 180° from +1 lands you at -1.<br>
+            That's why i × i = -1.<br><br>
+            It's not a weird algebraic trick. It's geometry.
+        </p>
+    </div>
+
+    <h3>General Multiplication Rule</h3>
+
+    <div class="formula-box">
+        <div class="title">WHEN YOU MULTIPLY COMPLEX NUMBERS</div>
+z₁ × z₂ = ?
+
+<span class="green">Magnitudes MULTIPLY:</span>
+|z₁ × z₂| = |z₁| × |z₂|
+
+<span class="blue">Angles ADD:</span>
+arg(z₁ × z₂) = arg(z₁) + arg(z₂)
+
+Multiplication = Scale + Rotate
+    </div>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE</div>
+        <p style="margin-bottom: 0;">
+            Multiply: (1 + i) × (1 + i)
+        </p>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION — ALGEBRAIC</div>
+        <p>
+            (1 + i)(1 + i) = 1 + i + i + i²<br>
+            = 1 + 2i + (-1)<br>
+            = <strong>2i</strong>
+        </p>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION — GEOMETRIC</div>
+        <p>
+            z = 1 + i has:<br>
+            • Magnitude: |1 + i| = √2<br>
+            • Angle: 45°<br><br>
+            Squaring it:<br>
+            • New magnitude: √2 × √2 = 2<br>
+            • New angle: 45° + 45° = 90°<br><br>
+            A number with magnitude 2 at angle 90° is <strong>2i</strong>. Same answer!
+        </p>
+    </div>
+
+    <div class="memory-box">
+        <div class="label">WHICH METHOD TO USE?</div>
+        <p style="margin-bottom: 0;">
+            <strong>For quick calculations:</strong> FOIL (algebraic)<br>
+            <strong>For powers and understanding:</strong> Geometric (multiply magnitudes, add angles)<br>
+            <strong>On tests:</strong> Check your answer using BOTH methods — they should match!<br><br>
+            <em style="color: #888;">The geometric method becomes essential when you get to De Moivre's theorem and roots.</em>
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 4: EULER'S FORMULA -->
+<div class="section" id="euler">
+    <h2>4. Euler's Formula — The Bridge</h2>
+
+    <div class="textbook-box">
+        <div class="label">WHAT YOUR TEXTBOOK SAYS</div>
+        <p style="margin-bottom: 10px;">
+            <strong>Euler's Formula:</strong> e<sup>iθ</sup> = cos θ + i sin θ
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #888;">
+            This formula connects exponential functions with trigonometric functions. The proof involves Taylor series expansions (you'll see that in calculus). For now, just know it's true and incredibly useful.
+        </p>
+    </div>
+
+    <div class="magic-box">
+        <div class="label">THE MOST BEAUTIFUL EQUATION IN MATHEMATICS</div>
+        <p style="margin-bottom: 10px; font-size: 1.2rem; text-align: center;">
+            <code style="color: #d4af37;">e<sup>iθ</sup> = cos θ + i sin θ</code>
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #888; text-align: center;">
+            This connects exponentials, trig functions, and complex numbers.<br>
+            All three are secretly the same thing: <strong>rotation</strong>.
+        </p>
+    </div>
+
+    <h3>What Does This Mean?</h3>
+
+    <div class="diagram">
+        The point e^(iθ) lives on the unit circle
+
+                    i
+                    ↑
+                    |   • ← e^(iθ) = cos θ + i sin θ
+                    |  /|
+                    | / |
+                    |/θ | sin θ
+             ———————+———+———→ 1
+                    |cos θ
+                    |
+                    ↓
+
+e^(iθ) is the point at angle θ on the unit circle
+cos θ = real part (x-coordinate)
+sin θ = imaginary part (y-coordinate)
+    </div>
+
+    <div class="key-insight">
+        <div class="label">TRANSLATION</div>
+        <p style="margin-bottom: 0;">
+            <code>e<sup>iθ</sup></code> means: <strong>"rotate by angle θ"</strong><br><br>
+            <code>cos θ</code> = where you are horizontally after rotating<br>
+            <code>sin θ</code> = where you are vertically after rotating<br><br>
+            <strong>Euler's formula just says: rotation = (horizontal, vertical)</strong>
+        </p>
+    </div>
+
+    <h3>Special Cases</h3>
+
+    <div class="formula-box">
+        <div class="title">FAMOUS VALUES</div>
+θ = 0:    e^(i·0) = cos(0) + i·sin(0) = 1 + 0i = <span class="green">1</span>
+θ = π/2:  e^(iπ/2) = cos(π/2) + i·sin(π/2) = 0 + i = <span class="blue">i</span>
+θ = π:    e^(iπ) = cos(π) + i·sin(π) = -1 + 0i = <span class="red">-1</span>
+θ = 3π/2: e^(i·3π/2) = cos(3π/2) + i·sin(3π/2) = 0 - i = <span class="purple">-i</span>
+θ = 2π:   e^(i·2π) = cos(2π) + i·sin(2π) = 1 + 0i = <span class="green">1</span> (full circle!)
+    </div>
+
+    <div class="geometry-box">
+        <div class="label">EULER'S IDENTITY</div>
+        <p style="margin-bottom: 10px; font-size: 1.1rem; text-align: center;">
+            <code style="color: #d4af37;">e<sup>iπ</sup> + 1 = 0</code>
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #888; text-align: center;">
+            Five fundamental constants (e, i, π, 1, 0) in one equation.<br>
+            It says: "Rotate halfway around the circle and you're at -1."
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 5: POLAR FORM -->
+<div class="section" id="polar">
+    <h2>5. Polar Form of Complex Numbers</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD NOTATION</div>
+        <p style="margin-bottom: 0;">
+            <strong>Rectangular form:</strong> z = a + bi (Cartesian coordinates)<br><br>
+            <strong>Polar form:</strong> z = r(cos θ + i sin θ) &nbsp;&nbsp;or&nbsp;&nbsp; z = r · cis θ<br><br>
+            <strong>Exponential form:</strong> z = r · e<sup>iθ</sup><br><br>
+            <em style="color: #888;">Note: "cis θ" is shorthand for "cos θ + i sin θ" — you'll see this on some tests.</em>
+        </p>
+    </div>
+
+    <p>
+        Every complex number can be written two ways:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">TWO FORMS</div>
+<span class="blue">Rectangular:</span>  z = a + bi      (Cartesian coordinates)
+<span class="green">Polar:</span>        z = r·e^(iθ)    (distance and angle)
+                  z = r(cos θ + i sin θ)  (expanded form)
+
+where:
+  r = |z| = √(a² + b²)   = distance from origin
+  θ = arg(z) = arctan(b/a) = angle from real axis
+    </div>
+
+    <div class="key-insight">
+        <div class="label">WHEN TO USE WHICH</div>
+        <p style="margin-bottom: 0;">
+            <strong>Addition/Subtraction:</strong> Use rectangular (a + bi)<br>
+            <strong>Multiplication/Division/Powers:</strong> Use polar (r·e^(iθ))<br><br>
+            Polar form makes multiplication trivial:<br>
+            Just multiply the r's and add the θ's!
+        </p>
+    </div>
+
+    <h3>Converting Between Forms</h3>
+
+    <div class="formula-box">
+        <div class="title">RECTANGULAR → POLAR</div>
+Given z = a + bi, find r and θ:
+
+r = √(a² + b²)
+θ = arctan(b/a)   ← adjust for quadrant!
+
+Quadrant adjustments:
+  Q1 (a > 0, b > 0): θ = arctan(b/a)
+  Q2 (a < 0, b > 0): θ = arctan(b/a) + π
+  Q3 (a < 0, b < 0): θ = arctan(b/a) + π
+  Q4 (a > 0, b < 0): θ = arctan(b/a) + 2π  (or just use negative angle)
+    </div>
+
+    <div class="formula-box">
+        <div class="title">POLAR → RECTANGULAR</div>
+Given z = r·e^(iθ), find a and b:
+
+a = r cos θ
+b = r sin θ
+
+Therefore: z = r cos θ + i·r sin θ
+    </div>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE: Convert 1 + √3·i to polar form</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION</div>
+        <p>
+            a = 1, b = √3<br><br>
+            r = √(1² + (√3)²) = √(1 + 3) = √4 = <strong>2</strong><br><br>
+            θ = arctan(√3/1) = arctan(√3) = <strong>60° = π/3</strong><br><br>
+            Polar form: <strong>z = 2·e^(iπ/3)</strong><br>
+            Or: z = 2(cos 60° + i sin 60°)
+        </p>
+    </div>
+
+    <div class="memory-box">
+        <div class="label">TEST TIP — RECOGNIZING SPECIAL ANGLES</div>
+        <p style="margin-bottom: 0;">
+            When you see these values, they're usually special angles:<br><br>
+            • √3/2 → 60° or 30°<br>
+            • √2/2 → 45°<br>
+            • 1/2 → 60° or 30°<br><br>
+            <strong>Quick reference:</strong><br>
+            1 + i → 45° (equal parts real and imaginary)<br>
+            1 + √3i → 60° (bigger imaginary part)<br>
+            √3 + i → 30° (bigger real part)
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 6: DE MOIVRE'S THEOREM -->
+<div class="section" id="demoivre">
+    <h2>6. De Moivre's Theorem — Powers Made Easy</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD STATEMENT</div>
+        <p style="margin-bottom: 0;">
+            <strong>De Moivre's Theorem:</strong> For any real number n,<br><br>
+            <code style="color: #6495ed;">[r(cos θ + i sin θ)]<sup>n</sup> = r<sup>n</sup>[cos(nθ) + i sin(nθ)]</code><br><br>
+            <em style="color: #888;">Named after Abraham de Moivre (1667-1754). It works for ALL real exponents n, including fractions (roots) and negatives.</em>
+        </p>
+    </div>
+
+    <div class="geometry-box">
+        <div class="label">DE MOIVRE'S THEOREM — THE VISUAL VERSION</div>
+        <p style="margin-bottom: 10px; font-size: 1.1rem;">
+            <code style="color: #d4af37;">[r(cos θ + i sin θ)]<sup>n</sup> = r<sup>n</sup>(cos nθ + i sin nθ)</code>
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem; color: #888;">
+            Or in exponential form: <code>(r·e^(iθ))^n = r^n · e^(inθ)</code>
+        </p>
+    </div>
+
+    <div class="key-insight">
+        <div class="label">WHAT THIS MEANS</div>
+        <p style="margin-bottom: 0;">
+            <strong>To raise a complex number to power n:</strong><br>
+            • Raise the magnitude to power n: r → r<sup>n</sup><br>
+            • Multiply the angle by n: θ → nθ<br><br>
+            That's it. No complicated algebra needed.
+        </p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE: Calculate (1 + i)^8</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION</div>
+        <p>
+            <strong>Step 1:</strong> Convert to polar form<br>
+            z = 1 + i<br>
+            r = √(1² + 1²) = √2<br>
+            θ = arctan(1/1) = 45° = π/4<br>
+            So: z = √2 · e^(iπ/4)<br><br>
+
+            <strong>Step 2:</strong> Apply De Moivre<br>
+            z^8 = (√2)^8 · e^(i·8·π/4)<br>
+            = (2^(1/2))^8 · e^(i·2π)<br>
+            = 2^4 · e^(i·2π)<br>
+            = 16 · (cos 2π + i sin 2π)<br>
+            = 16 · (1 + 0i)<br>
+            = <strong>16</strong>
+        </p>
+    </div>
+
+    <p class="quiet">
+        Try doing (1+i)^8 by multiplying out algebraically. De Moivre is MUCH faster.
+    </p>
+
+    <div class="warning-box">
+        <div class="label">COMMON MISTAKES WITH DE MOIVRE</div>
+        <p style="margin-bottom: 0;">
+            <strong>1. Forgetting to convert to polar first</strong><br>
+            De Moivre only works in polar form. Always find r and θ FIRST.<br><br>
+            <strong>2. Not simplifying the angle</strong><br>
+            If nθ > 360°, subtract 360° until you get a standard angle.<br><br>
+            <strong>3. Sign errors in the final step</strong><br>
+            After finding cos(nθ) and sin(nθ), be careful converting back to a + bi form.
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 7: ROOTS -->
+<div class="section" id="roots">
+    <h2>7. Finding Roots of Complex Numbers</h2>
+
+    <div class="textbook-box">
+        <div class="label">STANDARD PROCEDURE</div>
+        <p style="margin-bottom: 0;">
+            To find all n-th roots of a complex number z:<br><br>
+            <strong>Step 1:</strong> Convert z to polar form: z = r(cos θ + i sin θ)<br>
+            <strong>Step 2:</strong> Apply the formula for each k = 0, 1, 2, ..., n-1<br>
+            <strong>Step 3:</strong> Convert each root back to rectangular form if needed<br><br>
+            <em style="color: #888;">There are always EXACTLY n roots for an n-th root. No more, no less.</em>
+        </p>
+    </div>
+
+    <p>
+        De Moivre works in reverse too. To find the n-th roots of a complex number:
+    </p>
+
+    <div class="formula-box">
+        <div class="title">n-TH ROOTS FORMULA</div>
+The n-th roots of z = r·e^(iθ) are:
+
+w_k = r^(1/n) · e^(i(θ + 2πk)/n)
+
+for k = 0, 1, 2, ..., n-1
+
+There are exactly n roots, evenly spaced around a circle!
+    </div>
+
+    <div class="key-insight">
+        <div class="label">THE PATTERN</div>
+        <p style="margin-bottom: 0;">
+            The n roots of any number are:<br>
+            • All at the same distance from origin: r^(1/n)<br>
+            • Evenly spaced: 360°/n apart<br>
+            • First root at angle: θ/n<br><br>
+            They form a regular n-gon on the complex plane!
+        </p>
+    </div>
+
+    <div class="problem-box">
+        <div class="label">EXAMPLE: Find all cube roots of 8</div>
+    </div>
+
+    <div class="solution-box">
+        <div class="label">SOLUTION</div>
+        <p>
+            z = 8 = 8·e^(i·0) (magnitude 8, angle 0)<br><br>
+
+            <strong>The 3 cube roots:</strong><br><br>
+
+            k = 0: w₀ = 8^(1/3) · e^(i·0/3) = 2 · e^0 = <strong>2</strong><br><br>
+
+            k = 1: w₁ = 2 · e^(i·2π/3) = 2(cos 120° + i sin 120°)<br>
+            = 2(-1/2 + i·√3/2) = <strong>-1 + √3·i</strong><br><br>
+
+            k = 2: w₂ = 2 · e^(i·4π/3) = 2(cos 240° + i sin 240°)<br>
+            = 2(-1/2 - i·√3/2) = <strong>-1 - √3·i</strong>
+        </p>
+    </div>
+
+    <div class="diagram">
+    The 3 cube roots of 8 form an equilateral triangle:
+
+                    i
+                    ↑
+                    |     • w₁ = -1 + √3i
+                    |    /
+                    |   /
+                    |  /
+    ←———————————————+———•———————→ w₀ = 2
+          w₂ = -1 - √3i  \
+                    |     \
+                    ↓
+
+    All three roots have magnitude 2.
+    They're spaced 120° apart (360°/3).
+    </div>
+
+    <div class="memory-box">
+        <div class="label">VISUALIZATION TIP</div>
+        <p style="margin-bottom: 0;">
+            <strong>The roots form a regular polygon!</strong><br><br>
+            • 2 roots = 2 points on opposite sides (180° apart)<br>
+            • 3 roots = equilateral triangle (120° apart)<br>
+            • 4 roots = square (90° apart)<br>
+            • 5 roots = pentagon (72° apart)<br>
+            • n roots = regular n-gon (360°/n apart)<br><br>
+            <em style="color: #888;">Sketch the circle, mark the first root at angle θ/n, then add points every 360°/n. This visual check helps catch errors!</em>
+        </p>
+    </div>
+</div>
+
+<!-- SECTION 8: TRIG IDENTITIES FROM GEOMETRY -->
+<div class="section" id="trig-connection">
+    <h2>8. Trig Identities — They Come From Geometry</h2>
+
+    <div class="textbook-box">
+        <div class="label">THE STANDARD WAY — MEMORIZE THESE</div>
+        <p style="margin-bottom: 10px;">
+            On the AP exam, you're expected to know these:
+        </p>
+        <p style="margin-bottom: 0; font-family: 'SF Mono', monospace; font-size: 0.85rem;">
+            <strong>Sum/Difference:</strong><br>
+            sin(A ± B) = sin A cos B ± cos A sin B<br>
+            cos(A ± B) = cos A cos B ∓ sin A sin B<br><br>
+            <strong>Double Angle:</strong><br>
+            sin(2θ) = 2 sin θ cos θ<br>
+            cos(2θ) = cos²θ - sin²θ = 2cos²θ - 1 = 1 - 2sin²θ<br><br>
+            <strong>Power Reduction:</strong><br>
+            sin²θ = (1 - cos 2θ)/2<br>
+            cos²θ = (1 + cos 2θ)/2
+        </p>
+    </div>
+
+    <p>
+        Here's the payoff. All those trig identities you memorize? They're not arbitrary. They come directly from complex number geometry. <strong>Understanding where they come from makes them easier to remember.</strong>
+    </p>
+
+    <h3>Where Sum Formulas Come From</h3>
+
+    <div class="geometry-box">
+        <div class="label">THE DERIVATION</div>
+        <p style="margin-bottom: 10px;">
+            <code>e^(i(A+B)) = e^(iA) · e^(iB)</code>
+        </p>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">
+            Left side: cos(A+B) + i sin(A+B)<br>
+            Right side: (cos A + i sin A)(cos B + i sin B)<br><br>
+            Expand the right side and match real/imaginary parts = sum formulas!
+        </p>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">DERIVING THE SUM FORMULAS</div>
+e^(iA) · e^(iB) = (cos A + i sin A)(cos B + i sin B)
+
+Expand:
+= cos A cos B + i cos A sin B + i sin A cos B + i² sin A sin B
+= cos A cos B + i cos A sin B + i sin A cos B - sin A sin B
+= (cos A cos B - sin A sin B) + i(sin A cos B + cos A sin B)
+
+This must equal e^(i(A+B)) = cos(A+B) + i sin(A+B)
+
+Matching real parts:
+  <span class="green">cos(A+B) = cos A cos B - sin A sin B</span>
+
+Matching imaginary parts:
+  <span class="blue">sin(A+B) = sin A cos B + cos A sin B</span>
+
+THAT'S where those formulas come from!
+    </div>
+
+    <h3>Where Double Angle Formulas Come From</h3>
+
+    <div class="formula-box">
+        <div class="title">DOUBLE ANGLE = SQUARING</div>
+e^(i·2θ) = (e^(iθ))²
+         = (cos θ + i sin θ)²
+         = cos²θ + 2i sin θ cos θ + i² sin²θ
+         = (cos²θ - sin²θ) + i(2 sin θ cos θ)
+
+Therefore:
+  <span class="green">cos(2θ) = cos²θ - sin²θ</span>
+  <span class="blue">sin(2θ) = 2 sin θ cos θ</span>
+
+The double angle formulas ARE the algebra of squaring e^(iθ).
+    </div>
+
+    <div class="magic-box">
+        <div class="label">THE INSIGHT</div>
+        <p style="margin-bottom: 0;">
+            <strong>You don't have to memorize trig identities.</strong><br><br>
+            If you understand that e^(iθ) = cos θ + i sin θ,<br>
+            you can DERIVE any identity by doing algebra with exponentials.<br><br>
+            Addition of angles = multiplication of e^(iθ)<br>
+            Subtraction of angles = division of e^(iθ)<br>
+            Double angles = squaring e^(iθ)<br>
+            Half angles = square rooting e^(iθ)
+        </p>
+    </div>
+
+    <h3>Quick Reference: The Identities That Come From This</h3>
+
+    <div class="formula-box">
+        <div class="title">SUM & DIFFERENCE</div>
+sin(A ± B) = sin A cos B ± cos A sin B
+cos(A ± B) = cos A cos B ∓ sin A sin B
+
+<span class="quiet">(Note the ∓ — cosine flips the sign)</span>
+    </div>
+
+    <div class="formula-box">
+        <div class="title">DOUBLE ANGLE</div>
+sin(2θ) = 2 sin θ cos θ
+
+cos(2θ) = cos²θ - sin²θ
+        = 2cos²θ - 1
+        = 1 - 2sin²θ
+    </div>
+
+    <div class="formula-box">
+        <div class="title">POWER REDUCTION</div>
+sin²θ = (1 - cos 2θ)/2
+cos²θ = (1 + cos 2θ)/2
+
+<span class="quiet">(These come from solving the double angle formulas for sin² and cos²)</span>
+    </div>
+</div>
+
+<!-- CALCULATORS -->
+<div class="section" id="calculators">
+    <h2>Calculators</h2>
+    <p class="quiet">Tools to check your work.</p>
+
+    <div class="calc-box">
+        <div class="label">RECTANGULAR → POLAR</div>
+        <input type="number" id="rect_a" placeholder="Real part (a)" step="any">
+        <input type="number" id="rect_b" placeholder="Imaginary part (b)" step="any">
+        <button onclick="rectToPolar()">Convert to Polar</button>
+        <div class="result" id="polar_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">POLAR → RECTANGULAR</div>
+        <input type="number" id="polar_r" placeholder="Magnitude (r)" step="any">
+        <input type="number" id="polar_theta" placeholder="Angle θ (degrees)" step="any">
+        <button onclick="polarToRect()">Convert to Rectangular</button>
+        <div class="result" id="rect_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">COMPLEX POWER (De Moivre)</div>
+        <input type="number" id="pow_a" placeholder="Real part (a)" step="any">
+        <input type="number" id="pow_b" placeholder="Imaginary part (b)" step="any">
+        <input type="number" id="pow_n" placeholder="Power (n)" step="1">
+        <button onclick="complexPower()">Calculate (a + bi)^n</button>
+        <div class="result" id="power_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">N-TH ROOTS</div>
+        <input type="number" id="root_a" placeholder="Real part (a)" step="any">
+        <input type="number" id="root_b" placeholder="Imaginary part (b)" step="any">
+        <input type="number" id="root_n" placeholder="Root (n)" step="1" min="2">
+        <button onclick="findRoots()">Find All n-th Roots</button>
+        <div class="result" id="roots_result"></div>
+    </div>
+
+    <div class="calc-box">
+        <div class="label">EULER VISUALIZATION</div>
+        <input type="number" id="euler_theta" placeholder="Angle θ (degrees)" step="any">
+        <button onclick="showEuler()">Show e^(iθ)</button>
+        <div class="result" id="euler_result"></div>
+    </div>
+</div>
+
+<!-- CLOSING -->
+<div class="section" style="text-align: center; border-bottom: none;">
+    <div class="geometry-box">
+        <div class="label">THE TAKEAWAY</div>
+        <p style="margin-bottom: 0;">
+            Complex numbers are not abstract weirdness.<br>
+            They are <strong>points on a plane</strong>.<br><br>
+            Multiplication is <strong>rotation + scaling</strong>.<br>
+            e^(iθ) means <strong>"rotate by θ"</strong>.<br>
+            Trig identities are <strong>properties of rotation</strong>.<br><br>
+            Once you see the geometry, the formulas stop being arbitrary.
+        </p>
+    </div>
+
+    <p style="margin-top: 25px; color: #d4af37; font-size: 1.1rem;">
+        <strong>[1 = -1]</strong>
+    </p>
+
+    <p class="quiet" style="margin-top: 15px;">
+        — Your birthday brother, 121 years earlier
+    </p>
+
+    <a href="index.html" class="back-link" style="margin-top: 20px;">← Back to Letter</a>
+    <a href="trig.html" class="back-link">Full AP PreCalc Guide →</a>
+</div>
+
+<script>
+const PI = Math.PI;
+
+function formatNum(num, decimals = 4) {
+    if (Math.abs(num) < 0.0001 && num !== 0) return num.toExponential(3);
+    if (Math.abs(num) > 10000) return num.toExponential(3);
+    return parseFloat(num.toFixed(decimals));
+}
+
+function toRad(deg) { return deg * PI / 180; }
+function toDeg(rad) { return rad * 180 / PI; }
+
+function rectToPolar() {
+    const a = parseFloat(document.getElementById('rect_a').value);
+    const b = parseFloat(document.getElementById('rect_b').value);
+
+    if (isNaN(a) || isNaN(b)) {
+        document.getElementById('polar_result').innerHTML = 'Enter both parts';
+        return;
+    }
+
+    const r = Math.sqrt(a*a + b*b);
+    let theta = Math.atan2(b, a);
+    const thetaDeg = toDeg(theta);
+
+    document.getElementById('polar_result').innerHTML =
+        `<strong>z = ${formatNum(a)} + ${formatNum(b)}i</strong><br><br>` +
+        `r = √(${formatNum(a)}² + ${formatNum(b)}²) = <strong>${formatNum(r)}</strong><br>` +
+        `θ = arctan(${formatNum(b)}/${formatNum(a)}) = <strong>${formatNum(thetaDeg)}°</strong> = ${formatNum(theta)} rad<br><br>` +
+        `<strong>Polar: ${formatNum(r)} · e^(i · ${formatNum(theta)})</strong><br>` +
+        `Or: ${formatNum(r)}(cos ${formatNum(thetaDeg)}° + i sin ${formatNum(thetaDeg)}°)`;
+}
+
+function polarToRect() {
+    const r = parseFloat(document.getElementById('polar_r').value);
+    const thetaDeg = parseFloat(document.getElementById('polar_theta').value);
+
+    if (isNaN(r) || isNaN(thetaDeg)) {
+        document.getElementById('rect_result').innerHTML = 'Enter r and θ';
+        return;
+    }
+
+    const theta = toRad(thetaDeg);
+    const a = r * Math.cos(theta);
+    const b = r * Math.sin(theta);
+
+    const sign = b >= 0 ? '+' : '';
+    document.getElementById('rect_result').innerHTML =
+        `<strong>${formatNum(r)} · e^(i · ${formatNum(thetaDeg)}°)</strong><br><br>` +
+        `a = ${formatNum(r)} · cos(${formatNum(thetaDeg)}°) = <strong>${formatNum(a)}</strong><br>` +
+        `b = ${formatNum(r)} · sin(${formatNum(thetaDeg)}°) = <strong>${formatNum(b)}</strong><br><br>` +
+        `<strong>Rectangular: ${formatNum(a)} ${sign} ${formatNum(b)}i</strong>`;
+}
+
+function complexPower() {
+    const a = parseFloat(document.getElementById('pow_a').value);
+    const b = parseFloat(document.getElementById('pow_b').value);
+    const n = parseInt(document.getElementById('pow_n').value);
+
+    if (isNaN(a) || isNaN(b) || isNaN(n)) {
+        document.getElementById('power_result').innerHTML = 'Enter all values';
+        return;
+    }
+
+    const r = Math.sqrt(a*a + b*b);
+    const theta = Math.atan2(b, a);
+
+    const newR = Math.pow(r, n);
+    const newTheta = n * theta;
+
+    const newA = newR * Math.cos(newTheta);
+    const newB = newR * Math.sin(newTheta);
+
+    const sign = newB >= 0 ? '+' : '';
+    document.getElementById('power_result').innerHTML =
+        `<strong>(${formatNum(a)} + ${formatNum(b)}i)^${n}</strong><br><br>` +
+        `Original: r = ${formatNum(r)}, θ = ${formatNum(toDeg(theta))}°<br><br>` +
+        `After power ${n}:<br>` +
+        `r^${n} = ${formatNum(newR)}<br>` +
+        `${n}θ = ${formatNum(toDeg(newTheta))}°<br><br>` +
+        `<strong>Result: ${formatNum(newA)} ${sign} ${formatNum(newB)}i</strong>`;
+}
+
+function findRoots() {
+    const a = parseFloat(document.getElementById('root_a').value);
+    const b = parseFloat(document.getElementById('root_b').value);
+    const n = parseInt(document.getElementById('root_n').value);
+
+    if (isNaN(a) || isNaN(b) || isNaN(n) || n < 2) {
+        document.getElementById('roots_result').innerHTML = 'Enter all values (n ≥ 2)';
+        return;
+    }
+
+    const r = Math.sqrt(a*a + b*b);
+    const theta = Math.atan2(b, a);
+
+    const newR = Math.pow(r, 1/n);
+
+    let html = `<strong>The ${n} roots of (${formatNum(a)} + ${formatNum(b)}i):</strong><br><br>`;
+    html += `All roots have magnitude: ${formatNum(newR)}<br>`;
+    html += `Spacing: ${formatNum(360/n)}° apart<br><br>`;
+
+    for (let k = 0; k < n; k++) {
+        const rootTheta = (theta + 2*PI*k) / n;
+        const rootA = newR * Math.cos(rootTheta);
+        const rootB = newR * Math.sin(rootTheta);
+        const sign = rootB >= 0 ? '+' : '';
+        html += `w<sub>${k}</sub> = <strong>${formatNum(rootA)} ${sign} ${formatNum(rootB)}i</strong> (at ${formatNum(toDeg(rootTheta))}°)<br>`;
+    }
+
+    document.getElementById('roots_result').innerHTML = html;
+}
+
+function showEuler() {
+    const thetaDeg = parseFloat(document.getElementById('euler_theta').value);
+
+    if (isNaN(thetaDeg)) {
+        document.getElementById('euler_result').innerHTML = 'Enter an angle';
+        return;
+    }
+
+    const theta = toRad(thetaDeg);
+    const cosVal = Math.cos(theta);
+    const sinVal = Math.sin(theta);
+
+    const sign = sinVal >= 0 ? '+' : '';
+    document.getElementById('euler_result').innerHTML =
+        `<strong>e^(i · ${formatNum(thetaDeg)}°)</strong><br><br>` +
+        `= cos(${formatNum(thetaDeg)}°) + i · sin(${formatNum(thetaDeg)}°)<br><br>` +
+        `= ${formatNum(cosVal)} ${sign} ${formatNum(sinVal)}i<br><br>` +
+        `<span style="color:#888;">This is a point on the unit circle at angle ${formatNum(thetaDeg)}°</span>`;
+}
+</script>
+
+</body>
+</html>
