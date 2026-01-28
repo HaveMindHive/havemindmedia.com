@@ -149,34 +149,6 @@ class SiteHeader extends HTMLElement {
                     transform: scale(1.05);
                     box-shadow: 0 0 15px rgba(139, 0, 0, 0.5);
                 }
-                .hmm-link.whats-new {
-                    background: linear-gradient(135deg, #ffd700, #ff8c00);
-                    color: #000 !important;
-                    font-weight: 800;
-                    font-size: 1.2rem;
-                    border-radius: 6px;
-                    animation: newPulse 1.5s ease-in-out infinite;
-                    margin-left: 0.5rem;
-                    padding: 0.6rem 1rem;
-                    letter-spacing: 1px;
-                    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-                    text-shadow: none;
-                }
-                .hmm-link.whats-new:hover {
-                    background: linear-gradient(135deg, #ffec80, #ffb347);
-                    transform: scale(1.08);
-                    box-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 50px rgba(255, 140, 0, 0.6);
-                }
-                @keyframes newPulse {
-                    0%, 100% {
-                        box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-                        transform: scale(1);
-                    }
-                    50% {
-                        box-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 140, 0, 0.6);
-                        transform: scale(1.05);
-                    }
-                }
                 .hmm-link.kappa5 {
                     position: relative;
                     background: none;
@@ -510,9 +482,6 @@ class SiteHeader extends HTMLElement {
 
                         <!-- Support -->
                         <a href="${bp}support.html" class="hmm-link" title="Support">Support</a>
-
-                        <!-- What's New - Animated attention grabber -->
-                        <a href="${bp}whats-new.html" class="hmm-link whats-new" title="50+ New Pages!">NEW</a>
 
                         <!-- Games -->
                         <a href="${bp}games/index.html" class="hmm-link games" title="Mind Games">Games</a>
