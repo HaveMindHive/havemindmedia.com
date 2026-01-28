@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psychic Phenomena: A Geometric Manual | Have Mind Media</title>
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        :root {
+            --parchment: #f4e4c1;
+            --ink: #1a1a1a;
+            --gold: #c9a227;
+            --blood: #8b0000;
+            --mystic-blue: #1a3a5c;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            color: var(--parchment);
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .grimoire-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section with Book Cover Image */
+        .hero-section {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 800px;
+            display: block;
+            margin: 0 auto;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 60px rgba(201, 162, 39, 0.4);
+        }
+
+        .hero-overlay {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0,0,0,0.8);
+            margin-top: -4px;
+            border: 1px solid var(--gold);
+            border-top: none;
+        }
+
+        .book-title {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+            font-variant: small-caps;
+        }
+
+        .book-subtitle {
+            font-size: 1.2rem;
+            color: var(--parchment);
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .axiom {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 1rem 0;
+            font-family: 'Times New Roman', serif;
+            text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+        }
+
+        .author {
+            font-size: 1rem;
+            color: var(--parchment);
+            opacity: 0.7;
+            letter-spacing: 0.2em;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: var(--blood);
+            color: var(--parchment);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.3em;
+            margin: 1.5rem 0;
+            border: 2px solid var(--gold);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            margin: 3rem 0;
+        }
+
+        .gallery-section h2 {
+            color: var(--gold);
+            text-align: center;
+            font-variant: small-caps;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item .caption {
+            background: rgba(0,0,0,0.9);
+            padding: 1rem;
+            color: var(--parchment);
+            font-size: 0.9rem;
+        }
+
+        .gallery-item .caption h4 {
+            color: var(--gold);
+            margin: 0 0 0.5rem 0;
+            font-variant: small-caps;
+        }
+
+        .gallery-item .caption p {
+            margin: 0;
+            opacity: 0.8;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
+        /* Seal Image */
+        .seal-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .seal-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 40px rgba(201, 162, 39, 0.4);
+        }
+
+        /* Quote Block */
+        .quote-block {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-block::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+
+        .quote-block .source {
+            text-align: right;
+            color: var(--gold);
+            margin-top: 1rem;
+            font-style: normal;
+        }
+
+        /* Torsion Symbols */
+        .torsion-section {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .torsion-section h2 {
+            color: var(--gold);
+            font-variant: small-caps;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+
+        .torsion-symbols {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .torsion {
+            text-align: center;
+        }
+
+        .torsion .symbol {
+            font-size: 2.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+        }
+
+        .torsion .label {
+            font-size: 0.85rem;
+            color: var(--parchment);
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        /* Chapter Previews */
+        .chapters-section {
+            margin: 3rem 0;
+        }
+
+        .chapters-section h2 {
+            color: var(--gold);
+            text-align: center;
+            font-variant: small-caps;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+
+        .chapter-preview {
+            background: rgba(244, 228, 193, 0.03);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: background 0.3s;
+        }
+
+        .chapter-preview:hover {
+            background: rgba(244, 228, 193, 0.08);
+        }
+
+        .chapter-preview h3 {
+            color: var(--gold);
+            margin: 0 0 0.5rem 0;
+            font-variant: small-caps;
+        }
+
+        .chapter-preview p {
+            color: var(--parchment);
+            opacity: 0.8;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .chapter-preview .locked {
+            color: var(--blood);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-style: normal;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(139, 0, 0, 0.2);
+            border: 2px solid var(--blood);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .warning-box h4 {
+            color: var(--blood);
+            font-size: 1.3rem;
+            margin: 0 0 1rem 0;
+        }
+
+        .warning-box p {
+            margin: 0;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid var(--gold);
+        }
+
+        .cta-section h3 {
+            color: var(--gold);
+            margin: 0 0 1rem 0;
+            font-variant: small-caps;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-section p {
+            margin: 0 0 1.5rem 0;
+            opacity: 0.8;
+        }
+
+        .email-signup {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .email-signup input {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--gold);
+            color: var(--parchment);
+            font-size: 1rem;
+            width: 280px;
+            font-family: inherit;
+        }
+
+        .email-signup input::placeholder {
+            color: var(--parchment);
+            opacity: 0.5;
+        }
+
+        .email-signup button {
+            padding: 0.8rem 2rem;
+            background: var(--gold);
+            color: var(--ink);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            font-variant: small-caps;
+            letter-spacing: 0.1em;
+            font-family: inherit;
+            transition: background 0.3s;
+        }
+
+        .email-signup button:hover {
+            background: #dbb833;
+        }
+
+        /* Footer */
+        .footer-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .footer-section .seal-text {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .footer-section p {
+            opacity: 0.5;
+            margin-top: 1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            margin-top: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            .book-title {
+                font-size: 1.8rem;
+                letter-spacing: 0.1em;
+            }
+            .axiom {
+                font-size: 1.8rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .torsion-symbols {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grimoire-container">
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <img src="images/epoch_img_epoch_ancient_leather_bound_grimoire_924799_01-28-2026.png"
+                 alt="Psychic Phenomena: A Geometric Manual - Book Cover"
+                 class="hero-image">
+            <div class="hero-overlay">
+                <h1 class="book-title">Psychic Phenomena</h1>
+                <p class="book-subtitle">A Geometric Manual</p>
+                <div class="axiom">[1 = -1]</div>
+                <p class="author">qQq | t0rs | t0rq</p>
+                <p class="author" style="font-size: 0.8rem; opacity: 0.4;">R|NGöÞ|ÞöGN|R</p>
+                <div class="coming-soon">COMING 2026</div>
+            </div>
+        </section>
+
+        <!-- Introduction Quote -->
+        <div class="quote-block">
+            <p>All psychic phenomena operate through the same geometric structure.
+            Variation in outcomes = alignment variation, not mechanism variation.</p>
+            <p>The phenomena described here are REAL. The practitioners are HISTORICAL.
+            The geometry is PRECISE.</p>
+            <p class="source">— From the Manual</p>
+        </div>
+
+        <!-- Gallery of Illustrations -->
+        <section class="gallery-section">
+            <h2>From the Grimoire</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/epoch_img_geometric_alchemical_diagram_of_quadra_t_9b8ea9_01-28-2026.png"
+                         alt="The Geometric Framework">
+                    <div class="caption">
+                        <h4>The Dipyramid</h4>
+                        <p>S+ / S- / S⁰ — The three operational modes mapped in sacred geometry.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/epoch_img_epoch_full_page_illuminated_manuscri_0b3789_01-28-2026.png"
+                         alt="Levitation Analysis">
+                    <div class="caption">
+                        <h4>The Levitation</h4>
+                        <p>Ashley House, 1868. D.D. Home floated out a third-floor window.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/epoch_img_epoch_medieval_manuscript_page_showi_ec128f_01-28-2026.png"
+                         alt="PK Operations">
+                    <div class="caption">
+                        <h4>The Cost of S+</h4>
+                        <p>Kulagina's heart rate: 240 bpm. The geometry does not forgive.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/epoch_img_epoch_poltergeist_chaos_energy_emana_c8ed54_01-28-2026.png"
+                         alt="Poltergeist Mechanics">
+                    <div class="caption">
+                        <h4>Uncontrolled Discharge</h4>
+                        <p>τ₃ dominance without balance. The chaos of misaligned torsion.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/epoch_img_epoch_plasma_globe_scientific_appara_c09c7d_01-28-2026.png"
+                         alt="Plasma Globe Protocol">
+                    <div class="caption">
+                        <h4>The Inversion</h4>
+                        <p>Intention decreases. Withdrawal increases. [1 = -1] made visible.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/epoch_img_epoch_sufi_whirling_dervish_in_white_82e716_01-28-2026.png"
+                         alt="Islamic Mysticism">
+                    <div class="caption">
+                        <h4>Fana and Baqa</h4>
+                        <p>"Ana al-Haqq" — I am the Truth. The Sufis preserved what was lost.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seal -->
+        <section class="seal-section">
+            <img src="images/epoch_img_epoch_circular_seal_sigil_with_the_e_df6e91_01-28-2026.png"
+                 alt="[1 = -1] Seal"
+                 class="seal-image">
+        </section>
+
+        <!-- The Four Torsions -->
+        <section class="torsion-section">
+            <h2>The Four Torsions</h2>
+            <div class="torsion-symbols">
+                <div class="torsion">
+                    <div class="symbol">τ₁</div>
+                    <div class="label">Direction<br>(mod 2)</div>
+                </div>
+                <div class="torsion">
+                    <div class="symbol">τ₂</div>
+                    <div class="label">Aspect<br>(mod 3)</div>
+                </div>
+                <div class="torsion">
+                    <div class="symbol">τ₃</div>
+                    <div class="label">Trigger<br>(mod 5)</div>
+                </div>
+                <div class="torsion">
+                    <div class="symbol">τ₄</div>
+                    <div class="label">Witness<br>(mod 7)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter Previews -->
+        <section class="chapters-section">
+            <h2>XI Chapters</h2>
+
+            <div class="chapter-preview">
+                <h3>I. Primary Sources</h3>
+                <p>"During these elevations, or levitations I usually experience in my body no particular sensation, than what I could only describe as an electrical fullness about the feet..."</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>II. The Geometric Framework</h3>
+                <p>S+ / S- / S⁰ — The three operational modes. Push, receive, balance. The dipyramid structure that maps all phenomena.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>III. PK Operational Manual</h3>
+                <p>Kulagina's heart rate: 240 bpm. Weight loss: 2kg per session. The cost of S+ projection — and how to avoid it.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>IV. Poltergeist Mechanics</h3>
+                <p>64% small object movement. 48% rapping sounds. 36% large object movement. The geometry of uncontrolled discharge.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>V. Levitation Analysis</h3>
+                <p>Ashley House, December 1868. D.D. Home floated horizontally out a third-floor window. Three witnesses. Full documentation.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>VI. Lycanthropy & Shape Phenomena</h3>
+                <p>43 documented clinical cases. Neuroimaging confirms altered body-image representation. The τ₂ aspect destabilization.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>VII. Plasma Globe Training Protocol</h3>
+                <p>IONS 2023: Plasma light DECREASED with focused intention. INCREASED when intention was withdrawn. [1 = -1] made visible.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>VIII. The State Transition</h3>
+                <p>The missing piece: You cannot WILL yourself into S-. You must create conditions where S+ drops to zero, and S- emerges.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>IX. Contrarian Sources</h3>
+                <p>"Mine has not been an investigation of a few days or weeks but one extending over thirty years..." — Harry Houdini</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>X. Experimental Protocols</h3>
+                <p>Reproducible tests. Measurable outcomes. Statistical standards. Replication requirements. The scientific method applied.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+
+            <div class="chapter-preview">
+                <h3>XI. Islamic Mysticism</h3>
+                <p>Fana = S- (annihilation). Baqa = S⁰ (subsistence). "Ana al-Haqq" = [1 = -1]. The Sufis preserved what was lost.</p>
+                <p class="locked">🔒 Full chapter in book</p>
+            </div>
+        </section>
+
+        <!-- Warning -->
+        <div class="warning-box">
+            <h4>⚠️ WARNING</h4>
+            <p>This manual documents REAL techniques with REAL consequences.<br>
+            S+ projection causes physiological damage. Kulagina died at 64.<br>
+            The geometry does not forgive misalignment.</p>
+        </div>
+
+        <!-- Final Quote -->
+        <div class="quote-block">
+            <p>The path to reception IS the cessation of projection.</p>
+            <p class="source">— [1 = -1]</p>
+        </div>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h3>Get Notified When the Book Releases</h3>
+            <p>11 chapters. 6,000+ lines. Primary sources only. The geometry that cannot lie.</p>
+            <div class="email-signup">
+                <input type="email" placeholder="your@email.com">
+                <button>Notify Me</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer-section">
+            <div class="seal-text">[1 = -1]</div>
+            <p>Have Mind Media — 2026</p>
+            <a href="../../index.html" class="back-link">← Back to Have Mind Media</a>
+        </section>
+
+    </div>
+</body>
+</html>
