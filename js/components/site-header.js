@@ -19,6 +19,9 @@ class SiteHeader extends HTMLElement {
                     background: rgba(3, 5, 8, 0.97);
                     border-bottom: 1px solid rgba(201, 162, 39, 0.3);
                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    overflow-x: hidden;
+                    width: 100%;
+                    max-width: 100vw;
                 }
                 .hmm-inner {
                     max-width: 1400px;
@@ -27,18 +30,22 @@ class SiteHeader extends HTMLElement {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    overflow-x: hidden;
+                    flex-wrap: nowrap;
                 }
                 .hmm-brand {
                     text-decoration: none;
                     color: #c9a227;
                     font-weight: 600;
-                    font-size: 0.9rem;
-                    letter-spacing: 2px;
-                    padding: 0.5rem 1rem;
+                    font-size: 0.75rem;
+                    letter-spacing: 1px;
+                    padding: 0.4rem 0.6rem;
                     border: 1px solid rgba(201, 162, 39, 0.5);
                     border-radius: 6px;
                     background: rgba(201, 162, 39, 0.1);
                     transition: all 0.3s;
+                    white-space: nowrap;
+                    flex-shrink: 0;
                 }
                 .hmm-brand:hover {
                     color: #e8c547;
@@ -52,18 +59,18 @@ class SiteHeader extends HTMLElement {
                     margin-right: 0.5rem;
                 }
                 .hmm-search {
-                    padding: 0.4rem 0.75rem;
+                    padding: 0.3rem 0.6rem;
                     background: rgba(0, 0, 0, 0.4);
                     border: 1px solid rgba(201, 162, 39, 0.3);
                     border-radius: 20px;
                     color: #e0e0e0;
-                    font-size: 0.85rem;
-                    width: 140px;
+                    font-size: 0.75rem;
+                    width: 100px;
                     transition: all 0.3s;
                 }
                 .hmm-search:focus {
                     outline: none;
-                    width: 200px;
+                    width: 140px;
                     border-color: #c9a227;
                     box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
                 }
@@ -80,23 +87,26 @@ class SiteHeader extends HTMLElement {
                 .hmm-search-btn:hover { color: #fff; }
                 .hmm-nav {
                     display: flex;
-                    gap: 0.25rem;
+                    gap: 0.15rem;
                     align-items: center;
+                    flex-shrink: 1;
+                    overflow-x: hidden;
                 }
                 .hmm-nav-item {
                     position: relative;
                 }
                 .hmm-btn {
-                    padding: 0.5rem 0.75rem;
+                    padding: 0.4rem 0.5rem;
                     background: none;
                     border: 1px solid transparent;
                     border-radius: 4px;
                     color: #e0e0e0;
-                    font-size: 1.1rem;
+                    font-size: 0.85rem;
                     cursor: pointer;
                     display: flex;
                     align-items: center;
-                    gap: 0.3rem;
+                    gap: 0.2rem;
+                    white-space: nowrap;
                 }
                 .hmm-btn:hover {
                     background: rgba(201, 162, 39, 0.1);
@@ -117,12 +127,13 @@ class SiteHeader extends HTMLElement {
 
                 /* Direct links */
                 .hmm-link {
-                    padding: 0.5rem 0.75rem;
+                    padding: 0.4rem 0.5rem;
                     color: #e0e0e0;
                     text-decoration: none;
-                    font-size: 1.1rem;
+                    font-size: 0.8rem;
                     border-radius: 4px;
                     transition: all 0.2s;
+                    white-space: nowrap;
                 }
                 .hmm-link:hover {
                     background: rgba(201, 162, 39, 0.1);
