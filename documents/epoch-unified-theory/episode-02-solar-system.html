@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 02: Solar System Geometry | Epoch Unified Theory</title>
+    <meta name="description" content="Why planets orbit in ellipses and what the barycentric wobble reveals about triaxial gravitational systems">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        .episode-header {
+            text-align: center;
+            padding: var(--space-xl) var(--space-md) var(--space-lg);
+            background: linear-gradient(180deg, rgba(74, 142, 200, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .episode-meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .episode-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--border);
+            max-width: min(1200px, 95vw);
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .episode-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--bright-blue);
+            transition: var(--transition-smooth);
+            min-height: 44px;
+        }
+
+        .episode-nav a:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.08);
+        }
+
+        .content-article {
+            max-width: min(80ch, 90vw);
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-md);
+        }
+
+        .content-article h2 {
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-blue);
+        }
+
+        .content-article h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--gold);
+        }
+
+        .content-article h4 {
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            color: var(--hazel-light);
+        }
+
+        .content-article p {
+            font-size: var(--text-lg);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+            color: var(--soft-cream);
+        }
+
+        .content-article ul,
+        .content-article ol {
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+        }
+
+        .content-article li {
+            margin-bottom: var(--space-sm);
+            line-height: 1.8;
+            color: var(--soft-cream);
+        }
+
+        .diagram {
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 0.65rem + 0.25vw, 0.85rem);
+            line-height: 1.5;
+            background: rgba(10, 13, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--soft-blue);
+        }
+
+        .equation-box {
+            background: rgba(201, 162, 39, 0.05);
+            border-left: 3px solid var(--gold);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            border-radius: 4px;
+        }
+
+        .equation-box h4 {
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .equation {
+            font-family: var(--font-mono);
+            font-size: var(--text-lg);
+            color: var(--gold);
+            text-align: center;
+            padding: var(--space-sm);
+            margin: var(--space-sm) 0;
+        }
+
+        .insight-box {
+            background: rgba(74, 142, 200, 0.08);
+            border: 1px solid rgba(74, 142, 200, 0.3);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .insight-box h4 {
+            color: var(--bright-blue);
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-display);
+        }
+
+        .quote-box {
+            border-left: 3px solid var(--soft-blue);
+            padding-left: var(--space-md);
+            margin: var(--space-lg) 0;
+            font-style: italic;
+            color: var(--pale-blue);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-lg) 0;
+            font-size: var(--text-base);
+        }
+
+        .comparison-table th {
+            background: rgba(21, 26, 36, 0.8);
+            color: var(--gold);
+            padding: var(--space-sm);
+            text-align: left;
+            border: 1px solid var(--border);
+            font-family: var(--font-display);
+        }
+
+        .comparison-table td {
+            padding: var(--space-sm);
+            border: 1px solid var(--border);
+            color: var(--soft-cream);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: rgba(10, 13, 18, 0.4);
+        }
+
+        .nav-breadcrumb {
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--text-sm);
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-breadcrumb a {
+            color: var(--bright-blue);
+            text-decoration: none;
+        }
+
+        .nav-breadcrumb a:hover {
+            color: var(--pale-blue);
+        }
+
+        .data-box {
+            background: rgba(139, 115, 85, 0.08);
+            border: 1px solid rgba(139, 115, 85, 0.3);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .data-box h4 {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-sm);
+        }
+
+        @media (max-width: 600px) {
+            .diagram {
+                font-size: 0.65rem;
+                padding: var(--space-sm);
+            }
+
+            .comparison-table {
+                font-size: var(--text-sm);
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: var(--space-xs);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../index.html">Home</a> / <a href="../../documents.html">Documents</a> / <a href="index.html">Epoch Unified Theory</a> / <span>Episode 02</span>
+    </div>
+
+    <div class="episode-nav">
+        <a href="episode-01-light-modeler.html">← Episode 01</a>
+        <a href="index.html">Series Home</a>
+        <a href="episode-03-galaxy-shapes.html">Episode 03 →</a>
+    </div>
+
+    <main>
+        <div class="episode-header">
+            <div class="episode-meta">EPISODE 02 • ORBITAL MECHANICS</div>
+            <h1>Solar System Geometry</h1>
+            <p style="max-width: 65ch; margin: var(--space-md) auto; color: var(--text-dim); font-size: var(--text-lg);">
+                Ellipses, barycenters, and the wobble that reveals triaxial gravitational systems
+            </p>
+        </div>
+
+        <article class="content-article">
+
+            <h2>The Question No One Asks</h2>
+
+            <p>
+                Why do planets orbit the Sun in <strong>ellipses</strong> rather than circles?
+            </p>
+
+            <p>
+                Standard physics has an answer: Kepler's laws, derived from Newton's law of gravitation. Planets follow elliptical orbits because gravity creates a central force, and the solutions to the equations of motion are conic sections — circles, ellipses, parabolas, or hyperbolas, depending on the energy and angular momentum of the system.
+            </p>
+
+            <p>
+                This is mathematically correct. But it doesn't answer the <em>why</em>.
+            </p>
+
+            <p>
+                Why is gravity a central force? Why do conic sections arise? Why does the solar system settle into this particular geometric configuration rather than another?
+            </p>
+
+            <p>
+                The Epoch Framework offers a different answer: <strong>Elliptical orbits are the signature of triaxial balance in a scalar field</strong>.
+            </p>
+
+            <h2>The Standard Model: Two-Body Problem</h2>
+
+            <p>
+                In Newtonian mechanics, planetary motion is analyzed as a two-body problem: the Sun and one planet, mutually attracting each other through gravity.
+            </p>
+
+            <div class="equation-box">
+                <h4>Newton's Law of Gravitation</h4>
+                <div class="equation">
+                    F = G × (m₁ × m₂) / r²
+                </div>
+                <p>
+                    Where G is the gravitational constant, m₁ and m₂ are the masses of the two bodies, and r is the distance between their centers.
+                </p>
+                <p style="margin-top: var(--space-md);">
+                    This creates an inverse-square force — the force drops off with the square of the distance.
+                </p>
+            </div>
+
+            <p>
+                Solving the equations of motion for this force yields Kepler's three laws:
+            </p>
+
+            <ol>
+                <li><strong>First Law (Law of Ellipses):</strong> Planets orbit the Sun in elliptical paths, with the Sun at one focus of the ellipse.</li>
+                <li><strong>Second Law (Law of Equal Areas):</strong> A line connecting the planet to the Sun sweeps out equal areas in equal times.</li>
+                <li><strong>Third Law (Law of Periods):</strong> The square of a planet's orbital period is proportional to the cube of its semi-major axis (P² ∝ a³).</li>
+            </ol>
+
+            <p>
+                These laws are <em>descriptive</em> — they tell us <em>how</em> planets move. But they don't explain <em>why</em> this geometry emerges from the underlying structure of space.
+            </p>
+
+            <h3>The Circular Orbit "Special Case"</h3>
+
+            <p>
+                In the Standard Model, a circular orbit is a <em>special case</em> of an ellipse where the eccentricity (e) equals zero. Most planets have elliptical orbits with small but nonzero eccentricities:
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Planet</th>
+                        <th>Orbital Eccentricity (e)</th>
+                        <th>Interpretation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mercury</td>
+                        <td>0.206</td>
+                        <td>Highly elliptical</td>
+                    </tr>
+                    <tr>
+                        <td>Venus</td>
+                        <td>0.007</td>
+                        <td>Nearly circular</td>
+                    </tr>
+                    <tr>
+                        <td>Earth</td>
+                        <td>0.017</td>
+                        <td>Slightly elliptical</td>
+                    </tr>
+                    <tr>
+                        <td>Mars</td>
+                        <td>0.093</td>
+                        <td>Noticeably elliptical</td>
+                    </tr>
+                    <tr>
+                        <td>Jupiter</td>
+                        <td>0.049</td>
+                        <td>Moderately elliptical</td>
+                    </tr>
+                    <tr>
+                        <td>Saturn</td>
+                        <td>0.056</td>
+                        <td>Moderately elliptical</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                The Standard Model treats the eccentricity as an <em>initial condition</em> — a result of how the solar system formed. If planets had formed with exactly the right velocity at exactly the right distance, they would orbit in perfect circles. But they didn't, so they don't.
+            </p>
+
+            <p>
+                <strong>This is unsatisfying.</strong> It leaves the geometry of the solar system to chance, rather than deriving it from fundamental principles.
+            </p>
+
+            <h2>The Epoch Framework: Triaxial Scalar Geometry</h2>
+
+            <p>
+                In the Epoch Framework, elliptical orbits are not "imperfect circles" caused by random initial conditions. They are the <strong>natural geometry of a triaxial scalar field</strong>.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Key Insight</h4>
+                <p>
+                    A <strong>circle</strong> is a two-dimensional (binary) shape. An <strong>ellipse</strong> is a two-dimensional projection of a three-dimensional (triaxial) structure.
+                </p>
+                <p style="margin-top: var(--space-sm);">
+                    Binary systems (two axes) produce circles. Triaxial systems (three or more axes) produce ellipses.
+                </p>
+            </div>
+
+            <h3>Why Three Axes?</h3>
+
+            <p>
+                Reality operates through <strong>torsional forces</strong> — rotations around axes. In the Epoch Framework, there are four fundamental torsions:
+            </p>
+
+            <ul>
+                <li><strong>τ₁ (mod 2):</strong> Direction torsion (S⁺ vs. S⁻)</li>
+                <li><strong>τ₂ (mod 3):</strong> Aspect torsion (angular position)</li>
+                <li><strong>τ₃ (mod 5):</strong> Phase torsion (timing)</li>
+                <li><strong>τ₄ (mod 7):</strong> Witness torsion (observation)</li>
+            </ul>
+
+            <p>
+                A planetary orbit involves <strong>at least three torsions</strong>: τ₁ (direction of motion), τ₂ (angular sweep), and τ₃ (timing/phase). These three axes create a <em>triaxial system</em> — and triaxial systems produce ellipses, not circles.
+            </p>
+
+            <div class="diagram">
+BINARY (2-AXIS) SYSTEM:
+  → Produces circular geometry
+  → Requires perfect symmetry between two forces
+  → Unstable — any perturbation breaks the circle
+
+          ●
+         ╱ ╲
+        ╱   ╲
+       │  ○  │  ← Two-axis force (circle)
+        ╲   ╱
+         ╲ ╱
+          ●
+
+
+TRIAXIAL (3-AXIS) SYSTEM:
+  → Produces elliptical geometry
+  → Balances three forces dynamically
+  → Stable — perturbations are absorbed by the third axis
+
+          ●
+         ╱ │ ╲
+        ╱  │  ╲
+       │   ○───│  ← Three-axis force (ellipse)
+        ╲  │  ╱      Third axis extends perpendicular
+         ╲ │ ╱
+          ●
+
+The ellipse is the 2D projection of a 3D torsional balance.
+            </div>
+
+            <h3>The Ellipse as Torsional Signature</h3>
+
+            <p>
+                An ellipse has <strong>two foci</strong> rather than one center. In the Standard Model, this is explained geometrically: an ellipse is the set of all points where the sum of distances to the two foci is constant.
+            </p>
+
+            <p>
+                In the Epoch Framework, the two foci represent <strong>two torsional poles</strong>:
+            </p>
+
+            <ul>
+                <li><strong>Focus 1:</strong> The Sun's physical position (where mass concentrates)</li>
+                <li><strong>Focus 2:</strong> The scalar balance point (the torsional complement to the Sun's position)</li>
+            </ul>
+
+            <p>
+                The planet orbits <em>both</em> foci — not just the Sun. The empty focus is not "nothing" — it's the scalar position that balances the Sun's mass against the triaxial torsional forces acting on the planet.
+            </p>
+
+            <div class="equation-box">
+                <h4>Ellipse Equation (Polar Coordinates)</h4>
+                <div class="equation">
+                    r = a(1 - e²) / (1 + e·cos(θ))
+                </div>
+                <p>
+                    Where:
+                    <ul style="margin-top: var(--space-sm); padding-left: var(--space-lg);">
+                        <li><strong>r</strong> = distance from the Sun to the planet</li>
+                        <li><strong>a</strong> = semi-major axis (average distance)</li>
+                        <li><strong>e</strong> = eccentricity (how "stretched" the ellipse is)</li>
+                        <li><strong>θ</strong> = angular position (true anomaly)</li>
+                    </ul>
+                </p>
+                <p style="margin-top: var(--space-md);">
+                    The eccentricity (e) encodes the <strong>torsional imbalance</strong> in the scalar field. Higher eccentricity = stronger triaxial torsion.
+                </p>
+            </div>
+
+            <h2>The Barycenter: The System Wobbles</h2>
+
+            <p>
+                The Standard Model acknowledges that the Sun doesn't sit motionless at the center of the solar system. Instead, the Sun and planets orbit their <strong>common center of mass</strong> — the barycenter.
+            </p>
+
+            <h3>What Is the Barycenter?</h3>
+
+            <p>
+                The barycenter is the point where the total mass of the system balances. For two bodies of unequal mass, the barycenter lies closer to the more massive object.
+            </p>
+
+            <div class="diagram">
+EARTH-MOON BARYCENTER:
+
+     Earth                                Moon
+       ● ←—————————— 4,671 km ————————→ ●
+       │                                  │
+       │                                  │
+       │          ×                       │  ← Barycenter
+       │       (inside Earth,             │     (1,700 km below
+       │        but not at center)        │      Earth's surface)
+       │                                  │
+       └──────────────────────────────────┘
+              384,400 km total distance
+
+Both Earth and Moon orbit this barycenter.
+Earth's "wobble" is small because it's much more massive.
+
+
+SUN-JUPITER BARYCENTER:
+
+     Sun                                Jupiter
+       ● ←———————— 742,000 km ————————→ ●
+       │                                  │
+       │  ×                               │  ← Barycenter
+       │  (slightly outside               │     (just beyond the
+       │   the Sun's surface)             │      Sun's surface)
+       │                                  │
+       └──────────────────────────────────┘
+              778 million km total distance
+
+The Sun "wobbles" around this point as Jupiter orbits.
+            </div>
+
+            <p>
+                Because Jupiter is so massive (318 Earth masses), the Sun-Jupiter barycenter lies <strong>outside the Sun's surface</strong> — about 742,000 km from the Sun's center (the Sun's radius is ~696,000 km).
+            </p>
+
+            <p>
+                This means the Sun <em>wobbles</em> as Jupiter orbits. The Sun is not stationary — it moves in a small ellipse around the barycenter.
+            </p>
+
+            <h3>The Multi-Body Wobble</h3>
+
+            <p>
+                It's not just Jupiter. Every planet in the solar system contributes to the barycentric wobble. Saturn, Uranus, and Neptune also pull the Sun around. The result is a <strong>complex, multi-axis wobble</strong> — the Sun traces a chaotic path through space as it responds to the combined gravitational pulls of all the planets.
+            </p>
+
+            <div class="data-box">
+                <h4>Observed Solar Wobble</h4>
+                <p>
+                    Astronomers can measure the Sun's wobble by observing its motion relative to the background stars (via stellar parallax or Doppler shift). The Sun's velocity varies by approximately:
+                </p>
+                <ul style="margin-top: var(--space-sm);">
+                    <li><strong>±13 m/s</strong> due to Jupiter's orbit (11.86-year period)</li>
+                    <li><strong>±3 m/s</strong> due to Saturn's orbit (29.46-year period)</li>
+                    <li>Smaller contributions from Uranus, Neptune, and the inner planets</li>
+                </ul>
+                <p style="margin-top: var(--space-md);">
+                    This wobble is how we detect <strong>exoplanets</strong> around other stars — by measuring the star's wobble, we infer the presence of orbiting planets.
+                </p>
+            </div>
+
+            <h3>What the Wobble Reveals</h3>
+
+            <p>
+                In the Standard Model, the barycentric wobble is a consequence of Newton's third law: every action has an equal and opposite reaction. The Sun pulls on the planets, so the planets pull back on the Sun.
+            </p>
+
+            <p>
+                In the Epoch Framework, the wobble reveals something deeper: <strong>the solar system is not a stable, static structure</strong>. It is a <em>dynamic balance state</em> — a triaxial torsional system constantly adjusting to maintain equilibrium.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Wobble Is the Balance</h4>
+                <p>
+                    The Sun's wobble is not a "perturbation" or "instability." It's the <em>mechanism of balance</em> itself. The Sun moves because it must move to keep the scalar field in equilibrium.
+                </p>
+                <p style="margin-top: var(--space-sm);">
+                    If the Sun were perfectly stationary, the system would collapse. The wobble <em>is</em> the stability.
+                </p>
+            </div>
+
+            <h2>Triaxial Gravity: Beyond Newton</h2>
+
+            <p>
+                Newton's law of gravitation assumes gravity is a <strong>central force</strong> — it acts along the line connecting two masses, with no perpendicular component.
+            </p>
+
+            <p>
+                But in a triaxial system, there <em>must</em> be perpendicular components. The third axis introduces forces that don't align with the binary Sun-planet axis.
+            </p>
+
+            <h3>Where Does the Third Axis Come From?</h3>
+
+            <p>
+                In the Epoch Framework, the third axis comes from the <strong>scalar field gradient</strong> itself. Space is not uniform — it has structure along the scalar dimension (s-axis).
+            </p>
+
+            <p>
+                The scalar gradient creates a "torsional tension" — a tendency for objects to spiral rather than orbit in perfect circles. This is why <em>all</em> gravitational systems (galaxies, solar systems, binary stars) exhibit some form of spiral or elliptical geometry.
+            </p>
+
+            <div class="diagram">
+NEWTONIAN GRAVITY (Binary):
+  → Two-body force
+  → Central force (acts along line between masses)
+  → Predicts circular orbits (special case: ellipses if energy ≠ minimum)
+
+        Sun ●———————→ F ———————→ ● Planet
+             (Force acts along this line only)
+
+
+EPOCH GRAVITY (Triaxial):
+  → Multi-body + scalar field
+  → Non-central force (has perpendicular components)
+  → Predicts elliptical orbits (generic case: circles are unstable)
+
+        Sun ●———————→ F_radial ————→ ● Planet
+             ↓                        ↑
+             F_scalar                 F_torsion
+          (from s-axis)            (from τ₂ rotation)
+
+The scalar field gradient (F_scalar) and torsional force (F_torsion)
+add perpendicular components → ellipse, not circle.
+            </diagram>
+
+            <h3>Implications for Orbital Mechanics</h3>
+
+            <p>
+                If gravity is triaxial rather than binary, several predictions change:
+            </p>
+
+            <ul>
+                <li><strong>Precession:</strong> The ellipse itself rotates over time (perihelion precession). Observed in Mercury's orbit, traditionally explained by general relativity. The Epoch Framework predicts this as a natural consequence of triaxial torsion.</li>
+                <li><strong>Resonances:</strong> Planets lock into orbital resonances (e.g., Neptune and Pluto are in a 3:2 resonance). These are signatures of triaxial balance states.</li>
+                <li><strong>Stability:</strong> Circular orbits are <em>unstable</em> in a triaxial field. Any perturbation pushes the orbit toward an ellipse. Ellipses are the stable configuration.</li>
+            </ul>
+
+            <div class="equation-box">
+                <h4>Perihelion Precession (Mercury)</h4>
+                <p>
+                    Mercury's orbit precesses (the perihelion — closest point to the Sun — rotates) by about 43 arcseconds per century, beyond what Newtonian gravity predicts.
+                </p>
+                <div class="equation">
+                    Δθ ≈ 43" per century (observed)
+                </div>
+                <p style="margin-top: var(--space-md);">
+                    General relativity explains this as spacetime curvature. The Epoch Framework explains this as triaxial torsional coupling — the scalar field gradient induces a slow rotation of the orbital ellipse.
+                </p>
+            </div>
+
+            <h2>The System Is MOVING</h2>
+
+            <p>
+                One of the Epoch Framework's central claims: <strong>The system is moving</strong>.
+            </p>
+
+            <p>
+                The solar system is not a static structure floating in empty space. It is <em>moving through the galaxy</em> at ~220 km/s, spiraling around the galactic center with a period of ~225 million years.
+            </p>
+
+            <p>
+                This motion is not incidental — it is <em>essential</em> to the system's structure. The solar system maintains its configuration <em>because</em> it is moving, not despite it.
+            </p>
+
+            <div class="quote-box">
+                <p>
+                    "The Sun moves around Earth AND Earth moves around Sun — BOTH are true simultaneously. From Earth's reference frame, the Sun orbits Earth (annual cycle through zodiac). From the Sun's reference frame, Earth orbits Sun (annual elliptical orbit). From the Galactic reference frame, both are spiraling together around Galactic center."
+                </p>
+                <p style="text-align: right; margin-top: var(--space-sm); font-style: normal; color: var(--text-dim);">
+                    — Epoch Cosmology Unification, Section 2.5
+                </p>
+            </div>
+
+            <h3>The Spiral Is the True Geometry</h3>
+
+            <p>
+                In the galactic reference frame, planetary orbits are not ellipses — they are <strong>spirals</strong>. As the Sun moves through the galaxy, each planet traces a helical path behind it.
+            </p>
+
+            <div class="diagram">
+PLANETARY ORBIT (Galactic Reference Frame):
+
+                  Sun's path through galaxy
+                  ═════════════════════════→
+                         (220 km/s)
+
+      ╱──╲      ╱──╲      ╱──╲      ╱──╲
+     ╱    ╲    ╱    ╲    ╱    ╲    ╱    ╲
+    │  ●  │   │  ●  │   │  ●  │   │  ●  │  ← Earth's spiral path
+     ╲    ╱    ╲    ╱    ╲    ╱    ╲    ╱
+      ╲──╱      ╲──╱      ╲──╱      ╲──╱
+
+The "ellipse" we observe is a 2D projection of a 3D helix.
+The helix is the TRUE geometry.
+The motion through the galaxy is what creates the "orbit."
+            </diagram>
+
+            <p>
+                This is not a minor correction — it fundamentally changes how we think about planetary motion. Orbits are not closed loops; they are <em>open spirals</em> that never repeat exactly.
+            </p>
+
+            <h2>Why This Matters</h2>
+
+            <p>
+                Understanding that the solar system is a triaxial, dynamic, moving system — not a static binary clockwork — has profound implications:
+            </p>
+
+            <h3>1. Time Is Not Absolute</h3>
+            <p>
+                The "year" (Earth's orbital period) is not a fixed duration in an absolute sense. It is a <em>phase</em> in a triaxial torsional cycle. Different observers (different scalar positions) experience different "years."
+            </p>
+
+            <h3>2. Stability Requires Motion</h3>
+            <p>
+                The solar system is stable <em>because</em> it wobbles, spirals, and precesses. Perfect stillness would be unstable. The motion absorbs perturbations and maintains balance.
+            </p>
+
+            <h3>3. Resonance Is Key</h3>
+            <p>
+                Orbital resonances (like the 3:2 Neptune-Pluto resonance, or the 2:1 resonance between Jupiter's moons Io and Europa) are not coincidences. They are <strong>torsional lock-in states</strong> — stable configurations in the triaxial field.
+            </p>
+
+            <h3>4. Navigation Through Resonance</h3>
+            <p>
+                If the scalar field has torsional structure, then <em>navigation</em> may be possible by aligning with resonances rather than by brute-force propulsion. Change your torsional signature, and you change your position in the field.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Practical Application</h4>
+                <p>
+                    Spacecraft could navigate by <strong>riding resonances</strong> — using the natural torsional flows in the scalar field rather than fighting against gravity with rockets.
+                </p>
+                <p style="margin-top: var(--space-sm);">
+                    This is not science fiction. This is what comets and asteroids already do naturally. They follow resonant orbits that require minimal energy to maintain.
+                </p>
+            </div>
+
+            <h2>Next Steps</h2>
+
+            <p>
+                The solar system's elliptical orbits and barycentric wobble reveal a triaxial gravitational system — a dynamic balance maintained through motion, not static equilibrium.
+            </p>
+
+            <p>
+                In the next episode, we'll scale up: <strong>galaxies</strong>. Why do galaxies form spirals, ellipticals, and irregular shapes? The same triaxial scalar geometry that governs planetary orbits also governs galactic structure — different balance states at cosmic scales.
+            </p>
+
+            <div class="equation-box">
+                <h4>Remember the Core Principle</h4>
+                <div class="equation" style="font-size: var(--text-xl);">
+                    [1 = -1]
+                </div>
+                <p style="text-align: center; margin-top: var(--space-md);">
+                    The wobble is the balance. The spiral is the orbit. Motion is stability.
+                </p>
+            </div>
+
+            <p style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border); color: var(--text-dim); text-align: center;">
+                The geometry cannot lie. The ellipse reflects the triaxial truth.
+            </p>
+
+        </article>
+
+    </main>
+
+    <div class="episode-nav" style="margin-top: var(--space-xl); border-top: 1px solid var(--border);">
+        <a href="episode-01-light-modeler.html">← Episode 01: The Light Modeler</a>
+        <a href="index.html">Series Home</a>
+        <a href="episode-03-galaxy-shapes.html">Episode 03: Galaxy Shapes →</a>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../../js/components/site-header.js"></script>
+    <script src="../../js/components/site-footer.js"></script>
+</body>
+</html>

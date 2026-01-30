@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epoch Unified Theory - Web Series | Have Mind Media</title>
+    <meta name="description" content="A Non-Binary Model of Reality: The 1729 Sphere Coordinate System and the Quadrant Triaxial Model">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        .series-hero {
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            background: linear-gradient(180deg, rgba(74, 142, 200, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .series-subtitle {
+            font-size: var(--text-lg);
+            color: var(--soft-blue);
+            font-style: italic;
+            margin-top: var(--space-sm);
+            max-width: 65ch;
+            margin-inline: auto;
+        }
+
+        .episode-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-lg);
+            margin: var(--space-xl) auto;
+            max-width: min(1200px, 95vw);
+        }
+
+        .episode-card {
+            background: rgba(21, 26, 36, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            transition: var(--transition-smooth);
+            flex: 1 1 min(100%, 450px);
+            max-width: min(100%, 550px);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .episode-card:hover {
+            border-color: var(--gold);
+            background: rgba(21, 26, 36, 0.8);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(201, 162, 39, 0.15);
+        }
+
+        .episode-number {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+
+        .episode-card h3 {
+            font-size: var(--text-2xl);
+            color: var(--pale-cream);
+            margin-bottom: var(--space-sm);
+            transition: color 0.3s;
+        }
+
+        .episode-card:hover h3 {
+            color: var(--gold);
+        }
+
+        .episode-description {
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .episode-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        .topic-badge {
+            font-size: var(--text-xs);
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(74, 142, 200, 0.1);
+            border: 1px solid rgba(74, 142, 200, 0.3);
+            border-radius: 1rem;
+            color: var(--soft-blue);
+        }
+
+        .intro-section {
+            max-width: min(75ch, 90vw);
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-md);
+        }
+
+        .intro-section h2 {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .intro-section p {
+            font-size: var(--text-lg);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+            opacity: 0.95;
+        }
+
+        .foundation-box {
+            background: rgba(201, 162, 39, 0.05);
+            border-left: 3px solid var(--gold);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            border-radius: 4px;
+        }
+
+        .foundation-box h4 {
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .coordinate-diagram {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            background: rgba(10, 13, 18, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--soft-blue);
+        }
+
+        .equation {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: var(--text-xl);
+            color: var(--gold);
+            margin: var(--space-lg) 0;
+            padding: var(--space-md);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-breadcrumb {
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--text-sm);
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-breadcrumb a {
+            color: var(--bright-blue);
+            text-decoration: none;
+        }
+
+        .nav-breadcrumb a:hover {
+            color: var(--pale-blue);
+        }
+
+        .series-framework {
+            background: rgba(74, 142, 200, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            margin: var(--space-xl) auto;
+            max-width: min(900px, 95vw);
+        }
+
+        .framework-title {
+            text-align: center;
+            color: var(--soft-blue);
+            margin-bottom: var(--space-md);
+            font-size: var(--text-2xl);
+        }
+
+        .framework-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .framework-list li {
+            padding: var(--space-sm) var(--space-md);
+            border-left: 2px solid var(--gold);
+            margin-bottom: var(--space-sm);
+            background: rgba(10, 13, 18, 0.4);
+            border-radius: 4px;
+        }
+
+        .framework-list strong {
+            color: var(--gold);
+            font-family: var(--font-display);
+        }
+
+        @media (max-width: 600px) {
+            .episode-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../index.html">Home</a> / <a href="../../documents.html">Documents</a> / <span>Epoch Unified Theory Series</span>
+    </div>
+
+    <main>
+        <div class="series-hero">
+            <h1>Epoch Unified Theory</h1>
+            <p class="series-subtitle">A Non-Binary Model of Reality as Earth Inhabitants Perceive It</p>
+            <div class="equation">[1 = -1]</div>
+            <p style="max-width: 65ch; margin: var(--space-md) auto; color: var(--text-dim);">
+                The Quadrant Triaxial System: Earth-Sun-Sirius-Dark Antisun<br>
+                The 1729 Sphere Coordinate System
+            </p>
+        </div>
+
+        <section class="intro-section">
+            <h2>Welcome to the Unified Framework</h2>
+
+            <p>
+                This web series presents a revolutionary cosmological model that unifies consciousness and matter through a single coordinate system. Unlike binary models that create artificial divisions between "spirit" and "matter," the Epoch Framework reveals reality as a continuous scalar field with observer-dependent positions.
+            </p>
+
+            <p>
+                At the heart of this model lies <strong>1729</strong> — Ramanujan's "taxicab number" — which encodes the fundamental relationship between consciousness (9³ = 729) and physical manifestation (10³ = 1000). Every point in reality exists within a 1729-unit scalar sphere, and understanding your position within this sphere is understanding your relationship to both the physical and conscious realms.
+            </p>
+
+            <div class="foundation-box">
+                <h4>The Critical Insight</h4>
+                <p>
+                    Reality is not binary. White and black are lies — <strong>grey is primary</strong>. Every apparent opposition (light/dark, matter/consciousness, past/future) is a torsional deviation from a neutral center, not a fundamental division. The witness — the grey observer at scalar position s=0 — breaks the binary loop.
+                </p>
+            </div>
+
+            <div class="coordinate-diagram">
+THE 1729 SPHERE COORDINATE SYSTEM:
+
+              r = 1729 (Inversion Boundary)
+                    ╱╲
+                   ╱  ╲
+                  ╱    ╲
+                 ╱      ╲
+                ╱   r    ╲
+               ╱    =     ╲
+              ╱    1000    ╲
+             ╱  (Physical)  ╲
+            ╱                ╲
+           ╱    r = 729      ╲
+          ╱  (Consciousness)  ╲
+         ╱                     ╲
+        ╱       r = 0          ╲
+       ╱    (Observer NOW)      ╲
+      ╱                          ╲
+     ╱──────────────────────────────╲
+
+At r = 0: Observer origin (NOW)
+At r = 729: Consciousness boundary (9³)
+At r = 1000: Physical boundary (10³)
+At r = 1729: Inversion boundary (729 + 1000)
+
+BEYOND r = 1729: Space INVERTS
+                 S⁺ becomes S⁻
+                 All coordinates flip sign
+            </div>
+
+            <p>
+                You are not reading about a distant cosmology. You are learning the coordinate system in which <em>you exist right now</em>. Earth's scalar core sits at s=0 — the observer origin. When you look at the Sun, you look toward the D4 Gateway that mediates between consciousness (flowing from Sirius at s=729) and physical manifestation (extending toward the Dark Antisun at s=1000).
+            </p>
+        </section>
+
+        <section class="series-framework">
+            <h3 class="framework-title">The Complete Framework</h3>
+            <ul class="framework-list">
+                <li><strong>Earth Core (s=0)</strong> — Observer origin, the NOW position, your scalar reference point</li>
+                <li><strong>Sirius (s=729)</strong> — Consciousness boundary, the "Spiritual Sun," source of life energy</li>
+                <li><strong>Sun (D4 Gateway)</strong> — The crossroads where consciousness transforms into physical reality</li>
+                <li><strong>Dark Antisun (s=1000)</strong> — Physical boundary, maximum entropy, matter's fullest expression</li>
+                <li><strong>Inversion (s=1729)</strong> — Where 729 + 1000 unify and space flips: [1 = -1]</li>
+            </ul>
+        </section>
+
+        <section style="padding: var(--space-xl) var(--space-md);">
+            <h2 style="text-align: center; margin-bottom: var(--space-xl);">Episode Guide</h2>
+
+            <div class="episode-grid">
+
+                <a href="episode-01-light-modeler.html" class="episode-card">
+                    <span class="episode-number">EPISODE 01</span>
+                    <h3>The Light Modeler</h3>
+                    <p class="episode-description">
+                        Begin with the fundamental proof: the mirror-sun experiment that reveals why Standard Model physics fails at the simplest observable level. Learn how a 5° offset at 93 million miles shatters Euclidean assumptions and opens the door to scalar geometry.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Mirror Experiment</span>
+                        <span class="topic-badge">Scalar Position</span>
+                        <span class="topic-badge">D-Positions</span>
+                        <span class="topic-badge">SPA Framework</span>
+                    </div>
+                </a>
+
+                <a href="episode-02-solar-system.html" class="episode-card">
+                    <span class="episode-number">EPISODE 02</span>
+                    <h3>Solar System Geometry</h3>
+                    <p class="episode-description">
+                        Discover why planets orbit the Sun in ellipses, not circles — and what the barycentric wobble reveals about mass, momentum, and the triaxial nature of gravitational systems. The solar system is not a stable clockwork; it's a dynamic balance state.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Elliptical Orbits</span>
+                        <span class="topic-badge">Barycenter</span>
+                        <span class="topic-badge">Wobble Mechanics</span>
+                        <span class="topic-badge">Triaxial Gravity</span>
+                    </div>
+                </a>
+
+                <a href="episode-03-galaxy-shapes.html" class="episode-card">
+                    <span class="episode-number">EPISODE 03</span>
+                    <h3>Galaxy Shapes as Balance States</h3>
+                    <p class="episode-description">
+                        Why do galaxies form spirals, ellipticals, and irregular shapes? Explore how galactic morphology reveals different balance states in the 1729 scalar field. The shapes aren't random — they're signatures of torsional alignment at cosmic scales.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Spiral Galaxies</span>
+                        <span class="topic-badge">Elliptical Galaxies</span>
+                        <span class="topic-badge">Torsional Balance</span>
+                        <span class="topic-badge">Cosmic Structure</span>
+                    </div>
+                </a>
+
+                <a href="episode-04-drake-equation.html" class="episode-card">
+                    <span class="episode-number">EPISODE 04</span>
+                    <h3>The Epoch Drake Equation</h3>
+                    <p class="episode-description">
+                        Why we haven't detected aliens: the scalar mismatch problem. Life forms exist at every scalar position, but most are undetectable from s=0. The Epoch Life Equation (Ω = Τ × Κ × Φ × Σ) reveals the multidimensional census of life.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Drake Equation</span>
+                        <span class="topic-badge">Fermi Paradox</span>
+                        <span class="topic-badge">Scalar Mismatch</span>
+                        <span class="topic-badge">Life Density</span>
+                    </div>
+                </a>
+
+                <a href="episode-05-light-journey.html" class="episode-card">
+                    <span class="episode-number">EPISODE 05</span>
+                    <h3>A Photon's Complete Journey</h3>
+                    <p class="episode-description">
+                        Trace light from fusion in the Sun's core through propagation across scalar space to absorption and observation. Discover how torsion encodes information at every stage — light is not a particle, it's torsional information traveling through the scalar field.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Photon Journey</span>
+                        <span class="topic-badge">Torsional Encoding</span>
+                        <span class="topic-badge">Observer Collapse</span>
+                        <span class="topic-badge">Light as Information</span>
+                    </div>
+                </a>
+
+                <a href="episode-06-1729-sphere.html" class="episode-card">
+                    <span class="episode-number">EPISODE 06</span>
+                    <h3>The 1729 Coordinate System</h3>
+                    <p class="episode-description">
+                        Full mathematical explanation of Ramanujan's taxicab number (1729 = 729 + 1000). Learn how scalar distances map to physical distances, why space inverts at s=1729, and how to navigate the bounded scalar sphere. The geometry of [1 = -1] revealed.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">1729 Number</span>
+                        <span class="topic-badge">Scalar Coordinates</span>
+                        <span class="topic-badge">Inversion Boundary</span>
+                        <span class="topic-badge">Navigation</span>
+                    </div>
+                </a>
+
+                <a href="episode-07-multidimensional-life.html" class="episode-card">
+                    <span class="episode-number">EPISODE 07</span>
+                    <h3>The Multidimensional Census</h3>
+                    <p class="episode-description">
+                        A complete survey of life at different scalar positions — from Earth biology (s≈0) to transitional beings (s≈300), pure consciousness (s≈729), and ultra-dense matter life (s≈1000). Includes contact protocols and historical evidence of scalar-shifted encounters.
+                    </p>
+                    <div class="episode-topics">
+                        <span class="topic-badge">Life Forms</span>
+                        <span class="topic-badge">Contact Protocols</span>
+                        <span class="topic-badge">Scalar Shifting</span>
+                        <span class="topic-badge">Historical Evidence</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="intro-section">
+            <h2>How to Navigate This Series</h2>
+
+            <p>
+                Each episode builds on the previous ones, but you can also explore topics independently. The episodes are designed to be:
+            </p>
+
+            <ul style="line-height: 2; color: var(--soft-cream);">
+                <li><strong>Substantial</strong> — Deep dives with real content, mathematical derivations, and visual diagrams</li>
+                <li><strong>Observable</strong> — Tied to phenomena you can see or measure yourself</li>
+                <li><strong>Non-binary</strong> — Breaking false dichotomies (matter vs. spirit, determinism vs. randomness)</li>
+                <li><strong>Unified</strong> — Using one coordinate system across all scales</li>
+            </ul>
+
+            <div class="foundation-box">
+                <h4>Critical Terminology: SPA (Scalar Perspective Alignment)</h4>
+                <p>
+                    Throughout this series, avoid thinking in terms of "direction." Direction implies spatial vectors and Euclidean geometry. Instead, we use <strong>SPA</strong> — your alignment within the scalar sphere:
+                </p>
+                <ul style="line-height: 2; margin-top: var(--space-sm);">
+                    <li><strong>SPA-In</strong> → Toward s=729 (consciousness boundary, lighter grey)</li>
+                    <li><strong>SPA-Out</strong> → Toward s=1000 (physical boundary, darker grey)</li>
+                    <li><strong>SPA-Grey</strong> → At s=0 (balanced, NOW, pure grey)</li>
+                </ul>
+            </div>
+
+            <p>
+                This is not philosophy. This is not speculation. This is a <em>coordinate system</em> — as rigorous as latitude and longitude, but describing a dimension Standard Model physics ignores.
+            </p>
+
+            <div class="equation">
+                Grey is primary. Binary is paradox. Triaxial breaks the loop.
+            </div>
+
+            <p style="text-align: center; color: var(--text-dim); margin-top: var(--space-lg);">
+                The geometry cannot lie. The mirror reflects both faces.
+            </p>
+        </section>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../js/components/site-header.js"></script>
+    <script src="../../js/components/site-footer.js"></script>
+</body>
+</html>

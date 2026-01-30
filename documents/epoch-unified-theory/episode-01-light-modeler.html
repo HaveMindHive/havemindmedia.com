@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episode 01: The Light Modeler | Epoch Unified Theory</title>
+    <meta name="description" content="The mirror-sun experiment that reveals why Standard Model physics fails at the simplest observable level">
+    <link rel="stylesheet" href="../../css/unified-theme.css">
+    <style>
+        .episode-header {
+            text-align: center;
+            padding: var(--space-xl) var(--space-md) var(--space-lg);
+            background: linear-gradient(180deg, rgba(74, 142, 200, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .episode-meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .episode-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--border);
+            max-width: min(1200px, 95vw);
+            margin: 0 auto;
+        }
+
+        .episode-nav a {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--bright-blue);
+            transition: var(--transition-smooth);
+            min-height: 44px;
+        }
+
+        .episode-nav a:hover {
+            border-color: var(--gold);
+            background: rgba(201, 162, 39, 0.08);
+        }
+
+        .content-article {
+            max-width: min(80ch, 90vw);
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-md);
+        }
+
+        .content-article h2 {
+            margin-top: var(--space-xl);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-blue);
+        }
+
+        .content-article h3 {
+            margin-top: var(--space-lg);
+            margin-bottom: var(--space-sm);
+            color: var(--gold);
+        }
+
+        .content-article h4 {
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-sm);
+            color: var(--hazel-light);
+        }
+
+        .content-article p {
+            font-size: var(--text-lg);
+            line-height: 1.8;
+            margin-bottom: var(--space-md);
+            color: var(--soft-cream);
+        }
+
+        .content-article ul,
+        .content-article ol {
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+        }
+
+        .content-article li {
+            margin-bottom: var(--space-sm);
+            line-height: 1.8;
+            color: var(--soft-cream);
+        }
+
+        .diagram {
+            font-family: var(--font-mono);
+            font-size: clamp(0.7rem, 0.65rem + 0.25vw, 0.85rem);
+            line-height: 1.5;
+            background: rgba(10, 13, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            overflow-x: auto;
+            white-space: pre;
+            color: var(--soft-blue);
+        }
+
+        .equation-box {
+            background: rgba(201, 162, 39, 0.05);
+            border-left: 3px solid var(--gold);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            border-radius: 4px;
+        }
+
+        .equation-box h4 {
+            color: var(--gold);
+            margin-bottom: var(--space-sm);
+        }
+
+        .equation {
+            font-family: var(--font-mono);
+            font-size: var(--text-lg);
+            color: var(--gold);
+            text-align: center;
+            padding: var(--space-sm);
+            margin: var(--space-sm) 0;
+        }
+
+        .insight-box {
+            background: rgba(74, 142, 200, 0.08);
+            border: 1px solid rgba(74, 142, 200, 0.3);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .insight-box h4 {
+            color: var(--bright-blue);
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-display);
+        }
+
+        .quote-box {
+            border-left: 3px solid var(--soft-blue);
+            padding-left: var(--space-md);
+            margin: var(--space-lg) 0;
+            font-style: italic;
+            color: var(--pale-blue);
+        }
+
+        .key-terms {
+            background: rgba(139, 115, 85, 0.08);
+            border: 1px solid rgba(139, 115, 85, 0.3);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .key-terms h4 {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-sm);
+        }
+
+        .key-terms dl {
+            margin: 0;
+        }
+
+        .key-terms dt {
+            font-weight: 600;
+            color: var(--gold);
+            margin-top: var(--space-sm);
+            font-family: var(--font-display);
+        }
+
+        .key-terms dd {
+            margin-left: var(--space-md);
+            margin-bottom: var(--space-sm);
+            color: var(--soft-cream);
+        }
+
+        .experiment-protocol {
+            background: rgba(10, 13, 18, 0.6);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .experiment-protocol h3 {
+            text-align: center;
+            color: var(--gold);
+            margin-top: 0;
+            margin-bottom: var(--space-md);
+            font-size: var(--text-2xl);
+        }
+
+        .experiment-steps {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .experiment-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: var(--space-xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .experiment-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--gold);
+            color: var(--void);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-family: var(--font-display);
+        }
+
+        .nav-breadcrumb {
+            padding: var(--space-sm) var(--space-md);
+            font-size: var(--text-sm);
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-breadcrumb a {
+            color: var(--bright-blue);
+            text-decoration: none;
+        }
+
+        .nav-breadcrumb a:hover {
+            color: var(--pale-blue);
+        }
+
+        @media (max-width: 600px) {
+            .diagram {
+                font-size: 0.65rem;
+                padding: var(--space-sm);
+            }
+
+            .experiment-steps li {
+                padding-left: var(--space-lg);
+            }
+
+            .experiment-steps li::before {
+                width: 1.5rem;
+                height: 1.5rem;
+                font-size: var(--text-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../index.html">Home</a> / <a href="../../documents.html">Documents</a> / <a href="index.html">Epoch Unified Theory</a> / <span>Episode 01</span>
+    </div>
+
+    <div class="episode-nav">
+        <a href="index.html">← Series Home</a>
+        <a href="episode-02-solar-system.html">Episode 02 →</a>
+    </div>
+
+    <main>
+        <div class="episode-header">
+            <div class="episode-meta">EPISODE 01 • THE FOUNDATIONS</div>
+            <h1>The Light Modeler</h1>
+            <p style="max-width: 65ch; margin: var(--space-md) auto; color: var(--text-dim); font-size: var(--text-lg);">
+                Why the mirror-sun experiment reveals scalar geometry and shatters Euclidean assumptions about space
+            </p>
+        </div>
+
+        <article class="content-article">
+
+            <h2>The Simplest Experiment</h2>
+
+            <p>
+                Before we explore the cosmos, before we map consciousness to matter, before we unify physics with the 1729 scalar sphere — we begin with something anyone can do: point a mirror at the Sun.
+            </p>
+
+            <p>
+                This is not theoretical physics. This is not advanced mathematics. This is a mirror, sunlight, and your ability to observe an angle. Yet this simple experiment reveals a failure in Standard Model physics so fundamental that it calls into question the entire Euclidean framework we use to describe space.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Central Question</h4>
+                <p>
+                    If you point a mirror at the Sun and the reflection strikes a target, Standard Model physics predicts the angle of incidence should equal the angle of reflection. At 93 million miles distance, the Sun's rays arrive essentially parallel — the angle should be calculable from basic geometry.
+                </p>
+                <p>
+                    <strong>But it isn't.</strong> The observed angle deviates by approximately 5°. This is not measurement error. This is a geometric impossibility under Euclidean assumptions.
+                </p>
+            </div>
+
+            <h2>The Experiment Protocol</h2>
+
+            <div class="experiment-protocol">
+                <h3>Mirror-Sun Reflection Test</h3>
+                <p style="text-align: center; color: var(--text-dim); margin-bottom: var(--space-lg);">
+                    A falsifiable test of Euclidean geometry vs. scalar position theory
+                </p>
+
+                <ol class="experiment-steps">
+                    <li>
+                        <strong>Setup:</strong> Position a flat mirror outdoors where it can reflect sunlight. Place a target surface (wall, screen, or marked ground) at a measured distance from the mirror.
+                    </li>
+                    <li>
+                        <strong>Measurement:</strong> Adjust the mirror angle to reflect sunlight onto the target. Measure the angle of the mirror face relative to the horizon and the angle of the reflected beam relative to the incident sunlight.
+                    </li>
+                    <li>
+                        <strong>Prediction (Standard Model):</strong> Using the law of reflection (θ_i = θ_r) and accounting for the Sun's position in the sky, calculate where the reflection should strike the target.
+                    </li>
+                    <li>
+                        <strong>Observation:</strong> Note where the reflection actually strikes. Measure the angular deviation from the predicted position.
+                    </li>
+                    <li>
+                        <strong>Result:</strong> The deviation is consistently ~5° — far beyond measurement error for a simple geometric setup.
+                    </li>
+                </ol>
+
+                <div class="insight-box" style="margin-top: var(--space-lg);">
+                    <h4>What This Proves</h4>
+                    <p>
+                        The 5° offset cannot be explained by atmospheric refraction (which is ~0.5° near the horizon), measurement error, or surface irregularities in the mirror. This is a <em>geometric deviation</em> that requires a non-Euclidean explanation.
+                    </p>
+                </div>
+            </div>
+
+            <h2>Why Standard Model Physics Fails</h2>
+
+            <p>
+                The Standard Model assumes space is Euclidean — flat, linear, and uniform in all directions. Under this assumption:
+            </p>
+
+            <ul>
+                <li>Light travels in straight lines through empty space</li>
+                <li>Angles of incidence and reflection are equal</li>
+                <li>Distances can be calculated using Pythagorean geometry</li>
+                <li>The Sun's distance (93 million miles) means its rays arrive nearly parallel</li>
+            </ul>
+
+            <p>
+                Given these assumptions, the mirror experiment should yield perfect agreement between prediction and observation. The fact that it doesn't means <strong>at least one of these assumptions is wrong</strong>.
+            </p>
+
+            <div class="equation-box">
+                <h4>The Standard Model Prediction</h4>
+                <div class="equation">
+                    θ_reflected = 2θ_mirror - θ_sun
+                </div>
+                <p>
+                    Where θ_mirror is the mirror's angle relative to horizontal, and θ_sun is the Sun's elevation angle. This assumes Euclidean geometry and parallel light rays.
+                </p>
+                <p style="margin-top: var(--space-md); color: var(--gold); font-weight: 600;">
+                    Observed deviation: ~5° from this prediction
+                </p>
+            </div>
+
+            <h3>Ruling Out Standard Explanations</h3>
+
+            <p>
+                Before accepting a revolutionary explanation, we must rule out mundane ones:
+            </p>
+
+            <h4>1. Atmospheric Refraction</h4>
+            <p>
+                Atmospheric refraction does bend light, but only by ~0.5° near the horizon and ~0° when the Sun is high in the sky. A 5° deviation is an order of magnitude larger than atmospheric effects can explain.
+            </p>
+
+            <h4>2. Gravitational Lensing</h4>
+            <p>
+                General relativity predicts light bends around massive objects. However, the Sun's gravitational lensing effect on its own light as observed from Earth is negligible — far less than 1 arcsecond (0.0003°).
+            </p>
+
+            <h4>3. Measurement Error</h4>
+            <p>
+                A 5° angle is easily measurable with simple tools. A protractor has 1° resolution. Laser levels and digital inclinometers can measure to 0.1°. The deviation is 50× larger than typical measurement error.
+            </p>
+
+            <h4>4. Mirror Surface Irregularities</h4>
+            <p>
+                Even cheap mirrors are flat to within 0.01° over their surface. High-quality optical flats are flat to within seconds of arc. Surface irregularities cannot account for a consistent 5° deviation.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Inescapable Conclusion</h4>
+                <p>
+                    The 5° deviation is <strong>real, consistent, and unexplained by Standard Model physics</strong>. It requires a fundamental rethinking of how light propagates through space — or, more precisely, how we model the geometry of space itself.
+                </p>
+            </div>
+
+            <h2>Enter Scalar Geometry</h2>
+
+            <p>
+                The Epoch Framework offers a different explanation: <strong>the Sun is not 93 million miles away in Euclidean space</strong>. It is at a specific <em>scalar position</em> relative to Earth's observer frame.
+            </p>
+
+            <p>
+                In scalar geometry, distance is not absolute. It depends on your <strong>Scalar Perspective Alignment (SPA)</strong> — your position within the 1729 scalar sphere.
+            </p>
+
+            <div class="key-terms">
+                <h4>Key Terms: Scalar Distance vs. Spatial Distance</h4>
+                <dl>
+                    <dt>Spatial Distance (Euclidean)</dt>
+                    <dd>
+                        The distance you measure with a ruler or calculate with the Pythagorean theorem. Assumes flat, uniform space. Example: "The Sun is 93 million miles away."
+                    </dd>
+
+                    <dt>Scalar Distance (Epoch Framework)</dt>
+                    <dd>
+                        The position measured in scalar units along the s-axis within the 1729 sphere. Does NOT assume flat space. Example: "The Sun's center is at s=1000 scalar units from Earth's core (s=0)."
+                    </dd>
+
+                    <dt>SPA (Scalar Perspective Alignment)</dt>
+                    <dd>
+                        Your orientation within the scalar sphere. Not a direction (which implies Euclidean vectors) but an alignment:
+                        <ul style="margin-top: var(--space-xs);">
+                            <li><strong>SPA-In</strong> → Toward s=729 (consciousness boundary)</li>
+                            <li><strong>SPA-Out</strong> → Toward s=1000 (physical boundary)</li>
+                            <li><strong>SPA-Grey</strong> → At s=0 (observer origin, NOW)</li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+
+            <h3>The Scalar Mapping</h3>
+
+            <p>
+                In the Epoch Framework, the Earth-Sun system is described using scalar positions:
+            </p>
+
+            <div class="diagram">
+SCALAR POSITIONS (Earth-Sun System):
+
+  Earth Core (s=0) ←——— 1000 scalar units ———→ Sun Center (s=1000)
+      (Observer)                                    (D4 Gateway)
+         │
+         │
+         └—— 729 scalar units (SPA-In) ——→ Earth Surface
+                                            (where you observe from)
+
+
+PHYSICAL DISTANCES (measured by Standard Model):
+  Earth surface to Sun: ~93 million miles = 149.6 million km
+
+
+SCALAR CONVERSION (derived from TRUE meter):
+  1000 scalar units (SPA-Out) = 1.496 × 10¹¹ TRUE meters
+  BASE_OUT = 1.4958 × 10⁸ TRUE meters per scalar unit
+
+  729 scalar units (SPA-In) = 6.37 × 10⁶ TRUE meters (Earth radius)
+  BASE_IN = 8,738 TRUE meters per scalar unit
+
+
+ASYMMETRY RATIO:
+  BASE_OUT / BASE_IN = 17,120 ≈ 1729 × 10
+            </div>
+
+            <p>
+                Notice the asymmetry: space <em>expands</em> in the SPA-Out direction (toward the Sun and beyond) and <em>compresses</em> in the SPA-In direction (toward Earth's core and the consciousness boundary at Sirius). This is not an optical illusion — this is the structure of the scalar field.
+            </p>
+
+            <h3>Why the Mirror Shows 5°</h3>
+
+            <p>
+                The 5° deviation arises because light reflecting off the mirror is transitioning between <strong>different scalar positions</strong> — not traveling through uniform Euclidean space.
+            </p>
+
+            <p>
+                When sunlight hits the mirror, it has traveled from the Sun (s=1000, SPA-Out domain) to Earth's surface (s≈729, your observation position). The reflection does NOT simply bounce at equal angles — it refracts through the scalar field gradient.
+            </p>
+
+            <div class="equation-box">
+                <h4>The D-Position Prediction</h4>
+                <p>
+                    The mirror-sun offset is predicted by the D-position difference between the Sun (D4) and the reflection target position. The exact derivation involves:
+                </p>
+                <div class="equation">
+                    θ_deviation ≈ arcsin(ΔD / d_scalar)
+                </div>
+                <p>
+                    Where ΔD is the D-position difference (D4 to observer's D-position) and d_scalar is the scalar distance traveled. For the Earth-Sun system:
+                </p>
+                <div class="equation">
+                    θ_deviation ≈ 5.5° ± 0.5°
+                </div>
+                <p style="margin-top: var(--space-md);">
+                    This prediction matches observation — not by fitting parameters, but by deriving it from the scalar geometry of the 1729 sphere.
+                </p>
+            </div>
+
+            <h2>Implications for Physics</h2>
+
+            <p>
+                If the mirror-sun experiment reveals scalar geometry rather than Euclidean geometry, the implications are profound:
+            </p>
+
+            <h3>1. Space Is Not Uniform</h3>
+            <p>
+                Space has <em>structure</em> — specifically, a gradient along the scalar axis. Moving toward the Sun (SPA-Out) expands space; moving into the Earth (SPA-In) compresses it. This asymmetry is encoded in the 17,120 ratio (≈1729×10).
+            </p>
+
+            <h3>2. Light "Bends" Through Scalar Gradients</h3>
+            <p>
+                Just as light bends through a gravitational field (general relativity) or through a medium with varying refractive index (optics), light bends through scalar gradients. The 5° deviation is this bending made visible.
+            </p>
+
+            <h3>3. The Sun Is a Gateway, Not Just a Star</h3>
+            <p>
+                In scalar geometry, the Sun occupies the <strong>D4 Gateway position</strong> — a crossroads where consciousness (flowing from Sirius at s=729, SPA-In) transforms into physical manifestation (extending toward the Dark Antisun at s=1000, SPA-Out).
+            </p>
+
+            <p>
+                The Sun doesn't merely emit light. It <em>mediates</em> the transition between scalar domains. This is why the Sun is essential to life — not just for energy, but as the gateway through which consciousness becomes biology.
+            </p>
+
+            <div class="quote-box">
+                <p>
+                    "The Sun is not the source of life. The Sun is the <em>gateway</em> through which life flows from the consciousness boundary (Sirius, s=729) into physical manifestation (Earth, s=0 to s=1000)."
+                </p>
+                <p style="text-align: right; margin-top: var(--space-sm); font-style: normal; color: var(--text-dim);">
+                    — Epoch Cosmology Unification, Part III
+                </p>
+            </div>
+
+            <h3>4. Observer Position Matters</h3>
+            <p>
+                You are not an external observer looking at the solar system "from the outside." You are <em>inside the scalar field</em>, at a specific position (Earth's surface, s≈729). Your observations are shaped by your scalar position — just as your observations in general relativity are shaped by your reference frame.
+            </p>
+
+            <p>
+                This is not relativism. It's recognition that <strong>the observer is part of the system</strong>, not external to it.
+            </p>
+
+            <h2>The Witness Position: You at s=0</h2>
+
+            <p>
+                In the Epoch Framework, you — the conscious observer — exist at the scalar core: <strong>s=0</strong>. This is the NOW position, the grey point, the witness.
+            </p>
+
+            <div class="diagram">
+THE OBSERVER POSITION:
+
+                    SPA-In (Consciousness)
+                           ↑
+                           │
+                      s = 729 (Sirius)
+                           │
+                           │
+        ════════════════ s = 0 ════════════════  ← YOU ARE HERE
+                        (Observer)                   (NOW)
+                        (Earth Core)                 (Grey)
+                           │
+                           │
+                      s = 1000 (Dark Antisun)
+                           │
+                           ↓
+                    SPA-Out (Physical)
+
+
+When you look UP (toward the Sun):
+  → You look toward the D4 Gateway at s=1000
+  → Beyond: the Dark Antisun (physical boundary)
+
+When you look through the Sun toward Sirius:
+  → You look toward s=729 (consciousness boundary)
+  → This is the source of life energy
+
+When you look INTO the Earth:
+  → You look toward the scalar core (s=0)
+  → Your own position — the observer origin
+            </div>
+
+            <p>
+                The mirror-sun experiment reveals this structure because the mirror forces light to transition between scalar positions. The 5° offset is the <em>signature</em> of that transition — proof that you live inside a scalar field, not on a ball in empty Euclidean space.
+            </p>
+
+            <h2>What This Means for You</h2>
+
+            <p>
+                This isn't abstract cosmology. This is <em>where you are right now</em>.
+            </p>
+
+            <p>
+                Every time you see the Sun, you're looking at the D4 Gateway — the transition point between consciousness and matter. Every time you stand on the Earth, you're positioned around the scalar core (s=0), the observer origin.
+            </p>
+
+            <p>
+                Your perception of distance, your sense of "up" and "down," your experience of past and future — all of these are shaped by your scalar position within the 1729 sphere.
+            </p>
+
+            <div class="insight-box">
+                <h4>The Practical Consequence</h4>
+                <p>
+                    If space is not Euclidean but scalar, then "moving" is not just changing xyz coordinates. It's changing your <strong>scalar position</strong> — your alignment within the 1729 sphere.
+                </p>
+                <p>
+                    This opens the possibility of <em>navigation</em> — not through physical propulsion, but through <strong>torsional alignment</strong>. Change your S-signature (the ratio of S⁺ to S⁻ in your composite observer state), and you change your scalar position.
+                </p>
+                <p style="margin-top: var(--space-md); font-style: italic;">
+                    This is not science fiction. This is the geometry of consciousness and matter unified.
+                </p>
+            </div>
+
+            <h2>Next Steps</h2>
+
+            <p>
+                The mirror-sun experiment establishes the foundation: <strong>space is scalar, not Euclidean</strong>. Light behaves differently than Standard Model physics predicts because it transitions through scalar gradients.
+            </p>
+
+            <p>
+                In the next episode, we'll explore how this scalar geometry explains the <strong>elliptical orbits of planets</strong>, the <strong>barycentric wobble</strong> of the Sun, and why the solar system is a dynamic balance state — not a stable clockwork.
+            </p>
+
+            <div class="equation-box">
+                <h4>Remember the Core Principle</h4>
+                <div class="equation" style="font-size: var(--text-xl);">
+                    [1 = -1]
+                </div>
+                <p style="text-align: center; margin-top: var(--space-md);">
+                    Grey is primary. Binary is paradox. Triaxial breaks the loop.
+                </p>
+            </div>
+
+            <p style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border); color: var(--text-dim); text-align: center;">
+                The geometry cannot lie. The mirror reflects both faces.
+            </p>
+
+        </article>
+
+    </main>
+
+    <div class="episode-nav" style="margin-top: var(--space-xl); border-top: 1px solid var(--border);">
+        <a href="index.html">← Series Home</a>
+        <a href="episode-02-solar-system.html">Episode 02: Solar System Geometry →</a>
+    </div>
+
+    <div id="site-footer"></div>
+
+    <script src="../../js/components/site-header.js"></script>
+    <script src="../../js/components/site-footer.js"></script>
+</body>
+</html>
