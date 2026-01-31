@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Life Map | Epoch Unified Theory</title>
+    <meta name="description" content="Interactive visualization: See how galaxy structure determines where life forms">
+    <link rel="stylesheet" href="../../../css/unified-theme.css">
+    <link rel="stylesheet" href="models.css">
+    <style>
+        .galaxy-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        .galaxy-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(74, 142, 200, 0.1);
+            border: 2px solid rgba(74, 142, 200, 0.3);
+            border-radius: 8px;
+            color: var(--soft-blue);
+            font-size: var(--text-base);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            min-width: 140px;
+        }
+
+        .galaxy-btn:hover {
+            background: rgba(74, 142, 200, 0.2);
+            border-color: var(--bright-blue);
+        }
+
+        .galaxy-btn.active {
+            background: var(--bright-blue);
+            color: var(--void);
+            border-color: var(--bright-blue);
+        }
+
+        .galaxy-info {
+            margin-top: var(--space-lg);
+        }
+
+        .galaxy-name {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: var(--space-xs);
+        }
+
+        .galaxy-description {
+            text-align: center;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .galaxy-description.life-factory {
+            color: #4ecdc4;
+        }
+
+        .galaxy-description.graveyard {
+            color: #ff6b6b;
+        }
+
+        .galaxy-description.chaotic {
+            color: var(--gold);
+        }
+
+        .life-meter {
+            margin: var(--space-md) auto;
+            max-width: 400px;
+        }
+
+        .life-meter-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-xs);
+            font-size: var(--text-sm);
+        }
+
+        .life-meter-label span:first-child {
+            color: var(--text-dim);
+        }
+
+        .life-meter-value {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .life-meter-bar {
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .life-meter-fill {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.5s ease, background 0.5s ease;
+        }
+
+        .life-meter-fill.high {
+            background: linear-gradient(90deg, #4ecdc4, #2ecc71);
+        }
+
+        .life-meter-fill.medium {
+            background: linear-gradient(90deg, #d4af37, #f39c12);
+        }
+
+        .life-meter-fill.low {
+            background: linear-gradient(90deg, #ff6b6b, #e74c3c);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-md) 0;
+        }
+
+        .features-list li {
+            padding: var(--space-xs) 0;
+            padding-left: var(--space-md);
+            position: relative;
+            color: var(--soft-cream);
+        }
+
+        .features-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .region-info {
+            background: rgba(10, 13, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+            min-height: 80px;
+        }
+
+        .region-info.active {
+            border-color: var(--gold);
+        }
+
+        .region-title {
+            color: var(--hazel-light);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-xs);
+        }
+
+        .region-potential {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .region-potential-label {
+            color: var(--text-dim);
+            font-size: var(--text-sm);
+        }
+
+        .region-potential-value {
+            font-family: var(--font-mono);
+            font-size: var(--text-xl);
+            font-weight: 600;
+        }
+
+        .region-potential-value.high {
+            color: #4ecdc4;
+        }
+
+        .region-potential-value.medium {
+            color: var(--gold);
+        }
+
+        .region-potential-value.low {
+            color: #ff6b6b;
+        }
+
+        .hover-hint {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: var(--text-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .comparison-table {
+            margin-top: var(--space-xl);
+        }
+
+        .comparison-table h4 {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 100px 80px;
+            gap: var(--space-sm);
+            align-items: center;
+            padding: var(--space-sm);
+            background: rgba(21, 26, 36, 0.4);
+            border-radius: 4px;
+            margin-bottom: var(--space-xs);
+        }
+
+        .comparison-row.current {
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .comparison-row .name {
+            color: var(--soft-cream);
+        }
+
+        .comparison-row .bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .comparison-row .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .comparison-row .value {
+            font-family: var(--font-mono);
+            color: var(--gold);
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../../index.html">Home</a> /
+        <a href="../index.html">Epoch Unified Theory</a> /
+        <span>Galaxy Life Map</span>
+    </div>
+
+    <main class="model-container">
+
+        <a href="../index.html" class="back-link">← Back to Series</a>
+
+        <h1 class="model-title">Galaxy Life Map</h1>
+        <p class="model-subtitle">
+            You can look at a galaxy and know if life forms there. The shape tells you everything.
+        </p>
+
+        <div class="galaxy-selector">
+            <button class="galaxy-btn active" data-type="spiral">Spiral</button>
+            <button class="galaxy-btn" data-type="barred">Barred Spiral</button>
+            <button class="galaxy-btn" data-type="elliptical">Elliptical</button>
+            <button class="galaxy-btn" data-type="irregular">Irregular</button>
+        </div>
+
+        <div class="viz-area">
+            <div id="galaxy-viz"></div>
+            <p class="hover-hint">Hover over regions to see local life potential</p>
+        </div>
+
+        <div class="galaxy-info">
+            <div class="galaxy-name" id="galaxy-name">Spiral Galaxy</div>
+            <div class="galaxy-description life-factory" id="galaxy-description">LIFE FACTORY</div>
+
+            <div class="life-meter">
+                <div class="life-meter-label">
+                    <span>OVERALL LIFE POTENTIAL</span>
+                    <span class="life-meter-value" id="life-value">85%</span>
+                </div>
+                <div class="life-meter-bar">
+                    <div class="life-meter-fill high" id="life-bar" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <ul class="features-list" id="features-list">
+                <li>Spiral arms create new stars constantly</li>
+                <li>Rich in gas and dust (building blocks)</li>
+                <li>Organization enables chemistry</li>
+                <li>Our Milky Way is this type</li>
+            </ul>
+
+            <div class="region-info" id="region-info">
+                <div class="region-title" id="region-title">Hover over a region</div>
+                <div class="region-potential">
+                    <span class="region-potential-label">Local Life Potential:</span>
+                    <span class="region-potential-value" id="region-value">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-table">
+            <h4>Compare Galaxy Types</h4>
+            <div id="comparison-rows"></div>
+        </div>
+
+        <div class="insight-box">
+            <h4>What This Shows</h4>
+            <p>
+                Life isn't randomly scattered across the universe. It follows the geometry.
+                Where there's <strong>structure</strong> (spiral arms), there's life.
+                Where there's <strong>chaos or exhaustion</strong> (ellipticals), there's none.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+                This isn't speculation — it's geometry. The same patterns that create
+                spiral arms also create the conditions for chemistry, planets, and life.
+            </p>
+            <p style="margin-top: var(--space-sm); color: var(--gold);">
+                <strong>The key insight:</strong> When you look at the night sky and see
+                a spiral galaxy, you're looking at a life factory. When you see an elliptical,
+                you're looking at a graveyard.
+            </p>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../../js/components/site-header.js"></script>
+    <script src="../../../js/components/site-footer.js"></script>
+    <script src="galaxy-life-map.js"></script>
+    <script>
+        // Initialize the viewer
+        const viewer = new GalaxyLifeMap('galaxy-viz', {
+            size: 400,
+            onUpdate: handleUpdate
+        });
+
+        // DOM elements
+        const galaxyButtons = document.querySelectorAll('.galaxy-btn');
+        const galaxyName = document.getElementById('galaxy-name');
+        const galaxyDescription = document.getElementById('galaxy-description');
+        const lifeValue = document.getElementById('life-value');
+        const lifeBar = document.getElementById('life-bar');
+        const featuresList = document.getElementById('features-list');
+        const regionInfo = document.getElementById('region-info');
+        const regionTitle = document.getElementById('region-title');
+        const regionValue = document.getElementById('region-value');
+        const comparisonRows = document.getElementById('comparison-rows');
+
+        // Update functions
+        function handleUpdate(event) {
+            if (event.type === 'region' && event.region) {
+                regionInfo.classList.add('active');
+                regionTitle.textContent = event.label;
+
+                const percent = Math.round(event.potential * 100);
+                regionValue.textContent = `${percent}%`;
+
+                // Color based on potential
+                regionValue.className = 'region-potential-value';
+                if (event.potential >= 0.6) {
+                    regionValue.classList.add('high');
+                } else if (event.potential >= 0.3) {
+                    regionValue.classList.add('medium');
+                } else {
+                    regionValue.classList.add('low');
+                }
+            } else if (event.type === 'clear') {
+                regionInfo.classList.remove('active');
+                regionTitle.textContent = 'Hover over a region';
+                regionValue.textContent = '—';
+                regionValue.className = 'region-potential-value';
+            } else if (event.type === 'galaxyChange') {
+                updateGalaxyDisplay(event.galaxy);
+            }
+        }
+
+        function updateGalaxyDisplay(galaxy) {
+            if (!galaxy) galaxy = viewer.getGalaxyInfo();
+
+            galaxyName.textContent = galaxy.name;
+            galaxyDescription.textContent = galaxy.description;
+
+            // Update description color
+            galaxyDescription.className = 'galaxy-description';
+            if (galaxy.lifePotential >= 0.6) {
+                galaxyDescription.classList.add('life-factory');
+            } else if (galaxy.lifePotential >= 0.3) {
+                galaxyDescription.classList.add('chaotic');
+            } else {
+                galaxyDescription.classList.add('graveyard');
+            }
+
+            // Update life meter
+            const percent = Math.round(galaxy.lifePotential * 100);
+            lifeValue.textContent = `${percent}%`;
+            lifeBar.style.width = `${percent}%`;
+
+            lifeBar.className = 'life-meter-fill';
+            if (galaxy.lifePotential >= 0.6) {
+                lifeBar.classList.add('high');
+            } else if (galaxy.lifePotential >= 0.3) {
+                lifeBar.classList.add('medium');
+            } else {
+                lifeBar.classList.add('low');
+            }
+
+            // Update features
+            featuresList.innerHTML = galaxy.features
+                .map(f => `<li>${f}</li>`)
+                .join('');
+
+            // Update comparison table highlighting
+            updateComparisonTable();
+        }
+
+        function updateComparisonTable() {
+            const types = viewer.getAllTypes();
+            const currentType = viewer.getGalaxyType();
+
+            comparisonRows.innerHTML = types.map(type => {
+                const percent = Math.round(type.lifePotential * 100);
+                const isCurrent = type.key === currentType;
+
+                let fillColor;
+                if (type.lifePotential >= 0.6) {
+                    fillColor = '#4ecdc4';
+                } else if (type.lifePotential >= 0.3) {
+                    fillColor = '#d4af37';
+                } else {
+                    fillColor = '#ff6b6b';
+                }
+
+                return `
+                    <div class="comparison-row ${isCurrent ? 'current' : ''}" data-type="${type.key}">
+                        <span class="name">${type.name}</span>
+                        <div class="bar">
+                            <div class="bar-fill" style="width: ${percent}%; background: ${fillColor}"></div>
+                        </div>
+                        <span class="value">${percent}%</span>
+                    </div>
+                `;
+            }).join('');
+
+            // Add click handlers to comparison rows
+            document.querySelectorAll('.comparison-row').forEach(row => {
+                row.style.cursor = 'pointer';
+                row.addEventListener('click', () => {
+                    const type = row.dataset.type;
+                    selectGalaxyType(type);
+                });
+            });
+        }
+
+        function selectGalaxyType(type) {
+            viewer.setGalaxyType(type);
+
+            // Update button states
+            galaxyButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.type === type);
+            });
+
+            updateGalaxyDisplay();
+        }
+
+        // Bind galaxy type buttons
+        galaxyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectGalaxyType(btn.dataset.type);
+            });
+        });
+
+        // Initial display
+        updateGalaxyDisplay();
+        updateComparisonTable();
+    </script>
+</body>
+</html>

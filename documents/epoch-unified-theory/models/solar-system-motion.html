@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Motion | Epoch Unified Theory</title>
+    <meta name="description" content="Both Sun-centered AND Earth-centered views are true — position determines perspective">
+    <link rel="stylesheet" href="../../../css/unified-theme.css">
+    <link rel="stylesheet" href="models.css">
+    <style>
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .view-btn {
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(74, 142, 200, 0.1);
+            border: 2px solid rgba(74, 142, 200, 0.3);
+            color: var(--soft-blue);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .view-btn:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .view-btn:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .view-btn:not(:first-child):not(:last-child) {
+            border-left: none;
+            border-right: none;
+        }
+
+        .view-btn:first-child {
+            border-right: none;
+        }
+
+        .view-btn:hover {
+            background: rgba(74, 142, 200, 0.2);
+        }
+
+        .view-btn.active {
+            background: var(--bright-blue);
+            color: var(--void);
+            border-color: var(--bright-blue);
+        }
+
+        .view-btn.active-gold {
+            background: var(--gold);
+            color: var(--void);
+            border-color: var(--gold);
+        }
+
+        .view-descriptions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .view-desc {
+            padding: var(--space-md);
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            opacity: 0.6;
+        }
+
+        .view-desc.active {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .view-desc.earth {
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+
+        .view-desc.earth.active {
+            border-color: var(--earth, #4ecdc4);
+        }
+
+        .view-desc.sun {
+            background: rgba(243, 156, 18, 0.1);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+        }
+
+        .view-desc.sun.active {
+            border-color: #f39c12;
+        }
+
+        .view-desc.both {
+            background: rgba(201, 162, 39, 0.1);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .view-desc.both.active {
+            border-color: var(--gold);
+        }
+
+        .view-desc h4 {
+            margin-bottom: var(--space-xs);
+            font-size: var(--text-base);
+        }
+
+        .view-desc.earth h4 { color: #4ecdc4; }
+        .view-desc.sun h4 { color: #f39c12; }
+        .view-desc.both h4 { color: var(--gold); }
+
+        .view-desc p {
+            color: var(--soft-cream);
+            font-size: var(--text-xs);
+            line-height: 1.5;
+        }
+
+        .motion-controls {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(21, 26, 36, 0.6);
+            border-radius: 8px;
+            margin-top: var(--space-md);
+        }
+
+        .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 16px rgba(201, 162, 39, 0.4);
+        }
+
+        .play-btn svg {
+            fill: var(--void);
+            width: 20px;
+            height: 20px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .control-label {
+            color: var(--text-dim);
+            font-size: var(--text-sm);
+        }
+
+        .speed-btns {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .speed-btn {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: var(--text-xs);
+            transition: var(--transition-smooth);
+        }
+
+        .speed-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .speed-btn.active {
+            background: var(--gold);
+            color: var(--void);
+            border-color: var(--gold);
+        }
+
+        .trail-toggle {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .trail-toggle input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .trail-toggle label {
+            color: var(--soft-cream);
+            font-size: var(--text-sm);
+            cursor: pointer;
+        }
+
+        .reset-btn {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 4px;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: var(--text-sm);
+            transition: var(--transition-smooth);
+            margin-left: auto;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255, 107, 107, 0.3);
+        }
+
+        .time-display {
+            text-align: center;
+            margin-top: var(--space-md);
+            font-family: var(--font-mono);
+        }
+
+        .time-display .years {
+            font-size: var(--text-2xl);
+            color: var(--gold);
+        }
+
+        .time-display .label {
+            font-size: var(--text-sm);
+            color: var(--text-dim);
+        }
+
+        .description-box {
+            text-align: center;
+            padding: var(--space-md);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+            margin-top: var(--space-md);
+        }
+
+        .description-box p {
+            color: var(--soft-cream);
+            font-size: var(--text-base);
+        }
+
+        .historical-note {
+            background: rgba(10, 13, 18, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .historical-note h4 {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .historical-note ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .historical-note li {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--soft-cream);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+        }
+
+        .historical-note li:last-child {
+            border-bottom: none;
+        }
+
+        .historical-note strong {
+            color: var(--gold);
+        }
+
+        @media (max-width: 700px) {
+            .view-descriptions {
+                grid-template-columns: 1fr;
+            }
+
+            .view-toggle {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .view-btn {
+                border-radius: 0;
+                border: 2px solid rgba(74, 142, 200, 0.3);
+                border-bottom: none;
+            }
+
+            .view-btn:first-child {
+                border-radius: 8px 8px 0 0;
+            }
+
+            .view-btn:last-child {
+                border-radius: 0 0 8px 8px;
+                border-bottom: 2px solid rgba(74, 142, 200, 0.3);
+            }
+
+            .motion-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                justify-content: center;
+            }
+
+            .reset-btn {
+                margin-left: 0;
+                margin-top: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../../index.html">Home</a> /
+        <a href="../index.html">Epoch Unified Theory</a> /
+        <span>Solar System Motion</span>
+    </div>
+
+    <main class="model-container">
+
+        <a href="../index.html" class="back-link">← Back to Series</a>
+
+        <h1 class="model-title">Both Centers Are True</h1>
+        <p class="model-subtitle">
+            The Sun orbits Earth. Earth orbits the Sun. Both are mathematically valid — your position determines which you see.
+        </p>
+
+        <!-- Scale Selection -->
+        <div class="view-toggle" id="scale-toggle">
+            <button class="view-btn active" data-scale="local">Local System</button>
+            <button class="view-btn" data-scale="solar">Stellar Neighborhood</button>
+            <button class="view-btn" data-scale="galactic">Galactic</button>
+        </div>
+
+        <!-- View Selection (only visible for Local scale) -->
+        <div class="view-toggle" id="view-toggle">
+            <button class="view-btn active" data-view="earth_center">Earth-Centered</button>
+            <button class="view-btn" data-view="sun_center">Sun-Centered</button>
+            <button class="view-btn" data-view="both_true">Both True</button>
+        </div>
+
+        <!-- View descriptions (for Local scale) -->
+        <div class="view-descriptions" id="view-descriptions">
+            <div class="view-desc earth active">
+                <h4>Earth-Centered (Ptolemy)</h4>
+                <p>
+                    From where you stand, the Sun rises in the east, crosses the sky, and sets in the west.
+                    This is your direct experience — and it's valid.
+                </p>
+            </div>
+            <div class="view-desc sun">
+                <h4>Sun-Centered (Copernicus)</h4>
+                <p>
+                    From an external viewpoint, Earth orbits the Sun.
+                    This is what schools teach — simpler math, but you're not standing there.
+                </p>
+            </div>
+            <div class="view-desc both">
+                <h4>Both True (Tycho/Epoch)</h4>
+                <p>
+                    There's no absolute center. Everything moves relative to a balance point.
+                    Which center you see depends on where you observe from.
+                </p>
+            </div>
+        </div>
+
+        <!-- Scale descriptions (for Stellar/Galactic) -->
+        <div class="view-descriptions" id="scale-descriptions" style="display: none;">
+            <div class="view-desc sun active">
+                <h4>Stellar Neighborhood</h4>
+                <p>
+                    Our Sun among nearby stars. Sirius, the brightest, is 8.6 light-years away.
+                    The "Dark Sun Zone" marks the antisolar direction.
+                </p>
+            </div>
+            <div class="view-desc both">
+                <h4>Galactic Scale</h4>
+                <p>
+                    The Sun orbits the Milky Way's center every 225 million years.
+                    We're 26,000 light-years from Sagittarius A*.
+                </p>
+            </div>
+        </div>
+
+        <div class="viz-area">
+            <div id="motion-viz"></div>
+        </div>
+
+        <div class="motion-controls">
+            <button class="play-btn" id="play-btn" title="Play/Pause">
+                <svg viewBox="0 0 24 24" id="play-icon">
+                    <polygon points="5,3 19,12 5,21"/>
+                </svg>
+            </button>
+
+            <div class="control-group">
+                <span class="control-label">Speed:</span>
+                <div class="speed-btns">
+                    <button class="speed-btn" data-speed="0.5">0.5x</button>
+                    <button class="speed-btn active" data-speed="1">1x</button>
+                    <button class="speed-btn" data-speed="2">2x</button>
+                    <button class="speed-btn" data-speed="5">5x</button>
+                </div>
+            </div>
+
+            <div class="trail-toggle">
+                <input type="checkbox" id="show-trail" checked>
+                <label for="show-trail">Show motion trails</label>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Reset</button>
+        </div>
+
+        <div class="time-display">
+            <div class="years" id="time-years">0.0</div>
+            <div class="label">Earth years elapsed</div>
+        </div>
+
+        <div class="description-box">
+            <p id="view-description">From Earth, the Sun appears to orbit us once per year. This is your direct experience.</p>
+        </div>
+
+        <div class="historical-note">
+            <h4>Historical Context</h4>
+            <ul>
+                <li>
+                    <strong>Ptolemy (c. 150 CE)</strong> — Earth at center. Planets move in epicycles. Worked for navigation for 1,400 years.
+                </li>
+                <li>
+                    <strong>Copernicus (1543)</strong> — Sun at center. Simpler math, but required believing Earth moves (which you can't feel).
+                </li>
+                <li>
+                    <strong>Tycho Brahe (1588)</strong> — Both true. Sun orbits Earth, planets orbit Sun. Mathematically equivalent to Copernicus.
+                </li>
+                <li>
+                    <strong>Swedenborg (1734)</strong> — Universe of spiral motions and vortices. Nothing is fixed, everything whirls.
+                </li>
+                <li>
+                    <strong>Epoch Framework</strong> — Observer position determines center. [1 = -1] — both perspectives are simultaneously valid.
+                </li>
+            </ul>
+        </div>
+
+        <div class="insight-box">
+            <h4>What This Shows</h4>
+            <p>
+                The question "Does the Sun orbit Earth or does Earth orbit the Sun?" assumes there's one right answer.
+                But position is relative. From where you stand on Earth, the Sun orbits you — that's your lived experience.
+                From the Sun's reference frame, Earth orbits it.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+                Tycho Brahe understood this in 1588: his model had the Sun orbiting Earth while planets orbited the Sun.
+                It was mathematically equivalent to Copernicus — neither "more true" than the other.
+            </p>
+            <p style="margin-top: var(--space-sm); color: var(--gold);">
+                <strong>The key insight:</strong> There is no absolute center. The center you see depends on where you stand.
+                This is the triaxial reality — not binary (either/or), but observer-dependent.
+            </p>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../../js/components/site-header.js"></script>
+    <script src="../../../js/components/site-footer.js"></script>
+    <script src="solar-system-motion.js"></script>
+    <script>
+        // Initialize the viewer
+        const motion = new SolarSystemMotion('motion-viz', {
+            size: 400,
+            onUpdate: updateDisplay
+        });
+
+        // DOM elements
+        const scaleBtns = document.querySelectorAll('#scale-toggle .view-btn');
+        const viewBtns = document.querySelectorAll('#view-toggle .view-btn');
+        const viewDescs = document.querySelectorAll('#view-descriptions .view-desc');
+        const viewToggle = document.getElementById('view-toggle');
+        const viewDescriptions = document.getElementById('view-descriptions');
+        const scaleDescriptions = document.getElementById('scale-descriptions');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const speedBtns = document.querySelectorAll('.speed-btn');
+        const showTrail = document.getElementById('show-trail');
+        const resetBtn = document.getElementById('reset-btn');
+        const timeYears = document.getElementById('time-years');
+        const timeLabel = document.querySelector('.time-display .label');
+        const viewDescription = document.getElementById('view-description');
+
+        let isPlaying = false;
+        let currentScale = 'local';
+
+        function updateDisplay(info) {
+            // Update time based on scale
+            if (info.scaleMode === 'galactic') {
+                const millions = (info.time / 1000000).toFixed(1);
+                timeYears.textContent = millions + 'M';
+                timeLabel.textContent = 'Million years elapsed';
+            } else {
+                timeYears.textContent = info.time.toFixed(1);
+                timeLabel.textContent = 'Earth years elapsed';
+            }
+
+            // Update description
+            viewDescription.textContent = info.description;
+        }
+
+        function updatePlayButton() {
+            if (isPlaying) {
+                playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+            } else {
+                playIcon.innerHTML = '<polygon points="5,3 19,12 5,21"/>';
+            }
+        }
+
+        function setActiveScale(scale) {
+            currentScale = scale;
+
+            // Update scale buttons
+            scaleBtns.forEach(btn => {
+                btn.classList.remove('active', 'active-gold');
+                if (btn.dataset.scale === scale) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show/hide view toggle based on scale
+            if (scale === 'local') {
+                viewToggle.style.display = 'flex';
+                viewDescriptions.style.display = 'grid';
+                scaleDescriptions.style.display = 'none';
+            } else {
+                viewToggle.style.display = 'none';
+                viewDescriptions.style.display = 'none';
+                scaleDescriptions.style.display = 'grid';
+            }
+
+            // Update the visualization
+            motion.setScaleMode(scale);
+        }
+
+        function setActiveView(view) {
+            // Update buttons
+            viewBtns.forEach(btn => {
+                btn.classList.remove('active', 'active-gold');
+                if (btn.dataset.view === view) {
+                    if (view === 'both_true') {
+                        btn.classList.add('active-gold');
+                    } else {
+                        btn.classList.add('active');
+                    }
+                }
+            });
+
+            // Update description cards
+            viewDescs.forEach(desc => {
+                desc.classList.remove('active');
+                if ((view === 'earth_center' && desc.classList.contains('earth')) ||
+                    (view === 'sun_center' && desc.classList.contains('sun')) ||
+                    (view === 'both_true' && desc.classList.contains('both'))) {
+                    desc.classList.add('active');
+                }
+            });
+
+            // Update the visualization
+            motion.setViewMode(view);
+        }
+
+        // Scale mode toggle
+        scaleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setActiveScale(btn.dataset.scale);
+            });
+        });
+
+        // View mode toggle
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setActiveView(btn.dataset.view);
+            });
+        });
+
+        // Play/Pause
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                motion.pause();
+                isPlaying = false;
+            } else {
+                motion.play();
+                isPlaying = true;
+            }
+            updatePlayButton();
+        });
+
+        // Speed controls
+        speedBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                speedBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                motion.setSpeed(parseFloat(btn.dataset.speed));
+            });
+        });
+
+        // Trail toggle
+        showTrail.addEventListener('change', (e) => {
+            motion.setShowTrail(e.target.checked);
+        });
+
+        // Reset
+        resetBtn.addEventListener('click', () => {
+            motion.reset();
+            isPlaying = false;
+            updatePlayButton();
+        });
+
+        // Initial display
+        updateDisplay(motion.getInfo());
+    </script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Calculator | Epoch Unified Theory</title>
+    <meta name="description" content="Calculate life density anywhere in the cosmos using four measurable factors">
+    <link rel="stylesheet" href="../../../css/unified-theme.css">
+    <link rel="stylesheet" href="models.css">
+    <style>
+        .equation-display {
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: var(--text-2xl);
+            color: var(--gold);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+        }
+
+        .factor-grid {
+            display: grid;
+            gap: var(--space-md);
+        }
+
+        .factor-card {
+            background: rgba(21, 26, 36, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+        }
+
+        .factor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+        }
+
+        .factor-symbol {
+            font-size: var(--text-2xl);
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .factor-value {
+            font-family: var(--font-mono);
+            font-size: var(--text-xl);
+            color: var(--bright-blue);
+        }
+
+        .factor-question {
+            color: var(--soft-cream);
+            margin-bottom: var(--space-sm);
+        }
+
+        .factor-scale {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--text-xs);
+            color: var(--text-dim);
+            margin-top: var(--space-xs);
+        }
+
+        .result-section {
+            margin-top: var(--space-xl);
+        }
+
+        .omega-display {
+            text-align: center;
+            padding: var(--space-lg);
+            background: rgba(10, 13, 18, 0.8);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+        }
+
+        .omega-label {
+            font-size: var(--text-lg);
+            color: var(--text-dim);
+            margin-bottom: var(--space-sm);
+        }
+
+        .omega-value {
+            font-size: var(--text-5xl);
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .omega-percent {
+            font-size: var(--text-2xl);
+            color: var(--soft-blue);
+            margin-top: var(--space-xs);
+        }
+
+        .omega-bar {
+            height: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin: var(--space-md) 0;
+            overflow: hidden;
+        }
+
+        .omega-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a8ec8, #d4af37);
+            border-radius: 8px;
+            transition: width 0.3s ease;
+        }
+
+        .omega-description {
+            color: var(--soft-cream);
+            font-size: var(--text-lg);
+        }
+
+        .comparison-section {
+            margin-top: var(--space-xl);
+        }
+
+        .comparison-title {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .comparison-grid {
+            display: grid;
+            gap: var(--space-sm);
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm);
+            background: rgba(21, 26, 36, 0.4);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .comparison-row:hover {
+            background: rgba(74, 142, 200, 0.2);
+        }
+
+        .comparison-row.current {
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .comparison-name {
+            color: var(--soft-cream);
+        }
+
+        .comparison-value {
+            font-family: var(--font-mono);
+            color: var(--gold);
+        }
+
+        .comparison-bar {
+            flex: 1;
+            margin: 0 var(--space-md);
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .comparison-bar-fill {
+            height: 100%;
+            background: var(--soft-blue);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../../index.html">Home</a> /
+        <a href="../index.html">Epoch Unified Theory</a> /
+        <span>Life Calculator</span>
+    </div>
+
+    <main class="model-container">
+
+        <a href="../index.html" class="back-link">← Back to Series</a>
+
+        <h1 class="model-title">Life Density Calculator</h1>
+        <p class="model-subtitle">
+            Life isn't random chance — it's geometry. Adjust the factors and watch the result change.
+        </p>
+
+        <div class="equation-display">
+            Ω = Τ × Κ × Φ × Σ
+        </div>
+
+        <div class="factor-grid">
+            <!-- Factor T: Organization -->
+            <div class="factor-card">
+                <div class="factor-header">
+                    <span class="factor-symbol">Τ</span>
+                    <span class="factor-value" id="value-T">0.75</span>
+                </div>
+                <div class="factor-question">How organized is the local geometry?</div>
+                <input type="range" class="slider" id="slider-T"
+                       min="0" max="100" value="75" step="1">
+                <div class="factor-scale">
+                    <span>Chaotic</span>
+                    <span>Highly structured</span>
+                </div>
+            </div>
+
+            <!-- Factor K: Star Type -->
+            <div class="factor-card">
+                <div class="factor-header">
+                    <span class="factor-symbol">Κ</span>
+                    <span class="factor-value" id="value-K">0.95</span>
+                </div>
+                <div class="factor-question">How Sun-like is the star?</div>
+                <input type="range" class="slider" id="slider-K"
+                       min="0" max="100" value="95" step="1">
+                <div class="factor-scale">
+                    <span>Extreme (neutron star)</span>
+                    <span>Sun-like</span>
+                </div>
+            </div>
+
+            <!-- Factor P: Phase -->
+            <div class="factor-card">
+                <div class="factor-header">
+                    <span class="factor-symbol">Φ</span>
+                    <span class="factor-value" id="value-P">1.00</span>
+                </div>
+                <div class="factor-question">Where in the 1729 cycle?</div>
+                <input type="range" class="slider" id="slider-P"
+                       min="0" max="100" value="100" step="1">
+                <div class="factor-scale">
+                    <span>Near boundaries</span>
+                    <span>Optimal position</span>
+                </div>
+            </div>
+
+            <!-- Factor S: Accessibility -->
+            <div class="factor-card">
+                <div class="factor-header">
+                    <span class="factor-symbol">Σ</span>
+                    <span class="factor-value" id="value-S">0.90</span>
+                </div>
+                <div class="factor-question">How open is this region?</div>
+                <input type="range" class="slider" id="slider-S"
+                       min="0" max="100" value="90" step="1">
+                <div class="factor-scale">
+                    <span>Restricted</span>
+                    <span>Fully accessible</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="result-section">
+            <div class="omega-display">
+                <div class="omega-label">LIFE DENSITY (Ω)</div>
+                <div class="omega-value" id="omega-value">0.641</div>
+                <div class="omega-percent" id="omega-percent">64.1%</div>
+                <div class="omega-bar">
+                    <div class="omega-bar-fill" id="omega-bar" style="width: 64.1%"></div>
+                </div>
+                <div class="omega-description" id="omega-description">
+                    HIGHLY LIFE-RICH — Optimal conditions for life
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h4 class="comparison-title">Compare to Known Locations</h4>
+            <p style="color: var(--text-dim); margin-bottom: var(--space-md); font-size: var(--text-sm);">
+                Click any location to load its values
+            </p>
+            <div class="comparison-grid">
+                <div class="comparison-row current" data-preset="earth">
+                    <span class="comparison-name">Earth's neighborhood</span>
+                    <div class="comparison-bar">
+                        <div class="comparison-bar-fill" style="width: 64.1%"></div>
+                    </div>
+                    <span class="comparison-value">0.641</span>
+                </div>
+                <div class="comparison-row" data-preset="spiral_arm">
+                    <span class="comparison-name">Spiral arm interior</span>
+                    <div class="comparison-bar">
+                        <div class="comparison-bar-fill" style="width: 65.5%"></div>
+                    </div>
+                    <span class="comparison-value">0.655</span>
+                </div>
+                <div class="comparison-row" data-preset="elliptical">
+                    <span class="comparison-name">Elliptical galaxy</span>
+                    <div class="comparison-bar">
+                        <div class="comparison-bar-fill" style="width: 0.5%"></div>
+                    </div>
+                    <span class="comparison-value">0.005</span>
+                </div>
+                <div class="comparison-row" data-preset="core">
+                    <span class="comparison-name">Galactic core</span>
+                    <div class="comparison-bar">
+                        <div class="comparison-bar-fill" style="width: 0.27%"></div>
+                    </div>
+                    <span class="comparison-value">0.003</span>
+                </div>
+                <div class="comparison-row" data-preset="void">
+                    <span class="comparison-name">Intergalactic void</span>
+                    <div class="comparison-bar">
+                        <div class="comparison-bar-fill" style="width: 0.001%"></div>
+                    </div>
+                    <span class="comparison-value">0.00001</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>What This Shows</h4>
+            <p>
+                The Drake Equation asks "how many civilizations?" and gets answers ranging
+                from millions to zero — it's all guesswork.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+                The Epoch Life Equation asks "how dense is life here?" and gets a
+                <strong>calculable answer</strong> based on four measurable geometric factors.
+            </p>
+            <p style="margin-top: var(--space-sm); color: var(--gold);">
+                <strong>The key insight:</strong> Life follows geometry. Where the geometry
+                permits, life forms. Earth's neighborhood isn't lucky — it's geometrically optimal.
+            </p>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../../js/components/site-header.js"></script>
+    <script src="../../../js/components/site-footer.js"></script>
+    <script src="life-calculator.js"></script>
+    <script>
+        // Initialize calculator
+        const calc = new LifeCalculator('omega-viz', {
+            onUpdate: updateDisplay
+        });
+
+        // DOM elements
+        const sliders = {
+            T: document.getElementById('slider-T'),
+            K: document.getElementById('slider-K'),
+            P: document.getElementById('slider-P'),
+            S: document.getElementById('slider-S')
+        };
+
+        const values = {
+            T: document.getElementById('value-T'),
+            K: document.getElementById('value-K'),
+            P: document.getElementById('value-P'),
+            S: document.getElementById('value-S')
+        };
+
+        const omegaValue = document.getElementById('omega-value');
+        const omegaPercent = document.getElementById('omega-percent');
+        const omegaBar = document.getElementById('omega-bar');
+        const omegaDescription = document.getElementById('omega-description');
+        const comparisonRows = document.querySelectorAll('.comparison-row');
+
+        function updateDisplay() {
+            const state = calc.getState();
+
+            // Update value displays
+            for (const factor of ['T', 'K', 'P', 'S']) {
+                values[factor].textContent = state.factors[factor].toFixed(2);
+                sliders[factor].value = state.factors[factor] * 100;
+            }
+
+            // Update omega display
+            omegaValue.textContent = state.omega.toFixed(3);
+            omegaPercent.textContent = `${state.percentage.toFixed(1)}%`;
+            omegaBar.style.width = `${Math.min(100, state.percentage)}%`;
+            omegaDescription.textContent = state.description;
+
+            // Update comparison highlighting
+            comparisonRows.forEach(row => {
+                row.classList.remove('current');
+            });
+        }
+
+        // Bind sliders
+        for (const factor of ['T', 'K', 'P', 'S']) {
+            sliders[factor].addEventListener('input', (e) => {
+                calc.setFactor(factor, e.target.value / 100);
+                updateDisplay();
+            });
+        }
+
+        // Bind comparison rows
+        comparisonRows.forEach(row => {
+            row.addEventListener('click', () => {
+                const preset = row.dataset.preset;
+                calc.applyPreset(preset);
+                updateDisplay();
+                row.classList.add('current');
+            });
+        });
+
+        // Initial display
+        updateDisplay();
+        document.querySelector('[data-preset="earth"]').classList.add('current');
+    </script>
+</body>
+</html>

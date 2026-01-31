@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalar Position Viewer | Epoch Unified Theory</title>
+    <meta name="description" content="Interactive visualization: See how your position changes everything you perceive">
+    <link rel="stylesheet" href="../../../css/unified-theme.css">
+    <link rel="stylesheet" href="models.css">
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../../index.html">Home</a> /
+        <a href="../index.html">Epoch Unified Theory</a> /
+        <span>Scalar Position Viewer</span>
+    </div>
+
+    <main class="model-container">
+
+        <a href="../index.html" class="back-link">← Back to Series</a>
+
+        <h1 class="model-title">Where Are You?</h1>
+        <p class="model-subtitle">
+            There is no absolute center. The map changes based on where YOU stand.
+        </p>
+
+        <div class="viz-area">
+            <div id="scalar-viz"></div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <div class="control-label">
+                    <span>Your Scalar Position</span>
+                    <span class="value" id="position-value">0</span>
+                </div>
+                <input type="range" class="slider" id="position-slider"
+                       min="0" max="1000" value="0" step="1">
+                <div class="slider-markers">
+                    <span class="slider-marker">0</span>
+                    <span class="slider-marker">250</span>
+                    <span class="slider-marker">500</span>
+                    <span class="slider-marker">729</span>
+                    <span class="slider-marker">1000</span>
+                </div>
+                <p class="control-description" id="position-description">
+                    At position 0, you see both boundaries from the middle.
+                </p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">Distance to Consciousness</div>
+                <div class="stat-value" id="dist-consciousness">729</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Distance to Physical</div>
+                <div class="stat-value" id="dist-physical">1000</div>
+            </div>
+        </div>
+
+        <div class="presets">
+            <button class="preset-btn active" data-position="0">Observer (0)</button>
+            <button class="preset-btn" data-position="365">Middle (365)</button>
+            <button class="preset-btn" data-position="729">Consciousness (729)</button>
+            <button class="preset-btn" data-position="1000">Physical (1000)</button>
+        </div>
+
+        <div class="insight-box">
+            <h4>What This Shows</h4>
+            <p>
+                In the Epoch Framework, YOU are always at the center of your coordinate system.
+                The two boundaries — consciousness (at 729) and physical (at 1000) — are always
+                measured relative to YOUR position.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+                Move the slider and watch how the distances change. When you move toward one
+                boundary, it gets closer while the other moves further away. There's no
+                "correct" position — only your position.
+            </p>
+            <p style="margin-top: var(--space-sm); color: var(--gold);">
+                <strong>The key insight:</strong> Every observer creates their own map.
+                The geometry is the same, but the view depends on where you stand.
+            </p>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../../js/components/site-header.js"></script>
+    <script src="../../../js/components/site-footer.js"></script>
+    <script src="scalar-viewer.js"></script>
+    <script>
+        // Initialize the viewer
+        const viewer = new ScalarViewer('scalar-viz', {
+            size: 400
+        });
+
+        // DOM elements
+        const slider = document.getElementById('position-slider');
+        const positionValue = document.getElementById('position-value');
+        const positionDescription = document.getElementById('position-description');
+        const distConsciousness = document.getElementById('dist-consciousness');
+        const distPhysical = document.getElementById('dist-physical');
+        const presetBtns = document.querySelectorAll('.preset-btn');
+
+        // Update function
+        function updateDisplay() {
+            const info = viewer.getInfo();
+
+            positionValue.textContent = info.yourPosition;
+            distConsciousness.textContent = info.distanceToConsciousness;
+            distPhysical.textContent = info.distanceToPhysical;
+            positionDescription.textContent = info.description;
+
+            // Update preset buttons
+            presetBtns.forEach(btn => {
+                const btnPos = parseInt(btn.dataset.position);
+                btn.classList.toggle('active', btnPos === info.yourPosition);
+            });
+        }
+
+        // Slider input
+        slider.addEventListener('input', (e) => {
+            viewer.setPosition(parseInt(e.target.value));
+            updateDisplay();
+        });
+
+        // Preset buttons
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const pos = parseInt(btn.dataset.position);
+                slider.value = pos;
+                viewer.setPosition(pos);
+                updateDisplay();
+            });
+        });
+
+        // Initial update
+        updateDisplay();
+    </script>
+</body>
+</html>

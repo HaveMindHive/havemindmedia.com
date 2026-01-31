@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Photon's Journey | Epoch Unified Theory</title>
+    <meta name="description" content="Follow a single photon from the Sun's core to your eye — a 100,000 year journey">
+    <link rel="stylesheet" href="../../../css/unified-theme.css">
+    <link rel="stylesheet" href="models.css">
+    <style>
+        .journey-viz {
+            background: linear-gradient(180deg,
+                rgba(10, 13, 18, 0.9) 0%,
+                rgba(20, 30, 50, 0.9) 50%,
+                rgba(10, 13, 18, 0.9) 100%);
+            border-radius: 12px;
+            padding: var(--space-md);
+        }
+
+        .play-controls {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            background: rgba(21, 26, 36, 0.6);
+            border-radius: 8px;
+        }
+
+        .play-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 20px rgba(201, 162, 39, 0.4);
+        }
+
+        .play-btn svg {
+            fill: var(--void);
+            width: 24px;
+            height: 24px;
+        }
+
+        .play-btn.playing svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .timeline-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .timeline-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: var(--text-xs);
+            color: var(--text-dim);
+        }
+
+        .timeline-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .timeline-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: grab;
+            box-shadow: 0 2px 8px rgba(201, 162, 39, 0.4);
+        }
+
+        .reset-btn {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(74, 142, 200, 0.2);
+            border: 1px solid rgba(74, 142, 200, 0.3);
+            border-radius: 4px;
+            color: var(--soft-blue);
+            cursor: pointer;
+            font-size: var(--text-sm);
+            transition: var(--transition-smooth);
+        }
+
+        .reset-btn:hover {
+            background: rgba(74, 142, 200, 0.3);
+        }
+
+        .speed-controls {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .speed-btn {
+            padding: var(--space-xs) var(--space-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-dim);
+            cursor: pointer;
+            font-size: var(--text-xs);
+            transition: var(--transition-smooth);
+        }
+
+        .speed-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .speed-btn.active {
+            background: var(--gold);
+            color: var(--void);
+            border-color: var(--gold);
+        }
+
+        .journey-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .stat-card {
+            background: rgba(10, 13, 18, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            text-align: center;
+        }
+
+        .stat-card .label {
+            font-size: var(--text-xs);
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-card .value {
+            font-family: var(--font-mono);
+            font-size: var(--text-xl);
+            font-weight: 600;
+        }
+
+        .stat-card .value.age {
+            color: var(--gold);
+        }
+
+        .stat-card .value.wavelength {
+            color: var(--bright-blue);
+        }
+
+        .stat-card .value.energy {
+            color: #4ecdc4;
+        }
+
+        .energy-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: var(--space-xs);
+            overflow: hidden;
+        }
+
+        .energy-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4ecdc4, #2ecc71);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .phase-description {
+            text-align: center;
+            padding: var(--space-md);
+            background: rgba(201, 162, 39, 0.08);
+            border-radius: 8px;
+            margin-top: var(--space-md);
+        }
+
+        .phase-description .phase-name {
+            color: var(--gold);
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-xs);
+        }
+
+        .phase-description .phase-text {
+            color: var(--soft-cream);
+        }
+
+        .key-facts {
+            margin-top: var(--space-xl);
+        }
+
+        .key-facts h4 {
+            color: var(--hazel-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .fact-card {
+            background: rgba(21, 26, 36, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+        }
+
+        .fact-card .number {
+            font-family: var(--font-mono);
+            font-size: var(--text-2xl);
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .fact-card .description {
+            color: var(--soft-cream);
+            font-size: var(--text-sm);
+            margin-top: var(--space-xs);
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+    <div class="stars"></div>
+
+    <div id="site-header"></div>
+
+    <div class="nav-breadcrumb">
+        <a href="../../../index.html">Home</a> /
+        <a href="../index.html">Epoch Unified Theory</a> /
+        <span>Photon Journey</span>
+    </div>
+
+    <main class="model-container">
+
+        <a href="../index.html" class="back-link">← Back to Series</a>
+
+        <h1 class="model-title">The Photon's Journey</h1>
+        <p class="model-subtitle">
+            The light reaching your eye right now was born 100,000 years ago. You're reading ancient mail.
+        </p>
+
+        <div class="viz-area journey-viz">
+            <div id="photon-viz"></div>
+        </div>
+
+        <div class="play-controls">
+            <button class="play-btn" id="play-btn" title="Play/Pause">
+                <svg viewBox="0 0 24 24" id="play-icon">
+                    <polygon points="5,3 19,12 5,21"/>
+                </svg>
+            </button>
+
+            <div class="timeline-container">
+                <input type="range" class="timeline-slider" id="timeline"
+                       min="0" max="1000" value="0" step="1">
+                <div class="timeline-labels">
+                    <span>Birth (Core)</span>
+                    <span>Escape (Surface)</span>
+                    <span>Arrival (Eye)</span>
+                </div>
+            </div>
+
+            <div class="speed-controls">
+                <button class="speed-btn" data-speed="0.5">0.5x</button>
+                <button class="speed-btn active" data-speed="1">1x</button>
+                <button class="speed-btn" data-speed="2">2x</button>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Reset</button>
+        </div>
+
+        <div class="phase-description">
+            <div class="phase-name" id="phase-name">Sun's Core</div>
+            <div class="phase-text" id="phase-text">Born in nuclear fusion at 15 million °C</div>
+        </div>
+
+        <div class="journey-stats">
+            <div class="stat-card">
+                <div class="label">Age of This Photon</div>
+                <div class="value age" id="stat-age">0 years</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Current Wavelength</div>
+                <div class="value wavelength" id="stat-wavelength">Gamma Ray</div>
+            </div>
+            <div class="stat-card">
+                <div class="label">Energy Level</div>
+                <div class="value energy" id="stat-energy">100%</div>
+                <div class="energy-bar">
+                    <div class="energy-bar-fill" id="energy-bar" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="key-facts">
+            <h4>The Numbers That Matter</h4>
+            <div class="fact-grid">
+                <div class="fact-card">
+                    <div class="number">100,000</div>
+                    <div class="description">Years for a photon to escape the Sun's interior</div>
+                </div>
+                <div class="fact-card">
+                    <div class="number">10²⁵</div>
+                    <div class="description">Times it bounces before reaching the surface</div>
+                </div>
+                <div class="fact-card">
+                    <div class="number">8 min 20 sec</div>
+                    <div class="description">Time to travel from Sun to Earth through space</div>
+                </div>
+                <div class="fact-card">
+                    <div class="number">1 mm</div>
+                    <div class="description">Average distance traveled between each bounce</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h4>What This Shows</h4>
+            <p>
+                When you step outside and feel the warmth of sunlight, you're receiving energy
+                that was created when our ancestors were learning to make stone tools.
+                That photon bounced <strong>billions of billions of times</strong> inside the Sun
+                before it could escape.
+            </p>
+            <p style="margin-top: var(--space-sm);">
+                The instant sunlight feels to us — "the Sun is shining" — is actually the
+                end of an incomprehensibly long journey. Light isn't instant. Light is
+                <strong>history</strong>.
+            </p>
+            <p style="margin-top: var(--space-sm); color: var(--gold);">
+                <strong>The key insight:</strong> When you see, you're reading the past.
+                Every photon is a message that took a very long time to reach you.
+            </p>
+        </div>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../../../js/components/site-header.js"></script>
+    <script src="../../../js/components/site-footer.js"></script>
+    <script src="photon-journey.js"></script>
+    <script>
+        // Initialize the viewer
+        const journey = new PhotonJourney('photon-viz', {
+            width: 600,
+            height: 250,
+            onUpdate: updateDisplay
+        });
+
+        // DOM elements
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const timeline = document.getElementById('timeline');
+        const resetBtn = document.getElementById('reset-btn');
+        const speedBtns = document.querySelectorAll('.speed-btn');
+        const phaseName = document.getElementById('phase-name');
+        const phaseText = document.getElementById('phase-text');
+        const statAge = document.getElementById('stat-age');
+        const statWavelength = document.getElementById('stat-wavelength');
+        const statEnergy = document.getElementById('stat-energy');
+        const energyBar = document.getElementById('energy-bar');
+
+        let isPlaying = false;
+
+        function updateDisplay(info) {
+            // Update timeline slider
+            timeline.value = info.progress * 1000;
+
+            // Update phase info
+            const phaseNames = {
+                core: "Sun's Core",
+                radiative: "Radiative Zone",
+                convective: "Convective Zone",
+                surface: "Photosphere (Surface)",
+                space: "Empty Space",
+                atmosphere: "Earth's Atmosphere",
+                eye: "Your Eye"
+            };
+            phaseName.textContent = phaseNames[info.phase] || info.phase;
+            phaseText.textContent = info.description;
+
+            // Update stats
+            if (typeof info.ageYears === 'string') {
+                statAge.textContent = info.ageYears;
+            } else {
+                statAge.textContent = info.ageYears.toLocaleString() + ' years';
+            }
+            statWavelength.textContent = info.wavelength;
+            statEnergy.textContent = info.energy + '%';
+            energyBar.style.width = info.energy + '%';
+
+            // Check if journey complete
+            if (info.progress >= 1 && isPlaying) {
+                isPlaying = false;
+                updatePlayButton();
+            }
+        }
+
+        function updatePlayButton() {
+            if (isPlaying) {
+                playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+                playBtn.classList.add('playing');
+            } else {
+                playIcon.innerHTML = '<polygon points="5,3 19,12 5,21"/>';
+                playBtn.classList.remove('playing');
+            }
+        }
+
+        // Play/Pause button
+        playBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                journey.pause();
+                isPlaying = false;
+            } else {
+                // Reset if at end
+                if (journey.getProgress() >= 1) {
+                    journey.reset();
+                }
+                journey.play();
+                isPlaying = true;
+            }
+            updatePlayButton();
+        });
+
+        // Timeline scrubbing
+        timeline.addEventListener('input', (e) => {
+            journey.pause();
+            isPlaying = false;
+            updatePlayButton();
+            journey.setProgress(e.target.value / 1000);
+        });
+
+        // Reset button
+        resetBtn.addEventListener('click', () => {
+            journey.reset();
+            isPlaying = false;
+            updatePlayButton();
+        });
+
+        // Speed controls
+        speedBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                speedBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                journey.setSpeed(parseFloat(btn.dataset.speed));
+            });
+        });
+
+        // Initial display
+        updateDisplay(journey.getInfo());
+    </script>
+</body>
+</html>
